@@ -15,9 +15,9 @@ textboxViewModel.value("Some Initial Value");
 
 In the following example, the state of the control is updated.
 
-    ```ts
-    textboxViewModel.dirty(true);
-    ```  
+```ts
+textboxViewModel.dirty(true);
+```  
  
 The following controls also have their own documentation.
 
@@ -35,15 +35,10 @@ The following controls also have their own documentation.
 
 ## Changing forms to work without EditScopes
 
-Several new Azure controls are compatible with EditScope-backed controls. 
-
-This process specifies how to add the editscopeless **Name**  TextBox control from the `Fx/Controls/TextBox` module to an EditScope-based control. 
+Several new Azure controls are compatible with EditScope-backed controls. Adding editscope-less controls to an editscope-based form works the same way for all  editscope-less controls.  
+This process specifies how to add the editscopeless **Name**  TextBox control from the `Fx/Controls/TextBox` module to an EditScope-based control. It uses the EngineV3 sample that is located at  `<dir>\Client\V1\Create\EngineV3\ViewModels.ts`.  The  control is also included in the working sample located at  [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SampleMenuBlade/createengine](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SampleMenuBlade/createengine).
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. 
-
-This procedure uses the EngineV3 sample that is located at  `<dir>\Client\V1\Create\EngineV3\ViewModels.ts`.  The  control is also included in the working sample located at  [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SampleMenuBlade/createengine](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SampleMenuBlade/createengine).
-
-For more information about the create engine, see [portalfx-create-engine-sample.md](portalfx-create-engine-sample.md).
 
 1. Import modules
 
@@ -102,6 +97,7 @@ For more information about the create engine, see [portalfx-create-engine-sample
                 this.actionBar.valid(this.valid() && this.engineName.valid());
     });
     ```
+
 1. Modify ARM provisioner to use value from new control
 
     The `_supplyTemplateDeploymentOptions` provides the  ARM provisioner with the template deployment options.
@@ -114,6 +110,8 @@ For more information about the create engine, see [portalfx-create-engine-sample
 When this procedure is complete, all the changes that are required for an EditScope-compatible form to work with editscope-less controls have been added.
 
 <!-- The following section is from editscopeless overview.  It is not known how much of the controls is still needed for editscopeless forms. -->
+
+For more information about the create engine, see [portalfx-create-engine-sample.md](portalfx-create-engine-sample.md).
 
 ### Controls Namespace
 
