@@ -8,11 +8,11 @@ The Uservoice forum, located at [https://aka.ms/portalfx/uservoice](https://aka.
 
 The following is a diagram of the process used to file a new request.
 
-![alt-text](../media/partner-request-flow.png "Partner Request Process")
+![alt-text](../media/portalfx-partner-request-process/partner-request-flow.png "Partner Request Process")
 
 1. To get access to the [Uservoice forum](https://aka.ms/portalfx/uservoice), you need to sign-up with your "@microsoft.com" address. If you have not logged in with a Microsoft account, you will see the following screen.
     
-    ![alt-text](../media/access-denied-pr.png "Partner Request")
+    ![alt-text](../media/portalfx-partner-request-process/access-denied-pr.png "Partner Request")
 
 1. Post the title for your idea by entering it in the box labeled "How can we improve Azure Portal Experience for customers?".
 
