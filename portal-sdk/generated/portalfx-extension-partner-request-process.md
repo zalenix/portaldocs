@@ -31,4 +31,4 @@ The status of the item is initially marked "**blank**".  After we have prioritiz
 
 ![alt-text](../media/portalfx-partner-request-process/status.png "Partner Request Status")
 
-If an item needs more data, or is declined, then we will email you during the prioritization process.  The status of the items will be marked  "**In Progress**" after we begin the implementation process.
+If an item needs more data, or is declined, then we will email you during the prioritization process.  The status of the items will be marked  "**In Progress**" after the Ibiza team begins the implementation process.
