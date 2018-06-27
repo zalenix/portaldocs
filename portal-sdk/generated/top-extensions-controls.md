@@ -27,7 +27,7 @@ The **Knockout** binding for all controls is the `pcControl` binding, as in the 
 <div data-bind='pcControl: myControl'></div>
 ```
 
-Taken together, creating a blade as specified in [top-blades-procedure.md](top-blades-procedure.md) that contains only a textbox would look something like the following.
+Taken together, creating a blade as specified in [top-blades-template.md](top-blades-template.md) that contains only a textbox would look something like the following.
 <!-- TODO: Find a sample for this -->
 ```cs
 import * as TemplateBlade from "Fx/Composition/TemplateBlade";
@@ -182,6 +182,7 @@ DESCRIPTION: Why is it that the controls playground does not provide localizatio
 SOLUTION: Localization is done at build times, so none of the string inputs are localized.  Instead, the strings are sent  in non-localized forms so that copy/pasted code compiles and runs without requiring additional work.
 
 * * *
+
     
 
 <a name="extension-controls-glossary"></a>

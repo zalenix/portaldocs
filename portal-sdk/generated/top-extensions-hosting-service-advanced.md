@@ -1,7 +1,7 @@
 <a name="advanced-hosting-service-topics"></a>
 ## Advanced Hosting Service Topics
 
-**NOTE**: This section of the document assumes that the reader has reviewed the hosting service document located at [top-extensions-hosting-service-procedures.md](portalfx-extensions-hosting-service-procedures.md). 
+**NOTE**: This section of the document assumes that the reader has reviewed the hosting service document located at [top-extensions-hosting-service-procedures.md](top-extensions-hosting-service-procedures.md). 
 
 **NOTE**: This section is only relevant to extension developers who are using [WARM](portalfx-extensions-glossary-hosting-service.md) and [EV2](portalfx-extensions-glossary-hosting-service.md) for deployment, or who plan to migrate to WARM and EV2 for deployment.
 

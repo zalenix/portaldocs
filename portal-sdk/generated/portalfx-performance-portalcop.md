@@ -6,14 +6,13 @@ The Portal Framework team has a tool named **PortalCop** that helps reduce code 
 <a name="portalcop-installing-portalcop"></a>
 ### Installing PortalCop
 
-The tool should be installed when the developer installs Visual Studio, as specified in  [top-extensions-packages.md](top-extensions-packages.md).
-If not, the tool can be installed by running the following command in the NuGet Package Manager Console.
+The tool can be installed by running the following command in the NuGet Package Manager Console.
 
 ```
 Install-Package PortalFx.PortalCop -Source https://msazure.pkgs.visualstudio.com/DefaultCollection/_packaging/Official/nuget/v3/index.json -Version 1.0.0.339
 ```
 
-The tool can also be installed by running the following command in  a Windows command prompt.
+The tool can also be installed by running the following command in a Windows command prompt.
 
 ```
 nuget install PortalFx.PortalCop -Source https://msazure.pkgs.visualstudio.com/DefaultCollection/_packaging/Official/nuget/v3/index.json -Version 1.0.0.339
