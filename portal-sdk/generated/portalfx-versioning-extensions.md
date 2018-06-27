@@ -1,2 +1,2 @@
 
-The page you requested has moved to [portalfx-extensions-versioning.md](portalfx-extensions-versioning.md). 
+The page you requested has moved to [top-extensions-versioning.md](top-extensions-versioning.md). 

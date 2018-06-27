@@ -15,10 +15,10 @@ To test your local extension against the production portal, see [top-extensions-
 
 For more information about deploying the extension, see [portalfx-deployment.md](portalfx-deployment.md).
 
-<a name="debugging-an-extension-the-debug-tool"></a>
-## The debug tool
+<a name="debugging-an-extension-debug-mode"></a>
+## Debug mode
 
-The Portal contains a debug tool to aid with extension development. The keyboard shortcut CTRL+ALT+D toggles the visibility of the debug tool, as in the following image.
+The Portal contains a debug tool to aid with extension development. The keyboard shortcut CTRL+ALT+D toggles the visibility of the debug mode, as in the following image.
 
  ![alt-text](../media/portalfx-debugging/debugMode.png "Portal Debug Tool")
 
@@ -49,7 +49,7 @@ The information associated with each part provides the following information.
     * **Track**: Dumps the view model observables.
 * **Deep link**: Optional. Links to the blade.
 
-<a name="debugging-an-extension-the-debug-tool-toggling-optimizations"></a>
+<a name="debugging-an-extension-debug-mode-toggling-optimizations"></a>
 ### Toggling optimizations
 
 
@@ -86,7 +86,7 @@ The `IsDevelopmentMode` setting can be used on the server to alter the default o
 
 **NOTE**:  This flag applies to both the Portal and extensions source. If you are testing extensions that are already deployed to production, use the **clientOptimizations** flag instead of the **IsDevelopmentMode** appSetting. If you are working in a development environment instead, use the **IsDevelopmentMode** appSetting instead of the **clientOptimizations** flag to turn off bundling and minification for this extension only. This will speed up Portal load during development and testing.  To change the **IsDevelopmentMode** appSetting, locate the appropriate `web.config` file and change the value of the **IsDevelopmentMode** appSetting to `true`.
 
-<a name="debugging-an-extension-the-debug-tool-restore-default-settings"></a>
+<a name="debugging-an-extension-debug-mode-restore-default-settings"></a>
 ### Restore default settings
 
 The Portal tracks the state of the desktop for users as they navigate through the Portal. It stores the list of opened blades, active journeys, part selection status, and various other states of the Portal. At development time, it is often necessary to clear this information. If new parts are not displayed as expected, this is often the cause.

@@ -121,7 +121,7 @@ The first is the QueryCache. We use a QueryCache to cache a list of items as opp
 this.websitesQuery = new QueryCache<WebsiteModel, WebsiteQueryParams>({
     entityTypeName: SamplesExtension.DataModels.WebsiteModelType,
 
-    // when fetch() is called on the cache the params will be passed to this function and it 
+    // when fetch() is called on the cache the params will be passed to this function and it
     // should return the right URI for getting the data
     sourceUri: (params: WebsiteQueryParams): string => {
         let uri = MsPortalFx.Base.Resources.getAppRelativeUri("/api/Websites");
@@ -135,7 +135,7 @@ this.websitesQuery = new QueryCache<WebsiteModel, WebsiteQueryParams>({
         // this particular controller expects a sessionId as well but this is not the common case.
         // Unless your controller also requires a sessionId this can be omitted
         return Util.appendSessionId(uri);
-    }
+    },
 });
 
 ```
@@ -170,8 +170,8 @@ this.websiteEntities = new EntityCache<WebsiteModel, number>({
         queryCache: this.websitesQuery,
         entityMatchesId: (website, id) => {
             return website.id() === id;
-        }
-    }
+        },
+    },
 });
 
 ```
@@ -239,7 +239,7 @@ As is standard practice we'll call the view's `fetch` method on the blade's `onI
 
 /**
  * Invoked when the blade's inputs change
- */   
+ */
 public onInputsSet(inputs: Def.BrowseMasterListViewModel.InputsContract): MsPortalFx.Base.Promise {
     return this._websitesQueryView.fetch({ runningStatus: this.runningStatus.value() });
 }
@@ -304,7 +304,7 @@ HTML template to show the name, id and running status of the website but obvious
 
 - [Overview](portalfx-data-overview.md)
 - [Configuring the data cache](portalfx-data-configuringdatacache.md)
-- [Loading data](portalfx-data-loadingdata.md)
+- [Loading data](top-extensions-data-loading.md)
 - [Consuming data](portalfx-data-dataviews.md)
 - [Shaping data](portalfx-data-projections.md)
 - [Refreshing cached data](portalfx-data-refreshingdata.md)
@@ -426,7 +426,7 @@ The DataCache classes are a convenient way to load and cache data required by Bl
 
 * **QueryCache** - Loads data of type `Array<T>` according to an extension-specified `TQuery` type. `QueryCache` is useful for loading data for *list-like views* like Grid, List, Tree, Chart, etc..
 * **EntityCache** - Loads data of type `T` according to some extension-specified `TId` type. `EntityCache` is useful for loading data into property views and *single-record views*.
-* (Less commonly used) **EditScopeCache** - Loads and manages instances of EditScope, which is a change-tracked, editable model [for use in Forms](portalfx-forms-working-with-edit-scopes.md).  
+* (Less commonly used) **EditScopeCache** - Loads and manages instances of EditScope, which is a change-tracked, editable model [for use in Forms](top-legacy-editscopes.md).  
 
 From an API perspective these DataCache classes all share the same API and usage patterns:  
 
@@ -445,8 +445,8 @@ this.websiteEntities = new MsPortalFx.Data.EntityCache<SamplesExtension.DataMode
         queryCache: this.websitesQuery,
         entityMatchesId: (website, id) => {
             return website.id() === id;
-        }
-    }
+        },
+    },
 });
 
 ```
@@ -465,7 +465,7 @@ this._websiteEntityView = dataContext.websiteEntities.createView(container);
 
 /**
  * Invoked when the blade's inputs change
- */   
+ */
 public onInputsSet(inputs: Def.BrowseMasterListViewModel.InputsContract): MsPortalFx.Base.Promise {
     return this._websitesQueryView.fetch({ runningStatus: this.runningStatus.value() });
 }
@@ -823,8 +823,8 @@ var promise = MsPortalFx.Base.Net.ajax({
 ## Using DataViews
 
 The `QueryView` and `EntityView` both serve the purposes of presenting data from the cache to the view model, and providing reference counting. A DataView is created from the `createView` method of a QueryCache or EntityCache:
-
-`\Client\Data\MasterDetailBrowse\ViewModels\MasterViewModels.ts`
+<!-- TODO:  Determine the location of these samples; the code does not appear to exist. -->
+`\Client\V1\Data\MasterDetailBrowse\ViewModels\MasterViewModels.ts`
 
 ```ts
 this._websitesQueryView = dataContext.masterDetailBrowseSample.websitesQuery.createView(container);
@@ -907,13 +907,13 @@ A naive implementation of this might go something like this (ignore the lines ab
 
 ```typescript
 
-var projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
-    var projectionId = this._uuid++;
+const projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
+    const projectionId = this._uuid++;
     this._logMapFunctionRunning(projectionId, robot);
     return <RobotDetails>{
         name: ko.observable(robot.name()),
         status: ko.observable(robot.status()),
-        modelAndMfg: ko.observable("{0}:{1}".format(robot.model(), robot.manufacturer()))
+        modelAndMfg: ko.observable("{0}:{1}".format(robot.model(), robot.manufacturer())),
     };
 });
 
@@ -985,8 +985,8 @@ A correct implemenation of the map above then looks like (again ignore uuid and 
 
 ```typescript
 
-var projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
-    var projectionId = this._uuid++;
+const projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
+    const projectionId = this._uuid++;
     this._logMapFunctionRunning(projectionId, robot);
     return <RobotDetails>{
         name: robot.name,
@@ -994,7 +994,7 @@ var projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionL
         modelAndMfg: ko.pureComputed(() => {
             this._logComputedRecalculating(projectionId, robot);
             return "{0}:{1}".format(robot.model(), robot.manufacturer());
-        })
+        }),
     };
 });
 
@@ -1006,8 +1006,8 @@ Now that you understand how `map()` works we can introduce `mapInto()`. Here's t
 
 ```typescript
 
-var projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
-    var projectionId = this._uuid++;
+const projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
+    const projectionId = this._uuid++;
     this._logMapFunctionRunning(projectionId, robot);
     return <RobotDetails>{
         name: robot.name,
@@ -1015,7 +1015,7 @@ var projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProject
         modelAndMfg: ko.pureComputed(() => {
             this._logComputedRecalculating(projectionId, robot);
             return "{0}:{1}".format(robot.model(), robot.manufacturer());
-        })
+        }),
     };
 });
 
@@ -1025,13 +1025,13 @@ You can see how it reacts by clicking on the 'Proper mapInto' button and then ad
 
 ```typescript
 
-var projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
-    var projectionId = this._uuid++;
+const projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
+    const projectionId = this._uuid++;
     this._logMapFunctionRunning(projectionId, robot);
     return <RobotDetails>{
         name: ko.observable(robot.name()),
         status: ko.observable(robot.status()),
-        modelAndMfg: ko.observable("{0}:{1}".format(robot.model(), robot.manufacturer()))
+        modelAndMfg: ko.observable("{0}:{1}".format(robot.model(), robot.manufacturer())),
     };
 });
 
@@ -1066,12 +1066,12 @@ this._view = dataContext.robotData.robotsQuery.createView(container);
 // As items are added or removed from the underlying items array,
 // individual changed items will be re-evaluated to create the computed
 // value in the resulting observable array.
-var projectedItems = this._view.items.mapInto<RobotDetails>(container, (itemLifetime, robot) => {
+const projectedItems = this._view.items.mapInto<RobotDetails>(container, (itemLifetime, robot) => {
     return <RobotDetails>{
         name: robot.name,
         computedName: ko.pureComputed(() => {
             return "{0}:{1}".format(robot.model(), robot.manufacturer());
-        })
+        }),
     };
 });
 
@@ -1170,7 +1170,7 @@ In many scenarios, users expect to see their rendered data update implicitly as 
 public robotsQuery = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModels.Robot, any>({
     entityTypeName: SamplesExtension.DataModels.RobotType,
     sourceUri: () => Util.appendSessionId(RobotData._apiRoot),
-    poll: true
+    poll: true,
 });
 
 ```
@@ -1265,7 +1265,7 @@ public updateRobot(robot: SamplesExtension.DataModels.Robot): FxBase.PromiseV<an
         uri: Util.appendSessionId(RobotData._apiRoot + robot.name()),
         type: "PUT",
         contentType: "application/json",
-        data: ko.toJSON(robot)
+        data: ko.toJSON(robot),
     }).then(() => {
         // This will refresh the set of data that is available in the underlying data cache.
         this.robotsQuery.refreshAll();
@@ -1320,7 +1320,7 @@ public updateRobot(robot: SamplesExtension.DataModels.Robot): FxBase.PromiseV<an
         uri: Util.appendSessionId(RobotData._apiRoot + robot.name()),
         type: "PUT",
         contentType: "application/json",
-        data: ko.toJSON(robot)
+        data: ko.toJSON(robot),
     }).then(() => {
         // This will refresh the set of data that is available in the underlying data cache.
         this.robotsQuery.refreshAll();
@@ -1401,11 +1401,11 @@ public createRobot(robot: SamplesExtension.DataModels.Robot): FxBase.PromiseV<an
         uri: Util.appendSessionId(RobotData._apiRoot),
         type: "POST",
         contentType: "application/json",
-        data: ko.toJSON(robot)
+        data: ko.toJSON(robot),
     }).then(() => {
-        // This will refresh the set of data that is displayed to the client by applying the change we made to 
-        // each data set in the cache. 
-        // For this particular example, there is only one data set in the cache. 
+        // This will refresh the set of data that is displayed to the client by applying the change we made to
+        // each data set in the cache.
+        // For this particular example, there is only one data set in the cache.
         // This function is executed on each data set selected by the query params.
         // params: any The query params
         // dataSet: MsPortalFx.Data.DataSet The dataset to modify
@@ -1426,13 +1426,13 @@ public createRobot(robot: SamplesExtension.DataModels.Robot): FxBase.PromiseV<an
 public deleteRobot(robot: SamplesExtension.DataModels.Robot): FxBase.PromiseV<any> {
     return FxBaseNet.ajax({
         uri: Util.appendSessionId(RobotData._apiRoot + robot.name()),
-        type: "DELETE"
+        type: "DELETE",
     }).then(() => {
         // This will notify the shell that the robot is being removed.
         MsPortalFx.UI.AssetManager.notifyAssetDeleted(ExtensionDefinition.AssetTypes.Robot.name, robot.name());
 
-        // This will refresh the set of data that is displayed to the client by applying the change we made to 
-        // each data set in the cache. 
+        // This will refresh the set of data that is displayed to the client by applying the change we made to
+        // each data set in the cache.
         // For this particular example, there is only one data set in the cache.
         // This function is executed on each data set selected by the query params.
         // params: any The query params
@@ -1461,13 +1461,13 @@ Now, when the server data for a given cache entry *has been entirely deleted*, t
 public deleteComputer(computer: SamplesExtension.DataModels.Computer): FxBase.PromiseV<any> {
     return FxBaseNet.ajax({
         uri: Util.appendSessionId(ComputerData._apiRoot + computer.name()),
-        type: "DELETE"
+        type: "DELETE",
     }).then(() => {
         // This will notify the shell that the computer is being removed.
         MsPortalFx.UI.AssetManager.notifyAssetDeleted(ExtensionDefinition.AssetTypes.Computer.name, computer.name());
 
-        // This will refresh the set of data that is displayed to the client by applying the change we made to 
-        // each data set in the cache. 
+        // This will refresh the set of data that is displayed to the client by applying the change we made to
+        // each data set in the cache.
         // For this particular example, there is only one data set in the cache.
         // This function is executed on each data set selected by the query params.
         // params: any The query params

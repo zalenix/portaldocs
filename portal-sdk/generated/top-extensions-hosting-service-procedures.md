@@ -51,7 +51,7 @@ If the **IsDevelopmentMode** flag setting should be reserved for release builds 
 <a name="checklist-for-onboarding-hosting-service-verify-the-version-number"></a>
 ### Verify the version number
 
-The zip file generated during the build should be named `<BUILD_VERSION>.zip`, where <BUILD_VERSION> is the current version number. For more information about version numbers, see [portalfx-extensions-versioning.md](portalfx-extensions-versioning.md).
+The zip file generated during the build should be named `<BUILD_VERSION>.zip`, where <BUILD_VERSION> is the current version number. For more information about version numbers, see [top-extensions-versioning.md](top-extensions-versioning.md).
 
 * CoreXT extensions
 
