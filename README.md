@@ -145,7 +145,7 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 
 * [Adding your resource or service into the Browse menu](/portal-sdk/generated/top-extensions-browse.md)
 
-* [Common UX for Azure Resource Manager (ARM) based services](/portal-sdk/generated/)
+* [Common UX for Azure Resource Manager (ARM) based services](/portal-sdk/generated/top-extensions-arm.md)
 
 [Ask about browse integration on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-browse)
 
@@ -159,7 +159,7 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 
 * [Notifications](/portal-sdk/generated/top-extensions-notifications.md)
 
-* [Communication between blades](/portal-sdk/generated/)
+
 
 ### Loading and managing data
 
@@ -297,13 +297,6 @@ The Ibiza team provides and operates a common Extension Hosting Service that mak
 
 You should strive to use the Extension Hosting Service. If for some reason this is not possible then [learn how to build a custom extension deployment infrastructure](/portal-sdk/generated/top-extensions-custom-deployment.md).
 
-## Upgrading the Ibiza SDK
-
-Extensions are required to be running a version of the Ibiza SDK that has been published within the past 4 months. 
-* [Upgrade policy and alerts](/portal-sdk/generated/portalfx-deployment.md#deploying-an-extension)
-
-* [Updating the msportalfx-test framework](/portal-sdk/generated/)
-
 ## Legacy features
 
 These features are supported, but have had no recent investment. No additional investment is planned. There are modern capabilities that should be used instead if you are developing new features.
@@ -342,7 +335,7 @@ The documents are combinations from all the previous topics. Consequently, there
 
 1. [Legacy OneBox development approach](/gallery-sdk/generated/index-gallery.md#legacy-onebox-development-approach)
 
-1. [Using the Add to Resource Blade](/gallery-sdk/generated/index-gallery.md#using-the-add-to-resource-blade)
+1. [Using the "Add to Resource" blade](/gallery-sdk/generated/index-gallery.md#using-the-add-to-resource-blade)
 
 1. [Your icon tile for the Azure store](/gallery-sdk/generated/index-gallery.md#your-icon-tile-for-the-azure-store)
 
