@@ -13,9 +13,9 @@ To test your local extension against the production portal, see [top-extensions-
 
 For more information about deploying the extension, see [portalfx-deployment.md](portalfx-deployment.md).
 
-## The debug tool
+## Debug mode
 
-The Portal contains a debug tool to aid with extension development. The keyboard shortcut CTRL+ALT+D toggles the visibility of the debug tool, as in the following image.
+The Portal contains a debug tool to aid with extension development. The keyboard shortcut CTRL+ALT+D toggles the visibility of the debug mode, as in the following image.
 
  ![alt-text](../media/portalfx-debugging/debugMode.png "Portal Debug Tool")
 

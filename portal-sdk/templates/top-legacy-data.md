@@ -9,7 +9,7 @@ resources and a child blade that shows details about an individual resource
 
 - [Overview](portalfx-data-overview.md)
 - [Configuring the data cache](portalfx-data-configuringdatacache.md)
-- [Loading data](portalfx-data-loadingdata.md)
+- [Loading data](top-extensions-data-loading.md)
 - [Consuming data](portalfx-data-dataviews.md)
 - [Shaping data](portalfx-data-projections.md)
 - [Refreshing cached data](portalfx-data-refreshingdata.md)
