@@ -56,10 +56,6 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 
 * [How to update portal Nuget packages](/portal-sdk/generated/top-extensions-nuget.md)
 
-* [Available packages](/portal-sdk/generated/top-extensions-packages.md)
-
-* [Developing extensions](/portal-sdk/generated/top-extensions-getting-started.md)
-
 * [Running the extension locally (a.k.a. sideloading)](/portal-sdk/generated/top-extensions-sideloading.md)
 
 [Ask an SDK setup question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)
@@ -76,13 +72,13 @@ The primary UI building block is a called a blade. A blade is like a page. It ge
 
 * [Overview](/portal-sdk/generated/top-extensions-blades.md)
 
-* [TemplateBlade](/portal-sdk/generated/top-blades-procedure.md)
+* [TemplateBlade](/portal-sdk/generated/top-blades-template.md)
 
-* [MenuBlade](/portal-sdk/generated/top-blades-menublade.md)
+* [MenuBlade](/portal-sdk/generated/top-blades-menu.md)
 
 * [ResourceMenuBlade](/portal-sdk/generated/top-blades-resourcemenu.md)
 
-* [FrameBlade](/portal-sdk/generated/top-blades-frameblades.md)
+* [FrameBlade](/portal-sdk/generated/top-blades-frame.md)
 
 * [Opening and closing blades programmatically](/portal-sdk/generated/top-blades-opening-and-closing.md)
 
@@ -122,7 +118,7 @@ When using HTML and framework controls you have some control over styling. These
 
 * [Adding custom CSS](/portal-sdk/generated/top-style-guide-custom-css.md)
 
-* [Layout classes](/portal-sdk/generated/portalfx-blades-layout.md)
+* [Layout classes](/portal-sdk/generated/top-style-guide-layout.md)
 
 * [Theming](/portal-sdk/generated/top-style-guide-theming.md)
 
@@ -159,18 +155,11 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 
 * [Notifications](/portal-sdk/generated/top-extensions-notifications.md)
 
-
-
 ### Loading and managing data
 
-Since your extension is just web code, you can make **AJAX** calls to various services to load data into your UI. The framework provides a data library you can use to manage this data.
+Because your extension is Web code, you can make **AJAX** calls to various services to load data into your UI. The framework provides a data library you can use to manage this data.
 
-* [Making authenticated calls to Azure Resource Manager (ARM) and other endpoints](/portal-sdk/generated/portalfx-data-loadingdata.md#making-authenticated-ajax-calls)
-
-* [Ajax Batch calls to ARM](/portal-sdk/generated/top-extensions-ajax-batch.md)
-<!-- ajax calls and batch -->
-
-<!-- Ajax all up, batch calls to arm, ajax calls with batch flags set (new doc) GURUA will look at seed content -->
+* [Making authenticated calls to Azure Resource Manager (ARM) and other endpoints](/portal-sdk/generated/top-extensions-data-ajax.md))
 
 * [Legacy data management features](/portal-sdk/generated/top-legacy-data.md)
 
@@ -178,25 +167,25 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 
 ### Advanced development topics
 
-* [Memory management(LifetimeManager)](/portal-sdk/generated/portalfx-data-lifetime.md) 
+* [Memory management (LifetimeManager)](/portal-sdk/generated/top-extensions-data-lifetime.md) 
 
 * [Sharing blades and parts across extensions](/portal-sdk/generated/top-extensions-sharing-blades-and-parts.md)
 
-* [Custom domains (e.g. aad.portal.azure.com)](/portal-sdk/generated/)
+* [Custom domains (e.g. aad.portal.azure.com)](/portal-sdk/generated/ top-extensions-custom-domains.md)
 
 ## Debugging
 
-* [The debug tool](/portal-sdk/generated/top-extensions-debugging.md#the-debug-tool)
+* [Use the debug tool](/portal-sdk/generated/top-extensions-debugging.md#the-debug-tool)
 
-* [Debugging extension load failures](/portal-sdk/generated/top-extensions-debugging.md#debugging-extension-load-failures)
+* [Debug extension load failures](/portal-sdk/generated/top-extensions-debugging.md#debugging-extension-load-failures)
 
-* [Debugging console errors](/portal-sdk/generated/top-extensions-debugging.md#debugging-console-errors)
+* [Debug console errors](/portal-sdk/generated/top-extensions-debugging.md#debugging-console-errors)
 
-* [Debugging javascript](/portal-sdk/generated/top-extensions-debugging.md#debugging-javascript)
+* [Debug javascript](/portal-sdk/generated/top-extensions-debugging.md#debugging-javascript)
 
-* [Debugging knockout](/portal-sdk/generated/top-extensions-debugging.md#debugging-knockout)
+* [Debug knockout](/portal-sdk/generated/top-extensions-debugging.md#debugging-knockout)
 
-* [Debugging the data stack](/portal-sdk/generated/top-extensions-debugging.md#debugging-the-data-stack)
+* [Debug the data stack](/portal-sdk/generated/top-extensions-debugging.md#debugging-the-data-stack)
 
 ## Performance
 
