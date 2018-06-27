@@ -23,7 +23,7 @@ SOLUTION:
 1. Decrease Blade 'Revealed' scores.
 
     * Optimize the quantity and quality of parts on the blade.
-        * If there is only one part, or if the part is not a `<TemplateBlade>`, then migrate the part to use the  no-pdl template as specified in  [top-blades-procedure.md](top-blades-procedure.md).
+        * If there is only one part, or if the part is not a `<TemplateBlade>`, then migrate the part to use the  no-pdl template as specified in  [top-blades-template.md](top-blades-template.md).
         * If there are more than three parts, consider refactoring or removing some of them so that fewer parts need to be displayed.
     * Optimize the Blades's `constructor` and `OnInputsSet` methods.
     * Remove obsolete bundles, as specified in  [https://aka.ms/portalfx/obsoletebundles](https://aka.ms/portalfx/obsoletebundles).

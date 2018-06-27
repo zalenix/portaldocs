@@ -9,7 +9,7 @@ The following is a list of different types of blades.
 
 | Type                          | Document           | Description |
 | ----------------------------- | ---- | ---- |
-| TemplateBlade                 | [top-blades-procedure.md](top-blades-procedure.md) | Creating any Portal blade. This is the main and recommended authoring model for UI in the Portal. (Recommended) |
+| TemplateBlade                 | [top-blades-template.md](top-blades-template.md) | Creating any Portal blade. This is the main and recommended authoring model for UI in the Portal. (Recommended) |
 | MenuBlade                     | [top-blades-menublade.md](top-blades-menublade.md) | Displays a vertical menu at the left of a blade.      |
 | Resource MenuBlade       |   [top-blades-resourcemenu.md](top-blades-resourcemenu.md)  | A specialized version of MenuBlade that adds support for standard Azure resource features.  | 
 | Context Blades     |   [top-extensions-context-panes.md](top-extensions-context-panes.md)  | A specialized version of Blade that does not scroll horizontally.   | 

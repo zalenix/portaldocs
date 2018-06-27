@@ -11,7 +11,7 @@ Browse the following topics to learn about portal styling.
 
 * [Adding Custom CSS](top-style-guide-custom-css.md)
 
-* [Layout classes](portalfx-blades-layout.md)
+* [Layout classes](top-style-guide-layout.md)
 
 * [Typography](top-style-guide-typography.md)
 

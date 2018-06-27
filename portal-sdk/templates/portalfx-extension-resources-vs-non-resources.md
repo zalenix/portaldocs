@@ -19,7 +19,7 @@ The majority of the docs apply to these types of extensions.  The next few secti
 
 If you are developing an extension that is not acting as a front end for a standard Azure Resource Provider then this section describes a general strategy for designing such an extension. It also calls out which capabilities are not available to these types of extensions.
 
-__Time Saving Note__ - If you are developing this type of extension then your life will be better if all blades in your extension are built using [top-blades-procedure.md](top-blades-procedure.md).  If you are using `<Blade>` then you should ask youself why. That is a legacy part of the SDK.
+__Time Saving Note__ - If you are developing this type of extension then your life will be better if all blades in your extension are built using [top-blades-template.md](top-blades-template.md).  If you are using `<Blade>` then you should ask youself why. That is a legacy part of the SDK.
 
 ### Marketplace integration
 

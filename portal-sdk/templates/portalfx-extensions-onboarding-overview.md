@@ -40,13 +40,13 @@ Ask an onboarding question on [Stackoverflow](https://stackoverflow.microsoft.co
 
 ## Get the SDK, docs, and samples to your developers
 
- The [development guide](top-extensions-getting-started.md) located in the main documentation index has all the right pointers.
+ The [development guide](portalfx-extensions-getting-started.md) located in the main documentation index has all the right pointers.
 
 # Phase 2 - Development
 
 ## Develop your extension
 
- The [development guide](top-extensions-getting-started.md) located in the main documentation index has all the right pointers.
+ The [development guide](portalfx-extensions-getting-started.md) located in the main documentation index has all the right pointers.
 
 ## Learn about the hosting service / plan your deployment strategy
 
