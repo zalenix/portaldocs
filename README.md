@@ -6,7 +6,7 @@ Couldn't find what you needed? [Ask about the docs on StackOverflow](https://sta
 
 ## Onboarding a new extension
 
-* [Overview / Getting started](/portal-sdk/generated/top-onboarding.md)
+* [Overview / Get started](/portal-sdk/generated/top-onboarding.md)
 
 * [Steps that do not involve the Ibiza team](/portal-sdk/generated/top-extensions-onboarding-with-related-teams.md)
 
@@ -56,7 +56,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 
 * [How to update portal Nuget packages](/portal-sdk/generated/top-extensions-nuget.md)
 
-* [Running the extension locally (a.k.a. sideloading)](/portal-sdk/generated/top-extensions-sideloading.md)
+* [Run the extension locally (a.k.a. sideloading)](/portal-sdk/generated/top-extensions-sideloading.md)
 
 [Ask an SDK setup question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)
 
@@ -94,7 +94,7 @@ The primary UI building block is a called a blade. A blade is like a page. It ge
 
 If you want your experience to have a presence on Azure dashboards then you will want to build parts (a.k.a. tiles).
 
-* [Developing parts](/portal-sdk/generated/top-extensions-parts.md)
+* [Develop parts](/portal-sdk/generated/top-extensions-parts.md)
 
 [Ask a question about parts on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-blades-parts)
 
@@ -116,7 +116,7 @@ When using HTML and framework controls you have some control over styling. These
 
 * [HTML, CSS, and SVG sanitization](/portal-sdk/generated/top-style-guide-html-css-sanitization.md)
 
-* [Adding custom CSS](/portal-sdk/generated/top-style-guide-custom-css.md)
+* [Add custom CSS](/portal-sdk/generated/top-style-guide-custom-css.md)
 
 * [Layout classes](/portal-sdk/generated/top-style-guide-layout.md)
 
@@ -131,7 +131,7 @@ When using HTML and framework controls you have some control over styling. These
 
 Many experiences require the user to enter data into a form. The Ibiza controls library provides support for forms. It also provides a TypeScript based section model that lets you build your form in code without expressing all the fields in an html template.
 
-* [Developing forms](/portal-sdk/generated/top-extensions-forms.md)
+* [Develop forms](/portal-sdk/generated/top-extensions-forms.md)
 
 [Ask a forms related question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-forms)
 
@@ -159,7 +159,7 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 
 Because your extension is Web code, you can make **AJAX** calls to various services to load data into your UI. The framework provides a data library you can use to manage this data.
 
-* [Making authenticated calls to Azure Resource Manager (ARM) and other endpoints](/portal-sdk/generated/top-extensions-data-ajax.md))
+* [Making authenticated calls to Azure Resource Manager (ARM) and other endpoints](/portal-sdk/generated/top-extensions-data-ajax.md)
 
 * [Legacy data management features](/portal-sdk/generated/top-legacy-data.md)
 
@@ -175,17 +175,17 @@ Because your extension is Web code, you can make **AJAX** calls to various servi
 
 ## Debugging
 
-* [Use the debug tool](/portal-sdk/generated/top-extensions-debugging.md#the-debug-tool)
+* [Use debug mode](/portal-sdk/generated/top-extensions-debugging.md#debug-mode)
 
-* [Debug extension load failures](/portal-sdk/generated/top-extensions-debugging.md#debugging-extension-load-failures)
+* [Debug extension load failures](/portal-sdk/generated/top-extensions-debugging.md#debug-extension-load-failures)
 
-* [Debug console errors](/portal-sdk/generated/top-extensions-debugging.md#debugging-console-errors)
+* [Debug console errors](/portal-sdk/generated/top-extensions-debugging.md#debug-console-errors)
 
-* [Debug javascript](/portal-sdk/generated/top-extensions-debugging.md#debugging-javascript)
+* [Debug javascript](/portal-sdk/generated/top-extensions-debugging.md#debug-javascript)
 
-* [Debug knockout](/portal-sdk/generated/top-extensions-debugging.md#debugging-knockout)
+* [Debug knockout](/portal-sdk/generated/top-extensions-debugging.md#debug-knockout)
 
-* [Debug the data stack](/portal-sdk/generated/top-extensions-debugging.md#debugging-the-data-stack)
+* [Debug the data stack](/portal-sdk/generated/top-extensions-debugging.md#debug-the-data-stack)
 
 ## Performance
 
@@ -195,11 +195,11 @@ Because your extension is Web code, you can make **AJAX** calls to various servi
 
 The Ibiza team provides limited testing support. Due to resource constraints the C# and Node.js framework is open source. This is so that partners can unblock themselves in case the Ibiza team cannot make requested improvements as quickly as you might expect.
 
-* [Unit testing support](/portal-sdk/generated/portalfx-unit-test.md)
+* [Unit testing support](/portal-sdk/generatedtop-extensions-unit-test.md)
 
 * [C# test framework (Open source)](/portal-sdk/generated/top-extensions-csharp-test-framework.md)
 
-* [Node.js test framework (Open source)](/portal-sdk/generated/)
+* [Node.js test framework (Open source)](/portal-sdk/generated/ top-extensions-node-js-test-framework.md)
 
 [Ask a test-related question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-test)
 
@@ -270,15 +270,15 @@ Learn how to deploy your extension to the various clouds and environments.
 
 The Ibiza team provides and operates a common Extension Hosting Service that makes it easy to get your bits into a globally distributed system without having to manage your own infrastructure.
 
-* [Extension Hosting Service overview](/portal-sdk/generated/portalfx-extensions-hosting-service.md)
+* [Extension Hosting Service overview](/portal-sdk/generated/top-extensions-hosting-service.md)
 
-* [Onboarding your extension to the Extension Hosting Service](/portal-sdk/generated/portalfx-extensions-hosting-service-procedures.md)
+* [Onboarding your extension to the Extension Hosting Service](/portal-sdk/generated/top-extensions-hosting-service-procedures.md)
 
 * [Validating extension registration with the Extension Hosting Service](/portal-sdk/generated/)
 
-* [Versioning your extension](/portal-sdk/generated/portalfx-extensions-versioning.md)
+* [Versioning your extension](/portal-sdk/generated/top-extensions-versioning.md)
 
-* [Deploying your extension using Express V2 and the Extension Hosting Service](/portal-sdk/generated/portalfx-extensions-hosting-service-advanced.md)
+* [Deploying your extension using Express V2 and the Extension Hosting Service](/portal-sdk/generated/top-extensions-hosting-service-advanced.md)
 
 * [SLA for registering an extension with the Extension Hosting Service](/portal-sdk/generated/top-extensions-svc-lvl-agreements.md)
 
