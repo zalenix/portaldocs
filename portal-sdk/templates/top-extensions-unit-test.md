@@ -8,7 +8,6 @@
 * [Creating a project from scratch](#creating-a-project-from-scratch)
 
 * [Test results and code coverage](#test-results-and-code-coverage) 
-
 ## Project templates with Visual Studio
 
 If you do not see the `Azure Portal` project template in your installation of Visual Studio, ensure you have already installed the Portal SDK that is located at [https://aka.ms/portalfx/download](https://aka.ms/portalfx/download).  Also make sure you are using `Visual Studio 2015`.
@@ -411,7 +410,7 @@ The console output contains the results from  **karmajs** tests. These results w
 
 * Code Coverage
 
-  The content is located in the `./TestResults/Coverage/**/index.html` file.
+  The content is located in the `./TestResults/Coverage/**/index.html` file. The following is a sample .html file.
 
 
 
@@ -526,26 +525,6 @@ SOLUTION: Perform the following steps.
 
 ### Add ./index.html for running tests
 
-```html
-
-  <html>
-    <head>
-      <meta charset="utf-8">
-      <title>Mocha Tests</title>
-      <link href="./node_modules/mocha/mocha.css" rel="stylesheet" />
-    </head>
-    <body>
-      <div id="mocha"></div>
-
-      <!-- mocha prereq -->
-      <script type="text/javascript" charset="utf-8" src="./node_modules/mocha/mocha.js"></script>
-      <script type="text/javascript" charset="utf-8" src="./node_modules/chai/chai.js"></script>
-      <!-- fx prereq -->
-      <script src="./_generated/Fx/FxScriptDependencies.js"></script>
-    </body>
-  </html>
-
-```
 
 ### to generate FxScriptDependencies.js
 

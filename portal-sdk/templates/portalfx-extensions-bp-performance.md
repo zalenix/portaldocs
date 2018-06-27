@@ -67,7 +67,7 @@ There are a few patterns that assist in improving browser and Portal performance
 
     * For more information, see [https://aka.ms/portalfx/obsoletebundles](https://aka.ms/portalfx/obsoletebundles).
 
-1. Use the Portal's ARM token, as specified in []().
+1. Use the Portal's ARM token, as specified in the document located at    .
 
 1. Do not use old PDL blades that are composed of parts. Instead, use TypeScript decorators, as specified in  [portalfx-no-pdl-programming.md#building-a-hello-world-template-blade-using-decorators](portalfx-no-pdl-programming.md#building-a-hello-world-template-blade-using-decorators).
 

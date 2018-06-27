@@ -27,7 +27,7 @@ SOLUTION:
         * If there are more than three parts, consider refactoring or removing some of them so that fewer parts need to be displayed.
     * Optimize the Blades's `constructor` and `OnInputsSet` methods.
     * Remove obsolete bundles, as specified in  [https://aka.ms/portalfx/obsoletebundles](https://aka.ms/portalfx/obsoletebundles).
-    * Use  the Portal's ARM token, if possible. Verify whether the extension can use the Portal's ARM token and if so, follow the instructions located at []() to install it.
+    * Use  the Portal's ARM token, if possible. Verify whether the extension can use the Portal's ARM token and if so, follow the instructions in the document  located at    to install it.
     * Change the extension to use the hosting service, as specified in [top-extensions-hosting-service.md](top-extensions-hosting-service.md).
        * Wrap any **AJAX** calls with custom telemetry to ensure that they are not waiting on the result of the call.   Also, ensure that **AJAX** is called using the batch api.
     * Reduce the revealed times for parts on the blade.
