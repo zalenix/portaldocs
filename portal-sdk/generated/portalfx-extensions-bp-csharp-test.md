@@ -66,7 +66,7 @@ As you write UI based test cases using the Portal Test Framework it is recommend
 
     It is best practice to create wrappers and abstractions for common patterns of code. For example, when writing a `WaitUntil`, you may want to wrap it in a function that describes its actual intent.  This makes the intent of the  test code clear by hiding the actual details of  the abstraction's implementation.  It also helps with dealing with breaking changes, because you can modify the abstraction instead of every single test.  
 
-    If an abstraction you wrote might be generic and useful to the test framework, you may contribute it as specified in [/portal-sdk/generated/Contributing.md](/portal-sdk/generated/Contributing.md).
+    If an abstraction you wrote might be generic and useful to the test framework, you may contribute it as specified in [http://aka.ms/portalfx/contributing](http://aka.ms/portalfx/contributing).
 
 * Clear user settings before starting a test
 

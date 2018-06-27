@@ -7,7 +7,7 @@
 
 The Azure Portal uses a decentralized model of deployment that consists of several components that work together to provide the end-to-end experience.  Deploying an extension means that users can mange their experience by using servers that are geographically close to them, thereby reducing latency and improving the overall experience. 
 
-The Portal is deployed continuously. On any day, multiple bug fixes, new features, and API changes may be deployed to production. When a new version of the Portal is deployed to production, the corresponding version of the SDK is automatically released to the download center located at [aka.ms/portalfx/downloads](aka.ms/portalfx/downloads). The download center contains the change log for releases, including bug fixes, new features, and a log of breaking changes.
+The Portal is deployed continuously. On any day, multiple bug fixes, new features, and API changes may be deployed to production. When a new version of the Portal is deployed to production, the corresponding version of the SDK is automatically released to the download center located at [http://aka.ms/portalfx/downloads](http://aka.ms/portalfx/downloads). The download center contains the change log for releases, including bug fixes, new features, and a log of breaking changes.
 
 The Portal architecture and configuration for one extension are described in the following image.
 
