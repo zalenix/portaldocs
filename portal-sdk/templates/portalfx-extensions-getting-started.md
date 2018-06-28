@@ -1,6 +1,6 @@
 # Setting up for Azure Portal Development
 
-## Getting Started
+## Get started
 
 The following procedure specifies how to set up a developer computer for Azure extension development.
    
@@ -26,10 +26,7 @@ For more information about building extensions with TypeScript decorators, watch
 
 1. Create configuration files for the extension as specified in [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
 
-
-
-
-# Extension Extensibility
+## Exploit extensibility
 
 One of the great things about the Azure portal is the ability for multiple services to blend together to form a cohesive user experience.  In many cases, extensions will want to share parts, share data, and kick off actions. There are a few examples where this is useful:
 
@@ -40,7 +37,6 @@ One of the great things about the Azure portal is the ability for multiple servi
 - After configuring continuous deployment, the Visual Studio Online extension informs the Azure Websites extension it is complete with an RPC callback.
 
 To start learning more about parts, see [top-extensions-sharing-blades-and-parts](top-extensions-sharing-blades-and-parts). 
-
 
 ## Deploy the extension
 
@@ -74,6 +70,10 @@ To start learning more about parts, see [top-extensions-sharing-blades-and-parts
          In order to use the gallery loader, there are some values to set in the AzureGallery.exe.config file. For more information, see the Gallery Item Specifications document that is located at      [https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-item-specificiations](https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-item-specificiations).  
 
          For more dev/test scenarios, see [https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-package-development-and-debugging-testing-in-production](https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-package-development-and-debugging-testing-in-production).
+
+## Maintain development environment
+
+Developers need to keep their development environments current while they are implementing extensions.  They should occasionally revisit the software that was installed as specified in top-extensions-install-software.md to ensure that their development platforms use the most recent software that is compatible with Azure Development.  For example, http://aka.ms/portalfx/downloads specifies the most recent edition of the Azure Portal SDK.
 
 
  <!--TODO: Determine whether there  is a more direct way to make the following link:
