@@ -1,8 +1,8 @@
 <a name="setting-up-for-azure-portal-development"></a>
 # Setting up for Azure Portal Development
 
-<a name="setting-up-for-azure-portal-development-getting-started"></a>
-## Getting Started
+<a name="setting-up-for-azure-portal-development-get-started"></a>
+## Get started
 
 The following procedure specifies how to set up a developer computer for Azure extension development.
    
@@ -29,11 +29,8 @@ For more information about building extensions with TypeScript decorators, watch
 
 1. Create configuration files for the extension as specified in [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
 
-
-
-
-<a name="extension-extensibility"></a>
-# Extension Extensibility
+<a name="setting-up-for-azure-portal-development-exploit-extensibility"></a>
+## Exploit extensibility
 
 One of the great things about the Azure portal is the ability for multiple services to blend together to form a cohesive user experience.  In many cases, extensions will want to share parts, share data, and kick off actions. There are a few examples where this is useful:
 
@@ -45,8 +42,7 @@ One of the great things about the Azure portal is the ability for multiple servi
 
 To start learning more about parts, see [top-extensions-sharing-blades-and-parts](top-extensions-sharing-blades-and-parts). 
 
-
-<a name="extension-extensibility-deploy-the-extension"></a>
+<a name="setting-up-for-azure-portal-development-deploy-the-extension"></a>
 ## Deploy the extension
 
 1. Review the development phases that are located at [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md) to understand how development is related to production-ready metrics criteria.
@@ -80,6 +76,11 @@ To start learning more about parts, see [top-extensions-sharing-blades-and-parts
 
          For more dev/test scenarios, see [https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-package-development-and-debugging-testing-in-production](https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-package-development-and-debugging-testing-in-production).
 
+<a name="setting-up-for-azure-portal-development-maintain-development-environment"></a>
+## Maintain development environment
+
+Developers need to keep their development environments current while they are implementing extensions.  They should occasionally revisit the software that was installed as specified in top-extensions-install-software.md to ensure that their development platforms use the most recent software that is compatible with Azure Development.  For example, http://aka.ms/portalfx/downloads specifies the most recent edition of the Azure Portal SDK.
+
 
  <!--TODO: Determine whether there  is a more direct way to make the following link:
     [/gallery-sdk/generated/gallery-items.md#Gallery Item Specificiations](/gallery-sdk/generated/gallery-items.md#gallery-item-specificiations) -->
@@ -90,12 +91,12 @@ To start learning more about parts, see [top-extensions-sharing-blades-and-parts
     -->
 
 
-<a name="extension-extensibility-frequently-asked-questions"></a>
+<a name="setting-up-for-azure-portal-development-frequently-asked-questions"></a>
 ## Frequently Asked Questions
 
    <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
 
-<a name="extension-extensibility-frequently-asked-questions-getting-started"></a>
+<a name="setting-up-for-azure-portal-development-frequently-asked-questions-getting-started"></a>
 ### Getting Started
 
 ***Q: I want to create a new extension. How do I start?***
@@ -108,7 +109,7 @@ When you are ready to register the extension in the preview or production enviro
 
 For more information about Portal architecture, see [top-extensions-architecture.md](top-extensions-architecture.md).
 
-<a name="extension-extensibility-frequently-asked-questions-getting-help"></a>
+<a name="setting-up-for-azure-portal-development-frequently-asked-questions-getting-help"></a>
 ### Getting Help
 
 ***Q: I'm stuck. Where can I find help?***
@@ -124,14 +125,14 @@ SOLUTION: There are a few ways to get help.
 * If you are unable to find an answer, reach out to the Ibiza team at  [Stackoverflow Ibiza](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza).  For a list of topics and stackoverflow tags, see [portalfx-stackoverflow.md](portalfx-stackoverflow.md).
 
 
-<a name="extension-extensibility-frequently-asked-questions-broswer-support"></a>
+<a name="setting-up-for-azure-portal-development-frequently-asked-questions-broswer-support"></a>
 ### Broswer Support
 
 ***Q: Which browsers are supported?***
 
 SOLUTION: Currently the Portal supports the latest version of Edge, Firefox, Chrome, and Safari, and it also supports Internet Explorer Version 11.
 
-<a name="extension-extensibility-frequently-asked-questions-blade-commands"></a>
+<a name="setting-up-for-azure-portal-development-frequently-asked-questions-blade-commands"></a>
 ### Blade Commands
 
 ***Q: How do I show different commands for a blade based on the parameters passed to that blade?***
@@ -144,7 +145,7 @@ The **Toolbar** APIs allow an extension to call `commandBar.setItems([...])` to 
 
 
  
-<a name="extension-extensibility-glossary"></a>
+<a name="setting-up-for-azure-portal-development-glossary"></a>
 ## Glossary
 
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
