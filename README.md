@@ -56,6 +56,10 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 
 * [How to update portal Nuget packages](/portal-sdk/generated/top-extensions-nuget.md)
 
+* [Developing extensions](top-extensions-getting-started.md)
+
+* [SDK Update policy and alerts](top-extensions-getting-started.md#maintain-development-environment)
+
 * [Run the extension locally (a.k.a. sideloading)](/portal-sdk/generated/top-extensions-sideloading.md)
 
 [Ask an SDK setup question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)
