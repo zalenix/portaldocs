@@ -50,13 +50,13 @@ For example, this is the csproj configuration for Monitoring Extension in the Co
 
 2. Add valid ServiceGroupRootReplacements.json
 
-In order to author ServiceGroupRootReplacements.json you will need TargetContainerName, AzureSubscriptionId, CertKeyVaultUri,TargetStorageConStringKeyVaultUri and extension name. This will require you to set up keyvault.
+In order to author ServiceGroupRootReplacements.json you will need ServiceGroupRootReplacementsVersion,TargetContainerName, AzureSubscriptionId, CertKeyVaultUri,StorageAccountCredentialsType,TargetStorageCredentialsKeyVaultUri, and extension name.  See below for a sample ServiceGroupRootReplacements.json. This will require you to set up keyvault.
 
 i. Set up KeyVault
 
 During deployment we need to copy the zip from your official build to the storage account used provided when onboarding to the hosting service.  To do this you Ev2 and hosting service need two secrets:
     1. The Certificate Ev2 will use to call the hosting service to initiate a deployment.
-      **Note:** we ignore this certificate but it is still required. We validate you based on an allow list of storage accounts and the storage credential you supply via your `TargetStorageConStringKeyVaultUri` and `TargetContainerName` setting.
+      **Note:** we ignore this certificate but it is still required. We validate you based on an allow list of storage accounts and the storage credential you supply via your `TargetStorageCredentialsKeyVaultUri` and `TargetContainerName` setting.
     1. The Connection string to the target storage account where you want your extension deployed
 
 ii. Onboard to KeyVault
