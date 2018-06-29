@@ -1,7 +1,7 @@
 <a name="batch"></a>
 # Batch
 
-Extensions that call ARM should always batch their requests. This results in fewer  'options' calls than the `api/invoke` method, and also reduces the number of concurrent network requests.  As many as 20 calls can be batched into a single request.
+Extensions that call ARM should always batch their requests. This results in fewer 'options' calls than the `api/invoke` method, and also reduces the number of concurrent network requests.  As many as 20 calls can be batched into a single request.
 
 To batch multiple requests as one, use the batch helpers that are located in the `Fx/Ajax` module, as in the following code.
 
