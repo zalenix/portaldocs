@@ -1,49 +1,8 @@
-* [Working with data](#working-with-data)
-    * [Master details browse scenario](#working-with-data-master-details-browse-scenario)
-        * [The MasterDetail Area and DataContext](#working-with-data-master-details-browse-scenario-the-masterdetail-area-and-datacontext)
-        * [The websites QueryCache and EntityCache](#working-with-data-master-details-browse-scenario-the-websites-querycache-and-entitycache)
-        * [Implementing the master view](#working-with-data-master-details-browse-scenario-implementing-the-master-view)
-        * [Implementing the detail view](#working-with-data-master-details-browse-scenario-implementing-the-detail-view)
-        * [A bird's-eye view of Data](#working-with-data-master-details-browse-scenario-a-bird-s-eye-view-of-data)
-        * [Shared data access using **DataContext**](#working-with-data-master-details-browse-scenario-shared-data-access-using-datacontext)
-        * [Organizing your extension source code into **Areas**](#working-with-data-master-details-browse-scenario-organizing-your-extension-source-code-into-areas)
-        * [Developing a **DataContext** for your Area](#working-with-data-master-details-browse-scenario-developing-a-datacontext-for-your-area)
-        * [Using **DataCache** to load and cache data](#working-with-data-master-details-browse-scenario-using-datacache-to-load-and-cache-data)
-        * [**DataView** is for memory management](#working-with-data-master-details-browse-scenario-dataview-is-for-memory-management)
-        * [Summary](#working-with-data-master-details-browse-scenario-summary)
-    * [Querying for data](#working-with-data-querying-for-data)
-    * [Loading Data](#working-with-data-loading-data)
-        * [Controlling the AJAX call with `supplyData`](#working-with-data-loading-data-controlling-the-ajax-call-with-supplydata)
-        * [Optimize number CORS preflight requests to ARM using invokeApi](#working-with-data-loading-data-optimize-number-cors-preflight-requests-to-arm-using-invokeapi)
-        * [Reusing loaded/cached data with `findCachedEntity`](#working-with-data-loading-data-reusing-loaded-cached-data-with-findcachedentity)
-        * [Ignore redundant data with `cachedAjax()`](#working-with-data-loading-data-ignore-redundant-data-with-cachedajax)
-        * [Making authenticated AJAX calls](#working-with-data-loading-data-making-authenticated-ajax-calls)
-    * [Using DataViews](#working-with-data-using-dataviews)
-    * [Observable map & filter](#working-with-data-observable-map-filter)
-    * [Shaping and filtering data](#working-with-data-shaping-and-filtering-data)
-        * [Understanding observable map() and mapInto()](#working-with-data-shaping-and-filtering-data-understanding-observable-map-and-mapinto)
-        * [Using Knockout projections](#working-with-data-shaping-and-filtering-data-using-knockout-projections)
-        * [Chaining uses of `map` and `filter`](#working-with-data-shaping-and-filtering-data-chaining-uses-of-map-and-filter)
-        * [Anti-patterns and best practices](#working-with-data-shaping-and-filtering-data-anti-patterns-and-best-practices)
-    * [Auto-refreshing client-side data (a.k.a. 'polling')](#working-with-data-auto-refreshing-client-side-data-a-k-a-polling)
-    * [Data merging](#working-with-data-data-merging)
-        * [Data merging **caveats**](#working-with-data-data-merging-data-merging-caveats)
-    * [Explicitly/proactively reflecting server data changes on the client](#working-with-data-explicitly-proactively-reflecting-server-data-changes-on-the-client)
-        * [Refreshing or updating a **QueryCache/EntityCache**](#working-with-data-explicitly-proactively-reflecting-server-data-changes-on-the-client-refreshing-or-updating-a-querycache-entitycache)
-        * [Refreshing a **QueryView/EntityView**](#working-with-data-explicitly-proactively-reflecting-server-data-changes-on-the-client-refreshing-a-queryview-entityview)
-    * [Querying for virtualized data](#working-with-data-querying-for-virtualized-data)
-    * [Type metadata](#working-with-data-type-metadata)
-        * [Setting options](#working-with-data-type-metadata-setting-options)
-        * [Using the generated models](#working-with-data-type-metadata-using-the-generated-models)
-        * [Non-generated type metadata](#working-with-data-type-metadata-non-generated-type-metadata)
-    * [Data atomization](#working-with-data-data-atomization)
-
 
 <a name="working-with-data"></a>
 # Working with data
 
-- Master/details browse - How to share data across a parent blade that shows a list of 
-resources and a child blade that shows details about an individual resource 
+- Master/details browse - How to share data across a parent blade that shows a list of resources and a child blade that shows details about an individual resource 
 
 	
 <a name="working-with-data-master-details-browse-scenario"></a>
