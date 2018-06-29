@@ -85,36 +85,14 @@ Extensions should migrate to the `ResourceMenu` for all of their resources.
 ## Best Practices
 
 Portal development patterns or architectures that are recommended based on customer feedback and usability studies may be categorized by the type of part.
-
-<a name="azure-portal-best-practices-best-practices-loading-indicators"></a>
-#### Loading indicators
-
-Loading indicators should be consistently applied across all blades and parts of the extension.  To achieve this:
-
-* Call `container.revealContent()` to limit the time when the part displays  **blocking loading** indicators.
-
-* Return a `Promise` from the `onInputsSet` method that reflects all data-loading for the part. Return the `Promise` from the blade if it is locked or is of type  `<TemplateBlade>`.
-
-* Do not return a `Promise` from the `onInputsSet` method previous to the loading of all part data if it removes loading indicators.   The part will seem to be broken or unresponsive if no **loading** indicator is displayed while the data is loading, as in the following code.
-
-```ts
-public onInputsSet(inputs: MyPartInputs): Promise {
-    this._view.fetch(inputs.resourceId);
-    
-    // DO NOT DO THIS!  Removes all loading indicators.
-    // Your Part will look broken while the `fetch` above completes.
-    return Q();
-}
-```
-
 <a name="azure-portal-best-practices-best-practices-handling-part-errors"></a>
 ### Handling part errors
 
-The sad cloud UX is displayed when there is no meaningful error to display to the user. Typically this occures when the error is unexpected and the only option the user has is to try again.
+The sad cloud UX is displayed when there is no meaningful error to display to the user. Typically this occurs when the error is unexpected and the only option the user has is to try again.
 
-If an error occurs that the user can do something about, then the extension should launch the UX that allows them to correct the issue.    Extension  developers and domain owners are aware of  how to handle many types of errors.
+If an error occurs that the user can do something about, then the extension should launch the UX that allows them to correct the issue. Extension developers and domain owners are aware of  how to handle many types of errors.
 
-For example, if the error is caused because the user's credentials are not known to the extension, then it is best practice to use one of the following options instead of failing the part.
+For example, if the error is caused because the user credentials are not known to the extension, then it is best practice to use one of the following options instead of failing the part.
 
 1. The part can handle the error and change its content to show the credentials input form
 
@@ -138,7 +116,7 @@ Portal development patterns or architectures that are recommended based on custo
 <a name="azure-portal-best-practices-best-practices-bulb-productivity-tip"></a>
 ### :bulb: Productivity Tip
 
-**Typescript** 2.0.3 should be installed on your machine. The version can be verified by executing the following command:
+**Typescript** 2.3.3 should be installed on your machine. The version can be verified by executing the following command.
 
 ```bash
 $>tsc -version
@@ -146,17 +124,15 @@ $>tsc -version
 
 Also, **Typescript** files should be set up to Compile on Save.
 
-
 <a name="azure-portal-best-practices-best-practices-performance"></a>
 ### Performance
 
 There are practices that can improve the performance of the extension.  For more information, see [portalfx-extensions-bp-performance.md](portalfx-extensions-bp-performance.md).
 
-
 <a name="azure-portal-best-practices-best-practices-productivity-tip"></a>
 ### Productivity Tip
 
-Install Chrome that is located at [http://google.com/dir](http://google.com/dir) to leverage the debugger tools while developing an extension.
+Install Chrome that is located at [https://www.google.com/intl/en_ca/chrome/](https://www.google.com/intl/en_ca/chrome/) to leverage the debugger tools while developing an extension.
 
 
 
@@ -235,7 +211,7 @@ There are a few patterns that assist in improving browser and Portal performance
 
     * For more information, see [https://aka.ms/portalfx/obsoletebundles](https://aka.ms/portalfx/obsoletebundles).
 
-1. Use the Portal's ARM token, as specified in []().
+1. Use the Portal's ARM token, as specified in the document located at    .
 
 1. Do not use old PDL blades that are composed of parts. Instead, use TypeScript decorators, as specified in  [portalfx-no-pdl-programming.md#building-a-hello-world-template-blade-using-decorators](portalfx-no-pdl-programming.md#building-a-hello-world-template-blade-using-decorators).
 
@@ -383,16 +359,18 @@ The following image uses the selectableGrid `map` function to display only the d
 <a name="azure-portal-best-practices-best-practices"></a>
 ## Best Practices
    
-These best practices are in addition to the techniques that are documented in topics like [top-extensions-production-testing.md](top-extensions-production-testing.md).
-
-
 ***What is the best environment for sideloading during initial testing?***
 
  The FAQs for debugging extensions is located at [portalfx-extensions-faq-hosting-service.md](portalfx-extensions-faq-hosting-service.md).
 
 * * *
 
+<a name="azure-portal-best-practices-best-practices-onebox-stb-is-not-available"></a>
+### Onebox-stb is not available
 
+Onebox-stb has been deprecated. Please do not use it. Instead, migrate extensions to sideloading. For help on migration, send an email to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Help on Migration">ibiza-onboarding@microsoft.com</a>.
+
+* * * 
 
 <a name="azure-portal-best-practices-style-guide"></a>
 ## Style Guide
@@ -478,7 +456,7 @@ As you write UI based test cases using the Portal Test Framework it is recommend
 
     It is best practice to create wrappers and abstractions for common patterns of code. For example, when writing a `WaitUntil`, you may want to wrap it in a function that describes its actual intent.  This makes the intent of the  test code clear by hiding the actual details of  the abstraction's implementation.  It also helps with dealing with breaking changes, because you can modify the abstraction instead of every single test.  
 
-    If an abstraction you wrote might be generic and useful to the test framework, you may contribute it as specified in [Contributing.md](Contributing.md).
+    If an abstraction you wrote might be generic and useful to the test framework, you may contribute it as specified in [http://aka.ms/portalfx/contributing](http://aka.ms/portalfx/contributing).
 
 * Clear user settings before starting a test
 
@@ -519,19 +497,5 @@ As you write UI based test cases using the Portal Test Framework it is recommend
     ```cs
     grid.FindElements(By.CssSelector("[aria-selected=true]"))
     ```
-
-
-
-
-<a name="azure-portal-best-practices-best-practices"></a>
-## Best Practices
-
-<a name="azure-portal-best-practices-best-practices-onebox-stb-is-not-available"></a>
-### Onebox-stb is not available
-
-Onebox-stb has been deprecated. Please do not use it. Instead, migrate extensions to sideloading. For help on migration, send an email to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Help on Migration">ibiza-onboarding@microsoft.com</a>.
-
-* * * 
-
 
 

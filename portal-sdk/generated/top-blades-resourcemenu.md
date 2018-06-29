@@ -5,7 +5,7 @@
 <a name="the-resource-menu-overview"></a>
 ## Overview
 
-The resource menu provides an easy-to-use implementation of a menu blade, as specified in [top-blades-menublade.md](top-blades-menublade.md), with various common Azure resource menu items readily available. It does this by providing an app-like container for a resource, with a navigation menu on the left. This navigation menu allows an extension to access all of the functionality of the resource, categorized into relevant groups.
+The resource menu provides an easy-to-use implementation of a menu blade, as specified in [top-blades-menu.md](top-blades-menu.md), with various common Azure resource menu items readily available. It does this by providing an app-like container for a resource, with a navigation menu on the left. This navigation menu allows an extension to access all of the functionality of the resource, categorized into relevant groups.
 
 **What is required to enable the resource menu?**
 
