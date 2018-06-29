@@ -1,9 +1,7 @@
-{"gitdown": "contents"}
 
 # Working with data
 
-- Master/details browse - How to share data across a parent blade that shows a list of 
-resources and a child blade that shows details about an individual resource 
+- Master/details browse - How to share data across a parent blade that shows a list of resources and a child blade that shows details about an individual resource 
 
 	{"gitdown": "include-file", "file": "../templates/portalfx-data-masterdetailsbrowse.md"}
 
