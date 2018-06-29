@@ -75,7 +75,7 @@ Request the following permissions to stay current on product roadmaps, get news 
 
 * Developers should join the appropriate group listed on [http://aka.ms/standardaccess](http://aka.ms/standardaccess) to get access to portal telemetry. All groups on this page receive access. 
 
-* Developers should join the  `Azure Portal Partner Contributors - 19668(19668)` group by using this link: [https://myaccess/identityiq/accessRequest/accessRequest.jsf#/accessRequestSelf/add?quickLink=MS%20RequestAnyAccess](https://myaccess/identityiq/accessRequest/accessRequest.jsf#/accessRequestSelf/add?quickLink=MS%20RequestAnyAccess).
+* Developers should join the  `Azure Portal Partner Contributors - 19668(19668)` group by using this link: [https://myaccess](https://myaccess).
 
 * PMs, Developers, and Developer Leads should subscribe to the partner request process by joining the ```Uservoice ``` group at this link:  [https://aka.ms/portalfx/uservoice](https://aka.ms/portalfx/uservoice). For more information about the partner request process, see [portalfx-extension-partner-request-process.md](portalfx-extension-partner-request-process.md).
 
@@ -90,7 +90,7 @@ Ask an onboarding question on [Stackoverflow](https://stackoverflow.microsoft.co
 <a name="phase-1-onboarding-get-the-sdk-docs-and-samples-to-your-developers"></a>
 ## Get the SDK, docs, and samples to your developers
 
- The [development guide](portalfx-extensions-getting-started.md) located in the main documentation index has all the right pointers.
+ The [development guide](top-extensions-getting-started.md) located in the main documentation index has all the right pointers.
 
 <a name="phase-2-development"></a>
 # Phase 2 - Development
@@ -98,7 +98,7 @@ Ask an onboarding question on [Stackoverflow](https://stackoverflow.microsoft.co
 <a name="phase-2-development-develop-your-extension"></a>
 ## Develop your extension
 
- The [development guide](portalfx-extensions-getting-started.md) located in the main documentation index has all the right pointers.
+ The [development guide](top-extensions-getting-started.md) located in the main documentation index has all the right pointers.
 
 <a name="phase-2-development-learn-about-the-hosting-service-plan-your-deployment-strategy"></a>
 ## Learn about the hosting service / plan your deployment strategy

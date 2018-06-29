@@ -9,6 +9,7 @@
 * [Creating a project from scratch](#creating-a-project-from-scratch)
 
 * [Test results and code coverage](#test-results-and-code-coverage) 
+
 <a name="unit-test-framework-project-templates-with-visual-studio"></a>
 ## Project templates with Visual Studio
 
@@ -20,7 +21,7 @@ If you do not see the `Azure Portal` project template in your installation of Vi
 
 1. Launch Visual Studio and click `File > New > Project > Visual C# > Azure Portal`. It will scaffold a solution with two projects:  `Extension.csproj` and `Extension.UnitTest.csproj`.
 
-1. Update the `extension.csproj` to include `<TypeScriptGeneratesDeclarations>true</TypeScriptGeneratesDeclarations>`. Then,  build the  `extension.csproj` to ensure that the extension project will produce  `d.ts` files.
+1. Update the `extension.csproj` to include `<TypeScriptGeneratesDeclarations>true</TypeScriptGeneratesDeclarations>`. Then, build the `extension.csproj` to ensure that the extension project will produce  `d.ts` files.
 
 1. On the `Extension.UnitTest` project, right-click on `npm > Install Missing npm Packages`.  If the option is not available, use `Tools > NuGet Package Manager > Package Manager Console` to present the Package Manager Console. If the console indicates that any NuGet packages are missing, go ahead and install them.
 
@@ -32,6 +33,43 @@ If you do not see the `Azure Portal` project template in your installation of Vi
 ## Corext Environments
 
 Build environments which are constructed using Corext will need to manually specify where to locate the Unit Test Framework **NuGet** package. This **NuGet** package will be expanded at `CxCache`, which is not the default location.  Consequently,  you need to update the `CoreXT` config and then run  `npm packages.json` in order to point to the correct location.
+
+If you are executing the default instructions on your CoreXT environment, it may display the following error.
+
+`npm ERR! enoent ENOENT: no such file or directory, stat 'C:\...\ExtensionName\packages\Microsoft.Portal.TestFramework.UnitTest.5.0.302.979\msportalfx-ut-5.302.979.tgz'`
+
+This error indicates that the dev environment cannot find the expanded NuGet package for the Unit Test Framework. To make the dev environment aware of the package, perform the following steps.
+
+1. Update the repository's `corext.config` file that is located in the `\<ExtensionRepoName>\.corext` folder by adding the following to the end of the `<generator>` section.
+
+    ```xml
+    <!-- Unit Test Framework -->
+    <package id="Microsoft.Portal.TestFramework.UnitTest" />
+    ```
+
+2. Update the `package.config` file that is located in the `\<ExtensionRepoName>\src\<ExtensionName>\` folder by adding the following to the `<packages>` section.
+
+    ```xml
+    <package id="Microsoft.Portal.TestFramework.UnitTest" version="5.0.302.1016" targetFramework="net45" />
+    ```
+
+    where
+    
+    **version**:  matches the version of the Portal SDK you are using for your extension and also matches the version of the `"Microsoft.Portal.Framework"` package in your `packages.config`.*.
+
+
+3. Update the Unit Test `package.json` file that is located in the `<ExtensionRepoName>\src\<ExtensionName>.UnitTests\` folder by removing the `msportalfx-ut` package from the dependencies if it is listed.
+    
+    Update the  script's init command to the following:
+
+    `"init": "npm install --no-optional && npm install %PkgMicrosoft_Portal_TestFramework_UnitTest%\\msportalfx-ut-5.302.1016.tgz --no-save",`
+
+    **Note:** *The version listed above should match the version of the Portal SDK you are using for your extension and will match the `"Microsoft.Portal.Framework"` package in your `packages.config`.*
+
+4. Run the following commands to finish the setup.
+
+    * Run Corext Init - From the root of your repository run: `init`
+    * Run the Npm install - From your Unit Test directory run: `npm run init`
 
 <a name="unit-test-framework-creating-a-project-from-scratch"></a>
 ## Creating a project from scratch
@@ -76,7 +114,7 @@ The following steps will configure your project at dev or build time.
 
 1. Add the `./.npmrc` registry file to your project so that it will store feed URLs and credentials, as described in [https://docs.microsoft.com/en-us/vsts/package/npm/npmrc?view=vsts](https://docs.microsoft.com/en-us/vsts/package/npm/npmrc?view=vsts).
 
-1. The `msportalfx-ut` unit test package is available from the internal `AzurePortalNpmRegistry`.  To configure your project to use this registry add the following code to the `./.npmrc` file.
+1. The `msportalfx-ut` unit test package is available from the internal `AzurePortalNpmRegistry`. You may select any test and test assertion frameworks, because `msportalfx-ut` is test-framework agnostic. Add the following code to the `./.npmrc` file to configure your project to use this registry.
 
     ```
     registry=https://msazure.pkgs.visualstudio.com/_packaging/AzurePortalNpmRegistry/npm/registry/
@@ -659,12 +697,10 @@ The console output contains the results from  **karmajs** tests. These results w
 
   The content is located in the `./TestResults/Coverage/**/index.html` file. The following is a sample .html file.
 
-
-
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-
-/-----------------
+ <!-- TODO:  Determine whether there are more than one index.html file. 
+ 
 1. Add `./index.html` for running tests.
+-->
 
 ```html
 
@@ -692,92 +728,24 @@ The console output contains the results from  **karmajs** tests. These results w
 <a name="unit-test-framework-creating-a-project-from-scratch-to-generate-fxscriptdependencies-js"></a>
 ### to generate FxScriptDependencies.js
 
-In the ./index.html the following scripts are imported
+The following scripts are imported into the `./index.html` file.
 
-- `mocha.js`: this test framework is used in the shipped sample. Note that you may choose to use whatever test framework you wish. msportalfx-ut is test framewwork agnostic.
-- `chai.js`: test assertion framework. Note that you may choose to use whatever test framework you wish. msportalfx-ut is test framewwork agnostic.
-- `./node_modules/msportalfx-ut/lib/FxScripts.js`: this is an aggregate script that contains all portal scripts required as a pre-req for your test context. This script includes: default setup of window.fx.*, all portal bundles required to successfully load your blades, all requirejs config required to load your blades.
+* **mocha.js**: Test framework is used in the shipped sample. 
 
-- `./_generated/Ext/ExtensionStringResourcesRequireConfig.js` requirejs mapping for AMD modules generated from from the extension's resx files.
-- `./test-main.js` entrypoint to setup your test runner and extensions require config.
+* **chai.js**: Test assertion framework. 
 
-To generate `./_generated/Ext/ExtensionStringResourcesRequireConfig.js` and to copy typings local to the test context, msportalfx-ut provides a gulpfile that automates the generation of content under `./_generated/Ext/`. It can be executed as part of the `prereq` script below.
+* **./node_modules/msportalfx-ut/lib/FxScripts.js**: Aggregate script that contains all portal scripts required  for your test context. It includes: default setup of `window.fx.*`, all portal bundles required to successfully load your blades, and all `requirejs` configuration that is required to load your blades.
 
+* **./_generated/Ext/ExtensionStringResourcesRequireConfig.js**: `requirejs` mapping for AMD modules that are generated from the extension's `.resx` files.
 
+* **./test-main.js**: Entrypoint to setup the test runner and the `require` config.
 
-Before running the `prereq` script you must provide the following config such that the gulp task can correctly locate resources. This is done in msportalfx-ut.config.json.
+To generate `./_generated/Ext/ExtensionStringResourcesRequireConfig.js` and to copy typings local to the test context, `msportalfx-ut` provides a gulpfile that automates the generation of content under `./_generated/Ext/`. It can be executed as part of the `prereq` script below.
 
-
-
-
-<a name="unit-test-framework-creating-a-project-from-scratch-common-error"></a>
-### Common Error
-
-If you are executing the default instructions on your CoreXT environment, it may display the following error.
-
-`npm ERR! enoent ENOENT: no such file or directory, stat 'C:\...\ExtensionName\packages\Microsoft.Portal.TestFramework.UnitTest.5.0.302.979\msportalfx-ut-5.302.979.tgz'`
-
-DESCRIPTION: This error indicates that the dev environment cannot find the expanded NuGet package for the Unit Test Framework. 
-
-SOLUTION: Perform the following steps.
-
-1. Update your Repository's `corext.config` file.
-
-    It is located in the `\<ExtensionRepoName>\.corext` folder.
-
-    Add the following to the end of the `<generator>` section.
-
-    ```xml
-    <!-- Unit Test Framework -->
-    <package id="Microsoft.Portal.TestFramework.UnitTest" />
-    ```
-
-2. Update the `package.config` file.
-
-    It is located in the `\<ExtensionRepoName>\src\<ExtensionName>\` folder.
-
-    Add the following to the `<packages>` section.
-
-    ```xml
-    <package id="Microsoft.Portal.TestFramework.UnitTest" version="5.0.302.1016" targetFramework="net45" />
-    ```
-
-    where
-    
-    **version**:  matches the version of the Portal SDK you are using for your extension and also matches the version of the `"Microsoft.Portal.Framework"` package in your `packages.config`.*.
+Before running the `prereq` script you must provide the following configuration such that the gulp task can correctly locate resources. This is done in `msportalfx-ut.config.json`.
 
 
-3. Update your Unit Test `package.json`.
-
-       It is located in the `<ExtensionRepoName>\src\<ExtensionName>.UnitTests\` folder.
-
-    Remove the `msportalfx-ut` package from the dependencies if it is listed.
-    
-    Update the  script's init command to the following:
-
-    `"init": "npm install --no-optional && npm install %PkgMicrosoft_Portal_TestFramework_UnitTest%\\msportalfx-ut-5.302.1016.tgz --no-save",`
-
-    **Note:** *The version listed above should match the version of the Portal SDK you are using for your extension and will match the `"Microsoft.Portal.Framework"` package in your `packages.config`.*
-
-4. Run the following commands to finish the setup.
-
-    * Run Corext Init - From the root of your repository run: `init`
-    * Run the Npm install - From your Unit Test directory run: `npm run init`
-
-
-
-
-<a name="unit-test-framework-creating-a-project-from-scratch-with-visual-studio-code"></a>
-## Creating a project from scratch with Visual Studio Code
-
-
-
-
-<a name="unit-test-framework-creating-a-project-from-scratch-with-visual-studio-code-add-index-html-for-running-tests"></a>
-### Add ./index.html for running tests
-
-
-<a name="unit-test-framework-creating-a-project-from-scratch-with-visual-studio-code-to-generate-fxscriptdependencies-js"></a>
+<a name="unit-test-framework-creating-a-project-from-scratch-to-generate-fxscriptdependencies-js"></a>
 ### to generate FxScriptDependencies.js
 
 In the ./index.html the last script imported is `./_generated/Fx/FxScriptDependencies.js`. This generated script:
@@ -787,9 +755,9 @@ In the ./index.html the last script imported is `./_generated/Fx/FxScriptDepende
 - generates string resource AMD modules from the extension's resx files.
 - sets up require config for string resource AMD modules from resx files
 
-To generate this script and all other dependencies it requires to be able to successfully run tests, msportalfx-ut provides a gulpfile that automates the generation of FxScriptDependencies.js and is executed via the `prereq` script below.
+To generate this script and all other dependencies required to successfully run tests, msportalfx-ut provides a gulpfile that automates the generation of FxScriptDependencies.js and is executed in the following  `prereq` script.
 
-<a name="unit-test-framework-creating-a-project-from-scratch-with-visual-studio-code-to-generate-fxscriptdependencies-js-add-package-json"></a>
+<a name="unit-test-framework-creating-a-project-from-scratch-to-generate-fxscriptdependencies-js-add-package-json"></a>
 #### Add ./package.json
 
 ```json
@@ -837,14 +805,17 @@ npm install --no-optional
 
 the reference to the msportalfx-ut gulpfile will provide a default gulp task that will generate FxScriptDependencies.js and its dependencies. To run the script config items must be specified in msportalfx-ut.config.json.
 
-<a name="unit-test-framework-creating-a-project-from-scratch-with-visual-studio-code-to-generate-fxscriptdependencies-js-add-msportalfx-ut-config-json"></a>
+<a name="unit-test-framework-creating-a-project-from-scratch-to-generate-fxscriptdependencies-js-add-msportalfx-ut-config-json"></a>
 #### add ./msportalfx-ut.config.json
 
 The `msportalfx-ut.config.json` file defines paths to those files needed by the msportalfx-ut node module to generate `./_generated/Fx/FxScriptDependencies.js`.  The keys are defined as follows:
 
 - `UTNodeModuleRootPath`: the root path to where the msportalfx-ut node module was installed.
+
 - `GeneratedAssetRootPath`: the root path for all assets, such as FxScriptDependencies.js, that will be generated.
+
 - `ExtensionTypingsFiles`: glob for d.ts files of the extension. these are copied to the `GeneratedAssetRootPath` so  that your d.ts files are not side by side with your extensions .ts files. This ensures that typescript module resolution does not pickup the source .ts file during build of your extension thereby ensuring your UT project does not compile extension *.ts files that are under test.
+
 - `ResourcesResxRootDirectory`: extension client root directory that contains all *.resx files. These will be used to generate js AMD string resource modules into `GeneratedAssetRootPath` and the associated require config.
 
 1. add ./msportalfx-ut.config.json with the following value:

@@ -24,7 +24,7 @@ Installing the Portal SDK MSI will unpack the NuGet packages to a default locati
 <a name="nuget-packages-updating-your-extension-to-a-newer-version-of-the-sdk"></a>
 ## Updating your extension to a newer version of the SDK
 
-External partners can download and install the NuGet packages when they install and use **Visual Studio 2015**. For more information, see [portalfx-extensions-getting-started.md](portalfx-extensions-getting-started.md). The packages that are installed are located in the `C:\Program Files (x86)\Microsoft SDKs\PortalSDK\Packages` directory.
+External partners can download and install the NuGet packages when they install and use **Visual Studio 2015**. For more information, see [top-extensions-getting-started.md](top-extensions-getting-started.md). The packages that are installed are located in the `C:\Program Files (x86)\Microsoft SDKs\PortalSDK\Packages` directory.
 
 <a name="nuget-packages-updating-your-extension-to-a-newer-version-of-the-sdk-update-your-nuget-packages"></a>
 ### Update your NuGet Packages

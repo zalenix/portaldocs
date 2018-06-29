@@ -558,7 +558,7 @@ SOLUTION: Use the following troubleshooting steps.
 
 ***Error: 'Security of a sandboxed iframe is potentially compromised by allowing script and same origin access'.***
  
-The Azure Portal should frame the extension URL, as specified in [portalfx-extensions-getting-started.md](portalfx-extensions-getting-started.md) and [portalfx-extensions-key-components.md](portalfx-extensions-key-components.md).  Also see [#console-error-messages](#console-error-messages).
+The Azure Portal should frame the extension URL, as specified in [top-extensions-getting-started.md](top-extensions-getting-started.md) and [portalfx-extensions-key-components.md](portalfx-extensions-key-components.md).  Also see [#console-error-messages](#console-error-messages).
 
 * * *
 

@@ -22,19 +22,19 @@ This process validates that your development environment is set up correctly to 
 
    If the  browser displays the message 'Server Error in '/' Application' instead, it is likely that the **NuGet** packages are not yet associated with **Visual Studio**. The **Visual Studio** Error List dialog may display the error message that is in the following image.
 
-   ![alt-text](../media/portalfx-extensions-getting-started/nuGetPackagesMissing.png "Missing NuGet Packages")
+   ![alt-text](../media/top-extensions-getting-started/nuGetPackagesMissing.png "Missing NuGet Packages")
 
    If this message is displayed, the missing packages can be installed by using the **Nuget Package Manager**. The **Package Manager** can be started by selecting `Tools`  -> `Nuget Package Manager` -> `Package Manager Console`, as in the following image.
 
-   ![alt-text](../media/portalfx-extensions-getting-started/nugetPackageManagerConsole.png "Nuget Package Manager Console")
+   ![alt-text](../media/top-extensions-getting-started/nugetPackageManagerConsole.png "Nuget Package Manager Console")
 
    When the **Package Manager** console is displayed, click on the `Restore` button that is associated with the error, as in the following image.
      
-   ![alt-text](../media/portalfx-extensions-getting-started/nugetPackageManagerRestore.png "Nuget Package Manager Restore")
+   ![alt-text](../media/top-extensions-getting-started/nugetPackageManagerRestore.png "Nuget Package Manager Restore")
 
    You may want to validate that the **Content Unbundler** tool, which is a tool that ships with the VS Portal extension and that packages static files as zip file, was installed as one of the  **nuGet** packages.  Look for  `Microsoft.Portal.Tools.ContentUnbundler` in the `packages.config` file, as in the following image.
    
-   ![alt-text](../media/portalfx-extensions-getting-started/packages.png "Packages Config with Content Unbundler")
+   ![alt-text](../media/top-extensions-getting-started/packages.png "Packages Config with Content Unbundler")
 
    Click on the F5 button to rebuild the application. When the build is successful, **Visual Studio** will proceed to the next step and sideload the application into the production Portal.
 
