@@ -27,7 +27,3 @@ This document  contains all Best Practices that have been added to Azure Portal 
 ## Testing in Production 
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-csharp-test.md"}
-
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-production-testing.md"}
-
-

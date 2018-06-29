@@ -30,11 +30,11 @@ You do not need to have an Azure resource provider to integrate with the marketp
 The [Browse](top-extensions-browse.md) experience can serve as a user's main entry point to your non-resource extension. You have two options:
 
 1. Use the [asset model](top-extensions-browse.md#defining-an-asset-type-permalink-asset-type-non-arm), which lets you define your browsable asset even though it is not an Azure resource. This option is good if __your service conceptually exposes a single, top level, list of entities (e.g. Accounts, Workspaces, etc.)__.
-2. Use the [custom browse](top-extensions-browse.md#building-browse-experiences) option in browse.  __This option is useful if your service has many top level capabilities__. If you choose this option then it's highly recommended that you use a [menu blade](top-blades-menublade.md) to expose your service's capabilities. The [Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade) experience shows this pattern in production.
+2. Use the [custom browse](top-extensions-browse.md#building-browse-experiences) option in browse.  __This option is useful if your service has many top level capabilities__. If you choose this option then it's highly recommended that you use a [menu blade](top-blades-menu.md) to expose your service's capabilities. The [Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade) experience shows this pattern in production.
 
 ### Menu blades
 
-[Menu blades](top-blades-menublade.md) are a framework component that can be used to build blades that have a menu on the left and content on the right.  The look and feel of these blades is exactly like the resource menu blades that Azure resources have, except that the menu blade will not have items injected automatically. Usability and customer feedback has shown that this way of exposing features is more effective than previous patterns.
+[Menu blades](top-blades-menu.md) are a framework component that can be used to build blades that have a menu on the left and content on the right.  The look and feel of these blades is exactly like the resource menu blades that Azure resources have, except that the menu blade will not have items injected automatically. Usability and customer feedback has shown that this way of exposing features is more effective than previous patterns.
 
 ### Dashboard integration
 
