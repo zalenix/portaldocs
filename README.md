@@ -56,7 +56,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 
 * [How to update portal Nuget packages](/portal-sdk/generated/top-extensions-nuget.md)
 
-* [Developing extensions](/portal-sdk/generated/top-extensions-getting-started.md)
+* [Develop extensions](/portal-sdk/generated/top-extensions-getting-started.md)
 
 * [SDK Update policy and alerts](/portal-sdk/generated/top-extensions-getting-started.md#maintain-development-environment)
 
@@ -84,7 +84,7 @@ The primary UI building block is a called a blade. A blade is like a page. It ge
 
 * [FrameBlade](/portal-sdk/generated/top-blades-frame.md)
 
-* [Opening and closing blades programmatically](/portal-sdk/generated/top-blades-opening-and-closing.md)
+* [Open and close blades programmatically](/portal-sdk/generated/top-blades-opening-and-closing.md)
 
 * [Advanced TemplateBlade topics](/portal-sdk/generated/top-blades-advanced.md)
 
@@ -130,7 +130,6 @@ When using HTML and framework controls you have some control over styling. These
 
 * [Iconography](/portal-sdk/generated/top-style-guide-iconography.md)
 
-
 ### Forms
 
 Many experiences require the user to enter data into a form. The Ibiza controls library provides support for forms. It also provides a TypeScript based section model that lets you build your form in code without expressing all the fields in an html template.
@@ -143,7 +142,7 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 
 * [Blades that create or provision resources and services](/portal-sdk/generated/top-extensions-create.md)
 
-* [Adding your resource or service into the Browse menu](/portal-sdk/generated/top-extensions-browse.md)
+* [Add your resource or service into the Browse menu](/portal-sdk/generated/top-extensions-browse.md)
 
 * [Common UX for Azure Resource Manager (ARM) based services](/portal-sdk/generated/top-extensions-arm.md)
 
@@ -163,7 +162,7 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 
 Because your extension is Web code, you can make **AJAX** calls to various services to load data into your UI. The framework provides a data library you can use to manage this data.
 
-* [Making authenticated calls to Azure Resource Manager (ARM) and other endpoints](/portal-sdk/generated/top-extensions-data-ajax.md)
+* [Call Azure Resource Manager (ARM) and other endpoints](/portal-sdk/generated/top-extensions-data-ajax.md)
 
 * [Legacy data management features](/portal-sdk/generated/top-legacy-data.md)
 
