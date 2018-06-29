@@ -22,7 +22,7 @@ The page you have requested has moved to [portalfx-stackoverflow.md](portalfx-st
 
 ## Register your extension
 
-The page you have requested has moved to [portalfx-extensions-getting-started.md](portalfx-extensions-getting-started.md).
+The page you have requested has moved to [top-extensions-getting-started.md](top-extensions-getting-started.md).
 
 The page you have requested has moved to [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
 
