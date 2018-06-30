@@ -1,4 +1,12 @@
-# Release Notes since 2/28/2018
+# Release Notes since 3/2/2018
+
+## 5.0.302.1194
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2650321'>2650321</a></td><td>Bug Fix</td><td>Don't capture FxImpl.origin or FxImpl.protocol</td></tr></table>
+
+## 5.0.302.1193
+0 Breaking Changes, 4 Features added and 3 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2645448'>2645448</a></td><td>Feature</td><td>Enable the Activity Log blade redirect in Public Prod</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2641604'>2641604</a></td><td>Feature</td><td>Change pinnable blade without pinned part error to be warning</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2640382'>2640382</a></td><td>Feature</td><td>Enable ownership enforcement of PortalFx</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2612764'>2612764</a></td><td>Bug Fix</td><td>Dashboard uncompress is creating incorrect container model for inferred pinned parts</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2596848'>2596848</a></td><td>Bug Fix</td><td>Imported dashboards are not compatible with redirect part</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2579463'>2579463</a></td><td>Bug Fix</td><td>MonitorChartv2: Click-through from pinned parts from non-AI resources to MEv2 broken</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2566842'>2566842</a></td><td>Feature</td><td>[Config] Microsoft_Azure_AnalysisServices: Extension load - delegation token</td></tr></table>
 
 ## 5.0.302.1192
 0 Breaking Changes, 0 Features added and 1 Bugs Fixed
