@@ -414,10 +414,15 @@ If you are using safe deployment then it is likely that you want to rollout a ne
     * Update specific stage in config.json to this verion
 
 The versions available in the Hosting Service can be seen by going to the following URL:
-
-Dogfood: https://hosting.onecloud.azure-test.net/api/diagnostics
-MPAC: https://ms.hosting.portal.azure.net/api/diagnostics
-PROD: https://hosting.portal.azure.net/api/diagnostics
+ 
+| Environment   | Hosting service                                               | 
+|---------------|---------------------------------------------------------------| 
+| Dogfood       | https://hosting.onecloud.azure-test.net/api/diagnostics       | 
+| MPAC          | https://hosting-ms.portal.azure.net/api/diagnostics           | 
+| PROD          | https://hosting.portal.azure.net/api/diagnostics              | 
+| Mooncake      | https://hosting.azureportal.chinacloudapi.cn/api/diagnostics  | 
+| Blackforest   | https://hosting.azure-api.de/api/diagnostics                  | 
+| Fairfax       | https://hosting.azureportal.usgovcloudapi.net/api/diagnostics | 
 
 
 ### Monitoring and Logging
