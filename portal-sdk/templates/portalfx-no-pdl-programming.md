@@ -52,7 +52,7 @@ This is the decorator code.  There are several options that can be specified as 
 
  {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#DecoratorReference"}
 
-Additionally, the No-PDL programming model introduces (and requires) a context property to be present in your blade class. The context property is populated by the framework on your behalf and contains APIs you can call to interact with the shell.  You can learn more about the context property [here](#no-pdl-context-property).
+Additionally, the No-PDL programming model introduces (and requires) a context property to be present in your blade class. The context property is populated by the framework on your behalf and contains APIs you can call to interact with the shell.  You can learn more about the context property [here](#the-context-property).
 
  {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#Context"}
 
@@ -226,7 +226,7 @@ public onInitialize() {
 ...
 ```
 
-#### No-pdl-error
+#### Unassignable argument
 
 ```
 Argument of type 'typeof TestTemplateBlade' is not assignable to parameter of type 'TemplateBladeClass'.
@@ -266,7 +266,7 @@ Here, the best practice is to:
     - This is because errors in the 'Foo' Blade/Part will cause *no code* to be generated for 'Foo'.  
 
 Some gotchas to be aware of:
-- **Read all lines of multi-line TypeScript errors** - TypeScript errors are frequently multi-line.  If you compile from your IDE, often only the first line of each error is shown and the first line is often not useful (see an example [here](#no-pdl-error)).  Be sure to look at the whole error, focusing on the last lines of the multi-line error message.
+- **Read all lines of multi-line TypeScript errors** - TypeScript -errors are frequently multi-line.  If you compile from your IDE, often only the first line of each error is shown and the first line is often not useful (see an example [here](#unassignableargument)).  Be sure to look at the whole error, focusing on the last lines of the multi-line error message.
 - **Don't suppress compiler warnings** - Ibiza compilation of no-PDL TypeScript decorators often generates build *warnings* that are specific to no-PDL and more actionable than TypeScript errors.  To easily understand warnings/errors and turn these into code fixes, be sure to read *all compiler warnings*, which some IDEs / command-line builds are configured to suppress.
 
 #### How do I add an icon to my Blade?  
@@ -301,24 +301,6 @@ export class Carrot {
 ```
 Now, why is this so?  It seems easier to do this in a single-step at the Blade-level.  The answer here is that - according to Ibiza UX design - only Blades associated with a resource/asset should show a Blade icon.  To make this more obvious at the API level, as it stands, the only place to associate an icon for a Blade is on `<AssetType>`.
 
-#### How do I control the loading indicators for my Blade?  How is it different than PDL Blades?  
-
-[Controlling the loading indicator](portalfx-parts-revealContent.md) in Blades/Parts is the almost exactly the same for PDL and no-PDL Blades/Parts.  That is:  
-- An opaque loading indicator is shown as soon as the Blade/Part is displayed
-- The FX calls `onInitialize` (no-PDL) or `onInputsSet` (PDL) so the extension can render its Blade/Part UI
-- (Optionally) the extension can all `revealContent(...)` to show its UI, at which point a transparent/translucent loading indicator ("marching ants" at the top of Blade/Part) replaces the opaque loading indicator
-- The extension resolves the Promise returned from `onInitialize` / `onInputsSet` and all loading indicators are removed.
-
-The only difference with no-PDL here is that `onInitialize` replaces `onInputsSet` as the entrypoint for Blade/Part initialization.  
-
-For no-PDL, this is demonstrated in the sample [here](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).
-
-If yours is a scenario where your Blade/Part should show the loading indicators in response to some user interaction (like clicking 'Save' or 'Refresh'), read on...
-
-#### When should I use the 'operations' API to control the Blade/Part's loading indicator?  
-There are scenarios like 'User clicks "Save" on my Blade/Part' where the extension wants to show loading indicators at the Blade/Part level.  What's distinct about this scenario is that the Blade/Part has already completed its initialization and, now, the user is interacting with the Blade/Part UI.  This is precisely the kind of scenario for the 'operations' API.  
-
-For no-PDL Blades/Parts, the 'operations' API is `this.context.container.operations`, and the API's use is described in [top-legacy-blades-template-pdl.md#displaying-a-loading-indicator-ux](top-legacy-blades-template-pdl.md#displaying-a-loading-indicator-ux).  There is a sample to consult [here](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).
 
 #### How can I save some state for my no-PDL Blade?  
 There is a decorator - @TemplateBlade.Configurable.Decorator for example, available on all Blade variations - that adds a `this.context.configuration` API that can be used to load/save Blade "settings".  See a sample [here](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).

@@ -33,7 +33,7 @@ This is the only document within the topic that contains an H1-level header.
    * portalfx-stackoverflow.md
    * portalfx-extensions-status-codes.md
 
-1. Subtopics that occur within topics, like overviews or procedures, will always use that word as the last node within the filename.  Subtopics that are specific to a topic are self-naming, in one or two words. The last node of the file is the name of the subtopic, and is used to sort subtopics within the topic. Some filenames are `portalfx-telemetry-alerting-overview.md`, `portalfx-data-modeling.md`, `portalfx-telemetry-alerting-performance.md` or `portalfx-style-guide-utility-classes.md`. 
+1. Subtopics that occur within topics, like overviews or procedures, will always use that word as the last node within the filename.  Subtopics that are specific to a topic are self-naming, in one or two words. The last node of the file is the name of the subtopic, and is used to sort subtopics within the topic. Some filenames are `portalfx-telemetry-alerting-overview.md`, `portalfx-telemetry-alerting-performance.md` or `portalfx-style-guide-utility-classes.md`. 
 
 1. Best Practices, FAQ's, and glossaries use a slightly different naming convention, in that they are named `portalfx-extensions-bp-<major-area>`,  `portalfx-extensions-faq-<major-area>`, `portalfx-extensions-glossary-<major-area>`, respectively.
 
