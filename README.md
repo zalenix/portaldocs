@@ -8,6 +8,8 @@ Couldn't find what you needed? [Ask about the docs on StackOverflow](https://sta
 
 * [Overview / Get started](/portal-sdk/generated/top-onboarding.md)
 
+* [Third-party extensions](/portal-sdk/generated/top-third-party-onboarding.md)
+
 * [Steps that do not involve the Ibiza team](/portal-sdk/generated/top-extensions-onboarding-with-related-teams.md)
 
 * [Manage cloud/environment specific configuration](/portal-sdk/generated/top-extensions-configuration.md)
@@ -174,9 +176,11 @@ Because your extension is Web code, you can make **AJAX** calls to various servi
 
 * [Sharing blades and parts across extensions](/portal-sdk/generated/top-extensions-sharing-blades-and-parts.md)
 
-* [Custom domains (e.g. aad.portal.azure.com)](/portal-sdk/generated/ top-extensions-custom-domains.md)
+* [Custom domains (e.g. aad.portal.azure.com)](/portal-sdk/generated/top-extensions-custom-domains.md)
 
 ## Debugging
+
+* [Use developer mode](/portal-sdk/generated/top-extensions-hosting-service-procedures.md#update-isdevelopmentmode-flag)
 
 * [Use debug mode](/portal-sdk/generated/top-extensions-debugging.md#debug-mode)
 
