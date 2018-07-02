@@ -9,7 +9,16 @@
 
 This document contains all terms that are in the topic, with the following exceptions.
 * Standard English Language
-* Standard Computing terms, like the ones found in This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+* Standard Computing terms, like the ones found in  [https://techterms.com/](https://techterms.com/). 
+* Common acronyms, like the ones found in [https://www.acronymfinder.com](https://www.acronymfinder.com).
+
+The document may or may not contain definitions for terms that are located in the following Microsoft glossaries.
+| Title  | Location |
+| ------ | -------- |
+| Microsoft Office Server Master Glossary | [http://download.microsoft.com/download/1/A/9/1A96F918-793B-4A55-8B36-84113F275ADD/[MS-OFSGLOS].pdf](http://download.microsoft.com/download/1/A/9/1A96F918-793B-4A55-8B36-84113F275ADD/[MS-OFSGLOS].pdf) |
+| Microsoft Terminology Collection | [https://www.microsoft.com/en-us/language/Terminology](https://www.microsoft.com/en-us/language/Terminology) |
+| Windows Desktop Glossary | [https://msdn.microsoft.com/en-us/library/windows/desktop/dn688965.aspx](https://msdn.microsoft.com/en-us/library/windows/desktop/dn688965.aspx) | 
+| Windows Protocols Master Glossary | [https://msdn.microsoft.com/en-us/library/cc232129.aspx](https://msdn.microsoft.com/en-us/library/cc232129.aspx) |
 
 | Term           | Meaning |
 | -------------- | -------- |
@@ -26,6 +35,5 @@ This document contains all terms that are in the topic, with the following excep
 | SAS | Shared Access Signature |
 | separator  |
 | topic |
-| triage |
 | subtopic |
 | 

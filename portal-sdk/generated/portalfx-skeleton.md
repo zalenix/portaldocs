@@ -34,7 +34,7 @@ This is the only document within the topic that contains an H1-level header.
    * portalfx-stackoverflow.md
    * portalfx-extensions-status-codes.md
 
-1. Subtopics that occur within topics, like overviews or procedures, will always use that word as the last node within the filename.  Subtopics that are specific to a topic are self-naming, in one or two words. The last node of the file is the name of the subtopic, and is used to sort subtopics within the topic. Some filenames are `portalfx-telemetry-alerting-overview.md`, `portalfx-data-modeling.md`, `portalfx-telemetry-alerting-performance.md` or `portalfx-style-guide-utility-classes.md`. 
+1. Subtopics that occur within topics, like overviews or procedures, will always use that word as the last node within the filename.  Subtopics that are specific to a topic are self-naming, in one or two words. The last node of the file is the name of the subtopic, and is used to sort subtopics within the topic. Some filenames are `portalfx-telemetry-alerting-overview.md`, `portalfx-telemetry-alerting-performance.md` or `portalfx-style-guide-utility-classes.md`. 
 
 1. Best Practices, FAQ's, and glossaries use a slightly different naming convention, in that they are named `portalfx-extensions-bp-<major-area>`,  `portalfx-extensions-faq-<major-area>`, `portalfx-extensions-glossary-<major-area>`, respectively.
 
@@ -48,7 +48,7 @@ This is the only document within the topic that contains an H1-level header.
     | `portalfx-<major-area>-<topic>-procedures.md`  | Optional.  Checklist document. Used when there are specific steps to follow, or when there are specific tasks whose completion must be verified. |
     | `portalfx-extensions-bp-<topic>.md`            | Optional. Best Practices for the topic. |
     | `portalfx-extensions-faq-<topic>.md`           | Optional. Frequently Asked Questions for the topic. |
-    | `portalfx-<major-area>-<topic>-fyi.md`         | Optional. For Your Information. Contains links that could not be included in the content within the natural flow of the topic and subtopic. Typically, by the time the entire topic has been authored, there are few, if any, links left for this section.  |
+    | `portalfx-<major-area>-<topic>-moreinfo.md`         | Optional. More  Information. Contains links that could not be included in the content within the natural flow of the topic and subtopic. Typically, by the time the entire topic has been authored, there are few, if any, links left for this section.  |
     | `portalfx-extensions-glossary-<topic>.md`      | Required. Glossary for the topic. |
 
 1. Sections that have been written for other documents can be linked to within the subtopics using normal gitHub linking procedures. This is best practice, and is preferred over copying and modifying paragraphs from file to file.
@@ -92,7 +92,7 @@ For the most part, procedures do not include phrases like "as specified in. . ."
 
 This process validates that [state purpose of checklist]. Images of the procedure are optional.  Images  should be included in the document above the procedure that they specify, as in the following diagram.
 
-   ![alt-text](../media/partner-request-flow.png "New Project Dialog")
+   ![alt-text](../media/portalfx-partner-request-process/partner-request-flow.png "New Project Dialog")
 
 1. Step 1 of procedure
 
@@ -168,7 +168,7 @@ Each best practice section ends with three asterisks, as in '* * *', to include 
 <a name="skeleton-best-practices-onebox-stb-has-been-deprecated"></a>
 ### Onebox-stb has been deprecated
 
-Onebox-stb is no longer available. Please do not use it. Instead, migrate extensions to sideloading. For more information about sideloading, see [portalfx-extensions-production-testing-overview.md#sideloading](portalfx-extensions-production-testing-overview.md#sideloading).
+Onebox-stb is no longer available. Please do not use it. Instead, migrate extensions to sideloading. For more information about sideloading, see [top-extensions-sideloading.md](top-extensions-sideloading.md).
 
 For help on migration, reach out to <a href="mailto:ibiza-onboarding@microsoft.com?subject=Help on Migration">Ibiza Onboarding</a>.
 
@@ -242,7 +242,7 @@ The Stackoverflow FAQ item should be included in every topic that contains an FA
 * * *
    
 <!-- optional FYI document, for links that could not be included in the content within the natural flow of the doc -->
-<!-- gitdown": "include-file", "file": "../templates/portalfx-<major-area>-<topic>-fyi.md"  -->
+<!-- gitdown": "include-file", "file": "../templates/portalfx-<major-area>-<topic>-moreinfo.md"  -->
    ## For More Information
    
 For more information about documentation best practices by copying and modifying the document skeleton, see [portalfx-extensions-bp-skeleton.md](portalfx-extensions-bp-skeleton.md).
@@ -261,7 +261,16 @@ For more information about documentation best practices by copying and modifying
 
 This document contains all terms that are in the topic, with the following exceptions.
 * Standard English Language
-* Standard Computing terms, like the ones found in This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
+* Standard Computing terms, like the ones found in  [https://techterms.com/](https://techterms.com/). 
+* Common acronyms, like the ones found in [https://www.acronymfinder.com](https://www.acronymfinder.com).
+
+The document may or may not contain definitions for terms that are located in the following Microsoft glossaries.
+| Title  | Location |
+| ------ | -------- |
+| Microsoft Office Server Master Glossary | [http://download.microsoft.com/download/1/A/9/1A96F918-793B-4A55-8B36-84113F275ADD/[MS-OFSGLOS].pdf](http://download.microsoft.com/download/1/A/9/1A96F918-793B-4A55-8B36-84113F275ADD/[MS-OFSGLOS].pdf) |
+| Microsoft Terminology Collection | [https://www.microsoft.com/en-us/language/Terminology](https://www.microsoft.com/en-us/language/Terminology) |
+| Windows Desktop Glossary | [https://msdn.microsoft.com/en-us/library/windows/desktop/dn688965.aspx](https://msdn.microsoft.com/en-us/library/windows/desktop/dn688965.aspx) | 
+| Windows Protocols Master Glossary | [https://msdn.microsoft.com/en-us/library/cc232129.aspx](https://msdn.microsoft.com/en-us/library/cc232129.aspx) |
 
 | Term           | Meaning |
 | -------------- | -------- |
@@ -278,6 +287,5 @@ This document contains all terms that are in the topic, with the following excep
 | SAS | Shared Access Signature |
 | separator  |
 | topic |
-| triage |
 | subtopic |
 | 
