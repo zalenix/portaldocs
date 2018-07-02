@@ -21,5 +21,5 @@ Within kusto your configuration will be defined under a function, see the sub ca
 1. We will respond as soon as possible and apply the updates
 
 [alerting-onboarding]: https://aka.ms/portalfx/alerting-onboarding
-[alerting-tool]: https://microsoft.sharepoint.com/teams/azureteams/docs/PortalFx/Alert/AlertCustomizationTool.zip
+[alerting-tool]: https://microsoft.sharepoint.com/teams/azureteams/docs/PortalFx/Alert
 [alerting-kusto-partner]: https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/azportal.kusto.windows.net/databases/Partner?q=H4sIAAAAAAAEAEvOKS0uSS3SUHesKsgvKknMUdfUS0ksSUxKLE7VUApILCrJSy1S0tRzSU1LLM0pcS7KBKrOTNTQBABHZQn9OQAAAA%3d%3d

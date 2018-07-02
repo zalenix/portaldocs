@@ -17,7 +17,7 @@ When the developer is aware that extension child resources will have lifetimes t
 
 <!-- TODO:  Determine whether the disposing of the  child lifetime manager  when its parent is disposed is implicit. -->
 
-In the following example, a data cache already contains data. Each item is displayed as a row in a grid. A button is displayed in a section below the grid. The `mapInto()` function maps specific data cache items to the view grid items, as specified in [portalfx-data-views.md](portalfx-data-views.md) and [top-extensions-data-projections.md](top-extensions-data-projections.md). It also creates the button to add to the section.  The `itemLifetime` child lifetime manager is automatically created by the `mapInto()` function.
+In the following example, a data cache already contains data. Each item is displayed as a row in a grid. A button is displayed in a section below the grid. The `mapInto()` function maps specific data cache items to the view grid items, as specified in [portalfx-data-dataviews.md](portalfx-data-dataviews.md) and [top-extensions-data-projections.md](top-extensions-data-projections.md). It also creates the button to add to the section.  The `itemLifetime` child lifetime manager is automatically created by the `mapInto()` function.
 
 ```ts
 let gridItems = this._view.items.mapInto(container, (itemLifetime, item) => {

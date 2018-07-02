@@ -136,7 +136,7 @@ Some of the main factors in extension performance are associated with network pe
 
 1.	Waterfalling bundling
 
-    If any waterfalls exist within the extension, ensure you have the proper bundling hinting in place, as specified in the optimize bundling document located at []().
+    If any waterfalls exist within the extension, ensure you have the proper bundling hinting in place.  Check for waterfalling or serialized bundle requests, as described in [portalfx-extensions-bp-performance.md#coding-best-practices](portalfx-extensions-bp-performance.md#coding-best-practices).  If any waterfalls exist within the extension, ensure you have the proper bundling hinting in place, as specified in the optimize bundling document located at [top-extensions-debugging.md#toggling-optimizations](top-extensions-debugging.md#toggling-optimizations).
 
     The waterfall can be avoided or reduced by using the following code.
 
