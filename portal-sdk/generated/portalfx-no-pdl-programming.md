@@ -322,7 +322,7 @@ Here, the best practice is to:
     - This is because errors in the 'Foo' Blade/Part will cause *no code* to be generated for 'Foo'.  
 
 Some gotchas to be aware of:
-- **Read all lines of multi-line TypeScript errors** - TypeScript -errors are frequently multi-line.  If you compile from your IDE, often only the first line of each error is shown and the first line is often not useful (see an example [here](#unassignableargument)).  Be sure to look at the whole error, focusing on the last lines of the multi-line error message.
+- **Read all lines of multi-line TypeScript errors** - TypeScript -errors are frequently multi-line.  If you compile from your IDE, often only the first line of each error is shown and the first line is often not useful (see an example [here](#unassignable-argument)).  Be sure to look at the whole error, focusing on the last lines of the multi-line error message.
 - **Don't suppress compiler warnings** - Ibiza compilation of no-PDL TypeScript decorators often generates build *warnings* that are specific to no-PDL and more actionable than TypeScript errors.  To easily understand warnings/errors and turn these into code fixes, be sure to read *all compiler warnings*, which some IDEs / command-line builds are configured to suppress.
 
 <a name="defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl-faq-how-do-i-add-an-icon-to-my-blade"></a>

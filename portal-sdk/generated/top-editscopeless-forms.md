@@ -24,15 +24,15 @@ The following controls also have their own documentation.
 
 | Control                 | Document                                                                             | 
 | ----------------------- | ------------------------------------------------------------------------------------ |  
-| CustomHtml              | [portalfx-forms-designing.md](portalfx-forms-designing.md)                           | 
 | DateTimePicker          | [portalfx-controls-datetimepicker.md](portalfx-controls-datetimepicker.md)           |  
 | DateTimeRangePicker     | [portalfx-controls-datetimerangepicker.md](portalfx-controls-datetimerangepicker.md) | 
 | DropDown                | [portalfx-controls-dropdown.md](portalfx-controls-dropdown.md)                       | 
-| Section (Form Sections) | [portalfx-forms-designing.md](portalfx-forms-designing.md)                           | 
 | TextBox                 | [portalfx-controls-textbox.md](portalfx-controls-textbox.md)                         |
 | TimePicker              | [portalfx-controls-datetimepicker.md](portalfx-controls-datetimepicker.md)           | 
 
- For samples and experiences that are associated with form controls that do not use `EditScopes`, see [top-extensions-samples.md](top-extensions-samples.md).
+Sections, tabs and custom html can all be found in the playground located at [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground).
+
+For samples and experiences that are associated with form controls that do not use `EditScopes`, see [top-extensions-samples.md](top-extensions-samples.md).
 
 <a name="changing-forms-to-work-without-editscopes"></a>
 ## Changing forms to work without EditScopes

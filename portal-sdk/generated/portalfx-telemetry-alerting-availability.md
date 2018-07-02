@@ -126,5 +126,5 @@ Or visit [the tool][alerting-tool] to view a read only version of your config, a
 
 
 [alerting-onboarding]: https://aka.ms/portalfx/alerting-onboarding
-[alerting-tool]: https://microsoft.sharepoint.com/teams/azureteams/docs/PortalFx/Alert/AlertCustomizationTool.zip
+[alerting-tool]: https://microsoft.sharepoint.com/teams/azureteams/docs/PortalFx/Alert
 [alerting-kusto-partner]: https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/azportal.kusto.windows.net/databases/Partner?q=H4sIAAAAAAAEAEvOKS0uSS3SUHesKsgvKknMUdfUS0ksSUxKLE7VUApILCrJSy1S0tRzSU1LLM0pcS7KBKrOTNTQBABHZQn9OQAAAA%3d%3d

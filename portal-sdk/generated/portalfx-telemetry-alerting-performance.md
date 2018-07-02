@@ -252,7 +252,7 @@ Within kusto your configuration will be defined under a function. To find the fu
 
 
 [alerting-onboarding]: https://aka.ms/portalfx/alerting-onboarding
-[alerting-tool]: https://microsoft.sharepoint.com/teams/azureteams/docs/PortalFx/Alert/AlertCustomizationTool.zip
+[alerting-tool]: https://microsoft.sharepoint.com/teams/azureteams/docs/PortalFx/Alert
 [alerting-kusto-partner]: https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/azportal.kusto.windows.net/databases/Partner?q=H4sIAAAAAAAEAAtILUpzzEktKon3KE0qdq0oSc0rzszP09AEAEY7dWMZAAAA
 [alerting-performance-extension-function]: https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/azportal.kusto.windows.net/databases/Partner?q=H4sIAAAAAAAEAHNPLXGtKEnNK87Mz%2fPJT0wJSC1Kc8xJLSrxyCzRSEzP1zA0SdHUycsv19DUUfLNTC7KL85PK4l3rCotSo0PLskvSkxPVdJRKsgvKknM0UsECesl5%2bcq6Via6pibGhjomBroGBpoAgAN1%2f97ZwAAAA%3d%3d
 [alerting-performance-blade-function]: https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/azportal.kusto.windows.net/databases/Partner?q=H4sIAAAAAAAEAC3MPQvCMBCA4f%2bSqYWjTaEdHCOIHSooDo4lpNd6NOYkuaD468WP8R3eZ4%2by9XbCge10xDgbj1F6ksIuXDTtVELgR1GC2j0FQyIO9YFc5MSzjOaVI45n4WgXrL9O%2fS%2fjHOfwsy8k11Mmtw4U1qRA3TmK9ZX97JXjm4JNB63WGhoNXfkGLCEvwJQAAAA%3d

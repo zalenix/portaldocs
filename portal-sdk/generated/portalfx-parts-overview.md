@@ -2,7 +2,7 @@
 <a name="overview"></a>
 ## Overview
 
-Parts, also known as tiles, are a framework feature that integrates the UI of an extension on dashboards.  Parts were more prevalent on blades, but this older pattern is being obsoleted by TemplateBlades that do not contain parts. For more information about template blades, see [portalfx-blades-overview.md](portalfx-blades-overview.md).
+Parts, also known as tiles, are a framework feature that integrates the UI of an extension on dashboards.  Parts were more prevalent on blades, but this older pattern is being obsoleted by TemplateBlades that do not contain parts. For more information about template blades, see [top-blades-template.md](top-blades-template.md).
 
 Intrinsic parts are composed of existing controls in the portal, and provide patterns for solving common patterns in the portal.
 
@@ -183,7 +183,7 @@ export class ExampleCustomPartViewModel {
    }
 
    public increaseClickCount(): void {
-       var currentCount = this.numberOfClicks();
+       const currentCount = this.numberOfClicks();
        this.numberOfClicks(currentCount + 1);
    }
 
@@ -194,17 +194,17 @@ export class ExampleCustomPartViewModel {
    public myButtons = ko.observableArray([
        {
            displayName: ko.observable("First button"),
-           clicked: ko.observable(0)
+           clicked: ko.observable(0),
        },
        {
            displayName: ko.observable("Second button"),
-           clicked: ko.observable(0)
-       }
+           clicked: ko.observable(0),
+       },
    ]);
 
    public buttonClickHandler = () => {
        this.numberOfClicks(this.numberOfClicks() + 1);
-   };
+   }
 }
 
 ```
@@ -220,7 +220,7 @@ To register a part with the gallery, you need to add the `PartGalleryInfo` tag i
 <PartGalleryInfo
   Title="{Resource generalGalleryPartTitle, Module=ClientResources}"
   Category="{Resource partGalleryCategorySample, Module=ClientResources}"
-  Thumbnail="MsPortalFx.Base.Images.Favorite()"
+  Thumbnail="{Svg Type=Favorite}"
   AutoConfigSelectablePath="configOnDropSelectable"/>
 
 ```
@@ -241,17 +241,17 @@ Some tile experiences require that parts are configured when they are dropped fr
 // Configure the HotSpot's Selectable so it will be implicitly activated when the user drops this Part on a Dashboard.
 const bladeSelection: FxViewModels.DynamicBladeSelection = {
     detailBlade: ExtensionDefinition.BladeNames.pdlGeneralGalleryPartConfigurationBlade,
-    detailBladeInputs: {}
+    detailBladeInputs: {},
 };
 const hotSpotSelectable = new FxViewModels.Selectable({
-    selectedValue: bladeSelection
+    selectedValue: bladeSelection,
 });
 hotSpotSelectable.getDefaultSelection = () => {
     return Q(bladeSelection);
 };
 this.configureHotSpot.selectable = hotSpotSelectable;
 this.configOnDropSelectable = hotSpotSelectable;
-    
+
 // Create a ParameterCollector that will open the configure Blade to modify 'configuration' -- this Part's Configuration.
 const configuration = container.activateConfiguration<Inputs, Def.SettingsContract>();
 const collector = new FxViewModels.ParameterCollector<PartConfiguration>(container, {
@@ -263,7 +263,7 @@ const collector = new FxViewModels.ParameterCollector<PartConfiguration>(contain
     // The edited Configuration values are returned from the Provider Blade and updated in this Part.
     // Any edits will cause 'onInputsSet' to be called again, since this is the method where the Part receives a new, consistent
     // set of inputs/settings.
-    receiveResult: configuration.updateValues.bind(configuration)
+    receiveResult: configuration.updateValues.bind(configuration),
 });
 
 // This Selectable must be dynamically registered due to a PDL compiler bug that rejects any <BladeAction> that opens a
@@ -274,7 +274,7 @@ container.registerSelectable(
     hotSpotSelectable,
     {
         openInContextPane: true,
-        parameterCollector: collector
+        parameterCollector: collector,
     });
   
 ```
@@ -360,8 +360,8 @@ A working copy is located at [http://aka.ms/portalfx/samples#blade/SamplesExtens
       ```typescript
 
 onClick: () => {
-    container.resizeTo(resizeA.width, resizeA.height)
-}
+    container.resizeTo(resizeA.width, resizeA.height);
+},
         });
 
         
@@ -407,9 +407,9 @@ import TimeUnit = FxConfiguration.TimeUnit;
 // We have to explicitly define our Inputs contract here rather than use Def.InputsContract since there is a PDL
 // compiler bug where <Part.InputDefinitions> are not represented on Def.InputsContract.
 export interface Inputs {
-    timeRange: FxConfiguration.TimeRange,
-    otherParameter: string
-};
+    timeRange: FxConfiguration.TimeRange;
+    otherParameter: string;
+}
 
 // We have to use this over Def.Settings because Def.Settings includes an old 'content' property that is no longer
 // important to the Part Configuration design re: Part Settings.
@@ -422,7 +422,7 @@ export enum BackgroundColor {
     Default,
     Blue,
     Green,
-    Yellow
+    Yellow,
 }
 
 export enum FontStyle {
@@ -460,17 +460,17 @@ export class GeneralGalleryPart implements Def.Contract {
         // Configure the HotSpot's Selectable so it will be implicitly activated when the user drops this Part on a Dashboard.
         const bladeSelection: FxViewModels.DynamicBladeSelection = {
             detailBlade: ExtensionDefinition.BladeNames.pdlGeneralGalleryPartConfigurationBlade,
-            detailBladeInputs: {}
+            detailBladeInputs: {},
         };
         const hotSpotSelectable = new FxViewModels.Selectable({
-            selectedValue: bladeSelection
+            selectedValue: bladeSelection,
         });
         hotSpotSelectable.getDefaultSelection = () => {
             return Q(bladeSelection);
         };
         this.configureHotSpot.selectable = hotSpotSelectable;
         this.configOnDropSelectable = hotSpotSelectable;
-            
+
         // Create a ParameterCollector that will open the configure Blade to modify 'configuration' -- this Part's Configuration.
         const configuration = container.activateConfiguration<Inputs, Def.SettingsContract>();
         const collector = new FxViewModels.ParameterCollector<PartConfiguration>(container, {
@@ -482,7 +482,7 @@ export class GeneralGalleryPart implements Def.Contract {
             // The edited Configuration values are returned from the Provider Blade and updated in this Part.
             // Any edits will cause 'onInputsSet' to be called again, since this is the method where the Part receives a new, consistent
             // set of inputs/settings.
-            receiveResult: configuration.updateValues.bind(configuration)
+            receiveResult: configuration.updateValues.bind(configuration),
         });
 
         // This Selectable must be dynamically registered due to a PDL compiler bug that rejects any <BladeAction> that opens a
@@ -493,7 +493,7 @@ export class GeneralGalleryPart implements Def.Contract {
             hotSpotSelectable,
             {
                 openInContextPane: true,
-                parameterCollector: collector
+                parameterCollector: collector,
             });
           //parts#PartGalleryConfigOnDropDoc
         // For fringe cases, this illustrates how the Part can understand whether it is located on a Dashboard or a Blade.
