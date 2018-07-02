@@ -202,11 +202,11 @@ Because your extension is Web code, you can make **AJAX** calls to various servi
 
 The Ibiza team provides limited testing support. Due to resource constraints the C# and Node.js framework is open source. This is so that partners can unblock themselves in case the Ibiza team cannot make requested improvements as quickly as you might expect.
 
-* [Unit testing support](/portal-sdk/generatedtop-extensions-unit-test.md)
+* [Unit testing support](/portal-sdk/generated/top-extensions-unit-test.md)
 
 * [C# test framework (Open source)](/portal-sdk/generated/top-extensions-csharp-test-framework.md)
 
-* [Node.js test framework (Open source)](/portal-sdk/generated/ top-extensions-node-js-test-framework.md)
+* [Node.js test framework (Open source)](/portal-sdk/generated/top-extensions-node-js-test-framework.md)
 
 [Ask a test-related question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-test)
 
