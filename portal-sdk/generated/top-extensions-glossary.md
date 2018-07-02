@@ -146,9 +146,9 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | iFrame                       | An inline frame that embeds a document within the current HTML document. | 
 | Knockout                     | A standalone JavaScript implementation of the Model-View-ViewModel architecture. | 
 | KO                         |  Knockout   | 
-| minification                 | The process of removing all unnecessary characters from source code without changing its functionality. These characters may be whitespace, newlines, comments, and other non-executable items that increase code readability. Minification reduces the amount of data that is transferred across the Internet, and can be interpreted immediately without being uncompressed. | 
+| minification                 | The process of removing all unnecessary characters from source code and rewriting it to make it smaller without changing its functionality. Removed characters may be whitespace, newlines, comments, and other non-executable items that increase code readability, while rewritten code can be local variable names, boolean logic, etc. Minification reduces the amount of data that is transferred across the Internet. | 
 | PO | Proxy Observable |
-| proxy observable (PO)        | A tool that synchronizes the ViewModel in an iframe with a copy of that ViewModel that is used by the Knockout debugger. | 
+| proxy observable (PO)        | A layer over **Knockout** observables that is used to keep in sync an observable's value across iframes. | 
 | Selenium                     | Software-testing framework for web applications that  provides a playback tool for authoring tests.  |
 | startboard                   | |
 | sticky                       | Provides quick statistics and fast access to specific types of testing functionality. |
@@ -194,6 +194,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | region                   | The area in the world that that is served by a specific localization site. | 
 | RC                       | Release Candidate environment, used to deploy daily builds of the Azure Portal. There is no user traffic in this environment. |
 | RP                       | Resource Provider |
+| SDP                      | Safe Deployment Policy |
 | SLA                      | Service Level Agreement |
 | smoke test               | see build verification test  |
 | SSL                      | Secure Socket Layer |
@@ -321,6 +322,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | public endpoint      | |
 | RP                   | Resource Provider |
 | SAW                  | Secure Admin Workstation | 
+| SDP                  | Safe Deployment Policy |
 | server-side code     | Scripts that are located on a server that produce customized responses for each client request to the website, as opposed to the web server serving static web pages. |
 | WARM                 | Windows Azure Release Management |
 | zip file             | The extracted deployment artifacts that are generated during the build.  They and the  `config.json` file will be deployed to a public endpoint.  |
@@ -443,9 +445,13 @@ This section contains a glossary of terms and acronyms that are used in this doc
 
 This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
 
-| Term                | Meaning |
-| ------------------- | --- |
-|  | |
+| Term                | Meaning               |
+| ------------------- | --------------------- |
+| DOM                 | document object model |
+| imperative call     | imperative programming is a programming paradigm that uses statements that change a program's state, or describing how a program operates. An imperative program consists of commands for the computer to perform, and most computer languages are in the imperative style. |
+| localized title     |  a title that was created from the localizable strings in the extension that may be  located inside of a standard .NET RESX file. |
+| promise             | A construct used for synchronizing program execution in some concurrent programming languages. A proxy for a result that is initially unknown,  because its  computation process has not  completed. A  promise is the return value of an asynchronous function. |
+
 
 <a name="azure-portal-glossary-performance"></a>
 ## Performance
@@ -465,6 +471,7 @@ This section contains a glossary of terms and acronyms that are used in this doc
 | Percentile | A figure that reports the relative standing of a particular value within a statistical data set.  It is a ranking in relation to the rest of the data, instead of the mean, standard deviation, or actual data value. For example, a score at the 80th percentile means that 80% of the scores are lower, and  20% of the scores were higher. | 
 | performance bar     |         |
 | Revealed | The ViewModel within the blade or part has received enough information to begin to display it. |
+| SDP      | Safe Deployment Policy |
 | WxP score           | Weighted eXPerience score (WxP) |
 
 
@@ -488,6 +495,8 @@ This section contains a glossary of terms and acronyms that are used in this doc
  
 | Term                         | Meaning |
 | ---                          | --- |
+| blob                         | Binary large object. |
+| idempotent         |  An operation whose result does not change after the initial application. For example, if the client needs to retry a request due to intermittent network issues, the same value will be sent to the server.  This allows the server to ignore the retry if it has already been processed. Even if the request is ignored, the same response will be returned if the client needs the values in the response. |
 | localhost         | A hostname that means this computer or this host.  |
 | query string |  `uri` used for accessing the Azure Portal |
 | sideloading  | Loading an extension for a specific user session from any source other than the uri` that is registered in the Portal.  The process of transferring data between two local devices, or between the development platform and the local host. Also side load, side-load. |   
@@ -534,9 +543,10 @@ This section contains a glossary of terms and acronyms that are used in this doc
  
 | Term                         | Meaning |
 | ---                          | --- |
+| blob                         | Binary large object. |
 | idempotent         |  An operation whose result does not change after the initial application. For example, if the client needs to retry a request due to intermittent network issues, the same value will be sent to the server.  This allows the server to ignore the retry if it has already been processed. Even if the request is ignored, the same response will be returned if the client needs the values in the response. |
 | query string |  `uri` used for accessing the Azure Portal |
-| sideloading  | Loading an extension for a specific user session from any source other than the uri` that is registered in the Portal.  The process of transferring data between two local devices, or between the development platform and the local host. Also side load, side-load. |   
+| sideloading  | Loading an extension for a specific user session from any source other than the URI that is registered in the Portal.  The process of transferring data between two local devices, or between the development platform and the local host. Also side load, side-load. |   
 | untrusted extension | An extension that is not accompanied by an SSL certificate. |
 
 
