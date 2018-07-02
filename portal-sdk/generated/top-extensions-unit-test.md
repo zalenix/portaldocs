@@ -47,7 +47,7 @@ This error indicates that the dev environment cannot find the expanded NuGet pac
     <package id="Microsoft.Portal.TestFramework.UnitTest" />
     ```
 
-2. Update the `package.config` file that is located in the `\<ExtensionRepoName>\src\<ExtensionName>\` folder by adding the following to the `<packages>` section.
+1. Update the `package.config` file that is located in the `\<ExtensionRepoName>\src\<ExtensionName>\` folder by adding the following to the `<packages>` section.
 
     ```xml
     <package id="Microsoft.Portal.TestFramework.UnitTest" version="5.0.302.1016" targetFramework="net45" />
@@ -58,7 +58,7 @@ This error indicates that the dev environment cannot find the expanded NuGet pac
     **version**:  matches the version of the Portal SDK you are using for your extension and also matches the version of the `"Microsoft.Portal.Framework"` package in your `packages.config`.*.
 
 
-3. Update the Unit Test `package.json` file that is located in the `<ExtensionRepoName>\src\<ExtensionName>.UnitTests\` folder by removing the `msportalfx-ut` package from the dependencies if it is listed.
+1. Update the Unit Test `package.json` file that is located in the `<ExtensionRepoName>\src\<ExtensionName>.UnitTests\` folder by removing the `msportalfx-ut` package from the dependencies if it is listed.
     
     Update the  script's `init` command to the following:
 
@@ -66,7 +66,7 @@ This error indicates that the dev environment cannot find the expanded NuGet pac
 
     **Note:** *The version listed above should match the version of the Portal SDK you are using for your extension and will match the `"Microsoft.Portal.Framework"` package in your `packages.config`.*
 
-4. Run the following commands to finish the setup.
+1. Run the following commands to finish the setup.
 
     * Run Corext Init - From the root of your repository run: `init`
     * Run the Npm install - From your Unit Test directory run: `npm run init`
@@ -185,31 +185,30 @@ The following steps will configure the VS project at dev or build time.
           
       **NOTE**: If you receive auth errors against the internal NPM feed see the "Connect to feed" instructions that are located at  [https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=AzurePortalNpmRegistry&_a=feed](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=AzurePortalNpmRegistry&_a=feed).
 
-  1. The `msportalfx-ut.config.json` file defines paths to the files that are used by the `msportalfx-ut` module to generate everything in the `./_generated/*` folder.  This includes []().          The keys that this config file uses are the following parameters.
+  1. The `msportalfx-ut.config.json` file defines paths to the files that are used by the `msportalfx-ut` module to generate everything in the `./_generated/*` folder.  This includes [#test-results-and-code-coverage](#test-results-and-code-coverage).  The keys that this config file uses are the following parameters.
   
-    * `UTNodeModuleRootPath`: the root path to where the `msportalfx-ut` node module was installed. The value should be "./node_modules/msportalfx-ut".
+      * `UTNodeModuleRootPath`: the root path to where the `msportalfx-ut` node module was installed. The value should be "./node_modules/msportalfx-ut".
 
-    *  `GeneratedAssetRootPath`: the root path that will contain all of the generated assets, for example, `FxScriptDependencies.js` or the resx-to-AMD module that allows the use of resource strings would be located here. The value should be "./_generated".
+      *  `GeneratedAssetRootPath`: the root path that will contain all of the generated assets, for example, `FxScriptDependencies.js` or the resx-to-AMD module that allows the use of resource strings would be located here. The value should be "./_generated".
     
-    <!-- TODO: Determine whether this should be "glob" or "blob" -->
-    <!-- TODO:  Determine whether this should be "in work" or "under test". -->
+      <!-- TODO: Determine whether this should be "glob" or "blob" -->
+      <!-- TODO:  Determine whether this should be "in work" or "under test". -->
 
-    * `ExtensionTypingsFiles`: blob for `d.ts` files of the extension. These are copied to the `GeneratedAssetRootPath` so that the `d.ts` files are not side-by-side with the extension's `.ts` files. This ensures that typescript module resolution does not include the source `.ts` file during the build of your extension, which ensures that your UT project does not compile extension `*.ts` files that are still in work. under test. The value should be "../Extension/**/*.d.ts".
+      * `ExtensionTypingsFiles`: blob for `d.ts` files of the extension. These are copied to the `GeneratedAssetRootPath` so that the `d.ts` files are not side-by-side with the extension's `.ts` files. This ensures that typescript module resolution does not include the source `.ts` file during the build of your extension, which ensures that your UT project does not compile extension `*.ts` files that are still in work. under test. The value should be "../Extension/**/*.d.ts".
 
-    * `ResourcesResxRootDirectory`: The extension client root directory that contains all *.resx files. These will be used to generate javaScript  AMD string resource modules that will be located in the  `GeneratedAssetRootPath`, in addition to the associated `require.config`. The value should be "../Extension/Client". 
+      * `ResourcesResxRootDirectory`: The extension client root directory that contains all *.resx files. These will be used to generate javaScript  AMD string resource modules that will be located in the  `GeneratedAssetRootPath`, in addition to the associated `require.config`. The value should be "../Extension/Client". 
 
   1. Add `./msportalfx-ut.config.json` with the following value:
 
-    ```json
+      ```json
+     {
+          "UTNodeModuleRootPath" : "./node_modules/msportalfx-ut",
+          "GeneratedAssetRootPath" : "./_generated",
+          "ExtensionTypingsFiles": "../Extension/**/*.d.ts",
+          "ResourcesResxRootDirectory": "../Extension/Client"
+      }
 
-    {
-        "UTNodeModuleRootPath" : "./node_modules/msportalfx-ut",
-        "GeneratedAssetRootPath" : "./_generated",
-        "ExtensionTypingsFiles": "../Extension/**/*.d.ts",
-        "ResourcesResxRootDirectory": "../Extension/Client"
-    }
-
-    ```
+      ```
 
 
 
@@ -237,16 +236,18 @@ The following steps will configure the VS project at dev or build time.
 
 1. Add a test to the `./test/ResourceOverviewBlade.test.ts` file.  You can modify the following example for your own extension.
    
-  <!--
-    gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/test/ResourceOverviewBlade.test.ts"}
-  
-  -->
+    <!--
+      gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/test/ResourceOverviewBlade.test.ts"}
+    
+    -->
 
 1. To compile your test, and for dev time Intellisense, the project should have a `./tsconfig.json` file, as in the following example.
 
-      ```json
+    <!--
+
       gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/tsconfig.json"}
       ```
+    -->
 
 
 ```json
@@ -782,7 +783,7 @@ The following scripts are imported into the `./index.html` file.
 
 1. **./node_modules/msportalfx-ut/lib/FxScripts.js**: Aggregate script that contains all portal scripts required  for your test context. It includes: default setup of `window.fx.*`, all portal bundles required to successfully load your blades, and all `requirejs` configuration that is required to load your blades.
 
-1. **./_generated/Ext/ExtensionStringResourcesRequireConfig.js**: `requirejs` mapping for AMD modules that are generated from the extension's `.resx` files. To generate `./_generated/Ext/ExtensionStringResourcesRequireConfig.js` and to copy typings local to the test context, `msportalfx-ut` provides a gulpfile that automates the generation of content under `./_generated/Ext/`. It can be executed as part of the `prereq` script below. Before running the `prereq` script you must provide the  configuration specified in []() so that the gulp task can correctly locate resources when it runs  `msportalfx-ut.config.json`.
+1. **./_generated/Ext/ExtensionStringResourcesRequireConfig.js**: `requirejs` mapping for AMD modules that are generated from the extension's `.resx` files. To generate `./_generated/Ext/ExtensionStringResourcesRequireConfig.js` and to copy typings local to the test context, `msportalfx-ut` provides a gulpfile that automates the generation of content under `./_generated/Ext/`. It can be executed as part of the `prereq` script below. Before running the `prereq` script you must provide the  configuration specified in [#build-time-configuration](#build-time-configuration) so that the gulp task can correctly locate resources when it runs  `msportalfx-ut.config.json`.
 
 1. **./test-main.js**: Entrypoint to setup the test runner and the `require` config.
 
