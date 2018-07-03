@@ -275,7 +275,7 @@ class SummaryBlade extends Blade {
 ...
 ```
 
-#### Move Resource Blade
+#### The move resource blade
 
 The `MoveResourcesBlade` is used to move resources from one resource group to a new resource group.  The `portal.startMoveResource` method provides a simple abstraction that will initiate the move of an existing resource to a new resource group.  The following example demonstrates how to initiate the move and then wait on successful notification of completion.
   
