@@ -54,7 +54,6 @@ This error indicates that the dev environment cannot find the expanded NuGet pac
     
     **version**:  matches the version of the Portal SDK you are using for your extension and also matches the version of the `"Microsoft.Portal.Framework"` package in your `packages.config`.*.
 
-
 1. Update the Unit Test `package.json` file that is located in the `<ExtensionRepoName>\src\<ExtensionName>.UnitTests\` folder by removing the `msportalfx-ut` package from the dependencies if it is listed.
     
     Update the  script's `init` command to the following:
@@ -122,7 +121,7 @@ The following steps will configure the VS project at dev or build time.
 
 1. Add the  `./package.json` file to the project. The following example file uses **mocha** and **chai**, but you can choose your own test and assertion framework.
 
-    <!-- --gitdown": "include-file", "file": "../samples/VS/PackageTemplates/Default/Extension.UnitTests/package.json"} -->
+{"gitdown": "include-file", "file": "../samples/VS/PackageTemplates/Default/Extension.UnitTests/package.json"} 
 
     ```json
     {
@@ -214,7 +213,7 @@ The following steps will configure the VS project at dev or build time.
     Add the `./msportalfx-ut.config.json` file by using the following code.
 
     ```json
-    gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/msportalfx-ut.config.json"}
+    {"gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/msportalfx-ut.config.json"}
     ```
 
 1. Customize the file paths to the paths that are used by your project.  The `msportalfx-ut` gulpfile module searches for paths in the following order.
@@ -231,18 +230,13 @@ The following steps will configure the VS project at dev or build time.
 
 1. Add a test to the `./test/ResourceOverviewBlade.test.ts` file.  You can modify the following example for your own extension.
    
-    <!--
-      gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/test/ResourceOverviewBlade.test.ts"}
+      {"gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/test/ResourceOverviewBlade.test.ts"}
     
-    -->
-
+    
 1. To compile your test, and for dev time Intellisense, the project should have a `./tsconfig.json` file, as in the following example.
 
-    <!--
-
-      gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/tsconfig.json"}
-      ```
-    -->
+         {"gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/tsconfig.json"}
+    
 
 
 ```json
@@ -286,12 +280,10 @@ Now that your tests are building, add the following to run your tests.
 
     The `require.js`  and `mocha` scripts need be made aware of the locations of the modules for your extension, in addition to any frameworks that you are using, as in the following example.
 
-  <!--
-  ```javascript
+
   
   {"gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/karma.conf.js"}
-  ```
-  -->
+
 
      Add a `./test-main.js` file, like the one in the following example, as the main entrypoint for your app. Remember to update the file to point to the paths that should be specified for your extension, as in the following example.
 
