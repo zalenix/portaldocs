@@ -57,7 +57,7 @@ For more information on the types of shared extensions, see the following list o
 | Azure Insights              | [portalfx-pde-azureinsights.md](portalfx-pde-azureinsights.md) | Activity logs and other tools that provide metadata about extension performance and maintenance. | 
 | Azure Monitoring            | [portalfx-pde-monitoring.md](portalfx-pde-monitoring.md)       | azure-monitoring-usage-doc                                |
 
-For more information about sharing pde's, see [top-extensions-packages.md](top-extensions-packages.md).
+For more information about sharing pde's, see [top-extensions-nuget.md](top-extensions-nuget.md).
 
 ## The PDE File
 

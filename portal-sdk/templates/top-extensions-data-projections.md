@@ -24,11 +24,11 @@ The interface for the shaped data to display in the grid is located at `<dir>\Cl
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/MapAndMapIntoViewModels.ts", "section": "data#robotDetailsModel"}
 
-The initial implementation of [data projection](portalfx-extensions-glossary.md) would resemble the following code.
+The initial implementation of [data projection](portalfx-extensions-glossary-data.md) would resemble the following code.
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/MapAndMapIntoViewModels.ts", "section": "data#buggyMapProjection"}
 
-The `robot.name()` contains the name of the robot, and `robot.model()` and `robot.manufacturer()` respectively contain the model and manufacturer values. The `RobotDetails` interface that models the data in the grid requires observables for the  `name` and `modelAndMfg` properties, therefore they use the strings that are received from the `QueryCache` model. The `projectionId` and `_logMapFunctionRunning` methods are discussed in [](). 
+The `robot.name()` contains the name of the robot, and `robot.model()` and `robot.manufacturer()` respectively contain the model and manufacturer values. The `RobotDetails` interface that models the data in the grid requires observables for the  `name` and `modelAndMfg` properties, therefore they use the strings that are received from the `QueryCache` model. The `projectionId` and `_logMapFunctionRunning` methods are discussed in [#shaping-and-filtering-data](#shaping-and-filtering-data). 
 
  The grid is configured with the buttons in the middle of the screen.  When the grid is configured with different types of projections, the commands at the top of the screen are used to add, modify, or remove items in the data source.  The output window displays the results of the functions.
 
@@ -57,7 +57,7 @@ The reason that this implementation is not very performant is because it causes 
 
 When an observable that is associated with the contents of the `QueryCache` model changes, the filtered data that is  projected also changes.  This means that when the `status` observable updates the map's projection, the function runs and computes a different projected item. The object with "projectionId === 4" is gone because it was deleted and replaced with a new item that has the value "projectionId === 8" or some other value. Consequently, the child blade closed because its contents were based on the value of the previous `status` observable. The object that is now in the grid's item has a different `status` value, although it still contains the same `name` and `modelAndMfg`. The previous  `status` observable that was in the `selectableSet's` `activatedItems` observable array no longer exists in the grid's item list.
 
-For more information about displaying the data from the `QueryCache` with a `DataView`, see [portalfx-data-views.md](portalfx-data-views.md).
+For more information about displaying the data from the `QueryCache` with a `DataView`, see [portalfx-data-dataviews.md](portalfx-data-dataviews.md).
 
 ### How the map function works
 

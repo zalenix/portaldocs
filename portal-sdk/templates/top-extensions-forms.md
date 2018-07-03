@@ -5,7 +5,7 @@
 
 Form controls are a subset of controls that allow users to input information.  These controls provide a consistent API surface for managing validation, dirty states, and user input.  They also provide a consistent layout structure.
   
-Everything that applies to controls also applies to form controls, as specified in [top-extensions-controls.md](top-extensions.controls.md).
+Everything that applies to controls also applies to form controls, as specified in [top-extensions-controls.md](top-extensions-controls.md).
 
 ### Form control view model contract 
 

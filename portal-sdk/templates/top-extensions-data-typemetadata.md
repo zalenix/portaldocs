@@ -73,7 +73,7 @@ namespace Microsoft.Portal.Extensions.SamplesExtension.DataModels
 }
 ```
 
-In the sample above, the `TypeMetadataModel` data attribute designates this class as one which should be included in the type generation. The first parameter specifies the type that is being targeted, which is  the same as the class that is being  decorated. The second attribute provides the `TypeScript` namespace for the model-generated object. If the  namespace is not specified, the .NET namespace of the model object is used. The `key` attribute on the `name` field specifies that the `name` property is the primary key field of the object. This is required when performing merge operations from data sets and edit scopes, as specified in [portalfx-data-refreshing.md](portalfx-data-refreshing.md).
+In the sample above, the `TypeMetadataModel` data attribute designates this class as one which should be included in the type generation. The first parameter specifies the type that is being targeted, which is  the same as the class that is being  decorated. The second attribute provides the `TypeScript` namespace for the model-generated object. If the  namespace is not specified, the .NET namespace of the model object is used. The `key` attribute on the `name` field specifies that the `name` property is the primary key field of the object. This is required when performing merge operations from data sets and edit scopes, as specified in [portalfx-data-refreshingdata.md](portalfx-data-refreshingdata.md).
 
 ### Setting options
 

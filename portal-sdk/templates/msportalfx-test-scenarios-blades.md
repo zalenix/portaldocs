@@ -92,7 +92,7 @@ There are several approaches that can be used for locating an already opened bla
 
 ##### Opening the extensions Create blade
 
-See [Opening an extensions gallery package create blade](#create-opening-the-create-blade-from-a-deployed-gallery-package)
+See [msportalfx-test-scenarios-create.md#opening-the-create-blade-from-a-deployed-gallery-package](msportalfx-test-scenarios-create.md#opening-the-create-blade-from-a-deployed-gallery-package).
 
 ##### Opening the Browse blade for your resource
 
@@ -147,7 +147,7 @@ import SpecPickerBlade = testFx.Parts.SpecPickerBlade;
         
 ```
 
-There are also several API's available to make testing common functionality within browse such as context menu commands and column picking fucntionality for more details see [Browse Scenarios](#browse).
+There are also several API's available to make testing common functionality within browse such as context menu commands and column picking functionality. 
 
 ##### Settings Blade
 
@@ -381,4 +381,3 @@ import testFx = require('MsPortalFx-Test');
                 .then(() => dialog.clickButton(extensionResources.ok));
             });
 ```
-

@@ -5,7 +5,7 @@ This section describes how to open blades using container APIs. A working copy o
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
-For more information about the legacy declarative API's, see [top-legacy-blades-opening-and-closing.md](top-legacy-blades-opening-and-closing.md).
+For more information about the legacy declarative API's, see [top-blades-legacy.md](top-blades-legacy.md).
 
 ## Container APIs
 
