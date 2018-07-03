@@ -39,7 +39,7 @@ where
 
 **endpoint**: The localhost,  the computer on which the extension is being developed. The endpoint, or the computer that is being used for testing the extension. The extension endpoint when using a host other than `localhost` may also be the server where the extension will be hosted.
 
-**portNumber**: The port number associated with the endpoint that serves the extension, as in the following example: `https://DemoServer:59344/`. 
+**portNumber**: The port number associated with the endpoint that serves the extension, as in the following example: ```https://DemoServer:59344/```. 
 
 **settings**: Optional. Boolean value that registers the extension in the Portal for a specific timeframe. A value of `true` means that the registered extension will run only for the current browser session.  The default value of `false` means that the registered extension is valid across browser sessions. This state is saved in the browser's local storage. 
 

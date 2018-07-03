@@ -4,10 +4,10 @@ The updates are for images that are actually in use; if an image is found to be 
 
 ## Media
 
-![alt-text](../media/access-denied-pr.png "media/access-denied-pr.png")
+![alt-text](../media/portalfx-partner-request-process/access-denied-pr.png "media/access-denied-pr.png")
 
 
-![alt-text](../media/partner-request-flow.png "media/partner-request-flow.png")
+![alt-text](../media/portalfx-partner-request-process/partner-request-flow.png "media/partner-request-flow.png")
 
 
 ![alt-text](../media/placeholder-image.png "media/placeholder-image.png")
@@ -740,19 +740,15 @@ Update the following image to a more current blade and associated website.
 
 ![alt-text](../media/portalfx-ux-commands/Command_bar.jpg "portalfx-ux-commands/Command_bar.jpg")
 
-
 ![alt-text](../media/portalfx-ux-commands/Command_confirm.jpg "portalfx-ux-create-forms/Command_confirm.jpg")
-
 
 ![alt-text](../media/portalfx-ux-commands/Commands.jpg "portalfx-ux-commands/Commands.jpg")
 
 ## portalfx-ux-create-forms
 
-![alt-text](../media/portalfx-ux-create-forms/Creator_selector.jpg "portalfx-ux-create-forms/Creator_selector.jpg )
-
+![alt-text](../media/portalfx-ux-create-forms/Creator_selector.jpg "portalfx-ux-create-forms/Creator_selector.jpg")
 
 ![alt-text](../media/portalfx-ux-create-forms/Info_icon.jpg "portalfx-ux-create-forms/Info_icon.jpg")
-
 
 ![alt-text](../media/portalfx-ux-create-forms/Info_triggered.jpg "portalfx-ux-create-forms/Info_triggered.jpg")
 
@@ -760,36 +756,25 @@ Update the following image to a more current blade and associated website.
 
 ![alt-text](../media/portalfx-ux-create-forms/Location_dropdown.jpg "portalfx-ux-create-forms/Location_dropdown.jpg")
 
-
 ![alt-text](../media/portalfx-ux-create-forms/Locked_field.jpg "portalfx-ux-create-forms/Locked_field.jpg")
-
 
 ![alt-text](../media/portalfx-ux-create-forms/Pickers_and_dropdowns.jpg "portalfx-ux-create-forms/Pickers_and_dropdowns.jpg")
 
-
 ![alt-text](../media/portalfx-ux-create-forms/Pin_to_dash.jpg "portalfx-ux-create-forms/Pin_to_dash.jpg")
-
 
 ![alt-text](../media/portalfx-ux-create-forms/Pricing_card_1.jpg "portalfx-ux-create-forms/Pricing_card_1.jpg")
 
-
 ![alt-text](../media/portalfx-ux-create-forms/Pricing_card_2.jpg "portalfx-ux-create-forms/Pricing_card_2.jpg")
-
 
 ![alt-text](../media/portalfx-ux-create-forms/Primary_validation.jpg "portalfx-ux-create-forms/Primary_validation.jpg")
 
-
 ![alt-text](../media/portalfx-ux-create-forms/Primary_validation_error.jpg "portalfx-ux-create-forms/Primary_validation_error.jpg ")
-
 
 ![alt-text](../media/portalfx-ux-create-forms/Recommended_pricing.jpg "portalfx-ux-create-forms/ecommended_pricing.jpg ")
 
-
 ![alt-text](../media/portalfx-ux-create-forms/Required_field.jpg "portalfx-ux-create-forms/Required_field.jpg")
 
-
 ![alt-text](../media/portalfx-ux-create-forms/simple_create.jpg "portalfx-ux-create-forms/simple_create.jpg")
-
 
 ![alt-text](../media/portalfx-ux-create-forms/simple_create.png "portalfx-ux-create-forms/simple_create.png")
 
@@ -988,8 +973,7 @@ Update the following image to a more current blade and associated website.
 ![alt-text](../media/portalfx-ux-tiles/status.png	"portalfx-ux-tiles/status.png")
 	
 	
-![alt-text](../media/portalfx-ux-tiles/Tile_table.JPG	"portalfx-ux-tiles/Tile table.JPG")
-	
+![alt-text](../media/portalfx-ux-tiles/Tile_table.jpg "portalfx-ux-tiles/Tile table.JPG")
 	
 ![alt-text](../media/portalfx-ux-tiles/tile_gallery1.jpg	"portalfx-ux-tiles/tile_gallery1.jpg")
 	
