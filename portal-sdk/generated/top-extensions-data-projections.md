@@ -36,23 +36,23 @@ export interface RobotDetails {
 
 ```
 
-The initial implementation of [data projection](portalfx-extensions-glossary.md) would resemble the following code.
+The initial implementation of [data projection](portalfx-extensions-glossary-data.md) would resemble the following code.
 
 ```typescript
 
-var projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
-    var projectionId = this._uuid++;
+const projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
+    const projectionId = this._uuid++;
     this._logMapFunctionRunning(projectionId, robot);
     return <RobotDetails>{
         name: ko.observable(robot.name()),
         status: ko.observable(robot.status()),
-        modelAndMfg: ko.observable("{0}:{1}".format(robot.model(), robot.manufacturer()))
+        modelAndMfg: ko.observable("{0}:{1}".format(robot.model(), robot.manufacturer())),
     };
 });
 
 ```
 
-The `robot.name()` contains the name of the robot, and `robot.model()` and `robot.manufacturer()` respectively contain the model and manufacturer values. The `RobotDetails` interface that models the data in the grid requires observables for the  `name` and `modelAndMfg` properties, therefore they use the strings that are received from the `QueryCache` model. The `projectionId` and `_logMapFunctionRunning` methods are discussed in [](). 
+The `robot.name()` contains the name of the robot, and `robot.model()` and `robot.manufacturer()` respectively contain the model and manufacturer values. The `RobotDetails` interface that models the data in the grid requires observables for the  `name` and `modelAndMfg` properties, therefore they use the strings that are received from the `QueryCache` model. The `projectionId` and `_logMapFunctionRunning` methods are discussed in [#shaping-and-filtering-data](#shaping-and-filtering-data). 
 
  The grid is configured with the buttons in the middle of the screen.  When the grid is configured with different types of projections, the commands at the top of the screen are used to add, modify, or remove items in the data source.  The output window displays the results of the functions.
 
@@ -81,7 +81,7 @@ The reason that this implementation is not very performant is because it causes 
 
 When an observable that is associated with the contents of the `QueryCache` model changes, the filtered data that is  projected also changes.  This means that when the `status` observable updates the map's projection, the function runs and computes a different projected item. The object with "projectionId === 4" is gone because it was deleted and replaced with a new item that has the value "projectionId === 8" or some other value. Consequently, the child blade closed because its contents were based on the value of the previous `status` observable. The object that is now in the grid's item has a different `status` value, although it still contains the same `name` and `modelAndMfg`. The previous  `status` observable that was in the `selectableSet's` `activatedItems` observable array no longer exists in the grid's item list.
 
-For more information about displaying the data from the `QueryCache` with a `DataView`, see [portalfx-data-views.md](portalfx-data-views.md).
+For more information about displaying the data from the `QueryCache` with a `DataView`, see [portalfx-data-dataviews.md](portalfx-data-dataviews.md).
 
 <a name="shaping-and-filtering-data-how-the-map-function-works"></a>
 ### How the map function works
@@ -119,8 +119,8 @@ A performant  implemenation of the map resembles the following code.
 
 ```typescript
 
-var projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
-    var projectionId = this._uuid++;
+const projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
+    const projectionId = this._uuid++;
     this._logMapFunctionRunning(projectionId, robot);
     return <RobotDetails>{
         name: robot.name,
@@ -128,7 +128,7 @@ var projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionL
         modelAndMfg: ko.pureComputed(() => {
             this._logComputedRecalculating(projectionId, robot);
             return "{0}:{1}".format(robot.model(), robot.manufacturer());
-        })
+        }),
     };
 });
 
@@ -145,8 +145,8 @@ The following code demonstrates for the same projection, as implemented with the
 
   ```typescript
 
-var projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
-    var projectionId = this._uuid++;
+const projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
+    const projectionId = this._uuid++;
     this._logMapFunctionRunning(projectionId, robot);
     return <RobotDetails>{
         name: robot.name,
@@ -154,7 +154,7 @@ var projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProject
         modelAndMfg: ko.pureComputed(() => {
             this._logComputedRecalculating(projectionId, robot);
             return "{0}:{1}".format(robot.model(), robot.manufacturer());
-        })
+        }),
     };
 });
 
@@ -164,13 +164,13 @@ You can see how it behaves when you click on the 'Proper mapInto' button and the
 
 ```typescript
 
-var projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
-    var projectionId = this._uuid++;
+const projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
+    const projectionId = this._uuid++;
     this._logMapFunctionRunning(projectionId, robot);
     return <RobotDetails>{
         name: ko.observable(robot.name()),
         status: ko.observable(robot.status()),
-        modelAndMfg: ko.observable("{0}:{1}".format(robot.model(), robot.manufacturer()))
+        modelAndMfg: ko.observable("{0}:{1}".format(robot.model(), robot.manufacturer())),
     };
 });
 
@@ -203,12 +203,12 @@ this._view = dataContext.robotData.robotsQuery.createView(container);
 // As items are added or removed from the underlying items array,
 // individual changed items will be re-evaluated to create the computed
 // value in the resulting observable array.
-var projectedItems = this._view.items.mapInto<RobotDetails>(container, (itemLifetime, robot) => {
+const projectedItems = this._view.items.mapInto<RobotDetails>(container, (itemLifetime, robot) => {
     return <RobotDetails>{
         name: robot.name,
         computedName: ko.pureComputed(() => {
             return "{0}:{1}".format(robot.model(), robot.manufacturer());
-        })
+        }),
     };
 });
 

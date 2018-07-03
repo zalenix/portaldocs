@@ -34,13 +34,13 @@ For more information about building extensions with TypeScript decorators, watch
 
 One of the great things about the Azure portal is the ability for multiple services to blend together to form a cohesive user experience.  In many cases, extensions will want to share parts, share data, and kick off actions. There are a few examples where this is useful:
 
-- The [Azure Websites](https://azure.microsoft.com/en-us/services/websites/) browse blade [includes a part](portalfx-extension-sharing-pde.md) from [Visual Studio Team Services](https://www.visualstudio.com/team-services) which sets up continuous deployment between a source code repository and a web site.
+- The [Azure Websites](https://azure.microsoft.com/en-us/services/websites/) browse blade includes a part from [Visual Studio Team Services](https://www.visualstudio.com/team-services), as specified in [top-extensions-sharing-blades-and-parts.md](top-extensions-sharing-blades-and-parts.md), which sets up continuous deployment between a source code repository and a web site.
 
 ![alt-text](../media/portalfx-parts/part-sharing.png "Setting up continuous deployment with part sharing")
 
 - After configuring continuous deployment, the Visual Studio Online extension informs the Azure Websites extension it is complete with an RPC callback.
 
-To start learning more about parts, see [top-extensions-sharing-blades-and-parts](top-extensions-sharing-blades-and-parts). 
+To start learning more about parts, see [top-extensions-sharing-blades-and-parts.md](top-extensions-sharing-blades-and-parts.md). 
 
 <a name="setting-up-for-azure-portal-development-deploy-the-extension"></a>
 ## Deploy the extension

@@ -228,7 +228,7 @@ If the extension combines the `sort` option with the `disable` or `group` functi
 
 **NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions be developed without edit scopes, as specified in [top-editscopeless-forms.md](top-editscopeless-forms.md).
 
-For more information about forms without editScopes, see   [top-editscopeless-forms.md](top-editscopeless-forms.md) and [portalfx-controls-dropdown.md#migration-to-the-new-dropdown](portalfx-controls-dropdown.md#migration-to-the-new-dropdown).
+For more information about forms without editScopes, see   [portalfx-controls-dropdown.md#migration-to-the-new-dropdown](portalfx-controls-dropdown.md#migration-to-the-new-dropdown).
 
 For scenarios where a form is built with an `EditScope`, the Portal provides versions of accessible ARM dropdowns that replace the legacy, non-accessible dropdowns. The accessible controls have minimal API changes and are simple to integrate into existing blades or parts. However, the new dropdowns are based on a new accessible control that no longer supports the following options.
 
@@ -632,7 +632,7 @@ The Marketplace provides a categorized collection of packages that can be create
 
 1. Set a "hide key" before testing in production.
 
-1. Send the package to the Marketplace team to publish it for production, as specified in []().
+1. Send the package to the Marketplace team to publish it for production.
 
 1. Notify the Marketplace team when the extension is ready to go live.
 

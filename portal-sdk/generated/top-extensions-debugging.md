@@ -11,7 +11,7 @@ Other samples and tools are also available to assist in the debugging process.  
 
 Here are a few tips that help get extension development back on track. If you still have questions, reach out to Ibiza team by using the Stackoverflow tags as specified in [StackOverFlow Forums](portalfx-stackoverflow.md).
 
-To test your local extension against the production portal, see [top-extensions-production-testing.md](top-extensions-production-testing.md).  
+To test your local extension against the production portal, see [top-extensions-sideloading.md](top-extensions-sideloading.md).  
 
 For more information about deploying the extension, see [portalfx-deployment.md](portalfx-deployment.md).
 
@@ -49,11 +49,10 @@ The information associated with each part provides the following information.
     * **Track**: Dumps the view model observables.
 * **Deep link**: Optional. Links to the blade.
 
-<a name="debugging-an-extension-debug-mode-toggling-optimizations"></a>
-### Toggling optimizations
+<a name="debugging-an-extension-debug-mode-toggle-optimizations"></a>
+### Toggle optimizations
 
-
-Bundling and minification can be enabled or disabled for debugging by using the The **clientoptimizations** flag. This flag behaves somewhat like a trace mode flag, in that it does not turn on and off code within an extension, nor does it control requests for other extensions that are used by the extension that is being debugged.  Instead, it turns off bundling and minification of JavaScript to make debugging easier.
+Bundling and minification can be enabled or disabled for debugging by using the **clientoptimizations** flag. This flag behaves somewhat like a trace mode flag, in that it does not turn on and off code within an extension, nor does it control requests for other extensions that are used by the extension that is being debugged.  Instead, it turns off bundling and minification of JavaScript to make debugging easier.
 
 The following modes are available.
 
@@ -101,8 +100,8 @@ Next, click the `Restore default settings` option, as in the following image.
 
 The Portal refreshes when the `Apply` button is clicked, and user settings are cleared.
 
-<a name="debugging-an-extension-debugging-extension-load-failures"></a>
-## Debugging extension load failures
+<a name="debugging-an-extension-debug-extension-load-failures"></a>
+## Debug extension load failures
 
 You can check if the  extension is loaded in the debug panel (CTRL+ALT+D) by clicking 'Loaded extensions', as in the following example.
 
@@ -116,8 +115,8 @@ Extensions load failures are logged along with an associated failure code.  This
 
 If the extension is not loaded, or if the extension site is not running, another guide that may be of assistance is "Creating an Extension", located at [portalfx-extensions-create-blank-procedure.md](portalfx-extensions-create-blank-procedure.md).
 
-<a name="debugging-an-extension-debugging-console-errors"></a>
-## Debugging console errors
+<a name="debugging-an-extension-debug-console-errors"></a>
+## Debug console errors
 
 The Portal logs a significant amount of information into the browser developer console. Often this surfaces common errors and problems.
 Most modern browsers include tools that make it easy to debug JavaScript. To understand how the JavaScript debugging tools work in **Chrome**, view  "Chrome DevTools Overview" that is located at [https://developer.chrome.com/devtools](https://developer.chrome.com/devtools). For **Microsoft Edge**, the F12 tools guide is located at [https://docs.microsoft.com/en-us/microsoft-edge/f12-devtools-guide/debugger](https://docs.microsoft.com/en-us/microsoft-edge/f12-devtools-guide/debugger). The debugging tools in other popular browsers are outside of the scope of this document.  The following examples demonstrate Azure debugging techniques using the tools in **Internet Explorer**.  
@@ -130,13 +129,13 @@ After opening the console, refresh the Portal to display all messages. Then, do 
 
 ![alt-text](../media/portalfx-debugging/consoleError.png "Error in Console")
 
-<a name="debugging-an-extension-debugging-console-errors-trace-modes"></a>
+<a name="debugging-an-extension-debug-console-errors-trace-modes"></a>
 ### Trace Modes
 
 The errors that are presented in the console can be of great assistance in fixing extension issues. The trace mode that is included in the Portal will display information other than the standard console errors. Trace mode is enabled by appending a flag to the end of the query string. For example,  `https://portal.azure.com/?trace=diagnostics` will enable verbose debugging information in the console. For more information about trace modes, see [top-extensions-flags.md#trace-mode-flags](top-extensions-flags.md#trace-mode-flags). For other debugging services, see [top-extensions-debugging.md](top-extensions-debugging.md).
 
-<a name="debugging-an-extension-debugging-javascript"></a>
-## Debugging JavaScript
+<a name="debugging-an-extension-debug-javascript"></a>
+## Debug JavaScript
 
 In most cases, the code that is being debugged is part of the extension. To locate the source code files, press CTRL+P and search for the extension by name: ```<extensionName>ScriptsCore.js```, without the angle brackets, and open the file. All available source files can be searched using CTRL+SHIFT+F, as in the following image.
 
@@ -146,12 +145,12 @@ To debug a specific view model, search for the code by class name. You can now s
 
 For more information about debugging JavaScript, view the video named ***Debugging tools for the Web***, located at [https://vimeo.com/157292748](https://vimeo.com/157292748).
 
-<a name="debugging-an-extension-debugging-knockout"></a>
-## Debugging Knockout
+<a name="debugging-an-extension-debug-knockout"></a>
+## Debug Knockout
 
 All of the Azure UI data that comes from the view model (i.e., the `ViewModel` object that is bound to the HTML source)  is bound to the user interface by  the **Knockout** (KO) JavaScript library. As a result, when something does not display correctly on the screen, generally there is a discrepancy between the ViewModel and the framework code. This section discusses solutions for oddities that may be  encountered in the UI.
 
-<a name="debugging-an-extension-debugging-knockout-knockout-commands"></a>
+<a name="debugging-an-extension-debug-knockout-knockout-commands"></a>
 ### Knockout Commands
 
 One of the most useful commands when debugging knockout user interfaces is in the following code.
@@ -207,10 +206,7 @@ Previously, the perspective was that all of the extension debugging was in a sin
 
 This section discusses how to figure out where changes are coming from when they originate from a different iframe. 
 
-**NOTE**:  Unlike [#debugging-extensions-that-use-knockout](#debugging-extensions-that-use-knockout) and [#debugging-the-data-stack](#debugging-the-data-stack), this is very Portal specific. You may want to review Azure Portal architecture, as specified in   [top-extensions-architecture.md](top-extensions-architecture.md), previous to continuing with `iframe` testing.
-
-**NOTE**:  Unlike [#debugging-extensions-that-use-knockout](#debugging-extensions-that-use-knockout) and [#debugging-the-data-stack](#debugging-the-data-stack), this is very Portal specific. You may want to review Azure Portal architecture, as specified in [top-extensions-architecture.md](top-extensions-architecture.md), previous to continuing with iframe testing.
-
+**NOTE**:  Unlike debugging extensions that use **Knockout**, or debugging the data stack, `iframe` development is very Portal specific. You may want to review Azure Portal architecture, as specified in   [top-extensions-architecture.md](top-extensions-architecture.md), previous to continuing with `iframe` testing.
 
 1. To debug an extension that sends information across multiple `iframes`, the Portal should be loaded with diagnostics turned on, by setting the  flag `?trace=diagnostics`.  Without this flag, callstacks are not captured across `iframes` for performance reasons.  If this debugging is occurring in a  non-development environment, then client optimizations should be turned off by setting `clientOptimizations=false`. Otherwise, the test session will be debugging bundled & minified code.
 
@@ -242,7 +238,7 @@ For more information:
 
     [https://app.pluralsight.com/library/courses/knockout-tips/table-of-contents](https://app.pluralsight.com/library/courses/knockout-tips/table-of-contents)
 
-## Debugging the data stack
+## Debug the data stack
 
 The data stack contains all the information that the browser associates with the current testing session.  If, for example, edit scope changes are not displayed in the query cache,  or if  a row in the grid is updated without immediately apparent cause, the data stack may provide some answers to the debugging process.  Here are tips on how to debug using the data stack.
 
@@ -344,7 +340,7 @@ Then, verify that when a **TypeScript** file is saved, that the following text i
 
  * * *
  
-<a name="debugging-an-extension-debugging-knockout-other-debugging-questions"></a>
+<a name="debugging-an-extension-debug-knockout-other-debugging-questions"></a>
 ### Other debugging questions
 
 ***How can I ask questions about debugging ?***

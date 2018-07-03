@@ -125,5 +125,5 @@ The versions available in the hosting service are located at the following URLs.
 | Environment | URL                                                     |
 | ---         | ---                                                     |
 | Dogfood     | https://hosting.onecloud.azure-test.net/api/diagnostics |
-| MPAC        | https://hosting-ms.portal.azure.net/api/diagnostics     |
+| MPAC        | https://ms.hosting.portal.azure.net/api/diagnostics     |
 | PROD        | https://hosting.portal.azure.net/api/diagnostics        |

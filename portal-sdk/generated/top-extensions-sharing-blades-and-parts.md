@@ -60,7 +60,7 @@ For more information on the types of shared extensions, see the following list o
 | Azure Insights              | [portalfx-pde-azureinsights.md](portalfx-pde-azureinsights.md) | Activity logs and other tools that provide metadata about extension performance and maintenance. | 
 | Azure Monitoring            | [portalfx-pde-monitoring.md](portalfx-pde-monitoring.md)       | azure-monitoring-usage-doc                                |
 
-For more information about sharing pde's, see [top-extensions-packages.md](top-extensions-packages.md).
+For more information about sharing pde's, see [top-extensions-nuget.md](top-extensions-nuget.md).
 
 <a name="sharing-your-portal-definition-export-with-other-teams-the-pde-file"></a>
 ## The PDE File
@@ -182,13 +182,12 @@ It is located at `<dir>\Client\V1\Extensibility\RPC\ViewModels\RpcCallbacksViewM
 
 ```typescript
 
-
 /**
  * This method will invoke a method on SamplesExtension (ideally a different extension than your own).  That method is
  * defined in Program.ts of SamplesExtension, and will be returned async.
  */
 public invokeCallback() {
-    var extensionId = "SamplesExtension",
+    const extensionId = "SamplesExtension",
         callbackName = "StringUpperCaseCallback",
         arg = (new Date()).toTimeString();
 

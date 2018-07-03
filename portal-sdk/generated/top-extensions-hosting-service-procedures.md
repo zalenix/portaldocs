@@ -3,7 +3,7 @@
 ## Checklist for onboarding hosting service
 
 There are two different ways to onboard an extension to a hosting service. If your extension has never been hosted, and it should be onboarded to the hosting service, use the procedures named [initial onboarding to the hosting service](#initial-onboarding-to-the-hosting-service).
-If your extension was previously hosted, and is being migrated from DIY legacy deployment to a hosting service, use the procedure named [converting from DIY deployment to a hosting service](#converting-from-diy-deployment-to-a-hosting-service).
+If your extension was previously hosted, and is being migrated from DIY legacy deployment to a hosting service, use the procedure named [converting from custom deployment to a hosting service](#converting-from-custom-deployment-to-a-hosting-service).
 
 <a name="checklist-for-onboarding-hosting-service-initial-onboarding-to-the-hosting-service"></a>
 ### Initial onboarding to the hosting service
@@ -313,7 +313,7 @@ Extensions should publish the extracted deployment artifacts that are generated 
 
 
 <a name="provide-environment-specific-configuration-files-converting-from-custom-deployment-to-a-hosting-service"></a>
-### Converting from custom  deployment to a hosting service
+### Converting from custom deployment to a hosting service
 
 To minimize the probability of regression, use the following procedure to migrate an extension from custom  deployment to a hosting service. For more information about custom deployment, see [top-extensions-custom-deployment.md](top-extensions-custom-deployment.md).
 

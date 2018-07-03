@@ -237,7 +237,7 @@ The Ibiza Fx team supports the following Shell feature flags. These flags are on
 
 Shell feature flags are invoked with the syntax: `https://portal.azure.com/?feature.<featureName>=true`.
 
-The keyboard shortcut CTRL+ALT+D toggles the visibility of the debug tool, as specified in [top-extensions-debugging-overview.md](top-extensions-debugging-overview.md). The yellow sticky that is located at the bottom on the right side of the window can be used to toggle trace mode flags and shell feature flags.
+The keyboard shortcut CTRL+ALT+D toggles the visibility of the debug tool, as specified in [top-extensions-debugging.md#debug-mode](top-extensions-debugging.md#debug-mode). The yellow sticky that is located at the bottom on the right side of the window can be used to toggle trace mode flags and shell feature flags.
 
 <a name="feature-flags-shell-feature-flags-the-extensionname-flag"></a>
 ### The extensionName flag
@@ -306,7 +306,7 @@ The following are the feature flags that are invoked with the syntax: `feature.<
 | storage     | Add all storage services to the **Storage** category  
 | vm          | Rename **Compute** to **VMs**, and rename **Web + Mobile** to **App Services** |
 
-**feature.canmodifyextensions**:  Required to support loading untrusted extensions for security purposes. For more information, see [portalfx-extensions-production-testing-overview.md#loading-customized-extensions](portalfx-extensions-production-testing-overview.md#loading-customized-extensions).
+**feature.canmodifyextensions**:  Required to support loading untrusted extensions for security purposes. For more information, see [top-extensions-sideloading.md#loading-customized-extensions](top-extensions-sideloading.md#loading-customized-extensions).
 
 <!--TODO: Determine whether the following flag is associated with msportalfx-test.md#msportalfx-test-running-ci-->
 

@@ -12,9 +12,10 @@ The goal is to hide the extension from the general public, but show it to a limi
 
 ![alt-text](../media/top-extensions-developmentPhases/browseMenu.png "Browse Menu")
 
-It is still in hidden/ disabled state, and the preview tag in the the `extension.pdl` file is set to `Preview="true"`.  In this state the extension is not visible to all the customers of Azure Portal; instead, the developer and their team have acquired a small team of reviewers with which to collaborate on the development and testing of the extension. 
+The extension is still in hidden/ disabled state, and the preview tag in the the `extension.pdl` file is set to `Preview="true"`.  In this state the extension is not visible to all the customers of Azure Portal; instead, the developer and their team have acquired a small team of reviewers with which to collaborate on the development and testing of the extension. 
 
-Some teams also leverage this phase for testing the business model by providing a specific URL to their customers that allows them to access this extension. For more information about providing access to a limited set of customers, see [portalfx-hidden-extension-feedback.md](portalfx-hidden-extension-feedback.md).
+<!--Determine whether this URL is above and beyond any standard private preview access. -->
+Some teams also leverage this phase for testing the business model by providing a specific URL to their customers that allows them to access this extension. For more information about providing access to a limited set of customers, see .
 
 The developer can then modify the extension until it meets specific criteria for usability, reliability, performance, and other factors. The criteria are located at [top-extensions-production-ready-metrics.md](top-extensions-production-ready-metrics.md). 
 

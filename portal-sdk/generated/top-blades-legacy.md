@@ -4,7 +4,7 @@
 
 A blade is the vertical container that acts as the starting point for any journey. You can define multiple blades, each of which contains a collection of statically defined lenses and parts.
 
-**NOTE**: Given the complexity associated with this model, extension authors are encouraged to use TemplateBlades instead, as specified in [portalfx-blades-overview.md](portalfx-blades-overview.md).
+**NOTE**: Given the complexity associated with this model, extension authors are encouraged to use TemplateBlades instead, as specified in [top-blades-template.md](top-blades-template.md).
 
 The following image contains a legacy blade.
 
