@@ -1,100 +1,47 @@
 
-### Blades
+## Blades
 
-#### Blade navigation
+Topics about blade navigation are the following.
 
-To navigate to blades within msportalfx-test can use one of several approaches
+* [Common portal blades](#common-portal-blades)
 
-- via a deep link to the blade using the `portal.navigateToUriFragment` function e.g
+* [Locating an open blade](#locating-an-open-blade)
 
-    ```ts
-    import testFx = require('MsPortalFx-Test');
-    ...
-    
-        const resourceName = resourcePrefix + guid.newGuid();
-        const createOptions = {
-            name: resourceName,
-            resourceGroup: resourceGroupName,
-            location: locationId,
-            resourceProvider: resourceProvider,
-            resourceType: resourceType,
-            resourceProviderApiVersion: resourceProviderApiVersion,
-            properties: {
-                displacement: "600cc",
-                model: "type1",
-                status: 0
-            }
-        };
-        return testSupport.armClient.createResource(createOptions)
-            //form deep link to the quickstart blade
-            .then((resourceId) => {
-                return testFx.portal.navigateToUriFragment(`blade/SamplesExtension/EngineQuickStartBlade/id/${encodeURIComponent(resourceId)}`)
-                    .then(() =>
-                        testFx.portal.wait(ExpectedConditions.isPresent(testFx.portal.blade({ title: resourceId, bladeType: QuickStartBlade }))));
-    ```
+* [Dialogs](#dialogs)
 
-- via clicking on another ux component that opens the blade
+* [Blade navigation](#blade-navigation)
 
-    ```ts
-    import testFx = require('MsPortalFx-Test');
-    ...
-    
-            .then((blade) => blade.asType(SummaryBlade).essentialsPart.settingsHotSpot.click())
-            .then(() => settingsBlade.clickSetting(PortalFxResources.properties))
-            .then(() => testFx.portal.wait(until.isPresent(testFx.portal.element(testFx.Blades.PropertiesBlade))));
-    ```
+* * * 
 
-- via `portal.open*` functions open common portal blades like create, browse and resource summary blades. See [Opening common portal blades](#common-portal-blades)
+### Common portal blades
 
-- via `portal.search` function to search for, and open browse and resource blades
+There are several types of Portal blades that can be opened programmatically. There are also several API's available to make testing a common functionality within browse such as context menu commands and column picking functionality. 
 
-    ```ts
-    import testFx = require('MsPortalFx-Test');
-    ...
-    
-        const subscriptionsBlade = testFx.portal.blade({ title: testSupport.subscription });
-        
-        testFx.portal.portalContext.features.push({ name: "feature.resourcemenu", value: "true" });
-        return testFx.portal.goHome().then(() => {
-            return testFx.portal.search(testSupport.subscription);
-        }).then((results) => {
-            return testFx.portal.wait<SearchResult>(() => {
-                var result = results[0];
-                return result.title.getText().then((title) => {
-                    return title === testSupport.subscription ? result : null;
-                });
-            });
-        }).then((result) => {
-            return result.click();
-        }).then(() => {
-            return testFx.portal.wait(until.isPresent(subscriptionsBlade));
-        }); 
-    ```
+* [Open the create blade](#open-the-create-blade)
 
-#### Locating an open blade
+* [Open the browse blade from your resource](#open-the-browse-blade-from-your-resource)
 
-There are several approaches that can be used for locating an already opened blade use `testfx.portal.blade`.
+* [Open the resource summary blade](#open-the-resource-summary-blade)
 
-- by blade title
-    ```ts
-    
-        const resourceBlade = testFx.portal.blade({ title: resourceGroupName });
-    ```  
- 
-- by using an existing blade type and its predefined locator
-    ```ts
-    
-        const settingsBlade = testFx.portal.blade({ bladeType: testFx.Blades.SettingsBlade });
-        
-    ```
+* [Navigate to the spec picker blade](#navigate-to-the-spec-picker-blade)
 
-#### Common portal blades
+* [Navigate to the Settings blade](#navigate-to-the-settings-blade)
 
-##### Opening the extensions Create blade
+* [Navigate to the Properties Blade](#navigate-to-the-properties-blade)
 
-See [msportalfx-test-scenarios-create.md#opening-the-create-blade-from-a-deployed-gallery-package](msportalfx-test-scenarios-create.md#opening-the-create-blade-from-a-deployed-gallery-package).
+* [Navigate to the QuickStart blade](#navigate-to-the-quickstart-blade)
 
-##### Opening the Browse blade for your resource
+* [Navigate to the user access blade](#navigate-to-the-user-access-blade)
+
+* [The Move Resource Blade](#the-move-resource-blade)
+
+* * *
+
+#### Open the create blade
+
+For more information about opening the create blade, see [msportalfx-test-scenarios-create.md#opening-the-create-blade-from-a-deployed-gallery-package](msportalfx-test-scenarios-create.md#opening-the-create-blade-from-a-deployed-gallery-package).
+
+#### Open the browse blade from your resource
 
 To open/navigate to the Browse blade from resource type you can use `portal.openBrowseBlade`.  The returned promise will resolve with the browse blade. 
 
@@ -106,9 +53,10 @@ import testFx = require('MsPortalFx-Test');
             .then((blade) => blade.filterItems(resourceName))
 ...
 ```
-##### Opening a Resource Summary blade
 
-To open/navigate to the Resource Summary blade for a specific resource you can use `portal.openResourceBlade`.  The returned promise will resolve with the Resource summary blade for the given resource. 
+#### Open the resource summary blade
+
+Use the `portal.openResourceBlade` method to open or navigate to the Resource Summary blade for a specific resource.  The returned promise will resolve with the Resource summary blade for the specified resource, as in the following example.
 
 ```ts
 import testFx = require('MsPortalFx-Test');
@@ -120,9 +68,9 @@ import testFx = require('MsPortalFx-Test');
 ...
 ```
 
-##### Spec Picker Blade
+#### Navigate to the spec picker blade
 
-The `SpecPickerBlade` can be used to select/change the current spec of a resource.  The following example demonstrates how to navigate to the spec picker for a given resource then changes the selected spec.    
+The `SpecPickerBlade` can be used to select or change the current spec of a resource.  The following example demonstrates how to navigate to the spec picker for a specific resource, then changes the selected spec.
 
 ```ts
 //1. imports
@@ -132,26 +80,24 @@ import SpecPickerBlade = testFx.Parts.SpecPickerBlade;
 
         const pricingTierBlade = testFx.portal.blade({ title: extensionResources.samplesExtensionStrings.PricingTierBlade.title });
         let pricingTierPart: PricingTierPart;
-        //2. Open navigate blade and select the pricing tier part.  
-        // Note if navigating to a resourceblade use testFx.portal.openResourceBlade and blade.element
+//2. Open navigate blade and select the pricing tier part.  
+// Note if navigating to a resourceblade use testFx.portal.openResourceBlade and blade.element
         return testFx.portal.navigateToUriFragment("blade/SamplesExtension/PricingTierV3Blade", 15000).then(() => {
             return pricingTierBlade.waitUntilBladeAndAllTilesLoaded();
         }).then(() => {
             pricingTierPart = testFx.portal.element(PricingTierPart);
             return pricingTierPart.click();
         }).then(() => {
-            //3. get a reference to the picker blade and pick a spec 
+ //3. get a reference to the picker blade and pick a spec 
             var pickerBlade = testFx.portal.blade({ bladeType: SpecPickerBlade, title: extensionResources.choosePricingTier});
             return pickerBlade.pickSpec(extensionResources.M);
         }).then(() => {
         
 ```
 
-There are also several API's available to make testing common functionality within browse such as context menu commands and column picking functionality. 
+#### Navigate to the settings blade
 
-##### Settings Blade
-
-Navigation to the `SettingsBlade` is done via the `ResourceSummaryPart` on a resource summary blade. The following demonstrates how to navigate to a settings blade and click on a setting.
+Navigation to the `SettingsBlade` is performed by using the `ResourceSummaryPart` on a resource summary blade. The following demonstrates how to navigate to a settings blade and click on a setting.
 
 ```ts
 import testFx = require('MsPortalFx-Test');
@@ -166,10 +112,9 @@ class SummaryBlade extends Blade {
     public rolesAndInstancesPart = this.part({ innerText: resources.rolesAndInstances });
     public estimatedSpendPart = this.part({ innerText: resources.estimatedSpend });
 }
-
 ...
 //2. navigate to the quickstart and click a link
-
+...
         const settingsBlade = testFx.portal.blade({ bladeType: testFx.Blades.SettingsBlade });
         return testSupport.armClient.createResourceGroup(resourceGroups[0], locationId)
             .then((result) => testFx.portal.openResourceBlade(result.resourceGroup.id, result.resourceGroup.name, 70000))
@@ -182,9 +127,9 @@ class SummaryBlade extends Blade {
 ...
 ```
 
-##### Properties Blade
+#### Navigate to the properties blade
 
-Navigation to the `PropertiesBlade` is done via the resource summary blade. The following demonstrates how to navigate to the properties blade
+Navigation to the `PropertiesBlade` is performed by using the resource summary blade. The following demonstrates how to navigate to the properties blade.
 
 ```ts
 import testFx = require('MsPortalFx-Test');
@@ -209,9 +154,9 @@ import testFx = require('MsPortalFx-Test');
 ...
 ```
 
-##### QuickStart Blade
+#### Navigate to the quickstart blade
 
-Using a deep link you can navigate directly into a `QuickStartBlade` for a resource with `Portal.navigateToUriFragment`.
+The `Portal.navigateToUriFragment` method allows an extension to navigate directly into a `QuickStartBlade` for a resource by using a deep link.
    
 ```ts
 import testFx = require('MsPortalFx-Test');
@@ -239,7 +184,7 @@ import testFx = require('MsPortalFx-Test');
                         testFx.portal.wait(ExpectedConditions.isPresent(testFx.portal.blade({ title: resourceId, bladeType: QuickStartBlade }))));
 ```
 
-While deeplinking is fast it does not validate that the user can actually navigate to a QuickStartBlade via a `ResourceSummaryPart` on a resource summary blade.  The following demonstrates how to verify the user can do so.
+Deep-linking is fast, but it does not validate that the user can actually navigate to a `QuickStartBlade` by using a `ResourceSummaryPart` on a resource summary blade.  The following code demonstrates how to verify that the user can navigate to the blade.
 
 ```ts
 import testFx = require('MsPortalFx-Test');
@@ -270,9 +215,9 @@ class SummaryBlade extends Blade {
 ...
 ```
 
-##### Users Blade
+#### Navigate to the user access blade
 
-Using a deep link you can navigate directly into the user access blade for a resource with `Portal.navigateToUriFragment`.
+The `Portal.navigateToUriFragment` method allows an extension to navigate directly into the user access blade that is associated with a resource by using  a deep link.
    
 ```ts
 import testFx = require('MsPortalFx-Test');
@@ -299,7 +244,7 @@ import testFx = require('MsPortalFx-Test');
             .then(() => testFx.portal.wait(ExpectedConditions.isPresent(testFx.portal.element(testFx.Blades.UsersBlade))));
 ```
 
-While deeplinking is fast it does not validate that the user can actually navigate to a UsersBlade via a `ResourceSummaryPart` on a resource summary blade.  The following demonstrates how to verify the user can do so.
+Deep-linking is fast, but it does not validate that the user can actually navigate to a `UsersBlade ` by using a `ResourceSummaryPart` on a resource summary blade.  The following code demonstrates how to verify that the user can navigate to the blade.
 
 ```ts
 import testFx = require('MsPortalFx-Test');
@@ -330,9 +275,9 @@ class SummaryBlade extends Blade {
 ...
 ```
 
-##### Move Resource Blade
+#### Move Resource Blade
 
-The `MoveResourcesBlade` represents the Portals blade used to move resources from a resource group to a new resource group `portal.startMoveResource` provides a simple abstraction that will iniate the move of an existing resource to a new resource group.  The following example demonstrates how to initiate the move and then wait on successful notification of completion.
+The `MoveResourcesBlade` is used to move resources from one resource group to a new resource group.  The `portal.startMoveResource` method provides a simple abstraction that will initiate the move of an existing resource to a new resource group.  The following example demonstrates how to initiate the move and then wait on successful notification of completion.
   
 ```ts
 import testFx = require('MsPortalFx-Test');
@@ -350,15 +295,36 @@ import testFx = require('MsPortalFx-Test');
             return testFx.portal.element(NotificationsMenu).waitForNewNotification(portalFxResources.movingResourcesComplete, null, 5 * 60 * 1000);
 ```
 
-#### Blade Dialogs
+### Locating an open blade
 
-On some blades you may use commands that cause a blade dialog that generally required the user to perform some acknowledgement action.  
-The `Blade` class exposes a `dialog` function that can be used to locate the dialog on the given blade and perform an action against it. 
+The `testfx.portal.blade` method can be used to locate an already opened blade.
+
+*  Locate an already opened blade by its  title, as in the following example.
+
+    ```ts
+    
+        const resourceBlade = testFx.portal.blade({ title: resourceGroupName });
+    ```  
+ 
+* Locate an already opened blade by using its  blade type and its predefined locator, as in the following example.
+
+    ```ts
+    
+        const settingsBlade = testFx.portal.blade({ bladeType: testFx.Blades.SettingsBlade });
+        
+    ```
+
+### Dialogs
+
+Some blades commands create dialogs that typically require the user to acknowledge something. The `Blade` class exposes a `dialog` function that can be used to locate the dialog on the specified blade, and to perform actions against it. 
+
 The following example demonstrates how to:
 
-- get a reference to a dialog by title
-- find a field within the dialog and sendKeys to it 
-- clicking on a button in a dialog
+* Get a reference to a dialog by its title
+
+* Find a field within the dialog and send information to it by using the `sendKeys` method
+
+* Click on a button in a dialog
 
 ```ts
 import testFx = require('MsPortalFx-Test');
@@ -381,3 +347,73 @@ import testFx = require('MsPortalFx-Test');
                 .then(() => dialog.clickButton(extensionResources.ok));
             });
 ```
+
+### Blade navigation
+
+There are several approaches that can be used to  navigate to blades within `msportalfx-test`.
+
+* Use a deep link to the blade using the `portal.navigateToUriFragment` function, as in the following example.
+
+    ```ts
+    import testFx = require('MsPortalFx-Test');
+    ...
+    
+        const resourceName = resourcePrefix + guid.newGuid();
+        const createOptions = {
+            name: resourceName,
+            resourceGroup: resourceGroupName,
+            location: locationId,
+            resourceProvider: resourceProvider,
+            resourceType: resourceType,
+            resourceProviderApiVersion: resourceProviderApiVersion,
+            properties: {
+                displacement: "600cc",
+                model: "type1",
+                status: 0
+            }
+        };
+        return testSupport.armClient.createResource(createOptions)
+            //form deep link to the quickstart blade
+            .then((resourceId) => {
+                return testFx.portal.navigateToUriFragment(`blade/SamplesExtension/EngineQuickStartBlade/id/${encodeURIComponent(resourceId)}`)
+                    .then(() =>
+                        testFx.portal.wait(ExpectedConditions.isPresent(testFx.portal.blade({ title: resourceId, bladeType: QuickStartBlade }))));
+    ```
+
+* Click on another ux component that opens the blade, as in the following example.
+
+    ```ts
+    import testFx = require('MsPortalFx-Test');
+    ...
+    
+            .then((blade) => blade.asType(SummaryBlade).essentialsPart.settingsHotSpot.click())
+            .then(() => settingsBlade.clickSetting(PortalFxResources.properties))
+            .then(() => testFx.portal.wait(until.isPresent(testFx.portal.element(testFx.Blades.PropertiesBlade))));
+    ```
+
+* Use `portal.open*` functions that open blades like create, browse and resource summary blades. For more information, see [Opening common portal blades](#common-portal-blades).
+
+* Use the `portal.search` function to locate and open browse and resource blades, as in the following example.
+
+    ```ts
+    import testFx = require('MsPortalFx-Test');
+    ...
+    
+        const subscriptionsBlade = testFx.portal.blade({ title: testSupport.subscription });
+        
+        testFx.portal.portalContext.features.push({ name: "feature.resourcemenu", value: "true" });
+        return testFx.portal.goHome().then(() => {
+            return testFx.portal.search(testSupport.subscription);
+        }).then((results) => {
+            return testFx.portal.wait<SearchResult>(() => {
+                var result = results[0];
+                return result.title.getText().then((title) => {
+                    return title === testSupport.subscription ? result : null;
+                });
+            });
+        }).then((result) => {
+            return result.click();
+        }).then(() => {
+            return testFx.portal.wait(until.isPresent(subscriptionsBlade));
+        }); 
+    ```
