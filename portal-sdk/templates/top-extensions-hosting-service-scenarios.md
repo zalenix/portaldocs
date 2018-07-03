@@ -114,12 +114,10 @@ If you are using safe deployment, you can rollout a new version of an extension 
 
 **NOTE:** Publishing a version to a stage in safe deployment does not require a build or deployment.
 
-<!--  TODO: Determine why MPAC Hostname/IP doesn't match certificate's altnames: "Host: hosting-ms.portal.azure.net. is not in the cert's altnames: DNS:*.hosting.portal.azure.net, DNS:hosting.partners.azure.net, DNS:*.hosting.partners.azure.net, DNS:hosting.portal.azure.net"  -->
-
 The versions available in the hosting service are located at the following URLs.
 
 | Environment | URL                                                     |
 | ---         | ---                                                     |
 | Dogfood     | https://hosting.onecloud.azure-test.net/api/diagnostics |
-| MPAC        | https://hosting-ms.portal.azure.net/api/diagnostics     |
+| MPAC        | https://ms.hosting.portal.azure.net/api/diagnostics     |
 | PROD        | https://hosting.portal.azure.net/api/diagnostics        |
