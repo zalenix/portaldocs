@@ -57,10 +57,9 @@ This error indicates that the dev environment cannot find the expanded NuGet pac
     
     **version**:  matches the version of the Portal SDK you are using for your extension and also matches the version of the `"Microsoft.Portal.Framework"` package in your `packages.config`.*.
 
-
 1. Update the Unit Test `package.json` file that is located in the `<ExtensionRepoName>\src\<ExtensionName>.UnitTests\` folder by removing the `msportalfx-ut` package from the dependencies if it is listed.
     
-    Update the  script's `init` command to the following:
+    Update the script's `init` command to the following:
 
     `"init": "npm install --no-optional && npm install %PkgMicrosoft_Portal_TestFramework_UnitTest%\\msportalfx-ut-5.302.1016.tgz --no-save",`
 
@@ -101,7 +100,7 @@ The build and code generation will add the following folders.
 |   +-- Output
 ```
 
-**NOTE**: This document uses relative path syntax to indicate where you should add each file.  For example, `./index.html` indicates adding a file named `index.html` at the root of the test project folder, where the name of the test project is  `Extension.UnitTests`, therefore the relative path is   `Extension.UnitTests/index.html`.
+**NOTE**: This document uses relative path syntax to indicate where you should add each file.  For example, `./index.html` indicates adding a file named `index.html` at the root of the test project folder, where the name of the test project is  `Extension.UnitTests`, therefore the relative path is  `Extension.UnitTests/index.html`.
 
 **NOTE**:  All code snippets provided are for `Microsoft.Portal.Tools.V2.targets`. If you are using  `Microsoft.Portal.Tools.targets`, instead see the "Frequently Asked Questions" document that is located at [portalfx-extensions-faq-unit-test.md](portalfx-extensions-faq-unit-test.md).
 [Build-time-configuration](#build-time-configuration)
@@ -127,7 +126,57 @@ The following steps will configure the VS project at dev or build time.
 
 1. Add the  `./package.json` file to the project. The following example file uses **mocha** and **chai**, but you can choose your own test and assertion framework.
 
-    <!-- --gitdown": "include-file", "file": "../samples/VS/PackageTemplates/Default/Extension.UnitTests/package.json"} -->
+{
+  "name": "extension-ut",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "init": "npm install --no-optional",
+    "prereq": "npm run init && gulp generateAmdModuleFromResx --gulpfile=./node_modules/msportalfx-ut/gulpfile.js --cwd ./",
+    "build": "npm run prereq && tsc -p tsconfig.json",
+    "build-trace": "tsc -p tsconfig.json --diagnostics --listFiles --listEmittedFiles --traceResolution",
+    "test": "npm run build && karma start",
+    "test-ci": "npm run build && karma start --single-run --no-colors",
+    "test-dev": "npm run build && index.html"
+  },
+  "keywords": [
+    "unittest"
+  ],
+  "author": "Microsoft",
+  "license": "MIT",
+  "dependencies": {
+    "@types/chai": "4.1.2",
+    "@types/mocha": "2.2.48",
+    "@types/nconf": "0.0.37",
+    "@types/sinon": "4.3.0",
+    "chai": "4.1.2",
+    "gulp": "3.9.1",
+    "gulp-concat": "2.6.1",
+    "karma": "2.0.0",
+    "karma-chai": "0.1.0",
+    "karma-chrome-launcher": "2.2.0",
+    "karma-coverage": "1.1.1",
+    "karma-edge-launcher": "0.4.2",
+    "karma-mocha": "1.3.0",
+    "karma-mocha-reporter": "2.2.5",
+    "karma-junit-reporter": "1.2.0",
+    "karma-requirejs": "1.1.0",
+    "karma-trx-reporter": "0.2.9",
+    "mocha": "5.0.4",
+    "msportalfx-ut": "file:../../packages/Microsoft.Portal.TestFramework.UnitTest.$(CURRENT_BUILD_VERSION)/msportalfx-ut-$(NPM_CURRENT_BUILD_VERSION).tgz",
+    "nconf": "0.10.0",
+    "requirejs": "2.3.5",
+    "sinon": "4.4.3",
+    "typescript": "2.3.3"
+  },
+  "devDependencies": {
+  }
+}
+ 
+
+
+and this one
 
     ```json
     {
@@ -210,17 +259,18 @@ The following steps will configure the VS project at dev or build time.
 
       ```
 
-
-
 1. If using `Microsoft.Portal.Tools.*V2*.targets` in your `Extension.csproj` file, you need to  update the `ExtensionTypingsFiles` parameter as follows:
 
     `"ExtensionTypingsFiles": "../Extension/Output/typings/**/*.d.ts",`
 
     Add the `./msportalfx-ut.config.json` file by using the following code.
 
-    ```json
-    gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/msportalfx-ut.config.json"}
-    ```
+   {
+    "UTNodeModuleRootPath": "./node_modules/msportalfx-ut",
+    "GeneratedAssetRootPath": "./_generated",
+    "ResourcesResxRootDirectory": "../Extension/Client"
+}
+  
 
 1. Customize the file paths to the paths that are used by your project.  The `msportalfx-ut` gulpfile module searches for paths in the following order.
 
@@ -236,19 +286,97 @@ The following steps will configure the VS project at dev or build time.
 
 1. Add a test to the `./test/ResourceOverviewBlade.test.ts` file.  You can modify the following example for your own extension.
    
-    <!--
-      gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/test/ResourceOverviewBlade.test.ts"}
-    
-    -->
+ import { assert } from "chai"; // type issues with node d.ts and require js d.ts so using chai
+import { DataContext } from "Resource/ResourceArea";
+import { Parameters, ResourceOverviewBlade } from "Resource/ResourceOverviewBlade";
+import ClientResources = require("ClientResources");
+import * as sinon from "sinon";
+import { TemplateBladeHarness } from "msportalfx-ut/Harness";
 
+describe("Resource Overview Blade Tests", () => {
+  let server: sinon.SinonFakeServer;
+
+  beforeEach(function () {
+    server = sinon.fakeServer.create();
+    server.respondImmediately = true;
+  });
+
+  afterEach(function () {
+    server.restore();
+  });
+
+  it("title populated with content from ARM", () => {
+    // arrange
+    const resourceId = "/subscriptions/0c82cadf-f711-4825-bcaf-44189e8baa9f/resourceGroups/sdfsdfdfdf/providers/Providers.Test/statefulIbizaEngines/asadfasdff";
+    server.respondWith((request) => {
+      switch (request.requestHeaders["x-ms-path-query"].split("?")[0]) {
+        case resourceId:
+          request.respond(200, { "Content-Type": "application/json" }, JSON.stringify({ id: "foo", name: "bar", location: "eastus" }));
+          break;
+        default:
+          request.respond(404, null, "not mocked");
+      }
+    });
+
+    const bladeParameters : Parameters = { id: resourceId };
+    // options for the blade under test. optional callbacks beforeOnInitializeCalled, afterOnInitializeCalled and afterRevealContentCalled
+    // can be supplied to execute custom test code
+ 
+    // get blade instance with context initialized and onInitialized called
+    return TemplateBladeHarness.initializeBlade(ResourceOverviewBlade, {
+      parameters: bladeParameters,
+      dataContext: new DataContext(),
+      afterOnInitializeCalled: (blade) => {
+        console.log("after on init called");
+      },
+      beforeOnInitializeCalled: (blade) => {
+        console.log("before on init called");
+      },
+      afterRevealContentCalled: (blade) => {
+        console.log("after reveal called");
+      },
+    }).then((resourceBlade) => {
+      
+      assert.equal(resourceBlade.title(), "bar");
+      assert.equal(resourceBlade.subtitle, ClientResources.resourceOverviewBladeSubtitle);
+    });
+  });
+});
+    
 1. To compile your test, and for dev time Intellisense, the project should have a `./tsconfig.json` file, as in the following example.
 
-    <!--
-
-      gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/tsconfig.json"}
-      ```
-    -->
-
+ {
+    "compileOnSave": true,
+    "compilerOptions": {
+        "baseUrl": ".",
+        "experimentalDecorators": true,
+        "module": "amd",
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "outDir": "./Output",
+        "rootDir": ".",
+        "sourceMap": false,
+        "target": "es5",
+        "paths": {
+            "msportalfx-ut/*": [
+                "./node_modules/msportalfx-ut/lib/*"
+            ],
+            "*": [
+                "../Extension/Output/Content/Scripts/*",
+                "./node_modules/@types/*/index"
+            ]
+        }
+    },
+    "exclude": [],
+    "include": [
+        "../Extension/Definitions/*",
+        "../Extension/Output/typings/ClientResources.d.ts",
+        "test/**/*"
+    ]
+}
+    
+and another one.
 
 ```json
 
@@ -277,11 +405,11 @@ The following steps will configure the VS project at dev or build time.
 ```
 
 
-    Update the paths in the `tsconfig.json` file to your specific extension paths. Then, build your extension and run the following command to build your tests.
+1. Update the paths in the `tsconfig.json` file to your specific extension paths. Then, build your extension and run the following command to build your tests.
 
-      ```
-      npm run build
-      ```
+  ```
+  npm run build
+  ```
 
 <a name="unit-test-framework-creating-a-project-from-scratch-runtime-configuration"></a>
 ### Runtime configuration
@@ -291,10 +419,7 @@ Now that your tests are building, add the following to run your tests.
 1. Configure Require and Mocha and `test-main.js` file.
 
     The `require.js`  and `mocha` scripts need be made aware of the locations of the modules for your extension, in addition to any frameworks that you are using, as in the following example.
-
-  <!--
-  ```javascript
-  
+ 
   // Karma configuration
 // Generated on Fri Feb 16 2018 15:06:08 GMT-0800 (Pacific Standard Time)
 
@@ -416,8 +541,7 @@ module.exports = function (config) {
   })
 }
 
-  ```
-  -->
+
 
      Add a `./test-main.js` file, like the one in the following example, as the main entrypoint for your app. Remember to update the file to point to the paths that should be specified for your extension, as in the following example.
 
@@ -471,8 +595,9 @@ module.exports = function (config) {
 
 1. Configure your test runner
   
-  Add a file named `./karma.conf.js` to run your tests. This test runner provides a rich plugin ecosystem for watch "Compile on Save" based dev/test cycles, test reporting, and code coverage, among other testing factors. Remember to specify the paths for your extension.
+   Add a file named `./karma.conf.js` to run your tests. This test runner provides a rich plugin ecosystem for watch "Compile on Save" based dev/test cycles, test reporting, and code coverage, among other testing factors. Remember to specify the paths for your extension.
 
+  JavaScript
   ```javascript
   // Karma configuration
 // Generated on Fri Feb 16 2018 15:06:08 GMT-0800 (Pacific Standard Time)
@@ -596,6 +721,8 @@ module.exports = function (config) {
 }
 
   ```
+
+  Karma
 
   ```
   // Karma configuration
