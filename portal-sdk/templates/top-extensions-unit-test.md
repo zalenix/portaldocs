@@ -56,7 +56,7 @@ This error indicates that the dev environment cannot find the expanded NuGet pac
 
 1. Update the Unit Test `package.json` file that is located in the `<ExtensionRepoName>\src\<ExtensionName>.UnitTests\` folder by removing the `msportalfx-ut` package from the dependencies if it is listed.
     
-    Update the  script's `init` command to the following:
+    Update the script's `init` command to the following:
 
     `"init": "npm install --no-optional && npm install %PkgMicrosoft_Portal_TestFramework_UnitTest%\\msportalfx-ut-5.302.1016.tgz --no-save",`
 
@@ -96,7 +96,7 @@ The build and code generation will add the following folders.
 |   +-- Output
 ```
 
-**NOTE**: This document uses relative path syntax to indicate where you should add each file.  For example, `./index.html` indicates adding a file named `index.html` at the root of the test project folder, where the name of the test project is  `Extension.UnitTests`, therefore the relative path is   `Extension.UnitTests/index.html`.
+**NOTE**: This document uses relative path syntax to indicate where you should add each file.  For example, `./index.html` indicates adding a file named `index.html` at the root of the test project folder, where the name of the test project is  `Extension.UnitTests`, therefore the relative path is  `Extension.UnitTests/index.html`.
 
 **NOTE**:  All code snippets provided are for `Microsoft.Portal.Tools.V2.targets`. If you are using  `Microsoft.Portal.Tools.targets`, instead see the "Frequently Asked Questions" document that is located at [portalfx-extensions-faq-unit-test.md](portalfx-extensions-faq-unit-test.md).
 [Build-time-configuration](#build-time-configuration)
@@ -122,6 +122,9 @@ The following steps will configure the VS project at dev or build time.
 1. Add the  `./package.json` file to the project. The following example file uses **mocha** and **chai**, but you can choose your own test and assertion framework.
 
 {"gitdown": "include-file", "file": "../samples/VS/PackageTemplates/Default/Extension.UnitTests/package.json"} 
+
+
+and this one
 
     ```json
     {
@@ -204,17 +207,14 @@ The following steps will configure the VS project at dev or build time.
 
       ```
 
-
-
 1. If using `Microsoft.Portal.Tools.*V2*.targets` in your `Extension.csproj` file, you need to  update the `ExtensionTypingsFiles` parameter as follows:
 
     `"ExtensionTypingsFiles": "../Extension/Output/typings/**/*.d.ts",`
 
     Add the `./msportalfx-ut.config.json` file by using the following code.
 
-    ```json
-    {"gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/msportalfx-ut.config.json"}
-    ```
+   {"gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/msportalfx-ut.config.json"}
+  
 
 1. Customize the file paths to the paths that are used by your project.  The `msportalfx-ut` gulpfile module searches for paths in the following order.
 
@@ -230,14 +230,13 @@ The following steps will configure the VS project at dev or build time.
 
 1. Add a test to the `./test/ResourceOverviewBlade.test.ts` file.  You can modify the following example for your own extension.
    
-      {"gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/test/ResourceOverviewBlade.test.ts"}
-    
+ {"gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/test/ResourceOverviewBlade.test.ts"}
     
 1. To compile your test, and for dev time Intellisense, the project should have a `./tsconfig.json` file, as in the following example.
 
-         {"gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/tsconfig.json"}
+ {"gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/tsconfig.json"}
     
-
+and another one.
 
 ```json
 
@@ -266,11 +265,11 @@ The following steps will configure the VS project at dev or build time.
 ```
 
 
-    Update the paths in the `tsconfig.json` file to your specific extension paths. Then, build your extension and run the following command to build your tests.
+1. Update the paths in the `tsconfig.json` file to your specific extension paths. Then, build your extension and run the following command to build your tests.
 
-      ```
-      npm run build
-      ```
+  ```
+  npm run build
+  ```
 
 ### Runtime configuration
 
@@ -279,9 +278,7 @@ Now that your tests are building, add the following to run your tests.
 1. Configure Require and Mocha and `test-main.js` file.
 
     The `require.js`  and `mocha` scripts need be made aware of the locations of the modules for your extension, in addition to any frameworks that you are using, as in the following example.
-
-
-  
+ 
   {"gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/karma.conf.js"}
 
 
@@ -337,11 +334,14 @@ Now that your tests are building, add the following to run your tests.
 
 1. Configure your test runner
   
-  Add a file named `./karma.conf.js` to run your tests. This test runner provides a rich plugin ecosystem for watch "Compile on Save" based dev/test cycles, test reporting, and code coverage, among other testing factors. Remember to specify the paths for your extension.
+   Add a file named `./karma.conf.js` to run your tests. This test runner provides a rich plugin ecosystem for watch "Compile on Save" based dev/test cycles, test reporting, and code coverage, among other testing factors. Remember to specify the paths for your extension.
 
+  JavaScript
   ```javascript
   {"gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/karma.conf.js"}
   ```
+
+  Karma
 
   ```
   // Karma configuration
