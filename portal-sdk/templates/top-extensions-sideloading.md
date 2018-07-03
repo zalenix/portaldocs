@@ -134,7 +134,7 @@ For example, the following code registers the extension named "Microsoft_Azure_D
  The custom extension that was registered will be saved to user settings, and available in future sessions. When using the Portal in this mode, a banner is displayed that indicates that the state of the configured extensions has been changed, as in the following image.
 
 ![alt-text](../media/portalfx-productiontest/localExtensions.png "Local extensions")
-The following example describes a complete uri and query string that instructs the Portal to load the extension named "Microsoft_Azure_Demo" from endpoint "https://DemoServer:59344". It registers the extension only for the current user session by entering it into User Settings.
+The following example describes a complete uri and query string that instructs the Portal to load the extension named "Microsoft_Azure_Demo" from endpoint "`https://DemoServer:59344`". It registers the extension only for the current user session by entering it into User Settings.
 
 <!--TODO: This example contradicts the previous definition.  Determine which one is correct.  -->
 
