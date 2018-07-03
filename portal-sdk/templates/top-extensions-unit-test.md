@@ -121,8 +121,7 @@ The following steps will configure the VS project at dev or build time.
 
 1. Add the  `./package.json` file to the project. The following example file uses **mocha** and **chai**, but you can choose your own test and assertion framework.
 
-{"gitdown": "include-file", "file": "../samples/VS/PackageTemplates/Default/Extension.UnitTests/package.json"} 
-
+  {"gitdown": "include-file", "file": "../samples/VS/PackageTemplates/Default/Extension.UnitTests/package.json"} 
 
 and this one
 
@@ -212,9 +211,9 @@ and this one
     `"ExtensionTypingsFiles": "../Extension/Output/typings/**/*.d.ts",`
 
     Add the `./msportalfx-ut.config.json` file by using the following code.
-
+    ```
    {"gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/msportalfx-ut.config.json"}
-  
+   ```
 
 1. Customize the file paths to the paths that are used by your project.  The `msportalfx-ut` gulpfile module searches for paths in the following order.
 
