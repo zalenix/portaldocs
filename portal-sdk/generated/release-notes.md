@@ -1,4 +1,8 @@
-# Release Notes since 3/2/2018
+# Release Notes since 3/4/2018
+
+## 5.0.302.1197
+0 Breaking Changes, 0 Features added and 3 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2651422'>2651422</a></td><td>Bug Fix</td><td>[MonitorChartV2] Scatter charts not working in edge</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2627747'>2627747</a></td><td>Bug Fix</td><td>Fix XSS issue in the link property in Essentials</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2587504'>2587504</a></td><td>Bug Fix</td><td>Resource Group Overview Lens pinned part missing.</td></tr></table>
 
 ## 5.0.302.1196
 0 Breaking Changes, 0 Features added and 1 Bugs Fixed
