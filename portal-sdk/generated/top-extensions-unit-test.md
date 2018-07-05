@@ -882,8 +882,4 @@ To generate this script and all other dependencies required to successfully run 
 
 ```
 
-Save the previous script  to `./package.json` and then run the following command:
-
-```
-npm install --no-optional
-```
+Save the previous script  to `./package.json` and then run the following command: ```npm install --no-optional```.
