@@ -269,8 +269,10 @@ Add a test to the `./test/ResourceOverviewBlade.test.ts` file.  You can modify t
 
 To compile your test, and for dev time Intellisense, the project should have a `./tsconfig.json` file, as in the following example.
 
- {"gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/tsconfig.json"}
-    
+```json
+{"gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/tsconfig.json"}
+```
+
 and another one.
 
 ```json
