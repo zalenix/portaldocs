@@ -133,7 +133,7 @@ There are several files that need to be customized to test your extension in thi
   1. [Update the package json file](#update-the-package-json-file)
   1. [Update the extension csproj file](#update-the-extension-csproj-file)
   1. [Update the packages config file](#update-the-packages-config-file)
-  1. [Add tests](#add-tests)
+  1. [Add tests to the ResourceOverviewBlade file](#add-tests-to-the-ResourceOverviewBlade-file)
   1. [Update the tsconfig file](#update-the-tsconfig-file)
 
   After the  `tsconfig.json` file has been updated, and tests have been added to the  `./test/ResourceOverviewBlade.test.ts` file, you can run the following command to  build the extension and build your tests: ```npm run build```.
@@ -169,18 +169,6 @@ The `msportalfx-ut.config.json` file defines paths to the files that are used by
 * `ResourcesResxRootDirectory`: The extension client root directory that contains all *.resx files. These will be used to generate javaScript  AMD string resource modules that will be located in the  `GeneratedAssetRootPath`, in addition to the associated `require.config`. The value should be "../Extension/Client". 
 
 Add the following `./msportalfx-ut.config.json` file to the project.
-
-```json
-{
-    "UTNodeModuleRootPath" : "./node_modules/msportalfx-ut",
-    "GeneratedAssetRootPath" : "./_generated",
-    "ExtensionTypingsFiles": "../Extension/**/*.d.ts",
-    "ResourcesResxRootDirectory": "../Extension/Client"
-}
-
-```
-
-Add the `./msportalfx-ut.config.json` file by using the following code.
 
 ```
 {
@@ -309,7 +297,7 @@ Run the following command: `npm install --no-optional` to install the       .
 <a name="unit-test-framework-creating-a-project-from-scratch-build-time-configuration-update-the-extension-csproj-file"></a>
 #### Update the extension csproj file
 
-If using `Microsoft.Portal.Tools.*V2*.targets` in your `Extension.csproj` file, you need to update the `ExtensionTypingsFiles` parameter as follows:
+If using `Microsoft.Portal.Tools.*V2*.targets` in your `Extension.csproj` file, you need to add the following `ExtensionTypingsFiles` parameter to the   `./msportalfx-ut.config.json` file.
 
 `"ExtensionTypingsFiles": "../Extension/Output/typings/**/*.d.ts",`
 
@@ -320,11 +308,14 @@ Add `msportalfx-ut.*.tgz` from the `Microsoft.Portal.TestFramework.UnitTest` NuG
 
 **NOTE**: For more information about building using CoreXT, see [Corext Environments](#corext-environments).
 
-<a name="unit-test-framework-creating-a-project-from-scratch-build-time-configuration-add-tests"></a>
-#### Add tests
+<a name="unit-test-framework-creating-a-project-from-scratch-build-time-configuration-add-tests-to-the-resourceoverviewblade-file"></a>
+#### Add tests to the ResourceOverviewBlade file
+
+<!-- TODO: Determine whether it is always the ResourceOverviewBlade file.-->
 
 Add a test to the `./test/ResourceOverviewBlade.test.ts` file.  You can modify the following example for your own extension.
    
+```ts   
  import { assert } from "chai"; // type issues with node d.ts and require js d.ts so using chai
 import { DataContext } from "Resource/ResourceArea";
 import { Parameters, ResourceOverviewBlade } from "Resource/ResourceOverviewBlade";
@@ -381,6 +372,7 @@ describe("Resource Overview Blade Tests", () => {
     });
   });
 });
+```
 
 <a name="unit-test-framework-creating-a-project-from-scratch-build-time-configuration-update-the-tsconfig-file"></a>
 #### Update the tsconfig file
@@ -467,6 +459,7 @@ Now that your tests are building, add the following to run your tests.
 
 The `require.js`  and `mocha` scripts need be made aware of the locations of the modules for your extension, in addition to any frameworks that you are using, as in the following example.
  
+ ```js
 // Karma configuration
 // Generated on Fri Feb 16 2018 15:06:08 GMT-0800 (Pacific Standard Time)
 
@@ -588,8 +581,8 @@ module.exports = function (config) {
   })
 }
 
+```
 
-<a name="unit-test-framework-creating-a-project-from-scratch-runtime-configuration-configure-the-main-entry-point"></a>
 #### Configure the main entry point
 
 Add a `./test-main.js` file as the main entrypoint for your app. Remember to update the file to point to the paths that should be specified for your extension, as in the following example.
@@ -642,7 +635,6 @@ Add a `./test-main.js` file as the main entrypoint for your app. Remember to upd
 
 ```
 
-<a name="unit-test-framework-creating-a-project-from-scratch-runtime-configuration-configure-the-test-runner"></a>
 #### Configure the test runner
 
 Add a file named `./karma.conf.js` to run your tests. This test runner provides a rich plugin ecosystem for "Compile on Save"-based dev/test cycles in watch mode, test reporting, and code coverage, among other testing factors. Remember to specify the paths for your extension.
@@ -772,132 +764,6 @@ module.exports = function (config) {
 
 ```
 
-The Karma file
-
-```
-// Karma configuration
-// Generated on Fri Feb 16 2018 15:06:08 GMT-0800 (Pacific Standard Time)
-
-module.exports = function (config) {
-  config.set({
-
-    // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: "../",
-
-    // frameworks to use
-    // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ["mocha"],
-
-    plugins: [
-      require("karma-mocha"),
-      require("karma-mocha-reporter"),
-      require("karma-edge-launcher"),
-      require("karma-coverage"), // Include if you want coverage
-      require("karma-chrome-launcher"),
-      require("karma-junit-reporter"),  // Include if you want junit reporting
-      require("karma-trx-reporter")   // Include if you want trx reporting
-    ],
-    // list of files / patterns to load in the browser
-    files: [
-      // chai assertion framework.
-      { pattern: "Extension.UnitTests/node_modules/chai/**/*.js", included: false },
-      // sinonjs used for mocking xhr.
-      { pattern: "Extension.UnitTests/node_modules/sinon/**/*.js", included: false },
-      // aggregate script of portal bundles required for test.
-      "Extension.UnitTests/node_modules/msportalfx-ut/lib/FxScripts.js",
-      // karma requirejs adapter required to successfully load requirejs in karma.
-      "Extension.UnitTests/node_modules/karma-requirejs/lib/adapter.js",
-      // generated require configs for extension resx files.
-      { pattern: "Extension.UnitTests/_generated/Ext/**/*RequireConfig.js", included: true },
-      // msportalfx-ut test harness and other test scripts you may load within a unit test.
-      { pattern: "Extension.UnitTests/node_modules/msportalfx-ut/lib/*.js", included: false },
-      // portal framework scripts.
-      { pattern: "Extension.UnitTests/node_modules/msportalfx-ut/lib/fx/Content/Scripts/**/*.js", included: false },
-      // reserved directory for generated content for framework.
-      { pattern: "Extension.UnitTests/_generated/Fx/**/*.js", included: false },
-      // generated content for extension.
-      { pattern: "Extension.UnitTests/_generated/Ext/**/*.js", included: false },
-      // make available compiled tests from tsconfig.json outDir
-      { pattern: "Extension.UnitTests/Output/**/*.test.js", included: false },
-      // make available all client extension code that unit tests will use.
-      { pattern: "Extension/Client/**/*.js", included: false },
-      // the entrypoint for running unit tests.
-      "Extension.UnitTests/test-main.js",
-    ],
-
-    client: {
-      mocha: {
-        reporter: "html",
-        ui: "bdd"
-      }
-    },
-
-    // list of files / patterns to exclude
-    exclude: [
-    ],
-
-    // preprocess matching files before serving them to the browser
-    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
-      "./Extension/Client/**/*.js": "coverage"
-    },
-
-    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ["mocha", "trx", "junit", "coverage"],
-
-    // the default trx configuration
-    trxReporter: { outputFile: "./TestResults/test-results.trx", shortTestName: false },
-
-    junitReporter: {
-      outputDir: "./Extension.UnitTests/TestResults", // results will be saved as $outputDir/$browserName.xml
-      outputFile: "test-results.xml", // if included, results will be saved as $outputDir/$browserName/$outputFile
-      suite: "Extension.UnitTests", // suite will become the package name attribute in xml testsuite element
-      useBrowserName: true, // add browser name to report and classes names
-      nameFormatter: undefined, // function (browser, result) to customize the name attribute in xml testcase element
-      classNameFormatter: undefined, // function (browser, result) to customize the classname attribute in xml testcase element
-      properties: {} // key value pair of properties to add to the <properties> section of the report
-    },
-
-    coverageReporter: {
-      type: "html",
-      dir: "./Extension.UnitTests/TestResults/coverage/"
-    },
-
-    // web server port
-    port: 9876,
-
-    // enable / disable colors in the output (reporters and logs)
-    colors: true,
-
-    // level of logging
-    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
-
-    // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: true,
-
-    // start these browsers
-    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ["Chrome_No_Sandbox", "Edge"],
-
-    customLaunchers: {
-      Chrome_No_Sandbox: {
-          base: 'Chrome',
-          flags: ['--no-sandbox']
-      }
-    },
-    // Continuous Integration mode
-    // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
-
-    // Concurrency level
-    // how many browser should be started simultaneous
-    concurrency: Infinity,
-  })
-}
-```
-
-<a name="unit-test-framework-creating-a-project-from-scratch-runtime-configuration-run-your-tests"></a>
 #### Run your tests
 
   You can run your tests with `npm run test`.  This command is specified in `packages.json` and will start **karmajs** in watch mode in your configured target browser(s) .  This is good practice when used in conjunction with "Compile on Save", which allows for efficient iterative development.  Whenever the extension is modified, saving the code results in compilation and  automatic test execution.  Typically, any change to your extension and test project `.src` files will be automatically compiled because of  the `tsconfig.json` setup. Then, the tests run automatically because of  `karma.conf.js`. The net result is real time feedback on what tests were broken as a result of modifying the extension code.
@@ -912,7 +778,6 @@ module.exports = function (config) {
 
   **NOTE**: `karma.conf.js` is configured to run your tests in both **Edge** and **Chrome**. You may also pick and choose additional browsers by using the launcher plugins located at [https://karma-runner.github.io/2.0/config/browsers.html](https://karma-runner.github.io/2.0/config/browsers.html).
 
-<a name="unit-test-framework-creating-a-project-from-scratch-test-results-and-code-coverage"></a>
 ### Test results and code coverage
 
 The console output contains the results from  **karmajs** tests. These results were  generated by using the `npm run test` or `npm run test-ci` commands. In addition to the console output, reporters were added to `karma.conf.js` to provide output in formats that are compatible with CI scenarios.
@@ -930,28 +795,28 @@ The console output contains the results from  **karmajs** tests. These results w
 1. Add `./index.html` for running tests.
 -->
 
-```html
+  ```html
 
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Mocha Tests</title>
-  <link href="./node_modules/mocha/mocha.css" rel="stylesheet" />
-</head>
-<body>
-  <div id="mocha"></div>
-  <!-- mocha prereq -->
-  <script type="text/javascript" charset="utf-8" src="./node_modules/mocha/mocha.js"></script>
-  <script type="text/javascript" charset="utf-8" src="./node_modules/chai/chai.js"></script>
-  <!-- fx prereq -->
-  <script src="./node_modules/msportalfx-ut/lib/FxScripts.js"></script>
-  <!-- extension scripts -->
-  <script src="./_generated/Ext/ExtensionStringResourcesRequireConfig.js"></script>
-  <script src="./test-main.js"></script>
-</body>
-</html>
+  <html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mocha Tests</title>
+    <link href="./node_modules/mocha/mocha.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="mocha"></div>
+    <!-- mocha prereq -->
+    <script type="text/javascript" charset="utf-8" src="./node_modules/mocha/mocha.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./node_modules/chai/chai.js"></script>
+    <!-- fx prereq -->
+    <script src="./node_modules/msportalfx-ut/lib/FxScripts.js"></script>
+    <!-- extension scripts -->
+    <script src="./_generated/Ext/ExtensionStringResourcesRequireConfig.js"></script>
+    <script src="./test-main.js"></script>
+  </body>
+  </html>
 
-```
+  ```
 
 The following scripts are imported into the `./index.html` file.
 
@@ -967,7 +832,6 @@ The following scripts are imported into the `./index.html` file.
 
 <!-- TODO: Determine how many index.html files there are. -->
 
-<a name="unit-test-framework-creating-a-project-from-scratch-generating-the-fxscriptdependencies-js-file"></a>
 ### Generating the FxScriptDependencies.js file
 
 The last script imported into the `./index.html` file  is `./_generated/Fx/FxScriptDependencies.js`. This generated script:
