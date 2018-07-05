@@ -3,8 +3,6 @@
 
 * [Project templates with Visual Studio](#project-templates-with-visual-studio)
 
-* [CoreXT environments](#corext-environments)
-
 * [Creating a project from scratch](#creating-a-project-from-scratch)
 
 * [Test results and code coverage](#test-results-and-code-coverage) 
@@ -26,46 +24,6 @@ If you do not see the `Azure Portal` project template in your installation of Vi
 1. Build the solution by using `Ctrl + Shift + B` on the `Extension.UnitTests.csproj` project.
 
 1. Run `npm run test` or `npm run test-ci` from the command line, or open `index.html` in a browser if you have already performed a build.
-
-## Corext Environments
-
-Build environments which are constructed using Corext will need to manually specify where to locate the Unit Test Framework **NuGet** package. This **NuGet** package will be expanded at `CxCache`, which is not the default location.  Consequently, you need to update the `CoreXT` config and then run  `npm packages.json` in order to point to the correct location.
-
-If you are executing the default instructions on your CoreXT environment, it may display the following error.
-
-`npm ERR! enoent ENOENT: no such file or directory, stat 'C:\...\ExtensionName\packages\Microsoft.Portal.TestFramework.UnitTest.5.0.302.979\msportalfx-ut-5.302.979.tgz'`
-
-This error indicates that the dev environment cannot find the expanded NuGet package for the Unit Test Framework. To make the dev environment aware of the package, perform the following steps.
-
-1. Update the repository's `corext.config` file that is located in the `\<ExtensionRepoName>\.corext` folder by adding the following to the end of the `<generator>` section.
-
-    ```xml
-    <!-- Unit Test Framework -->
-    <package id="Microsoft.Portal.TestFramework.UnitTest" />
-    ```
-
-1. Update the `packages.config` file that is located in the `\<ExtensionRepoName>\src\<ExtensionName>\` folder by adding the following to the `<packages>` section.
-
-    ```xml
-    <package id="Microsoft.Portal.TestFramework.UnitTest" version="<version>" targetFramework="net45" />
-    ```
-
-    where
-    
-    **version**:  Matches the version of the Portal SDK you are using for your extension and also matches the version of the `"Microsoft.Portal.Framework"` package in your `packages.config.*` file. An example value of the version parameter is "5.0.302.1016". The version number also matches the `"Microsoft.Portal.Framework"` package in the `packages.config.*` file.
-
-1. Update the Unit Test `package.json` file that is located in the `<ExtensionRepoName>\src\<ExtensionName>.UnitTests\` folder by removing the `msportalfx-ut` package from the dependencies if it is listed.
-    
-    Update the script's `init` command to the following:
-
-    `"init": "npm install --no-optional && npm install %PkgMicrosoft_Portal_TestFramework_UnitTest%\\msportalfx-ut-5.302.1016.tgz --no-save",`
-
-    **NOTE:** The version listed above matches the version of the Portal SDK you are using for your extension and also matches the `"Microsoft.Portal.Framework"` package in the  `packages.config` file.
-
-1. Run the following commands to finish the setup.
-
-    * Run Corext Init - From the root of your repository run: `init`
-    * Run the Npm install - From your Unit Test directory run: `npm run init`
 
 ## Creating a project from scratch
 
@@ -493,4 +451,6 @@ To generate this script and all other dependencies required to successfully run 
 
 ```
 
-Save the previous script  to `./package.json` and then run the following command: ```npm install --no-optional```.
+Save the previous script to `./package.json` and then run the following command: ```npm install --no-optional```.
+
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-unit-test.md"}
