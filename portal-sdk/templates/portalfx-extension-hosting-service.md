@@ -418,7 +418,7 @@ The versions available in the Hosting Service can be seen by going to the follow
 | Environment   | Hosting service                                               | 
 |---------------|---------------------------------------------------------------| 
 | Dogfood       | https://hosting.onecloud.azure-test.net/api/diagnostics       | 
-| MPAC          | https://hosting-ms.portal.azure.net/api/diagnostics           | 
+| MPAC          | https://ms.hosting.portal.azure.net/api/diagnostics          | 
 | PROD          | https://hosting.portal.azure.net/api/diagnostics              | 
 | Mooncake      | https://hosting.azureportal.chinacloudapi.cn/api/diagnostics  | 
 | Blackforest   | https://hosting.azure-api.de/api/diagnostics                  | 
