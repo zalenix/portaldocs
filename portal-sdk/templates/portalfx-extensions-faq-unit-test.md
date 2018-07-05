@@ -16,7 +16,7 @@ Solution: Install the `Node Tools for Visual Studio` that is located at [https:/
 
 ### Overriding default stubs
 
-***How do I override the default stubs the unit test harness provides out of the box ***
+***How do I override the default stubs the unit test harness provides out of the box?***
 
 Description:
 
@@ -54,7 +54,7 @@ harness.init(options);
 
 ### Mocha test harness
 
-***Simple html test harness for running mocha tests ***
+***Simple html test harness for running mocha tests***
 
 Description: Even though it is not that useful for gated CI, some teams prefer to have a simple `index.html` for debugging their tests in the browser rather than using the **karma** Debug view.
 
@@ -66,7 +66,7 @@ Solution: If you would like this alternative approach use the following.
 
 ### Using Microsoft.Portal.Tools.targets
 
-***I am still using Microsoft.Portal.Tools.targets rather than Microsoft.Portal.Tools.V2.targets ***
+***I am still using Microsoft.Portal.Tools.targets rather than Microsoft.Portal.Tools.V2.targets***
 
 Description: How do I upgrade from `Microsoft.Portal.Tools.targets` to `Microsoft.Portal.Tools.V2.targets`?
 
