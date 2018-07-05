@@ -387,7 +387,8 @@ describe("Resource Overview Blade Tests", () => {
 
 To compile your test, and for dev time Intellisense, the project should have a `./tsconfig.json` file, as in the following example.
 
- {
+```json
+{
     "compileOnSave": true,
     "compilerOptions": {
         "baseUrl": ".",
@@ -417,7 +418,8 @@ To compile your test, and for dev time Intellisense, the project should have a `
         "test/**/*"
     ]
 }
-    
+```
+
 and another one.
 
 ```json
