@@ -123,19 +123,19 @@ If there are differences between the paths for your official build environment a
 
 There are several files that need to be customized to test your extension in this environment.
 
-  1. [Update the .npmrc registry file](#update-the-.npmrc-registry-file)
-  1. [Update the msportalfx-ut.config.json file](#update-the-msportalfx-ut.config.json-file)
-  1. [Update the package.json file](#update-the-package.json-file)
-  1. [Update the extension.csproj file](#update-the-extension.csproj-file)
-  1. [Update the packages.config file](#update-the-packages.config-file)
+  1. [Update the npmrc registry file](#update-the-npmrc-registry-file)
+  1. [Update the msportalfx ut configuration file](#update-the-msportalfx-ut-configuration-file)
+  1. [Update the package json file](#update-the-package-json-file)
+  1. [Update the extension csproj file](#update-the-extension-csproj-file)
+  1. [Update the packages config file](#update-the-packages-config-file)
   1. [Add tests](#add-tests)
-  1. [Update the tsconfig.json file](#update-the-tsconfig.json-file)
+  1. [Update the tsconfig file](#update-the-tsconfig-file)
 
   After the  `tsconfig.json` file has been updated, and tests have been added to the  `./test/ResourceOverviewBlade.test.ts` file, you can run the following command to  build the extension and build your tests: ```npm run build```.
 
 * * * 
 
-#### Update the .npmrc registry file  
+#### Update the npmrc registry file  
 
 Add the `./.npmrc` registry file to your project so that it will store feed URLs and credentials, as specified  in [https://docs.microsoft.com/en-us/vsts/package/npm/npmrc?view=vsts](https://docs.microsoft.com/en-us/vsts/package/npm/npmrc?view=vsts).
 
@@ -146,7 +146,7 @@ registry=https://msazure.pkgs.visualstudio.com/_packaging/AzurePortalNpmRegistry
 always-auth=true
 ```
 
-#### Update the msportalfx-ut.config.json file 
+#### Update the msportalfx ut configuration file 
 
 The `msportalfx-ut.config.json` file defines paths to the files that are used by the `msportalfx-ut` module to generate everything in the `./_generated/*` folder.  This includes [#test-results-and-code-coverage](#test-results-and-code-coverage).  The keys that this config file uses are the following parameters.
   
@@ -179,7 +179,7 @@ Add the `./msportalfx-ut.config.json` file by using the following code.
 {"gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/msportalfx-ut.config.json"}
 ```
 
-#### Update the package.json file  
+#### Update the package json file  
 
 Add the  `./package.json` file to the project. The following example file uses **mocha** and **chai**, but you can choose your own test and assertion framework.
 
@@ -247,13 +247,13 @@ Run the following command: `npm install --no-optional` to install the       .
 
 **NOTE**: If you receive authentication errors against the internal NPM feed see the "Connect to feed" instructions that are located at  [https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=AzurePortalNpmRegistry&_a=feed](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=AzurePortalNpmRegistry&_a=feed).
 
-#### Update the extension.csproj file
+#### Update the extension csproj file
 
 If using `Microsoft.Portal.Tools.*V2*.targets` in your `Extension.csproj` file, you need to update the `ExtensionTypingsFiles` parameter as follows:
 
 `"ExtensionTypingsFiles": "../Extension/Output/typings/**/*.d.ts",`
 
-#### Update the packages.config file
+#### Update the packages config file
 
 Add `msportalfx-ut.*.tgz` from the `Microsoft.Portal.TestFramework.UnitTest` NuGet package to the `./<extensionName>/packages.config` file, in addition to adding a `file://` reference to the path where it will be located.
 
@@ -265,7 +265,7 @@ Add a test to the `./test/ResourceOverviewBlade.test.ts` file.  You can modify t
    
  {"gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/test/ResourceOverviewBlade.test.ts"}
 
-#### Update the tsconfig.json file
+#### Update the tsconfig file
 
 To compile your test, and for dev time Intellisense, the project should have a `./tsconfig.json` file, as in the following example.
 
