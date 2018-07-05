@@ -7,7 +7,7 @@ Sideloading allows the testing and debugging of extensions locally against any e
  
 This helps the developer validate that the extension is ready for standard Portal use in private preview or public preview mode. During standard Portal use, the Portal web application loads the UI extension from a URL that is part of the Portal's configuration, as specified in the environment configuration file(s) for the extension.
 
-Extensions can be loaded on a per-user basis on production deployments.  It allows the developer to include hotfixes, customize the extension for different environments, and other factors. Sideloading can be used to test a new extension or an existing extension on a developer's machine with production credentials. To reduce phishing risks, the extension is hosted on `localhost`, although it can be hosted on any port.
+Extensions can be loaded on a per-user basis on production deployments.  Sideloading allows the developer to include hotfixes, customize the extension for different environments, and other factors. Sideloading can be used to test a new extension or an existing extension on a developer's machine with production credentials. To reduce phishing risks, the extension is hosted on `localhost`, although it can be hosted on any port.
 
 The different types of deployment for testing are in the following image.
 
@@ -23,15 +23,15 @@ For more information about testing extensions in the hosting service, see  [top-
  
 ### Query strings
 
-The difference between sideloading and testing in production is the endpoint from which the extension is loaded. The sideloaded extension's code is located on the endpoint that represents the local host, or the developer's computer.  The endpoint used for testing in production represents the computer that is being used for testing, and it is not likely that the production testing endpoint is the local host.
+The difference between sideloading and testing in production is the endpoint from which the extension is loaded. The sideloaded extension's code is located on the endpoint that represents the local host, or the developer's computer. The endpoint used for testing in production represents the computer that is being used for testing, and it is not likely that the production testing endpoint is the local host.
 
 The following query string can be used to load an extension by using the address bar.
 
 ```<protocol>://<environment>/?feature.canmodifyextensions=true#?testExtensions={"<extensionName>":"<protocol>://<endpoint>:<portNumber>"[,<settings>]}```
 
-where 
+where
 
-**protocol**: Matches the protocol of the shell into which the extension is loaded, without the angle brackets.  It can have a value of `HTTP` or a value of `HTTPS`. For the production shell, the value is `HTTPS`.  If the value of this portion of the parameter is incorrectly specified, the browser will not allow the extension to communicate. 
+**protocol**: Matches the protocol of the shell into which the extension is loaded, without the angle brackets.  It can have a value of `HTTPS`.  If the value is not  `HTTPS`,   the browser will not allow the extension to communicate and the extension will not sideload.  If you have not trusted the certificate that **IIS Express** uses for localhost, the extension will fail to side load. See FAQ [Extension will not sideload](portalfx-extensions-faq-sideloading.md#extension-will-not-sideload)
 
 **environment**: Portal environment in which to load the extension. Portal environments are `portal.azure.com`, `rc.portal.azure.com`, `mpac.portal.azure.com`, and `df.onecloud.azure-test.net`.
 
@@ -46,11 +46,6 @@ where
 For example, the following complete URL and query string can be used to sideload the extension named "Microsoft_Azure_Demo" onto the localhost for testing. It also instructs the Portal to load from endpoint "https://DemoServer:44300". It registers the extension only for the current user session.  
 
 ```https://portal.azure.com/?feature.canmodifyextensions=true#?testExtensions={"Microsoft_Azure_Demo":"https://localhost:44300/"}```
-
-In the following example, the endpoint is a server that the developer specifies. The server can be a development server, a testing server, or a production server in any region or environment.
-
-```https://portal.azure.com/?feature.canmodifyextensions=true#?testExtensions={"Microsoft_Azure_Demo":"https://DemoServer:59344/}"```
-
 
 The following example programmatically registers the extension in User Settings.
 
@@ -68,7 +63,7 @@ For information about debugging switches or feature flags, see  [top-extensions-
 
 An extension can be sideloaded from the development computer, or it can be loaded from a test environment. To load an extension from the development machine or the localhost, extension developers need to register it, as specified in [#registering-extensions-with-the-registerTestExtension-API](#registering-extensions-with-the-registerTestExtension-API). To sideload an extension from a test environment, either as a localhost extension or as a deployed extension, you can set the appropriate query strings and execute the `registerTestExtension` function for deployed extensions, or set a query string for localhost extensions.
 
-You may want to programmatically register a deployed extension with JavaScript and then reload the Portal. This step is optional if they use the query string method to load the extension into the browser from the localhost. Using the  `registerTestExtension` API for programmatic changes allows the developer to register a custom extension from `localhost`, or register a custom extension from a custom environment. To load an extension from the test environment or an unregistered source, extension developers can leverage the following approach.
+The developer may want to programmatically register a deployed extension with JavaScript and then reload the Portal. This step is optional if they use the query string method to load the extension into the browser from the localhost. Using the  `registerTestExtension` API for programmatic changes allows the developer to register a custom extension from `localhost`, or register a custom extension from a custom environment. To load an extension from the test environment or an unregistered source, extension developers can leverage the following approach.
 
  <!-- TODO: Determine whether the registerTestExtension API can be used with the hosting service or if the hosting service only allows query strings. If the registerTestExtension API allows use of a hosting service, find the example code so that the following sentence can be  re-included into the document:
   or load an extension from a custom environment using a hosting service.
@@ -236,10 +231,6 @@ There are several scenarios in which a developer might test various ideas for an
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-sideloading.md"}
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-production-testing.md"}
-
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-status-codes.md"}
-
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-production-testing.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-sideloading.md"}
