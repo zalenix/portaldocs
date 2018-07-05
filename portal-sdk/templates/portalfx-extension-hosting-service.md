@@ -413,6 +413,7 @@ If you are using safe deployment then it is likely that you want to rollout a ne
 1. If the version to be published is in the storage account 
     * Update specific stage in config.json to this verion
 
+#### Hosting Service diagnostics
 The versions available in the Hosting Service can be seen by going to the following URL:
  
 | Environment   | Hosting service                                               | 
