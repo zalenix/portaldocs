@@ -5,70 +5,72 @@
 <a name="sideloading-an-extension-overview"></a>
 ## Overview
    
-Sideloading allows the testing and debugging of extensions locally against any environment. It loads an extension for a specific user session from any source other than the `uri` that is registered in the Portal. When unit-testing the UI extension, the developer can instruct the Portal to load the extension from a URL that they specify.  The extension can be loaded using a query string, or it can be loaded programmatically. This is the preferred method of testing, and is a basic first step.
- 
-This helps the developer validate that the extension is ready for standard Portal use in private preview or public preview mode. During standard Portal use, the Portal web application loads the UI extension from a URL that is part of the Portal's configuration, as specified in the environment configuration file(s) for the extension.
+Sideloading allows the testing and debugging of extensions locally against any environment. When unit-testing the extension, the developer can instruct the Portal to load the extension for a specific user session from any source other than the `uri` that is registered in the Portal. During standard Portal use, the Portal web application loads the extension from a URL that is part of the Portal's configuration, as specified in the environment configuration file(s) for the extension. Sideloading helps the developer validate that the extension is ready for standard Portal use in private preview or public preview mode. Sideloading allows the developer to include hotfixes, customize the extension for different environments, or test a new extension.  It can also be used to test an existing extension on a developer's machine with production credentials, in addition to private preview and some forms of usability testing.
 
-Extensions can be loaded on a per-user basis on production deployments.  Sideloading allows the developer to include hotfixes, customize the extension for different environments, and other factors. Sideloading can be used to test a new extension or an existing extension on a developer's machine with production credentials. To reduce phishing risks, the extension is hosted on `localhost`, although it can be hosted on any port.
-
-The different types of deployment for testing are in the following image.
+Extensions can be loaded on a per-user basis on production deployments.  The different types of deployment for testing are in the following image.
 
 ![alt-text](../media/portalfx-extensions-sideloading/sideloading.png "Testing Extensions Versions in Separate Locations")
 
-Sideloading can be used when developing an extension, in addition to private preview and some forms of usability testing. It is also useful when testing multiple versions of an extension, or determining which features should remain in various editions of an extension.  For example, an English-language extension may have other UX editions that include localization for various languages, each of which may ship separately when the extension is deployed or geodistributed.
+Sideloading is useful when testing multiple versions of an extension, or determining which features should remain in various editions of an extension. For example, an English-language extension may have other UX editions that include localization for various languages, each of which may ship separately when the extension is deployed or geodistributed. The sideloaded extension can be loaded using a query string, or it can be loaded programmatically with the `registerTestExtension` method, which is the preferred method of testing.
 
-During standard Portal use, the Portal web application loads the UI extension from a URL that is part of the Portal's configuration.  When developing and testing the UI extension, the developer can instruct the Portal to load the extension from a specified URL.  For more information, see [top-extensions-architecture.md](top-extensions-architecture.md).
+Sideloading is performed on the local host by using [query strings](#query-strings), or it can be performed in any environment by [registering with the registerTestExtension API](#registering-with-the-registertestextension-api).
 
-For information about regular debugging and testing, see [top-extensions-debugging.md](top-extensions-debugging.md) and [top-extensions-csharp-test-framework.md](top-extensions-csharp-test-framework.md).
+For more information about extension and Portal architecture, see [top-extensions-architecture.md](top-extensions-architecture.md).
 
-For more information about testing extensions in the hosting service, see  [top-extensions-hosting-service-scenarios.md#sideloading](top-extensions-hosting-service-scenarios.md#sideloading).  
- 
+For more information about testing extensions in the hosting service, see  [top-extensions-hosting-service-scenarios.md#sideloading](top-extensions-hosting-service-scenarios.md#sideloading). 
+
+* * *
+
 <a name="sideloading-an-extension-overview-query-strings"></a>
 ### Query strings
 
-The main difference between sideloading and testing in production is the endpoint from which the extension is loaded. The sideloaded extension's code is located on the endpoint that represents the local host, or the developer's computer. The endpoint used for testing in production represents the computer that is being used for testing, and it is not likely that the production testing endpoint is the local host.
+The main difference between sideloading and testing in production is whether the test can use a query string. The query string can only be used if the extension is on the localhost. There are also special types of testing like hotfixes or working with multiple names or friendly names while hosting.
 
-The following query string can be used to load an extension by using the address bar.
+The following is the syntax of a query string that can be used to load an extension by using the address bar in the browser.
 
 ```<protocol>://<environment>/?feature.canmodifyextensions=true#?testExtensions={"<extensionName>":"<protocol>://<endpoint>:<portNumber>"[,<settings>]}```
 
+or 
+
+```<protocol>://<environment>/?feature.canmodifyextensions=true#?testExtensions={"<extensionName>":"<protocol>://<uri>/"}```
+
 where
 
-**protocol**: Matches the protocol of the shell into which the extension is loaded, without the angle brackets.  It can have a value of `HTTPS`.  If the value is not  `HTTPS`, the browser will not allow the extension to communicate and the extension will not sideload.  If you have not trusted the certificate that **IIS Express** uses for localhost, the extension will fail to side load. See FAQ [Extension will not sideload](portalfx-extensions-faq-sideloading.md#extension-will-not-sideload)
+**protocol**: Matches the protocol of the shell into which the extension is loaded, without the angle brackets.  It can have a value of `HTTPS`.  If the value is not  `HTTPS`, the browser will not allow the extension to communicate and the extension will not sideload.  If you have not trusted the certificate that **IIS Express** uses for localhost, the extension will fail to side load. For more information, see [portalfx-extensions-faq-sideloading.md#extension-will-not-sideload](portalfx-extensions-faq-sideloading.md#extension-will-not-sideload).
 
 **environment**: Portal environment in which to load the extension. Portal environments are `portal.azure.com`, `rc.portal.azure.com`, `mpac.portal.azure.com`, and `df.onecloud.azure-test.net`.
 
+**feature.canmodifyextensions**: Required to support loading untrusted extensions for security purposes.  This feature flag grants permission to the Portal to load extensions from URLs other than the ones that are typically used by customers.  It triggers an additional Portal UI that indicates that the Portal is running with untrusted extensions. This feature flag has a value of `true`.  For more information about feature flags, see [top-extensions-flags.md](top-extensions-flags.md).
+
+**testExtensions**: Contains the name of the extension, and the environment in which the extension is located. It specifies the intent to load the extension `<extensionName>` from the `localhost:<portNumber>` into the current session of the Portal.
+
 **extensionName**: Matches the name of the extension, without the angle brackets, as specified in the `<Extension>` element  in the  `extension.pdl` file.  For more information about the configuration file, see [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
 
-**endpoint**: The localhost,  the computer on which the extension is being developed. The endpoint, or the computer that is being used for testing the extension. The extension endpoint when using a host other than `localhost` may also be the server where the extension will be hosted.
+**endpoint**: The localhost, or the computer on which the extension is being developed. The endpoint, or the computer that is being used for testing the extension. The extension endpoint when using a host other than `localhost` may also be the server where the extension will be hosted.
 
-**portNumber**: The port number associated with the endpoint that serves the extension, as in the following example: ```https://DemoServer:59344/```. 
+**settings**: Optional. Boolean value that registers the extension in the Portal for a specific timeframe. A value of `true` means that the registered extension will run only for the current browser session.  A value of `false` means that the registered extension is valid across browser sessions. This state is saved in the browser's local storage. The default value is `false`.
 
-**settings**: Optional. Boolean value that registers the extension in the Portal for a specific timeframe. A value of `true` means that the registered extension will run only for the current browser session.  The default value of `false` means that the registered extension is valid across browser sessions. This state is saved in the browser's local storage. 
+**uri**: Defines the extension endpoint. If there is a port number associated with the extension, it can be appended to the `uri` by separating it from the `uri` by a colon. The uri is formatted as  `"https://<serverName>:<portNumber>"`, where 
 
-For example, the following complete URL and query string can be used to sideload the extension named "Microsoft_Azure_Demo" onto the localhost for testing. It also instructs the Portal to load from endpoint "https://DemoServer:44300". It registers the extension only for the current user session.  
+**serverName**: The server where the extension will be hosted.
 
-`
+**portNumber**: The port number wher the extension is hosted on the endpoint that serves the extension, as in the following example: ```https://DemoServer:59344/```. 
 
-The following example programmatically registers the extension in User Settings.
+The following complete URL and query string was built using the previous syntax.  It can be used to sideload the extension named "Microsoft_Azure_Demo" onto the localhost for testing. It also instructs the Portal to load from port 44300". It registers the extension only for the current user session.  
 
-  ```ts
-    MsPortalImpl.Extension.registerTestExtension({ name: "<extensionName>", uri: "https://<serverName>:<portNumber>" });
-  ```
+```?feature.canmodifyextensions=true#?testExtensions={"Microsoft_Azure_Demo":"https://localhost:44300/",true}```
 
-  The registered extension will be saved to User Settings, and will be available in future sessions. When the Portal is used in this mode, it displays a banner that indicates that the state of the configured extensions has been changed, as in the following image.
+### Registering with the registerTestExtension API
 
-  ![alt-text](../media/portalfx-productiontest/localExtensions.png "Local extensions")
+Registering an extension with the registerTestExtension API works in all cases. However, an extension can only be sideloaded using a query string on a localhost machine.
 
-For information about debugging switches or feature flags, see  [top-extensions-flags.md](top-extensions-flags.md).
+The developer may want to programmatically register a deployed extension with JavaScript and then reload the Portal. This step is optional. Using the `registerTestExtension` API for programmatic changes allows the developer to register an extension from `localhost`, or register an extension from a custom environment. 
 
-## Registering extensions with the registerTestExtension API
+Custom extensions that are used for testing can be loaded into the Portal by using feature flags. The `uriFormat` parameter, in conjunction with the `uri` parameter, can increase the number of extension editions that can be loaded in various Portal environments. These parameters are located in the `extensions.<EnvironmentName>.json` file, in conjunction with the `Client\extension.pdl` file. The edition of the extension that is loaded can be changed by modifying the `uri` and `uriFormat` parameters instead of using  **endpoint** and **portNumber** in the query string. 
 
-An extension can be sideloaded from the development computer, or it can be loaded from a test environment. To load an extension from the development machine or the localhost, extension developers need to register it, as specified in [#registering-extensions-with-the-registerTestExtension-API](#registering-extensions-with-the-registerTestExtension-API). To sideload an extension from a test environment, either as a localhost extension or as a deployed extension, you can set the appropriate query strings and execute the `registerTestExtension` function for deployed extensions, or set a query string for localhost extensions.
+To load an extension, extension developers can leverage the following approach.
 
-The developer may want to programmatically register a deployed extension with JavaScript and then reload the Portal. This step is optional if they use the query string method to load the extension into the browser from the localhost. Using the  `registerTestExtension` API for programmatic changes allows the developer to register a custom extension from `localhost`, or register a custom extension from a custom environment. To load an extension from the test environment or an unregistered source, extension developers can leverage the following approach.
-
- <!-- TODO: Determine whether the registerTestExtension API can be used with the hosting service or if the hosting service only allows query strings. If the registerTestExtension API allows use of a hosting service, find the example code so that the following sentence can be  re-included into the document:
+<!-- TODO: Determine whether the registerTestExtension API can be used with the hosting service . If the registerTestExtension API allows use of a hosting service, find the example code so that the following sentence can be  re-included into the document:
   or load an extension from a custom environment using a hosting service.
  -->
 
@@ -99,82 +101,31 @@ The developer may want to programmatically register a deployed extension with Ja
 
 where
 
-* **name** and **uri** parameters are as specified in [portalfx-extensions-configuration-overview.md#understanding-the-extension-configuration-in-portal](portalfx-extensions-configuration-overview.md#understanding-the-extension-configuration-in-portal).
-
-* **settings**: Registers the extension in the portal, as specified in [#query-strings](#query-strings).
-
 1. Reload the portal by navigating to [https://portal.azure.com?feature.canmodifyextensions=true&clientOptimizations=false](https://portal.azure.com?feature.canmodifyextensions=true&clientOptimizations=false).
 
-1. Select the registered extension from the dashboard.
- 
-### Loading an extension programmatically
+1. Select the registered extension from the dashboard. Use the following code snippet to load the extension programmatically and register it in User Settings.
 
-Use the following code snippets in your code to load extensions programmatically.
+  ```ts
+    MsPortalImpl.Extension.registerTestExtension({ name: "<extensionName>", uri: "https://<serverName>:<portNumber>" });
+  ```
 
-
-
-```ts
-   MsPortalImpl.Extension.registerTestExtension({ name: "<extensionName>", uri: "https://<serverName>:<portNumber>" });
-```
-
-where
-
-* **serverName**: The server where the extension will be hosted
-
-* **portNumber**: The port where extension is hosted on `<serverName>
-
-For example, the following code registers the extension named "Microsoft_Azure_Demo" only for the current browser session.
+  Or, use the following code to registers the extension only for the current browser session.
 
  ```ts
-   MsPortalImpl.Extension.registerTestExtension({ name: "Microsoft_Azure_Demo", uri: "https://DemoServer:44300" }, true);
+   MsPortalImpl.Extension.registerTestExtension({ name:  "<extensionName>", uri: "https://<serverName>:<portNumber>"}, true);
 ```
 
- The custom extension that was registered will be saved to user settings, and available in future sessions. When using the Portal in this mode, a banner is displayed that indicates that the state of the configured extensions has been changed, as in the following image.
+  The extension that was registered will be saved to User Settings, and will be available in future sessions. When the Portal is used in this mode, it displays a banner that indicates that the state of the configured extensions has been changed, as in the following image.
 
-![alt-text](../media/portalfx-productiontest/localExtensions.png "Local extensions")
-The following example describes a complete uri and query string that instructs the Portal to load the extension named "Microsoft_Azure_Demo" from endpoint "`https://DemoServer:59344`". It registers the extension only for the current user session by entering it into User Settings.
+  ![alt-text](../media/portalfx-productiontest/localExtensions.png "Local extensions")
 
-<!--TODO: This example contradicts the previous definition.  Determine which one is correct.  -->
+For information about debugging switches or feature flags, see  [top-extensions-flags.md](top-extensions-flags.md).
 
-   ```ts
-   MsPortalImpl.Extension.registerTestExtension({
-     name: "Microsoft_Azure_Demo",
-     uri: "https://DemoServer:44300"});
-   ```
+For information about regular debugging and testing, see [top-extensions-debugging.md](top-extensions-debugging.md). 
 
-For more information on loading, see [top-extensions-csharp-test-framework.md](top-extensions-csharp-test-framework.md)
+For more information on loading, see [top-extensions-csharp-test-framework.md#creating-the-test-project](top-extensions-csharp-test-framework.md#creating-the-test-project). 
 
-<a name="sideloading-an-extension-loading-customized-extensions"></a>
-## Loading customized extensions
-
-Custom extensions that are used for testing can be loaded into the Portal by using feature flags. The `uriFormat` parameter, in conjunction with the `uri` parameter, can increase the number of extension editions that can be loaded in various Portal environments. These parameters are located in the `extensions.<EnvironmentName>.json` file, in conjunction with the `Client\extension.pdl` file. The edition of the extension that is loaded can be changed by modifying the `uri` and `uriFormat` parameters instead of using  **endpoint** and **portNumber** in the query string. For more information about extension configuration, see [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
-
-To register a customized extension, or register a different extension edition, use the following parameters in the Portal extension query string.
- 
-```<protocol>://<environment>/?feature.canmodifyextensions=true#?testExtensions={"<extensionName>":"<protocol>://<uri>/"}```
-
-where
-
-* **protocol**: Matches the protocol of the shell into which the extension is loaded, without the angle brackets.  It can have a value of `HTTP` or a value of `HTTPS`. For the production shell, the value is `HTTPS`.  If the value of this portion of the parameter is incorrectly specified, the browser will not allow the extension to communicate.
-
-* **environment**: Portal environment in which to load the extension. Portal environments are `portal.azure.com`, `rc.portal.azure.com`, `mpac.portal.azure.com`, and `df.onecloud.azure-test.net`, although extension developers can sideload their extensions in any environment. 
-
-* **feature.canmodifyextensions**: Required to support loading untrusted extensions for security purposes.  This feature flag grants permission to the Portal to load extensions from URLs other than the ones that are typically used by customers.  It triggers an additional Portal UI that indicates that the Portal is running with untrusted extensions. This feature flag has a value of `true`.  For more information about feature flags, see [top-extensions-flags.md](top-extensions-flags.md).
-
-* **testExtensions**: Contains the name of the extension, and the environment in which the extension is located. It specifies the intent to load the extension `<extensionName>` from the `localhost:<portNumber>` into the current session of the Portal.
-
-  * **extensionName**: Matches the name of the extension, without the angle brackets, as specified in the `<Extension>` element  in the  `extension.pdl` file.
-
-  * **protocol**: Matches the protocol of the shell into which the extension is loaded, without the angle brackets.  It can have a value of `HTTP` or a value of `HTTPS`. For the production shell, the value is `HTTPS`.  If the value of this portion of the parameter is incorrectly specified, the browser will not allow the extension to communicate. 
-
-  * **uri**: The extension endpoint. If there is a port number associated with the extension, it can be appended to the `uri` by separating it from the `uri` by a colon, as in the following example: `https://localhost:1234/`. 
-
-<!-- TODO:  Determine whether this is a duplication of a previous explanation or is really a separate case. -->
-
-
-For more information on loading, see [portalfx-testing-ui-test-cases.md](portalfx-testing-ui-test-cases.md).
-
-
+<a name="sideloading-an-extension-unregistering-test-extensions"></a>
 ## Unregistering test extensions
 
 When testing is completed, the developer can run the `unregisterTestExtension` method in the Developer Tools Console to reset the user settings and unregister the extension, as in the following example.
@@ -183,11 +134,12 @@ When testing is completed, the developer can run the `unregisterTestExtension` m
   MsPortalImpl.Extension.unregisterTestExtension("<extensionName>");
 ```
 
-
+<a name="sideloading-an-extension-completing-the-extension-test"></a>
 ## Completing the extension test
 
 When all steps are complete, the developer can submit a pull request to enable the extension, as specified in [top-extensions-publishing.md](top-extensions-publishing.md). When the extension is enabled, users will be able to access it in all environments, as specified in [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
 
+<a name="sideloading-an-extension-common-uses-for-custom-extensions"></a>
 ## Common uses for custom extensions
 
 There are several scenarios in which a developer might test various ideas for an extension by using  different editions. Three of them are as follows. 
@@ -232,6 +184,7 @@ There are several scenarios in which a developer might test various ideas for an
     For more information about obsolete bundles and obsolete script bundles, see [portalfx-extension-reference-obsolete-bundle.md](portalfx-extension-reference-obsolete-bundle.md).
 
 
+<a name="sideloading-an-extension-best-practices"></a>
 ## Best Practices
    
 ***What is the best environment for sideloading during initial testing?***
@@ -240,12 +193,14 @@ There are several scenarios in which a developer might test various ideas for an
 
 * * *
 
+<a name="sideloading-an-extension-best-practices-onebox-stb-is-not-available"></a>
 ### Onebox-stb is not available
 
 Onebox-stb has been deprecated. Please do not use it. Instead, migrate extensions to sideloading. For help on migration, send an email to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Help on Migration">ibiza-onboarding@microsoft.com</a>.
 
 * * * 
 
+<a name="sideloading-an-extension-frequently-asked-questions"></a>
 ## Frequently asked questions
 
 ***Where are the FAQ's for normal debugging?***
@@ -254,6 +209,7 @@ The FAQs for debugging extensions is located at [portalfx-extensions-faq-debuggi
 
 * * *
 
+<a name="sideloading-an-extension-frequently-asked-questions-sandboxed-iframe-security"></a>
 ### Sandboxed iframe security
 
 *** I get an error 'Security of a sandboxed iframe is potentially compromised by allowing script and same origin access'. How do I fix this? ***
@@ -262,6 +218,7 @@ You need to allow the Azure Portal to frame your extension URL. For more informa
 
 * * *
 
+<a name="sideloading-an-extension-frequently-asked-questions-extension-will-not-sideload"></a>
 ### Extension will not sideload
 
 *** My Extension fails to side load and I get an ERR_INSECURE_RESPONSE in the browser console ***
@@ -276,6 +233,7 @@ Items that are specifically status codes or error messages can be located in [po
 
 * * *
 
+<a name="sideloading-an-extension-frequently-asked-questions-sideloading-in-chrome"></a>
 ### Sideloading in Chrome
 
 ***Ibiza sideloading in Chrome fails to load parts***
@@ -284,6 +242,7 @@ Enable the `allow-insecure-localhost` flag, as described in [https://stackoverfl
 
 * * *
 
+<a name="sideloading-an-extension-frequently-asked-questions-sideloading-in-chrome-sideloading-gallery-packages"></a>
 #### Sideloading gallery packages
 
 ***Trouble sideloading gallery packages***
@@ -292,6 +251,7 @@ SOLUTION:  Some troubleshooting steps are located at [https://stackoverflow.micr
 
 * * *
 
+<a name="sideloading-an-extension-frequently-asked-questions-sideloading-in-chrome-sideloading-friendly-names"></a>
 #### Sideloading friendly names
 
 ***Sideloading friendly names is not working in the Dogfood environment***
@@ -305,6 +265,7 @@ The parameter `feature.canmodifystamps=true` is required for side-loading, and
 
 * * *
 
+<a name="sideloading-an-extension-frequently-asked-questions-other-testing-questions"></a>
 ### Other testing questions
 
 ***How can I ask questions about testing ?***
@@ -312,11 +273,13 @@ The parameter `feature.canmodifystamps=true` is required for side-loading, and
 You can ask questions on Stackoverflow with the tag [ibiza-test](https://stackoverflow.microsoft.com/questions/tagged/ibiza-test).
 
 
+<a name="sideloading-an-extension-status-codes-and-error-messages"></a>
 ## Status Codes and Error Messages
 
 Status codes or error messages that are encountered while developing an extension may be dependent on the type of extension that is being created, or the development phase in which the message is encountered.  Terms that are encountered in the error messages may be defined in the [Glossary](portalfx-extensions-glossary-status-codes.md).
 <!-- TODO:  Find at least one status code for each of these conditions. -->
 
+<a name="sideloading-an-extension-status-codes-and-error-messages-console-error-messages"></a>
 ### Console Error Messages
 
 ***Console error messages in F12 developer tools***
@@ -325,7 +288,8 @@ Some console and HTTP error messages are located at [https://msdn.microsoft.com/
 
 * * *
 
-### UNKNOWN ENTITY-TYPED OBJECT ARRAY 
+<a name="sideloading-an-extension-status-codes-and-error-messages-unknown-entity-typed-object-array"></a>
+### UNKNOWN ENTITY-TYPED OBJECT ARRAY
 
 ***Error: "Entity-typed object/array is not known to this edit scope..."***
 
@@ -351,6 +315,7 @@ SOLUTION:  Here are two schemes that can be used to avoid this error.
   
 * * *
 
+<a name="sideloading-an-extension-status-codes-and-error-messages-form-improperly-allows-edits"></a>
 ### Form improperly allows edits
 
 *** Error: Form should not allow edits until an EditScope is loaded***
@@ -365,6 +330,7 @@ Extensions should use the `mapIncomingDataForEditScope` option when instantiatin
 
 * * *
 
+<a name="sideloading-an-extension-status-codes-and-error-messages-err_connection_reset"></a>
 ### ERR_CONNECTION_RESET
 
 ***Cannot load `localhost` Ibiza extension with ERR_CONNECTION_RESET***
@@ -375,6 +341,7 @@ SOLUTION: [https://stackoverflow.microsoft.com/questions/48581/cannot-load-local
 
 * * * 
 
+<a name="sideloading-an-extension-status-codes-and-error-messages-err_insecure_response"></a>
 ### ERR_INSECURE_RESPONSE
 
 ERR_INSECURE_RESPONSE in the browser console
@@ -389,6 +356,7 @@ SOLUTION: Install and trust the certificate.
 
 * * *
 
+<a name="sideloading-an-extension-status-codes-and-error-messages-failed-to-initialize"></a>
 ### Failed To Initialize
 
 ERROR: The extension failed to initialize. One or more calls to methods on the extension's entry point class failing.
@@ -397,6 +365,7 @@ SOLUTION: Scan all the relevant error messages during the timeframe of the failu
 
 * * * 
 
+<a name="sideloading-an-extension-status-codes-and-error-messages-first-response-not-received"></a>
 ### First Response Not Received
 
 ERROR: The shell loaded the extension URL obtained from the config into an IFrame; however there wasn't any response from the extension.
@@ -409,6 +378,7 @@ SOLUTION:
 
 * * * 
 
+<a name="sideloading-an-extension-status-codes-and-error-messages-invalid-definition"></a>
 ### Invalid Definition
 
 ERROR: The definition that was received from an extension had validation errors.
@@ -419,6 +389,7 @@ SOLUTION: Scan the error logs for all the validation errors in the extension def
 
 
 
+<a name="sideloading-an-extension-status-codes-and-error-messages-invalid-extension-name"></a>
 ### Invalid Extension Name
 
 ERROR: The name of the extension as specified in the `extensions.json` configuration file doesn't match the name of the extension in the extension manifest.
@@ -429,6 +400,7 @@ If the name in the manifest is incorrect, contact the relevant extension team to
 
 * * * 
 
+<a name="sideloading-an-extension-status-codes-and-error-messages-invalid-indicate-loaded"></a>
 ### Invalid Indicate Loaded
 
 ERROR: The manifest for an extension was received at an invalid time. e.g. if the manifest was already obtained or the extension was already loaded.
@@ -437,6 +409,7 @@ SOLUTION: Report this issue to the framework team for investigation.
 
 * * * 
 
+<a name="sideloading-an-extension-status-codes-and-error-messages-invalid-manifest"></a>
 ### Invalid Manifest
 
 ERROR: The manifest that was received from an extension had validation errors.
@@ -445,6 +418,7 @@ SOLUTION: Scan the error logs for all the validation errors in the extension man
 
 * * * 
 
+<a name="sideloading-an-extension-status-codes-and-error-messages-manifest-not-received"></a>
 ### Manifest Not Received
 
 ERROR: The bootstrap logic was completed, however the extension did not return a manifest to the shell. The shell waits for a period of time (currently 40 seconds as of 2014/10/06) and then times out.
@@ -457,7 +431,8 @@ SOLUTION:
 
 * * * 
 
-### Server Error 404 
+<a name="sideloading-an-extension-status-codes-and-error-messages-server-error-404"></a>
+### Server Error 404
 
 ERROR: 404, Not Found.
 
@@ -475,7 +450,7 @@ this._dataView = dataContext.createView(container, { interceptNotFound: false })
 
 
 
-<a name="sideloading-an-extension-loading-customized-extensions-internal-server-error-500"></a>
+<a name="sideloading-an-extension-status-codes-and-error-messages-internal-server-error-500"></a>
 ### Internal Server Error 500
 
 ERROR: Received 500, Internal Server Error when loading the extension. The extension logs the message "*Unable to find AMD modules '_generated/Manifest'*".
@@ -492,7 +467,7 @@ SOLUTION:
 
 * * *
 
-<a name="sideloading-an-extension-loading-customized-extensions-portal-error-520"></a>
+<a name="sideloading-an-extension-status-codes-and-error-messages-portal-error-520"></a>
 ### Portal Error 520
 
 ***The Portal encountered a part it cannot render***
@@ -515,7 +490,7 @@ SOLUTION: Use the following troubleshooting steps.
 
 * * *
 
-<a name="sideloading-an-extension-loading-customized-extensions-sandboxed-iframe-security"></a>
+<a name="sideloading-an-extension-status-codes-and-error-messages-sandboxed-iframe-security"></a>
 ### Sandboxed iframe security
 
 ***Error: 'Security of a sandboxed iframe is potentially compromised by allowing script and same origin access'.***
@@ -524,7 +499,7 @@ The Azure Portal should frame the extension URL, as specified in [top-extensions
 
 * * *
 
-<a name="sideloading-an-extension-loading-customized-extensions-timed-out"></a>
+<a name="sideloading-an-extension-status-codes-and-error-messages-timed-out"></a>
 ### Timed Out
 
 ERROR: The extension failed to load after the predefined timeout, which is currently 40 seconds.
@@ -533,7 +508,7 @@ SOLUTION: Scan the errors to see if there are any other relevant error messages 
 
 * * * 
 
-<a name="sideloading-an-extension-loading-customized-extensions-too-many-bootgets"></a>
+<a name="sideloading-an-extension-status-codes-and-error-messages-too-many-bootgets"></a>
 ### Too Many BootGets
 
 ERROR: The extension tried to send the bootGet message to request for Fx scripts multiple times. The error should specify the number of times it refreshed before the extension was disabled.
@@ -542,7 +517,7 @@ SOLUTION:  Scan the errors to see if there are any other relevant error messages
 
 * * * 
 
-<a name="sideloading-an-extension-loading-customized-extensions-too-many-refreshes"></a>
+<a name="sideloading-an-extension-status-codes-and-error-messages-too-many-refreshes"></a>
 ### Too Many Refreshes
 
 ERROR: The extension tried  to reload itself within the IFrame multiple times. The error should specify the number of times it refreshed before the extension was disabled.
