@@ -3,7 +3,7 @@
 
 ## Overview
    
-Sideloading allows the testing and debugging of extensions locally against any environment. It loads an extension for a specific user session from any source other than the `uri` that is registered in the Portal. When unit-testing the UI extension, the developer can instruct the Portal to load the extension from a URL that they specify.  The extension can be loaded using a development environment, a query string, or it can be loaded programmatically.  This is the preferred method of testing, and is a basic first step.
+Sideloading allows the testing and debugging of extensions locally against any environment. It loads an extension for a specific user session from any source other than the `uri` that is registered in the Portal. When unit-testing the UI extension, the developer can instruct the Portal to load the extension from a URL that they specify.  The extension can be loaded using a query string, or it can be loaded programmatically. This is the preferred method of testing, and is a basic first step.
  
 This helps the developer validate that the extension is ready for standard Portal use in private preview or public preview mode. During standard Portal use, the Portal web application loads the UI extension from a URL that is part of the Portal's configuration, as specified in the environment configuration file(s) for the extension.
 
@@ -11,7 +11,7 @@ Extensions can be loaded on a per-user basis on production deployments.  Sideloa
 
 The different types of deployment for testing are in the following image.
 
-![alt-text](../media/portalfx-extensions-testing/sideloading-and-testing.png "Testing Extensions Versions in Separate Locations")
+![alt-text](../media/portalfx-extensions-sideloading/sideloading.png "Testing Extensions Versions in Separate Locations")
 
 Sideloading can be used when developing an extension, in addition to private preview and some forms of usability testing. It is also useful when testing multiple versions of an extension, or determining which features should remain in various editions of an extension.  For example, an English-language extension may have other UX editions that include localization for various languages, each of which may ship separately when the extension is deployed or geodistributed.
 
@@ -23,7 +23,7 @@ For more information about testing extensions in the hosting service, see  [top-
  
 ### Query strings
 
-The difference between sideloading and testing in production is the endpoint from which the extension is loaded. The sideloaded extension's code is located on the endpoint that represents the local host, or the developer's computer. The endpoint used for testing in production represents the computer that is being used for testing, and it is not likely that the production testing endpoint is the local host.
+The main difference between sideloading and testing in production is the endpoint from which the extension is loaded. The sideloaded extension's code is located on the endpoint that represents the local host, or the developer's computer. The endpoint used for testing in production represents the computer that is being used for testing, and it is not likely that the production testing endpoint is the local host.
 
 The following query string can be used to load an extension by using the address bar.
 
@@ -31,7 +31,7 @@ The following query string can be used to load an extension by using the address
 
 where
 
-**protocol**: Matches the protocol of the shell into which the extension is loaded, without the angle brackets.  It can have a value of `HTTPS`.  If the value is not  `HTTPS`,   the browser will not allow the extension to communicate and the extension will not sideload.  If you have not trusted the certificate that **IIS Express** uses for localhost, the extension will fail to side load. See FAQ [Extension will not sideload](portalfx-extensions-faq-sideloading.md#extension-will-not-sideload)
+**protocol**: Matches the protocol of the shell into which the extension is loaded, without the angle brackets.  It can have a value of `HTTPS`.  If the value is not  `HTTPS`, the browser will not allow the extension to communicate and the extension will not sideload.  If you have not trusted the certificate that **IIS Express** uses for localhost, the extension will fail to side load. See FAQ [Extension will not sideload](portalfx-extensions-faq-sideloading.md#extension-will-not-sideload)
 
 **environment**: Portal environment in which to load the extension. Portal environments are `portal.azure.com`, `rc.portal.azure.com`, `mpac.portal.azure.com`, and `df.onecloud.azure-test.net`.
 
@@ -45,7 +45,7 @@ where
 
 For example, the following complete URL and query string can be used to sideload the extension named "Microsoft_Azure_Demo" onto the localhost for testing. It also instructs the Portal to load from endpoint "https://DemoServer:44300". It registers the extension only for the current user session.  
 
-```https://portal.azure.com/?feature.canmodifyextensions=true#?testExtensions={"Microsoft_Azure_Demo":"https://localhost:44300/"}```
+`
 
 The following example programmatically registers the extension in User Settings.
 
