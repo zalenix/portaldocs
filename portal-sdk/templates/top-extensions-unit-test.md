@@ -76,7 +76,7 @@ always-auth=true
 
     In the package.json you can see we're using mocha and chai but you can choose your own test and assertion framework.
 
-1. Update ./package.json to refer directly to msportalfx-ut i.e rather then using the file:// syntax simply specify `"msportalfx-ut" : "5.0.302.VersionOfSdkYouAreUsing"`
+1. Update ./package.json to refer directly to msportalfx-ut i.e rather then using the file:// syntax simply specify `"msportalfx-ut" : "5.302.VersionOfSdkYouAreUsing"` (notice difference in versioning, no 0 as minor version)
 
 1. run the following command.
 
@@ -416,4 +416,4 @@ Try the following:
 ## My build nodes are completely disconnected from the internet 
 
 * you can commit your version of msportalfx-ut.zip into your repo and install it directly using relative file path syntax
-`"msportalfx-ut": "file:../externals/msportalfx-ut-5.0.302.someversion.tgz",`
+`"msportalfx-ut": "file:../externals/msportalfx-ut-5.302.someversion.tgz",`
