@@ -1,4 +1,12 @@
-# Release Notes since 3/7/2018
+# Release Notes since 3/8/2018
+
+## 5.0.302.1200
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2690038'>2690038</a></td><td>Bug Fix</td><td>AFD flighting is no-op</td></tr></table>
+
+## 5.0.302.1199
+0 Breaking Changes, 1 Features added and 2 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2639670'>2639670</a></td><td>Bug Fix</td><td>[Error tracker] UI.SessionHandler: Error calling graph for policy details</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2599017'>2599017</a></td><td>Bug Fix</td><td>Check if a tenant has any token lifetime policy prior to session validation</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2595777'>2595777</a></td><td>Feature</td><td>[extension hosting service]  Extension Microsoft_Azure_RecoveryServices , Changing URI to hosting service</td></tr></table>
 
 ## 5.0.302.1198
 0 Breaking Changes, 1 Features added and 4 Bugs Fixed
