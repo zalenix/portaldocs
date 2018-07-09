@@ -1,7 +1,6 @@
 
 # Building create experiences
 
-
 ## Overview
 
 The Azure portal offers three ways to build a create form:
@@ -17,6 +16,12 @@ The Azure portal offers three ways to build a create form:
 1. Custom create forms
 
     These are fully-customized forms that developed in  **TypeScript** for Azure Portal extensions. Most teams build custom create forms for full flexibility in the UI and validation. 
+
+1. The "Deploy to Azure" button 
+    
+    The "Deploy to Azure" button allows you to dynamically generate a Create form based on a [Resource Manager template](https://azure.microsoft.com/en-us/documentation/articles/resource-group-authoring-templates).
+
+    The form is generated based on the input parameters defined in the template. The most common use of the "Deploy to Azure" button is for [community templates posted on Github](https://github.com/Azure/azure-quickstart-templates), but you can also create a Marketplace package that uses the "Deploy to Azure" blade. This is the simplest way to publish a Create experience in the Azure Portal.
 
 This document contains information about building custom create forms, including ARM dropdowns, automation, and validation. The following is a list of subtopics in blade creation.
 
@@ -391,7 +396,6 @@ For more information about deployment validation see the Engine V3 sample locate
 
 - [http://aka.ms/portalfx/samples#create/microsoft.engine](http://aka.ms/portalfx/samples#create/microsoft.engine)
 
-
 ### Automation options
 
 All Create forms should have automated testing to help avoid regressions. Validation is critical, and the performance of the Create blade is important  in ensuring the highest possible quality for your customers.
@@ -402,9 +406,6 @@ resources by using the command line interface (CLI), **PowerShell**, and other s
 
 When customers leave the Create blade before submitting the form, the Portal asks for feedback. The feedback is stored
 in the standard telemetry tables, as specified in [portalfx-telemetry.md](portalfx-telemetry.md). For example, the query `source == "FeedbackPane" and action == "CreateFeedback"` will retrieve abandonment feedback.
-
-
-
 
 ### Initiating Create from other places
 
@@ -419,9 +420,6 @@ Some scenarios may require launching the Create experience from outside the `+Ne
  "Continuous Deployment" setup from a web app blade, as in the following image.
 
 ![alt-text](../media/portalfx-create/create-originating-from-blade-part.png "Create originating from blade part")
-
-
-
 
 ### Create Marketplace and Gallery packages
 
@@ -445,9 +443,70 @@ The Marketplace provides a categorized collection of packages that can be create
 
 ### Wizards
 
-The Azure portal has a **legacy pattern** for wizard blades, because customer feedback and usability studies have proven that the design is not  ideal and therefore should not be used. In addition, the wizard does not include parameter collectors, as specified in 
-[portalfx-parameter-collection-getting-started.md](portalfx-parameter-collection-getting-started.md), which leads to complicated designs and increased development time.  Consequently it is not recommended that extensions continue to use wizards, and they are not supported.
+The Azure portal has a **legacy pattern** for wizard blades, because customer feedback and usability studies have proven that the design is not ideal and therefore should not be used. In addition, the wizard does not include parameter collectors, as specified in [portalfx-parameter-collection-getting-started.md](portalfx-parameter-collection-getting-started.md), which leads to complicated designs and increased development time.  Consequently it is not recommended that extensions continue to use wizards, and they are not supported.
 
 Reach out to <a href="mailto:ibizafxpm@microsoft.com?subject=Create wizards + full screen">Ibiza FX PM</a> if you have any questions about wizards and full-screen Create support.
+
+## Linking from the web
+
+To deep-link to the template deployment blade, URL-encode your hosted template URL and append it to the end of this URL:
+
+    https://portal.azure.com/#create/microsoft.template/uri/**<url-encoded-template-path>**
+
+For example, this simple storage account template...
+
+    https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-create-storage-account-standard/azuredeploy.json
+
+Would be this URL...
+
+    https://portal.azure.com/#create/microsoft.template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-create-storage-account-standard%2Fazuredeploy.json
+
+To add a "Deploy to Azure" button to your Github project, add the following markdown, replacing the `{encodedTemplateUrl}`
+with a URI-encoded link to your template.
+
+```md
+[![Deploy to Azure](../media/portalfx-create-deploytoazure/deploybutton.png) http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/{encodedTemplateUrl})
+```
+
+Or in HTML...
+
+```html
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/{encodedTemplateUrl}"><img src="http://azuredeploy.net/deploybutton.png"></a>
+```
+
+## Adding to the Marketplace
+
+To create a custom package that can be hosted directly in the Marketplace, create your package as you
+normally would, but instead of a custom `UIDefinition.json` file, use the following:
+
+```js
+{
+    "$schema": "https://gallery.azure.com/schemas/2015-02-12/UIDefinition.json#",
+    "createDefinition": {
+        "createBlade": {
+            "name": "DeployToAzure",
+            "extension": "HubsExtension"
+        }
+    }
+}
+```
+
+If the custom package should be read-only so that it cannot be edited, add `readonlytemplate` to the list of category ids.
+
+Both of these will load your template automatically and open the list of parameters by default. [Try it!](https://portal.azure.com/#create/microsoft.template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-create-storage-account-standard%2Fazuredeploy.json)
+
+
+## Best practices
+
+* Always define a `defaultValue` for parameters, when possible
+* Define `allowedValues` when a parameter has a static list of values
+* Define `minValue` and `maxValue` when using a numeric range
+* Define `minLength` and `maxLength` when using string values with length constraints
+* Use `group` metadata to organize related parameters together
+* Use `group: "basics"` for the primary resource name to elevate that to the top of the form
+* Add `label` metadata to customize the display text for each field
+* Add `description` metadata to provide additional information about what the parameter is for, but only if it adds contextual values
+
+
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-create.md"}

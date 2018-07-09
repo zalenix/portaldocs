@@ -12,9 +12,9 @@ experience in the Azure portal.
 
 To deep-link to the template deployment blade, URL-encode your hosted template URL and append it to the end of this URL:
 
-    https://portal.azure.com/#create/microsoft.template/uri/**<url-encoded-template-path>**
-
-For instance, this simple storage account template...
+   `https://portal.azure.com/#create/microsoft.template/uri/`
+    
+For instance, the storage account template...
 
     https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-create-storage-account-standard/azuredeploy.json
 
@@ -37,8 +37,8 @@ Or in HTML...
 
 ## Adding to the Marketplace
 
-To create a custom Marketplace package that can be hosted directly in the Marketplace, create your package as you
-normally would, but instead of a custom UIDefinition.json file, use the following:
+To create a custom package that can be hosted directly in the Marketplace, create your package as you
+normally would, but instead of a custom `UIDefinition.json` file, use the following:
 
 ```js
 {
@@ -52,10 +52,9 @@ normally would, but instead of a custom UIDefinition.json file, use the followin
 }
 ```
 
-If you want to make your custom package read-only (so people cannot edit the template), add `readonlytemplate` to the list of category ids.
+If you want to make the custom package read-only so that it cannot be edited, add `readonlytemplate` to the list of category ids.
 
 Both of these will load your template automatically and open the list of parameters by default. [Try it!](https://portal.azure.com/#create/microsoft.template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-create-storage-account-standard%2Fazuredeploy.json)
-
 
 ## Best practices
 
