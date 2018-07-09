@@ -98,6 +98,7 @@ To target elements by using `cssSelectors`,  send the specific `cssSelector` as 
 
 When the extension specifies a target, it should  also  specify where the dialog is displayed,  relative to that target. To do so, you can send a `positionHint` to the `dialogOptions`. The screen positioning will be honored if the space is available; otherwise, it will fallback to an available space.
 
+```
 /**
 * option hint for requested dialog position. Defaults to BottomLeftEdge.
 */
@@ -107,3 +108,4 @@ RightTopEdge = 2,
 BottomLeftEdge = 3,
 LeftTopEdge = 4,
 }
+```
