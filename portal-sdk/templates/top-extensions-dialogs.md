@@ -75,7 +75,9 @@ In the following example, the `fxClick` creates an `FxElement` and sends it as a
 When the  `fxClick` element is clicked, it is sent as a parameter to the onClick `fxClick` handler, as is specified in the sample located at  `<dir>\Client\V2\Dialogs\DialogSamplesBlade.ts` and in the following code.
 
 ```
+
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V2/Dialogs/DialogSamplesBlade.ts", "section": "top-extensions-dialogs#mouse"}
+
 ```
 
 The `target` property on the dialogOptions is `evt.target` and the dialog will open in context of your element.
