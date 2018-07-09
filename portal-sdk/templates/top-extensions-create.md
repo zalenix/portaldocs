@@ -3,7 +3,7 @@
 
 ## Overview
 
-The Azure portal offers three ways to build a create form:
+The Azure portal offers four ways to build a create form:
 
 1. Deploy to Azure
 
