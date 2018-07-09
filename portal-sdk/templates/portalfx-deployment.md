@@ -29,7 +29,7 @@ for static resources (images, scripts, etc.). This shifts the location of the mo
 
 The portal is deployed continuously. On any given day, multiple bug fixes, new features, and API changes may be deployed
 to production. When a new version of the portal is deployed to production, the corresponding version of the SDK is
-automatically released to the [download center](downloads.md). The download center contains the change log for the given
+automatically released to the [download center](/portal-sdk/generated/downloads.md). The download center contains the change log for the given
 release, including bug fixes, new features, and a log of breaking changes.
 
 ## Before deploying extension

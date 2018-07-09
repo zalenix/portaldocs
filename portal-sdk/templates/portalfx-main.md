@@ -9,7 +9,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 
 ### 1.1 Installation
 
-* [Option 1 - MSI Installer](downloads.md)
+* [Option 1 - MSI Installer](/portal-sdk/generated/downloads.md)
 * [Option 2 - Nuget packages](portalfx-nuget-overview.md)
 
 ### 1.2 Getting Set up in an IDE - *Typescript version / Compile on save*
