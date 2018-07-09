@@ -157,6 +157,7 @@ htmlTemplate: "" +
 When the  `fxClick` element is clicked, it is sent as a parameter to the onClick `fxClick` handler, as is specified in the sample located at  `<dir>\Client\V2\Dialogs\DialogSamplesBlade.ts` and in the following code.
 
 ```
+
 ```typescript
 
    /**
@@ -167,6 +168,7 @@ When the  `fxClick` element is clicked, it is sent as a parameter to the onClick
    }
 
 ```
+
 ```
 
 The `target` property on the dialogOptions is `evt.target` and the dialog will open in context of your element.
