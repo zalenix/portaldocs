@@ -156,7 +156,7 @@ htmlTemplate: "" +
 <!-- [BradO] Sorry, but it's not clear how this onTarget method relates to 'onClick' nor is it clear how 'FxMouseEvent' relates to 'FxElement'.  -->
 When the  `fxClick` element is clicked, it is sent as a parameter to the onClick `fxClick` handler, as is specified in the sample located at  `<dir>\Client\V2\Dialogs\DialogSamplesBlade.ts` and in the following code.
 
-```
+```ts
 
 ```typescript
 
