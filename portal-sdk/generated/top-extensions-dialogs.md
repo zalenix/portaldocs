@@ -20,7 +20,7 @@ Dialogs are great to use in cases where an extension requests a confirmation fro
 <a name="dialogs-the-dialog-api"></a>
 ### The dialog API
 
-Dialogs expose various options that allow developers to customise the dialog experience. To open a dialog, the extension should specify `dialogOptions`. The simplest form of those options is the 'Simple dialog' implementation that is located at `<dir>\Client\V2\Dialogs\DialogSamplesBlade.ts` and in the following code.
+Dialogs expose various options that allow developers to customize the dialog experience. To open a dialog, the extension should specify `dialogOptions`. The simplest form of those options is the 'Simple dialog' implementation that is located at `<dir>\Client\V2\Dialogs\DialogSamplesBlade.ts` and in the following code.
 
 ```typescript
 
@@ -134,7 +134,7 @@ public onTargetWithFxElementClick(evt: FxMouseEvent) {
 <a name="dialogs-targeting-the-dialog-at-a-specific-element-or-cssselector"></a>
 ### Targeting the dialog at a specific element or cssSelector
 
-If you want to provide context to which the dialog applies, maybe you're confirming a delete of a certain item. That is possible by specifying a `string | FxElement` which either captures the `cssSelector` or, in the case of `FxElement`, the element of the control or `div`. 
+If you want to provide context to which the dialog applies, for example, confirming a delete of a certain item, this can be made possible by specifying a `string | FxElement` which either captures the `cssSelector` or, in the case of `FxElement`, the element of the control or `div`. 
 
 In the following example, the `fxClick` creates an `FxElement` and sends it as a parameter to the `fxClick` handler.
 
@@ -167,6 +167,20 @@ When the  `fxClick` element is clicked, it is sent as a parameter to the onClick
    }
 
 ```
+```
+
+The `target` property on the dialogOptions is `evt.target` and the dialog will open in context of your element.
+
+For targeting elements via `cssSelectors` you send  the desired cssSelector as a string to the `target` property on the dialogOptions.
+
+```
+container.openDialog({
+	telemetryName: "DialogTargetingViaCSS",
+	title: ClientResources.Dialog.SimpleDialog.title,
+	content: ClientResources.Dialog.SimpleDialog.message,
+	buttons: DialogButtons.OK,
+	target: ".ext-color-text"
+});
 ```
 
 The extension defines the `target` property on the `dialogOptions` as `evt.target`. The  dialog will open within the context of the element.
