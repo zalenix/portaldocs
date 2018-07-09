@@ -186,7 +186,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
     * [Work with other teams to have other extensions call 'container.openBlade(...)' to open my Blade](portalfx-blades-opening.md#importing-the-pde-file)
     * Associate my Blade with an <AssetType> so it is opened from Browse
     * [Add my Blade as an entry in a Resource Blade or a Menu Blade]
-        * [No-PDL](portalfx-no-pdl.md#building-a-menu-blade-using-decorators)
+        * [No-PDL](portalfx-no-pdl-programming.md#building-a-menu-blade-using-decorators)
         * [PDL](portalfx-blades-menublade.md)
 * [Parts]
     * Make my Blades pinnable using @Blade.Pinnable.Decorator/onPin
