@@ -261,7 +261,7 @@ Sure! Book in some time in the Azure performance office hours.
     - Loading any required obsoleted bundles is a blocking request during your extension load times
     - See https://aka.ms/portalfx/obsoletebundles for further details
 - Use the Portal's ARM token
-- Don't use old PDL blades composed of parts: [hello world template blade](portalfx-no-pdl.md#building-a-hello-world-template-blade-using-decorators)
+- Don't use old PDL blades composed of parts: [hello world template blade](portalfx-no-pdl-p.md#building-a-hello-world-template-blade-using-decorators)
     - Each part on the blade has its own viewmodel and template overhead, switching to a no-pdl template blade will mitigate that overhead
 - Use the latest controls available: see https://aka.ms/portalfx/playground
     - This will minimise your observable usage
