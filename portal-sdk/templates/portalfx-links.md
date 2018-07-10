@@ -4,6 +4,31 @@
 Use deep links to jump directly into your extension within the portal. Each deep link consists of the portal URL (e.g. https://portal.azure.com), target directory domain name or tenant id (e.g. microsoft.com), a route prefix (i.e. asset, resource, blade, browse, or marketplace), and the actual deep link target.
 
 
+
+## Blades
+
+To link to blades, the route prefix is `blade` followed by the owning extension then the blade name:
+
+`https://portal.azure.com/#@{directory}blade/{extension}/{blade}`
+
+Blade inputs are serialized in consecutive name/value pairs, the below example has a single input `resourceType` and the value passed in is `Microsoft.Resources/resources`
+
+For instance: 
+
+https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources
+
+### Menu Blades
+
+Similar to blades, Menu blades follow the same `blade` prefix. 
+Although a difference a menu blade deep link is they allow for a menu item identifier. If this is specified the given menu item will be selected,
+if not then it will default to the overview item or the first item in the menu.
+
+`https://portal.azure.com/#@{directory}blade/{extension}/{blade}/{menuItemId}`
+
+For instance:
+https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview
+
+
 ## Resources
 
 To link to a ARM resource, all you need is the ARM resource id. Tenant resources and nested resources are not supported.
@@ -14,19 +39,14 @@ For instance:
 
 https://portal.azure.com/#@microsoft.onmicrosoft.com/resource/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/foo/providers/microsoft.web/sites/bar
 
+ARM resources are built using a menu blade, so they also follow the menu blade deeplinking format - you can provide a menu item to be selected 
+as the final parameter.
 
-## Blades
-
-To link to blades, the route prefix is `blade` followed by the owning extension then the blade name:
-
-`https://portal.azure.com/#@{directory}blade/{extension}/{blade}`
+`https://portal.azure.com/#@{directory}resource{resource id}/{menuItemId}`
 
 For instance:
-https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview
 
-Blade inputs are serialized in consecutive name/value pairs, the below example has a single input `resourceType` and the value passed in is `Microsoft.Resources/resources`
-https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources
-
+https://portal.azure.com/#@microsoft.onmicrosoft.com/resource/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/foo/providers/microsoft.web/sites/bar/monitoring
 
 ## Create blades
 
