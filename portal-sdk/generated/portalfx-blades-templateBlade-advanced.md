@@ -44,11 +44,11 @@ constructor(container: FxCompositionBlade.Container, initialState: any, dataCont
 
     const translucent = MsPortalFx.ViewModels.ShieldType.Translucent;
     const opaque = MsPortalFx.ViewModels.ShieldType.Opaque;
-    var isTranslucent = true;
+    let isTranslucent = true;
 
-    var op = () => {
-        var operation = Q.defer<any>();
-        var shieldType = isTranslucent ? translucent : opaque;
+    const op = () => {
+        const operation = Q.defer<any>();
+        const shieldType = isTranslucent ? translucent : opaque;
         container.operations.add(operation.promise, { blockUi: true, shieldType: shieldType });
 
         isTranslucent = !isTranslucent;
@@ -60,8 +60,8 @@ constructor(container: FxCompositionBlade.Container, initialState: any, dataCont
     window.setInterval(op, 5000);
 
     // TextBox
-    var textBoxOptions = <TextBox.Options>{
-        label: ko.observable(ClientResources.formsSampleBasicTextBox)
+    const textBoxOptions = <TextBox.Options>{
+        label: ko.observable(ClientResources.formsSampleBasicTextBox),
     };
     this.myTextBox = new TextBox.ViewModel(container, textBoxOptions);
 }
@@ -92,8 +92,8 @@ if (newContentState !== MsPortalFx.ViewModels.ContentState.None) {
         text: newDisplayText,
         state: newContentState,
         selection: stateDetailsBladeSelection,
-        onActivated: onActivated
-    }
+        onActivated: onActivated,
+    };
 }
 
 this.statusBar(statusBar);
@@ -159,15 +159,15 @@ this.configureHotSpot = new HotSpotViewModel(container, {
             // set of inputs/settings.
             receiveResult: (result) => {
                 configuration.updateValues(result);
-            }
+            },
         });
 
         bladeRef.metadata = {
-            isContextBlade: true
+            isContextBlade: true,
         };
 
         return bladeRef;
-    }
+    },
 });
 
 ```
@@ -233,7 +233,7 @@ public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
                 noticeDescription: ClientResources.comingSoonDescription,
                 noticeCallToActionText: ClientResources.comingSoonAction,
                 noticeCallToActionUri: ClientResources.microsoftUri,
-                noticeImageType: MsPortalFx.ViewModels.Controls.Notice.ImageType.ComingSoon
+                noticeImageType: MsPortalFx.ViewModels.Controls.Notice.ImageType.ComingSoon,
             });
         });
     } else {

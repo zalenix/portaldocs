@@ -33,21 +33,12 @@
 
 * [Defining Blades and Parts using TypeScript decorators (a.k.a. 'no-PDL')](portalfx-no-pdl-programming.md#defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl)
 
-* [Parts (a.k.a. tiles)](portalfx-parts.md#parts-a-k-a-tiles)
 
 * [Blades](portalfx-blades.md#blades)
 
 * [Developing Forms](portalfx-forms.md#developing-forms)
     * [FAQ](portalfx-forms.md#faq)
 
-* [Controls](portalfx-controls.md#controls)
-    * [Date and Time](portalfx-controls.md#date-and-time)
-    * [Drop downs](portalfx-controls.md#drop-downs)
-    * [Editors](portalfx-controls.md#editors)
-    * [Forms](portalfx-controls.md#forms)
-    * [Lists](portalfx-controls.md#lists)
-    * [Helpers and Indicators](portalfx-controls.md#helpers-and-indicators)
-    * [Visualizing Data](portalfx-controls.md#visualizing-data)
 
 
 <a name="development-authentication"></a>
@@ -88,7 +79,6 @@
 
 <a name="development-debugging"></a>
 ## Debugging
-* [Debugging](portalfx-debugging.md#debugging)
 
 * [Debugging extension load failures](portalfx-debugging-extension-load-failures.md#debugging-extension-load-failures)
 

@@ -10,7 +10,7 @@ In many scenarios, users expect to see their rendered data update implicitly as 
 public robotsQuery = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModels.Robot, any>({
     entityTypeName: SamplesExtension.DataModels.RobotType,
     sourceUri: () => Util.appendSessionId(RobotData._apiRoot),
-    poll: true
+    poll: true,
 });
 
 ```
@@ -105,7 +105,7 @@ public updateRobot(robot: SamplesExtension.DataModels.Robot): FxBase.PromiseV<an
         uri: Util.appendSessionId(RobotData._apiRoot + robot.name()),
         type: "PUT",
         contentType: "application/json",
-        data: ko.toJSON(robot)
+        data: ko.toJSON(robot),
     }).then(() => {
         // This will refresh the set of data that is available in the underlying data cache.
         this.robotsQuery.refreshAll();
@@ -160,7 +160,7 @@ public updateRobot(robot: SamplesExtension.DataModels.Robot): FxBase.PromiseV<an
         uri: Util.appendSessionId(RobotData._apiRoot + robot.name()),
         type: "PUT",
         contentType: "application/json",
-        data: ko.toJSON(robot)
+        data: ko.toJSON(robot),
     }).then(() => {
         // This will refresh the set of data that is available in the underlying data cache.
         this.robotsQuery.refreshAll();
@@ -241,11 +241,11 @@ public createRobot(robot: SamplesExtension.DataModels.Robot): FxBase.PromiseV<an
         uri: Util.appendSessionId(RobotData._apiRoot),
         type: "POST",
         contentType: "application/json",
-        data: ko.toJSON(robot)
+        data: ko.toJSON(robot),
     }).then(() => {
-        // This will refresh the set of data that is displayed to the client by applying the change we made to 
-        // each data set in the cache. 
-        // For this particular example, there is only one data set in the cache. 
+        // This will refresh the set of data that is displayed to the client by applying the change we made to
+        // each data set in the cache.
+        // For this particular example, there is only one data set in the cache.
         // This function is executed on each data set selected by the query params.
         // params: any The query params
         // dataSet: MsPortalFx.Data.DataSet The dataset to modify
@@ -266,13 +266,13 @@ public createRobot(robot: SamplesExtension.DataModels.Robot): FxBase.PromiseV<an
 public deleteRobot(robot: SamplesExtension.DataModels.Robot): FxBase.PromiseV<any> {
     return FxBaseNet.ajax({
         uri: Util.appendSessionId(RobotData._apiRoot + robot.name()),
-        type: "DELETE"
+        type: "DELETE",
     }).then(() => {
         // This will notify the shell that the robot is being removed.
         MsPortalFx.UI.AssetManager.notifyAssetDeleted(ExtensionDefinition.AssetTypes.Robot.name, robot.name());
 
-        // This will refresh the set of data that is displayed to the client by applying the change we made to 
-        // each data set in the cache. 
+        // This will refresh the set of data that is displayed to the client by applying the change we made to
+        // each data set in the cache.
         // For this particular example, there is only one data set in the cache.
         // This function is executed on each data set selected by the query params.
         // params: any The query params
@@ -301,13 +301,13 @@ Now, when the server data for a given cache entry *has been entirely deleted*, t
 public deleteComputer(computer: SamplesExtension.DataModels.Computer): FxBase.PromiseV<any> {
     return FxBaseNet.ajax({
         uri: Util.appendSessionId(ComputerData._apiRoot + computer.name()),
-        type: "DELETE"
+        type: "DELETE",
     }).then(() => {
         // This will notify the shell that the computer is being removed.
         MsPortalFx.UI.AssetManager.notifyAssetDeleted(ExtensionDefinition.AssetTypes.Computer.name, computer.name());
 
-        // This will refresh the set of data that is displayed to the client by applying the change we made to 
-        // each data set in the cache. 
+        // This will refresh the set of data that is displayed to the client by applying the change we made to
+        // each data set in the cache.
         // For this particular example, there is only one data set in the cache.
         // This function is executed on each data set selected by the query params.
         // params: any The query params

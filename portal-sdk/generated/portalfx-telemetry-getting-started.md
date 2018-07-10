@@ -18,9 +18,9 @@ Data Source: [https://AzPortal.kusto.windows.net](https://AzPortal.kusto.windows
 <a name="getting-started-permissions"></a>
 ### Permissions
 
-All Azure employees should have access to our Kusto clusters. The way permissions are granted is through inheritence of the overall AAD group (`REDMOND\AZURE-ALL-PSV` for teams in C+E, for teams outside `REDMOND\AZURE-ALL-FPS`). We do not grant individuals access to the kusto, you will need to join your respective team's group. To inherit the valid permissions your team should have a standard access group you can join in //ramweb or //myaccess and that group should be configured to have the correct permissions.
+All Azure employees should have access to our Kusto clusters. The way permissions are granted is through inheritance of the overall AAD group (`REDMOND\AZURE-ALL-PSV` for teams in C+E, for teams outside `REDMOND\AZURE-ALL-FPS`). We do not grant individuals access to the kusto, you will need to join your respective team's group. To inherit the valid permissions your team should have a standard access group you can join in //ramweb or //myaccess and that group should be configured to have the correct permissions.
 
-If you don't have access please follow the below steps:
+If you don't have access, please follow the below steps:
 
 1. Visit [http://aka.ms/standardaccess](http://aka.ms/standardaccess)
 1. On the standard access page you will find a table of team projects 'Active ​Azure  Team Projects'
@@ -33,7 +33,7 @@ If you don't have access please follow the below steps:
 
 If you are unable to find a group to join within the table, you may need to create a new group. First confirm that with your colleagues, there may be a group that is named non-intuitively.
 
-If there is still no group you can join you will need to create a new group. To do that please follow documentation on [http://aka.ms/standardaccess](http://aka.ms/standardaccess).
+If there is still no group, you can join you will need to create a new group. To do that please follow documentation on [http://aka.ms/standardaccess](http://aka.ms/standardaccess).
 Look for the link named 'Azure RBAC Getting Started Guide'.
 
 

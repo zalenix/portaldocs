@@ -76,7 +76,7 @@ module Main {
             const viewModel = this.viewModel = new FrameBlade.ViewModel(container, {
                 src: MsPortalFx.Base.Resources.getContentUri("/Content/SamplesExtension/framebladepage.html"),
             });
-			
+
 //top-blades-frameblades#viewmodel
 
             // You can add command bars to FrameBlades.

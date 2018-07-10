@@ -29,7 +29,7 @@ const mySectionOptions: Section.Options = {
         this.myCheckBox,
         this.mySelector,
         this.myDropDown,
-    ])
+    ]),
 };
 this.mySection = new Section.ViewModel(this._container, mySectionOptions);
 

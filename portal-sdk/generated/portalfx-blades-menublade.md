@@ -70,7 +70,7 @@ export class SampleMenuBlade extends FxMenuBlade.ViewModel {
                                 },
                                 receiveResult: result => {
                                     // Intentionally blank. The launched blade is responsible for the create operation.
-                                }
+                                },
                             });
                         },
                     },
@@ -91,7 +91,7 @@ export class SampleMenuBlade extends FxMenuBlade.ViewModel {
                         supplyBladeReference: () => {
                             return new BladeReferences.BladeWithActivationStyleReference();
                         },
-                    }
+                    },
                 ],
             },
             {

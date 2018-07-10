@@ -130,8 +130,8 @@ this.websiteEntities = new MsPortalFx.Data.EntityCache<SamplesExtension.DataMode
         queryCache: this.websitesQuery,
         entityMatchesId: (website, id) => {
             return website.id() === id;
-        }
-    }
+        },
+    },
 });
 
 ```
@@ -150,7 +150,7 @@ this._websiteEntityView = dataContext.websiteEntities.createView(container);
 
 /**
  * Invoked when the blade's inputs change
- */   
+ */
 public onInputsSet(inputs: Def.BrowseMasterListViewModel.InputsContract): MsPortalFx.Base.Promise {
     return this._websitesQueryView.fetch({ runningStatus: this.runningStatus.value() });
 }

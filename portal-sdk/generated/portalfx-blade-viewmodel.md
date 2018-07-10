@@ -45,7 +45,7 @@ public nameTextBox: TextBox.ViewModel;
 /**
  * Observable containing either a numeric textbox or a textbox.
  */
-public smartPhone: KnockoutObservable<TextBox.ViewModel>
+public smartPhone: KnockoutObservable<TextBox.ViewModel>;
 
 /**
  * OK button for submitting updated user data back to server.
@@ -98,8 +98,8 @@ Here's what our blade view model constructor looks like:
 this._view = dataContext.personData.peopleEntities.createView(container);
 
 this.nameTextBox = new TextBox.ViewModel(container, {
-    readonly: true,
-    label: ko.observable("Name")
+    readOnly: true,
+    label: ko.observable("Name"),
 });
 
 this.smartPhone = ko.observable<TextBox.ViewModel>();
@@ -108,7 +108,7 @@ this.okButton = Button.create(container, {
     text: "OK",
     onClick: () => {
         container.closeChildBlade();
-    }
+    },
 });
 
 ```
@@ -174,19 +174,19 @@ onInputsSet method:
 ```typescript
 
 return this._view.fetch(inputs.id).then(() => {
-    let person = this._view.data;
+    const person = this._view.data;
 
     // populate name textbox value
     this.nameTextBox.value(person.name());
 
     // if smartphone has a value create a control to display it
     // otherwise leave it empty
-    let smartPhone = person.smartPhone();
+    const smartPhone = person.smartPhone();
     if (smartPhone) {
-        let textBox = new TextBox.ViewModel(this._container, {
-            readonly: true,
+        const textBox = new TextBox.ViewModel(this._container, {
+            readOnly: true,
             label: ko.observable("Smart phone"),
-            defaultValue: ko.observable(smartPhone)
+            defaultValue: ko.observable(smartPhone),
         });
         this.smartPhone(textBox);
     }
