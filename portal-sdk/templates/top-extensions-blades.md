@@ -19,9 +19,6 @@ The following is a list of different types of blades.
 | Advanced TemplateBlade Topics    | [top-blades-advanced.md](top-blades-advanced.md) | More blade development techniques.  |
 | Blade with tiles   | [top-blades-legacy.md](top-blades-legacy.md)  |  Legacy authoring model. Deprecated due to its complexity. | 
 
-
- {"gitdown": "include-file", "file": "portalfx-extensions-bp-blades.md"}
-
  {"gitdown": "include-file", "file": "portalfx-extensions-faq-blades.md"}
 
  {"gitdown": "include-file", "file": "portalfx-extensions-glossary-blades.md"}
