@@ -1,108 +1,136 @@
 
 # Azure Portal Glossary
 
+<!-- Glossary  documents are included in this document in the same order as the topic documents are included in the README.md. -->
+<!-- Glossaries for documents that are not top documents are in the same section as the first top document that links to them. -->
+
  This section contains all glossaries from all Azure Portal Extension documents. There may be some duplication because documents may contain terms that are used in other documents.
 
-<!--TODO:  The order in this document should match the main index. -->
+## Onboarding a new extension
 
-## Extension Architecture
+{"gitdown": "include", "file": "portalfx-extensions-glossary-onboarding.md"}
 
-{"gitdown": "include-file", "file": "portalfx-extensions-glossary-architecture.md"}
-
-## Blades 
-
-{"gitdown": "include-file", "file": "portalfx-extensions-glossary-blades.md"}
-
-## CNAMEs and CNAME Records
-
-{"gitdown": "include-file", "file": "portalfx-extensions-glossary-cnames.md"}
-
-## Controls
-
-{"gitdown": "include-file", "file": "portalfx-extensions-glossary-controls.md"}
-
-## Create
-
-{"gitdown": "include-file", "file": "portalfx-extensions-glossary-create.md"}
-
-## Custom Deployment 
-
-{"gitdown": "include-file", "file": "portalfx-extensions-glossary-custom-deployment.md"}
-
-
-## Debugging Extensions 
-
-{"gitdown": "include-file", "file": "portalfx-extensions-glossary-debugging.md"}
-
-## Extension Configuration
+{"gitdown": "include", "file": "portalfx-extensions-glossary-external.md"}
 
 {"gitdown": "include-file", "file": "portalfx-extensions-glossary-configuration.md"}
 
-## Feature Flags
+{"gitdown": "include-file", "file": "portalfx-extensions-glossary-cnames.md"}
 
-   {"gitdown": "include-file", "file": "portalfx-extensions-glossary-flags.md"}
+## Azure portal architecture
 
-## Flighting 
+{"gitdown": "include-file", "file": "portalfx-extensions-glossary-architecture.md"}
 
- {"gitdown": "include-file", "file": "portalfx-extensions-glossary-flighting.md"}
-  
-## Forms 
+## What's new
 
- {"gitdown": "include-file", "file": "portalfx-extensions-glossary-forms.md"}
+{"gitdown": "include", "file": "portalfx-extensions-glossary-typescript.md"}
 
-## Hello World Extension
+## Getting started
 
-   {"gitdown": "include-file", "file": "portalfx-extensions-glossary-helloWorld.md"}
+ {"gitdown": "include-file", "file": "portalfx-extensions-glossary-getting-started.md"}
+ 
+ {"gitdown": "include-file", "file": "portalfx-extensions-glossary-nuget.md"}
 
-## Hosting Service
+ {"gitdown": "include", "file": "portalfx-extensions-glossary-sideloading.md"}
 
- {"gitdown": "include-file", "file": "portalfx-extensions-glossary-hosting-service.md"}
-  
-## Initializing the Developer Platform
+ {"gitdown": "include-file", "file": "portalfx-extensions-glossary-helloWorld.md"}
 
-   {"gitdown": "include-file", "file": "portalfx-extensions-glossary-getting-started.md"}
+<!--
+## Samples  
+-->
 
-## Key Components 
+## Blades
 
-   {"gitdown": "include-file", "file": "portalfx-extensions-glossary-key-components.md"}
+{"gitdown": "include-file", "file": "portalfx-extensions-glossary-blades.md"}
 
-## No-PDL Programming
-
- {"gitdown": "include", "file": "portalfx-extensions-glossary-typescript.md"}
-
-## Onboarding
-
- {"gitdown": "include", "file": "portalfx-extensions-glossary-onboarding.md"}
+{"gitdown": "include", "file": "portalfx-extensions-glossary-resourcemenu.md"}
 
 ## Parts
 
  {"gitdown": "include", "file": "portalfx-extensions-glossary-parts.md"}
 
-## Performance
+## Building UI with HTML templates and Fx controls
 
- {"gitdown": "include", "file": "portalfx-extensions-glossary-performance.md"}
+{"gitdown": "include-file", "file": "portalfx-extensions-glossary-controls.md"}
 
-## Resource Menu
-
- {"gitdown": "include", "file": "portalfx-extensions-glossary-resourcemenu.md"}
-
-## Sideloading
-
- {"gitdown": "include", "file": "portalfx-extensions-glossary-sideloading.md"}
-
-## Status Codes and Error Messages
-
-   {"gitdown": "include-file", "file": "portalfx-extensions-glossary-status-codes.md"}
-
-## Style Guide
+## Styling and theming
 
  {"gitdown": "include", "file": "portalfx-extensions-glossary-style-guide.md"}
 
+ {"gitdown": "include", "file": "portalfx-extensions-glossary-icons.md"}
+
+## Forms
+
+ {"gitdown": "include-file", "file": "portalfx-extensions-glossary-forms.md"}
+
+## Common scenarios and integration points
+
+{"gitdown": "include-file", "file": "portalfx-extensions-glossary-create.md"}
+
+## Other UI concepts
+
+{"gitdown": "include-file", "file": "portalfx-extensions-glossary-notifications.md"}
+
+<!--
+## Loading and managing data
+## Advanced development topics
+-->
+
+## Debugging
+
+{"gitdown": "include-file", "file": "portalfx-extensions-glossary-debugging.md"}
+
+{"gitdown": "include-file", "file": "portalfx-extensions-glossary-status-codes.md"}
+
+## Performance 
+
+{"gitdown": "include", "file": "portalfx-extensions-glossary-performance.md"}
+
+{"gitdown": "include", "file": "portalfx-extensions-glossary-cdn.md"}
+
 ## Testing
 
- {"gitdown": "include", "file": "portalfx-extensions-glossary-testing.md"}
- {"gitdown": "include", "file": "portalfx-extensions-glossary-production-testing.md"}
+{"gitdown": "include", "file": "portalfx-extensions-glossary-testing.md"}
+ 
+<!--
+## Telemetry and alerting
+-->
 
-## Versioning
+## Experimentation and flighting
+
+{"gitdown": "include-file", "file": "portalfx-extensions-glossary-flighting.md"}
+
+{"gitdown": "include-file", "file": "portalfx-extensions-glossary-flags.md"}
+ 
+
+## Localization / Globalization
+
+{"gitdown": "include-file", "file": "portalfx-extensions-glossary-localization-globalization.md"}
+
+## Accessibility
+
+{"gitdown": "include-file", "file": "portalfx-extensions-glossary-accessibility.md"}
+
+## Deploying your extension
+
+{"gitdown": "include-file", "file": "portalfx-extensions-glossary-deployment.md"}
+
+## Deployment using the Ibiza hosting service
+
+{"gitdown": "include-file", "file": "portalfx-extensions-glossary-hosting-service.md"}
 
 {"gitdown": "include", "file": "portalfx-extensions-glossary-versioning.md"}  
+
+## Custom extension deployment infrastructure
+
+{"gitdown": "include-file", "file": "portalfx-extensions-glossary-custom-deployment.md"}
+
+
+## Legacy features
+
+{"gitdown": "include-file", "file": "portalfx-extensions-glossary-data.md"}
+
+## Other Documents 
+  
+### Key Components 
+
+{"gitdown": "include-file", "file": "portalfx-extensions-glossary-key-components.md"}
