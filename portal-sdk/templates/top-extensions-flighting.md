@@ -107,4 +107,6 @@ The strategy for the designing, running, and analyzing the test flight is as fol
 
    The Kusto queries can be configured to run on a schedule, and can be fed to **PowerBI** reports and dashboards for scenarios that require visibility by various levels of leadership.
  
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-flighting.md"}
+ <!--
+gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-flighting.md"}
+-->

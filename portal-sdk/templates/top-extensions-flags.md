@@ -413,5 +413,6 @@ The following are the feature flags that are invoked with the syntax: `feature.<
 
 
 
-
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-flags.md"}
+<!--
+gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-flags.md"}
+-->

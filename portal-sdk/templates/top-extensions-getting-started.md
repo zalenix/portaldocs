@@ -53,4 +53,6 @@ Developers need to keep their development environments current while they are im
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-getting-started.md"}
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-getting-started.md"}
+<!--
+gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-getting-started.md"}
+-->

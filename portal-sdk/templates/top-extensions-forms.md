@@ -74,4 +74,6 @@ For more information about forms without editScopes, see  [top-editscopeless-for
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-forms.md"}
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-forms.md"}
+<!--
+gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-forms.md"}
+-->

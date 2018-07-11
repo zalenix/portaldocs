@@ -182,5 +182,6 @@ There are several scenarios in which a developer might test various ideas for an
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-sideloading.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-status-codes.md"}
-
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-sideloading.md"}
+<!--
+gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-sideloading.md"}
+-->

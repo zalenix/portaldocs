@@ -42,4 +42,6 @@ The following is a list of hosting service topics.
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-hosting-service.md"}
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-hosting-service.md"}
+<!--
+gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-hosting-service.md"}
+-->

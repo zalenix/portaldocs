@@ -164,6 +164,6 @@ If you need to open a different blade for a specific message, the extension shou
 * Always use server events for non-read operations, and for any events that originate on a server or end system.
 
 * Server events are used to track asset history. Even if a change is considered to be unimportant, the extension should raise a low-priority Info event to track it appropriately.
-
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-notifications.md"}
-
+<!--
+gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-notifications.md"}
+-->
