@@ -239,4 +239,5 @@ Web semantics
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-accessibility.md"}
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-accessibility.md"}
+<!--
+gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-accessibility.md"}

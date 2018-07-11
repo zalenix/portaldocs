@@ -21,4 +21,6 @@ The following is a list of different types of blades.
 
  {"gitdown": "include-file", "file": "portalfx-extensions-faq-blades.md"}
 
- {"gitdown": "include-file", "file": "portalfx-extensions-glossary-blades.md"}
+<!--
+ gitdown": "include-file", "file": "portalfx-extensions-glossary-blades.md"}
+-->
