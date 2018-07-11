@@ -8,8 +8,6 @@ Couldn't find what you needed? [Ask about the docs on StackOverflow](https://sta
 
 * [Overview / Get started](/portal-sdk/generated/top-onboarding.md)
 
-* [Third-party extensions](/portal-sdk/generated/top-third-party-onboarding.md)
-
 * [Steps that do not involve the Ibiza team](/portal-sdk/generated/top-extensions-onboarding-with-related-teams.md)
 
 * [Manage cloud/environment specific configuration](/portal-sdk/generated/top-extensions-configuration.md)
@@ -63,6 +61,8 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [SDK Update policy and alerts](/portal-sdk/generated/top-extensions-getting-started.md#maintain-development-environment)
 
 * [Run the extension locally (a.k.a. sideloading)](/portal-sdk/generated/top-extensions-sideloading.md)
+
+
 
 [Ask an SDK setup question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)
 
@@ -265,6 +265,10 @@ The Azure portal strives to meet high accessibility standards to ensure the prod
 [Ask about accessibility on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-accessibility)
 
 ## Deploying your extension
+
+<!--
+* [Deploy your extension](/portal-sdk/generated/top-extensions-deployment.md)
+-->
 
 Learn how to deploy your extension to the various clouds and environments.
 * [Extension registration, environments, clouds and Ibiza team SLAs](/portal-sdk/generated/top-extensions-publishing.md)
