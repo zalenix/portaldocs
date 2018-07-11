@@ -1,7 +1,29 @@
 <a name="azure-portal-best-practices"></a>
 # Azure Portal Best Practices
 
-This document  contains all Best Practices that have been added to Azure Portal topics. Best Practices that have been documented in textbooks and similar publications are outside of the scope of this document.
+<!-- Best Practices documents are included in this document in the same order as the topic documents are included in the README.md. -->
+
+This document contains all Best Practices that have been included in the Azure Portal topics in [https://github.com/Azure/portaldocs](https://github.com/Azure/portaldocs). Practices that have been documented in textbooks and similar publications are outside of the scope of this document.
+
+<a name="azure-portal-best-practices-getting-started"></a>
+## Getting started
+
+
+<a name="azure-portal-best-practices-best-practices"></a>
+## Best Practices
+   
+***What is the best environment for sideloading during initial testing?***
+
+ The FAQs for debugging extensions is located at [portalfx-extensions-faq-hosting-service.md](portalfx-extensions-faq-hosting-service.md).
+
+* * *
+
+<a name="azure-portal-best-practices-best-practices-onebox-stb-is-not-available"></a>
+### Onebox-stb is not available
+
+Onebox-stb has been deprecated. Please do not use it. Instead, migrate extensions to sideloading. For help on migration, send an email to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Help on Migration">ibiza-onboarding@microsoft.com</a>.
+
+* * * 
 
 <a name="azure-portal-best-practices-blades-and-parts"></a>
 ## Blades and parts
@@ -81,6 +103,7 @@ Extensions should migrate to the `ResourceMenu` for all of their resources.
 
 
 
+
 <a name="azure-portal-best-practices-best-practices"></a>
 ## Best Practices
 
@@ -99,6 +122,41 @@ For example, if the error is caused because the user credentials are not known t
 1. The part can handle the error and show a message that says ‘click here to enter credentials’. Clicking the part would launch a blade with the credentials form.
 
  
+
+<!--
+<a name="azure-portal-best-practices-building-ui-with-html-templates-and-fx-controls"></a>
+## Building UI with HTML templates and Fx controls
+-->
+
+<a name="azure-portal-best-practices-styling-and-theming"></a>
+## Styling and theming
+
+
+<a name="azure-portal-best-practices-best-practices"></a>
+## Best Practices
+
+<a name="azure-portal-best-practices-best-practices-general-best-practices"></a>
+### General Best Practices
+
+Do not use JavaScript reserved words, as specified in [https://docs.microsoft.com/en-us/scripting/javascript/reference/javascript-reserved-words](https://docs.microsoft.com/en-us/scripting/javascript/reference/javascript-reserved-words), as names for the icons in your extension.
+
+
+<!--
+<a name="azure-portal-best-practices-forms"></a>
+## Forms
+
+<a name="azure-portal-best-practices-common-scenarios-and-integration-points"></a>
+## Common scenarios and integration points
+
+<a name="azure-portal-best-practices-other-ui-concepts"></a>
+## Other UI concepts
+
+<a name="azure-portal-best-practices-loading-and-managing-data"></a>
+## Loading and managing data
+
+<a name="azure-portal-best-practices-advanced-development-topics"></a>
+## Advanced development topics
+-->
 
 <a name="azure-portal-best-practices-debugging"></a>
 ## Debugging
@@ -133,7 +191,6 @@ There are practices that can improve the performance of the extension.  For more
 ### Productivity Tip
 
 Install Chrome that is located at [https://www.google.com/intl/en_ca/chrome/](https://www.google.com/intl/en_ca/chrome/) to leverage the debugger tools while developing an extension.
-
 
 
 <a name="azure-portal-best-practices-performance"></a>
@@ -352,41 +409,33 @@ The following image uses the selectableGrid `map` function to display only the d
 * The decrease in size and transfer time also reduces  memory usage.
 
 
-<a name="azure-portal-best-practices-sideloading"></a>
-## Sideloading
-
-
-<a name="azure-portal-best-practices-best-practices"></a>
-## Best Practices
-   
-***What is the best environment for sideloading during initial testing?***
-
- The FAQs for debugging extensions is located at [portalfx-extensions-faq-hosting-service.md](portalfx-extensions-faq-hosting-service.md).
-
-* * *
-
-<a name="azure-portal-best-practices-best-practices-onebox-stb-is-not-available"></a>
-### Onebox-stb is not available
-
-Onebox-stb has been deprecated. Please do not use it. Instead, migrate extensions to sideloading. For help on migration, send an email to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Help on Migration">ibiza-onboarding@microsoft.com</a>.
-
-* * * 
-
-<a name="azure-portal-best-practices-style-guide"></a>
-## Style Guide
-
 
 <a name="azure-portal-best-practices-best-practices"></a>
 ## Best Practices
 
-<a name="azure-portal-best-practices-best-practices-general-best-practices"></a>
-### General Best Practices
+<a name="azure-portal-best-practices-best-practices-resource-menu-item"></a>
+### Resource menu item
 
-Do not use JavaScript reserved words, as specified in [https://docs.microsoft.com/en-us/scripting/javascript/reference/javascript-reserved-words](https://docs.microsoft.com/en-us/scripting/javascript/reference/javascript-reserved-words), as names for the icons in your extension.
+Please use `cdnIntegration` for the resource menu item id. This id is used  to track blade loads and create telemetry on the CDN Integration Blade.
+
+<a name="azure-portal-best-practices-best-practices-localizing-text"></a>
+### Localizing text
+
+ The displayText named "Azure CDN" should  be localized and located in the  `Resources.resx` file of the extension.
+
+<a name="azure-portal-best-practices-best-practices-conditional-setting-of-integraion"></a>
+### Conditional setting of Integraion
+
+ To display this blade, set the `visible` property on the `cdnIntegration` menu item to `true`.  Also, the extension can conditionally display this blade based on a feature flag  in the extension, as in the following example.
+
+	```ts
+	visible: ko.observable(MsPortalFx.isFeatureEnabled("cdnintegration"))
+	```
 
 
-<a name="azure-portal-best-practices-testing-in-production"></a>
-## Testing in Production
+
+<a name="azure-portal-best-practices-testing"></a>
+## Testing
 
 
 <a name="azure-portal-best-practices-testing-best-practices"></a>
@@ -497,5 +546,172 @@ As you write UI based test cases using the Portal Test Framework it is recommend
     ```cs
     grid.FindElements(By.CssSelector("[aria-selected=true]"))
     ```
+
+
+
+<!--
+<a name="azure-portal-best-practices-telemetry-and-alerting"></a>
+## Telemetry and alerting
+
+<a name="azure-portal-best-practices-experimentation-and-flighting"></a>
+## Experimentation and flighting
+-->
+
+<a name="azure-portal-best-practices-localization-globalization"></a>
+## Localization / Globalization
+
+
+<a name="azure-portal-best-practices-best-practices"></a>
+## Best Practices
+
+Some best practices for localizing or globalizing extensions that run in the Portal are in _Best Practices for Developing World-Ready Applications_, which is  located at [https://docs.microsoft.com/en-us/dotnet/standard/globalization-localization/best-practices-for-developing-world-ready-apps](https://docs.microsoft.com/en-us/dotnet/standard/globalization-localization/best-practices-for-developing-world-ready-apps).
+
+
+
+<a name="azure-portal-best-practices-accessibility"></a>
+## Accessibility
+
+
+<a name="azure-portal-best-practices-best-practices"></a>
+## Best Practices
+
+1. Design and code your extension with accessibility in mind  
+
+1. Use Portal tiles/parts, forms, and controls whenever possible, as those are designed to be accessible
+
+1. Use HTML semantics when using custom HTML, as described in [http://www.w3schools.com/html/html5_semantic_elements.asp](http://www.w3schools.com/html/html5_semantic_elements.asp). For example, create buttons with the `BUTTON`  tag instead of a  styled `DIV` tag.
+
+1. Avoid using `aria-*`  attributes.  If you find yourself using those attributes, review your design and try to use HTML semantics as much as possible.
+
+1. Provide concise, meaningful instructions for user input.
+
+1. Scrub your content for consistent terminology and iconography before releasing it to the public
+
+1. Always use multiple sensory cues to convey information. Never use the position, orientation, size, shape, or color  of a UI element alone to communicate important information to the user.
+
+
+<!--
+<a name="azure-portal-best-practices-deploying-your-extension"></a>
+## Deploying your extension
+
+<a name="azure-portal-best-practices-deployment-using-the-ibiza-hosting-service"></a>
+## Deployment using the Ibiza hosting service
+
+<a name="azure-portal-best-practices-custom-extension-deployment-infrastructure"></a>
+## Custom extension deployment infrastructure
+-->
+
+<a name="azure-portal-best-practices-legacy-features"></a>
+## Legacy features
+
+<a name="azure-portal-best-practices-best-practices"></a>
+## Best Practices
+
+<a name="azure-portal-best-practices-best-practices-use-querycache-and-entitycache"></a>
+### Use QueryCache and EntityCache
+
+When performing data access from your view models, it may be tempting to make data calls directly from the `onInputsSet` function. By using the `QueryCache` and `EntityCache` objects from the `DataCache` class, you can control access to data through a single component. A single ref-counted cache can hold data across your entire extension.  This has the following benefits.
+
+* Reduced memory consumption
+* Lazy loading of data
+* Less calls out to the network
+* Consistent UX for views over the same data.
+
+**NOTE**: Developers should use the `DataCache` objects `QueryCache` and `EntityCache` for data access. These classes provide advanced caching and ref-counting. Internally, these make use of Data.Loader and Data.DataSet (which will be made FX-internal in the future).
+
+To learn more, visit [portalfx-data-configuringdatacache.md](portalfx-data-configuringdatacache.md).
+
+<a name="azure-portal-best-practices-best-practices-avoid-unnecessary-data-reloading"></a>
+### Avoid unnecessary data reloading
+
+As users navigate through the Ibiza UX, they will frequently revisit often-used resources within a short period of time.
+They might visit their favorite Website Blade, browse to see their Subscription details, and then return to configure/monitor their
+favorite Website. In such scenarios, ideally, the user would not have to wait through loading indicators while Website data reloads.
+
+To optimize for this scenario, use the `extendEntryLifetimes` option that is available on the `QueryCache` object and the `EntityCache` object.
+
+```ts
+
+public websitesQuery = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModels.WebsiteModel, any>({
+    entityTypeName: SamplesExtension.DataModels.WebsiteModelType,
+    sourceUri: MsPortalFx.Data.uriFormatter(Shared.websitesControllerUri),
+    supplyData: (method, uri, headers, data) => {
+        // ...
+    },
+    extendEntryLifetimes: true
+});
+
+```
+
+The cache objects contain numerous cache entries, each of which are ref-counted based on not-disposed instances of QueryView/EntityView. When a user closes a blade, typically a cache entry in the corresponding cache object will be removed, because all QueryView/EntityView instances will have been disposed. In the scenario where the user revisits the Website blade, the corresponding cache entry will have to be reloaded via an **AJAX** call, and the user will be subjected to loading indicators on the blade and its parts.
+
+With `extendEntryLifetimes`, unreferenced cache entries will be retained for some amount of time, so when a corresponding blade is reopened, data for the blade and its parts will already be loaded and cached.  Here, calls to `this._view.fetch()` from a blade or part `ViewModel` will return a resolved Promise, and the user will not see long-running loading indicators.
+
+**NOTE**:  The time that unreferenced cache entries are retained in QueryCache/EntityCache is controlled centrally by the FX and the timeout will be tuned based on telemetry to maximize cache efficiency across extensions.)
+
+For your scenario to make use of `extendEntryLifetimes`, it is **very important** that you take steps to keep your client-side QueryCache/EntityCache data caches **consistent with server data**.
+See [Reflecting server data changes on the client](portalfx-data-configuringdatacache.md) for details.
+
+<a name="azure-portal-best-practices-best-practices-anti-patterns-and-best-practices"></a>
+### Anti-patterns and best practices
+
+Do not unwrap observables directly in the mapping function of your extensions.  When returning a new object from the function supplied to `map`, you should avoid unwrapping observables directly in the mapping function, illustrated by `computedName` in the following example.
+
+```ts
+var projectedItems = this._view.items.map<RobotDetails>({
+    mapping: (robot: SamplesExtension.DataModels.Robot) => {
+        return <RobotDetails>{
+            name: robot.name,
+            
+            // DO NOT DO THIS!  USE A COMPUTED INSTEAD!
+            computedName: "{0}:{1}".format(robot.model(), robot.manufacturer());
+        };
+    },
+    ...
+```
+
+The `computedName` property above is the source of a common bug where "my grid loses selection when my `QueryCache` refreshes".  The reason for this is subtle.  If you unwrap observables in your mapping function, you will find that - each time the observable changes - your mapping function will be invoked again, (inefficiently) *generating an entirely new object*.  Since the Azure Portal FX's selection machinery presently relies on JavaScript object identity, selection tracked relative to the *old object* will be lost when this object is replaced by the *new object* generated by your mapping function.  Ignoring bugs around selection, generating new objects can lead to UI flicker and performance problems, as more UI is re-rendered than is necessary to reflect data changes. 
+
+SOLUTION: Follow these two patterns to avoid re-running of mapping functions and to avoid unnecessarily generating new output objects.
+ 
+1.  Reuse observables from the input object
+
+    Above, the `name` property above simply reuses - in the projected output object - an observable *from the input object*
+
+1.  Use `ko.computed()` for new, computed properties
+
+    The `computedName` property above uses a Knockout `computed`, and unwraps observables in the function that defines the  `computed`.
+ With this, only the `computedName` property is recomputed when the input `robot` object changes.
+
+1.  Use `map` and `filter` to reduce the size of the data you are binding to a control
+
+    See "Use map and filter to reduce size of rendered data".
+
+1.  Do not use `subscribe` to project\shape data.
+
+    An extreme anti-pattern would be to not use `map` at all when projecting/shaping data for use in controls, as in the following example.
+
+    ```ts
+    // DO NOT DO THIS!
+    this._view.items.subscribe((items) => {
+        var mappedItems: MappedPerson[] = [];
+        for (var i = 0; i < items.length; i++) {
+            // create a new mapped person for every item
+            mappedItems.push({
+                name: items[i].name,
+                model: robot.model()
+            });
+        }
+
+        this.selectableGridViewModel.items(mappedItems);
+    });
+    ```
+
+    There are two significant problems with `subscribe` used.
+
+    * Whenever `this._view.items` changes, an *entirely new array containing entirely new objects* will be generated.  Your scenario will suffer from the cost of serializing/deserializing this new array to the grid control and from the cost of fully re-rendering your grid.
+
+    * Whenever the `robot.model` observable changes, this change *will not be reflected in the grid*, since no code has subscribed to this `robot.model` observable.
+
 
 
