@@ -45,7 +45,7 @@ To start learning more about parts, see [top-extensions-sharing-blades-and-parts
 <a name="setting-up-for-azure-portal-development-maintain-development-environment"></a>
 ## Maintain development environment
 
-Developers need to keep their development environments current while they are implementing extensions.  They should occasionally revisit the software that was installed as specified in top-extensions-install-software.md to ensure that their development platforms use the most recent software that is compatible with Azure Development.  For example, http://aka.ms/portalfx/downloads specifies the most recent edition of the Azure Portal SDK.
+Developers need to keep their development environments current while they are implementing extensions.  They should occasionally revisit the software that was installed as specified in [top-extensions-install-software.md](top-extensions-install-software.md) to ensure that their development platforms use the most recent software that is compatible with Azure Development.  For example, [http://aka.ms/portalfx/downloads](http://aka.ms/portalfx/downloads) specifies the most recent edition of the Azure Portal SDK.
 
 
  <!--TODO: Determine whether there  is a more direct way to make the following link:
