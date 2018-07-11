@@ -1,2 +1,2 @@
 
-The page you requested has been moved to [portalfx-deployment.md#using-the-content-delivery-network](portalfx-deployment.md#using-the-content-delivery-network).
+The page you requested has been moved to [top-extensions-cdn.md#using-the-content-delivery-network](top-extensions-cdn.md#using-the-content-delivery-network).

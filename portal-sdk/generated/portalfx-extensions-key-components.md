@@ -70,7 +70,7 @@ For more information on creating gallery packages and create forms see the [gall
 Determine what the content was, and whether it has been included in the key components document.
 -->
 
-For more information about creating Portal experiences, see     [portalfx-create.md#building-create-experiences](portalfx-create.md#building-create-experiences).
+For more information about creating Portal experiences, see     [top-extensions-create.md#building-custom-create-forms](top-extensions-create.md#building-custom-create-forms).
 
 
 <a name="key-components-of-an-extension-browse-experience"></a>
@@ -96,7 +96,7 @@ The code for the browse implementation is located in the ```Browse.pdl``` file i
 
 When the  ```resourceType ``` name "Microsoft.PortalSdk/rootResources" is replaced with your production Resource Provider (RP) type,  your resources will be displayed in the list after the F5 button is clicked. 
 
-For more information on the Browse experience, see the document located at [portalfx-browse.md](portalfx-browse.md).
+For more information on the Browse experience, see the document located at [top-extensions-browse.md](top-extensions-browse.md).
 
 For more information about Resource Providers (RP) and other ARM support, see the Microsoft internal ARM wiki, located at [http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Wiki.aspx](http://sharepoint/sites/AzureUX/Sparta/SpartaWiki/Sparta%20Wiki.aspx).
 
@@ -120,23 +120,10 @@ The code for the resource menu blade is located in the ``` AssetTypeViewModel ``
 
 <!-- TODO:  Locate a gallery doc that describes the common resource properties.  [Resource menu blade documentation](/gallery-sdk/generated/index-gallery.md#resource-management-resource-menu).-->
 
-For more information on the Resource Menu,  see          .
+For more information on the Resource Menu,  see [top-blades-resourcemenu.md](top-blades-resourcemenu.md).
 
 
 
-<a name="key-components-of-an-extension-glossary"></a>
-## Glossary
-
-This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
-
-| Term                  | Meaning |
-| ---                   | --- |
-| blade                 | The main unit of the Azure UX that can be built using the Azure SDK.   The vertical container that acts as the starting point for any journey. Web pages that can be loaded in the Portal. Also known as blade or context blade. |
-| browse implementation | The implementation of the Azure Portal, based on the Portal environment, the Resource Provider (RP), and other factors. The portal's common navigation experience that displays a list of  services and resource types that  are available through the Portal. | 
-| experience            | Azure Portal software application. Also see UX. |
-| gallery package       | Contains all assets for a gallery item: icons, screenshots, descriptions, et al. The gallery package is compiled into a file with the .azpkg extension  for transfer between environments. |
-| Marketplace Gallery   | |
-| menu blade            | |
-| resource              | |
-| resource features     | |
-| resourceType          | The fully qualified name for the categories of resources to display in the BrowseResourceListPart. |
+<!--
+gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-key-components.md"}
+-->

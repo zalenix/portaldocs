@@ -1,18 +1,18 @@
 
 <a name="frequently-asked-questions"></a>
-## Frequently Asked Questions
+# Frequently Asked Questions
 
 <!-- FAQ documents are included in this document in the same order as the topic documents are included in the README.md. -->
 
 This section contains all Azure Portal FAQ's.
 
-<a name="onboarding-a-new-extension"></a>
+<a name="frequently-asked-questions-onboarding-a-new-extension"></a>
 ## Onboarding a new extension
 
-<a name="frequently-asked-questions"></a>
+<a name="frequently-asked-questions-frequently-asked-questions"></a>
 ## Frequently asked questions
 
-<a name="frequently-asked-questions-ssl-certs"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-ssl-certs"></a>
 ### SSL certs
 
 ***How do I use SSL certs?***
@@ -21,7 +21,7 @@ Instructions are located at [portalfx-extensions-faq-debugging.md#sslCerts](port
 
 * * *
 
-<a name="frequently-asked-questions-loading-different-versions-of-an-extension"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-loading-different-versions-of-an-extension"></a>
 ### Loading different versions of an extension
 
 ***How do I load different versions of an extension?***
@@ -31,16 +31,16 @@ Understanding which extension configuration to modify is located at [portalfx-ex
 
 
 
-<a name="what-s-new"></a>
+<a name="frequently-asked-questions-what-s-new"></a>
 ## What&#39;s new
 
 
-<a name="frequently-asked-questions"></a>
+<a name="frequently-asked-questions-frequently-asked-questions"></a>
 ## Frequently asked questions
 
 <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
 
-<a name="frequently-asked-questions-how-do-i-know-what-properties-methods-to-add-to-my-blade-or-part-class"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-how-do-i-know-what-properties-methods-to-add-to-my-blade-or-part-class"></a>
 ### How do I know what properties/methods to add to my Blade or Part class?
 
 ***How do I know what properties/methods to add to my Blade or Part class?***
@@ -64,7 +64,7 @@ If you iteratively refine your class based on **Intellisense** errors, once thes
 
 * * * 
 
-<a name="frequently-asked-questions-how-do-i-know-what-types-to-return-from-the-oninitialize-method"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-how-do-i-know-what-types-to-return-from-the-oninitialize-method"></a>
 ### How do I know what types to return from the <code>onInitialize</code> method?
 
 SOLUTION: If a 'return' statement is not used in the  `onInitialize` method, or any other method required by the  choice of **TypeScript** decorator, **Intellisense** errors will reflect the expected return type for the method:
@@ -76,7 +76,7 @@ public onInitialize() {
 ...
 ```
 
-<a name="frequently-asked-questions-why-can-t-i-return-my-data-loading-promise-directly-from-oninitialize"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-why-can-t-i-return-my-data-loading-promise-directly-from-oninitialize"></a>
 ### Why can&#39;t I return my data-loading Promise directly from &#39;onInitialize&#39;?
 
 SOLUTION: Extensions will see compile errors when then attempt to return from `onInitialize` the result of a call to `queryView.fetch(...)`, `entityView.fetch(...)`, `Base.Net.ajax2(...)`, as in the following code.
@@ -101,7 +101,7 @@ This application of `Q(...)` simply coerces your data-loading Promise into the r
 
 * * * 
 
-<a name="frequently-asked-questions-why-can-t-i-return-my-data-loading-promise-directly-from-oninitialize-i-don-t-understand-the-typescript-compilation-errors-that-is-occuring-around-my-typescript-blade-part-and-there-are-lots-of-them-what-should-i-do"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-why-can-t-i-return-my-data-loading-promise-directly-from-oninitialize-i-don-t-understand-the-typescript-compilation-errors-that-is-occuring-around-my-typescript-blade-part-and-there-are-lots-of-them-what-should-i-do"></a>
 #### I don&#39;t understand the <strong>TypeScript</strong> compilation errors that is occuring around my TypeScript Blade/Part.  And there are lots of them.  What should I do?
 
 SOLUTION: Typically, around  **TypeScript** Blades and Parts (and even PDL-defined Blades/Parts), only the first 1-5 compilation errors are easily understandable and actionable.  
@@ -134,7 +134,7 @@ Some snags to be aware of:
 
 * * * 
 
-<a name="frequently-asked-questions-how-do-i-add-an-icon-to-my-blade"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-how-do-i-add-an-icon-to-my-blade"></a>
 ### How do I add an icon to my Blade?
 
 Developers coming from PDL will be used to customizing their Blade's icon like the following example.
@@ -169,12 +169,12 @@ Now, why is this so?  It seems easier to do this in a single-step at the Blade-l
 
 * * * 
 
-<a name="frequently-asked-questions-how-do-i-control-the-loading-indicators-for-my-blade-how-is-it-different-from-pdl-blades"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-how-do-i-control-the-loading-indicators-for-my-blade-how-is-it-different-from-pdl-blades"></a>
 ### How do I control the loading indicators for my Blade?  How is it different from PDL Blades?
 
 Controlling the loading indicator in Blades/Parts, as specified in [portalfx-parts-revealContent.md](portalfx-parts-revealContent.md), is the almost exactly the same for PDL and no-PDL Blades/Parts. .
 
-<a name="frequently-asked-questions-how-do-i-control-the-loading-indicators-for-my-blade-how-is-it-different-from-pdl-blades-when-should-i-use-the-operations-api-to-control-the-blade-part-s-loading-indicator"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-how-do-i-control-the-loading-indicators-for-my-blade-how-is-it-different-from-pdl-blades-when-should-i-use-the-operations-api-to-control-the-blade-part-s-loading-indicator"></a>
 #### When should I use the &#39;operations&#39; API to control the Blade/Part&#39;s loading indicator?
 
 SOLUTION: 
@@ -183,7 +183,7 @@ For no-PDL Blades/Parts, the 'operations' API is `this.context.container.operati
 
 * * * 
 
-<a name="frequently-asked-questions-how-can-i-save-some-state-for-my-no-pdl-blade"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-how-can-i-save-some-state-for-my-no-pdl-blade"></a>
 ### How can I save some state for my no-PDL Blade?
 
 There is a decorator - @TemplateBlade.Configurable.Decorator for example, available on all Blade variations - that adds a `this.context.configuration` API that can be used to load/save Blade "settings".  See a sample [here](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).
@@ -192,16 +192,16 @@ There is a decorator - @TemplateBlade.Configurable.Decorator for example, availa
 
 * * *
 
-<a name="getting-started"></a>
+<a name="frequently-asked-questions-getting-started"></a>
 ## Getting Started
 
 
-<a name="frequently-asked-questions"></a>
+<a name="frequently-asked-questions-frequently-asked-questions"></a>
 ## Frequently Asked Questions
 
    <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
 
-<a name="frequently-asked-questions-getting-started"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-getting-started"></a>
 ### Getting Started
 
 ***Q: I want to create a new extension. How do I start?***
@@ -214,7 +214,7 @@ When you are ready to register the extension in the preview or production enviro
 
 For more information about Portal architecture, see [top-extensions-architecture.md](top-extensions-architecture.md).
 
-<a name="frequently-asked-questions-getting-help"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-getting-help"></a>
 ### Getting Help
 
 ***Q: I'm stuck. Where can I find help?***
@@ -230,14 +230,14 @@ SOLUTION: There are a few ways to get help.
 * If you are unable to find an answer, reach out to the Ibiza team at  [Stackoverflow Ibiza](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza).  For a list of topics and stackoverflow tags, see [portalfx-stackoverflow.md](portalfx-stackoverflow.md).
 
 
-<a name="frequently-asked-questions-broswer-support"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-broswer-support"></a>
 ### Broswer Support
 
 ***Q: Which browsers are supported?***
 
 SOLUTION: Currently the Portal supports the latest version of Edge, Firefox, Chrome, and Safari, and it also supports Internet Explorer Version 11.
 
-<a name="frequently-asked-questions-blade-commands"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-blade-commands"></a>
 ### Blade Commands
 
 ***Q: How do I show different commands for a blade based on the parameters passed to that blade?***
@@ -249,7 +249,7 @@ The **Toolbar** APIs allow an extension to call `commandBar.setItems([...])` to 
 
 
 
-<a name="frequently-asked-questions"></a>
+<a name="frequently-asked-questions-frequently-asked-questions"></a>
 ## Frequently asked questions
 
 ***Where are the FAQ's for normal debugging?***
@@ -258,7 +258,7 @@ The FAQs for debugging extensions is located at [portalfx-extensions-faq-debuggi
 
 * * *
 
-<a name="frequently-asked-questions-sandboxed-iframe-security"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-sandboxed-iframe-security"></a>
 ### Sandboxed iframe security
 
 *** I get an error 'Security of a sandboxed iframe is potentially compromised by allowing script and same origin access'. How do I fix this? ***
@@ -267,7 +267,7 @@ You need to allow the Azure Portal to frame your extension URL. For more informa
 
 * * *
 
-<a name="frequently-asked-questions-extension-will-not-sideload"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-extension-will-not-sideload"></a>
 ### Extension will not sideload
 
 *** My Extension fails to side load and I get an ERR_INSECURE_RESPONSE in the browser console ***
@@ -282,7 +282,7 @@ Items that are specifically status codes or error messages can be located in [po
 
 * * *
 
-<a name="frequently-asked-questions-sideloading-in-chrome"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-sideloading-in-chrome"></a>
 ### Sideloading in Chrome
 
 ***Ibiza sideloading in Chrome fails to load parts***
@@ -291,7 +291,7 @@ Enable the `allow-insecure-localhost` flag, as described in [https://stackoverfl
 
 * * *
 
-<a name="frequently-asked-questions-sideloading-in-chrome-sideloading-gallery-packages"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-sideloading-in-chrome-sideloading-gallery-packages"></a>
 #### Sideloading gallery packages
 
 ***Trouble sideloading gallery packages***
@@ -300,7 +300,7 @@ SOLUTION:  Some troubleshooting steps are located at [https://stackoverflow.micr
 
 * * *
 
-<a name="frequently-asked-questions-sideloading-in-chrome-sideloading-friendly-names"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-sideloading-in-chrome-sideloading-friendly-names"></a>
 #### Sideloading friendly names
 
 ***Sideloading friendly names is not working in the Dogfood environment***
@@ -314,23 +314,23 @@ The parameter `feature.canmodifystamps=true` is required for side-loading, and
 
 * * *
 
-<a name="frequently-asked-questions-other-testing-questions"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-other-testing-questions"></a>
 ### Other testing questions
 
 ***How can I ask questions about testing ?***
 
 You can ask questions on Stackoverflow with the tag [ibiza-test](https://stackoverflow.microsoft.com/questions/tagged/ibiza-test).
 
-<a name="samples"></a>
+<a name="frequently-asked-questions-samples"></a>
 ## Samples
 
 
-<a name="frequently-asked-questions"></a>
+<a name="frequently-asked-questions-frequently-asked-questions"></a>
 ## Frequently asked questions
 
 
 <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
-<a name="frequently-asked-questions-samples-will-not-compile"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-samples-will-not-compile"></a>
 ### Samples will not compile
 
 ***How do I fix this?***
@@ -363,7 +363,7 @@ You can ask questions on Stackoverflow with the tag [ibiza-test](https://stackov
 
  * * *
 
-<a name="frequently-asked-questions-cannot-launch-iis"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-cannot-launch-iis"></a>
 ### Cannot launch IIS
 
 *** Unable to launch the Microsoft Visual Studio IIS Express Web server***
@@ -378,13 +378,13 @@ Terminate IIS express processes in Task Manager and press F5 again.
 
 * * *
 
-<a name="blades-and-parts"></a>
+<a name="frequently-asked-questions-blades-and-parts"></a>
 ## Blades and parts
 
-<a name="frequently-asked-questions"></a>
+<a name="frequently-asked-questions-frequently-asked-questions"></a>
 ## Frequently asked questions
 
-<a name="frequently-asked-questions-when-to-make-properties-observable"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-when-to-make-properties-observable"></a>
 ### When to make properties observable
 
 *** Why not make every property observable just in case you want to update it later?***
@@ -395,12 +395,12 @@ SOLUTION: Performance. Using an observable string instead of a string increases 
 
 
 
-<a name="frequently-asked-questions"></a>
+<a name="frequently-asked-questions-frequently-asked-questions"></a>
 ## Frequently asked questions
 
 <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
 
-<a name="frequently-asked-questions-the-resource-menu"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-the-resource-menu"></a>
 ### The Resource menu
 
 ***What is the resource menu?***
@@ -409,7 +409,7 @@ SOLUTION:  The resource menu is a single location for all the resource's functio
 
 * * *
 
-<a name="frequently-asked-questions-resource-menu-samples"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-resource-menu-samples"></a>
 ### Resource menu samples
 
 ***Are there any samples I can refer to?***
@@ -418,7 +418,7 @@ SOLUTION: There are numerous samples that demonstrate how to use the resource me
 
 * * *
 
-<a name="frequently-asked-questions-the-support-resource-management-group"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-the-support-resource-management-group"></a>
 ### The Support Resource Management Group
 
 ***How do I add items to the Support/Resource Management Group?***
@@ -428,7 +428,7 @@ SOLUTION:  You can add items by using a `MenuGroupExtension`. `MenuGroupExtensio
 
 * * * 
 
-<a name="frequently-asked-questions-horizontal-scrolling"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-horizontal-scrolling"></a>
 ### Horizontal scrolling
 
 ***How do I reduce horizontal scrolling and UI movement in my extension?***
@@ -437,15 +437,15 @@ Horizontal scrolling and UI movement was a prime source of negative user feedbac
 
 * * *
 
-<a name="building-ui-with-html-templates-and-fx-controls"></a>
+<a name="frequently-asked-questions-building-ui-with-html-templates-and-fx-controls"></a>
 ## Building UI with HTML templates and Fx controls
 
-<a name="faqs-for-extension-controls"></a>
+<a name="frequently-asked-questions-faqs-for-extension-controls"></a>
 ## FAQs for Extension Controls
 
    <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
 
-<a name="faqs-for-extension-controls-how-to-use-a-monitorchartpart-from-legacy-blade"></a>
+<a name="frequently-asked-questions-faqs-for-extension-controls-how-to-use-a-monitorchartpart-from-legacy-blade"></a>
 ### How to use a MonitorChartPart from Legacy Blade
 
 ***My extension is still using legacy blades (locked or unlocked). Is this still applicable to me? If yes, do I get the benefits mentioned above?***
@@ -456,7 +456,7 @@ If there is an Insights/Monitoring Metrics part on your blade already, you can r
 
 * * * 
 
-<a name="faqs-for-extension-controls-changing-the-metrics-time-range-chart-type"></a>
+<a name="frequently-asked-questions-faqs-for-extension-controls-changing-the-metrics-time-range-chart-type"></a>
 ### Changing the metrics/time range/chart type
 
 ***Can the users change the metrics/time range/chart type of the charts shown in the overview blade?***
@@ -475,7 +475,7 @@ Removing customizations from blades also provides more reliable blade performanc
     
 * * * 
 
-<a name="faqs-for-extension-controls-controls-playground-questions"></a>
+<a name="frequently-asked-questions-faqs-for-extension-controls-controls-playground-questions"></a>
 ### Controls playground questions
 
 DESCRIPTION:  If I run into any problems using the controls playground or the new control `ViewModels`, who do I ask? 
@@ -484,7 +484,7 @@ SOLUTION: For control `ViewModel` issues, please post on StackOverflow.  For spe
 
 * * *
 
-<a name="faqs-for-extension-controls-adding-code-to-the-controls-playground"></a>
+<a name="frequently-asked-questions-faqs-for-extension-controls-adding-code-to-the-controls-playground"></a>
 ### Adding code to the controls playground
 
 DESCRIPTION:  Why can’t I type code directly into the controls playground editor?
@@ -493,7 +493,7 @@ SOLUTION: The controls playground does not execute code provided by the user due
 
 * * *
 
-<a name="faqs-for-extension-controls-missing-playground-controls"></a>
+<a name="frequently-asked-questions-faqs-for-extension-controls-missing-playground-controls"></a>
 ### Missing playground controls
 
 DESCRIPTION: Why aren’t all of the new controls in the playground?
@@ -502,7 +502,7 @@ SOLUTION:  The code for the playground extension is generated from `Fx.d.ts`.  S
 
 * * *
 
-<a name="faqs-for-extension-controls-playground-controls-are-not-localized"></a>
+<a name="frequently-asked-questions-faqs-for-extension-controls-playground-controls-are-not-localized"></a>
 ### Playground controls are not localized
 
 DESCRIPTION: Why is it that the controls playground does not provide localization?
@@ -512,11 +512,11 @@ SOLUTION: Localization is done at build times, so none of the string inputs are 
 * * *
 
 
-<a name="styling-and-theming"></a>
+<a name="frequently-asked-questions-styling-and-theming"></a>
 ## Styling and theming
 
 
-<a name="styling-and-theming-icon-incorrectly-displayed"></a>
+<a name="frequently-asked-questions-styling-and-theming-icon-incorrectly-displayed"></a>
 ### Icon incorrectly displayed
 
 ***My icon is black!?!***
@@ -533,20 +533,20 @@ Include the icon in your project normally. Build and  look at the generated file
 
 * * *
  
-<a name="styling-and-theming-"></a>
+<a name="frequently-asked-questions-styling-and-theming-"></a>
 ### 
 
 SOLUTION:
 
 * * *
 
-<a name="forms"></a>
+<a name="frequently-asked-questions-forms"></a>
 ## Forms
 
-<a name="frequently-asked-questions"></a>
+<a name="frequently-asked-questions-frequently-asked-questions"></a>
 ## Frequently asked questions
 
-<a name="frequently-asked-questions-should-i-use-an-action-bar-or-a-commands-toolbar-on-my-form"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-should-i-use-an-action-bar-or-a-commands-toolbar-on-my-form"></a>
 ### Should I use an action bar or a commands toolbar on my form?
 
 It depends on the scenario that drives the UX. If the form will capture some data from the user and expect the blade to be closed after submitting the changes, then use an action bar, as specified in [portalfx-ux-create-forms.md#action-bar-+-blue-buttons](portalfx-ux-create-forms.md#action-bar-+-blue-buttons).  However, if the form will edit or update some data, and expect the user to make multiple changes before the blade is closed, then use commands, as specified in [portalfx-commands.md](portalfx-commands.md). 
@@ -564,23 +564,23 @@ It depends on the scenario that drives the UX. If the form will capture some dat
 * * * 
 
 <!--
-<a name="common-scenarios-and-integration-points"></a>
+<a name="frequently-asked-questions-common-scenarios-and-integration-points"></a>
 ## Common scenarios and integration points
-<a name="other-ui-concepts"></a>
+<a name="frequently-asked-questions-other-ui-concepts"></a>
 ## Other UI concepts
-<a name="loading-and-managing-data"></a>
+<a name="frequently-asked-questions-loading-and-managing-data"></a>
 ## Loading and managing data
-<a name="advanced-development-topics"></a>
+<a name="frequently-asked-questions-advanced-development-topics"></a>
 ## Advanced development topics
 -->
 
-<a name="debugging"></a>
+<a name="frequently-asked-questions-debugging"></a>
 ## Debugging
 
-<a name="faqs-for-debugging-extensions"></a>
+<a name="frequently-asked-questions-faqs-for-debugging-extensions"></a>
 ## FAQs for Debugging Extensions
 
-<a name="faqs-for-debugging-extensions-ssl-certificates"></a>
+<a name="frequently-asked-questions-faqs-for-debugging-extensions-ssl-certificates"></a>
 ### SSL certificates
 
    <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
@@ -595,7 +595,7 @@ SSL Certs are relevant only for teams that host their own extensions.  Azure Por
 
 * * *
 
-<a name="faqs-for-debugging-extensions-loading-different-versions-of-an-extension"></a>
+<a name="frequently-asked-questions-faqs-for-debugging-extensions-loading-different-versions-of-an-extension"></a>
 ### Loading different versions of an extension
 
 ***How do I load different versions of an extension?***
@@ -604,7 +604,7 @@ Understanding which extension configuration to modify is located at [portalfx-ex
 
 * * * 
 
-<a name="faqs-for-debugging-extensions-checking-the-version-of-a-loaded-extension"></a>
+<a name="frequently-asked-questions-faqs-for-debugging-extensions-checking-the-version-of-a-loaded-extension"></a>
 ### Checking the version of a loaded extension
 
 ***I have set ApplicationContext.Version for my extension, how do I check what version of my extension is currently loaded in shell ?***
@@ -624,7 +624,7 @@ Understanding which extension configuration to modify is located at [portalfx-ex
 
 * * *
 
-<a name="faqs-for-debugging-extensions-onboarding-faq"></a>
+<a name="frequently-asked-questions-faqs-for-debugging-extensions-onboarding-faq"></a>
 ### Onboarding FAQ
 
 ***Where are the onboarding FAQs for Sparta (ARM/CSM-RP)?***
@@ -648,7 +648,7 @@ Then, verify that when a **TypeScript** file is saved, that the following text i
 
  * * *
  
-<a name="faqs-for-debugging-extensions-other-debugging-questions"></a>
+<a name="frequently-asked-questions-faqs-for-debugging-extensions-other-debugging-questions"></a>
 ### Other debugging questions
 
 ***How can I ask questions about debugging ?***
@@ -657,13 +657,13 @@ You can ask questions on Stackoverflow with the tag [ibiza](https://stackoverflo
 
 
 
-<a name="performance"></a>
+<a name="frequently-asked-questions-performance"></a>
 ## Performance
 
-<a name="frequently-asked-questions"></a>
+<a name="frequently-asked-questions-frequently-asked-questions"></a>
 ## Frequently asked questions
 
-<a name="frequently-asked-questions-extension-scores-are-above-the-bar"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-extension-scores-are-above-the-bar"></a>
 ### Extension scores are above the bar
 
 ***How can I refactor my code to improve performance?***
@@ -699,7 +699,7 @@ SOLUTION:
 
 * * *
 
-<a name="frequently-asked-questions-my-wxp-score-is-below-the-bar"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-my-wxp-score-is-below-the-bar"></a>
 ### My WxP score is below the bar
 
 ***How do I identify which pieces of the extension are not performant?***
@@ -714,7 +714,7 @@ If the extension is drastically under the bar, it is  likely that a high-usage b
 
 * * * 
 
-<a name="frequently-asked-questions-azure-performance-office-hours"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-azure-performance-office-hours"></a>
 ### Azure performance office hours
 
 ***Is there any way I can get further help?***
@@ -755,12 +755,12 @@ You can also reach out to <a href="mailto:sewatson@microsoft.com?subject=<extens
 
 
 
-<a name="frequently-asked-questions"></a>
+<a name="frequently-asked-questions-frequently-asked-questions"></a>
 ## Frequently asked questions
 
 <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
 
-<a name="frequently-asked-questions-cdn-paths-and-versioning"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-cdn-paths-and-versioning"></a>
 ### CDN Paths and Versioning
 
 ***Cannot find paths with versioning***
@@ -776,15 +776,15 @@ Ensure `IsDevelopmentMode` in the `*.config` file  is set to `false`.
 * * *
 
 
-<a name="testing"></a>
+<a name="frequently-asked-questions-testing"></a>
 ## Testing
 
-<a name="frequently-asked-questions"></a>
+<a name="frequently-asked-questions-frequently-asked-questions"></a>
 ## Frequently asked questions
 
 <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
 
-<a name="frequently-asked-questions-cannot-create-new-vs-project"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-cannot-create-new-vs-project"></a>
 ### Cannot create new VS project
 
 ***Cannot find the Node Tools for VS***
@@ -797,7 +797,7 @@ Solution: Install the `Node Tools for Visual Studio` that is located at [https:/
 
 <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
 
-<a name="frequently-asked-questions-overriding-default-stubs"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-overriding-default-stubs"></a>
 ### Overriding default stubs
 
 ***How do I override the default stubs the unit test harness provides out of the box?***
@@ -836,7 +836,7 @@ harness.init(options);
 
 ***
 
-<a name="frequently-asked-questions-mocha-test-harness"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-mocha-test-harness"></a>
 ### Mocha test harness
 
 ***Simple html test harness for running mocha tests***
@@ -867,7 +867,7 @@ Solution: If you would like this alternative approach use the following.
 
 ***
 
-<a name="frequently-asked-questions-using-microsoft-portal-tools-targets"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-using-microsoft-portal-tools-targets"></a>
 ### Using Microsoft.Portal.Tools.targets
 
 ***I am still using Microsoft.Portal.Tools.targets rather than Microsoft.Portal.Tools.V2.targets***
@@ -958,7 +958,7 @@ Update the script named `prereq` to be the following:
     ```
 ***
 
-<a name="frequently-asked-questions-cannot-use-internal-registry"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-cannot-use-internal-registry"></a>
 ### Cannot use internal registry
 
 ***I can't use the internal npm registry***
@@ -969,7 +969,7 @@ Solution:
 
 ***
 
-<a name="frequently-asked-questions-extension-will-not-authenticate"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-extension-will-not-authenticate"></a>
 ### Extension will not authenticate
 
 ***I can't authenticate***
@@ -985,7 +985,7 @@ If you are not a member of any of the Groups on https://msazure.visualstudio.com
 
 ***
 
-<a name="frequently-asked-questions-build-nodes-are-disconnected"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-build-nodes-are-disconnected"></a>
 ### Build nodes are disconnected
 
 ***My build nodes are completely disconnected from the internet***
@@ -1000,7 +1000,7 @@ Solution: You can commit your version of `msportalfx-ut.zip` into your repo and 
 
 ***
 
-<a name="frequently-asked-questions-corext-environments"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-corext-environments"></a>
 ### Corext Environments
 
 Build environments which are constructed using Corext will need to manually specify where to locate the Unit Test Framework **NuGet** package. This **NuGet** package will be expanded at `CxCache`, which is not the default location.  Consequently, you need to update the `CoreXT` config and then run  `npm packages.json` in order to point to the correct location.
@@ -1043,42 +1043,42 @@ This error indicates that the dev environment cannot find the expanded NuGet pac
 
 
 <!--
-<a name="telemetry-and-alerting"></a>
+<a name="frequently-asked-questions-telemetry-and-alerting"></a>
 ## Telemetry and alerting
-<a name="experimentation-and-flighting"></a>
+<a name="frequently-asked-questions-experimentation-and-flighting"></a>
 ## Experimentation and flighting
-<a name="localization-globalization"></a>
+<a name="frequently-asked-questions-localization-globalization"></a>
 ## Localization / Globalization
 -->
 
-<a name="accessibility"></a>
+<a name="frequently-asked-questions-accessibility"></a>
 ## Accessibility
 
-<a name="frequently-asked-questions"></a>
+<a name="frequently-asked-questions-frequently-asked-questions"></a>
 ## Frequently asked questions
 
-<a name="frequently-asked-questions-"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-"></a>
 ### 
 
 * * * 
 
 <!--
-<a name="deploying-your-extension"></a>
+<a name="frequently-asked-questions-deploying-your-extension"></a>
 ## Deploying your extension
 -->
 
-<a name="deployment-using-the-ibiza-hosting-service"></a>
+<a name="frequently-asked-questions-deployment-using-the-ibiza-hosting-service"></a>
 ## Deployment using the Ibiza hosting service
 
 
 
-<a name="frequently-asked-questions"></a>
+<a name="frequently-asked-questions-frequently-asked-questions"></a>
 ## Frequently asked questions
 
 <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
 
 
-<a name="frequently-asked-questions-content-unbundler-throws-aggregate-exception"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-content-unbundler-throws-aggregate-exception"></a>
 ### Content Unbundler throws aggregate exception
 
 ***Content Unbundler throws an Aggregate Exception during build.***
@@ -1092,7 +1092,7 @@ For more information, see [top-extensions-hosting-service-basic.md#prerequisites
 
 * * *
 
-<a name="frequently-asked-questions-finding-old-ux-after-deployment"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-finding-old-ux-after-deployment"></a>
 ### Finding old UX After Deployment
 
 ***Some customers of my extension are finding the old UX even after deploying the latest package. Is there a bug in hosting service ?***
@@ -1102,7 +1102,7 @@ We have seen scenarios where customers did not refresh the Portal for 2 weeks.
 
 * * * 
 
-<a name="frequently-asked-questions-friendly-name-support"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-friendly-name-support"></a>
 ### Friendly name support
 
 ***When will support for friendly names become available ?***
@@ -1111,7 +1111,7 @@ Azure support for friendly names became available in SDK release 5.0.302.834.
 
 * * *
 
-<a name="frequently-asked-questions-how-extensions-are-served"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-how-extensions-are-served"></a>
 ### How extensions are served
 
 ***How does hosting service serve my extension?***
@@ -1124,7 +1124,7 @@ For performance reasons, once a version is downloaded, it will not be downloaded
 
 * * * 
 
-<a name="frequently-asked-questions-output-zip-file-incorrectly-named"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-output-zip-file-incorrectly-named"></a>
 ### Output zip file incorrectly named
 
 ***When I build my project, the output zip is called HostingSvc.zip instead of \<some version>.zip.***
@@ -1147,7 +1147,7 @@ The primary cause of this issue is that your `web.config` appSetting for **IsDev
 
 * * * 
 
-<a name="frequently-asked-questions-rollout-time-for-stages"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-rollout-time-for-stages"></a>
 ### Rollout time for stages
 
 ***How much time does hosting service take to rollout a new version of extension to the relevant stage?*** 
@@ -1157,7 +1157,7 @@ The hosting service takes about 5 minutes to publish the latest version to all d
 * * *
 
 
-<a name="frequently-asked-questions-sas-tokens"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-sas-tokens"></a>
 ### SAS Tokens
 
 ***Can I provide a SAS token instead of keyvault for EV2 to access the storage account ?***
@@ -1166,7 +1166,7 @@ The current rolloutspec generated by **ContentUnbundler** only provides support 
 
 * * *
 
-<a name="frequently-asked-questions-speed-up-test-cycles"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-speed-up-test-cycles"></a>
 ### Speed up test cycles
 
 ***My local build is slow. How can I speed up the dev/test cycles ?***
@@ -1183,7 +1183,7 @@ The default F5 experience for extension development remains unchanged however wi
 
 * * * 
 
-<a name="frequently-asked-questions-storage-account-registration"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-storage-account-registration"></a>
 ### Storage account registration
 
 ***Do I need to register a new storage account everytime I need to upload zip file ?***
@@ -1192,7 +1192,7 @@ No. Registering a storage account with the hosting service is one-time process, 
 
 * * * 
 
-<a name="frequently-asked-questions-zip-file-replaced-in-storage-account"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-zip-file-replaced-in-storage-account"></a>
 ### Zip file replaced in storage account
 
 ***What happens if instead of publishing new version to my storage account I replace the zip file ?***
@@ -1216,7 +1216,7 @@ Sample config.json for version 2.0.0.0
 
 * * * 
 
-<a name="frequently-asked-questions-other-hosting-service-questions"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-other-hosting-service-questions"></a>
 ### Other hosting service questions
 
 ***How can I ask questions about hosting service ?***
@@ -1226,33 +1226,33 @@ You can ask questions on Stackoverflow with the tag [ibiza-deployment](https://s
 * * * 
 
 <!--
-<a name="custom-extension-deployment-infrastructure"></a>
+<a name="frequently-asked-questions-custom-extension-deployment-infrastructure"></a>
 ## Custom extension deployment infrastructure
 -->
 
-<a name="legacy-features"></a>
+<a name="frequently-asked-questions-legacy-features"></a>
 ## Legacy features
 
-<a name="frequently-asked-questions"></a>
+<a name="frequently-asked-questions-frequently-asked-questions"></a>
 ## Frequently asked questions
 
-<a name="frequently-asked-questions-"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-"></a>
 ### 
 
 * * * 
 
-<a name="frequently-asked-questions"></a>
+<a name="frequently-asked-questions-frequently-asked-questions"></a>
 ## Frequently asked questions
 
-<a name="frequently-asked-questions-"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-"></a>
 ### 
 
 * * * 
 
-<a name="frequently-asked-questions"></a>
+<a name="frequently-asked-questions-frequently-asked-questions"></a>
 ## Frequently asked questions
 
-<a name="frequently-asked-questions-discard-change-pop-up-always-displayed"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-discard-change-pop-up-always-displayed"></a>
 ### Discard change pop-up always displayed
 
 ***Q: My users see the 'discard change?' pop-up, even when they've made no changes on my Form Blade. What's wrong?*** 
@@ -1267,7 +1267,7 @@ Rather than initializing the EditScope by programmatically modifying/updating Ed
   
 * * *
 
-<a name="frequently-asked-questions-editscope-location"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-editscope-location"></a>
 ### EditScope Location
 
 ***Q: I need to integrate my Form with an EditScope. Where do I get the EditScope?*** 
@@ -1286,7 +1286,7 @@ SOLUTION: Integrate forms with `EditScopes` varies according to the UX design. D
 
 * * *
   
-<a name="frequently-asked-questions-what-is-an-editscopeaccessor"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-what-is-an-editscopeaccessor"></a>
 ### What is an EditScopeAccessor?
 
 ***Q: Form fields have two constructor overloads, which should I use? What is an EditScopeAccessor?*** 
@@ -1295,7 +1295,7 @@ SOLUTION: For more information about EditScopeAccessors, see [top-legacy-editsco
 
 * * * 
 
-<a name="frequently-asked-questions-type-metadata"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-type-metadata"></a>
 ### Type metadata
 <!-- TODO:  Move this back to the TypeScript  document -->
 ***Q: When do I need to worry about type metadata for my EditScope?***
@@ -1317,7 +1317,7 @@ For more information about type metadata, see [portalfx-data-typemetadata.md](po
 
 * * *
 
-<a name="frequently-asked-questions-keeping-editscope-from-tracking-changes"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-keeping-editscope-from-tracking-changes"></a>
 ### Keeping EditScope from tracking changes
 
 ***Q: Some of my Form data is not editable. How do I keep EditScope from tracking changes for this data?***
@@ -1326,7 +1326,7 @@ SOLUTION: For more information about configuring an EditScope by using type meta
   
 * * *
 
-<a name="frequently-asked-questions-key-value-pairs"></a>
+<a name="frequently-asked-questions-frequently-asked-questions-key-value-pairs"></a>
 ### Key-value pairs
 
 ***Q: My Form data is just key/value pairs. How do I model a Dictionary/StringMap in EditScope? Why can't I just use a JavaScript object like a property bag?***

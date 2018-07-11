@@ -4,6 +4,12 @@
 <!-- Best Practices documents are included in this document in the same order as the topic documents are included in the README.md. -->
 
 This document contains all Best Practices that have been included in the Azure Portal topics in [https://github.com/Azure/portaldocs](https://github.com/Azure/portaldocs). Practices that have been documented in textbooks and similar publications are outside of the scope of this document.
+<!--
+<a name="azure-portal-best-practices-onboarding-a-new-extension"></a>
+## Onboarding a new extension
+<a name="azure-portal-best-practices-what-s-new"></a>
+## What&#39;s new
+-->
 
 <a name="azure-portal-best-practices-getting-started"></a>
 ## Getting started
