@@ -1,7 +1,6 @@
 <a name="azure-portal-a-composed-web-application"></a>
 # Azure Portal -- A composed web application
 
-
 The Azure Portal web application is based on a UI composition system whose primary design goal is to enable the integration of UI built by hundreds of teams into a single, robust single-page web application.
 
 With this system, a team develops a UI extension to plug into and extend the UI of the Azure Portal.  Teams develop and refine UI iteratively and can choose a deployment cadence that suits their team schedule and their customer needs.  They can safely link from their UI to UI's constructed by other teams, resulting in a Portal application that -- to the Azure user -- appears to have been built by a single team.  Any bug in a team's UI has only a local impact on that team's UI and does not impact the availability/reliability of the larger Azure Portal UX or that of any other UI extension.
