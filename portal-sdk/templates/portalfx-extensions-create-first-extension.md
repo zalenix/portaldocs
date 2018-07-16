@@ -1,4 +1,4 @@
-## Introduction
+# Introduction
  
 Blades are the main unit of the user experience (UX) that can be built using the Azure SDK. They are pages that can be loaded in the Portal.
 
@@ -54,15 +54,15 @@ In the following "Hello World" example, the data context for blades is named `Gr
 
 1. Add a folder for the group of blades within the `Client` folder of the project. It should be named the same as the area.
 
-    ![alt-text](../media/portalfx-extensions-helloWorld/areaFolder.png "Area Folder")
+    ![alt-text](../media/portalfx-extensions-create-first-extension/areaFolder.png "Area Folder")
 
 1. Add a file for the new blade to the folder. The file should be named the same as the blade. In the following image, the name of the blade is `Aloha`.
 
-    ![alt-text](../media/portalfx-extensions-helloWorld/areaBladeFile.png "New Blade in Folder")
+    ![alt-text](../media/portalfx-extensions-create-first-extension/areaBladeFile.png "New Blade in Folder")
 
 1. Also add a file that describes the area to the area folder.  The name of the file should be the name of the group, concatenated with the word ‘Area’. This is also known as the  `DataContext`.
 
-    ![alt-text](../media/portalfx-extensions-helloWorld/areaGroupFile.png "GreetingsArea describes the area or datacontext")
+    ![alt-text](../media/portalfx-extensions-create-first-extension/areaGroupFile.png "GreetingsArea describes the area or datacontext")
 
 1. Within the `GreetingsArea.ts` file that was just created, add the following code.
 
@@ -110,11 +110,11 @@ In the following "Hello World" example, the data context for blades is named `Gr
         }
     ```
 
-1.	 The extension can now be compiled.
+1. The extension can now be compiled.
 
         **NOTE**:  The blade title in the browser is not the same as the blade name as displayed in Visual Studio.
 
-1.	Test the new extension by using a link in the following format in the address bar of the browser.
+1.Test the new extension by using a link in the following format in the address bar of the browser.
 
     ```
     <PORTAL URI>#blade/<extensionName>/<bladeName>
@@ -148,10 +148,10 @@ In the following "Hello World" example, the data context for blades is named `Gr
 
     When the site is properly accessed, the blade from this example should resemble the following image.
 
-    ![alt-text](../media/portalfx-extensions-helloWorld/helloWorldExtensionAlohaBlade.png "New Extension and blade")
+    ![alt-text](../media/portalfx-extensions-create-first-extension/helloWorldExtensionAlohaBlade.png "New Extension and blade")
 
 
 <!--
-gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-helloWorld.md"}
+gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-create-first-extension.md"}
 -->
 

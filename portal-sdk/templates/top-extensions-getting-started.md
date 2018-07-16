@@ -6,9 +6,9 @@ The following procedure specifies how to set up a developer computer for Azure e
    
 1. Install the pre-requisites as documented in [top-extensions-install-software.md](top-extensions-install-software.md).
 
-1. Build an empty extension, as specified in [portalfx-extensions-create-blank-procedure.md](portalfx-extensions-create-blank-procedure.md).
+1. Build an empty extension, as specified in [portalfx-extensions-create-first-extension.md](portalfx-extensions-create-first-extension.md).
 
-1. Build a Hello World extension, as specified in [portalfx-extensions-helloWorld.md](portalfx-extensions-helloWorld.md).
+1. Build a Hello World extension, as specified in [portalfx-extensions-create-first-extension.md](portalfx-extensions-create-first-extension.md).
 
 1. Samples are part of the downloaded SDK, and the  DOGFOOD (DF) environment displays working copies of the samples. Browse through the samples that are located at [top-extensions-samples.md](top-extensions-samples.md) to explore live examples of APIs.
 

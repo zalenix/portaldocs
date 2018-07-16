@@ -7,7 +7,7 @@ A blade is the vertical container that acts as the starting point for any journe
 
 The following image contains a legacy blade.
 
-![alt-text](../media/portalfx-extensions-helloWorld/helloWorldExtensionAlohaBlade.png "Blade")
+![alt-text](../media/portalfx-extensions-create-first-extension/helloWorldExtensionAlohaBlade.png "Blade")
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
