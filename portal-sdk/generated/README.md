@@ -1,5 +1,5 @@
 * [Home](#home)
-    * [[Onboard Ibiza](/portal-sdk/generated/index-portalfx-extension-onboarding.md)](#home-onboard-ibiza-portal-sdk-generated-index-portalfx-extension-onboarding-md)
+    * [[Onboard Ibiza](/portal-sdk/generated/top-onboarding.md)](/portal-sdk/generated/top-onboarding.md)
 * [Extension Developer Resources](#extension-developer-resources)
 * [Marketplace/Gallery Developer Resources](#marketplace-gallery-developer-resources)
 * [Code of Conduct](#code-of-conduct)
