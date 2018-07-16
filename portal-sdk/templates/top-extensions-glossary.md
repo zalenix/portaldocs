@@ -32,7 +32,9 @@
 
  {"gitdown": "include", "file": "portalfx-extensions-glossary-sideloading.md"}
 
- {"gitdown": "include-file", "file": "portalfx-extensions-glossary-helloWorld.md"}
+<!--
+ gitdown": "include-file", "file": "portalfx-extensions-glossary-create-first-extension.md"}
+-->
 
 <!--
 ## Samples  
