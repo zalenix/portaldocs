@@ -11,7 +11,6 @@ This is the only document within the topic that contains an H1-level header.
    * controls 
    * create
    * data
-   * extensions
    * forms
    * parameters
    * parts
@@ -34,7 +33,9 @@ This is the only document within the topic that contains an H1-level header.
    * portalfx-stackoverflow.md
    * portalfx-extensions-status-codes.md
 
-1. Subtopics that occur within topics, like overviews or procedures, will always use that word as the last node within the filename.  Subtopics that are specific to a topic are self-naming, in one or two words. The last node of the file is the name of the subtopic, and is used to sort subtopics within the topic. Some filenames are `portalfx-telemetry-alerting-overview.md`, `portalfx-telemetry-alerting-performance.md` or `portalfx-style-guide-utility-classes.md`. 
+1. Subtopics that occur within topics, like overviews or procedures, will always use that word as the last node within the filename.  However, the author has the option of including the overview and the procedure in the topic document instead of using a GitHub include statement. 
+
+Subtopics that are specific to a topic are self-naming, in one or two words. The last node of the file is the name of the subtopic, and is used to sort subtopics within the topic. Some filenames are `portalfx-telemetry-alerting-overview.md`, `portalfx-telemetry-alerting-performance.md` or `portalfx-style-guide-utility-classes.md`. 
 
 1. Best Practices, FAQ's, and glossaries use a slightly different naming convention, in that they are named `portalfx-extensions-bp-<major-area>`,  `portalfx-extensions-faq-<major-area>`, `portalfx-extensions-glossary-<major-area>`, respectively.
 
@@ -42,16 +43,15 @@ This is the only document within the topic that contains an H1-level header.
 
     | Name                                           | Purpose |
     | ---------------------------------------------- | ------- |
-    | `portalfx-<major-area>-<topic>-overview.md`    | Required. General discussion of topic. |
+    | `portalfx-<major-area>-<topic>-overview.md`    | Required. General discussion of topic. May be included in the topic document instead of remaining a separate file. |
     | `portalfx-<major-area>-<topic>-<subtopic1>.md` | Optional. A section that is used when the topic goes deeper than an overview.  The last item in the overview may be a table that links to these sections, in addition to relying on the gitHub includes that are a part of the overarching document. |
     | `portalfx-<major-area>-<topic>-<subtopic2>.md` | Optional. A section that is used when the topic goes deeper than an overview. |
-    | `portalfx-<major-area>-<topic>-procedures.md`  | Optional.  Checklist document. Used when there are specific steps to follow, or when there are specific tasks whose completion must be verified. |
+    | `portalfx-<major-area>-<topic>-procedure.md`   | Optional.  Checklist document. Used when there are specific steps to follow, or when there are specific tasks whose completion must be verified. May be included in the topic document instead of remaining a separate file. |
     | `portalfx-extensions-bp-<topic>.md`            | Optional. Best Practices for the topic. |
     | `portalfx-extensions-faq-<topic>.md`           | Optional. Frequently Asked Questions for the topic. |
-    | `portalfx-<major-area>-<topic>-moreinfo.md`         | Optional. More  Information. Contains links that could not be included in the content within the natural flow of the topic and subtopic. Typically, by the time the entire topic has been authored, there are few, if any, links left for this section.  |
     | `portalfx-extensions-glossary-<topic>.md`      | Required. Glossary for the topic. |
 
-1. Sections that have been written for other documents can be linked to within the subtopics using normal gitHub linking procedures. This is best practice, and is preferred over copying and modifying paragraphs from file to file.
+1. Sections that have been written for other documents can be linked to within the subtopics using normal gitHub linking procedures. This is best practice, and is preferred over copying and modifying paragraphs from file to file. If the section is a separate file, the link would resemble the following: `[portalfx-<major-area>-<topic>-<subtopic1>.md](portalfx-<major-area>-<topic>-<subtopic1>.md)`. Otherwise, if the section is a paragraph within a separate topic, the link would resemble the following `[portalfx-<major-area>-<topic>.md#<subtopic1>](portalfx-<major-area>-<topic>.md#<subtopic1>)`.
 
 1. Files are included in a topic by gitHub, based on the topic-subtopic relationship. They are linked to in this overarching document with gitHub commands.  Because this skeleton file also functions as a sample document, the gitHub commands in the following section are slightly malformed.  To use this skeleton to create a new topic, fill in the parameters that are designated with angle brackets, and then enclose the gitHub command in curly brackets.
 
@@ -75,7 +75,7 @@ Subtopic documents can be authored along the same lines.
 <!-- gitdown": "include-file", "file":  "../templates/portalfx-<major-area>-<topic>-<subtopic2>.md"  -->
 
 <!-- optional checklist document. Use this when there are specific steps to follow, or when there are specific tasks that the developer must verify as being completed. -->
-<!-- gitdown": "include-file", "file": "../templates/portalfx-<major-area>-<topic>-procedures.md"  -->
+<!-- gitdown": "include-file", "file": "../templates/portalfx-<major-area>-<topic>-procedure.md"  -->
    ## Skeleton Procedure
 <!-- topic name is a level 2 at the beginning of the doc>
 
@@ -130,6 +130,10 @@ The following is a sample procedure. It specifies how to author a document in th
 
  1. Amend the overarching document so that the gitHub commands include each existing section once and only once. The overarching skeleton document includes placeholders for this purpose.
   
+<!--  optional subtopic documents. Use these when the topic goes deeper than an overview. The overview may contain a table that links to these sections, in addition to (or instead of) relying on the following gitHub includes. -->
+<!-- gitdown": "include-file", "file":  "../templates/portalfx-<major-area>-<topic>-<subtopic1>.md"  -->
+<!-- gitdown": "include-file", "file":  "../templates/portalfx-<major-area>-<topic>-<subtopic2>.md"  -->
+
 <!-- optional Best Practices document -->
 <!-- gitdown": "include-file", "file": "../templates/portalfx-<major-area>-bp-<topic>.md"  -->
    
@@ -241,14 +245,6 @@ The Stackoverflow FAQ item should be included in every topic that contains an FA
 
 * * *
    
-<!-- optional FYI document, for links that could not be included in the content within the natural flow of the doc -->
-<!-- gitdown": "include-file", "file": "../templates/portalfx-<major-area>-<topic>-moreinfo.md"  -->
-   ## For More Information
-   
-For more information about documentation best practices by copying and modifying the document skeleton, see [portalfx-extensions-bp-skeleton.md](portalfx-extensions-bp-skeleton.md).
-
-
-
 <!-- required Glossary document. -->
 <!-- gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-<major-area>.md"  -->
    ## Skeleton Glossary 
