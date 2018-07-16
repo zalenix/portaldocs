@@ -113,7 +113,7 @@ If the extension throws an error while trying to load, try clicking on the url i
 
 Extensions load failures are logged along with an associated failure code.  This error code is printed out as part of the error message logged by the client trace controller. A list of failure codes and what they mean is located at [portalfx-extensions-status-codes.md](portalfx-extensions-status-codes.md).
 
-If the extension is not loaded, or if the extension site is not running, another guide that may be of assistance is "Creating an Extension", located at [portalfx-extensions-create-blank-procedure.md](portalfx-extensions-create-blank-procedure.md).
+If the extension is not loaded, or if the extension site is not running, another guide that may be of assistance is "Creating an Extension", located at [portalfx-extensions-create-first-extension.md](portalfx-extensions-create-first-extension.md).
 
 <a name="debugging-an-extension-debug-console-errors"></a>
 ## Debug console errors

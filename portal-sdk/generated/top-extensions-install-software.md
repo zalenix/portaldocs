@@ -28,4 +28,4 @@ Install the following software. Your team should be aware of the most current do
 
 1. Azure Portal SDK that is located at [http://aka.ms/portalfx/download](http://aka.ms/portalfx/download)
 
-To validate that your dev machine is ready for Azure Portal Extension development, you can create and build a blank extension, as specified in [portalfx-extensions-create-blank-procedure.md](portalfx-extensions-create-blank-procedure.md).
+To validate that your dev machine is ready for Azure Portal Extension development, you can create and build a blank extension, as specified in [portalfx-extensions-create-first-extension.md](portalfx-extensions-create-first-extension.md).

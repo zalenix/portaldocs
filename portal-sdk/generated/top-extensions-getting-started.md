@@ -8,9 +8,9 @@ The following procedure specifies how to set up a developer computer for Azure e
    
 1. Install the pre-requisites as documented in [top-extensions-install-software.md](top-extensions-install-software.md).
 
-1. Build an empty extension, as specified in [portalfx-extensions-create-blank-procedure.md](portalfx-extensions-create-blank-procedure.md).
+1. Build an empty extension, as specified in [portalfx-extensions-create-first-extension.md](portalfx-extensions-create-first-extension.md).
 
-1. Build a Hello World extension, as specified in [portalfx-extensions-helloWorld.md](portalfx-extensions-helloWorld.md).
+1. Build a Hello World extension, as specified in [portalfx-extensions-create-first-extension.md](portalfx-extensions-create-first-extension.md).
 
 1. Samples are part of the downloaded SDK, and the  DOGFOOD (DF) environment displays working copies of the samples. Browse through the samples that are located at [top-extensions-samples.md](top-extensions-samples.md) to explore live examples of APIs.
 
@@ -69,7 +69,7 @@ Developers need to keep their development environments current while they are im
 
 SOLUTION: To contribute an extension to the Portal, you can build an extension in its own source tree instead of cloning the a Portal repository.
 
-You can write an extension by following the instructions in using the [portalfx-extensions-create-blank-procedure.md](portalfx-extensions-create-blank-procedure.md), deploy it to your own machine, and load it into the Portal at runtime.
+You can write an extension by following the instructions in using the [portalfx-extensions-create-first-extension.md](portalfx-extensions-create-first-extension.md), deploy it to your own machine, and load it into the Portal at runtime.
 
 When you are ready to register the extension in the preview or production environments, make sure you have the right environment as specified in  [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md). Then publish it to the environment as specified in [top-extensions-publishing.md](top-extensions-publishing.md).
 

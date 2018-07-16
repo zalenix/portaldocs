@@ -117,7 +117,7 @@ The monitorChart V2 control can plot more than one metric on the chart while it 
 
 If you are not using a template blade, you can reference the `MonitorChartPart` from the `HubsExtension` in the pdl file associated with the extension.
 
-Ensure that the `HubsExtension.pde` file has been added to the extension. The `HubsExtension.pde` file and the `MonitorChartPart.d.ts` file are made available to the project when the `Microsoft.Portal.Extensions.Hubs.<<Build#>>.nupkg` package is installed.  For more information about NuGet and making packages available to Visual Studio, see [top-extensions-nuget.md](top-extensions-nuget.md) and [portalfx-extensions-create-blank-procedure.md](portalfx-extensions-create-blank-procedure.md).
+Ensure that the `HubsExtension.pde` file has been added to the extension. The `HubsExtension.pde` file and the `MonitorChartPart.d.ts` file are made available to the project when the `Microsoft.Portal.Extensions.Hubs.<<Build#>>.nupkg` package is installed.  For more information about NuGet and making packages available to Visual Studio, see [top-extensions-nuget.md](top-extensions-nuget.md) and [portalfx-extensions-create-first-extension.md](portalfx-extensions-create-first-extension.md).
 
 <a name="monitor-chart-legacy-blade-usage-legacy-blade-pdl"></a>
 #### Legacy Blade PDL

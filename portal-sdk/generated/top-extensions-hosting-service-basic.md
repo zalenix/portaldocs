@@ -63,7 +63,7 @@ Extensions that have server-side code or controllers can use hosting services.  
 
  ## Prerequisites for onboarding hosting service
 
-The **Visual Studio** project that is associated with developing the extension contains several files that will be updated or overridden while getting the extension ready for the hosting service. This topic discusses the files to create or change to meet requirements for the onboarding process. This procedure uses the **Content Unbundler** tool that was installed with the **nuGet** packages in Visual Studio.  For more information, see [portalfx-extensions-create-blank-procedure.md](portalfx-extensions-create-blank-procedure.md) and [top-extensions-nuget.md](top-extensions-nuget.md).
+The **Visual Studio** project that is associated with developing the extension contains several files that will be updated or overridden while getting the extension ready for the hosting service. This topic discusses the files to create or change to meet requirements for the onboarding process. This procedure uses the **Content Unbundler** tool that was installed with the **nuGet** packages in Visual Studio.  For more information, see [portalfx-extensions-create-first-extension.md](portalfx-extensions-create-first-extension.md) and [top-extensions-nuget.md](top-extensions-nuget.md).
 
 1. For all extensions
    * SDK Version 

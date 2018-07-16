@@ -487,19 +487,19 @@ Update the following image for fictitious names.
 
 ![alt-text](../media/top-extensions-developmentPhases/browseMenu.png "top-extensions-developmentPhases/browseMenu.png ")
 
-<a name="all-images-in-the-media-library-portalfx-extensions-helloworld"></a>
-## portalfx-extensions-helloWorld
+<a name="all-images-in-the-media-library-portalfx-extensions-create-first-extension"></a>
+## portalfx-extensions-create-first-extension
 
-![alt-text](../media/portalfx-extensions-helloWorld/areaBladeFile.png "portalfx-extensions-helloWorld/areaBladeFile.png ")
-
-
-![alt-text](../media/portalfx-extensions-helloWorld/areaFolder.png "portalfx-extensions-helloWorld/areaFolder.png ")
+![alt-text](../media/portalfx-extensions-create-first-extension/areaBladeFile.png "portalfx-extensions-create-first-extension/areaBladeFile.png ")
 
 
-![alt-text](../media/portalfx-extensions-helloWorld/areaGroupFile.png "portalfx-extensions-helloWorld/areaGroupFile.png ")
+![alt-text](../media/portalfx-extensions-create-first-extension/areaFolder.png "portalfx-extensions-create-first-extension/areaFolder.png ")
 
 
-![alt-text](../media/portalfx-extensions-helloWorld/helloWorldExtensionAlohaBlade.png "portalfx-extensions-helloWorld/helloWorldExtensionAlohaBlade.png ")
+![alt-text](../media/portalfx-extensions-create-first-extension/areaGroupFile.png "portalfx-extensions-create-first-extension/areaGroupFile.png ")
+
+
+![alt-text](../media/portalfx-extensions-create-first-extension/helloWorldExtensionAlohaBlade.png "portalfx-extensions-create-first-extension/helloWorldExtensionAlohaBlade.png ")
 
 <a name="all-images-in-the-media-library-portalfx-extensions-hosting-service"></a>
 ## portalfx-extensions-hosting-service

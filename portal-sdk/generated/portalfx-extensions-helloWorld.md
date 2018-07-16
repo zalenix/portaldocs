@@ -1,32 +1,15 @@
-<a name="hello-world-extension"></a>
-# Hello World Extension
- 
- 
-<a name="hello-world-extension-introduction"></a>
-## Introduction
- 
-Blades are the main unit of the user experience (UX) that can be built using the Azure SDK. They are pages that can be loaded in the Portal.
-
-Blades are components that are developed as part of the extension, and can be rendered at specific locations in the Portal UI. They are opened by using the `container.openContextPane(...)` API, as specified in the `MsPortalFx.d.ts` file of the project.
-
-<a name="hello-world-extension-overview"></a>
-## Overview
-
-Use the following steps to develop a blade.
-
-1. You and your team will determine the types of blades that can be grouped together into one area.  Because these blades will probably share data, the area is also known as a `DataContext` that is meaningfully named.  In this example, the data context for blades is named `Greetings`, and the blade that is being developed is named `Aloha`. Remember to remove the angle brackets when substituting the name of the `DataContext` group for the parameter name `<AreaName>`.
 
 1. Add a folder for the group of blades within the `Client` folder of the project. It should be named the same as the area.
 
-    ![alt-text](../media/portalfx-extensions-helloWorld/areaFolder.png "Area Folder")
+    ![alt-text](../media/portalfx-extensions-create-first-extension/areaFolder.png "Area Folder")
 
 1. Add a file for the new blade to the folder. The file should be named the same as the blade. In the following image, the name of the blade is `Aloha`.
 
-    ![alt-text](../media/portalfx-extensions-helloWorld/areaBladeFile.png "New Blade in Folder")
+    ![alt-text](../media/portalfx-extensions-create-first-extension/areaBladeFile.png "New Blade in Folder")
 
 1. Also add a file that describes the area to the area folder.  The name of the file should be the name of the group, concatenated with the word ‘Area’. This is also known as the  `DataContext`.
 
-    ![alt-text](../media/portalfx-extensions-helloWorld/areaGroupFile.png "GreetingsArea describes the area or datacontext")
+    ![alt-text](../media/portalfx-extensions-create-first-extension/areaGroupFile.png "GreetingsArea describes the area or datacontext")
 
 1. Within the `GreetingsArea.ts` file that was just created, add the following code.
 
@@ -112,8 +95,7 @@ Use the following steps to develop a blade.
 
     When the site is properly accessed, the blade from this example should resemble the following image.
 
-    ![alt-text](../media/portalfx-extensions-helloWorld/helloWorldExtensionAlohaBlade.png "New Extension and blade")
-
+    ![alt-text](../media/portalfx-extensions-create-first-extension/helloWorldExtensionAlohaBlade.png "New Extension and blade")
 
 
 <!--
