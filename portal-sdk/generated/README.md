@@ -22,7 +22,7 @@ The success of Azure portal is dependent on the success of our partners. For our
 Ready to grow your business?
 
 <a name="home-onboard-ibiza-portal-sdk-generated-index-portalfx-extension-onboarding-md"></a>
-## <a href="/portal-sdk/generated/index-portalfx-extension-onboarding.md">Onboard Ibiza</a>
+## <a href="/portal-sdk/generated/top-onboarding.md">Onboard Ibiza</a>
 
 <a name="extension-developer-resources"></a>
 # Extension Developer Resources
