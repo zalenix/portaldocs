@@ -22,7 +22,7 @@ As per the safe deployment mandate, all configuration changes are treated as cod
 
 The configuration file for the extension that will be cherry-picked should be similar to the examples in [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md). The relationship between the environments and the configuration files specified in [portalfx-extensions-branches.md](portalfx-extensions-branches.md).
 
- For permission to send pull requests, developers should join the **Azure Portal Partner Contributors - 19668(19668)** group as specified in [portalfx-extensions-onboarding-overview.md#join-dls-and-request-permissions](portalfx-extensions-onboarding-overview.md#join-dls-and-request-permissions).
+ For permission to send pull requests, developers should join the **Azure Portal Partner Contributors - 19668(19668)** group as specified in [top-onboarding.md#join-dls-and-request-permissions](top-onboarding.md#join-dls-and-request-permissions).
 
 All the pull requests should be sent first to the dev branch. To add or update or your extension's configuration, use the following process to send a pull request to the reviewers that you can specify in the request.
 
