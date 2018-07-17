@@ -73,6 +73,3 @@ To link to assets, include the extension name, asset type, and asset id.
 
 For instance:
 https://portal.azure.com/#asset/Microsoft_Azure_KeyVault/Secret/https://mykeyvaultname.vault.azure.net/secrets/secretName/id
-
-
-
