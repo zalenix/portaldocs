@@ -208,7 +208,7 @@ There is a decorator - @TemplateBlade.Configurable.Decorator for example, availa
 
 SOLUTION: To contribute an extension to the Portal, you can build an extension in its own source tree instead of cloning the a Portal repository.
 
-You can write an extension by following the instructions in using the [portalfx-extensions-create-blank-procedure.md](portalfx-extensions-create-blank-procedure.md), deploy it to your own machine, and load it into the Portal at runtime.
+You can write an extension by following the instructions in using the [portalfx-extensions-create-first-extension.md](portalfx-extensions-create-first-extension.md), deploy it to your own machine, and load it into the Portal at runtime.
 
 When you are ready to register the extension in the preview or production environments, make sure you have the right environment as specified in  [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md). Then publish it to the environment as specified in [top-extensions-publishing.md](top-extensions-publishing.md).
 
