@@ -86,6 +86,4 @@ This section contains all Azure Portal FAQ's.
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-parts.md"}
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-data.md"}
-
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-editscope.md"}
