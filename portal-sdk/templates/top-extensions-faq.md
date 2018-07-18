@@ -56,8 +56,6 @@ This section contains all Azure Portal FAQ's.
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-performance.md"}
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-cdn.md"}
-
 ## Testing
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-unit-test.md"}

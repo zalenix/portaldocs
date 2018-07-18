@@ -140,3 +140,17 @@ Sample config.json for version 2.0.0.0
 You can ask questions on Stackoverflow with the tag [ibiza-deployment](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment).
 
 * * * 
+
+### CDN Paths and Versioning
+
+***Cannot find paths with versioning***
+
+DESCRIPTION:  
+
+I am not seeing paths with versioning during debug.
+
+SOLUTION:
+
+Ensure `IsDevelopmentMode` in the `*.config` file  is set to `false`.
+
+* * *
