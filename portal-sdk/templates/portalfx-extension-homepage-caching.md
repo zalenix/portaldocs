@@ -80,11 +80,7 @@ To enable this, here are the steps you need to take:
     }
     ```
 
-1.  <a href="mailto:ibizafxpm@microsoft.com?subject=[Manifest Caching] on &lt;ExtensionName&gt; &body=Hi, we have enabled manifest caching on &lt;ExtensionName&gt; please make the appropriate portal change">Contact the Portal team</a>
-     or submit a [Work Item Request](https://aka.ms/cachemanifest) so we can update the value from our side.  
-    Sorry about this step.
-    We added it to ensure backward compatibility.
-    When all extensions have moved to newer SDKs, we can eliminate it.
+1.  Once you have deployed adn verified your extension. Send a pull request to the portal's dev branch removing the cachability setting from your extensions configuration. http://aka.ms/portalfx/extensionsprodjson
 
 ### Implications of client side caching
 
