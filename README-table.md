@@ -1,6 +1,6 @@
 # Azure portal extension documentation
 
-This is the home page for all documentation related to onboarding, developing, operating, and anything else to do with owning an Azure portal extension.
+This is the home page for all documentation related to onboarding, developing, operating, and anything else to do with owning an Azure portal extension.   
 
 Couldn't find what you needed? [Ask about the docs on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-missing-docs).
 
