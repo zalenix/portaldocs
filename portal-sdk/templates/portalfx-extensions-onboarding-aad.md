@@ -1,18 +1,18 @@
 
 The AAD Onboarding Website is located at [https://aadonboardingsite.cloudapp.net/RegisterApp](https://aadonboardingsite.cloudapp.net/RegisterApp).
 
-Follow the instructions on the website to register your app.
+Follow the instructions on the website to register your app. The following screen images specify the options that should be chosen to register your extension with Azure Active Directory(AAD).
 
   ![alt-text](../media/portalfx-extensions-onboarding-aad/create-first-app.png "Agree to Requirements and Target Environment")
 
   ![alt-text](../media/portalfx-extensions-onboarding-aad/switch-mode.png "Switch modes")
 
   ![alt-text](../media/portalfx-extensions-onboarding-aad/app-info.png "Application Overview")
-
-**NOTE**: If you need MSA users without Azure accounts to authenticate, Select "Enable" for the  `MSA Passthrough` option on the following screen.
+authenticate, Select "Enable" for the  `MSA Passthrough` option on the following screen.
 
   ![alt-text](../media/portalfx-extensions-onboarding-aad/msa-auth.png "Authentication Screen")
 
+**NOTE**: If you need MSA users without Azure accounts to 
   ![alt-text](../media/portalfx-extensions-onboarding-aad/credentials.png "Credentials Screen")
 
   ![alt-text](../media/portalfx-extensions-onboarding-aad/keys.png "Public Key Credentials")
