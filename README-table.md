@@ -4,65 +4,6 @@ This is the home page for all documentation related to onboarding, developing, o
 
 Couldn't find what you needed? [Ask about the docs on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-missing-docs).
 
-The following links are to the  sections that discuss Azure Portal topics.
-
-* [Onboarding a new extension](#onboarding-a-new-extension)
-
-* [Azure portal architecture](#azure-portal-architecture)
-
-* [What's new](#whats-new)
-
-* [Getting started](#getting-started)
-
-* [Samples](#samples)
-
-* [Blades](#blades)
-
-* [Parts](#parts)
-
-* [Building UI with HTML templates and Fx controls](#building-ui-with-html-templates-and-fx-controls)
-
-* [Styling and theming](#styling-and-theming)
-
-* [Forms](#forms)
-
-* [common scenarios and integration points](#common-scenarios-and-integration-points)
-
-* [Other UI concepts](#other-ui-concepts)
-
-* [Loading and managing data](#loading-and-managing-data)
-
-* [Advanced development topics](#advanced-development-topics)
-
-* [debugging](#debugging)
-
-* [Performance](#performance)
-
-* [Testing](#testing)
-
-* [Telemetry and alerting](#telemetry-and-alerting)
-
-* [experimentation and flighting](#experimentation-and-flighting)
-
-* [Localization and globalization](#localization-and-globalization)
-
-* [Accessibility](#accessibility)
-
-* [deploying your extension](#deploying-your-extension)
-
-* [deployment using the extension Hosting Service](#deployment-using-the-extension-hosting-service)
-
-* [custom extension deployment infrastructure](#custom-extension-deployment-infrastructure)
-
-* [Upgrading the Ibiza SdK](#upgrading-the-ibiza-sdK)
-
-* [Legacy features](#legacy-features)
-
-* [Additional resources](#additional-resources)
-
-* [Marketplace/Gallery developer resources](#marketplace/gallery-developer-resources)
-
-
 ## Onboarding a new extension
 
 | Name | Location | Purpose |
@@ -669,7 +610,7 @@ The documents are combinations from all the previous topics. Consequently, there
 
 | | [Glossary](/portal-sdk/generated/top-extensions-glossary.md) |
 
-# Marketplace/Gallery Developer Resources
+# Marketplace gallery developer resources
 
 1. [Gallery overview](/gallery-sdk/generated/index-gallery.md#gallery-overview) |
 
