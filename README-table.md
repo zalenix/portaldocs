@@ -10,7 +10,7 @@ Couldn't find what you needed? [Ask about the docs on StackOverflow](https://sta
 | ---- | -------- | ------- |
 | Overview | [/portal-sdk/generated/ top-onboarding.md](/portal-sdk/generated/top-onboarding.md) | Getting your team ready to develop extensions | 
 | Steps that do not involve the Ibiza team | [/portal-sdk/generated/ top-extensions-onboarding-with-related-teams.md](/portal-sdk/generated/top-extensions-onboarding-with-related-teams.md) | Coordinating with other teams to deploy an extension  |
-| Manage cloud/environment specific configuration | [/portal-sdk/generated/ top-extensions-configuration.md](/portal-sdk/generated/top-extensions-configuration.md) |  Configuring an extension to run in  various environments  |
+| Manage cloud/environment specific configuration | [/portal-sdk/generated/ top-extensions-configuration.md](/portal-sdk/generated/top-extensions-configuration.md) | Configuring an extension to run in  various environments  |
 | Production-ready metrics | [/portal-sdk/generated/ top-extensions-production-ready-metrics.md](/portal-sdk/generated/top-extensions-production-ready-metrics.md) | Criteria for  moving an extension from one preview to another |
 | Partner request process | [/portal-sdk/generated/ top-extensions-partner-request.md](/portal-sdk/generated/top-extensions-partner-request.md) | How to request new features from the Ibiza team |
 
