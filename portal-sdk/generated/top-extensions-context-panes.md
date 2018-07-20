@@ -1,7 +1,7 @@
 <a name="context-blades"></a>
 # Context blades
 
-Context blades are a different visual representation of blades. The main difference is that they do not cause the screen to horizontally scroll when navigating to a context blade. Instead, the context blade  overlays on top of the current conten, beginning at  the right side of the screen, as in the following image.  This allows the user to interact with the context blade while retaining the context of the previous experience.
+Context blades are a different visual representation of blades. The main difference is that they do not cause the screen to horizontally scroll when navigating to a context blade. Instead, the context blade  is displayed in front of the current content, beginning at  the right side of the screen, as in the following image.  This allows the user to interact with the context blade while retaining the context of the previous experience.
 
 <a name="context-blades-when-to-use-a-context-pane"></a>
 ### When to use a context pane
@@ -122,7 +122,7 @@ export class OpenBladeApiSamplesViewModel
 
     public onRowClick(item: Person) {
         this._container.openBlade(new ListViewChildBladeReference({
-            ssnId: item.ssnId()
+            ssnId: item.ssnId(),
         }));
     }
 
@@ -130,7 +130,7 @@ export class OpenBladeApiSamplesViewModel
         this.hotspot = new HotspotViewModel(container, {
             onClick: () => {
                 container.openBlade(new OpenBladeApiChildBladeReference());
-            }
+            },
         });
     }
 
@@ -139,18 +139,18 @@ export class OpenBladeApiSamplesViewModel
 
         const selectionOptions: Grid.SelectableRowExtensionOptions<Person, Person> = {
             selectableRow: {
-                selectionMode: Grid.RowSelectionMode.Single
+                selectionMode: Grid.RowSelectionMode.Single,
             },
-            onRowClicked: this.onRowClick.bind(this)
+            onRowClicked: this.onRowClick.bind(this),
         };
 
         this.grid = new Grid.ViewModel<Person, Person>(container, this._view.items, Grid.Extensions.SelectableRow, selectionOptions);
         this.grid.columns([
             {
-                itemKey: "ssnId"
+                itemKey: "ssnId",
             },
             {
-                itemKey: "name"
+                itemKey: "name",
             }]);
     }
 }
