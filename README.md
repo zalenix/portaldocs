@@ -1,5 +1,5 @@
 * [Home](#home)
-    * [[Onboard Ibiza](/portal-sdk/generated/index-portalfx-extension-onboarding.md)](#home-onboard-ibiza-portal-sdk-generated-index-portalfx-extension-onboarding-md)
+    * [[Onboard Ibiza](/portal-sdk/generated/top-onboarding.md)](/portal-sdk/generated/top-onboarding.md)
 * [Extension Developer Resources](#extension-developer-resources)
 * [Marketplace/Gallery Developer Resources](#marketplace-gallery-developer-resources)
 * [Code of Conduct](#code-of-conduct)
@@ -16,7 +16,7 @@ The portal is basically a web application that hosts the shell.  The service ext
 Sounds interesting. Want to become a partner?  
 
 <a name="home-onboard-ibiza-portal-sdk-generated-index-portalfx-extension-onboarding-md"></a>
-## <a href="/portal-sdk/generated/index-portalfx-extension-onboarding.md">Onboard Ibiza</a>
+## <a href="/portal-sdk/generated/top-onboarding.md">Onboard Ibiza</a>
 
 <a name="extension-developer-resources"></a>
 # Extension Developer Resources
