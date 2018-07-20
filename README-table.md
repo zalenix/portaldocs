@@ -28,12 +28,12 @@ Learn how the framework is structured and how it is designed to run in multiple 
 
 | Name | Location | Purpose |
 | ---- | -------- | ------- |
-| No-PDL blades and parts | http://top-whats-new#no-pdl.md | Reduces the number of files and concepts to build UI |
+| No-PDL blades and parts | http://top-whats-new #no-pdl.md | Reduces the number of files and concepts to build UI |
 | Forms without edit scope | [/portal-sdk/generated/ top-editscopeless-forms.md](/portal-sdk/generated/top-editscopeless-forms.md) | More intuitive APIs for building forms |
 | EditableGrid V2 | /portal-sdk/generated | Improved APIs designed to work with new forms |
 | Extension availability alerts |  /portal-sdk/generated  | Get notified if your extension goes down |
 | Actionable notifications |availibility-alerts.md | Point users to well known next steps |
-| [EV2 support for the Extension Hosting Service | [top-extensions-hosting-service-advanced.md](top-extensions-hosting-service-advanced.md) | Nuff said |
+| [EV2 support for the Extension Hosting Service | [/portal-sdk/generated/ top-extensions-hosting-service-advanced.md](/portal-sdk/generated/top-extensions-hosting-service-advanced.md) | Nuff said |
 | Multi-Column for the Essentials control | /portal-sdk/generated/ | Better use of screen real estate |
 | TreeView improvements | /portal-sdk/generated/ | Checkboxes, commands, and Load More / Virtualization |
 
@@ -51,7 +51,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 | Install the SDK | [/portal-sdk/generated/ top-extensions-install-software.md](/portal-sdk/generated/top-extensions-install-software.md) | Initializing the computer for Azure extension development |
 | How to update portal Nuget packages |  [/portal-sdk/generated/ top-extensions-nuget.md](/portal-sdk/generated/top-extensions-nuget.md) |  |
 | Developing extensions |  [/portal-sdk/generated/ top-extensions-getting-started.md](/portal-sdk/generated/top-extensions-getting-started.md) |  |
-| SDK Update policy and alerts |  [/portal-sdk/generated/ top-extensions-getting-started.md#maintain-development-environment](/portal-sdk/generated/top-extensions-getting-started.md#maintain-development-environment) |  |
+| SDK Update policy and alerts |  [/portal-sdk/generated/ top-extensions-getting-started.md #maintain-development-environment](/portal-sdk/generated/top-extensions-getting-started.md#maintain-development-environment) |  |
 | Sideloading  | [/portal-sdk/generated/ top-extensions-sideloading.md](/portal-sdk/generated/top-extensions-sideloading.md)  | Running the extension locally | 
 
 [Ask an SDK setup question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate) 
@@ -124,6 +124,7 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 | Name             | Location | Purpose |
 | ---------------- | -------- | ------- |
 | Developing forms | [/portal-sdk/generated/ top-extensions-forms.md](/portal-sdk/generated/top-extensions-forms.md) | Form controls are a subset of controls that allow users to input information. |
+
 [Ask a forms related question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-forms)
 
 #### Common scenarios and integration points
@@ -171,13 +172,13 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 
 | Name                            | Location | Purpose |
 | ------------------------------- | -------- | ------- |
-| Using developer mode | [/portal-sdk/generated/ top-extensions-hosting-service-procedures.md#update-isdevelopmentmode-flag](/portal-sdk/generated/top-extensions-hosting-service-procedures.md#update-isdevelopmentmode-flag)  | |
-| Using debug mode | [/portal-sdk/generated/ top-extensions-debugging.md#the-debug-tool](/portal-sdk/generated/top-extensions-debugging.md#the-debug-tool)  | |
-| Debugging extension load failures | [/portal-sdk/generated/ top-extensions-debugging.md#debugging-extension-load-failures](/portal-sdk/generated/top-extensions-debugging.md#debugging-extension-load-failures)  | |
-| Debugging console errors | [/portal-sdk/generated/ top-extensions-debugging.md#debugging-console-errors](/portal-sdk/generated/top-extensions-debugging.md#debugging-console-errors) | |
-| Debugging javascript | [/portal-sdk/generated/ top-extensions-debugging.md#debugging-javascript](/portal-sdk/generated/top-extensions-debugging.md#debugging-javascript)  | |
-| Debugging knockout | [/portal-sdk/generated/ top-extensions-debugging.md#debugging-knockout](/portal-sdk/generated/top-extensions-debugging.md#debugging-knockout)  | |
-| Debugging the data stack | [/portal-sdk/generated/ top-extensions-debugging.md#debugging-the-data-stack](/portal-sdk/generated/top-extensions-debugging.md#debugging-the-data-stack) | |
+| Using developer mode | [/portal-sdk/generated/ top-extensions-hosting-service-procedures.md #update-isdevelopmentmode-flag](/portal-sdk/generated/top-extensions-hosting-service-procedures.md#update-isdevelopmentmode-flag)  | |
+| Using debug mode | [/portal-sdk/generated/ top-extensions-debugging.md #the-debug-tool](/portal-sdk/generated/top-extensions-debugging.md#the-debug-tool)  | |
+| Debugging extension load failures | [/portal-sdk/generated/ top-extensions-debugging.md #debugging-extension-load-failures](/portal-sdk/generated/top-extensions-debugging.md#debugging-extension-load-failures)  | |
+| Debugging console errors | [/portal-sdk/generated/ top-extensions-debugging.md #debugging-console-errors](/portal-sdk/generated/top-extensions-debugging.md#debugging-console-errors) | |
+| Debugging javascript | [/portal-sdk/generated/ top-extensions-debugging.md #debugging-javascript](/portal-sdk/generated/top-extensions-debugging.md#debugging-javascript)  | |
+| Debugging knockout | [/portal-sdk/generated/ top-extensions-debugging.md #debugging-knockout](/portal-sdk/generated/top-extensions-debugging.md#debugging-knockout)  | |
+| Debugging the data stack | [/portal-sdk/generated/ top-extensions-debugging.md #debugging-the-data-stack](/portal-sdk/generated/top-extensions-debugging.md#debugging-the-data-stack) | |
 
 ### Performance
 
@@ -229,11 +230,11 @@ The Azure portal supports multiple languages and locales. You will need to local
 
 | Name                                             | Location | Purpose |
 | ------------------------------------------------ | -------- | ------- |
-| Localization overview and supported languages    | [/portal-sdk/generated/ top-extensions-localization-globalization.md#understanding-localization](/portal-sdk/generated/top-extensions-localization-globalization.md#understanding-localization) | |
+| Localization overview and supported languages    | [/portal-sdk/generated/ top-extensions-localization-globalization.md #understanding-localization](/portal-sdk/generated/top-extensions-localization-globalization.md#understanding-localization) | |
 | Setting up localization for your extension       | [](/portal-sdk/generated/) | |
 | Setting up localization for your gallery package | [](/portal-sdk/generated/) | |
 | Testing localization with side-loading           | [/portal-sdk/generated/ top-extensions-sideloading.md](/portal-sdk/generated/top-extensions-sideloading.md) | |
-| Formatting numbers, currencies and dates         | [/portal-sdk/generated/ top-extensions-localization-globalization.md#globalization-api](/portal-sdk/generated/top-extensions-localization-globalization.md#globalization-api) | |
+| Formatting numbers, currencies and dates         | [/portal-sdk/generated/ top-extensions-localization-globalization.md #globalization-api](/portal-sdk/generated/top-extensions-localization-globalization.md#globalization-api) | |
 
 [Ask about localization / globalization on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-localization-global)
 
@@ -244,7 +245,7 @@ The Azure Portal strives to meet high accessibility standards to ensure the prod
 | Name                            | Location | Purpose |
 | ------------------------------- | -------- | ------- |
 | Accessibility guidelines | [/portal-sdk/generated/ top-extensions-accessibility.md](/portal-sdk/generated/top-extensions-accessibility.md) | |
-| Accessibility testing and SLAs | [/portal-sdk/generated/ top-extensions-accessibility.md#accessibility-planning](/portal-sdk/generated/top-extensions-accessibility.md#accessibility-planning) | |
+| Accessibility testing and SLAs | [/portal-sdk/generated/ top-extensions-accessibility.md #accessibility-planning](/portal-sdk/generated/top-extensions-accessibility.md#accessibility-planning) | |
 
 [Ask about accessibility on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-accessibility)
 
@@ -268,7 +269,7 @@ The Ibiza team provides and operates a common Extension Hosting Service that mak
 | ------------------------ | -------- | ------- |
 | Hosting Service overview | [/portal-sdk/generated/ top-extensions-hosting-service.md](/portal-sdk/generated/top-extensions-hosting-service.md) | |
 | Onboarding your extension to the Extension Hosting Service | [/portal-sdk/generated/ top-extensions-hosting-service-procedures.md](/portal-sdk/generated/top-extensions-hosting-service-procedures.md) | |
-| Validating extension registration with the Extension Hosting Service | [/portal-sdk/generated/ top-extensions-hosting-service-procedures.md#register-the-extension](/portal-sdk/generated/top-extensions-hosting-service-procedures.md#register-the-extension) | |
+| Validating extension registration with the Extension Hosting Service | [/portal-sdk/generated/ top-extensions-hosting-service-procedures.md #register-the-extension](/portal-sdk/generated/top-extensions-hosting-service-procedures.md#register-the-extension) | |
 | Versioning your extension | [/portal-sdk/generated/ top-extensions-versioning.md](/portal-sdk/generated/top-extensions-versioning.md) | |
 | Deploying your extension using Express V2 and the Extension Hosting Service | [/portal-sdk/generated/ top-extensions-hosting-service-advanced.md](/portal-sdk/generated/top-extensions-hosting-service-advanced.md)| |
 | SLA for registering an extension with the Extension Hosting Service | [/portal-sdk/generated/ top-extensions-svc-lvl-agreements.md](/portal-sdk/generated/top-extensions-svc-lvl-agreements.md) | |
