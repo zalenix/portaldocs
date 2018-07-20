@@ -1,7 +1,7 @@
 ## Overview
 
-MsPortalFx-Test is an end-to-end test framework that runs tests against the Microsoft Azure Portal. It uses an open source contribution model to focus on partner needs instead of  internal Portal needs. It is  distributed independently from the SDK in an  effort to allow developers to develop tests in the same language as the extension.
-It interacts with the Portal  as a user would, and helps developers make performant and robust extensions when they strive for zero breaking changes to partner team CI.
+**MsPortalFx-Test** is an end-to-end test framework that runs tests against the Microsoft Azure Portal. It tests extension interactions with user behavior, moreso than extension interactions with the Portal.  Its open source contribution model  focuses on partner needs instead of internal Portal needs. It is  distributed independently from the SDK to allow developers to develop tests in the same language as the extension.
+It interacts with the Portal  as a user would, and helps developers make performant and robust extensions when they strive to decrease breaking changes to partner team CI.
 
 * [General Architecture](#general-architecture)
 
@@ -11,17 +11,29 @@ It interacts with the Portal  as a user would, and helps developers make perform
 
 * [Configure, compile and run](#configure,-compile-and-run)
 
+* [Output](#output)
+
+* [Updating the test tool](#updating-the-test-tool) 
+
+* [More Examples](#more-examples)
+
+* [Running tests in Visual Studio](#running-tests-in-visual-studio)
+
+* [Create an extension and resource](#create-an-extension-and-resource)
+
+* [Here](#here)
+
 ### General Architecture
 
-**MsPortalFx-Test** is arranged into three layers of abstraction.  The names of the layers may not be consistent in all instances, but the general idea is the same.  There may also be some future refactoring to easily differentiate between the layers.
+**MsPortalFx-Test** is arranged into three layers of abstraction. The names of the layers may not be consistent in all instances, but the general idea is the same.  There may also be some future refactoring to easily differentiate between the layers.
 
 1. Controls layer 
 
  The controls layer contains the basic controls used in the Portal, like blades, checkboxes, textboxes, and others.  It is not used directly by tests in most cases, because it is mainly for composing the action layer and the  test layers. It is built on webdriver primitives and there is little or no retry logic.  
 
- 1. Action layer 
+ 1. Actions layer 
 
-The action layer performs an action and verifies whether it was successful. It can retry the action if necessary. It is  used in writing tests like `portal.openBrowseBlade`. It is built upon the controls layer.
+The actions layer performs an action and verifies whether it was successful. It can retry the action if necessary. It is  used in writing tests like `portal.openBrowseBlade`. It is built upon the controls layer.
 
 1. Test layer 
 
@@ -172,7 +184,7 @@ Applying filter 'mycloudservice'...
 
 **NOTE**: If you receive compilation errors on the `node.d.ts` file, verify that the `tsc` version you are using is 1.8.x by running the following command: `tsc --version`. If the version is incorrect, then you may need to adjust the path variables or directly call the correct version of tsc.exe.  
 
-### Updating MsportalFx-Test
+### Updating the test tool 
 
 To stay current with the latest changes, we recommend updating whenever a new version of **MsportalFx-Test** is released.  The `npm install` command will automatically pull the latest version of `msportalfx-test`. 
  
@@ -188,7 +200,6 @@ If you do not have access to the AzureUX-PortalFx dashboard, you can enlist by f
  
 Your computer should have the most recent editions of operating systems and other software installed, as specified in [top-extensions-install-software.md](top-extensions-install-software.md).
 
-
 1. Launch **Visual Studio 2015** and navigate to `File -> New -> Project`. In the new project dialog, select `Installed ->  Templates -> TypeScript`. Select the `Node.js -> From Existing Node.js code*` project type, and give it a unique name.  The name of the project typically matches the solution name. The location can be the same as any other **Visual Studio** project directory.  Then, click the checkbox next to ```Create directory for solution```.  Then, click the ```OK``` button, as described in the following image.
 
     ![alt-text](../media/msportalfx-test/NewTypeScriptNodeJsExistingProject.png "NewTypeScriptNodeJsExistingProject")
@@ -197,9 +208,159 @@ Your computer should have the most recent editions of operating systems and othe
 
     ![alt-text](../media/msportalfx-test/FileSetTestFrameworkPropertyMocha.png "FileSetTestFrameworkPropertyMocha")
 
-1. Now, you should be able to build your test and view it in the Test Explorer.  If you do not see your tests, make sure that there are no build errors.  You can also try restarting Visual Studio to see if that makes them show up.  
+1. Now, you should be able to build your test and view it in the Test Explorer.  If you do not see your tests, make sure that there are no build errors.  You can also try restarting Visual Studio to determine whether that will cause the IDE to display the test results.  
 
-  {"gitdown": "include-file", "file": "../templates/msportalfx-test-procedure-installation.md"}
+-----------------
+## Here
+
+### Create an extension and resource 
+
+Create a new Portal extension in **Visual Studio** by using the procedures located in [top-extensions-getting-started.md](top-extensions-getting-started.md).  For the purposes of this example we named the project **theresource**. The extension is named  'LocalExtension' and made it run in the default [https://localhost:44300](https://localhost:44300) address by using CTRL+F5.  
+
+1. Click on the `Create Resource` option in the left Menu, then click on the `see all` option. Then select `Local Development` in the MarketPlace pane to display previews for **theresource**.  You may have to select a preview size on the MarketPlace pane previous to completing the required fields on the extension pane and clicking the  `Create` button.
+
+1. Then, on the MyResource pane, enter **theresource** in the ResourceName field, complete the required fields on the extension pane and clicking the `Create` button.
+
+1. Wait for the resource to get created.
+
+To write a test that verifies the Browse experience while sideloading your local extension:
+
+1. Create a new TypeScript file called **localextensiontests.ts**.
+ 
+1. In the created file, import the MsPortalFx-Test module and layout the Mocha test:
+
+	```ts
+	/// <reference path="./typings/index.d.ts" />
+	
+	import assert = require('assert');
+	import testFx = require('MsPortalFx-Test');
+	import until = testFx.until;
+	
+	describe('Local Extension Tests', function () {
+		this.timeout(0);
+	
+		it('Can Browse To The Resource Blade', () => {
+			
+		});
+	});
+	```
+
+1. In the **Can Browse To The Resource Blade** test body,  specify the credentials for the test session (replace with your actual Azure credentials):
+ 
+	```ts
+	// Hardcoding credentials to simplify the example, but you should never hardcode credentials
+	testFx.portal.portalContext.signInEmail = 'johndoe@outlook.com';
+	testFx.portal.portalContext.signInPassword = '12345';
+	```
+
+1. Now, use the **features** option of the portal.PortalContext object to enable the **canmodifyextensions** feature flag and use the **testExtensions** option to specify the name and address of the local extension to load:
+ 
+	```ts
+	testFx.portal.portalContext.features = [{ name: "feature.canmodifyextensions", value: "true" }];
+	testFx.portal.portalContext.testExtensions = [{ name: 'LocalExtension', uri: 'https://localhost:44300/' }];
+	```
+
+1. Declare a variable with the name of the resource that the test will browse to:
+
+	```ts
+	let resourceName = 'theresource';
+	```
+ 
+1. To be able to open the browse blade for our resource we'll need to know three things: The resource provider, the resource type and the title of the blade. You can get all that info from the Browse PDL implementation of your extension. In this case the resource provider is **Microsoft.PortalSdk**, the resource type is **rootResources** and the browse blade title is **My Resources**. With that info we can call the **openBrowseBlade** function of the Portal object:
+
+	```ts
+	return testFx.portal.openBrowseBlade('Microsoft.PortalSdk', 'rootResources', 'My Resources')
+	```
+ 
+1. From there on we can use the returned Blade object to filter the list, verify that only one row remains after filtering and select that row:
+	
+	```ts
+	.then((blade) => {
+        return testFx.portal.wait<testFx.Controls.GridRow>(() => {
+            return blade.grid.rows.count().then((count) => {
+                return count === 1 ? blade.grid.rows.first() : null;
+            });
+        }, null, "Expected only one row matching '" + resourceName + "'.");
+    }).then((row) => {
+        return row.click();				
+	})
+	```
+
+1. And finally we'll verify the correct blade opened and will close the Portal when done:
+
+	```ts
+	.then(() => {
+		let summaryBlade = testFx.portal.blade({ title: resourceName });
+		return testFx.portal.wait(until.isPresent(summaryBlade));
+	}).then(() => {
+		return testFx.portal.quit();
+	});
+	```
+
+1. Here for the complete test:
+
+    ```ts
+    /// <reference path="./typings/index.d.ts" />
+
+    import assert = require('assert');
+    import testFx = require('MsPortalFx-Test');
+    import until = testFx.until;
+
+    describe('Local Extension Tests', function () {
+        this.timeout(0);
+
+        it('Can Browse To The Resource Blade', () => {
+            // Hardcoding credentials to simplify the example, but you should never hardcode credentials
+            testFx.portal.portalContext.signInEmail = 'johndoe@outlook.com';
+            testFx.portal.portalContext.signInPassword = '12345';
+            testFx.portal.portalContext.features = [{ name: "feature.canmodifyextensions", value: "true" }];
+            testFx.portal.portalContext.testExtensions = [{ name: 'LocalExtension', uri: 'https://localhost:44300/' }];
+            
+            let resourceName = 'theresource';
+            
+            return testFx.portal.openBrowseBlade('Microsoft.PortalSdk', 'rootResources', 'My Resources').then((blade) => {
+                return blade.filterItems(resourceName);
+            }).then((blade) => {
+                return testFx.portal.wait<testFx.Controls.GridRow>(() => {
+                    return blade.grid.rows.count().then((count) => {
+                        return count === 1 ? blade.grid.rows.first() : null;
+                    });
+                }, null, "Expected only one row matching '" + resourceName + "'.");
+            }).then((row) => {
+                return row.click();				
+            }).then(() => {
+                let summaryBlade = testFx.portal.blade({ title: resourceName });
+                return testFx.portal.wait(until.isPresent(summaryBlade));
+            }).then(() => {
+                return testFx.portal.quit();
+            });
+        });
+    });
+    ```
+
+To add the required configuration and run the test:
+
+1. Create a file named **config.json** next to localextensiontests.ts. Paste this in the file:
+
+	```json
+	{
+	  "capabilities": {
+	    "browserName": "chrome"
+	  },
+	  "portalUrl": "https://portal.azure.com"
+	}
+	```		
+
+1. Compile your TypeScript test file:
+
+		tsc localextensiontests.ts --module commonjs
+
+1. Run Mocha against the generated JavaScript file:
+
+		node_modules\.bin\mocha localextensiontests.js
+
+
+--------------
 
   {"gitdown": "include-file", "file": "../templates/msportalfx-test-sideloading.md"}
 
