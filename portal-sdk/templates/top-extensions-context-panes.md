@@ -1,6 +1,6 @@
 # Context blades
 
-Context blades are a different visual representation of blades. The main difference is that they do not cause the screen to horizontally scroll when navigating to a context blade. Instead, the context blade  overlays on top of the current conten, beginning at  the right side of the screen, as in the following image.  This allows the user to interact with the context blade while retaining the context of the previous experience.
+Context blades are a different visual representation of blades. The main difference is that they do not cause the screen to horizontally scroll when navigating to a context blade. Instead, the context blade  is displayed in front of the current content, beginning at  the right side of the screen, as in the following image.  This allows the user to interact with the context blade while retaining the context of the previous experience.
 
 ### When to use a context pane
 
