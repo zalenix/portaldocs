@@ -33,7 +33,7 @@ Learn how the framework is structured and how it is designed to run in multiple 
 | EditableGrid V2 | /portal-sdk/generated | Improved APIs designed to work with new forms |
 | Extension availability alerts |  /portal-sdk/generated  | Get notified if your extension goes down |
 | Actionable notifications |availibility-alerts.md | Point users to well known next steps |
-| [EV2 support for the Extension Hosting Service | [/portal-sdk/generated/ top-extensions-hosting-service-advanced.md](/portal-sdk/generated/top-extensions-hosting-service-advanced.md) | Nuff said |
+| EV2 support for the Extension Hosting Service | [/portal-sdk/generated/ top-extensions-hosting-service-advanced.md](/portal-sdk/generated/top-extensions-hosting-service-advanced.md) | Nuff said |
 | Multi-Column for the Essentials control | /portal-sdk/generated/ | Better use of screen real estate |
 | TreeView improvements | /portal-sdk/generated/ | Checkboxes, commands, and Load More / Virtualization |
 
@@ -49,9 +49,9 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 | Release notes | [/portal-sdk/generated/ release-notes.md](/portal-sdk/generated/release-notes.md) | Summary of recent changes to the Azure SDK |
 | Breaking changes | [/portal-sdk/generated/ breaking-changes.md](/portal-sdk/generated/breaking-changes.md) | SDK editions that are associated with bugs, workarounds or fixes |
 | Install the SDK | [/portal-sdk/generated/ top-extensions-install-software.md](/portal-sdk/generated/top-extensions-install-software.md) | Initializing the computer for Azure extension development |
-| How to update portal Nuget packages |  [/portal-sdk/generated/ top-extensions-nuget.md](/portal-sdk/generated/top-extensions-nuget.md) |  |
-| Developing extensions |  [/portal-sdk/generated/ top-extensions-getting-started.md](/portal-sdk/generated/top-extensions-getting-started.md) |  |
-| SDK Update policy and alerts |  [/portal-sdk/generated/ top-extensions-getting-started.md #maintain-development-environment](/portal-sdk/generated/top-extensions-getting-started.md#maintain-development-environment) |  |
+| How to update portal Nuget packages |  [/portal-sdk/generated/ top-extensions-nuget.md](/portal-sdk/generated/top-extensions-nuget.md) | A list of Nuget packages and how to install them  |
+| Developing extensions |  [/portal-sdk/generated/ top-extensions-getting-started.md](/portal-sdk/generated/top-extensions-getting-started.md) | From empty form factor to a functional extension |
+| SDK Update policy and alerts |  [/portal-sdk/generated/ top-extensions-getting-started.md #maintain-development-environment](/portal-sdk/generated/top-extensions-getting-started.md#maintain-development-environment) | Keeping your computer current for extension development |
 | Sideloading  | [/portal-sdk/generated/ top-extensions-sideloading.md](/portal-sdk/generated/top-extensions-sideloading.md)  | Running the extension locally | 
 
 [Ask an SDK setup question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate) 
@@ -131,8 +131,8 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 
 | Name                            | Location | Purpose |
 | ------------------------------- | -------- | ------- |
-| Blades that create or provision resources and services | [/portal-sdk/generated/ top-extensions-create.md](/portal-sdk/generated/top-extensions-create.md) |  |
-| Adding your resource or service into the Browse menu | [/portal-sdk/generated/ top-extensions-browse.md](/portal-sdk/generated/top-extensions-browse.md) | |
+| The Create Blade | [/portal-sdk/generated/ top-extensions-create.md](/portal-sdk/generated/top-extensions-create.md) | Blades that create or provision resources and services |
+| The Browse Blade | [/portal-sdk/generated/ top-extensions-browse.md](/portal-sdk/generated/top-extensions-browse.md) | Adding your resource or service into the Browse menu |
 | Common UX for Azure Resource Manager (ARM) based services | /portal-sdk/generated/ | |
 
 [Ask about browse integration on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-browse)
@@ -143,10 +143,10 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 
 | Name                            | Location | Purpose |
 | ------------------------------- | -------- | ------- |
-| Context panes | [/portal-sdk/generated/ top-extensions-context-panes.md](/portal-sdk/generated/top-extensions-context-panes.md)  | |
-| Dialogs | [/portal-sdk/generated/ top-extensions-dialogs.md](/portal-sdk/generated/top-extensions-dialogs.md)  | |
-| Notifications | [/portal-sdk/generated/](/portal-sdk/generated/top-extensions-notifications.md) | |
-| Communication between blades | [/portal-sdk/generated/ parameters-and-collectors)](/portal-sdk/generated/parameters-and-collectors) | |
+| Context panes | [/portal-sdk/generated/ top-extensions-context-panes.md](/portal-sdk/generated/top-extensions-context-panes.md)  | Panes that overlay the current content instead of scrolling the screen horizontally. |
+| Dialogs | [/portal-sdk/generated/ top-extensions-dialogs.md](/portal-sdk/generated/top-extensions-dialogs.md)  | Lightweight alternative to context blades |
+| Notifications | [/portal-sdk/generated/ top-extensions-notifications.md](/portal-sdk/generated/top-extensions-notifications.md) | Context-sensitive warnings, errors, and other information |
+| Communication between blades | [/portal-sdk/generated/ parameters-and-collectors](/portal-sdk/generated/parameters-and-collectors) | |
 
 #### Loading and managing data
 
@@ -154,9 +154,9 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 
 | Name                            | Location | Purpose |
 | ------------------------------- | -------- | ------- |
-| Call Azure Resource Manager (ARM) and other endpoints) | [/portal-sdk/generated/ top-extensions-data-ajax.md](/portal-sdk/generated/top-extensions-data-ajax.md) | |
+| Call Azure Resource Manager (ARM) and other endpoints) | [/portal-sdk/generated/ top-extensions-data-ajax.md](/portal-sdk/generated/top-extensions-data-ajax.md) | Making Ajax calls from the client to the server |
 | More Ajax  | /portal-sdk/generated/ | Ajax all up, ajax calls with batch flags set  |
-| Legacy data management features | [/portal-sdk/generated/ top-legacy-data.md](/portal-sdk/generated/top-legacy-data.md) | |
+| Legacy data management features | [/portal-sdk/generated/ top-legacy-data.md](/portal-sdk/generated/top-legacy-data.md) | QueryCache and the master view, in association with EntityCache and the detail view |
 
 [Ask about data management on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-data-caching)
 
@@ -164,21 +164,21 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 
 | Name                                | Location | Purpose |
 | ----------------------------------- | -------- | ------- |
-| Memory management (LifetimeManager) | [/portal-sdk/generated/ top-extensions-data-lifetime.md](/portal-sdk/generated/top-extensions-data-lifetime.md) | |
-| Sharing blades and parts across extensions | [/portal-sdk/generated/ top-extensions-sharing-blades-and-parts.md](/portal-sdk/generated/top-extensions-sharing-blades-and-parts.md) | |
-| Custom domains (e.g. aad.portal.azure.com) | [/portal-sdk/generated/ top-extensions-custom-domains.md](/portal-sdk/generated/top-extensions-custom-domains.md) | |
+| Memory management (LifetimeManager) | [/portal-sdk/generated/ top-extensions-data-lifetime.md](/portal-sdk/generated/top-extensions-data-lifetime.md) | Disposing of child resources previous to the closing of the parent blade |
+| Sharing blades and parts across extensions | [/portal-sdk/generated/ top-extensions-sharing-blades-and-parts.md](/portal-sdk/generated/top-extensions-sharing-blades-and-parts.md) | Making your extension available to other teams |
+| Custom domains (e.g. aad.portal.azure.com) | [/portal-sdk/generated/ top-extensions-custom-domains.md](/portal-sdk/generated/top-extensions-custom-domains.md) | Domain-based configuration for third-party and other extensions  |
 
 ### Debugging
 
 | Name                            | Location | Purpose |
 | ------------------------------- | -------- | ------- |
-| Using developer mode | [/portal-sdk/generated/ top-extensions-hosting-service-procedures.md #update-isdevelopmentmode-flag](/portal-sdk/generated/top-extensions-hosting-service-procedures.md#update-isdevelopmentmode-flag)  | |
-| Using debug mode | [/portal-sdk/generated/ top-extensions-debugging.md #the-debug-tool](/portal-sdk/generated/top-extensions-debugging.md#the-debug-tool)  | |
-| Debugging extension load failures | [/portal-sdk/generated/ top-extensions-debugging.md #debugging-extension-load-failures](/portal-sdk/generated/top-extensions-debugging.md#debugging-extension-load-failures)  | |
-| Debugging console errors | [/portal-sdk/generated/ top-extensions-debugging.md #debugging-console-errors](/portal-sdk/generated/top-extensions-debugging.md#debugging-console-errors) | |
-| Debugging javascript | [/portal-sdk/generated/ top-extensions-debugging.md #debugging-javascript](/portal-sdk/generated/top-extensions-debugging.md#debugging-javascript)  | |
-| Debugging knockout | [/portal-sdk/generated/ top-extensions-debugging.md #debugging-knockout](/portal-sdk/generated/top-extensions-debugging.md#debugging-knockout)  | |
-| Debugging the data stack | [/portal-sdk/generated/ top-extensions-debugging.md #debugging-the-data-stack](/portal-sdk/generated/top-extensions-debugging.md#debugging-the-data-stack) | |
+| Using developer mode | [/portal-sdk/generated/ top-extensions-hosting-service-procedures.md #update-isdevelopmentmode-flag](/portal-sdk/generated/top-extensions-hosting-service-procedures.md#update-isdevelopmentmode-flag)  | Setting a released extension for development testing |
+| Using debug mode | [/portal-sdk/generated/ top-extensions-debugging.md #the-debug-tool](/portal-sdk/generated/top-extensions-debugging.md#the-debug-tool)  | F12 tools in your browser |
+| Debug extension load failures | [/portal-sdk/generated/ top-extensions-debugging.md #debug-extension-load-failures](/portal-sdk/generated/top-extensions-debugging.md#debug-extension-load-failures)  | What to do when your extension does not load  |
+| Debugging console errors | [/portal-sdk/generated/ top-extensions-debugging.md #debug-console-errors](/portal-sdk/generated/top-extensions-debugging.md#debug-console-errors) | Errors that are written to the browser developer console log |
+| Debugging javascript | [/portal-sdk/generated/ top-extensions-debugging.md #debug-javascript](/portal-sdk/generated/top-extensions-debugging.md#debug-javascript)  | Extension source code files |
+| Debugging knockout | [/portal-sdk/generated/ top-extensions-debugging.md #debug-knockout](/portal-sdk/generated/top-extensions-debugging.md#debug-knockout)  | The ViewModel and Knockout code |
+| Debugging the data stack | [/portal-sdk/generated/ top-extensions-debugging.md #debug-the-data-stack](/portal-sdk/generated/top-extensions-debugging.md#debug-the-data-stack) | Browser data for the current testing session |
 
 ### Performance
 
@@ -245,7 +245,7 @@ The Azure Portal strives to meet high accessibility standards to ensure the prod
 | Name                            | Location | Purpose |
 | ------------------------------- | -------- | ------- |
 | Accessibility guidelines | [/portal-sdk/generated/ top-extensions-accessibility.md](/portal-sdk/generated/top-extensions-accessibility.md) | |
-| Accessibility testing and SLAs | [/portal-sdk/generated/ top-extensions-accessibility.md #accessibility-planning](/portal-sdk/generated/top-extensions-accessibility.md#accessibility-planning) | |
+| Accessibility testing and SLAs | [/portal-sdk/generated/ top-extensions-accessibility.md #accessibility-planning](/portal-sdk/generated/top-extensions-accessibility.md#accessibility-planning) | How to report bugs to the Accessibility Team |
 
 [Ask about accessibility on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-accessibility)
 
@@ -289,9 +289,9 @@ These features are supported, but have had no recent investment. No additional i
 | Name                            | Location | Purpose |
 | ------------------------------- | -------- | ------- |
 | PDL-based programming | [/portal-sdk/generated/ top-legacy-blades-template-pdl.md](/portal-sdk/generated/top-legacy-blades-template-pdl.md)  | |
-| Legacy parts | [top-legacy-parts.md](top-legacy-parts.md) | |
-| Legacy data management feature | [top-legacy-data.md](top-legacy-data.md) | |
-| Controls in the MsPortalFx namespace | [/portal-sdk/generated/ top-extensions-samples-controls-deprecated.md](/portal-sdk/generated/top-extensions-samples-controls-deprecated.md) | |
+| Legacy parts | [/portal-sdk/generated/ top-legacy-parts.md](/portal-sdk/generated/top-legacy-parts.md) | |
+| Legacy data management feature | [/portal-sdk/generated/ top-legacy-data.md](/portal-sdk/generated/top-legacy-data.md) | |
+| Controls in the MsPortalFx namespace | [/portal-sdk/generated/ top-extensions-samples-controls-deprecated.md](/portal-sdk/generated/top-extensions-samples-controls-deprecated.md) | A list of deprecated controls and the replacements to use during migration to more performant extensions. |
 | EditScope | [/portal-sdk/generated/ top-legacy-editscopes.md](/portal-sdk/generated/top-legacy-editscopes.md) | |
 
 ### Additional resources
@@ -300,7 +300,7 @@ The documents are combinations from all the previous topics. Consequently, there
 
 | Name                            | Location | Purpose |
 | ------------------------------- | -------- | ------- |
-| Best practices | [(/portal-sdk/generated/top-extensions-bp.md](/portal-sdk/generated/top-extensions-bp.md) | Great ideas for coding extensions that are in addition to the topic document. | |
+| Best practices | [(/portal-sdk/generated/ top-extensions-bp.md](/portal-sdk/generated/top-extensions-bp.md) | Great ideas for coding extensions that are in addition to the topic document. | |
 | Frequently asked questions | [/portal-sdk/generated/ top-extensions-faq.md](/portal-sdk/generated/top-extensions-faq.md) | Stackoverflow discussions that are worth including in the Ibiza library |
 | Glossary | [/portal-sdk/generated/ top-extensions-glossary.md](/portal-sdk/generated/top-extensions-glossary.md) | Terms that are not defined in standard computing or acronym dictionaries |
 
