@@ -22,7 +22,6 @@ It interacts with the Portal  as a user would, and helps developers make perform
 
 * [Create an extension and resource](#create-an-extension-and-resource)
 
-* [Here](#here)
 
 <a name="overview-general-architecture"></a>
 ### General Architecture
@@ -220,10 +219,8 @@ Your computer should have the most recent editions of operating systems and othe
 1. Now, you should be able to build your test and view it in the Test Explorer.  If you do not see your tests, make sure that there are no build errors.  You can also try restarting Visual Studio to determine whether that will cause the IDE to display the test results.  
 
 -----------------
-<a name="here"></a>
-## Here
 
-<a name="here-create-an-extension-and-resource"></a>
+<a name="overview-create-an-extension-and-resource"></a>
 ### Create an extension and resource
 
 Create a new Portal extension in **Visual Studio** by using the procedures located in [top-extensions-getting-started.md](top-extensions-getting-started.md).  For the purposes of this example we named the project **theresource**. The extension is named  'LocalExtension' and made it run in the default [https://localhost:44300](https://localhost:44300) address by using CTRL+F5.  
