@@ -21,7 +21,6 @@ It interacts with the Portal  as a user would, and helps developers make perform
 
 * [Create an extension and resource](#create-an-extension-and-resource)
 
-* [Here](#here)
 
 ### General Architecture
 
@@ -211,7 +210,6 @@ Your computer should have the most recent editions of operating systems and othe
 1. Now, you should be able to build your test and view it in the Test Explorer.  If you do not see your tests, make sure that there are no build errors.  You can also try restarting Visual Studio to determine whether that will cause the IDE to display the test results.  
 
 -----------------
-## Here
 
 ### Create an extension and resource 
 
