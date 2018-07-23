@@ -41,8 +41,11 @@ This section contains all Azure Portal FAQ's.
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-forms.md"}
 
-<!--
 ## Common scenarios and integration points
+
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-authentication.md"}
+
+<!--
 ## Other UI concepts
 ## Loading and managing data
 ## Advanced development topics

@@ -68,6 +68,8 @@
 
 {"gitdown": "include-file", "file": "portalfx-extensions-glossary-create.md"}
 
+{"gitdown": "include-file", "file": "portalfx-extensions-glossary-authentication.md"}
+
 ## Other UI concepts
 
 {"gitdown": "include-file", "file": "portalfx-extensions-glossary-notifications.md"}
