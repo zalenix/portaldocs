@@ -6,6 +6,7 @@
     * [Showing up in All Resources and resource group resources](#assets-showing-up-in-all-resources-and-resource-group-resources)
     * [Handling permissions for RBAC](#assets-handling-permissions-for-rbac)
     * [Special-casing ARM resource kinds](#assets-special-casing-arm-resource-kinds)
+    * [Displaying multiple kinds together in a single browse view](#assets-displaying-multiple-kinds-together-in-a-single-browse-view)
     * [Handling deleted resources](#assets-handling-deleted-resources)
     * [Linking notifications to assets](#assets-linking-notifications-to-assets)
     * [ARM RP and resource type metadata](#assets-arm-rp-and-resource-type-metadata)
@@ -194,8 +195,8 @@ The portal supports overriding the following default behaviors based on the reso
 * Hiding resources in Browse and resource groups
 * Displaying separate icons throughout the portal
 * Launching different blades when an asset is opened
+* Merging kinds to display in a single browse view
 
-Kinds can also be used to
 
 The kind value can be whatever value makes sense for your scenarios. Just add supported kinds to the `AssetType` PDL:
 
@@ -234,6 +235,79 @@ If different kinds need to opt in to a static resource menu overview item, add t
 <Kind ...>
   <StaticOverview />
 </Kind>
+```
+
+<a name="assets-displaying-multiple-kinds-together-in-a-single-browse-view"></a>
+### Displaying multiple kinds together in a single browse view
+
+There are two options for displaying multiple kinds as a single view. Both cases require exposing a entry for your asset. 
+
+1. Merging multiple kinds together via any of each kind's browse entry (MergedKind)
+1. Exposing a logical kind (KindGroup) which acts as a single entry point for multiple kinds.
+
+<a name="assets-displaying-multiple-kinds-together-in-a-single-browse-view-mergedkind"></a>
+#### MergedKind
+
+To expose your resources as a merged kind you need to define the kinds you wish to merge as below.
+
+```xml
+<AssetType Name="Watch">
+    <ResourceType ResourceTypeName="Microsoft.Test/watches"
+                  ApiVersion="2017-04-01">
+      <!--
+        The 'garmin-merged' kind has two merged kinds, 'garmin' and 'garmin2'. The 'garmin-merged' kind is not a real
+        kind and is not emitted to the manifest as a kind, it is organizational only.
+      -->
+      <MergedKind Name="garmin-merged">
+        <Kind Name="garmin"
+              CompositeDisplayName="{Resource AssetTypeNames.Watch.Garmin, Module=ClientResources}"
+              Icon="{Svg IsLogo=true, File=../../Svg/Watches/garmin.svg}"
+              BladeName="GarminWatchBlade"
+              PartName="GarminWatchTile" />
+        <Kind Name="garmin2"
+              CompositeDisplayName="{Resource AssetTypeNames.Watch.Garmin2, Module=ClientResources}"
+              Icon="{Svg IsLogo=true, File=../../Svg/Watches/garmin2.svg}"
+              BladeName="Garmin2WatchBlade"
+              PartName="Garmin2WatchTile" />
+      </MergedKind>
+    </ResourceType>
+  </AssetType>
+```
+
+<a name="assets-displaying-multiple-kinds-together-in-a-single-browse-view-kindgroup"></a>
+#### KindGroup
+
+To expose your resources as grouped as a single kind you will need to define the below.
+Note both lg and samsung in the example below will be exposed as entries too.
+
+```xml
+<AssetType Name="Watch">
+    <ResourceType ResourceTypeName="Microsoft.Test/watches"
+                  ApiVersion="2017-04-01">
+      <Kind Name="lg"
+            CompositeDisplayName="{Resource AssetTypeNames.Watch.LG, Module=ClientResources}"
+            Icon="{Svg IsLogo=true, File=../../Svg/Watches/lg.svg}"
+            BladeName="LgWatchBlade"
+            PartName="LgWatchTile" />
+      <Kind Name="samsung"
+            CompositeDisplayName="{Resource AssetTypeNames.Watch.Samsung, Module=ClientResources}"
+            Icon="{Svg IsLogo=true, File=../../Svg/Watches/samsung.svg}"
+            BladeName="SamsungWatchBlade"
+            PartName="SamsungWatchTile" />
+      <!--
+        The 'android' kind group wraps the lg and samsung kinds into a single kind. The 'android' kind is an abstract
+        kind. There should never be a watch with the kind set to 'android'. Instead it's used to group kinds into
+        a single list. However, 'lg' watches and be seen separately, same with 'samsung' watches. The 'android' kind
+        will be emitted to the manifest as a kind.
+      -->
+      <KindGroup Name="android"
+            CompositeDisplayName="{Resource AssetTypeNames.Watch.Android, Module=ClientResources}"
+            Icon="{Svg IsLogo=true, File=../../Svg/Watches/android.svg}">
+        <KindReference KindName="lg" />
+        <KindReference KindName="samsung" />
+      </KindGroup>
+    </ResourceType>
+  </AssetType>
 ```
 
 <a name='notify-asset-deleted'></a>

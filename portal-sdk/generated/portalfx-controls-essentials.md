@@ -198,7 +198,7 @@ public essentials: Essentials.ResourceLayoutContract;
 public onInitialize(): Q.Promise<void> {
     let clickCounter = 0;
 
-    return mockAPI()
+    return mockAPI(2)
     .then(() => {
         const { container, configuration } = this.context;
 
@@ -288,6 +288,7 @@ public onInitialize(): Q.Promise<void> {
 private _initializeControl(): void {
     this.essentials =  Essentials.create(this.context.container, {
         resourceId: "/subscriptions/sub123/resourcegroups/snowtraxpsx/providers/Microsoft.Test/snowmobiles/snowtraxpsx600",
+        includeTags: true,
         additionalRight: [{
             label: ClientResources.essentialsItem,
             value: ClientResources.essentialsSampleString,
