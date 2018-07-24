@@ -7,9 +7,9 @@ During sign-in, the Portal obtains a token that contains claims that identify th
 
 **NOTE:** Users can sign in without a subscription. Extensions must gracefully handle this case and return zero assets when queried.
 
-The extension can call ARM from the client or from the extension server. The extension can also call alternate services from the client or from the extension server.
+The extension can call ARM from the client or from the extension server. The extension can also call external  services from the client or from the extension server.
 
-Calling alternate services involves AAD Onboarding.  The onboarding process can take five or six  weeks, so if your extension needs to invoke services other than ARM, you should reach out to the Azure Portal team early in the design phase, as specified in [top-extensions-onboarding-with-related-teams.md](top-extensions-onboarding-with-related-teams.md).
+Calling external services involves AAD Onboarding.  The onboarding process can take five or six  weeks, so if your extension needs to invoke services other than ARM, you should reach out to the Azure Portal team early in the design phase, as specified in [top-extensions-onboarding-with-related-teams.md](top-extensions-onboarding-with-related-teams.md).
 
 **NOTE**: Only first-party extensions can call alternate resources. Third party extensions use an encrypted token that cannot be decrypted by services other than ARM, therefore they cannot call alternate resources.
 
@@ -19,7 +19,7 @@ Calling alternate services involves AAD Onboarding.  The onboarding process can 
 
 * [Calling ARM from the server](#calling-arm-from-the-server)
 
-* [Calling alternate resources](#calling-alternate-resources)
+* [Calling external resources](#calling-external-resources)
 
 * [Accessing claims](#accessing-claims)
 
@@ -64,16 +64,25 @@ The following is the signin process that is performed by the Portal.
 
     **NOTE**: Tokens are cached in memory on the server, as described in [http://aka.ms/portalfx/DelegationTokenProvider](http://aka.ms/portalfx/DelegationTokenProvider). In this example, the `resourceName:self` indicates that this extension only calls itself from the client.
 
+1. Now the extension's client side can call server side API's, or call external services directly. 
+
+    * Server side API 
+
+        The extension's server-side code can exchange its current access token for another access token that allows it to use resources, as described in [http://aka.ms/portalfx/onbehalfof](http://aka.ms/portalfx/onbehalfof). The developer manages the permissions and dependencies for the extension by registering the application and coordinating with AAD Onboarding, as specified in [portalfx-extensions-onboarding-aad.md](portalfx-extensions-onboarding-aad.md). In the sample code located at [http://aka.ms/portalfx/TokenBasedAuthenticationClient](http://aka.ms/portalfx/TokenBasedAuthenticationClient), a registered  extension's server side code exchanges its access token for an access token for AAD Graph. 
+
+    *  Direct external services call
+
+        The PortalFx's client side `ajax` wrapper makes the `DelegationToken` call to get a token for the specified resource. In this case, the PortalFx team creates the app registration for the extension and manages permissions for the API's as specified in the extension configuration during onboarding with PortalFx.
+
+
+
+
 1. The Portal gets a list of directories that the user can  access from ARM.
 1. The Portal gets a list of subscriptions that the user can access from ARM.
 1. The Portal signs the user into the last-used directory, the home directory for AAD accounts, or the first directory it gets from ARM for MSA accounts.
 1. Finally, the Portal loads the Startboard and all extensions.
- 
-in step 4 (see portalAuthorization below)
 
 **NOTE**: Cookies are not used for authentication.
-
-For more information on memory caching, see []().
 
 For more information about OIDC flow, see [https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-openid-connect-code](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-openid-connect-code).
 
@@ -98,7 +107,7 @@ Use the `WebApiClient` class to call ARM from your extension server. This class 
     }
 ```
 
-## Calling alternate resources
+## Calling external resources
 
 Only Ibiza has the authority to mint tokens. To call external resources, extension developers need to request the creation of the AAD and register the extension resources with Ibiza for the appropriate environment, as specified in [top-onboarding.md#register-the-extension-with-the-portal-product-configuration](top-onboarding.md#register-the-extension-with-the-portal-product-configuration). 
 
@@ -230,17 +239,17 @@ The following example enables `Contoso_Extension`, a sample extension that queri
     ```
 ## Accessing claims
 
-Tokens received from AAD contain a set of claims that are formatted as key-value pairs.  They contain information about the user, and they are only available to extensions that comply with the Azure privacy policy that is located at [https://www.microsoft.com/en-us/TrustCenter/Privacy/default.aspx](https://www.microsoft.com/en-us/TrustCenter/Privacy/default.aspx). 
+Tokens received from AAD contain a set of claims that are formatted as key-value pairs.  They contain information about the user, and they are only available to extensions that comply with the Azure privacy policy that is located at [https://www.microsoft.com/en-us/TrustCenter/Privacy/default.aspx](https://www.microsoft.com/en-us/TrustCenter/Privacy/default.aspx).
 
 Extensions that are not covered by this policy, like the ones that share PII with third-parties, do not have access to the token or its claims, because Microsoft can be sued for abuse or misuse of PII as specified in the  privacy policy. These  exceptions need to be approved by reaching out to <a href="mailto:ibiza-lca@microsoft.com?subject=Personally-identifiable Information Policy">ibiza-lca@microsoft.com</a>.
 
 ### Accessing claims from the client
 
-Extensions that have access to claims can use the `getUserInfo()` API to retrieve common claims from the client. 
+Extensions that have access to claims can use the `getUserInfo()` API to retrieve common claims from the client.
 
 **NOTE**: Secondary claims, like name and email, may not always be available and cannot be guaranteed. Token claims may change over time as AAD evolves. Call the `Graph` to get required user information instead of extracting claims yourself. Do not make hard dependencies on claims.
 
-The following code retrieves common claims from the client. 
+The following code retrieves common claims from the client.
 
 ```ts
 MsPortalFx.Base.Security.getUserInfo() : PromiseV<MsPortalFx.Base.Security.UserInfo>
@@ -260,13 +269,14 @@ interface UserInfo {
 <!-- TODO:  This aka.ms link was previously (http://msdn.microsoft.com/library/system.web.httpcontext.user.aspx). the new link seems to be the one in the aka.ms link.  Determine whether this was the intent. -->
 
 While not recommended, the token used to communicate with your server also contains claims that can be read from the
-server by using the ASP.NET claims API specified in [http://msdn.microsoft.com/en-us/library/ee517271.aspx](http://msdn.microsoft.com/en-us/library/ee517271.aspx). To simplify development, the `HttpContext.User` property specified in [http://aka.ms/portalfx/httpContextUser](http://aka.ms/portalfx/httpContextUser) has been augmented with the most commonly used claims. 
- 
+server by using the ASP.NET claims API specified in [http://msdn.microsoft.com/en-us/library/ee517271.aspx](http://msdn.microsoft.com/en-us/library/ee517271.aspx). To simplify development, the `HttpContext.User` property specified in [http://aka.ms/portalfx/httpContextUser](http://aka.ms/portalfx/httpContextUser) has been augmented with the most commonly used claims.
+
 The extension can use the ASP.NET claims API to read additional claims from the token. Due to size constraints, additional information required by an extension cannot be added to the token. Instead, the extension can obtain it from the AAD Graph API that is specified in [http://aka.ms/portalfx/AADGraphAPI](http://aka.ms/portalfx/AADGraphAPI). 
 
 1.  Reference the following assemblies:
 
 * Microsoft.Portal.AadCore.dll
+
 * System.IdentityModel.Tokens.Jwt.dll
 
 1.  Add the following to your **web.config** file:
@@ -327,7 +337,7 @@ The extension can use the ASP.NET claims API to read additional claims from the 
 </configuration>
 ```
 
-1.  Use [HttpContext.User](http://msdn.microsoft.com/library/system.web.httpcontext.user.aspx) to retrieve the common claims:
+1. Use [HttpContext.User](http://msdn.microsoft.com/library/system.web.httpcontext.user.aspx) to retrieve the common claims:
 
 ```cs
 // use IPortalIdentity for email and tenant id
