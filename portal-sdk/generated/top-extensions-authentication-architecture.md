@@ -1,4 +1,10 @@
 
+The Azure Portal calls a number of other extensions so that a user can sign-in and authenticate to use Portal services.
+
+The following image explains the internal workings of how the Portal, its extensions and the API's that back those extensions integrate with Azure AD for authentication.
+
+![alt-text](../media/portalfx-extensions-authentication/authentication.png "Authentication")
+
 The following is the signin process that is performed by the Portal.
 
 1. User browses to the Portal.
