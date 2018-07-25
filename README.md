@@ -22,6 +22,8 @@ Learn how the framework is structured and how it is designed to run in multiple 
 
 * [Architecture overview](/portal-sdk/generated/top-extensions-architecture.md)
 
+* [Authentication architecture](/portal-sdk/generated/top-extensions-authentication-architecture.md)
+
 * [Authentication](/portal-sdk/generated/top-extensions-authentication.md)
 
 ## What's new
