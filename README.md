@@ -62,8 +62,6 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 
 * [Run the extension locally (a.k.a. sideloading)](/portal-sdk/generated/top-extensions-sideloading.md)
 
-
-
 [Ask an SDK setup question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)
 
 ### Samples
@@ -145,6 +143,8 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 * [Blades that create or provision resources and services](/portal-sdk/generated/top-extensions-create.md)
 
 * [Add your resource or service into the Browse menu](/portal-sdk/generated/top-extensions-browse.md)
+
+* [Authentication](/portal-sdk/generated/top-extensions-authentication.md)
 
 * [Common UX for Azure Resource Manager (ARM) based services](/portal-sdk/generated/top-extensions-arm.md)
 

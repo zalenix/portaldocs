@@ -133,6 +133,7 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 | ------------------------------- | -------- | ------- |
 | The Create Blade | [/portal-sdk/generated/ top-extensions-create.md](/portal-sdk/generated/top-extensions-create.md) | Blades that create or provision resources and services |
 | The Browse Blade | [/portal-sdk/generated/ top-extensions-browse.md](/portal-sdk/generated/top-extensions-browse.md) | Adding your resource or service into the Browse menu |
+| Authentication | [/portal-sdk/generated/ top-extensions-authentication.md](/portal-sdk/generated/top-extensions-authentication.md) | User signin and Portalfx token processing  |
 | Common UX for Azure Resource Manager (ARM) based services | /portal-sdk/generated/ | |
 
 [Ask about browse integration on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-browse)
@@ -184,7 +185,7 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 
 | Name                            | Location | Purpose |
 | ------------------------------- | -------- | ------- |
-| Performance profiling | [/portal-sdk/generated/ top-extensions-performance-profiling.md](/portal-sdk/generated/top-extensions-performance-profiling.md) | |
+| Performance profiling | [/portal-sdk/generated/ top-extensions-performance-profiling.md](/portal-sdk/generated/top-extensions-performance-profiling.md) | How to make your extension more performant |
 
 ### Testing
 
@@ -192,9 +193,9 @@ The Ibiza team provides limited testing support. Due to resource constraints the
 
 | Name                            | Location | Purpose |
 | ------------------------------- | -------- | ------- |
-| Unit testing support | [/portal-sdk/generated/ portalfx-unit-test.md](/portal-sdk/generated/portalfx-unit-test.md) | |
-| C# test framework (Open source) | [/portal-sdk/generated/ top-extensions-csharp-test-framework.md](/portal-sdk/generated/top-extensions-csharp-test-framework.md) | |
-| Node.js test framework (Open source) | [/portal-sdk/generated/ top-extensions-node-js-test-framework.md](/portal-sdk/generated/top-extensions-node-js-test-framework.md) | |
+| Unit testing support | [/portal-sdk/generated/ top-extensions-unit-test.md](/portal-sdk/generated/top-extensions-unit-test.md) | Creating a unit test for your extension |
+| C# test framework (Open source) | [/portal-sdk/generated/ top-extensions-csharp-test-framework.md](/portal-sdk/generated/top-extensions-csharp-test-framework.md) | A framework for UI-based Selenium Webdriver tests |
+| Node.js test framework (Open source) | [/portal-sdk/generated/ top-extensions-msportalfx-test.md](/portal-sdk/generated/top-extensions-msportalfx-test.md) | An end-to-end test framework that tests extension interactions with user behavior |
 
 [Ask a test-related question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-test)
 
@@ -221,8 +222,8 @@ It is common for teams to want to experiment with new capabilities. We offer two
 
 | Name                            | Location | Purpose |
 | ------------------------------- | -------- | ------- |
-| Flighting a new version of your extension in MPAC | [/portal-sdk/generated/ top-extensions-flighting.md)](/portal-sdk/generated/top-extensions-flighting.md) | |
-| Feature flags to enable or disable individual features within an environment | [/portal-sdk/generated/ top-extensions-flags.md](/portal-sdk/generated/top-extensions-flags.md) | |
+| Flighting a new version of your extension in MPAC | [/portal-sdk/generated/ top-extensions-flighting.md)](/portal-sdk/generated/top-extensions-flighting.md) | Testing control group/experiment group versions of an extension previous to production deployment |
+| Feature flags to enable or disable individual features within an environment | [/portal-sdk/generated/ top-extensions-flags.md](/portal-sdk/generated/top-extensions-flags.md) | Query string flags that modify the run-time behavior of extensions for interacting with the Portal, or controlling and diagnosing extension behavior |
 
 ### Localization and globalization
 
