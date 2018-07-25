@@ -133,7 +133,6 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 | ------------------------------- | -------- | ------- |
 | The Create Blade | [/portal-sdk/generated/ top-extensions-create.md](/portal-sdk/generated/top-extensions-create.md) | Blades that create or provision resources and services |
 | The Browse Blade | [/portal-sdk/generated/ top-extensions-browse.md](/portal-sdk/generated/top-extensions-browse.md) | Adding your resource or service into the Browse menu |
-| Authentication | [/portal-sdk/generated/ top-extensions-authentication.md](/portal-sdk/generated/top-extensions-authentication.md) | User signin and Portalfx token processing  |
 | Common UX for Azure Resource Manager (ARM) based services | /portal-sdk/generated/ | |
 
 [Ask about browse integration on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-browse)
