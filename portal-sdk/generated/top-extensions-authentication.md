@@ -2,15 +2,15 @@
 <a name="overview"></a>
 ## Overview
 
-The Portal uses an internal provider for authentication and authorization. The built-in cloud authentication provider uses Azure Active Directory (AAD), which also supports Microsoft Account users. If your extension needs to differentiate between AAD and MSA users, see [Accessing claims from your server](#accessing-claims-from-your-server). If you are working on first-party extensions, but you are not sure that your extension scenarios comply with Azure terms and conditions, you may want to reach out to <a href="mailto:ibiza-lca@microsoft.com?subject=Compliance with Azure Terms and Conditions">ibiza-lca@microsoft.com</a>.
+The Portal uses an internal provider for authentication and authorization. The built-in cloud authentication provider uses Azure Active Directory (AAD), which also supports Microsoft Account users. If your extension needs to differentiate between AAD and MSA users, see [Accessing claims from the extension server](#accessing-claims-from-the-extension-server). If you are working on first-party extensions, but you are not sure that your extension scenarios comply with Azure terms and conditions, you may want to reach out to <a href="mailto:ibiza-lca@microsoft.com?subject=Compliance with Azure Terms and Conditions">ibiza-lca@microsoft.com</a>.
 
 During sign-in, the Portal obtains a token that contains claims that identify the signed-in user. The Portal also retrieves directories and subscriptions to which the user has access.
 
-**NOTE:** Users can sign in without a subscription. Extensions must gracefully handle this case and return zero assets when queried.
+**NOTE**:  Users can sign in without a subscription. Extensions must gracefully handle this case and return zero assets when queried.
 
 The extension can call ARM from the client or from the extension server. The extension can also call external  services from the client or from the extension server.
 
-Calling external services involves AAD Onboarding.  The onboarding process can take five or six  weeks, so if your extension needs to invoke services other than ARM, you should reach out to the Azure Portal team early in the design phase, as specified in [top-extensions-onboarding-with-related-teams.md](top-extensions-onboarding-with-related-teams.md).
+Calling external services involves AAD Onboarding.  The onboarding process can take five or six weeks, so if your extension needs to invoke services other than ARM, you should reach out to the Azure Portal team early in the design phase, as specified in [top-extensions-onboarding-with-related-teams.md](top-extensions-onboarding-with-related-teams.md).
 
 **NOTE**: Only first-party extensions can call alternate resources. Third party extensions use an encrypted token that cannot be decrypted by services other than ARM, therefore they cannot call alternate resources.
 
@@ -41,7 +41,7 @@ The following is the signin process that is performed by the Portal.
 
 1. When the user triggers the loading of the extension, the extension home page is downloaded from the location in the extension configuration, as specified in [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md). This provides information required by the Shell to bootstrap the extension UI.
 
-1. When an extension asks for a token, it makes a request to the Portal DelegationToken controller endpoint. This endpoint requires the refresh token that was just acquired, in addition to the extension name and the resource name that the extension requested. This endpoint returns access tokens to the browser, as in the sample code located at  [http://aka.ms/portalfx/DelegationTokenProvider](http://aka.ms/portalfx/DelegationTokenProvider). 
+1. When an extension asks for a token, it makes a request to the Portal `DelegationToken` controller endpoint. This endpoint requires the refresh token that was just acquired, in addition to the extension name and the resource name that the extension requested. This endpoint returns access tokens to the browser, as in the sample code located at  [http://aka.ms/portalfx/DelegationTokenProvider](http://aka.ms/portalfx/DelegationTokenProvider). 
 
     * Sample request:
         ```
@@ -74,15 +74,13 @@ The following is the signin process that is performed by the Portal.
 
     *  Direct external services call
 
-        The PortalFx's client side `ajax` wrapper makes the `DelegationToken` call to get a token for the specified resource. In this case, the PortalFx team creates the app registration for the extension and manages permissions for the API's as specified in the extension configuration during onboarding with PortalFx.
+        The PortalFx's client side `ajax` wrapper makes the `DelegationToken` call to get a token for the specified resource. In this case, the PortalFx team creates the app registration for the extension and manages permissions for the API's as specified in [top-extensions-configuration.md](top-extensions-configuration.md).
 
+        The framework keeps track of token expiration. When the user interacts with the site in a way that results in an API call, and the token is about to expire, the framework makes the call to `DelegationToken` again to get new access tokens. The extension uses the PortalFx's client side `ajax` wrapper as specified in [http://aka.ms/portalfx/servicesecuritytokens](http://aka.ms/portalfx/servicesecuritytokens).
 
+The Portal signs the user into the last-used directory, the home directory for AAD accounts, or the first directory it gets from ARM for MSA accounts. It also loads the Startboard and all extensions.
 
-
-1. The Portal gets a list of directories that the user can  access from ARM.
-1. The Portal gets a list of subscriptions that the user can access from ARM.
-1. The Portal signs the user into the last-used directory, the home directory for AAD accounts, or the first directory it gets from ARM for MSA accounts.
-1. Finally, the Portal loads the Startboard and all extensions.
+Navigating to a new extension repeats this process, beginning at triggering the loading of the extension. If the user revisits an extension, a client side in-memory token cache is used instead of  making another request to the Portal `DelegationToken` controller endpoint. This cache is lost on page refresh.
 
 **NOTE**: Cookies are not used for authentication.
 
@@ -245,9 +243,12 @@ The following example enables `Contoso_Extension`, a sample extension that queri
 <a name="accessing-claims"></a>
 ## Accessing claims
 
-Tokens received from AAD contain a set of claims that are formatted as key-value pairs.  They contain information about the user, and they are only available to extensions that comply with the Azure privacy policy that is located at [https://www.microsoft.com/en-us/TrustCenter/Privacy/default.aspx](https://www.microsoft.com/en-us/TrustCenter/Privacy/default.aspx).
+Tokens received from AAD contain a set of claims that are formatted as key-value pairs.  They contain information about the user, and they are only available to extensions that comply with the Azure privacy policy that is located at [https://www.microsoft.com/en-us/TrustCenter/Privacy/default.aspx](https://www.microsoft.com/en-us/TrustCenter/Privacy/default.aspx). 
 
-Extensions that are not covered by this policy, like the ones that share PII with third-parties, do not have access to the token or its claims, because Microsoft can be sued for abuse or misuse of PII as specified in the  privacy policy. These  exceptions need to be approved by reaching out to <a href="mailto:ibiza-lca@microsoft.com?subject=Personally-identifiable Information Policy">ibiza-lca@microsoft.com</a>.
+<!-- TODO: Validate whether the following lists are still part of the signin process. -->
+They may include items like a list of directories that the user can  access from ARM, or a list of subscriptions that the user can access from ARM.
+
+Extensions that are not covered by this policy, like the ones that share PII with third-parties, do not have access to the token or its claims, because Microsoft can be sued for abuse or misuse of PII as specified in the  privacy policy. These exceptions need to be approved by reaching out to <a href="mailto:ibiza-lca@microsoft.com?subject=Personally-identifiable Information Policy">ibiza-lca@microsoft.com</a>.
 
 <a name="accessing-claims-accessing-claims-from-the-client"></a>
 ### Accessing claims from the client
@@ -274,96 +275,100 @@ interface UserInfo {
 <a name="accessing-claims-accessing-claims-from-the-extension-server"></a>
 ### Accessing claims from the extension server
 
-<!-- TODO:  This aka.ms link was previously (http://msdn.microsoft.com/library/system.web.httpcontext.user.aspx). the new link seems to be the one in the aka.ms link.  Determine whether this was the intent. -->
+<!-- TODO:  This aka.ms link was previously (http://msdn.microsoft.com/library/system.web.httpcontext.user.aspx). The aka.ms link is to a new version of the same content.  Determine whether this was the intent. -->
 
 While not recommended, the token used to communicate with your server also contains claims that can be read from the
-server by using the ASP.NET claims API specified in [http://msdn.microsoft.com/en-us/library/ee517271.aspx](http://msdn.microsoft.com/en-us/library/ee517271.aspx). To simplify development, the `HttpContext.User` property specified in [http://aka.ms/portalfx/httpContextUser](http://aka.ms/portalfx/httpContextUser) has been augmented with the most commonly used claims.
+server by using the **ASP.NET** claims API specified in [http://msdn.microsoft.com/en-us/library/ee517271.aspx](http://msdn.microsoft.com/en-us/library/ee517271.aspx). To simplify development, the `HttpContext.User` property specified in [http://aka.ms/portalfx/httpContextUser](http://aka.ms/portalfx/httpContextUser) has been augmented with the most commonly used claims.
 
-The extension can use the ASP.NET claims API to read additional claims from the token. Due to size constraints, additional information required by an extension cannot be added to the token. Instead, the extension can obtain it from the AAD Graph API that is specified in [http://aka.ms/portalfx/AADGraphAPI](http://aka.ms/portalfx/AADGraphAPI). 
+<!-- TODO: Determine what is recommended instead of this procedure. -->
 
-1.  Reference the following assemblies:
+The extension uses the API to read additional claims from the token. Due to size constraints, additional information required by an extension cannot be added to the token. Instead, the extension obtains it from the AAD Graph API that is specified in [http://aka.ms/portalfx/AADGraphAPI](http://aka.ms/portalfx/AADGraphAPI). 
 
-* Microsoft.Portal.AadCore.dll
+The following code sample retrieves common claims.
 
-* System.IdentityModel.Tokens.Jwt.dll
+1. Reference the following assemblies:
 
-1.  Add the following to your **web.config** file:
+    * Microsoft.Portal.AadCore.dll
 
-<!-- INTERNAL NOTE: copy settings from src\StbPortal\Extensions\AzureHubsExtension\Web.config -->
+    * System.IdentityModel.Tokens.Jwt.dll
 
-```xml
-<!-- deny anonymous users -->
-<system.web>
-    <authorization>
-      <deny users="?" />
-    </authorization>
-</system.web>
+1. Add the following to the **web.config** file.
 
-<!-- allow the home page which serves the extension source -->
-<!-- TODO: This loads your extension from ~/Index; change path to fit your needs -->
-<location path="Index">
-  <system.web>
-    <authorization>
-      <allow users="*" />
-    </authorization>
-  </system.web>
-</location>
+    <!-- INTERNAL NOTE: copy settings from src\StbPortal\Extensions\AzureHubsExtension\Web.config -->
 
-<!-- allow images and scripts -->
-<location path="Content">
-  <system.web>
-    <authorization>
-      <allow users="*" />
-    </authorization>
-  </system.web>
-</location>
-<location path="Scripts">
-  <system.web>
-    <authorization>
-      <allow users="*" />
-    </authorization>
-  </system.web>
-</location>
+    ```xml
+    <!-- deny anonymous users -->
+    <system.web>
+        <authorization>
+        <deny users="?" />
+        </authorization>
+    </system.web>
 
-<configuration>
-  <appSettings>
-    <!-- For test, use authority="https://login.windows-ppe.net/" -->
-    <!-- For PROD, use authority="https://login.windows.net/" -->
-    <add key="Microsoft.Portal.Security.AzureActiveDirectory.AadAuthenticationConfiguration.Authority"
-         value="https://login.windows-ppe.net/" />
-    <add key="Microsoft.Portal.Security.AzureActiveDirectory.AadAuthenticationConfiguration.TenantId"
-         value="common" />
-    <add key="Microsoft.Portal.Security.AzureActiveDirectory.AadAuthenticationConfiguration.AllowedAudiences"
-         value="['https://management.core.windows.net/']" />
-    <add key="Microsoft.Portal.Security.AzureActiveDirectory.AadAuthenticationConfiguration.MinValidationCertUpdateInterval"
-         value="PT05M" />
-    <add key="Microsoft.Portal.Security.AzureActiveDirectory.AadAuthenticationConfiguration.MaxValidationCertUpdateInterval"
-         value="PT24H" />
-    <add key="Microsoft.Portal.Security.AzureActiveDirectory.AadAuthenticationConfiguration.ForwardDecryptedAuthorizationTokens"
-         value="false" />
-  </appSettings>
-</configuration>
-```
+    <!-- allow the home page which serves the extension source -->
+    <!-- this loads the extension from ~/Index; change path to fit your development environment -->
+    <location path="Index">
+    <system.web>
+        <authorization>
+        <allow users="*" />
+        </authorization>
+    </system.web>
+    </location>
 
-1. Use [HttpContext.User](http://msdn.microsoft.com/library/system.web.httpcontext.user.aspx) to retrieve the common claims:
+    <!-- allow images and scripts -->
+    <location path="Content">
+    <system.web>
+        <authorization>
+        <allow users="*" />
+        </authorization>
+    </system.web>
+    </location>
+    <location path="Scripts">
+    <system.web>
+        <authorization>
+        <allow users="*" />
+        </authorization>
+    </system.web>
+    </location>
 
-```cs
-// use IPortalIdentity for email and tenant id
-// NOTE: Do not rely on IPortalIdentity.FirstName and LastName properties; they aren't consistenty populated
-var portalUser = HttpContext.User.Identity as Microsoft.Portal.Framework.IPortalIdentity;
-// portalUser.EmailAddress;
-// portalUser.TenantId;
+    <configuration>
+    <appSettings>
+        <!-- For test, use authority="https://login.windows-ppe.net/" -->
+        <!-- For PROD, use authority="https://login.windows.net/" -->
+        <add key="Microsoft.Portal.Security.AzureActiveDirectory.AadAuthenticationConfiguration.Authority"
+            value="https://login.windows-ppe.net/" />
+        <add key="Microsoft.Portal.Security.AzureActiveDirectory.AadAuthenticationConfiguration.TenantId"
+            value="common" />
+        <add key="Microsoft.Portal.Security.AzureActiveDirectory.AadAuthenticationConfiguration.AllowedAudiences"
+            value="['https://management.core.windows.net/']" />
+        <add key="Microsoft.Portal.Security.AzureActiveDirectory.AadAuthenticationConfiguration.MinValidationCertUpdateInterval"
+            value="PT05M" />
+        <add key="Microsoft.Portal.Security.AzureActiveDirectory.AadAuthenticationConfiguration.MaxValidationCertUpdateInterval"
+            value="PT24H" />
+        <add key="Microsoft.Portal.Security.AzureActiveDirectory.AadAuthenticationConfiguration.ForwardDecryptedAuthorizationTokens"
+            value="false" />
+    </appSettings>
+    </configuration>
+    ```
 
-// use IAadIdentity (implements IPortalIdentity) for user id
-// and to determine if the user is an MSA or AAD account
-var aadUser = portalUser as Microsoft.WindowsAzure.Management.AadAuthentication.IAadIdentity;
-if (aadUser != null)
-{
-    // aadUser.ObjectId;
-    // aadUser.PrincipalId;
-    // aadUser.IsOrgId
-}
-```
+1. Use `HttpContext.User` to retrieve the common claims, as in the following code.
+
+    ```cs
+    // use IPortalIdentity for email and tenant id
+    // NOTE: Do not rely on IPortalIdentity.FirstName and LastName properties; they are not consistenty populated
+    var portalUser = HttpContext.User.Identity as Microsoft.Portal.Framework.IPortalIdentity;
+    // portalUser.EmailAddress;
+    // portalUser.TenantId;
+
+    // use IAadIdentity (implements IPortalIdentity) for user id
+    // and to determine if the user is an MSA or AAD account
+    var aadUser = portalUser as Microsoft.WindowsAzure.Management.AadAuthentication.IAadIdentity;
+    if (aadUser != null)
+    {
+        // aadUser.ObjectId;
+        // aadUser.PrincipalId;
+        // aadUser.IsOrgId
+    }
+    ```
 
 For more information about default claims that are provided by AAD, see the "Azure AD token reference" article located at [http://aka.ms/portalfx/tokensandclaims](http://aka.ms/portalfx/tokensandclaims).
 
