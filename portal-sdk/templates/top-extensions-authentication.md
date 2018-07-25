@@ -308,8 +308,6 @@ For more information about default claims that are provided by AAD, see the "Azu
 
  {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-authentication.md"}
 
- {"gitdown": "include-file", "file": "../templates/top-extensions-authentication-architecture.md"}
-
 <!--
  gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-authentication.md"}
  -->
