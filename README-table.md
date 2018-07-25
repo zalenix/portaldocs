@@ -23,6 +23,7 @@ Learn how the framework is structured and how it is designed to run in multiple 
 | Name | Location | Purpose |
 | ---- | -------- | ------- |
 | Architecture overview | [/portal-sdk/generated/ top-extensions-architecture.md](/portal-sdk/generated/top-extensions-architecture.md) | Describes the components of the Azure Portal  and their interrelationships |
+| Authentication | [/portal-sdk/generated/ top-extensions-authentication.md](/portal-sdk/generated/top-extensions-authentication.md) |  |
 
 ### What's new
 
