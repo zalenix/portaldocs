@@ -1,4 +1,7 @@
 
+<a name="portal-authentication-architecture"></a>
+# Portal Authentication Architecture
+
 The Azure Portal calls a number of other extensions so that a user can sign-in and authenticate to use Portal services.
 
 The following image explains the internal workings of how the Portal, its extensions and the API's that back those extensions integrate with Azure AD for authentication.
