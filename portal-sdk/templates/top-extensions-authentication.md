@@ -7,13 +7,11 @@ During sign-in, the Portal obtains a token that contains claims that identify th
 
 **NOTE**:  Users can sign in without a subscription. Extensions must gracefully handle this case and return zero assets when queried.
 
-The extension can call ARM from the client or from the extension server. The extension can also call external  services from the client or from the extension server.
+The extension can call ARM from the client or from the extension server. The extension can also call external services from the client or from the extension server.
 
 Calling external services involves AAD Onboarding.  The onboarding process can take five or six weeks, so if your extension needs to invoke services other than ARM, you should reach out to the Azure Portal team early in the design phase, as specified in [top-extensions-onboarding-with-related-teams.md](top-extensions-onboarding-with-related-teams.md).
 
 **NOTE**: Only first-party extensions can call alternate resources. Third party extensions use an encrypted token that cannot be decrypted by services other than ARM, therefore they cannot call alternate resources.
-
-* [Signing in](#signing-in)
 
 * [Calling ARM from the client](#calling-arm-from-the-client)
 
@@ -24,65 +22,6 @@ Calling external services involves AAD Onboarding.  The onboarding process can t
 * [Accessing claims](#accessing-claims)
 
 * * *
-
-## Signing in
-
-The following is the signin process that is performed by the Portal.
-
-1. User browses to the Portal.
-
-1. The Portal redirects to AAD to sign in. Sample redirection code is located at [AAD Login v1 authorize endpoint](https://msazure.visualstudio.com/DefaultCollection/One/One%20(Empty%20Default)/_git/AzureUX-PortalFx?path=%2Fsrc%2FStbPortal%2FWebsite%2FAadAuthentication%2FProviders%2FAuthorizeActionProvider.cs&version=GBproduction&line=69&lineEnd=69&lineStartColumn=16&lineEndColumn=64&lineStyle=plain).
-
-1. AAD redirects to the `portal.azure.com/signin` with an id_token. The audience of the id_token is the Azure Portal app.
-
-1. The Portal server exchanges this code for an access token, as specified in [http://aka.ms/portalfx/PortalAuthenticationClient](http://aka.ms/portalfx/PortalAuthenticationClient). This refresh token is returned to the browser, as part of the Portal Shell UI and is stored in memory.
-
-1. When the user triggers the loading of the extension, the extension home page is downloaded from the location in the extension configuration, as specified in [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md). This provides information required by the Shell to bootstrap the extension UI.
-
-1. When an extension asks for a token, it makes a request to the Portal `DelegationToken` controller endpoint. This endpoint requires the refresh token that was just acquired, in addition to the extension name and the resource name that the extension requested. This endpoint returns access tokens to the browser, as in the sample code located at  [http://aka.ms/portalfx/DelegationTokenProvider](http://aka.ms/portalfx/DelegationTokenProvider). 
-
-    * Sample request:
-        ```
-        "extensionName":"Microsoft_AAD_IAM",
-        "resourceName":"self",
-        "tenant":"9e4917cd-bd32-4371-b1c8-82b5d610f2e2",
-        "portalAuthorization":"MIIF…."
-        ```
-
-    * Sample response:
-        ```
-        "value":{
-        "authHeader":"Bearer eyJ0...",
-        "authorizationHeader":"Bearer ...",
-        "expiresInMs":3299000,
-        "refreshToken":"MIIF...",
-        "error":null,
-        "errorMessage":null
-        },
-        "portalAuthorization":"MIIF..."
-        ```
-
-    **NOTE**: Tokens are cached in memory on the server, as described in [http://aka.ms/portalfx/DelegationTokenProvider](http://aka.ms/portalfx/DelegationTokenProvider). In this example, the `resourceName:self` indicates that this extension only calls itself from the client.
-
-1. Now the extension's client side can call server side API's, or call external services directly. 
-
-    * Server side API 
-
-        The extension's server-side code can exchange its current access token for another access token that allows it to use resources, as described in [http://aka.ms/portalfx/onbehalfof](http://aka.ms/portalfx/onbehalfof). The developer manages the permissions and dependencies for the extension by registering the application and coordinating with AAD Onboarding, as specified in [portalfx-extensions-onboarding-aad.md](portalfx-extensions-onboarding-aad.md). In the sample code located at [http://aka.ms/portalfx/TokenBasedAuthenticationClient](http://aka.ms/portalfx/TokenBasedAuthenticationClient), a registered  extension's server side code exchanges its access token for an access token for AAD Graph. 
-
-    *  Direct external services call
-
-        The PortalFx's client side `ajax` wrapper makes the `DelegationToken` call to get a token for the specified resource. In this case, the PortalFx team creates the app registration for the extension and manages permissions for the API's as specified in [top-extensions-configuration.md](top-extensions-configuration.md).
-
-        The framework keeps track of token expiration. When the user interacts with the site in a way that results in an API call, and the token is about to expire, the framework makes the call to `DelegationToken` again to get new access tokens. The extension uses the PortalFx's client side `ajax` wrapper as specified in [http://aka.ms/portalfx/servicesecuritytokens](http://aka.ms/portalfx/servicesecuritytokens).
-
-The Portal signs the user into the last-used directory, the home directory for AAD accounts, or the first directory it gets from ARM for MSA accounts. It also loads the Startboard and all extensions.
-
-Navigating to a new extension repeats this process, beginning at triggering the loading of the extension. If the user revisits an extension, a client side in-memory token cache is used instead of  making another request to the Portal `DelegationToken` controller endpoint. This cache is lost on page refresh.
-
-**NOTE**: Cookies are not used for authentication.
-
-For more information about OIDC flow, see [https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-openid-connect-code](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-openid-connect-code).
 
 ## Calling ARM from the client
 
@@ -235,11 +174,13 @@ The following example enables `Contoso_Extension`, a sample extension that queri
         }
     });
     ```
+
 ## Accessing claims
 
 Tokens received from AAD contain a set of claims that are formatted as key-value pairs.  They contain information about the user, and they are only available to extensions that comply with the Azure privacy policy that is located at [https://www.microsoft.com/en-us/TrustCenter/Privacy/default.aspx](https://www.microsoft.com/en-us/TrustCenter/Privacy/default.aspx). 
 
 <!-- TODO: Validate whether the following lists are still part of the signin process. -->
+
 They may include items like a list of directories that the user can  access from ARM, or a list of subscriptions that the user can access from ARM.
 
 Extensions that are not covered by this policy, like the ones that share PII with third-parties, do not have access to the token or its claims, because Microsoft can be sued for abuse or misuse of PII as specified in the  privacy policy. These exceptions need to be approved by reaching out to <a href="mailto:ibiza-lca@microsoft.com?subject=Personally-identifiable Information Policy">ibiza-lca@microsoft.com</a>.
@@ -364,7 +305,10 @@ The following code sample retrieves common claims.
 
 For more information about default claims that are provided by AAD, see the "Azure AD token reference" article located at [http://aka.ms/portalfx/tokensandclaims](http://aka.ms/portalfx/tokensandclaims).
 
+
  {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-authentication.md"}
+
+ {"gitdown": "include-file", "file": "../templates/top-extensions-authentication-architecture.md"}
 
 <!--
  gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-authentication.md"}
