@@ -15,7 +15,7 @@ The test framework interacts with the Portal as a user would, and helps develope
 
 * [Running tests in Visual Studio](#running-tests-in-visual-studio)
 
-* [Write a test](#write-a-test)
+* [Write a browse blade test](#write-a-browse-blade-test)
 
     * [Configure, compile and run](#configure,-compile-and-run)
 
