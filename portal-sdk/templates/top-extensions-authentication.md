@@ -21,7 +21,7 @@ Calling external services involves AAD Onboarding.  The onboarding process can t
 
 * [Access claims](#access-claims)
 
-* [Accessing claims](#accessing-claims)
+* [Enable local portal authentication](#enable-local-portal-authentication)
 
 * * *
 
