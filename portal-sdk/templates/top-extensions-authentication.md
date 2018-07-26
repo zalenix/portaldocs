@@ -13,17 +13,19 @@ Calling external services involves AAD Onboarding.  The onboarding process can t
 
 **NOTE**: Only first-party extensions can call alternate resources. Third party extensions use an encrypted token that cannot be decrypted by services other than ARM, therefore they cannot call alternate resources.
 
-* [Calling ARM from the client](#calling-arm-from-the-client)
+* [Call ARM from the client](#call-arm-from-the-client)
 
-* [Calling ARM from the server](#calling-arm-from-the-server)
+* [Call ARM from the server](#call-arm-from-the-server)
 
-* [Calling external resources](#calling-external-resources)
+* [Call external resources](#call-external-resources)
+
+* [Access claims](#access-claims)
 
 * [Accessing claims](#accessing-claims)
 
 * * *
 
-## Calling ARM from the client
+## Call ARM from the client
 
 Your extension should use cross-origin resource sharing (CORS) for all non-aggregated, non-orchestrated calls. If you need to call multiple sources for a single piece of UI, you should use a server API to orchestrate and aggregate those calls.
 
@@ -31,7 +33,7 @@ Use the built-in `ajax()` function to communicate from the extension client to c
 
 **NOTE**: Do not use `jQuery.ajax()` because it will not properly authorize your requests. If you have a scenario that is not supported by `ajax()`, you can use the `getAuthorizationToken()` function to obtain a token and manually attach it to your request.
 
-## Calling ARM from the server
+## Call ARM from the server
 
 Use the `WebApiClient` class to call ARM from your extension server. This class attaches a token to the request on your behalf, in a manner similar to the client `ajax()` function.  The following code attaches a token that is targeted at ARM.
 
@@ -44,7 +46,7 @@ Use the `WebApiClient` class to call ARM from your extension server. This class 
     }
 ```
 
-## Calling external resources
+## Call external resources
 
 Only Ibiza has the authority to mint tokens. To call external resources, extension developers need to request the creation of the AAD and register the extension resources with Ibiza for the appropriate environment, as specified in [top-onboarding.md#register-the-extension-with-the-portal-product-configuration](top-onboarding.md#register-the-extension-with-the-portal-product-configuration). 
 
@@ -175,7 +177,7 @@ The following example enables `Contoso_Extension`, a sample extension that queri
     });
     ```
 
-## Accessing claims
+## Access claims
 
 Tokens received from AAD contain a set of claims that are formatted as key-value pairs.  They contain information about the user, and they are only available to extensions that comply with the Azure privacy policy that is located at [https://www.microsoft.com/en-us/TrustCenter/Privacy/default.aspx](https://www.microsoft.com/en-us/TrustCenter/Privacy/default.aspx). 
 
@@ -185,7 +187,7 @@ They may include items like a list of directories that the user can  access from
 
 Extensions that are not covered by this policy, like the ones that share PII with third-parties, do not have access to the token or its claims, because Microsoft can be sued for abuse or misuse of PII as specified in the  privacy policy. These exceptions need to be approved by reaching out to <a href="mailto:ibiza-lca@microsoft.com?subject=Personally-identifiable Information Policy">ibiza-lca@microsoft.com</a>.
 
-### Accessing claims from the client
+### Access claims from the client
 
 Extensions that have access to claims can use the `getUserInfo()` API to retrieve common claims from the client.
 
@@ -206,7 +208,7 @@ interface UserInfo {
 }
 ```
 
-### Accessing claims from the extension server
+### Access claims from the extension server
 
 <!-- TODO:  This aka.ms link was previously (http://msdn.microsoft.com/library/system.web.httpcontext.user.aspx). The aka.ms link is to a new version of the same content.  Determine whether this was the intent. -->
 
@@ -305,6 +307,21 @@ The following code sample retrieves common claims.
 
 For more information about default claims that are provided by AAD, see the "Azure AD token reference" article located at [http://aka.ms/portalfx/tokensandclaims](http://aka.ms/portalfx/tokensandclaims).
 
+### Enable local portal authentication
+
+Authentication is not configured in the local Portal by default, which simplifies extension development. Use the following steps to enable authentication.
+
+1. Install Internet Information Services (IIS) by following the instructions located at [http://msdn.microsoft.com/en-us/library/ms181052%28v=vs.80%29.aspx] (http://msdn.microsoft.com/en-us/library/ms181052%28v=vs.80%29.aspx) Do not use **IIS Express**.
+
+1. Install the URL Rewrite module for IIS that is located at [http://www.iis.net/downloads/microsoft/url-rewrite](http://www.iis.net/downloads/microsoft/url-rewrite), which  enables Web administrators to create rules for implementing memorable URLs.
+
+1. Install the the most current version of the Azure SDK that is available from  [http://aka.ms/portalfx/downloads](http://aka.ms/portalfx/downloads). Other relevant downloads are available at [http://www.windowsazure.com/en-us/downloads](http://www.windowsazure.com/en-us/downloads).
+
+1. Create a new IIS site that can be accessed at [http://onestb.cloudapp.net/](http://onestb.cloudapp.net/). This site is located in the following folder: `%programfiles(x86)%\Microsoft SDKs\PortalSDK\StbPortal` and is configured to use the CURRENT test environment, which includes AAD-PPE and MSA-PROD.  This site is created by executing the `%programfiles(x86)%\Microsoft SDKs\PortalSDK\Tools\Setup-OneCloud.cmd` script. To change environments to either NEXT or DOGFOOD, update the `web.config`` files for the Portal, Hubs extension, and the Billing extension. Each extension has environment configuration at the top to simplify switching environments.
+
+**NOTE:** The `http://onestb.cloudapp.net/` URL is configured within AAD and cannot be changed. A new hosts file entry was added to support loopback.
+
+<!-- TODO:  Determine whether this still works, because onestb has been deprecated. If it still works, what site does it create?  -->
 
  {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-authentication.md"}
 
