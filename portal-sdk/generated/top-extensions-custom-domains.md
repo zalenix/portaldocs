@@ -4,122 +4,318 @@
 <a name="custom-domains-domain-based-configuration"></a>
 ## Domain based configuration
 
-Domain-based configuration allows the Portal and Extensions to dynamically obtain settings based on the URL that was used to access the Portal. For example, accessing the Portal by using the `contoso.portal.azure.com` URL, as opposed to accessing the Portal by using the `portal.azure.com` URL, would display  different values for domain-based settings.
+Domain-based configuration allows the Portal and Extensions to dynamically obtain settings based on the URL that was used to access the Portal. For example, accessing the Portal by using the `contoso.portal.azure.com` URL displays different values for domain-based settings than the `portal.azure.com` URL displays.
 
-While domain based configuration is not technically required in order to support national clouds, there is great overlap between settings that are changed for community clouds. It is often easier to store settings such as a links over to domain based configuration. Settings such as ARM endpoints would not normally be candidates for domain-based configuration.
+The first-party or third-party developer identifies the functionality that an extension will use, based on the domain in which the extension is running.  Some partner needs can be met at the deployment level. For example, national clouds like China, Germany, or Government, can use normal configuration with no dynamic tests at runtime. Examples of this type of configuration are ARM and RP URLs, or AAD client application IDs. Settings like ARM endpoints are not typically candidates for domain-based configuration.
 
-Additionally, domain-based configuration includes support for expanding links from link redirection / shortener services such as Microsoft's FwLink and `aka.ms` services.
+In other instances, a single deployment of an extension supports multiple domains.  For example, community clouds, like Fujitsu A5, use domain-based configuration.  In these instances, functionality is selected based on the Trusted Authority for the calling extension, as specified in [#The-TrustedAuthorityHost-function](#the-trustedauthorityhost-function). Extensions that are called contain additional code that pushes values to the browser.  The consumption example located at [consumption example](#consumption-example) demonstrates the pattern that wires up server-side domain-based configuration.
 
-**NOTE**: Domain-based configuration is based on the domain host address of the Shell, instead  of the Extension. Extensions do not need to support additional host names themselves in order to take advantage of domain-based configuration.
+While domain-based configuration is not required to support national clouds, there is great overlap between settings that are changed for community clouds. It is often easier to store settings like links in domain-based configuration. Additionally, domain-based configuration includes support for expanding links from link redirection, or from shortener services such as **FwLink** and `aka.ms` services.
 
-For more information about when to use domain-based configuration settings instead of vanilla configuration settings, please see [#expected-design-pattern](#expected-design-pattern).
+**NOTE**: Domain-based configuration is based on the domain host address of the Shell, instead of the extension. Extensions do not need to support additional host names themselves in order to take advantage of domain-based configuration.
 
-The Shell provides two APIs to support domain based configuration:
+* [Domain based configuration APIs](#domain-based-configuration-apis)
 
-<a name="custom-domains-domain-based-configuration-msportalfx-settings-getsharedsettings"></a>
-### MsPortalFx.Settings.getSharedSettings()
+* [Expected design pattern](#expected-design-pattern)
 
-Selected values from Shell are exposed through an RPC call so that:
- 1. Extensions do not all have to hold their own copy of commonly defined values, such as the support URL, and 
- 1. Changes to these shared settings do not require simultaneous redeployment of extensions.
+If you have any questions, reach out to Ibiza team at  [https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza).
+
+<a name="custom-domains-domain-based-configuration-apis"></a>
+## Domain based configuration APIs
+
+The Shell provides two APIs to support domain-based configuration.
+
+* [The getSharedSettings function](#the-getSharedSettings-function)
+
+* [The TrustedAuthorityHost function](#the-trustedAuthorityHost-function)
+
+<a name="custom-domains-domain-based-configuration-apis-the-getsharedsettings-function"></a>
+### The getSharedSettings function
+
+In the `MsPortalFx.Settings.getSharedSettings()` function, selected values from Shell are exposed through an RPC call for the following reasons.
+
+ 1. Each extension does not have to have its own copy of commonly defined values, such as the support URL.
+
+ 1. Changes to shared settings do not require simultaneous redeployment of extensions.
  
 The first call by the extension to this API results in an RPC call from the extension to Shell. After that, the results are served from a cache.
  
-The `MsPortalFx.Settings.getSharedSettings()` API returns the following structure (defined in src\SDK\Framework\TypeScript\MsPortalFx\SharedSettings.d.ts). 
-At the time of writing (1/26/2016), the root of this object is empty (reserved for future use) except for a links property containing the following settings:
+The `MsPortalFx.Settings.getSharedSettings()` API returns an object whose root is empty and reserved for future use, except for a `links` property that contains the following links collection structure, as defined in `src\SDK\Framework\TypeScript\MsPortalFx\SharedSettings.d.ts`.
 
-**Links collection:**
-Element Name          |Description
-----------------------|-----------
-accountsPortal        |Link to the Accounts portal.
-classicPortal         |Link to the Classic portal.
-createSupportRequest  |Link to the create support request UI.
-giveFeedback          |Link to the feedback UI.
-helpAndSupport        |Link to the help and support UI.
-learnRelatedResources |Link to the learn related resources help topic.
-manageSupportRequests |Link to the manage support request UI.
-privacyAndTerms       |Link to the privacyAndTerms UI.
-resourceGroupOverview |Link to resource groups overview.
+| Element Name          | Description                                    |
+| --------------------- | ---------------------------------------------- | 
+| accountsPortal        | Link to the Accounts portal                    | 
+| classicPortal         | Link to the Classic portal                     | 
+| createSupportRequest  | Link to the create support request UI          | 
+| giveFeedback          | Link to the feedback UI                        | 
+| helpAndSupport        | Link to the help and support UI                | 
+| learnRelatedResources | Link to the learn related resources help topic | 
+| manageSupportRequests | Link to the manage support request UI          | 
+| privacyAndTerms       | Link to the privacyAndTerms UI                 | 
+| resourceGroupOverview | Link to resource groups overview               | 
 
-**Notes:**
+<!-- TODO: Determine whether the following description of the root of this object is still current. -->
 
-1. Links can be full URLs (i.e. external links), a URL fragment (i.e. blade link), or `String.Empty` (feature is not supported for that
-   user / tenant / environment). It is the consumer's job to support all three formats if they take a dependency.
+Links are automatically expanded according to the user's domain, tenant, and language preferences. Links can be any of the following.
 
-1. Links are automatically expanded according to the user's domain, tenant, and language preferences.
+*  Full URLs like external links
+
+*  Fragment URLs like blade links
+
+*  `String.Empty`
+
+    In this instance, the feature is not supported for that user / tenant / environment combination.
+
+The consuming extension should support all three formats if they take a dependency.
  
+<a name="custom-domains-domain-based-configuration-apis-the-trustedauthorityhost-function"></a>
+### The TrustedAuthorityHost function
+
+The Server-side `PortalContext.TrustedAuthorityHost` function returns the host name under which the extension was loaded. For example, an extension named may need to know if it is being called from `portal.azure.com` or `Contoso.azure.com`. In the first case `TrustedAuthorityHost` will contain "portal.azure.com" and in the second, "contoso.azure.com".
  
-<a name="custom-domains-domain-based-configuration-trustedauthorityhost"></a>
-### TrustedAuthorityHost
-
-Server-side `PortalContext.TrustedAuthorityHost` returns the host name under which the extension was loaded. For example, if 
-Extension A may need to know if it's being called from portal.azure.com or Contoso.azure.com. In the first case TrustedAuthorityHost 
-will be portal.azure.com and in the second, contoso.azure.com. 
- 
-**NOTE:** If the extension needs to change its configuration based on the domain of the caller, the recommended pattern is to use 
-domain based configuration (which is designed specifically for this sort of work) rather than coding directly against values returned  by PortalContext.TrustedAuthorityHost.
-
-
-<tags ms.service="portalfx"
-      ms.workload="portalfx"
-      ms.tgt_pltfrm="portalfx"
-      ms.devlang="portalfx"
-      ms.topic="get-started-article"
-      ms.date="05/02/2016"
-      ms.author="dbrankin" />
+**NOTE**: If the extension needs to change its configuration based on the domain of the caller, the recommended solution is to use domain-based configuration, which is designed specifically for this sort of work.  It is preferred over coding directly against values returned by `PortalContext.TrustedAuthorityHost`.
 
 <a name="custom-domains-expected-design-pattern"></a>
 ## Expected design pattern
+ 
+The following is the recommended implementation methodology, although partners and developers can implement domain-based configuration in many ways. 
 
-The partner identifies the functionality that needs to change based on domain. If the change is only required at the 
-deployment level (i.e. national clouds, such as China, Germany, Government, etc) normal config should be 
-used with no dynamic tests at runtime. Examples of configuration falling into this category are things like ARM and RP URLs, 
-AAD client application IDs, etc.
+Once the partner and developer have identified the configurations for the extension, the developer creates a supporting `DictionaryConfiguration` class as specified in [Dictionary Configuration](#dictionary-configuration). The dictionary key is the host name the Shell was loaded under, which is available at run time by using `PortalContext` and `TrustedAuthorityHost`.
 
-If on the other hand the same deployment has to support multiple domains (i.e. community clouds, such as Fujitsu A5),
-domain based configuration should be used, with the selection being based on the Trusted Authority for the caller.
+**NOTE**: It is recommended that domain-based configuration class names have the characters `DomainBasedConfiguration` appended to them. Some examples are `ErrorApplicationDomainBasedConfiguration`, `HubsDomainBasedConfiguration`, and `WebsiteDomainBasedConfiguration`. However, this naming convention is not required.
 
-For those that wish to jump ahead, this [example](portalfx-domain-based-configuration-example.md) 
-shows all the code required to wire up domain based configuration server side. Additional code is required to push values 
-down to the browser, and the recommended pattern for this is covered below.
+<a name="custom-domains-expected-design-pattern-exposing-config-settings-to-the-client"></a>
+### Exposing config settings to the client
 
-<a name="custom-domains-built-in-support"></a>
-## Built in support
-See also [Shell RPC call](portalfx-domain-based-configuration.md) and
-[PortalContext.TrustedAuthorityHost](portalfx-domain-based-configuration.md)
+Configuration settings are commonly used to control application behavior like timeout values, page size, endpoints, ARM version number, and other items. With the .NET framework, managed code can easily load configurations; however, most of the implementation of a Portal extension is client-side JavaScript. 
 
-<a name="custom-domains-expected-design-pattern"></a>
-## Expected design pattern
-Partners (extension authors) are of free to do what they want with respect to domain based configuration, but the following is the
-pattern recommend we recommend and best support.
+By allowing the client code in extensions to gain access to configuration settings, the Portal framework provides a way to get the extension configuration and expose it in `window.fx.environment`, as in the following steps.
 
-The partner identifies the functionality that needs to change based on domain. If the change is only required at the deployment level
-(e.g. Global vs China vs Germany vs Govenment) normal config should be used with no dynamic tests at runtime. Examples of
-configuration falling into this category are things like ARM and RP URLs, AAD client application IDs, etc.
+1. The Portal framework initializes the instance of the  `ApplicationConfiguration` class, which is located in the   **Configuration** folder in the VS project for the extension. The instance will try to populate all properties by finding their configurations in the `appSettings` section of the  `web.config` file. For each property, the Portal framework will use the key "{ApplicationConfiguration class full name}.{property name}" unless a different name is specified in the associated `ConfigurationSetting` attribute that applied that property in the `ApplicationConfiguration` class.
 
-If on the other hand the same deployment has to support multiple domains (e.g. Global supporting Fujitsu A5),
-domain based configuration should be used, with the selection being based on the Trusted Authority for the caller.
+1. The Portal framework creates an instance of `window.fx.environment` for the client script. It uses the mapping in the `ExtensionConfiguration` dictionary in the `Definition.cs` file that is located in the `Controllers` folder.
 
-<a name="custom-domains-domain-based-configuration"></a>
-## Domain based configuration
-Once the partner has identified their configuration, they create a supporting `DictionaryConfiguration` class as per the
-[DictionaryConfiguration documentation](portalfx-dictionaryconfiguration.md). The dictionary key will
-be the `TrustedAuthorityHost` (i.e. the host name the Shell was loaded under), which is available at run time via `PortalContext`.
+1. The client script loads the configuration from `window.fx.environment` that implements the `FxEnvironment` interface. To declare the new configuration entry, the file `FxEnvironmentExtensions.d.ts` in the `Definitions` folder should be updated for each property that is exposed to the client.
 
-By convention, we append `DomainBasedConfiguration` to the end of the class name (`ErrorApplicationDomainBasedConfiguration`,
-`HubsDomainBasedConfiguration`, (portal) `WebsiteDomainBasedConfiguration`, etc). However, this is purely a convention and is
-not enforced (or required).
+<a name="custom-domains-expected-design-pattern-configuration-procedure"></a>
+### Configuration procedure
 
-This [example](portalfx-domain-based-configuration-example.md) shows all the code required to wire up
-domain based configuration.
+This procedure assumes that a Portal extension named "MyExtension" is being customized to add a new configuration called "PageSize". The source for the samples is located in the `Documents\PortalSDK\FrameworkPortal\Extensions\SamplesExtension` folder.
+
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. 
+
+1. Open the `ApplicationConfiguration.cs` file that is located in the  `Configuration` folder.
+
+1. Add a new property named `PageSize` to the sample code that is located at `SamplesExtension\Extension\` directory, and to the code that is located at `<dirParent>\Extension\Configuration\ArmConfiguration.cs`. The sample is included in the following code.
+
+    <!--TODO: Customize the sample code to match the description -->
+
+     gitdown": "include-section", "file": "SamplesExtension/Extension/Configuration/ArmConfiguration.cs", "section": "config#configurationsettings"}
+
+1. Save the file.
+
+    **NOTE**: The namespace is `Microsoft.Portal.Extensions.MyExtension`, the full name of the class is `Microsoft.Portal.Extensions.MyExtension.ApplicationConfiguration`, and the configuration key is `Microsoft.Portal.Extensions.MyExtension.ApplicationConfiguration.PageSize`.
+
+1. Open the `web.config` file of the extension.
+
+1. Locate the `appSettings` section. Add a new entry for PageSize.
+
+    ```xml
+    ...
+      <appSettings>
+            ...
+            <add key="Microsoft.Portal.Extensions.MyExtension.ApplicationConfiguration.PageSize" value="20"/>
+      </appSettings>
+      ...
+    ```
+
+1. Save and close the `web.config` file.
+
+1. Open the `Definition.cs` file that is located in the `Controllers` folder. Add a new mapping in `ExtensionConfiguration` property.
+
+    ```csharp
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Definition"/> class.
+        /// </summary>
+        /// <param name="applicationConfiguration">The application configuration.</param>
+        [ImportingConstructor]
+        public Definition(ApplicationConfiguration applicationConfiguration)
+        {
+            this.ExtensionConfiguration = new Dictionary<string, object>()
+            {
+                ...
+                { "pageSize", applicationConfiguration.PageSize },
+            };
+            ...
+        }
+    ```
+
+1. Open the `FxEnvironmentExtensions.d.ts` file that is located in the  `Definitions` folder, and add the `pageSize` property in the environment interface.
+
+    ```ts
+        interface FxEnvironment {
+            ...
+            pageSize?: number;
+        } 
+    ```
+
+1. The new configuration entry is now defined. To use the configuration, add code like the following in the script.
+
+    ```JavaScript
+        var pageSize = window.fx.environment && window.fx.environment.pageSize || 10;
+    ```
+
+An extended version of this procedure is used to transfer domain based configurations, like correctly formatted FwLinks, to the client. 
+
+-------------------
+
+<a name="custom-domains-dictionary-configuration"></a>
+## Dictionary configuration
+
+The `DictionaryConfiguration` class allows strongly-typed JSON blobs to be defined in the configuration file, and selected based on an arbitrary, case-insensitive string key. For example, the Shell and Hubs use the class to select between domain-specific configuration sets. A boilerplate  example is located at [consumption example](#consumption-example).
+
+Two configuration classes are created.
+
+1. A stand-alone settings class that contains the setting values associated with a specific key and user culture.
+
+1. A configuration class that is derived from `DictionaryCollection` that manages and exposes the instances.
+
+Like other configuration classes, these are  auto-magically wired-up and populated from the config based on namespace, class name, and the Settings property name. For example, if the namespace is `Microsoft.MyExtension.Configuration` and the configuration class is `MyConfiguration`, then the configuration setting name must be `Microsoft.MyExtension.Configuratation.MyConfiguration.Settings`.
+
+Instances of configuration classes are normally obtained through MEF constructors, and this is unchanged for `StringDictionaryConfiguration` and its sub-classes.
+
+At runtime, the strongly typed settings for a specific key are obtained through the `GetSettings` method inherited by your configuration class. For example, the `T settings = configClass.GetSettings(string key, CultureInfo culture)` method can be used. `Culture` is optional, and is used when expanding settings that are marked with the special `[Link]` attribute. If culture is not specified, it defaults to `CultureInfo.CurrentUICulture`.
+
+<a name="custom-domains-dictionary-configuration-the-configuration-class"></a>
+### The configuration class
+
+This is almost a no-code operation.
+Create a class that derives from `StringDictionaryConfiguration&lt;T&gt;`,
+
+where 
+
+`T` is the type of the settings class.
+
+Remember to mark the class as MEF exportable if you intend to make the config available to interested code in the normal fashion.
+
+For example:
+
+```cs
+namespace Microsoft.MyExtension.Configuration
+{
+    [Export]
+    public class MyConfiguration : DictionaryConfiguration<MySettings>
+    {
+    }
+}
+```
+
+<a name="custom-domains-dictionary-configuration-the-settings-class"></a>
+### The settings class
+
+The settings class is a data transport object. However, as we are using the configuration system `ConfigurationSettingKind.Json` option, all properties to be populated from the JSON blob in the configuration file must be
+marked as `[JsonProperty]` else they will not be deserialized and will be left null.
+
+```
+<table>
+    <thead><tr><th>Example settings class</th><th>Example config*</th></tr></thead>
+    <tr>
+        <td>
+            <pre>
+namespace Microsoft.MyExtension.Configuration
+{
+    public class MySettings
+    {
+        [JsonProperty]
+        public bool ShowPricing { get; private set; }
+    }
+}
+            </pre>
+        </td>
+        <td>
+<pre>
+&lt;add key="Microsoft.MyExtension.Configuration.MyConfiguration.Settings" value="{
+    'default': {
+        'showPricing': true
+    },
+    'someOtherKey' : {
+        'showPricing': false
+    }
+}" /&gt;
+</pre>
+        </td>
+    </tr>
+</table>
+```
+
+**NOTE**: The  configuration class name appears in the config, instead of the settings class's namespace `Microsoft.MyExtension.Configuration`.
+
+**Note:**
+
+1. The deserializer will handle camel-case to pascal-case conversion provided you follow JSON property name conventions in the
+config file and C# conventions in the configuration classes.
+
+1. Nested objects are fully supported (e.g. Billing.EA.ShowPricing. See the example code for an example of this)
+
+<a name="custom-domains-dictionary-configuration-the-settings-class-use-of-the-link-attribute"></a>
+#### Use of the [Link] attribute]
+
+If the property is marked `[Link]` then link expansion logic will be applied in the following
+
+If the string is numeric, it will be expanded according to the format string specified in the `LinkTemplate` property at the root of 
+the object. Occurrences of `{linkId}` in the string will be expanded to the numeric value. If no LinkTemplate property is specified, 
+the value will be left unexpanded.
+
+1. Occurrences in the string of `{lcid}` will be replaced with the hex representation of the user's preferred .NET LCID value (for example,
+   409 for US English)
+
+2. Occurrences in the string of `{culture}` will be replaced with the user's preferred .NET culture code (for example, en-US for US English).
+
+A LinkTemplate value of `https://go.microsoft.com/fwLink/?LinkID={linkId}&amp;clcid=0x{lcid}` is the correct template for FwLinks.
+
+An exception will be thrown if the target of a `[Link]` attribute is not in one of the follow string formats
+
+1. Numeric (e.g. '12345' )
+
+1. A URL hash-fragment (e.g. #create\Microsoft.Support)
+
+1. A http or https URL
+
+<a name="custom-domains-dictionary-configuration-the-settings-class-the-default-key"></a>
+#### The &#39;default&#39; key
+
+If no exact match is found for the specified key (or the caller passes null), Get returns the settings associated with a key whose name is `default`.
+
+<a name="custom-domains-dictionary-configuration-setting-inheritance"></a>
+### Setting inheritance
+
+`DictionaryConfiguration` supports a simplistic one-level inheritance model to avoid having to repeat unchanged settings in 'subclassed' config. 
+
+If a property inside the settings for a non-default key is missing or explicitly set to null,  the value for that property is set to the value from the default key. For example:
+
+``` xml
+    <add key="Microsoft.Portal.Framework.WebsiteDomainBasedConfiguration.Settings" value="{
+        'default': { 'setting1': 'A1', 'setting2': 'A2' },
+        'config2': { 'setting1': 'B1', 'setting2': 'B2' },
+        'config3': { 'setting1': 'C1' },
+        'config4': { 'setting1': null },
+    }"/>
+```
+
+Will return:
+
+| Key    | Setting 1 | Setting 2 |Notes |
+Default|A1       |A2       |
+Config1|A1       |A1       |Since there is no config1 entry, the default is returned
+Config2|B1       |B2       |Both values were overridden
+Config3|C1       |A2       |Only setting1 was overridden
+Config4|A1       |A2       |Assigning null is the same as skipping the property
+-----------------------------------
 
 <a name="custom-domains-exporting-domain-based-configuration-values-to-the-client"></a>
 ## Exporting domain based configuration values to the client
-See [How to expose config settings for consumption in the client](portalfx-load-configuration.md) for an
-overview of exposing config settings to the client.
 
-In many cases, the domain based configuration is needed in client side TypeScript. While the extension developer is free to do this any
- way they want, we recommend the following for extensions following our recommended practices / templates:
+In many cases, the domain-based configuration is needed in client-side **TypeScript**. While the extension developer is free to do this any way they want, we recommend the following for extensions following our recommended practices / templates:
 
 1. In ExtensionExtensionDefinition.cs, add your configuration class to your ImportContructor and save it away for later use
 
@@ -147,55 +343,9 @@ and use this to extend the environmental object being returned to the client. Fo
 3. Update `ExtensionFxEnvironment.d.ts` to include TypeScript definitions for the new values you are downloading to the client.
 
 
-<a name="custom-domains-anti-patterns"></a>
-## Anti-patterns
 
-<a name="custom-domains-anti-patterns-do-not-use-portalcontext-trustedauthorityhost-directly"></a>
-### Do not use PortalContext.TrustedAuthorityHost directly
-Do not write code like this:
-
-```cs
-if (PortalContext.TrustedAuthorityHost.startsWith("contoso"))
-{
-    // We're in contoso.portal.azure.com, contoso-df.portal.azure.com, contoso.onestb.cloudapp.net etc
-    ...
-}
-```
-
-This is an anti-pattern for several reasons:
-
-1. The code becomes peppered with Cloud specific 'if' blocks that are hard to test, maintain, and find. This increases in complexity
-   as the number of supported Clouds increases.
-
-1. If another cloud comes online requiring some (or all) of the same logic, the code has to be updated.
-
-Instead, use the domain based configuration to create a setting that varies by PortalContext.TrustedAuthorityHost.
-
-<a name="custom-domains-anti-patterns-do-not-change-pdl-on-the-fly-by-feature-flag"></a>
-### Do not change PDL on the fly / by Feature Flag
-Never change the PDL your extension severs up based on the host of the caller or a feature flag that changes between callers. 
-
-1. The Shell caches your PDL on behalf of the client and the same PDL bundle is delivered to all community clouds. 
-
-1. When the Shell directly requests the PDL from each extension, it does so on its own behalf and not on behalf of any specific user. 
-   In such cases, PortalContext.TrustedAuthorityHost is a constant.
-
-1. Changing the default feature flags sent to the extension requires Shell config changes and redeployment.
-
-
-<tags ms.service="portalfx"
-      ms.workload="portalfx"
-      ms.tgt_pltfrm="portalfx"
-      ms.devlang="portalfx"
-      ms.topic="get-started-article"
-      ms.date="05/02/2016"
-      ms.author="dbrankin" />
-
-<a name="custom-domains-domain-based-configuration-example-sample-code"></a>
-## Domain based configuration example &amp; sample code
-
-<a name="custom-domains-domain-based-configuration-example-sample-code-example-consumption"></a>
-### Example consumption
+<a name="custom-domains-exporting-domain-based-configuration-values-to-the-client-consumption-example"></a>
+### Consumption example
 
 ```cs
 [ImportingConstructor]
@@ -213,7 +363,7 @@ public void DoSomthing()
 }
 ```
 
-<a name="custom-domains-domain-based-configuration-example-sample-code-example-configuration-and-settings-classes"></a>
+<a name="custom-domains-exporting-domain-based-configuration-values-to-the-client-example-configuration-and-settings-classes"></a>
 ### Example configuration and settings classes
 
 ```cs
@@ -252,8 +402,9 @@ namespace Microsoft.MyExtension.Configuration
 }
 ```
 
-<a name="custom-domains-domain-based-configuration-example-sample-code-corresponding-example-config-settings"></a>
+<a name="custom-domains-exporting-domain-based-configuration-values-to-the-client-corresponding-example-config-settings"></a>
 ### Corresponding example config settings
+
 This example supports a deployment returning different run-time configuration values for the above settings class depending on whether the portal was accessed through
 portal.azure.com, example.microsoft.com, fujitsu.portal.azure.com, or hostfileoverride.com.
 
@@ -302,5 +453,467 @@ hostFileOverride.com    |en-us  |true |https://go.microsoft.com/fwLink/?LinkID=1
  
 ***Note:** Only the URL the portal is accessed through matters. The URL the extension is accessed through does not change.
 
+<a name="custom-domains-custom-domain-questionnaire-template"></a>
+## Custom Domain - Questionnaire Template
+
+The following template contains questions that your team answers previous to  the granting of your custom domain. You may want to make a copy and fill the details.
+
+1. Why do you need a Custom Domain?
+
+1. What is the name of the extension in Ibiza Portal?
+
+1. When do you expect your extension to be ready for deployment?
+
+1. What timelines are you looking to go live? 
+
+    | Requirement | Estimated Completion Date |
+    | ----------- | ------------------------- |
+    | Azure Portal team PM Lead approval |    |
+    | Completed Questionnaire |               |
+    | Completed Default Dashboard Json |      |
+    | Planning for Dev work |   1 week        |
+    | Dev work                    | Requires 3-4 weeks after scheduling subject to resource availability | 
+    | Deployments                 | Post dev work 2-3 weeks to Prod based on Safe deployment schedule | 
+
+1. URL
+
+	| Setting name / notes	| Public Value	        | Your value                       |
+    | --------------------- | --------------------  | -------------------------------- |
+    | Production URL        | `portal.azure.com`    | `aad.portal.azure.com`           |
+    | Dogfood URL           | `df.portal.azure.com` | `df-aad.onecloud.azure-test.net` |
+ 
+<a name="custom-domains-branding-and-chrome"></a>
+## Branding and Chrome
+
+The following is 
+
+
+![alt-text]()
+
+
+The following table is .
+
+| Setting name / notes | Description | Public Value | Your value |
+| -------------------- | ----------- | ------------ | ---------- |
+| Product Name | The text that appears on the top bar | Microsoft Azure | Azure Active Directory admin center (don't translate Azure Active Directory) |
+| Title | The text that appears on the Browser tab/title bar.  (written to the page’s `<TITLE>` element) | Microsoft Azure | Azure Active Directory admin center |
+| Description | SEO text that is included in the page source (not end-user visible) | Microsoft Azure Management Portal	 | Azure Active Directory admin center for administrators |
+| defaultTheme | The default color theme for the portal | blue |  light |
+| hideCreateButton | Hides the Create ("+ New") Button | false |  true |
+| hideDashboardShare | Hides the Dashboard Share Button | false | true |
+| hidePartsGalleryPivots | Hides parts types picker from parts gallery. Does not disable the category picker  | false | true |
+| hideSearchBox | Hides the “Search resources” box | false | true |
+| hiddenGalleryParts | Hides listed parts from the parts gallery (e.g. All Resources, Service Health, …)  | empty |	(only include markdown, clock and video, help & support) |
+ 
+<a name="custom-domains-feature-flags"></a>
+## Feature flags
+
+Recommended details are prepopulated. 
+
+| Setting name / notes	    | Public Value  | Your Value 	(recommended values shown)  | 	Notes  | 
+| ------------------------- | ------------  | --------------------------------------  | -------- |
+| feedback	| true	| true |  	False hides feedback smiley icon on top bar (see screenshot above).  | 
+| hidesupport	 | (not set) | 	false	 | Hides support functionality in property and other select dialogs.  | 
+| internalonly | 	false	 | false | 	Controls whether the Orange ‘Preview’ tag appears to the left of the site name (see screenshot above)  | 
+| nps | 	true | 	true | 	Controls whether the Net Promoter Score (‘How likely are you to recommend this site?’) prompt can appear for the site. Recommend set to false.  | 
+| hubsextension_skipeventpoll	 | (not set)	 | true	 | Disables ‘what’s new’ and subscription level notifications (such as deployment complete for VMs). Recommend set to true unless showing all resource types from all extensions. | 
+ 
+<a name="custom-domains-links"></a>
+## Links
+
+Your cloud has the option to override certain links displayed by the system. Overriding is optional, and in many cases no overrides are required.
+
+Links are separated into three sections below: Shell, Hubs & Error pages. This separation is purely for our internal convenience.
+
+Enter one of the following values for each item:
+
+* A numeric FwLink ID
+
+* A blade reference
+
+* An absolute URL (See note below)
+
+* Disabled – enter ‘Disabled’ as the value if the link should be hidden and not displayed to the user.
+
+* (no change) – enter ‘(no change)’ to indicate the default production value should be used (and that if the default production value should change in future, that change will automatically propagate to your extension).
+
+Where supported, FwLinks must be used over absolute URLs as (a) FwLinks do not require the Shell to be redeployed in order for the extension to change the destination, and (b) FwLinks support the user’s in-product language selection, which is often different to the browser’s default language (if the user has set the language in the portal to Chinese, they should get Chinese pages).
+
+The two settings marked with an ‘*’ below do not support FwLinks or blade references as they are either download links, or base URLs to which additional parameter / path information is added dynamically at run-time.
+
+Items marked with an ‘#’ may not currently support the Disabled setting, or values of the types other than those shown under Public Value. These can be made to work if needed, but may slow delivery time as we would need to work with the owner team that added them.
+ 
+<a name="custom-domains-links-shell-links"></a>
+### Shell Links
+
+| Setting name / notes | Public Value | Your Value |
+| -------------------- | ------------ | ---------- |
+| accessDetails# | #blade/HubsExtension/MyAccessBlade/resourceId/ |	blank (verify that menu item is hidden) | 
+| accountPortal* | https://account.windowsazure.com/ |	blank (verify that menu item is hidden) | 
+| classicPortal* | https://manage.windowsazure.com/	 | same (link won't be shown) | 
+| createSupportRequest | #create/Microsoft.Support | same |
+| giveFeedback | [https://go.microsoft.com/fwLink/?LinkID=522329](https://go.microsoft.com/fwLink/?LinkID=522329) | [https://go.microsoft.com/fwlink/?linkid=838978](https://go.microsoft.com/fwlink/?linkid=838978) | 
+| helpAndSupport | 	#blade/Microsoft_Azure_Support/HelpAndSupportBlade |	same | 
+| learnRelatedResources	| [https://go.microsoft.com/fwLink/?LinkID=618605](https://go.microsoft.com/fwLink/?LinkID=618605) | same (link won't be shown) | 
+| learnSharedDashboard | [https://go.microsoft.com/fwLink/?LinkID=746967](https://go.microsoft.com/fwLink/?LinkID=746967) | 	same (link won't be shown) | 
+| manageSupportRequests | #blade/HubsExtension/BrowseServiceBlade/        assetTypeId/Microsoft_Azure_Support_SupportRequest | same |
+| privacyAndTerms | [https://go.microsoft.com/fwLink/?LinkID=522330](https://go.microsoft.com/fwLink/?LinkID=522330)	 | same | 
+| resourceGroupOverview	| [https://go.microsoft.com/fwLink/?LinkID=394393](https://go.microsoft.com/fwLink/?LinkID=394393) | same (link won't be shown) | 
+| survey	| [https://go.microsoft.com/fwLink/?LinkID=733278](https://go.microsoft.com/fwLink/?LinkID=733278)  | 	??? Gauge team to follow up on this | 
+| joinResearchPanel | [https://uriux.fluidsurveys.com/s/MicrosoftReseachPanel/](https://uriux.fluidsurveys.com/s/MicrosoftReseachPanel) | same |
+| learnAzureCli# | 	[https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-azure-resource-manager/](https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-azure-resource-manager/)	 | same |
+ 
+<a name="custom-domains-links-hubs-links"></a>
+### Hubs links
+
+| Setting name / notes  | Public Value |	Your Value |
+| --------------------- | ------------ | ---------- |
+| createNewSubscription     | [https://go.microsoft.com/fwLink/?LinkID=522331](https://go.microsoft.com/fwLink/?LinkID=522331)	 | same |
+| manageAzureResourceHelp   | [https://go.microsoft.com/fwLink/?LinkID=394637](https://go.microsoft.com/fwLink/?LinkID=394637)	 | same |
+| moveResourcesDoc#	| [https://go.microsoft.com/fwLink/?LinkID=747963](https://go.microsoft.com/fwLink/?LinkID=747963)	 | same |
+| resourceGroupInstallClientLibraries	| [https://go.microsoft.com/fwLink/?LinkID=234674](https://go.microsoft.com/fwLink/?LinkID=234674)	 | same |
+| resourceGroupInstallPowerShell*	| [https://go.microsoft.com/fwLink/?LinkID=https://go.microsoft.com/?linkid=9811175](https://go.microsoft.com/fwLink/?LinkID=https://go.microsoft.com/?linkid=9811175)			(download link) | same |
+| resourceGroupInstallTools	| [https://go.microsoft.com/fwLink/?LinkID=94686](https://go.microsoft.com/fwLink/?LinkID=94686)	 | same |
+| resourceGroupIntroduction	| [https://go.microsoft.com/fwLink/?LinkID=394393](https://go.microsoft.com/fwLink/?LinkID=394393)	 | same |
+| resourceGroupIntroductionVideo	| [https://go.microsoft.com/fwLink/?LinkID=394394](https://go.microsoft.com/fwLink/?LinkID=394394)	 | same |
+| resourceGroupResourceManagement	| [https://go.microsoft.com/fwLink/?LinkID=394396](https://go.microsoft.com/fwLink/?LinkID=394396)	 | same |
+| resourceGroupSample	| [https://go.microsoft.com/fwLink/?LinkID=394397](https://go.microsoft.com/fwLink/?LinkID=394397)	 | same |
+| resourceGroupTemplate	| [https://go.microsoft.com/fwLink/?LinkID=394395](https://go.microsoft.com/fwLink/?LinkID=394395)	 | same |
+| subCerts	| [https://go.microsoft.com/fwLink/?LinkID=734721](https://go.microsoft.com/fwLink/?LinkID=734721)	 | same |
+| tourHelp	| [https://go.microsoft.com/fwLink/?LinkID=626007](https://go.microsoft.com/fwLink/?LinkID=626007)	 | same |
+| templateDeployment	| [https://go.microsoft.com/fwLink/?LinkID=733371](https://go.microsoft.com/fwLink/?LinkID=733371)	 | same |
+| tagsHelp# | [https://go.microsoft.com/fwLink/?LinkID=822935](https://go.microsoft.com/fwLink/?LinkID=822935)  | same |
+| pricingHelp# | [https://go.microsoft.com/fwLink/?LinkID=829091](https://go.microsoft.com/fwLink/?LinkID=829091)  | same |
+| azureStatus# | [https://status.azure.com]()  | same |
+ 
+<a name="custom-domains-error-page-links"></a>
+## Error Page Links
+	
+| Setting name / notes | Public Value |	Your Value |
+| -------------------- | ------------ | ---------- |
+| classicPortal*	   | https://manage.windowsazure.com/	| same |
+| contactSupport |	[https://go.microsoft.com/fwLink/?LinkID=733312](https://go.microsoft.com/fwLink/?LinkID=733312)	 | same |
+| html5StorageExceededHelp |	[https://go.microsoft.com/fwLink/?LinkID=522344](https://go.microsoft.com/fwLink/?LinkID=522344)	 | same |
+| javaScriptDisabledHelp |	[https://go.microsoft.com/fwLink/?LinkID=530268](https://go.microsoft.com/fwLink/?LinkID=530268)	 | same |
+| noHtml5StorageHelp |	[https://go.microsoft.com/fwLink/?LinkID=522344](https://go.microsoft.com/fwLink/?LinkID=522344)	 | same |
+| portalVideo |	[https://go.microsoft.com/fwLink/?LinkID=394684](https://go.microsoft.com/fwLink/?LinkID=394684) |	 blank |
+| supportedBrowserMatrix |	[https://go.microsoft.com/fwLink/?LinkID=394683](https://go.microsoft.com/fwLink/?LinkID=394683)	 | same |
+| unsupportedLayoutHelp	 |[https://go.microsoft.com/fwLink/?LinkID=394683]()	 | same |
+ 
+<a name="custom-domains-curation"></a>
+## Curation
+
+Curation controls the visibility and grouping of browsable asset types in the Favorites and Browse portions of left nav (see Terminology screenshot below). A browsable asset type is one defined in your (or someone else’s) PDL using the <Browse> tag.
+
+Your cloud can customize how browseable assets appear in the Favorites and Category sections. This is all optional (you can just inherit from production if you want).
+
+![alt-text]( .png "Categories and asset types")
+	 
+Curation allows the listed items to be added, removed, and reordered. It is important to note that Curation only hides items from the left nav, not from code or deep links. This means, for (fictional) example, you can hide the ability to create a new Storage Accounts from users while still allowing your extension to open the Storage Accounts property and usage logs blades for the storage account you created behind the scenes for one of your assets.
+ 
+<a name="custom-domains-curation-category-curation"></a>
+### Category Curation
+
+The Category curation model provides a significant degree of flexibility, which can be overwhelming at first as the following options are NOT mutually exclusive:
+  
+		○ Based on Production
+Take the production curation definition and programmatically modify it. For example, ‘Remove everything except assets from these 3 extensions’ or ‘Change the Category that items from extension3 live under’.
+			 
+		Note: Empty categories are automatically hidden.
+		
+		The most common configurations are:
+			§ Community Clouds that show just assets from your extension, Help & Support, and that will automatically add new browsable assets 
+Use Curation by AssetType listing just items from your extension (plus some items from Help & Support if desired), combined with Curation by Extension to allow new asset types you deploy to appear while your updates to your Curation by AssetType are waiting on the next Shell deployment, combined with a DiscoveryPolicy of Hide to prevent new asset types from other extensions appearing.
+		
+		- All AAD extensions except "KeyVault" and "Help + Support"
+		- Default all items to go under "Security + Identity" category (including help and support)
+	
+	 
+<a name="custom-domains-curation-default-favorites"></a>
+### Default Favorites
+
+When a new user visits your Community Cloud for the first time, the system places a number of assets types in the far left drawer. You can control which items are placed here and the order in which they are displayed. The only restriction is that these items must also exist in the Category Curation.
+	 
+| Extension Name | Asset ID | Comments |
+| -------------- | -------- | -------- |
+| MICROSOFT_AAD_IAM | AzureActiveDirectory  |  |
+| MICROSOFT_AAD_IAM | AzureActiveDirectoryQuickStart | Not implemented yet | 
+| MICROSOFT_AAD_IAM | UserManagement |  | 
+| MICROSOFT_AAD_IAM | Application |  | 
+| MICROSOFT_AAD_IAM | Licenses | Not implemented yet | 
+ 
+* Azure Active Directory
+* Quick start
+* Users and groups
+* Enterprise apps
+* Licenses
+	
+Items will be added in the order listed.
+ 
+<a name="custom-domains-curation-default-dashboard"></a>
+### Default Dashboard
+
+The default dashboard JSON controls what parts appear on the dashboard for new users. Existing users need to use the `Reset Dashboard` option to see updated versions of the default dashboard. The following steps generate the JSON. 
+
+1. Use the Portal’s `customize` mode to manually create the dashboard.  Pin or drag and drop the dashboard contents into place.
+
+1. Use the Portal’s `Share` feature to publish the dashboard to an Azure subscription.
+
+ **NOTE**: The subscription is  not related to your content; this is just a means to an end.
+
+1. Navigate to `More Services -> Resource Explorer` and find the dashboard that was  just published. The `Resource Explorer` will display the JSON representation of the dashboard.  You can review and adjust  the tile sizes, positions, and settings.  
+
+1. Inspect the JSON to confirm that it contains no user-specific values, because this dashboard will be applied to all new users.
+
+1. Paste the following `AzureActiveDirectoryDashboardv2.json` File from AAD into the Default Dashboard JSON. The file is also located at [](). 
+
+    ```
+    {
+        "properties": {
+            "lenses": {
+                "0": {
+                    "order": 0,
+                    "parts": {
+                        "0": {
+                            "position": {
+                                "x": 0,
+                                "y": 0,
+                                "rowSpan": 2,
+                                "colSpan": 4
+                            },
+                            "metadata": {
+                                "inputs": [],
+                                "type": "Extension/Microsoft_AAD_IAM/PartType/OrganizationIdentityPart"
+                            }
+                        },
+                        "1": {
+                            "position": {
+                                "x": 4,
+                                "y": 0,
+                                "rowSpan": 2,
+                                "colSpan": 4
+                            },
+                            "metadata": {
+                                "inputs": [],
+                                "type": "Extension/Microsoft_AAD_IAM/PartType/AzurePortalWelcomePart"
+                            }
+                        },
+                        "2": {
+                            "position": {
+                                "x": 0,
+                                "y": 2,
+                                "rowSpan": 2,
+                                "colSpan": 4
+                            },
+                            "metadata": {
+                                "inputs": [],
+                                "type": "Extension/Microsoft_AAD_IAM/Blade/ActiveDirectoryBlade/Lens/ActiveDirectoryLens/PartInstance/ActiveDirectory_UserManagementSummaryPart"
+                            }
+                        },
+                        "3": {
+                            "position": {
+                                "x": 0,
+                                "y": 4,
+                                "rowSpan": 2,
+                                "colSpan": 4
+                            },
+                            "metadata": {
+                                "inputs": [
+                                    {
+                                        "name": "userObjectId",
+                                        "isOptional": true
+                                    },
+                                    {
+                                        "name": "startDate",
+                                        "isOptional": true
+                                    },
+                                    {
+                                        "name": "endDate",
+                                        "isOptional": true
+                                    },
+                                    {
+                                        "name": "fromAppsTile",
+                                        "isOptional": true
+                                    }
+                                ],
+                                "type": "Extension/Microsoft_AAD_IAM/PartType/UsersActivitySummaryReportPart"
+                            }
+                        },
+                        "4": {
+                            "position": {
+                                "x": 0,
+                                "y": 6,
+                                "rowSpan": 1,
+                                "colSpan": 2
+                            },
+                            "metadata": {
+                                "inputs": [],
+                                "type": "Extension/Microsoft_AAD_IAM/PartType/ADConnectStatusPart"
+                            }
+                        },
+                        "5": {
+                            "position": {
+                                "x": 2,
+                                "y": 6,
+                                "rowSpan": 1,
+                                "colSpan": 2
+                            },
+                            "metadata": {
+                                "inputs": [],
+                                "type": "Extension/Microsoft_AAD_IAM/PartType/AuditEventsDashboardPart"
+                            }
+                        },
+                        "6": {
+                            "position": {
+                                "x": 4,
+                                "y": 2,
+                                "rowSpan": 4,
+                                "colSpan": 4
+                            },
+                            "metadata": {
+                                "inputs": [],
+                                "type": "Extension/Microsoft_AAD_IAM/PartType/ActiveDirectoryRecommendationPart",
+                                "viewState": {
+                                    "content": {
+                                        "selection": {
+                                            "selectedItems": [],
+                                            "activatedItems": []
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "7": {
+                            "position": {
+                                "x": 8,
+                                "y": 0,
+                                "rowSpan": 2,
+                                "colSpan": 2
+                            },
+                            "metadata": {
+                                "inputs": [],
+                                "type": "Extension/Microsoft_AAD_IAM/PartType/ActiveDirectoryQuickTasksPart"
+                            }
+                        },
+                        "8": {
+                            "position": {
+                                "x": 8,
+                                "y": 2,
+                                "rowSpan": 1,
+                                "colSpan": 2
+                            },
+                            "metadata": {
+                                "inputs": [],
+                                "type": "Extension/Microsoft_AAD_IAM/PartType/AzurePortalPart"
+                            }
+                        }
+                    }
+                }
+            },
+            "metadata": {
+                "model": {
+                    "timeRange": {
+                        "value": {
+                            "relative": {
+                                "duration": 24,
+                                "timeUnit": 1
+                            }
+                        },
+                        "type": "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange"
+                    }
+                }
+            }
+        },
+        "id": "/subscriptions/8bd095e7-b4a6-4f9c-b826-8b83943111fa/resourceGroups/dashboards/providers/Microsoft.Portal/dashboards/438319b8-6761-4c27-9f1f-97b12413c30b",
+        "name": "438319b8-6761-4c27-9f1f-97b12413c30b",
+        "type": "Microsoft.Portal/dashboards",
+        "location": "eastasia",
+        "tags": {
+            "hidden-title": "Dashboard"
+        }
+    }
+    ```
+
+    <!--TODO:  Locate a copy that can be linked to from here, instead of the following OneNote link.
+    [https://microsoft.sharepoint.com/teams/azureteams/aapt/azureux/portalfx/_layouts/OneNote.aspx?id=%2Fteams%2Fazureteams%2Faapt%2Fazureux%2Fportalfx%2FSiteAssets%2FPortalFx%20Notebook&wd=target%28Execution%2FFundamentals%2FDeployments.one%7C9B8BE2F4-DDEF-4504-982B-560AF50A892C%2FCustom%20Domain%20-%20Questionnaire%20Template%7C90BDECEB-D69D-4BA0-B60A-8A9EBB877CC4%2F%29](https://microsoft.sharepoint.com/teams/azureteams/aapt/azureux/portalfx/_layouts/OneNote.aspx?id=%2Fteams%2Fazureteams%2Faapt%2Fazureux%2Fportalfx%2FSiteAssets%2FPortalFx%20Notebook&wd=target%28Execution%2FFundamentals%2FDeployments.one%7C9B8BE2F4-DDEF-4504-982B-560AF50A892C%2FCustom%20Domain%20-%20Questionnaire%20Template%7C90BDECEB-D69D-4BA0-B60A-8A9EBB877CC4%2F%29)
+
+    -->
+ 
+<a name="custom-domains-tile-gallery"></a>
+## Tile Gallery
+
+The tile gallery is visible when the user clicks on Edit dashboard. It displays  a collection of tiles that can be dragged and dropped on the dashboard. Available tiles can be searched by Category, by Type, by resource group, by tag, or by using the Search string.
+
+* The `hidePartsGalleryPivot` flag disables all the search types except the Category search. The Category selector will be displayed only if any tile has a category assigned to it.
+
+* The `hiddenGalleryParts` list allows this extension to hide specific parts that are made available by other extensions. For example, by default, the Service Health part will always be shown. This part can be hidden by adding it to this list.
+ 
+<a name="custom-domains-best-practices"></a>
+## Best Practices
+
+<a name="custom-domains-best-practices-do-not-use-portalcontext-trustedauthorityhost-directly"></a>
+### Do not use PortalContext.TrustedAuthorityHost directly
+
+Do not write code like this.
+
+```cs
+if (PortalContext.TrustedAuthorityHost.startsWith("contoso"))
+{
+    // We're in contoso.portal.azure.com, contoso-df.portal.azure.com, contoso.onestb.cloudapp.net etc
+    ...
+}
+```
+
+This is an anti-pattern for several reasons:
+
+1. The code becomes peppered with Cloud specific 'if' blocks that are hard to test, maintain, and find. This increases in complexity
+   as the number of supported Clouds increases.
+
+1. If another cloud comes online requiring some (or all) of the same logic, the code has to be updated.
+
+Instead, use the domain-based configuration to create a setting that varies by PortalContext.TrustedAuthorityHost.
+
+<a name="custom-domains-best-practices-do-not-change-pdl-on-the-fly-by-feature-flag"></a>
+### Do not change PDL on the fly / by Feature Flag
+
+Never change the PDL your extension severs up based on the host of the caller or a feature flag that changes between callers. 
+
+1. The Shell caches your PDL on behalf of the client and the same PDL bundle is delivered to all community clouds. 
+
+1. When the Shell directly requests the PDL from each extension, it does so on its own behalf and not on behalf of any specific user. 
+   In such cases, PortalContext.TrustedAuthorityHost is a constant.
+
+1. Changing the default feature flags sent to the extension requires Shell config changes and redeployment.
+
+ 
+<a name="custom-domains-frequently-asked-questions"></a>
+## Frequently Asked Questions
+
+<a name="custom-domains-frequently-asked-questions-site-is-not-accessible"></a>
+### Site is not accessible
+
+*** My site is not accessible from a custom URL in DogFood
+
+SOLUTION:  Verify that the configuration setting  `Microsoft.Portal.Framework.FrameworkConfiguration.AllowedParentFrame` is correctly set in your extension’s configuration file. Your extension will reject calls from pages from domains and subdomains of the values listed here. For example, a setting value of `df.onecloud.azure-test.net` will NOT allow calls from pages hosted at `df-myExtension.onecloud.azure-test.net`, but a setting of `onecloud.azure-test.net` will allow calls from both `df.onecloud.azure-test.net` and `df-myExtension.onecloud.azure-test.net`.
+
+* * * 
+
+<a name="custom-domains-frequently-asked-questions-default-favorites-list-do-not-match-the-submitted-list"></a>
+### Default favorites list do not match the submitted list
+
+***I changed the default favorites definition, but am still seeing the old one.***
+
+SOLUTION: Default favorites are user-configurable and stored in `User Settings`. The system generates and saves the user's default favorites only if they haven’t been previously generated for the user. To force a refresh, reset your desktop.
+
+* * *
+
+<a name="custom-domains-frequently-asked-questions-shared-url-for-cloud-and-production"></a>
+### Shared URL for cloud and production
+
+***Can I point my Community Cloud and Production to the same extension URL?***
+
+Yes, if the only difference between your Community Cloud and Production is branding the hiding of other extensions UI. 
+
+However, a major reuse restriction is that you must serve the same PDL to both Production and your Community Cloud. You can serve different domain-based configuration to the user’s browser,  as specified in `AuxDocs`, and you can review  `PortalContext.TrustedAuthorityHost` to determine the  environment from which the client is calling your extension.  However, you cannot change the behavior of server-to-server calls, and PDL is requested by servers.
 
 
