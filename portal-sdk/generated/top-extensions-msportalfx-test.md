@@ -1,8 +1,17 @@
 <a name="overview"></a>
 ## Overview
 
-There are many different ways to test an extension.  In the development environment, you can test from Visual Studio or from the command line.  In the Windows Azure Engineering System (WAES), you can use the procedures that are described in [http://aka.ms/WAES](http://aka.ms/WAES). If you run **mocha** with the `--debug-brk` flag, you can press F5 and the project will attach to a debugger. 
-There are instructions that describe how to set up test run parallelization in **Jenkins**.
+There are many different ways to test an extension.
+
+* In the development environment, you can test from Visual Studio or from the command line. 
+
+* In the Windows Azure Engineering System (WAES), you can use the procedures that are described in [http://aka.ms/WAES](http://aka.ms/WAES). 
+
+* If you run **mocha** with the `--debug-brk` flag, you can press F5 and the project will attach to a debugger.
+
+* There are instructions that describe how to set up test run parallelization in **Jenkins**.
+
+* The **MsPortalFx-Test** test framework that runs tests against the Microsoft Azure Portal. 
 
 <a name="msportalfx-test"></a>
 ## MSPortalFx-test
@@ -29,6 +38,8 @@ The test framework interacts with the Portal as a user would, and helps develope
 
 * [Running a test in cloudtest](#running-a-test-in-cloudtest)
 
+* [Check test results](#check-test-results)
+
 <a name="msportalfx-test-general-architecture"></a>
 ### General Architecture
 
@@ -38,11 +49,11 @@ The test framework interacts with the Portal as a user would, and helps develope
 
     The controls layer contains the basic controls used in the Portal, like blades, checkboxes, textboxes, and others.  It is not used directly by tests in most cases, because it is mainly for composing the action layer and the  test layers. It is built on webdriver primitives and there is little or no retry logic.  
 
- 1. Actions layer 
+ 1. Actions layer
 
     The actions layer performs an action and verifies whether it was successful. It can retry the action if necessary. It is  used in writing tests like `portal.openBrowseBlade`. It is built upon the controls layer.
 
-1. Test layer 
+1. Test layer
 
     The test layer contains wrappers that are used for testing common functionality. It is built upon the action and control layers, and is used in writing business-case tests or other forms of suite-test functionality, like `parts.canPinAllBladeParts`. It can re-run the test if necessary, and throws an exception if the test or verification fails.  
 
@@ -57,7 +68,7 @@ In addition, you should perform the following verifications to ensure that your 
 
 * npm version is 3.10.6 or greater using `npm -v`. 
     
-    To update npm version use `npm install npm -g`.  The `npm install` command will automatically pull the latest version of `msportalfx-test`. 
+   To update npm version use `npm install npm -g`.  The `npm install` command will automatically pull the latest version of `msportalfx-test`. 
 
 * tsc version is 1.8.10 or greater, but less than Typescript 2+, by using `tsc -v`.
 
@@ -82,8 +93,8 @@ Now you can install the provided definitions by performing the following steps.
 
 You may also need the C++ compiler that is included in Visual Studio or some other development environment.
 
-<a name="running-tests-in-visual-studio"></a>
-## Running tests in Visual Studio
+<a name="msportalfx-test-running-tests-in-visual-studio"></a>
+### Running tests in Visual Studio
 
 Your computer should have the most recent editions of operating systems and other software installed, as specified in [top-extensions-install-software.md](top-extensions-install-software.md).
 
@@ -97,7 +108,7 @@ Your computer should have the most recent editions of operating systems and othe
 
 1. Now, you should be able to build your test and view it in the Test Explorer.  If you do not see your tests, make sure that there are no build errors.  You can also try restarting **Visual Studio** to determine whether the restart will cause the IDE to display the test results.  
  
-<a name="running-tests-in-visual-studio-write-a-browse-blade-test"></a>
+<a name="msportalfx-test-write-a-browse-blade-test"></a>
 ### Write a browse blade test
 
  This test scenario is that the user opens the Cloud Services Browse blade, filters the list of cloud services, checks that the grid has only one row after the filter, selects the only row and waits for the correct blade to open. Finally, the browser is closed when the user is done. The test uses the **Mocha** testing framework that is located at [https://mochajs.org/](https://mochajs.org/), but you can use any framework that supports **Node.js** modules and promises. The **Mocha** **Typescript** definitions were installed when **typings** was installed, but if you need to install Mocha, you can do so by using the following command: `npm install mocha`.
@@ -164,7 +175,7 @@ This test requires an existing cloud service, so if you need one, you can create
 
 After the **MsPortalFx-Test** module is imported and the credentials are specified for the user, we can use the Portal object to drive the test. The scenario completes when the call to `quit()` closes the browser.
 
-<a name="running-tests-in-visual-studio-write-a-browse-blade-test-configure-compile-and-run"></a>
+<a name="msportalfx-test-write-a-browse-blade-test-configure-compile-and-run"></a>
 #### Configure, compile and run
 
 Create the following configuration file to specify that  **MsPortalFx-Test** will use the **Chrome** browser for the test session and `https://portal.azure.com` for the test Portal.  The file is named **config.json** and is located in the `e2etests` directory. 
@@ -190,7 +201,7 @@ Then, run **Mocha** against the generated JavaScript file using the following co
 
 **NOTE**: Using an elevated command prompt may cause **Chrome** to crash.  Use a non-elevated command prompt for best results.
 
-<a name="running-tests-in-visual-studio-write-a-browse-blade-test-output"></a>
+<a name="msportalfx-test-write-a-browse-blade-test-output"></a>
 #### Output
 
 The following output will be sent to your console as the test progresses.
@@ -210,7 +221,7 @@ Applying filter 'mycloudservice'...
 
 **NOTE**: If you receive compilation errors on the `node.d.ts` file, verify that the `tsc` version you are using is 1.8.x by running the following command: `tsc --version`. If the version is incorrect, then you may need to adjust the path variables or directly call the correct version of `tsc.exe`.  
 
-<a name="running-tests-in-visual-studio-create-and-test-a-resource"></a>
+<a name="msportalfx-test-create-and-test-a-resource"></a>
 ### Create and test a resource
 
 This scenario creates a resource in an extension, and tests it with a new TypeScript file that is saved in the **e2etest** folder of your extension. The test verifies the Browse experience while sideloading your local extension.
@@ -332,8 +343,8 @@ This scenario creates a resource in an extension, and tests it with a new TypeSc
 
 ```
 
-<a name="running-tests-in-visual-studio-entire-test-script"></a>
-### Entire test script
+<a name="msportalfx-test-create-and-test-a-resource-entire-test-script"></a>
+#### Entire test script
 
 The following is the entire test script.
 
@@ -376,8 +387,8 @@ describe('Local Extension Tests', function () {
 });
 ```
 
-<a name="running-a-test-in-cloudtest"></a>
-## Running a test in cloudtest
+<a name="msportalfx-test-running-a-test-in-cloudtest"></a>
+### Running a test in cloudtest
 
  In CI, one test option is to use Cloudtest.  The `nodejs` test adaptor cannot be used with `vs.console.exe` since it requires a full installation of Visual Studio, which is absent on the VMs. Fortunately, we can run a script that sets up the test environment and the Exe Execution type that will run against the powershell/cmd executable.
 
@@ -439,14 +450,10 @@ describe('Local Extension Tests', function () {
         ct -t "amd64\CloudTest\TestMap.xml" -tenant Default -BuildId "GUID" -props worker:TEST_ENVIRONMENT=canary
         ```
 
+<a name="msportalfx-test-check-test-results"></a>
+### Check test results
 
----------------------
-
-<a name="debugging"></a>
-## Debugging
-
-<a name="debugging-checking-results-while-tests-are-running"></a>
-### Checking results while tests are running
+<!-- TODO: Determine whether the screen shots work whether or not the developer is using the **mocha** test runner. -->
 
 Screenshots are a handy way to help diagnose issues. The following code takes a screenshot of what is currently displayed in the browser.  
 
@@ -457,7 +464,8 @@ import testFx = require('MsPortalFx-Test');
     var screenshotPromise = testFx.portal.takeScreenshot(ScreenshotTitleHere);
 ```
 
-Sometimes it is useful to get the result of currently running tests.  The following code takes a screenshot  only when the test fails, if you are using the **mocha** test runner,
+Sometimes it is useful to get the result of currently running tests.  The following code takes a screenshot only when the test fails.
+
 
 ```ts
 import testFx = require('MsPortalFx-Test');
@@ -470,142 +478,59 @@ import testFx = require('MsPortalFx-Test');
 
 ```
 
-<a name="debugging-lambda-functions"></a>
+<a name="msportalfx-test-capture-browser-console-output"></a>
+### Capture browser console output
+
+Console logs of the browser that was used in testing can be useful when identifying reasons for test failure. You can capture the logs at a specified level of error, or at all levels using the `LogLevel` parameter. Error levels include warnings, errors, and other severity levels.
+
+The `getBrowserLogs` method returns a `Promise` of type `string[]` which contains the array of logs when resolved. The array can be  viewed during debug or written to the test console for later analysis. The following example demonstrates how to call the `getBrowserLogs` method and work with the result. 
+
+```ts
+import testFx = require('MsPortalFx-Test');
+...
+
+        return testFx.portal.goHome(20000).then(() => {
+            return testFx.portal.getBrowserLogs(LogLevel.All);
+        }).then((logs) => {
+            assert.ok(logs.length > 0, "Expected to collect at least one log.");
+        });
+
+```
+
+<a name="msportalfx-test-lambda-functions"></a>
 ### lambda functions
 
-Typescript lambda functions, also known as "the fat arrow" or "() => {}", capture the "this" variable from the surrounding context.  This can cause problems when trying to access Mocha's current test state.  See [arrow functions](https://basarat.gitbooks.io/typescript/content/docs/arrow-functions.html) for details.
+Typescript lambda functions, also known as "the fat arrow" or "() => {}", capture the "this" variable from the surrounding context.  This can cause problems when trying to access Mocha's current test state. For more information, see [http://aka.ms/portalfx/arrowfunctions](http://aka.ms/portalfx/arrowfunctions).
 
-
-<a name="debugging-how-to-capture-browser-console-output"></a>
-### How to capture browser console output
-
-When trying to identify reasons for failure of a test, its useful to capture the console logs of the browser that was used to execute your test. You can capture the logs at a given level e.g error, warning, etc or at all levels using the LogLevel parameter. The following example demonstrates how to call getBrowserLogs and how to work with the result. getBrowserLogs will return a Promise of string[] which when resolved will contain the array of logs that you can view during debug or write to the test console for later analysis.
-
-```ts
-import testFx = require('MsPortalFx-Test');
-...
-
-        return testFx.portal.goHome(20000).then(() => {
-            return testFx.portal.getBrowserLogs(LogLevel.All);
-        }).then((logs) => {
-            assert.ok(logs.length > 0, "Expected to collect at least one log.");
-        });
-
-```
-
-<a name="debugging-callstack"></a>
+<a name="msportalfx-test-callstack"></a>
 ### Callstack
 
-<a name="debugging-test-output-artifacts"></a>
+This section was never written.
+
+<a name="msportalfx-test-test-output-artifacts"></a>
 ### Test output artifacts
 
-        
----------------------------
+This section was never written.
 
-<a name="debugging-more-examples"></a>
-### More Examples
-
-Examples and test scripts are located at [https://github.com/Azure/msportalfx-test/tree/master/test](https://github.com/Azure/msportalfx-test/tree/master/test), and in various folders located at  [https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx), including `src/SDK/AcceptanceTests/Extensions/SamplesExtension/Tests`.
-
-If you do not have access to the AzureUX-PortalFx dashboard, you can enlist by following the instructions specified in [top-onboarding.md](top-onboarding.md). 
---------------
-
-
-  ## Debugging
-
-<a name="debugging-debug-tests-101"></a>
-### debug tests 101
-
-<a name="debugging-debugging-tests-in-vs-code"></a>
-### debugging tests in VS Code
-
-If you run mocha with the --debug-brk flag, you can press F5 and the project will attach to a debugger. 
-
-<a name="debugging-checking-the-result-of-the-currently-running-test-in-code"></a>
-### Checking the result of the currently running test in code
-
-Sometimes it is useful to get the result of the currently running test, for example: you want to take a screenshot only when the test fails.
-
-```ts
-
-    afterEach(function () {
-        if (this.currentTest.state === "failed") {
-            return testSupport.GatherTestFailureDetails(this.currentTest.title);
-        }
-    });
-
-```
-
-One thing to watch out for in typescript is how lambda functions, "() => {}", behave.  Lambda functions (also called "fat arrow" sometimes) in Typescript capture the "this" variable from the surrounding context.  This can cause problems when trying to access Mocha's current test state.  See [arrow functions](https://basarat.gitbooks.io/typescript/content/docs/arrow-functions.html) for details.
-
-<a name="debugging-how-to-take-a-screenshot-of-the-browser"></a>
-### How to take a screenshot of the browser
-
-This is an example of how to take a screenshot of what is currently displayed in the browser.  
-
-```ts
-//1. import test fx
-import testFx = require('MsPortalFx-Test');
-...
-    var screenshotPromise = testFx.portal.takeScreenshot(ScreenshotTitleHere);
-```
-
-Taking a screenshot when there is a test failure is a handy way to help diagnose issues.  If you are using the mocha test runner, then you can do the following to take a screenshot whenever a test fails:
-
-```ts
-import testFx = require('MsPortalFx-Test');
-...
-
-    afterEach(function () {
-        if (this.currentTest.state === "failed") {
-            return testSupport.GatherTestFailureDetails(this.currentTest.title);
-        }
-    });
-
-```
-
-<a name="debugging-how-to-capture-browser-console-output"></a>
-### How to capture browser console output
-
-When trying to identify reasons for failure of a test its useful to capture the console logs of the browser that was used to execute your test. You can capture the logs at a given level e.g error, warning, etc or at all levels using the LogLevel parameter. The following example demonstrates how to call getBrowserLogs and how to work with the result. getBrowserLogs will return a Promise of string[] which when resolved will contain the array of logs that you can view during debug or write to the test console for later analysis.    
-
-```ts
-import testFx = require('MsPortalFx-Test');
-...
-
-        return testFx.portal.goHome(20000).then(() => {
-            return testFx.portal.getBrowserLogs(LogLevel.All);
-        }).then((logs) => {
-            assert.ok(logs.length > 0, "Expected to collect at least one log.");
-        });
-
-```
-
-<a name="debugging-callstack"></a>
-### Callstack
-
-<a name="debugging-test-output-artifacts"></a>
-### Test output artifacts
-
-
-   ## Localization
-
-This section intentionally left  blank.
-
-   
-<a name="user-management"></a>
-## User Management
+<a name="msportalfx-test-localization"></a>
+### Localization
 
 This section intentionally left blank.
 
-   
-<a name="user-management-create"></a>
-### Create
+<a name="msportalfx-test-user-management"></a>
+### User Management
 
-<a name="user-management-create-opening-the-create-blade-from-a-deployed-gallery-package"></a>
-#### Opening the create blade from a deployed gallery package
+This section intentionally left blank.
 
-To open/navigate to the create blade a gallery package previously deployed to the Azure Marketplace you can use `portal.openGalleryCreateBlade`.  The returned promise will resolve with the CreateBlade defined by that gallery package. 
+<a name="msportalfx-test-create-functions-for-test-scenarios"></a>
+### Create functions for test scenarios
+
+The create method for testing needs to open blades that are in several locations.
+
+<a name="msportalfx-test-create-functions-for-test-scenarios-opening-from-a-deployed-gallery-package"></a>
+#### Opening from a deployed gallery package
+
+The `portal.openGalleryCreateBlade` method opens and navigates to a create blade gallery package that was previously deployed to the Azure Marketplace.  The returned promise will resolve with the CreateBlade defined by that gallery package, as in the following example.
 
 ```ts 
 import TestFx = require('MsPortalFx-Test');
@@ -624,10 +549,14 @@ FromLocalPackage
 ...
 ```
 
-<a name="user-management-create-opening-the-create-blade-from-a-local-gallery-package"></a>
-#### Opening the create blade from a local gallery package
+<a name="msportalfx-test-create-functions-for-test-scenarios-opening-from-a-local-gallery-package"></a>
+#### Opening from a local gallery package
 
-To open/navigate to the create blade a local gallery package that has been sideloaded into the Portal along with your extension you can use `portal.openGalleryCreateBladeFromLocalPackage`.  The returned promise will resolve with the CreateBlade defined by that gallery package. 
+The `portal.openGalleryCreateBladeFromLocalPackage` method opens and navigates to a create blade gallery package that is sideloaded locally into the Portal along with your extension.
+
+The returned promise will resolve with the CreateBlade defined by that gallery package, as in the following example.
+
+The returned promise will resolve with the CreateBlade defined by that gallery package. 
 
 ```ts 
 import TestFx = require('MsPortalFx-Test');
@@ -646,52 +575,62 @@ import TestFx = require('MsPortalFx-Test');
 ...
 ```
 
-<a name="user-management-create-validation-state"></a>
-#### Validation State
+<a name="msportalfx-test-validation-states"></a>
+### Validation States
 
-<a name="user-management-create-get-the-validation-state-of-fields-on-your-create-form"></a>
-#### Get the validation state of fields on your create form
+The `FormElement` object exposes two useful functions for working with the validation state of controls. 
 
-`FormElement` exposes two useful functions for working with the ValidationState of controls. 
+* The getValidationState method 
 
-The function `getValidationState` returns a promise that resolves with the current state of the control and can be used as follows
+    The function `getValidationState` returns a promise that resolves with the current state of the control, as in the following code.
 
-```ts
-import TestFx = require('MsPortalFx-Test');
-...
+    ```ts
+    import TestFx = require('MsPortalFx-Test');
+    ...
 
-            //click the createButton on the create blade to fire validation
-            .then(() => this.actionBar.createButton.click())
-            //get the validation state of the control
-            .then(() => this.name.getValidationState())
-            //assert state matches expected
-            .then((state) => assert.equal(state, testFx.Constants.ControlValidationState.invalid, "name should have invalid state"));
-...
+    //click the createButton on the create blade to fire validation
+    .then(() => this.actionBar.createButton.click())
+    //get the validation state of the control
+    .then(() => this.name.getValidationState())
+    //assert state matches expected
+    .then((state) => assert.equal(state, testFx.Constants.ControlValidationState.invalid, "name should have invalid state"));
+    ...
 
-```
+    ```
 
-<a name="user-management-create-wait-on-a-fields-validation-state"></a>
-#### Wait on a fields validation state
+* The waitOnValidationState function
 
-The function `waitOnValidationState(someState, optionalTimeout)` returns a promise that resolves when the current state of the control is equivalent to someState supplied.  This is particularly useful for scenarions where you may be performing serverside validation and the control remains in a pending state for the duration of the network IO.
+    The function `waitOnValidationState(someState, optionalTimeout)` returns a promise that resolves when the current state of the control is equivalent to the state represented by the `someState` parameter.  This is typically used in  when an extension is performing server-side validation and the control remains in a pending state for the duration of the network transmission.
 
-```ts
-import TestFx = require('MsPortalFx-Test');
-...
+    ```ts
+    import TestFx = require('MsPortalFx-Test');
+    ...
 
-            //change the value to initiate validation
-            .then(() => this.name.sendKeys(nameTxt + webdriver.Key.TAB))
-            //wait for the control to reach the valid state
-            .then(() => this.name.waitOnValidationState(testFx.Constants.ControlValidationState.valid))
-...
+    //change the value to initiate validation
+    .then(() => this.name.sendKeys(nameTxt + webdriver.Key.TAB))
+    //wait for the control to reach the valid state
+    .then(() => this.name.waitOnValidationState(testFx.Constants.ControlValidationState.valid))
+    ...
 
-```
+    ```
+
+---------------------------
+
+<a name="msportalfx-test-more-examples"></a>
+### More Examples
+
+Examples and test scripts are located at [https://github.com/Azure/msportalfx-test/tree/master/test](https://github.com/Azure/msportalfx-test/tree/master/test), and in various folders located at  [https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx), including `src/SDK/AcceptanceTests/Extensions/SamplesExtension/Tests`.
+
+If you do not have access to the AzureUX-PortalFx dashboard, you can enlist by following the instructions specified in [top-onboarding.md](top-onboarding.md). 
+--------------
+
+
 
  
-<a name="user-management-browse"></a>
+<a name="msportalfx-test-browse"></a>
 ### Browse
 
-<a name="user-management-browse-how-to-test-the-context-menu-in-browse-shows-your-extensions-commands"></a>
+<a name="msportalfx-test-browse-how-to-test-the-context-menu-in-browse-shows-your-extensions-commands"></a>
 #### How to test the context menu in browse shows your extensions commands?
 
 There is a simple abstraction available in MsPortalFx.Tests.Browse.  You can use it as follows: 
@@ -720,7 +659,7 @@ it("Can Use Context Click On Browse Grid Rows", () => {
 });
 ```
 
-<a name="user-management-browse-how-to-test-the-grid-in-browse-shows-the-expected-default-columns-for-your-extension-resource"></a>
+<a name="msportalfx-test-browse-how-to-test-the-grid-in-browse-shows-the-expected-default-columns-for-your-extension-resource"></a>
 #### How to test the grid in browse shows the expected default columns for your extension resource
 
 There is a simple abstraction available in MsPortalFx.Tests.Browse.  You can use it as follows:
@@ -753,7 +692,7 @@ it("Browse contains default columns with expected column header", () => {
 }
 ```
 
-<a name="user-management-how-to-test-the-grid-in-browse-shows-additional-extension-resource-columns-that-are-selected"></a>
+<a name="msportalfx-test-how-to-test-the-grid-in-browse-shows-additional-extension-resource-columns-that-are-selected"></a>
 ### How to test the grid in browse shows additional extension resource columns that are selected
 
 There is a simple abstraction available in MsPortalFx.Tests.Browse that asserts extension resource specific columns can be selected in browse and that after selection they show up in the browse grid.  
