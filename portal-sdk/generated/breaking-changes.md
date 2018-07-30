@@ -1,4 +1,4 @@
-# Breaking Changes since 3/29/2018 
+# Breaking Changes since 3/30/2018 
 * Additional Q&A about breaking changes can be found [here](./breaking-changes.md) 
 * To ask a question about breaking changes [use this](https://aka.ms/ask/ibiza-breaking-change)  
 
@@ -246,6 +246,3 @@ like this –</font></p>
 
 ## 5.0.302.1056
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2316884'>2316884</a></td><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2316884'>Upgrade to the latest Microsoft.WindowsAzure.ConfigurationManager package</a><p>The Microsoft.WindowsAzure.ConfigurationManager dependency of the Azure Portal SDK has been upgraded from 2.0.1.0 to 3.2.3.</p></td></tr></table>
-
-## 5.0.302.1051
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2184815'>2184815</a></td><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2184815'>Allow resource to be updated after creation for Essential control</a><p><div><br></div><div>The Essentials control has gone some interface changes to make development easier:</div><div><ol><li>The Essentials<span style="color:rgb(0, 0, 0);">&nbsp;ViewModel is no longer existing. You need to use the 'create' method to create an instance of the Essentials contract.</span></li><li>The option types and contracts have been renamed (&quot;Default&quot; to &quot;DefaultResourceLayout&quot;, &quot;CustomLayout&quot; to &quot;CustomResourceLayout&quot;, &quot;NonResource&quot; to &quot;NonResourceLayout&quot;).&nbsp;</li><li>Some of the unused interfaces (like BladeOpenOptions, etc) have been removed.</li></ol></div><div></p></td></tr></table>
