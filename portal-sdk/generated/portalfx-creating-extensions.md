@@ -1,6 +1,4 @@
 * [Getting started with the Portal SDK](#getting-started-with-the-portal-sdk)
-    * [Prerequisites](#getting-started-with-the-portal-sdk-prerequisites)
-    * [Creating an Extension](#getting-started-with-the-portal-sdk-creating-an-extension)
     * [Marketplace Gallery Integration and Create Experience](#getting-started-with-the-portal-sdk-marketplace-gallery-integration-and-create-experience)
     * [Browse](#getting-started-with-the-portal-sdk-browse)
     * [Resource Menu Blade](#getting-started-with-the-portal-sdk-resource-menu-blade)
