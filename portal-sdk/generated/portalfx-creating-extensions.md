@@ -76,6 +76,33 @@ For more information on the browse experience see the [Browse documentation](#ge
 
 The information you requested has moved to [top-blades-resourcemenu.md](top-blades-resourcemenu.md).
 
+<a name="getting-started-with-the-portal-sdk-v1-versus-v2-in-the-samples-extension"></a>
+### V1 versus V2 in the samples extension
+
+You will probably notice that the samples extension is forked into V1 and V2 folders.  
+
+V2 is our post-GA collection of new APIs that, when we're done, is meant to be the only set of APIs needed to develop a modern Ibiza extension.
+
+Our V1 APIs are riddled with APIs that support old UX patterns that we either have or want to move extensions away from. The V1 APIs are also quite difficult to use in many places, as they were developed quickly and early in the project when there was a lot of trial/error in both the UX design and in the associated APIs.
+
+So far, V2 covers these API areas, and we're adding more:
+
+- New Blade variations -- TemplateBlade, FrameBlade, MenuBlade importantly
+- Blade-opening/closing -- 'container.openBlade, et al'
+- no-PDL TypeScript decorators -- to define all recommended Blade/Part variations
+- Forms -- No V1 EditScope concept
+
+As for V1 concepts, these are concepts we're asking extensions to avoid where there are V2 APIs that can be used:
+- __PDL__
+- __EditScope__
+- __ParameterCollector/ParameterProvider__
+- __"Blades containing Parts"__
+- __Non-full-screen Blades__ -- that is, ones that open with a fixed width
+- __V1 Blade-opening__ -- Selectable/SelectableSet APIs
+- __V1 Forms__ -- using EditScope
+
+Bear in mind that we don't have the V2 space entirely built out. In the meantime, you will have to use V1 APIs in places, even the V1 concepts listed above.
+
 <a name="getting-started-with-the-portal-sdk-hello-world-for-blades"></a>
 ### Hello World for blades
 
