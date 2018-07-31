@@ -13,59 +13,7 @@
 <a name="getting-started-with-the-portal-sdk"></a>
 ## Getting started with the Portal SDK
 
-<a name="getting-started-with-the-portal-sdk-prerequisites"></a>
-### Prerequisites
-
-- Windows 10 [Download](https://www.microsoft.com/en-us/software-download/windows10), Windows Server 2012 R2 [Download](https://www.microsoft.com/en-us/download/details.aspx?id=41703), or the most recent edition of the client or server platform. Some 
-- Visual Studio 2015 update 3 (a SKU of Professional or greater is required) - [Download](https://www.visualstudio.com/vs/older-downloads/)
-- TypeScript 2.3.3 for Visual Studio 2015 — May 22, 2017 [Download](http://download.microsoft.com/download/6/D/8/6D8381B0-03C1-4BD2-AE65-30FF0A4C62DA/2.3.3-TS-release-dev14update3-20170519.1/TypeScript_Dev14Full.exe)
-- Node.js LTS 8.11.1 or later - [Download](https://nodejs.org/dist/v8.11.1/node-v8.11.1-x64.msi)
-- Node Tools for Visual Studio 2025 v1.3.1- [Download](https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1)
-- The latest Azure Portal SDK - [Download](http://aka.ms/portalfx/download)
-
-<a name="getting-started-with-the-portal-sdk-creating-an-extension"></a>
-### Creating an Extension
-The Azure Portal SDK includes everything you need to build extensions for the portal.  Included are variety of tools and samples that help developers build extensions on top of the framework.
-
-To start, launch Visual Studio and navigate to File -> New -> Project.  In the new project template, select Installed -> Visual C# -> Azure Portal.  Select the `Azure Portal Extension` project type, give it a unique name, and click 'OK':
-
-![New project template](../media/portalfx-overview/new-project-template.png)
-
-- Next, hit F5 to compile, and run your extension in IIS Express.   
-- On first run you should see a request to install a certificate for localhost for IIS express Accept the certificate to continue
-
-  ![Accept https certificate](../media/portalfx-overview/enablehttps.png)
-
-You may get a debugging not enabled warning.  Feel free to enable or disable debugging, depending on your preferences.
-
-![Debugging not enabled](../media/portalfx-overview/first-run-debugging-dialog.png)
-
-It will now open a new window to the url which your extension service is running on `https://localhost:44300/`.
-
-Your extension will now be side loaded into the production portal. The portal will prompt you to allow your side loaded extension. Click __allow__.
-
-![Untrusted Extensions](../media/portalfx-overview/untrusted-extensions.png)
-
-**Note**: If the browser did not automatically open a new window to the portal with the side loaded querystring already composed.  Check the following two items:
- 
- - Your web.config appSetting with key ending in `.IsDevelopmentMode` is set to true.
- - Check your browser has not blocked popups.
- 
-If you are still having trouble after performing both of the above you can  manually side-load your extension by going to the url:
-
-```
- https://portal.azure.com/?feature.canmodifyextensions=true#?testExtensions={"YourExtensionName":"https://localhost:44300/"}   
-```
-
-Just replace `"YourExtensionName"` with the name you chose for your new Azure Portal Extension project name and `"https://localhost:44300/"` with the url of your extension service (but this is the default url).
-
-Congratulations!  You've just created your first extension.
-
-You will find that the project template has implemented many of the key components of an extension.  
-
-- Marketplace Gallery Integration (How people create your resources)
-- Browse (How people browse resources they have created)
-- Resource Menu Blade (How people use and manage resources they have created)
+The information you requested has moved to [top-extensions-install-software.md](top-extensions-install-software.md).
 
 <a name="getting-started-with-the-portal-sdk-marketplace-gallery-integration-and-create-experience"></a>
 ### Marketplace Gallery Integration and Create Experience
@@ -128,46 +76,7 @@ For more information on the browse experience see the [Browse documentation](#ge
 <a name="getting-started-with-the-portal-sdk-resource-menu-blade"></a>
 ### Resource Menu Blade
 
-If you are building an extension for an Azure service then it's likely you have built a resource provider that exposes a top-level resource (e.g. Virtual Machine, Storage account).
-
-If that's the case then the resource menu blade is a great starting point. The idea is that after the user selects a particular resource from the browse experience they land on a menu blade that has a mixture of standard resource features (e.g. activity log, role based access control, Support, etc) and service-specific features (e.g. Tables in a storage account). This section walks through the basics. 
-
-Click on your resource from within the browse list to open the resource menu blade.  Many of the standard Azure experiences such as __tags__, __locks__, and __acess control__ have been automatically injected into your menu.
-
-![Resource menu blade](../media/portalfx-overview/resource-menu.png)
-
-The code for the resource menu blade is located in __Browse/ViewModels/AssetTypeViewModel__. You can extend the menu by modifying the __getMenuConfig__ function.
-
-![Resource menu blade code](../media/portalfx-overview/resource-menu-code.png)
-
-For more information on the resource menu blade see the [Resource menu blade documentation](/gallery-sdk/generated/index-gallery.md#resource-management-resource-menu).
-
-<a name="getting-started-with-the-portal-sdk-v1-versus-v2-in-the-samples-extension"></a>
-### V1 versus V2 in the samples extension
-
-You will probably notice that the samples extension is forked into V1 and V2 folders.  
-
-V2 is our post-GA collection of new APIs that, when we're done, is meant to be the only set of APIs needed to develop a modern Ibiza extension.
-
-Our V1 APIs are riddled with APIs that support old UX patterns that we either have or want to move extensions away from. The V1 APIs are also quite difficult to use in many places, as they were developed quickly and early in the project when there was a lot of trial/error in both the UX design and in the associated APIs.
-
-So far, V2 covers these API areas, and we're adding more:
-
-- New Blade variations -- TemplateBlade, FrameBlade, MenuBlade importantly
-- Blade-opening/closing -- 'container.openBlade, et al'
-- no-PDL TypeScript decorators -- to define all recommended Blade/Part variations
-- Forms -- No V1 EditScope concept
-
-As for V1 concepts, these are concepts we're asking extensions to avoid where there are V2 APIs that can be used:
-- __PDL__
-- __EditScope__
-- __ParameterCollector/ParameterProvider__
-- __"Blades containing Parts"__
-- __Non-full-screen Blades__ -- that is, ones that open with a fixed width
-- __V1 Blade-opening__ -- Selectable/SelectableSet APIs
-- __V1 Forms__ -- using EditScope
-
-Bear in mind that we don't have the V2 space entirely built out. In the meantime, you will have to use V1 APIs in places, even the V1 concepts listed above.
+The information you requested has moved to [top-blades-resourcemenu.md](top-blades-resourcemenu.md).
 
 <a name="getting-started-with-the-portal-sdk-hello-world-for-blades"></a>
 ### Hello World for blades
