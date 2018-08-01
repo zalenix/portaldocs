@@ -1,4 +1,16 @@
-# Release Notes since 3/31/2018
+# Release Notes since 4/1/2018
+
+## 5.0.302.1247
+0 Breaking Changes, 0 Features added and 4 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2752892'>2752892</a></td><td>Bug Fix</td><td>[MonitorChartV2] unhandled exception: infinitly range</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2703100'>2703100</a></td><td>Bug Fix</td><td>remove unused code in ArmExplorerArea, remove default httpmethod from batch call in ArmDashboardClient</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2702330'>2702330</a></td><td>Bug Fix</td><td>unbundler targets failing to handle trailing slash </td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2650318'>2650318</a></td><td>Bug Fix</td><td>MsPortalFx.require api does not work in msportalfx-ut context</td></tr></table>
+
+## 5.0.302.1246
+0 Breaking Changes, 2 Features added and 0 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2754166'>2754166</a></td><td>Feature</td><td>[GDPR] [DsrHandler] Update PCF SDK to the latest verison</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2746614'>2746614</a></td><td>Feature</td><td>[MonitorChart][MonitorChartV2] Update ASE resources to use MDM</td></tr></table>
+
+## 5.0.302.1244
+0 Breaking Changes, 1 Features added and 3 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2749222'>2749222</a></td><td>Bug Fix</td><td>Reduce size of extensionMetadata</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2741869'>2741869</a></td><td>Feature</td><td>[Browse] Remove national cloud curation for SQL resources</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2738599'>2738599</a></td><td>Bug Fix</td><td>Update to edgedriver 10.0.17134.0 for Windows RS4</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2729742'>2729742</a></td><td>Bug Fix</td><td>portal sdk msi license</td></tr></table>
 
 ## 5.0.302.1243
 0 Breaking Changes, 3 Features added and 2 Bugs Fixed
