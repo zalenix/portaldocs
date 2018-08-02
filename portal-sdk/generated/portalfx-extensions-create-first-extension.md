@@ -117,7 +117,7 @@ In the following "Hello World" example, the data context for blades is named `Gr
 
         **NOTE**:  The blade title in the browser is not the same as the blade name as displayed in Visual Studio.
 
-1.Test the new extension by using a link in the following format in the address bar of the browser.
+1. Test the new extension by using a link in the following format in the address bar of the browser.
 
     ```
     <PORTAL URI>#blade/<extensionName>/<bladeName>
