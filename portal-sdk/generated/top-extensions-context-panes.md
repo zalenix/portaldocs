@@ -1,7 +1,7 @@
 <a name="context-panes"></a>
 # Context panes
 
-Context panes are a different visual representation of blades. The main difference is that they do not cause the screen to horizontally scroll when navigating to a context pane. Instead, the context pane  is displayed in front of the current content, beginning at  the right side of the screen, as in the following image.  This allows the user to interact with the context pane while retaining the context of the previous experience.
+Context panes are a different visual representation of blades. The main difference is that they do not cause the screen to horizontally scroll when navigating to a context pane. Instead, the context pane is displayed in front of the current content, beginning at  the right side of the screen, as in the following image.  This allows the user to interact with the context pane while retaining the context of the previous experience.
 
 <a name="context-panes-when-to-use-a-context-pane"></a>
 ### When to use a context pane
@@ -21,6 +21,7 @@ An example of a context pane is in the following image.
 A context pane can be authored as a standard blade implementation. The extension can call a variant of the blade-opening APIs that will instruct the Portal to open the context pane at the location at which you want to open the pane. 
 An example of using a context pane is located at `<dir>/Client/V1/Navigation/OpenAndCloseBladeApis/ViewModels/OpenBladeApiSamplesViewModel.ts`. It is also in the following code.
 
+```
 import * as FxCompositionBlade from "Fx/Composition/Pdl/Blade";
 import { ViewModels as ViewModelDefinitions } from "../../../../_generated/ExtensionDefinition";
 import { DataContext } from "../../NavigationArea";
@@ -155,5 +156,6 @@ export class OpenBladeApiSamplesViewModel
     }
 }
 
+```
     
 For information about blade references, see [top-blades-opening-and-closing.md#open-blade-methods](top-blades-opening-and-closing.md#open-blade-methods).
