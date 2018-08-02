@@ -1,11 +1,11 @@
 
 # Partner Request Process
 
-The Partner Request process allows you to tell the Ibiza team your ideas for Framework improvements.  This ideas may help us assist you in achieving your goal of a richer customer experience in the Ibiza portal. You can help us identify needed enhancements or features for  the framework.
+The Partner Request process allows you to ask the Ibiza team for Framework improvements. 
 
-The Uservoice forum, located at [https://aka.ms/portalfx/uservoice](https://aka.ms/portalfx/uservoice), is a place where you can post ideas that may help us improve the Portal. We can select popular ideas that can be implemented after inclusion in our forecasting.
+We use a Uservoice forum, located at [https://aka.ms/portalfx/uservoice](https://aka.ms/portalfx/uservoice).  It allows you to post and vote on improvements. We consult this list for semester planning and try to get to the most impactful items. We do not get to all of them since requests come from over 100 partners.  The Uservoice process is not a substitute for working directly with our PM team for urgent or business critical requests.
 
-The following is a diagram of the process used to file a new request.
+ Once you submit, vote, or comment on an idea you will get email updates when we update the status. The following is a diagram of the process used to file a new request.
 
 ![alt-text](../media/portalfx-partner-request-process/partner-request-flow.png "Partner Request Process")
 
@@ -29,4 +29,4 @@ The following is a diagram of the process used to file a new request.
 
 ## How the Ibiza team prioritizes requests
 
-The Ibiza team reviews [Uservoice](https://aka.ms/portalfx/uservoice) ideas once per week. Requests that have the most votes will be considered for the next Ibiza quarterly planning cycle.  We will consider implementing the items that have received the most votes as bandwidth permits. We also assign a higher priority to requests that unblock a scenario that is required to complete a benchmark usability task.   For more urgent requests, please contact <a href="mailto:ibizafxpm@microsoft.com">ibizafxpm@microsoft.com</a> to engage with PMs on our team.
+The Ibiza team reviews [Uservoice](https://aka.ms/portalfx/uservoice)  ideas once per week. We will consider implementing the items that have received the most votes or align with existing priorities as bandwidth permits. We also assign a higher priority to requests that unblock a scenario that is required to complete a benchmark usability task. For more urgent requests, please contact <a href="mailto:ibizafxpm@microsoft.com">ibizafxpm@microsoft.com</a> to engage with PMs on our team.
