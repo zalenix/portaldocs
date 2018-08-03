@@ -88,9 +88,7 @@ For more information about handling credentials, see [#managing-authentication-c
 
 ### Sideloading An Extension
 
-The Portal provides options for side loading your extension for testing. To side load your extension you need to set the appropriate query strings and execute the `registerTestExtension` function. An example of side loading a deployed extension can be seen below. For more information, see [portalfx-extensions-production-testing-overview.md](portalfx-extensions-production-testing-overview.md).
-<!-- TODO: locate the title that should have been the link. -->
-<!-- like maybe portalfx-extensions-production-testing.md-->
+The Portal provides options for side loading your extension for testing. To side load your extension you need to set the appropriate query strings and execute the `registerTestExtension` function. An example of side loading a deployed extension can be seen below. For more information, see [Sideloading an Extension](top-extensions-sideloading.md).
 
 {"gitdown": "include-section", "file": "../samples/SampleCSTestsFiles/NavigateToPortalTest.cs", "section": "config#sideLoadingExtension"}
 
@@ -156,7 +154,7 @@ var errorPart = webDriver.WaitUntil(() => blade.FindElements<Part>()
 									"Could not find a part with a Send Error text.");
 ```
 
-**NOTE**: The **WebDriver.WaitUntil** method is a general and recommended mechanism to ask the **WebDriver** to retry an operation until a condition succeeds. In this instance, the test case waits  by polling continually until it finds a part in the blade that contains text that includes the 'Send Error' string. When the part is found, it is returned to the `errorPart` variable; otherwise, if it is not found before the default timeout of 10 seconds, the  method throws an exception that uses the text specified in the last parameter. For more information, see [portalfx-extensions-bp-csharp-test.md#testing -best-practices](portalfx-extensions-bp-csharp-test.md#testing -best-practices). 
+**NOTE**: The **WebDriver.WaitUntil** method is a general and recommended mechanism to ask the **WebDriver** to retry an operation until a condition succeeds. In this instance, the test case waits by polling continually until it finds a part in the blade that contains text that includes the 'Send Error' string. When the part is found, it is returned to the `errorPart` variable; otherwise, if it is not found before the default timeout of 10 seconds, the  method throws an exception that uses the text specified in the last parameter. For more information, see [portalfx-extensions-bp-csharp-test.md#testing-best-practices](portalfx-extensions-bp-csharp-test.md#testing-best-practices). 
 
 Classic Selenium **WebDriver** syntax can also be used to find any element based on a **By** selector. For example, the following code finds a single button element within the found part.
 
@@ -799,5 +797,6 @@ For example, if you want to turn off an old extension and turn on a new one, you
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-csharp-test.md"}
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-testing.md"}
-
+<!--
+gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-testing.md"}
+-->
