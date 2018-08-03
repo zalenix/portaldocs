@@ -1,8 +1,8 @@
 ## Overview
 
-You must register and configure your extension with the Ibiza team for your extension to be available in the Portal. We rely on you to manage your own configuration in the Portal repository. For internal partners, this is done via pull requests, as specified in [top-extensions-publishing.md](top-extensions-publishing.md). External partners use the procedures that are located in [top-external-onboarding.md](top-external-onboarding.md).
+You must register and configure your extension with the Ibiza team for your extension to be available in the Portal. We rely on you to manage your own configuration in the Portal repository. For internal partners, this is done by using pull requests, as specified in [top-extensions-publishing.md](top-extensions-publishing.md). External partners use the procedures that are located in [top-third-party-onboarding.md](top-third-party-onboarding.md).
 
-External partners should also read this guide to understand the capabilities that Portal can provide for extensions by using configuration. However, external partner requests should be submitted by sending an email to <a href="mailto:ibizafxpm@microsoft.com?subject=<Onboarding Request ID> Add <extensionName> extension to the Portal&body=Extension name: <Company>_<BrandOrSuite>_<ProductOrComponent> <br><br> URLs: <br><br> PROD:  main.<extensionName>.ext.contoso.com <br><br> Contact info: <br><br> Business Contacts:<br><br> Dev leads: <br><br> PROD on-call email: <br><br>">ibizafxpm@microsoft.com</a> instead of using the internal sites that are in this document. For more information for external partners, see [top-external-onboarding.md](top-external-onboarding.md).
+External partners should also read this guide to understand the capabilities that Portal can provide for extensions by using configuration. However, external partner requests should be submitted by sending an email to <a href="mailto:ibizafxpm@microsoft.com?subject=&gt;<Onboarding Request ID&lt; Add [extensionName] extension to the Portal&body=Extension name: [Company]_[BrandOrSuite]_[ProductOrComponent] \n \n URLs: \n \n PROD:  main.<extensionName>.ext.contoso.com \n \n Contact info: \n \n Business Contacts:\n \n Dev leads: \n \n PROD on-call email: \n \n">ibizafxpm@microsoft.com</a> instead of using the internal sites that are in this document. For more information for external partners, see [top-third-party-onboarding.md](top-third-party-onboarding.md).
 
 The following links describe what a configuration file is and how to use it in different situations.
 
@@ -144,7 +144,7 @@ Its options are as follows.
  
  * **scriptoptimze**: Leverage the performance optimizations in the base controller. A value of `true`  , whereas a value of `false` .
 
- For more information about loading extension configuration files, see [portalfx-extensions-production-testing-overview.md#loading-customized-extensions](portalfx-extensions-production-testing-overview.md#loading-customized-extensions).
+ For more information about loading extension configuration files, see [top-extensions-sideloading.md#loading-customized-extensions](top-extensions-sideloading.md#loading-customized-extensions).
 
 ### Extension stamps and safe deployment
 
