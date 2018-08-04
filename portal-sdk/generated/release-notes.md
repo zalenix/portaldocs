@@ -1,4 +1,12 @@
-# Release Notes since 4/3/2018
+# Release Notes since 4/4/2018
+
+## 5.0.302.1250
+0 Breaking Changes, 1 Features added and 1 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2757755'>2757755</a></td><td>Bug Fix</td><td>Fix null refs when reading bad responses sent by ARM during an ARM error/outage.</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2755633'>2755633</a></td><td>Feature</td><td>Telemetry: Add deepLink to dashboard telemetry</td></tr></table>
+
+## 5.0.302.1249
+0 Breaking Changes, 4 Features added and 4 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2781899'>2781899</a></td><td>Bug Fix</td><td>Add flag to bust AFD backend cache</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2780379'>2780379</a></td><td>Feature</td><td>[BVT] Make sure MergeValidation runs important bundling & content validation tests in all environments</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2779308'>2779308</a></td><td>Bug Fix</td><td>Remove compute and network from prewarming until they have removed dependency on xml serializer</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2778642'>2778642</a></td><td>Feature</td><td>Specify QuickBuild flags in BatmonConfig rather than CDP config</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2748598'>2748598</a></td><td>Bug Fix</td><td>Remove ldns.js because it's no longer used</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2712431'>2712431</a></td><td>Feature</td><td>[dSMS] Add support for using a cert version that is a minimum age old</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2703221'>2703221</a></td><td>Feature</td><td>Enable prewarming for EMA extension</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2677445'>2677445</a></td><td>Bug Fix</td><td>dont depend on sinon in harness.ts</td></tr></table>
 
 ## 5.0.302.1247
 0 Breaking Changes, 0 Features added and 4 Bugs Fixed
