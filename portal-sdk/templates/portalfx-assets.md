@@ -106,6 +106,7 @@ Replace '*' with the desired environment, for documentation regarding enabling f
 
  
 ##### Hosting service:
+
 If you’re using the hosting service, you can do this by updating your domainname.json (e.g. portal.azure.cn.json file)
  
 
@@ -114,6 +115,22 @@ If you’re using the hosting service, you can do this by updating your domainna
         "hideassettypes": "AzureContainerService,ContainerGroup,ManagedClusters,VirtualWan"
       }
     }
+
+###### Testing your hidden asset
+
+To test enable your hidden asset for testing purposes, you will need to update the hide asset feature flag to exclude the asset you want to show and ensure you have feature.canmodifyextensions set.
+
+For the desired environment append the following feature flags.
+> If you want to test showing all hidden assets, make sure to specify some value, 'x' as an example, for the 'hideassettypes' feature flag.
+
+```
+    ?microsoft_azure_mynewextension_hideassettypes=MyNewAsset
+    &microsoft_azure_mynewextension=true
+    &feature.canmodifyextensions=true
+```
+
+For example:
+https://rc.portal.azure.com/?microsoft_azure_compute_hideassettypes=VirtualMachine&microsoft_azure_compute=true&feature.canmodifyextensions=true
 
 
 #### Handling empty browse
