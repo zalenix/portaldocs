@@ -1,5 +1,5 @@
 
-### Running a test in cloudtest
+## Running a test in cloudtest
 
  In CI, one test option is to use Cloudtest.  The `nodejs` test adaptor cannot be used with `vs.console.exe` since it requires a full installation of Visual Studio, which is absent on the VMs. Fortunately, we can run a script that sets up the test environment and the Exe Execution type that will run against the powershell/cmd executable.
 
@@ -60,11 +60,11 @@
         ```
         ct -t "amd64\CloudTest\TestMap.xml" -tenant Default -BuildId "GUID" -props worker:TEST_ENVIRONMENT=canary
         ```
-### Create functions for test scenarios
+## Create functions for test scenarios
 
 Test scenarios will open blades that are in local and deployed gallery packages.
 
-#### Opening from a deployed gallery package
+### Opening from a deployed gallery package
 
 The `portal.openGalleryCreateBlade` method opens and navigates to a create blade gallery package that was previously deployed to the Azure Marketplace.  The returned promise will resolve with the CreateBlade defined by that gallery package, as in the following example.
 
@@ -85,7 +85,7 @@ FromLocalPackage
 ...
 ```
 
-#### Opening from a local gallery package
+### Opening from a local gallery package
 
 The `portal.openGalleryCreateBladeFromLocalPackage` method opens and navigates to a create blade gallery package that is sideloaded locally into the Portal along with your extension. The returned promise will resolve with the CreateBlade defined by that gallery package, as in the following example.
 
@@ -106,7 +106,7 @@ import TestFx = require('MsPortalFx-Test');
 ...
 ```
 
-#### Validation States
+### Validation States
 
 The `FormElement` object exposes two useful functions for working with the validation state of controls.
 
@@ -144,7 +144,7 @@ The `FormElement` object exposes two useful functions for working with the valid
 
     ```
 
-### Browse functions for test scenarios
+## Browse functions for test scenarios
 
 The following code that is located in `MsPortalFx.Tests.Browse` tests the context menu in Browse and shows the commands used by your extension.
 
@@ -243,6 +243,3 @@ it("Can select additional columns for the resourcetype and columns have expected
             columnsToSelect); 
 }
 ```
-
-
-

@@ -40,22 +40,47 @@ The following table contains several topics that are associated with running  **
 | Document | Description |
 | -------- | ----------- |
 | [portalfx-extensions-msportalfx-install-and-test.md](portalfx-extensions-msportalfx-install-and-test.md) | Installation and Visual Studio Testing |
+| [portalfx-extensions-msportalfx-npm-tests.md](portalfx-extensions-msportalfx-npm-tests.md) | Running npm tests |
+| [portalfx-extensions-msportalfx-cloudtest-create-browse.md](portalfx-extensions-msportalfx-cloudtest-create-browse.md) | Running tests in cloudtest.  Create and Browse testing |
 | [portalfx-extensions-msportalfx-browse-blade.md](portalfx-extensions-msportalfx-browse-blade.md) |  Write a browse blade test |
 | [portalfx-extensions-msportalfx-resource.md](portalfx-extensions-msportalfx-resource.md) | Create and test a resource |
-| [portalfx-extensions-msportalfx-cloudtest-create-browse.md](portalfx-extensions-msportalfx-cloudtest-create-browse.md) | Running tests in cloudtest.  Create and Browse testing |
-| | |
+| [portalfx-extensions-msportalfx-blades.md](portalfx-extensions-msportalfx-blades.md) | Testing with blades |
+| [portalfx-extensions-msportalfx-mock.md](portalfx-extensions-msportalfx-mock.md) | Creating tests that use mockup ARM data  |
+| [portalfx-extensions-msportalfx-components.md](portalfx-extensions-msportalfx-components.md) | Parts, components and other topics  |
 
-When your testing is complete, you can send a pull request by using the procedures specified in [top-extensions-publishing.md](top-extensions-publishing.md).
+When testing is complete, you can send a pull request by using the procedures specified in [top-extensions-publishing.md](top-extensions-publishing.md).
+
+### Generate internal documentation
+
+<!-- TODO:  Determine whether this sentence is accurate.  If not, 
+1)  Is there any documentation to generate
+2)  Where will it be located after it is generated
+3)  Are there any reminders while the code is being created that this 
+    documentation should exist
+-->
+
+If there is documentation that should accompany your code, it should be generated  in a manner that includes it into the `.azpkg` file. This documentation is separate from the Azure documentation that is located at [http://aka.ms/portalfx/docs](http://aka.ms/portalfx/docs).
+
+You can generate the documentation in one of two ways.
+
+* Run the `docs` script from `package.json` to ensure that all docs are up to date as part of the packaging process.  Use the following command.
+
+    ```
+    npm pack
+    ```
+
+* While you are authoring docs, you may want to check that your composition or jsdoc for API ref is generating as expected.   Use the following command.
+
+    ```
+    npm run docs
+    ```
+
+    The output of the composed `TEMPLATE.md` file will be written to the `./README.md` file, and the generated API reference from your jsdocs will be written to `/docs/apiref.md`.
+
 
 If you have questions, you can send an email to <a href="mailto:ibizadiscuss@microsoft.com">ibizadiscuss@microsoft.com</a>.
 
-
-
 ## MSPortalFx-test
-
-* [More Examples](#more-examples)
-
-* [Running a test in cloudtest](#running-a-test-in-cloudtest)
 
 * [Check test results](#check-test-results)
 
@@ -65,14 +90,9 @@ Examples and test scripts are located at [https://github.com/Azure/msportalfx-te
 
 If you do not have access to the AzureUX-PortalFx dashboard, you can enlist by following the instructions specified in [top-onboarding.md](top-onboarding.md). 
 
- {"gitdown": "include-file", "file": "../templates/msportalfx-test-scenarios-blades.md"}
-
  {"gitdown": "include-file", "file": "../templates/msportalfx-test-scenarios-parts.md"}
-
- {"gitdown": "include-file", "file": "../templates/msportalfx-test-scenarios-several.md"}
 
  {"gitdown": "include-file", "file": "../templates/msportalfx-test-scenarios-mocking.md"}
 
  {"gitdown": "include-file", "file": "../templates/msportalfx-test-scenarios-contributing.md"}
 
- {"gitdown": "include-file", "file": "../templates/msportalfx-test-scenarios-running.md"}

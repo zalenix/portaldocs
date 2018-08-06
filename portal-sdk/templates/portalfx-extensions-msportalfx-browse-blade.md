@@ -1,5 +1,5 @@
 
-### Write a browse blade test
+## Write a browse blade test
 
  This test scenario is that the user opens the Cloud Services Browse blade, filters the list of cloud services, checks that the grid has only one row after the filter, selects the only row and waits for the correct blade to open. Finally, the browser is closed when the user is done. The test uses the **Mocha** testing framework that is located at [https://mochajs.org/](https://mochajs.org/), but you can use any framework that supports **Node.js** modules and promises. The **Mocha** **Typescript** definitions were installed when **typings** was installed, but if you need to install Mocha, you can do so by using the following command: `npm install mocha`.
 
@@ -65,7 +65,7 @@ This test requires an existing cloud service, so if you need one, you can create
 
 After the **MsPortalFx-Test** module is imported and the credentials are specified for the user, we can use the Portal object to drive the test. The scenario completes when the call to `quit()` closes the browser.
 
-#### Configure, compile and run
+### Configure, compile and run
 
 Create the following configuration file to specify that  **MsPortalFx-Test** will use the **Chrome** browser for the test session and `https://portal.azure.com` for the test Portal.  The file is named **config.json** and is located in the `e2etests` directory. 
 
@@ -90,7 +90,7 @@ Then, run **Mocha** against the generated JavaScript file using the following co
 
 **NOTE**: Using an elevated command prompt may cause **Chrome** to crash.  Use a non-elevated command prompt for best results.
 
-#### Output
+### Output
 
 The following output will be sent to your console as the test progresses.
 

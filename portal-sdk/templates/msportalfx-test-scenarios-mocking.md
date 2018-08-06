@@ -1,13 +1,10 @@
 
-### Mocking
+## How to show mock ARM data in the Portal
 
-#### How to show mock data into the Portal
+Mockup data includes items like providers, subscriptions, resource groups and resources that can be defined in JSON objects and used to initialize the ArmManager. The **MsPortalFx-Mock**  package that is located at [https://www.npmjs.com/package/msportalfx-mock](https://www.npmjs.com/package/msportalfx-mock) provides a framework for displaying mock data in the Portal. It come with builtin support for mocking ARM data. 
 
-The [MsPortalFx-Mock](https://www.npmjs.com/package/msportalfx-mock) package provides a framework for showing mock data in the portal. It come with builtin support for mocking ARM data.
 
-##### Mocking ARM
-
-Mock data including providers, subscriptions, resource groups and resources can be defined in JSON object and used to initialize the ArmManager.
+At the beginning of your tests, the extension should initialize the `ArmProxy` with the `ArmManager`. The `ArmProxy` supports two modes; it can show mock and actual data, or it can show mock data only, as in the following example.
 
 ```ts
 
@@ -109,9 +106,7 @@ const mockData: ArmManager.MockData = {
     
 ```
 
-The ArmProxy needs to initialized at the beginning of your tests with the ArmManager. The ArmProxy supports two modes for showing data 1) mock ONLY and 2) mock + actual.
-
-You will need to initialize the portalContext->patches to the local server address setup by the proxy.
+In the following sample, the test initializes the `portalContext->patches` to the local server address that was set up by the proxy.
 
 ```ts
 
@@ -122,7 +117,7 @@ You will need to initialize the portalContext->patches to the local server addre
         
 ```
 
-The proxy can be disposed at the end of your tests.
+Remember to dispose of the proxy at the end of the test, as in the following example.
 ```ts
 
         return testFx.portal.quit().then(() => ArmProxy.dispose(armProxy));
