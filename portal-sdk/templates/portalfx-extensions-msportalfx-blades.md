@@ -340,7 +340,7 @@ There are several approaches that can be used to navigate to blades within `mspo
             .then(() => testFx.portal.wait(until.isPresent(testFx.portal.element(testFx.Blades.PropertiesBlade))));
     ```
 
-* Use `portal.open*` functions that open blades like create, browse and resource summary blades. For more information, see [Opening common portal blades](#common-portal-blades).
+* Use `portal.open*` functions that open blades like create, browse and resource summary blades. For more information, see [Common blades](#common-blades).
 
 * Use the `portal.search` function to locate and open browse and resource blades, as in the following example.
 
