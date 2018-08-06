@@ -1,5 +1,5 @@
 <a name="create-and-test-a-resource"></a>
-### Create and test a resource
+## Create and test a resource
 
 This scenario creates a resource in an extension, and tests it with a new TypeScript file that is saved in the **e2etest** folder of your extension. The test verifies the Browse experience while sideloading your local extension.
 
@@ -119,9 +119,8 @@ This scenario creates a resource in an extension, and tests it with a new TypeSc
 	  1 passing (23s)
 
 ```
-
 <a name="create-and-test-a-resource-entire-test-script"></a>
-#### Entire test script
+### Entire test script
 
 The following is the entire test script.
 
@@ -163,3 +162,39 @@ describe('Local Extension Tests', function () {
     });
 });
 ```
+
+<a name="variations-on-resource-testing"></a>
+## Variations on resource testing
+
+The scenarios in this section perform resource testing that more advanced than the testing in the 
+section named [#Create and test a resource](#create-and-test-a-resource) section.
+
+<a name="variations-on-resource-testing-open-the-browse-blade-from-the-resource"></a>
+### Open the browse blade from the resource
+
+The  `portal.openBrowseBlade` function is used to open or navigate to the Browse blade from the resource type. The returned promise will resolve with the browse blade. 
+
+```ts
+import testFx = require('MsPortalFx-Test');
+...
+
+        return testFx.portal.openBrowseBlade(resourceProvider, resourceType, resourceBladeTitle, 20000)
+            .then((blade) => blade.filterItems(resourceName))
+...
+```
+
+<a name="variations-on-resource-testing-open-the-resource-summary-blade"></a>
+### Open the resource summary blade
+
+Use the `portal.openResourceBlade` method to open or navigate to the Resource Summary blade for a specific resource.  The returned promise will resolve with the Resource summary blade for the specified resource, as in the following example.
+
+```ts
+import testFx = require('MsPortalFx-Test');
+...
+
+        return testSupport.armClient.createResourceGroup(resourceGroupName, locationId)
+            .then((result) => testFx.portal.openResourceBlade(result.resourceGroup.id, result.resourceGroup.name, 70000))
+            .then(() => resourceBlade.clickCommand(extensionResources.deleteLabel))
+...
+```
+

@@ -1,6 +1,6 @@
 
 <a name="installation"></a>
-### Installation
+## Installation
 
 Your computer should have the most recent editions of operating systems and other software installed, as specified in [top-extensions-install-software.md](top-extensions-install-software.md). To stay current with the latest changes, we recommend updating whenever a new version of **MsportalFx-Test** is released. 
 
@@ -36,7 +36,7 @@ Now you can install the provided definitions by performing the following steps.
 You may also need the C++ compiler that is included in Visual Studio or some other development environment.
 
 <a name="running-tests-in-visual-studio"></a>
-### Running tests in Visual Studio
+## Running tests in Visual Studio
 
 Your computer should have the most recent editions of operating systems and other software installed, as specified in [top-extensions-install-software.md](top-extensions-install-software.md).
 
@@ -52,7 +52,7 @@ Your computer should have the most recent editions of operating systems and othe
 
 
 <a name="check-test-results"></a>
-### Check test results
+## Check test results
 
 <!-- TODO: Determine whether the screen shots work whether or not the developer is using the **mocha** test runner. -->
 
@@ -80,7 +80,7 @@ import testFx = require('MsPortalFx-Test');
 ```
 
 <a name="capture-browser-console-output"></a>
-### Capture browser console output
+## Capture browser console output
 
 Console logs of the browser that was used in testing can be used to identify reasons for test failure. They can be captured at a specified level of error, or at all levels using the `LogLevel` parameter. Error levels include warnings, errors, and other severity levels.
 
@@ -99,29 +99,29 @@ import testFx = require('MsPortalFx-Test');
 ```
 
 <a name="lambda-functions"></a>
-### lambda functions
+## lambda functions
 
 Typescript lambda functions, also known as "the fat arrow" or "() => {}", capture the "this" variable from the surrounding context.  This can cause problems when trying to access Mocha's current test state. For more information, see [http://aka.ms/portalfx/arrowfunctions](http://aka.ms/portalfx/arrowfunctions).
 
 <!-- TODO:  Determine whether the folloiwng sections that were along for the ride are still needed. -->
 
 <a name="lambda-functions-callstack"></a>
-#### Callstack
+### Callstack
 
 This section was never written.
 
 <a name="lambda-functions-test-output-artifacts"></a>
-#### Test output artifacts
+### Test output artifacts
 
 This section was never written.
 
 <a name="lambda-functions-localization"></a>
-#### Localization
+### Localization
 
 This section intentionally left blank.
 
 <a name="lambda-functions-user-management"></a>
-#### User Management
+### User Management
 
 This section intentionally left blank.
 

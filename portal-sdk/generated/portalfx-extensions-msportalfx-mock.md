@@ -4,7 +4,6 @@
 
 Mockup data includes items like providers, subscriptions, resource groups and resources that can be defined in JSON objects and used to initialize the ArmManager. The **MsPortalFx-Mock**  package that is located at [https://www.npmjs.com/package/msportalfx-mock](https://www.npmjs.com/package/msportalfx-mock) provides a framework for displaying mock data in the Portal. It come with builtin support for mocking ARM data. 
 
-
 At the beginning of your tests, the extension should initialize the `ArmProxy` with the `ArmManager`. The `ArmProxy` supports two modes; it can show mock and actual data, or it can show mock data only, as in the following example.
 
 ```ts
