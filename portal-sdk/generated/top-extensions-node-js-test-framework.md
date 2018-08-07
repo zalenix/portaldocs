@@ -14,6 +14,10 @@ There are many different ways to test an extension.
 
 * There are instructions that describe how to set up test run parallelization in **Jenkins**.
 
+* The *Can Find Grid Row* and the *Can Choose A Spec* tests require special configuration, as specified in [portalfx-extensions-msportalfx-resource.md](portalfx-extensions-msportalfx-resource.md) and [portalfx-extensions-msportalfx-browse-blade.md](portalfx-extensions-msportalfx-browse-blade.md).
+
+* Many tests currently rely on the CloudService extension, as specified in [portalfx-extensions-msportalfx-cloudtest-create-browse.md](portalfx-extensions-msportalfx-cloudtest-create-browse.md).
+
 * You can use The **MsPortalFx-Test** framework that runs tests against the Microsoft Azure Portal. 
 
 **MsPortalFx-Test** is an end-to-end test framework that runs tests against the Microsoft Azure Portal. It tests extension interactions with user behavior, moreso than extension interactions with the Portal.  Its open source contribution model focuses on partner needs instead of internal Portal needs. It is distributed independently from the SDK to allow developers to develop tests in the same language as the extension.
@@ -49,6 +53,9 @@ The following table contains several topics that are associated with running  **
 | [portalfx-extensions-msportalfx-blades.md](portalfx-extensions-msportalfx-blades.md) | Testing with blades |
 | [portalfx-extensions-msportalfx-mock.md](portalfx-extensions-msportalfx-mock.md) | Creating tests that use mockup ARM data  |
 | [portalfx-extensions-msportalfx-components.md](portalfx-extensions-msportalfx-components.md) | Parts, components and other topics  |
+| [portalfx-extensions-msportalfx-contribute.md](portalfx-extensions-msportalfx-contribute.md) | Enlisting the contribution after testing   |
+
+**NOTE**: `https://github.com/azure/msportalfx-test.git` has a README.md that is the same as this document.
 
 When testing is complete, you can send a pull request by using the procedures specified in [top-extensions-publishing.md](top-extensions-publishing.md).
 
@@ -91,151 +98,24 @@ Examples and test scripts are located at [https://github.com/Azure/msportalfx-te
 If you do not have access to the AzureUX-PortalFx dashboard, you can enlist by following the instructions specified in [top-onboarding.md](top-onboarding.md). 
 
  
-The page you requested has moved to  [portalfx-extensions-msportalfx-components.md#parts](portalfx-extensions-msportalfx-components.md#parts).
-
-
-
- 
-<a name="how-to-show-mock-arm-data-in-the-portal"></a>
-## How to show mock ARM data in the Portal
-
-Mockup data includes items like providers, subscriptions, resource groups and resources that can be defined in JSON objects and used to initialize the ArmManager. The **MsPortalFx-Mock**  package that is located at [https://www.npmjs.com/package/msportalfx-mock](https://www.npmjs.com/package/msportalfx-mock) provides a framework for displaying mock data in the Portal. It come with builtin support for mocking ARM data. 
-
-
-At the beginning of your tests, the extension should initialize the `ArmProxy` with the `ArmManager`. The `ArmProxy` supports two modes; it can show mock and actual data, or it can show mock data only, as in the following example.
-
-```ts
-
-import { ArmProxy } from "MsPortalFx-Mock/lib/src/ArmProxy/ArmProxy";
-import { ArmManager } from "MsPortalFx-Mock/lib/src/ArmProxy/ArmManager";
-
-...
-
-const mockData: ArmManager.MockData = {
-    providers: [
-        {
-            namespace: "Providers.Test",
-            resourceTypes: [
-                {
-                    resourceType: "type1",
-                    locations: ["WestUS"],
-                    apiVersions: ["2014-04-01"]
-                },
-                {
-                    resourceType: "type2",
-                    locations: ["East US", "East US 2", "North Central US"],
-                    apiVersions: ["2014-04-01"]
-                }
-            ]
-        }
-    ],
-    subscriptions: [
-        {
-            subscriptionId: "sub1",
-            displayName: "Test sub 1",
-            state: "Active",
-            subscriptionPolicies: {
-                locationPlacementId: "Public_2014-09-01",
-                quotaId: "FreeTrial_2014-09-01"
-            },
-            resourceGroups: [
-                {
-                    name: "sub1rg1",
-                    location: "WestUS",
-                    tags: {
-                        "env": "prod",
-                        "ver": "4.6"
-                    },
-                    properties: {
-                        lockState: "Unlocked",
-                        provisioningState: "Succeeded",
-                    },
-                    resources: [
-                        {
-                            name: "sub1rg1r1",
-                            location: "WestUS",
-                            tags: {
-                                "env": "prod"
-                            },
-                            type: "providers.test/type1",
-                            kind: null,
-                            nestedResources: [
-                                {
-                                    name: "nr1",
-                                    tags: {},
-                                    type: "nested"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    name: "sub1rg2",
-                    location: "WestUS",
-                    tags: {
-                        "env": "prod",
-                        "ver": "4.6"
-                    },
-                    properties: {
-                        lockState: "Unlocked",
-                        provisioningState: "Succeeded",
-                    },
-                    resources: [
-                        {
-                            name: "sub1rg2r1",
-                            location: "WestUS",
-                            tags: {
-                                "env": "prod"
-                            },
-                            type: "providers.test/type2",
-                            kind: null
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
-};
-
-...
-
-    let armManager = new ArmManager.Manager();
-    armManager.initializeMockData(mockData);
-    
-```
-
-In the following sample, the test initializes the `portalContext->patches` to the local server address that was set up by the proxy.
-
-```ts
-
-        return ArmProxy.create(nconf.get("armEndpoint"), 5000, armManager, null, true).then(proxy => {
-            armProxy = proxy;
-            testFx.portal.portalContext.patches = [proxy.patchAddress];
-        });
-        
-```
-
-Remember to dispose of the proxy at the end of the test, as in the following example.
-```ts
-
-        return testFx.portal.quit().then(() => ArmProxy.dispose(armProxy));
-        
-```
-
-
- 
 <a name="contributing"></a>
 ## Contributing
 
-To enlist a contribution, use the following code.
+Enlisting a contribution makes it available to 
+The following steps are used to enlist a contribution.
 
-`git clone https://github.com/azure/msportalfx-test.git`
+1. Enlist the contribution
 
-Use Visual Studio or Visual Studio Code to build the source, as in the following code.
+    To enlist a contribution, use the following code.
 
-`Run ./scripts/Setup.cmd`
+    `git clone https://github.com/azure/msportalfx-test.git`
 
-To setup the tests you need the following.
+1. Build the source
+    Use **Visual Studio** or **Visual Studio Code** to build the source. Then run it by using `Run ./scripts/Setup.cmd`.
+
+1. Set up the tests
+
+To setup the tests you need to perform the following.
 
 1. Create a dedicated test subscription that is used for tests only
 
@@ -271,9 +151,9 @@ To setup the tests you need the following.
 
 1. Install the Portal SDK from [http://aka.ms/portalfx/download](http://aka.ms/portalfx/download), then open Visual Studio and create a new Portal Extension from File --> New Project --> Azure Portal --> Azure Portal Extension. Name this project **LocalExtension** so that the extension itself is named LocalExtension, which is what many of the tests expect. Then click CTRL+F5 to host the extension in IIS Express.
 
-1. The *Can Find Grid Row* and the *Can Choose A Spec* tests require special configuration described in the tests themselves.
+1. The *Can Find Grid Row* and the *Can Choose A Spec* tests require special configuration, as specified in [portalfx-extensions-msportalfx-resource.md](portalfx-extensions-msportalfx-resource.md) and [portalfx-extensions-msportalfx-browse-blade.md](portalfx-extensions-msportalfx-browse-blade.md)   described in the tests themselves.
 
-1. Many of the tests currently rely on the CloudService extension. 
+1. Many of the tests currently rely on the CloudService extension, as specified in [portalfx-extensions-msportalfx-cloudtest-create-browse.md](portalfx-extensions-msportalfx-cloudtest-create-browse.md).
 
 <!-- TODO: Determine whether the dependency has been removed."We are working to remove this dependency." -->
 

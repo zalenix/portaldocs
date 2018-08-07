@@ -22,6 +22,8 @@ This section was never written.
 <a name="parts-and-components-detect-styling-or-layout-regression"></a>
 ### Detect Styling or layout regression
 
+**NOTE**: The CSS styling regression feature has been deprecated. Please remove all usage of the `portal.detectStylingRegression` function.
+
 To detect styling or layout regressions while testing your extension, use the `portal.detectStylingRegression` function, as in the following example.
 
     ```ts
