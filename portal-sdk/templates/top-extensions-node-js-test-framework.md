@@ -13,6 +13,10 @@ There are many different ways to test an extension.
 
 * There are instructions that describe how to set up test run parallelization in **Jenkins**.
 
+* The *Can Find Grid Row* and the *Can Choose A Spec* tests require special configuration, as specified in [portalfx-extensions-msportalfx-resource.md](portalfx-extensions-msportalfx-resource.md) and [portalfx-extensions-msportalfx-browse-blade.md](portalfx-extensions-msportalfx-browse-blade.md).
+
+* Many tests currently rely on the CloudService extension, as specified in [portalfx-extensions-msportalfx-cloudtest-create-browse.md](portalfx-extensions-msportalfx-cloudtest-create-browse.md).
+
 * You can use The **MsPortalFx-Test** framework that runs tests against the Microsoft Azure Portal. 
 
 **MsPortalFx-Test** is an end-to-end test framework that runs tests against the Microsoft Azure Portal. It tests extension interactions with user behavior, moreso than extension interactions with the Portal.  Its open source contribution model focuses on partner needs instead of internal Portal needs. It is distributed independently from the SDK to allow developers to develop tests in the same language as the extension.
@@ -47,6 +51,9 @@ The following table contains several topics that are associated with running  **
 | [portalfx-extensions-msportalfx-blades.md](portalfx-extensions-msportalfx-blades.md) | Testing with blades |
 | [portalfx-extensions-msportalfx-mock.md](portalfx-extensions-msportalfx-mock.md) | Creating tests that use mockup ARM data  |
 | [portalfx-extensions-msportalfx-components.md](portalfx-extensions-msportalfx-components.md) | Parts, components and other topics  |
+| [portalfx-extensions-msportalfx-contribute.md](portalfx-extensions-msportalfx-contribute.md) | Enlisting the contribution after testing   |
+
+**NOTE**: `https://github.com/azure/msportalfx-test.git` has a README.md that is the same as this document.
 
 When testing is complete, you can send a pull request by using the procedures specified in [top-extensions-publishing.md](top-extensions-publishing.md).
 
@@ -85,10 +92,6 @@ If you have questions, you can send an email to <a href="mailto:ibizadiscuss@mic
 Examples and test scripts are located at [https://github.com/Azure/msportalfx-test/tree/master/test](https://github.com/Azure/msportalfx-test/tree/master/test), and in various folders located at  [https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx), including `src/SDK/AcceptanceTests/Extensions/SamplesExtension/Tests`.
 
 If you do not have access to the AzureUX-PortalFx dashboard, you can enlist by following the instructions specified in [top-onboarding.md](top-onboarding.md). 
-
- {"gitdown": "include-file", "file": "../templates/msportalfx-test-scenarios-parts.md"}
-
- {"gitdown": "include-file", "file": "../templates/msportalfx-test-scenarios-mocking.md"}
 
  {"gitdown": "include-file", "file": "../templates/msportalfx-test-scenarios-contributing.md"}
 
