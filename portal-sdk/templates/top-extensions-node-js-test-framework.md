@@ -92,6 +92,3 @@ If you have questions, you can send an email to <a href="mailto:ibizadiscuss@mic
 Examples and test scripts are located at [https://github.com/Azure/msportalfx-test/tree/master/test](https://github.com/Azure/msportalfx-test/tree/master/test), and in various folders located at  [https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx), including `src/SDK/AcceptanceTests/Extensions/SamplesExtension/Tests`.
 
 If you do not have access to the AzureUX-PortalFx dashboard, you can enlist by following the instructions specified in [top-onboarding.md](top-onboarding.md). 
-
- {"gitdown": "include-file", "file": "../templates/msportalfx-test-scenarios-contributing.md"}
-
