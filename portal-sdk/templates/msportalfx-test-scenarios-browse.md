@@ -1,1 +1,1 @@
-The page you requested has moved to [top-extensions-msportalfx-test.md#browse-functions-for-test-scenarios](top-extensions-msportalfx-test.md#browse-functions-for-test-scenarios).
+The page you requested has moved to [portalfx-extensions-msportalfx-browse-blade.md](portalfx-extensions-msportalfx-browse-blade.md).

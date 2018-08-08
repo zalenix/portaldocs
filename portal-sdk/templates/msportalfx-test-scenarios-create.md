@@ -1,2 +1,2 @@
 
-The page you requested has moved to [top-extensions-msportalfx-test.md#create-functions-for-test-scenarios](top-extensions-msportalfx-test.md#create-functions-for-test-scenarios).
+The page you requested has moved to [portalfx-extensions-msportalfx-cloudtest-create-browse.md](portalfx-extensions-msportalfx-cloudtest-create-browse.md).
