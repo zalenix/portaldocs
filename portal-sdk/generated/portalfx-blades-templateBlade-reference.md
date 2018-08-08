@@ -163,7 +163,7 @@ constructor(container: FxCompositionBlade.Container, initialState: any, dataCont
 
     this.title(ClientResources.templateBladeWithCommandBar);
 
-    var commandBarButton = new Toolbars.ToggleButton<boolean>();
+    const commandBarButton = new Toolbars.ToggleButton<boolean>();
     commandBarButton.label(ClientResources.templateBladeCommandBarToggleLabel);
     commandBarButton.icon(Images.Redo());
     commandBarButton.checked.subscribe(container,(isChecked) => {

@@ -197,13 +197,25 @@ describe("Resource Overview Blade Tests", () => {
     // arrange
     const resourceId = "/subscriptions/0c82cadf-f711-4825-bcaf-44189e8baa9f/resourceGroups/sdfsdfdfdf/providers/Providers.Test/statefulIbizaEngines/asadfasdff";
     server.respondWith((request) => {
-      switch (request.requestHeaders["x-ms-path-query"].split("?")[0]) {
-        case resourceId:
-          request.respond(200, { "Content-Type": "application/json" }, JSON.stringify({ id: "foo", name: "bar", location: "eastus" }));
-          break;
-        default:
-          request.respond(404, null, "not mocked");
-      }
+        if (request.url.startsWith(`${MsPortalFx.getEnvironmentValue("armEndpoint")}/batch`)
+            && JSON.parse(request.requestBody).requests[0].url.endsWith(`${resourceId}?api-version=${MsPortalFx.getEnvironmentValue("armApiVersion")}`)) {
+            request.respond(200, { "Content-Type": "application/json" }, JSON.stringify({
+                "responses": [
+                    {
+                        "httpStatusCode": 200,
+                        "content": {
+                            "id":`${resourceId}`,
+                            "name": "bar",
+                            "type": "Providers.Test/statefulIbizaEngines",
+                            "location": "East Asia",
+                            "properties": {}
+                        }
+                    }
+                ]
+            }));
+        } else {
+            request.respond(404, null, "not mocked");
+        }
     });
 
     const bladeParameters : Parameters = { id: resourceId };

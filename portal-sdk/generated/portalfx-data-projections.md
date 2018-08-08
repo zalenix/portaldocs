@@ -40,13 +40,13 @@ A naive implementation of this might go something like this (ignore the lines ab
 
 ```typescript
 
-var projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
-    var projectionId = this._uuid++;
+const projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
+    const projectionId = this._uuid++;
     this._logMapFunctionRunning(projectionId, robot);
     return <RobotDetails>{
         name: ko.observable(robot.name()),
         status: ko.observable(robot.status()),
-        modelAndMfg: ko.observable("{0}:{1}".format(robot.model(), robot.manufacturer()))
+        modelAndMfg: ko.observable("{0}:{1}".format(robot.model(), robot.manufacturer())),
     };
 });
 
@@ -118,8 +118,8 @@ A correct implemenation of the map above then looks like (again ignore uuid and 
 
 ```typescript
 
-var projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
-    var projectionId = this._uuid++;
+const projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
+    const projectionId = this._uuid++;
     this._logMapFunctionRunning(projectionId, robot);
     return <RobotDetails>{
         name: robot.name,
@@ -127,7 +127,7 @@ var projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionL
         modelAndMfg: ko.pureComputed(() => {
             this._logComputedRecalculating(projectionId, robot);
             return "{0}:{1}".format(robot.model(), robot.manufacturer());
-        })
+        }),
     };
 });
 
@@ -139,8 +139,8 @@ Now that you understand how `map()` works we can introduce `mapInto()`. Here's t
 
 ```typescript
 
-var projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
-    var projectionId = this._uuid++;
+const projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
+    const projectionId = this._uuid++;
     this._logMapFunctionRunning(projectionId, robot);
     return <RobotDetails>{
         name: robot.name,
@@ -148,7 +148,7 @@ var projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProject
         modelAndMfg: ko.pureComputed(() => {
             this._logComputedRecalculating(projectionId, robot);
             return "{0}:{1}".format(robot.model(), robot.manufacturer());
-        })
+        }),
     };
 });
 
@@ -158,13 +158,13 @@ You can see how it reacts by clicking on the 'Proper mapInto' button and then ad
 
 ```typescript
 
-var projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
-    var projectionId = this._uuid++;
+const projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
+    const projectionId = this._uuid++;
     this._logMapFunctionRunning(projectionId, robot);
     return <RobotDetails>{
         name: ko.observable(robot.name()),
         status: ko.observable(robot.status()),
-        modelAndMfg: ko.observable("{0}:{1}".format(robot.model(), robot.manufacturer()))
+        modelAndMfg: ko.observable("{0}:{1}".format(robot.model(), robot.manufacturer())),
     };
 });
 
@@ -199,12 +199,12 @@ this._view = dataContext.robotData.robotsQuery.createView(container);
 // As items are added or removed from the underlying items array,
 // individual changed items will be re-evaluated to create the computed
 // value in the resulting observable array.
-var projectedItems = this._view.items.mapInto<RobotDetails>(container, (itemLifetime, robot) => {
+const projectedItems = this._view.items.mapInto<RobotDetails>(container, (itemLifetime, robot) => {
     return <RobotDetails>{
         name: robot.name,
         computedName: ko.pureComputed(() => {
             return "{0}:{1}".format(robot.model(), robot.manufacturer());
-        })
+        }),
     };
 });
 

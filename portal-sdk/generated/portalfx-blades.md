@@ -493,7 +493,7 @@ constructor(container: FxCompositionBlade.Container, initialState: any, dataCont
 
     this.title(ClientResources.templateBladeWithCommandBar);
 
-    var commandBarButton = new Toolbars.ToggleButton<boolean>();
+    const commandBarButton = new Toolbars.ToggleButton<boolean>();
     commandBarButton.label(ClientResources.templateBladeCommandBarToggleLabel);
     commandBarButton.icon(Images.Redo());
     commandBarButton.checked.subscribe(container,(isChecked) => {
@@ -558,11 +558,11 @@ constructor(container: FxCompositionBlade.Container, initialState: any, dataCont
 
     const translucent = MsPortalFx.ViewModels.ShieldType.Translucent;
     const opaque = MsPortalFx.ViewModels.ShieldType.Opaque;
-    var isTranslucent = true;
+    let isTranslucent = true;
 
-    var op = () => {
-        var operation = Q.defer<any>();
-        var shieldType = isTranslucent ? translucent : opaque;
+    const op = () => {
+        const operation = Q.defer<any>();
+        const shieldType = isTranslucent ? translucent : opaque;
         container.operations.add(operation.promise, { blockUi: true, shieldType: shieldType });
 
         isTranslucent = !isTranslucent;
@@ -574,8 +574,8 @@ constructor(container: FxCompositionBlade.Container, initialState: any, dataCont
     window.setInterval(op, 5000);
 
     // TextBox
-    var textBoxOptions = <TextBox.Options>{
-        label: ko.observable(ClientResources.formsSampleBasicTextBox)
+    const textBoxOptions = <TextBox.Options>{
+        label: ko.observable(ClientResources.formsSampleBasicTextBox),
     };
     this.myTextBox = new TextBox.ViewModel(container, textBoxOptions);
 }
@@ -606,8 +606,8 @@ if (newContentState !== MsPortalFx.ViewModels.ContentState.None) {
         text: newDisplayText,
         state: newContentState,
         selection: stateDetailsBladeSelection,
-        onActivated: onActivated
-    }
+        onActivated: onActivated,
+    };
 }
 
 this.statusBar(statusBar);
@@ -673,15 +673,15 @@ this.configureHotSpot = new HotSpotViewModel(container, {
             // set of inputs/settings.
             receiveResult: (result) => {
                 configuration.updateValues(result);
-            }
+            },
         });
 
         bladeRef.metadata = {
-            isContextBlade: true
+            isContextBlade: true,
         };
 
         return bladeRef;
-    }
+    },
 });
 
 ```
@@ -747,7 +747,7 @@ public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
                 noticeDescription: ClientResources.comingSoonDescription,
                 noticeCallToActionText: ClientResources.comingSoonAction,
                 noticeCallToActionUri: ClientResources.microsoftUri,
-                noticeImageType: MsPortalFx.ViewModels.Controls.Notice.ImageType.ComingSoon
+                noticeImageType: MsPortalFx.ViewModels.Controls.Notice.ImageType.ComingSoon,
             });
         });
     } else {
@@ -827,7 +827,7 @@ export class SampleMenuBlade extends FxMenuBlade.ViewModel {
                                 },
                                 receiveResult: result => {
                                     // Intentionally blank. The launched blade is responsible for the create operation.
-                                }
+                                },
                             });
                         },
                     },
@@ -848,7 +848,7 @@ export class SampleMenuBlade extends FxMenuBlade.ViewModel {
                         supplyBladeReference: () => {
                             return new BladeReferences.BladeWithActivationStyleReference();
                         },
-                    }
+                    },
                 ],
             },
             {
@@ -1546,7 +1546,7 @@ this.commandBar.setItems([this._openLinkButton()]);
 ```typescript
 
 private _openLinkButton(): Toolbars.OpenLinkButton {
-    var button = new Toolbars.OpenLinkButton("http://microsoft.com");
+    const button = new Toolbars.OpenLinkButton("http://microsoft.com");
 
     button.label(ClientResources.ToolbarButton.openLink);
     button.icon(MsPortalFx.Base.Images.Hyperlink());
@@ -1582,8 +1582,8 @@ The code snippet below demonstrates how to listen to a message from your IFrame 
 this.on("getAuthToken", () => {
     // This is an example of how to post a message back to your iframe.
     MsPortalFx.Base.Security.getAuthorizationToken().then((token) => {
-        let header = token.header;
-        let message = new FxAppBlade.Message("getAuthTokenResponse", header);
+        const header = token.header;
+        const message = new FxAppBlade.Message("getAuthTokenResponse", header);
 
         this.postMessage(message);
     });
@@ -1614,7 +1614,7 @@ When using a template blade, you are responsible for implementing theming in you
 
 // Get theme class and pass it to App Blade
 MsPortalFx.Services.getSettings().then(settings => {
-    let theme = settings["fxs-theme"];
+    const theme = settings["fxs-theme"];
     theme.subscribe(container, theme =>
         this.postMessage(new FxAppBlade.Message("theme", theme.name))
     ).callback(theme());

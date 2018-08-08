@@ -74,7 +74,7 @@ The first is the QueryCache. We use a QueryCache to cache a list of items as opp
 this.websitesQuery = new QueryCache<WebsiteModel, WebsiteQueryParams>({
     entityTypeName: SamplesExtension.DataModels.WebsiteModelType,
 
-    // when fetch() is called on the cache the params will be passed to this function and it 
+    // when fetch() is called on the cache the params will be passed to this function and it
     // should return the right URI for getting the data
     sourceUri: (params: WebsiteQueryParams): string => {
         let uri = MsPortalFx.Base.Resources.getAppRelativeUri("/api/Websites");
@@ -88,7 +88,7 @@ this.websitesQuery = new QueryCache<WebsiteModel, WebsiteQueryParams>({
         // this particular controller expects a sessionId as well but this is not the common case.
         // Unless your controller also requires a sessionId this can be omitted
         return Util.appendSessionId(uri);
-    }
+    },
 });
 
 ```
@@ -123,8 +123,8 @@ this.websiteEntities = new EntityCache<WebsiteModel, number>({
         queryCache: this.websitesQuery,
         entityMatchesId: (website, id) => {
             return website.id() === id;
-        }
-    }
+        },
+    },
 });
 
 ```
@@ -192,7 +192,7 @@ As is standard practice we'll call the view's `fetch` method on the blade's `onI
 
 /**
  * Invoked when the blade's inputs change
- */   
+ */
 public onInputsSet(inputs: Def.BrowseMasterListViewModel.InputsContract): MsPortalFx.Base.Promise {
     return this._websitesQueryView.fetch({ runningStatus: this.runningStatus.value() });
 }

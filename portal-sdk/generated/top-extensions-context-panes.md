@@ -122,7 +122,7 @@ export class OpenBladeApiSamplesViewModel
 
     public onRowClick(item: Person) {
         this._container.openBlade(new ListViewChildBladeReference({
-            ssnId: item.ssnId()
+            ssnId: item.ssnId(),
         }));
     }
 
@@ -130,7 +130,7 @@ export class OpenBladeApiSamplesViewModel
         this.hotspot = new HotspotViewModel(container, {
             onClick: () => {
                 container.openBlade(new OpenBladeApiChildBladeReference());
-            }
+            },
         });
     }
 
@@ -139,18 +139,18 @@ export class OpenBladeApiSamplesViewModel
 
         const selectionOptions: Grid.SelectableRowExtensionOptions<Person, Person> = {
             selectableRow: {
-                selectionMode: Grid.RowSelectionMode.Single
+                selectionMode: Grid.RowSelectionMode.Single,
             },
-            onRowClicked: this.onRowClick.bind(this)
+            onRowClicked: this.onRowClick.bind(this),
         };
 
         this.grid = new Grid.ViewModel<Person, Person>(container, this._view.items, Grid.Extensions.SelectableRow, selectionOptions);
         this.grid.columns([
             {
-                itemKey: "ssnId"
+                itemKey: "ssnId",
             },
             {
-                itemKey: "name"
+                itemKey: "name",
             }]);
     }
 }
