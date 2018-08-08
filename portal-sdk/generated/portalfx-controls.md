@@ -280,7 +280,7 @@ export class SampleEditorViewModel extends MsPortalFx.ViewModels.Controls.Docume
                "        x = x + 'The number is ' + i;",
                "    }",
                "    document.getElementById('demo').innerHTML = x;",
-               "}"
+               "}",
            ].join("\n");
 
        // Set up whether or not to show line numbers and what the tab size is in the editor.
@@ -334,7 +334,7 @@ export class EditorInstructionsPartViewModel
                this.editorVM.save.execute().then(() => {
                    // Here is where you would put code that is executed after any changes have been written back to the content property on the viewmodel.
                });
-           }
+           },
        });
    }
 }

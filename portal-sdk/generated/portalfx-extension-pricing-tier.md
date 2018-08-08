@@ -28,9 +28,9 @@ const initialDataObservable = ko.observable<SpecPicker.InitialData>({
             message: ClientResources.robotPricingTierLauncherDisabledSpecMessage,
             helpBalloonMessage: ClientResources.robotPricingTierLauncherDisabledSpecHelpBalloonMessage,
             helpBalloonLinkText: ClientResources.robotPricingTierLauncherDisabledSpecLinkText,
-            helpBalloonLinkUri: ClientResources.robotPricingTierLauncherDisabledSpecLinkUri
-        }
-    ]
+            helpBalloonLinkUri: ClientResources.robotPricingTierLauncherDisabledSpecLinkUri,
+        },
+    ],
 });
 this.specDropDown = new SpecsDropDown(container, {
     form: this,
@@ -45,8 +45,8 @@ this.specDropDown = new SpecsDropDown(container, {
     pricingBlade: {
         detailBlade: "BillingSpecPickerV3",
         detailBladeInputs: {},
-        hotspot: "EngineSpecDropdown1"
-    }
+        hotspot: "EngineSpecDropdown1",
+    },
 });
 
 ```
@@ -179,7 +179,7 @@ ko.reactor(container, () => {
         //disabledSpecs: [],
         //failureMessage: "",
         //recentSpecIds: [],
-        filteredSpecIds: filteredSpecIds
+        filteredSpecIds: filteredSpecIds,
     };
     // Update the output observable to give all the spec data back to the spec picker blade
     this.output(output);
@@ -221,40 +221,40 @@ Sample Spec
         {
             "id": "cores",
             "value": "20",
-            "unitDescription": "Cores"
+            "unitDescription": "Cores",
         },
         {
             "id": "ram",
             "value": "140",
-            "unitDescription": "GB"
-        }
+            "unitDescription": "GB",
+        },
     ],
     "features": [
         {
             "id": "disks",
-            "displayValue": "40"
+            "displayValue": "40",
         },
         {
             "id": "iops",
-            "displayValue": "40x500"
+            "displayValue": "40x500",
         },
         {
             "id": "ssdCache",
-            "displayValue": "1000 GB"
+            "displayValue": "1000 GB",
         },
         {
             "id": "loadBalancing",
-            "displayValue": ""
+            "displayValue": "",
         },
         {
             "id": "autoScale",
-            "displayValue": ""
-        }
+            "displayValue": "",
+        },
     ],
     "cost": {
         "currencyCode": "USD",
-        "caption": "{0}/Month (Estimated)"
-    }
+        "caption": "{0}/Month (Estimated)",
+    },
 },
 
 ```
@@ -264,12 +264,12 @@ Sample Features
 {
     "id": "disks",
     "displayName": "Data disks",
-    "iconSvgData": "<svg viewBox=\"0 0 50 50\" class=\"msportalfx-svg-placeholder\" > <path d=\"M50,37.198c0,5.001-11.194,9.054-25,9.054S0,42.199,0,37.198v-4.88h50V37.198z\" class=\"msportalfx-svg-c14\"/> <path d=\"M50,32.318c0,5.001-11.194,9.054-25,9.054S0,37.319,0,32.318c0-5,11.193-9.054,25-9.054S50,27.318,50,32.318 \" class=\"msportalfx-svg-c13\"/> <path d=\"M33.013,31.797c0,1.33-3.588,2.407-8.014,2.407s-8.015-1.077-8.015-2.407s3.589-2.407,8.015-2.407 S33.013,30.468,33.013,31.797\" class=\"msportalfx-svg-c14\"/> <path opacity=\"0.25\" d=\"M43.071,26.115c-3.502-1.327-8.104-2.269-13.279-2.633l-3.244,6.004 c1.596,0.094,3.023,0.329,4.127,0.662L43.071,26.115z\" class=\"msportalfx-svg-c01\"/> <path opacity=\"0.25\" d=\"M5.902,38.208c3.601,1.543,8.598,2.643,14.288,3.045l3.793-7.02 c-1.579-0.06-3.014-0.257-4.168-0.552L5.902,38.208z\" class=\"msportalfx-svg-c01\"/> <path d=\"M50,17.682c0,5.001-11.194,9.054-25,9.054S0,22.682,0,17.682v-4.88h50V17.682z\" class=\"msportalfx-svg-c19\"/> <path d=\"M50,12.802c0,5.001-11.194,9.054-25,9.054S0,17.802,0,12.802s11.193-9.054,25-9.054S50,7.801,50,12.802\" class=\"msportalfx-svg-c15\"/> <path d=\"M33.013,12.281c0,1.33-3.588,2.407-8.014,2.407s-8.015-1.077-8.015-2.407s3.589-2.407,8.015-2.407 S33.013,10.951,33.013,12.281\" class=\"msportalfx-svg-c19\"/> <path opacity=\"0.25\" d=\"M43.071,6.549c-3.502-1.327-8.104-2.269-13.279-2.633L26.548,9.92 c1.596,0.094,3.023,0.329,4.127,0.662L43.071,6.549z\" class=\"msportalfx-svg-c01\"/> <path opacity=\"0.25\" d=\"M5.902,18.642c3.601,1.543,8.598,2.643,14.288,3.045l3.793-7.02 c-1.579-0.06-3.014-0.257-4.168-0.552L5.902,18.642z\" class=\"msportalfx-svg-c01\"/> </svg>"
+    "iconSvgData": "<svg viewBox=\"0 0 50 50\" class=\"msportalfx-svg-placeholder\" > <path d=\"M50,37.198c0,5.001-11.194,9.054-25,9.054S0,42.199,0,37.198v-4.88h50V37.198z\" class=\"msportalfx-svg-c14\"/> <path d=\"M50,32.318c0,5.001-11.194,9.054-25,9.054S0,37.319,0,32.318c0-5,11.193-9.054,25-9.054S50,27.318,50,32.318 \" class=\"msportalfx-svg-c13\"/> <path d=\"M33.013,31.797c0,1.33-3.588,2.407-8.014,2.407s-8.015-1.077-8.015-2.407s3.589-2.407,8.015-2.407 S33.013,30.468,33.013,31.797\" class=\"msportalfx-svg-c14\"/> <path opacity=\"0.25\" d=\"M43.071,26.115c-3.502-1.327-8.104-2.269-13.279-2.633l-3.244,6.004 c1.596,0.094,3.023,0.329,4.127,0.662L43.071,26.115z\" class=\"msportalfx-svg-c01\"/> <path opacity=\"0.25\" d=\"M5.902,38.208c3.601,1.543,8.598,2.643,14.288,3.045l3.793-7.02 c-1.579-0.06-3.014-0.257-4.168-0.552L5.902,38.208z\" class=\"msportalfx-svg-c01\"/> <path d=\"M50,17.682c0,5.001-11.194,9.054-25,9.054S0,22.682,0,17.682v-4.88h50V17.682z\" class=\"msportalfx-svg-c19\"/> <path d=\"M50,12.802c0,5.001-11.194,9.054-25,9.054S0,17.802,0,12.802s11.193-9.054,25-9.054S50,7.801,50,12.802\" class=\"msportalfx-svg-c15\"/> <path d=\"M33.013,12.281c0,1.33-3.588,2.407-8.014,2.407s-8.015-1.077-8.015-2.407s3.589-2.407,8.015-2.407 S33.013,10.951,33.013,12.281\" class=\"msportalfx-svg-c19\"/> <path opacity=\"0.25\" d=\"M43.071,6.549c-3.502-1.327-8.104-2.269-13.279-2.633L26.548,9.92 c1.596,0.094,3.023,0.329,4.127,0.662L43.071,6.549z\" class=\"msportalfx-svg-c01\"/> <path opacity=\"0.25\" d=\"M5.902,18.642c3.601,1.543,8.598,2.643,14.288,3.045l3.793-7.02 c-1.579-0.06-3.014-0.257-4.168-0.552L5.902,18.642z\" class=\"msportalfx-svg-c01\"/> </svg>",
 },
 {
     "id": "iops",
     "displayName": "Max IOPS",
-    "iconName": "Monitoring"
+    "iconName": "Monitoring",
 },
 
 ```
@@ -283,8 +283,8 @@ Sample Resource Map
             {
                 "id": "STANDARD_D15_V2",
                 "resourceId": "4naypwzhqsu7yaeruxj3fpqa5ah5p9ax4nayrti71j3x5pdwtc7y4imyqeyy6a", // resource target key for this spec (you can use GUID now) work with PM if you don’t know this
-                "quantity": 744 // quantity based on the unit of measure in the Catalog
-            }
+                "quantity": 744, // quantity based on the unit of measure in the Catalog
+            },
         ],
         "thirdParty": [ // list of third party resources, this is used for Marketplace, usually not used for Microsoft resource
             {
@@ -296,11 +296,11 @@ Sample Resource Map
                 "meters": [
                     {
                         "meterId": "20core",
-                        "quantity": 744
-                    }
-                ]
-            }
-        ]
+                        "quantity": 744,
+                    },
+                ],
+            },
+        ],
     },
     
 ```

@@ -64,7 +64,7 @@ this.commandBar.setItems([this._openLinkButton()]);
 ```typescript
 
 private _openLinkButton(): Toolbars.OpenLinkButton {
-    var button = new Toolbars.OpenLinkButton("http://microsoft.com");
+    const button = new Toolbars.OpenLinkButton("http://microsoft.com");
 
     button.label(ClientResources.ToolbarButton.openLink);
     button.icon(MsPortalFx.Base.Images.Hyperlink());
@@ -100,8 +100,8 @@ The code snippet below demonstrates how to listen to a message from your IFrame 
 this.on("getAuthToken", () => {
     // This is an example of how to post a message back to your iframe.
     MsPortalFx.Base.Security.getAuthorizationToken().then((token) => {
-        let header = token.header;
-        let message = new FxAppBlade.Message("getAuthTokenResponse", header);
+        const header = token.header;
+        const message = new FxAppBlade.Message("getAuthTokenResponse", header);
 
         this.postMessage(message);
     });
@@ -132,7 +132,7 @@ When using a template blade, you are responsible for implementing theming in you
 
 // Get theme class and pass it to App Blade
 MsPortalFx.Services.getSettings().then(settings => {
-    let theme = settings["fxs-theme"];
+    const theme = settings["fxs-theme"];
     theme.subscribe(container, theme =>
         this.postMessage(new FxAppBlade.Message("theme", theme.name))
     ).callback(theme());

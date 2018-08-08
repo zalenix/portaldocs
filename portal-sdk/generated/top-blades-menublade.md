@@ -23,7 +23,7 @@ import * as ClientResources from "ClientResources";
 import * as MenuBlade from "Fx/Composition/MenuBlade";
 import * as BladeReferences from "../../../_generated/BladeReferences";
 import * as BladesArea from "../BladesArea";
-
+//menuBlade#Decorator
 @MenuBlade.Decorator()
 export class SampleMenuBlade {
     public title = BladeClientResources.menuBladeTitle;
@@ -48,9 +48,9 @@ export class SampleMenuBlade {
                             icon: null,
                             supplyBladeReference: () => {
                                 return new BladeReferences.ControlsMenuBladeContentAreaBladeReference();
-                            }
-                        }
-                    ]
+                            },
+                        },
+                    ],
                 },
             ],
             overview: {
@@ -59,14 +59,14 @@ export class SampleMenuBlade {
                 icon: null,
                 supplyBladeReference: () => {
                     return new BladeReferences.MenuBladeOverviewBladeReference();
-                }
-            }
+                },
+            },
         });
 
         return Q();  // This sample loads no data.
     }
 }
-
+//menuBlade#Decorator
  
 There are a few things to notice in the preceding code.
 

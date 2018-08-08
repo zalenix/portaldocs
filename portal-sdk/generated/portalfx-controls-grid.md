@@ -58,14 +58,14 @@ this.grid = new Grid.ViewModel<WorkItem, WorkItem>(
     Grid.Extensions.Scrollable | Grid.Extensions.Filterable | Grid.Extensions.SortableColumn,
     {
         scrollable: <Grid.ScrollableOptions<WorkItem>>{
-            dataNavigator: this._navigator
+            dataNavigator: this._navigator,
         },
         filterable: <Grid.FilterableOptions>{
             // Server filter causes the grid to use the data navigator for filtering.
-            serverFilter: ko.observable(true)
+            serverFilter: ko.observable(true),
         },
         sortableColumn: <Grid.SortableColumnOptions<WorkItem>>{
-        }
+        },
     });
 
 ```
@@ -97,7 +97,7 @@ There are many other column options that specify the formatting of the value or 
 
 ```typescript
 
-var columns: MsPortalFx.ViewModels.Controls.Lists.Grid.Column[] = [
+const columns: MsPortalFx.ViewModels.Controls.Lists.Grid.Column[] = [
     {
         itemKey: "name",
         name: ko.observable<string>(ClientResources.controlSampleName),
@@ -107,12 +107,12 @@ var columns: MsPortalFx.ViewModels.Controls.Lists.Grid.Column[] = [
         name: ko.observable<string>(ClientResources.controlSampleSsn),
         getCellAriaLabel: (item: SamplesExtension.DataModels.Person) => {
             return ClientResources.gridCellAriaLabel.format(item.name(), item.ssnId());
-        }
+        },
     },
     {
         itemKey: "bills",
-        name: ko.observable<string>(ClientResources.gridBasicGridBills)
-    }
+        name: ko.observable<string>(ClientResources.gridBasicGridBills),
+    },
 ];
 this.basicGridViewModel.columns = ko.observableArray<MsPortalFx.ViewModels.Controls.Lists.Grid.Column>(columns);
 
@@ -155,8 +155,8 @@ The following formatters can be used for formatting dates:
         dateFormat: {
             month: "long",
             day: "numeric",
-        }
-    }
+        },
+    },
 },
 
 ```
@@ -177,9 +177,9 @@ It is capable of formatting numbers in many ways including currency.
     name: ko.observable<string>(ClientResources.controlSamplePairsOfShoes),
     format: MsPortalFx.ViewModels.Controls.Lists.Grid.Format.Number,
     formatOptions: {
-        numberFormat: { minimumFractionDigits: 1 }
-    }
-}
+        numberFormat: { minimumFractionDigits: 1 },
+    },
+},
 
 ```
 
@@ -234,8 +234,8 @@ The $data object bound to the template will be in the following format where val
 
     format: MsPortalFx.ViewModels.Controls.Lists.Grid.Format.HtmlBindings,
     formatOptions: {
-        htmlBindingsTemplate: "<span data-bind='text: value'></span>\\<span data-bind='text: settings.item.smartPhone'></span>"
-    }
+        htmlBindingsTemplate: "<span data-bind='text: value'></span>\\<span data-bind='text: settings.item.smartPhone'></span>",
+    },
 },
 
 ```
