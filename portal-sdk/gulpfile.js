@@ -189,7 +189,7 @@ function generateDynamicDocs(portalFxLogs, outputDir, prodSdkVersionTags) {
         const title = entity.Title ? entity.Title._ : "";
         const workItemUrl = getWorkItemUrl(changeType);
         aggregate[sdkVersion] = aggregate[sdkVersion] || { breakingCount: 0, featureCount: 0, bugFixCount: 0, downloadUrl: "", dateInProd: entity.Date._, breakingChanges: { rows: "", titles: [] } };
-        
+
         if (previousRNVersion !== sdkVersion) {
             if (previousRNVersion) {
                 if (!rnRows) { // If there aren't any bug fixes/features then insert an empty row
@@ -238,7 +238,7 @@ function generateDynamicDocs(portalFxLogs, outputDir, prodSdkVersionTags) {
                 entity.BreakingChangeDescription ? entity.BreakingChangeDescription._ : "No description available for this breaking change."));
 
             if (entity.BreakingChangeDescription && !entity.BreakingChangeDescription._) {
-                 console.error(util.format("*** The following breaking change has no description https://msazure.visualstudio.com/One/Azure%20Portal/_workitems/edit/#_a=edit&id=%s", entity.BreakingChangeDescription._ || entity.RowKey._));
+                console.error(util.format("*** The following breaking change has no description https://msazure.visualstudio.com/One/Azure%20Portal/_workitems/edit/%s", entity.BreakingChangeDescription._ || entity.RowKey._));
             }
         }
 
