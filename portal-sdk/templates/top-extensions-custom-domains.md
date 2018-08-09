@@ -1,6 +1,3 @@
-
-
-
 # Custom Domains
 
 * [Domain based configuration](#domain-based-configuration)
@@ -23,7 +20,6 @@
 
 * [Override Links](#override-links)
 
-
 ## Domain based configuration
 
 Domain-based configuration allows the Portal and Extensions to dynamically obtain settings based on the URL that was used to access the Portal. For example, accessing the Portal by using the `contoso.portal.azure.com` URL displays different values for domain-based settings than the `portal.azure.com` URL displays.
@@ -37,7 +33,6 @@ While domain-based configuration is not required to support national clouds, the
 Extensions that are called contain additional code that pushes values to the browser.  The consumption example located at [consumption example](#consumption-example) demonstrates the pattern that wires up server-side domain-based configuration.
 
 **NOTE**: Settings like ARM endpoints are not typically candidates for domain-based configuration.
-
 
 **NOTE**: It is recommended that domain-based configuration class names have the characters `DomainBasedConfiguration` appended to them. Some examples are `ErrorApplicationDomainBasedConfiguration`, `HubsDomainBasedConfiguration`, and `WebsiteDomainBasedConfiguration`. However, this naming convention is not required.
 
@@ -188,9 +183,9 @@ An extended version of this procedure is used to transfer domain based configura
 
 The `DictionaryConfiguration` class allows strongly-typed JSON blobs to be defined in the configuration file, and selected based on an arbitrary, case-insensitive string key. For example, the Shell and Hubs use the class to select between domain-specific configuration sets. Two configuration classes can be created.
 
-1. A configuration class that is derived from `DictionaryCollection` that manages and exposes the instances, as specified in [#the-configuration-class](#the-configuration-class).
+1. A configuration class that is derived from `DictionaryCollection` that manages and exposes the instances.
 
-1. A stand-alone settings class that contains the setting values associated with a specific key and user culture, as specified in [#the-settings-class](#the-settings-class).
+1. A stand-alone settings class that contains the setting values associated with a specific key and user culture.
 
 Like other configuration classes, these are named and populated from the config based on namespace, class name, and the Settings property name. For example, if the namespace is `Microsoft.MyExtension.Configuration` and the configuration class is `MyConfiguration`, then the configuration setting name is `Microsoft.MyExtension.Configuration.MyConfiguration.Settings`.
 
@@ -204,63 +199,63 @@ At runtime, the strongly typed settings for a specific key are obtained by using
 
   A boilerplate example is located at [consumption example](#consumption-example).
 
-### The configuration class
+* The configuration class
 
-To create a configuration class, derive a class from `StringDictionaryConfiguration&lt;T&gt;`, where `T` is the type of the settings class.
+    To create a configuration class, derive a class from `StringDictionaryConfiguration&lt;T&gt;`, where `T` is the type of the settings class.
 
-Remember to mark the class as MEF exportable if the config will be made available in the normal fashion, as in the following example.
+    Remember to mark the class as MEF exportable if the config will be made available in the normal fashion, as in the following example.
 
-```cs
-namespace Microsoft.MyExtension.Configuration
-{
-    [Export]
-    public class MyConfiguration : DictionaryConfiguration<MySettings>
+    ```cs
+    namespace Microsoft.MyExtension.Configuration
     {
+        [Export]
+        public class MyConfiguration : DictionaryConfiguration<MySettings>
+        {
+        }
     }
-}
-```
+    ```
 
-Nested objects, like `Billing.EA.ShowPricing`, are fully supported, as in the example code located at [consumption example](#consumption-example).
+    Nested objects, like `Billing.EA.ShowPricing`, are fully supported, as in the example code located at [consumption example](#consumption-example).
 
-### The settings class
+* The settings class
 
-The settings class is a data transport object. The following example  contains the configuration class name `MySettings`, in addition to the settings class's namespace `Microsoft.MyExtension.Configuration`.
+    The settings class is a data transport object. The following example  contains the configuration class name `MySettings`, in addition to the settings class's namespace `Microsoft.MyExtension.Configuration`.
 
-All properties that are populated from the JSON blob in the configuration file are marked as `[JsonProperty]` so that the configuration system `ConfigurationSettingKind.Json` option can be used. If the properties are not marked, they will not be deserialized and will remain null.
+    All properties that are populated from the JSON blob in the configuration file are marked as `[JsonProperty]` so that the configuration system `ConfigurationSettingKind.Json` option can be used. If the properties are not marked, they will not be deserialized and will remain null.
 
-```
-<table>
-    <thead><tr><th>Example settings class</th><th>Example config*</th></tr></thead>
-    <tr>
-        <td>
-            <pre>
-namespace Microsoft.MyExtension.Configuration
-{
-    public class MySettings
+    ```
+    <table>
+        <thead><tr><th>Example settings class</th><th>Example config*</th></tr></thead>
+        <tr>
+            <td>
+                <pre>
+    namespace Microsoft.MyExtension.Configuration
     {
-        [JsonProperty]
-        public bool ShowPricing { get; private set; }
+        public class MySettings
+        {
+            [JsonProperty]
+            public bool ShowPricing { get; private set; }
+        }
     }
-}
-            </pre>
-        </td>
-        <td>
-<pre>
-&lt;add key="Microsoft.MyExtension.Configuration.MyConfiguration.Settings" value="{
-    'default': {
-        'showPricing': true
-    },
-    'someOtherKey' : {
-        'showPricing': false
-    }
-}" /&gt;
-</pre>
-        </td>
-    </tr>
-</table>
-```
+                </pre>
+            </td>
+            <td>
+    <pre>
+    &lt;add key="Microsoft.MyExtension.Configuration.MyConfiguration.Settings" value="{
+        'default': {
+            'showPricing': true
+        },
+        'someOtherKey' : {
+            'showPricing': false
+        }
+    }" /&gt;
+    </pre>
+            </td>
+        </tr>
+    </table>
+    ```
 
-**NOTE**: The deserializer handles camel-case to pascal-case conversion when the code uses JSON property name conventions in the config file and C# name conventions in the configuration classes.
+    **NOTE**: The deserializer handles camel-case to pascal-case conversion when the code uses JSON property name conventions in the config file and C# name conventions in the configuration classes.
  
 #### Use of the Link attribute
 
@@ -479,13 +474,11 @@ The following template contains questions that your team answers previous to  th
  
 ## Branding and Chrome
 
-The following is 
+The following image is the Azure Dashboard.
 
+![alt-text](branding-and-chrome.png "Branding and Chrome")
 
-![alt-text]()
-
-
-The following table is .
+The following table specifies the parts in the dashboard image.
 
 | Setting name / notes | Description | Public Value | Your value |
 | -------------------- | ----------- | ------------ | ---------- |
@@ -747,13 +740,12 @@ The default dashboard JSON controls what parts appear on the dashboard for new u
 
 ## Tile Gallery
 
-The tile gallery is visible when the user clicks on Edit dashboard. It displays  a collection of tiles that can be dragged and dropped on the dashboard. Available tiles can be searched by Category, by Type, by resource group, by tag, or by using the Search string.
+The tile gallery is visible when the user clicks on `Edit dashboard`. It displays a collection of tiles that can be dragged and dropped on the dashboard. Available tiles can be searched by Category, by Type, by resource group, by tag, or by using the Search string.
 
 * The `hidePartsGalleryPivot` flag disables all the search types except the Category search. The Category selector will be displayed only if any tile has a category assigned to it.
 
-* The `hiddenGalleryParts` list allows this extension to hide specific parts that are made available by other extensions. For example, by default, the Service Health part will always be shown. This part can be hidden by adding it to this list.
+* The `hiddenGalleryParts` list allows this extension to hide specific parts that are made available by other extensions. For example, by default, the Service Health part is always displayed, but it can be hidden by adding it to this list.
  
-
 ## Override links
 
 Your cloud has the option of using settings to override specific links that are displayed by the system. Overriding is optional, and in many cases no overrides are required. Where supported, settings use FwLinks for links instead of absolute URLs because FwLinks do not require the Shell to be redeployed in order for the extension to change the destination. Also, FwLinks support the user’s in-product language selection, which is often different from the browser’s default language.  For example, if the user has set the language in the Portal to Chinese, it should display Chinese-language pages.
@@ -846,9 +838,6 @@ Links are separated into the following three sections.
 | supportedBrowserMatrix |	[https://go.microsoft.com/fwLink/?LinkID=394683](https://go.microsoft.com/fwLink/?LinkID=394683)	 | same |
 | unsupportedLayoutHelp	 |[https://go.microsoft.com/fwLink/?LinkID=394683]()	 | same |
  
-
-
-
  {"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-custom-domains.md"}
 
  {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-custom-domains.md"}
