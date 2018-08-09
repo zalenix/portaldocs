@@ -51,7 +51,7 @@ The following table contains several topics that are associated with running  **
 | [portalfx-extensions-msportalfx-blades.md](portalfx-extensions-msportalfx-blades.md) | Testing with blades |
 | [portalfx-extensions-msportalfx-mock.md](portalfx-extensions-msportalfx-mock.md) | Creating tests that use mockup ARM data  |
 | [portalfx-extensions-msportalfx-components.md](portalfx-extensions-msportalfx-components.md) | Parts, components and other topics  |
-| [portalfx-extensions-msportalfx-contribute.md](portalfx-extensions-msportalfx-contribute.md) | Enlisting the contribution after testing   |
+| [portalfx-extensions-msportalfx-contribute.md](portalfx-extensions-msportalfx-contribute.md) | Enlisting a contribution into **msportalfx-test**   |
 
 **NOTE**: `https://github.com/azure/msportalfx-test.git` has a README.md that is the same as this document.
 
