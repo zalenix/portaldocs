@@ -491,7 +491,7 @@ The following template contains questions that your team answers previous to  th
 
 The following image is the Azure Dashboard.
 
-![alt-text](branding-and-chrome.png "Branding and Chrome")
+![alt-text](../media/top-extensions-custom-domains/branding-and-chrome.png "Branding and Chrome")
 
 The following table specifies the parts in the dashboard image.
 
@@ -499,13 +499,13 @@ The following table specifies the parts in the dashboard image.
 | -------------------- | ----------- | ------------ | ---------- |
 | Product Name | The text that appears on the top bar | Microsoft Azure | Azure Active Directory admin center (don't translate Azure Active Directory) |
 | Title | The text that appears on the Browser tab/title bar.  (written to the page’s `<TITLE>` element) | Microsoft Azure | Azure Active Directory admin center |
-| Description | SEO text that is included in the page source (not end-user visible) | Microsoft Azure Management Portal	 | Azure Active Directory admin center for administrators |
+| Description | SEO text that is included in the page source (not end-user visible) | Microsoft Azure Management Portal | Azure Active Directory admin center for administrators |
 | defaultTheme | The default color theme for the portal | blue |  light |
 | hideCreateButton | Hides the Create ("+ New") Button | false |  true |
 | hideDashboardShare | Hides the Dashboard Share Button | false | true |
 | hidePartsGalleryPivots | Hides parts types picker from parts gallery. Does not disable the category picker  | false | true |
 | hideSearchBox | Hides the “Search resources” box | false | true |
-| hiddenGalleryParts | Hides listed parts from the parts gallery (e.g. All Resources, Service Health, …)  | empty |	(only include markdown, clock and video, help & support) |
+| hiddenGalleryParts | Hides listed parts from the parts gallery (e.g. All Resources, Service Health, …)  | empty | (only include markdown, clock and video, help & support) |
  
 <a name="custom-domains-feature-flags"></a>
 ## Feature flags
@@ -527,7 +527,7 @@ Curation controls the visibility and grouping of browsable asset types in the Fa
 
 Your cloud can customize how browseable assets appear in the Favorites and Category sections. This is all optional (you can just inherit from production if you want).
 
-![alt-text]( .png "Categories and asset types")
+![alt-text](../media/top-extensions-custom-domains/curation.png "Categories and asset types")
 	 
 Curation allows the listed items to be added, removed, and reordered. It is important to note that Curation only hides items from the left nav, not from code or deep links. This means, for (fictional) example, you can hide the ability to create a new Storage Accounts from users while still allowing your extension to open the Storage Accounts property and usage logs blades for the storage account you created behind the scenes for one of your assets.
  
