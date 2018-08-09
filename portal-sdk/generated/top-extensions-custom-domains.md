@@ -1,6 +1,3 @@
-
-
-
 <a name="custom-domains"></a>
 # Custom Domains
 
@@ -24,7 +21,6 @@
 
 * [Override Links](#override-links)
 
-
 <a name="custom-domains-domain-based-configuration"></a>
 ## Domain based configuration
 
@@ -39,7 +35,6 @@ While domain-based configuration is not required to support national clouds, the
 Extensions that are called contain additional code that pushes values to the browser.  The consumption example located at [consumption example](#consumption-example) demonstrates the pattern that wires up server-side domain-based configuration.
 
 **NOTE**: Settings like ARM endpoints are not typically candidates for domain-based configuration.
-
 
 **NOTE**: It is recommended that domain-based configuration class names have the characters `DomainBasedConfiguration` appended to them. Some examples are `ErrorApplicationDomainBasedConfiguration`, `HubsDomainBasedConfiguration`, and `WebsiteDomainBasedConfiguration`. However, this naming convention is not required.
 
@@ -196,9 +191,9 @@ An extended version of this procedure is used to transfer domain based configura
 
 The `DictionaryConfiguration` class allows strongly-typed JSON blobs to be defined in the configuration file, and selected based on an arbitrary, case-insensitive string key. For example, the Shell and Hubs use the class to select between domain-specific configuration sets. Two configuration classes can be created.
 
-1. A configuration class that is derived from `DictionaryCollection` that manages and exposes the instances, as specified in [#the-configuration-class](#the-configuration-class).
+1. A configuration class that is derived from `DictionaryCollection` that manages and exposes the instances.
 
-1. A stand-alone settings class that contains the setting values associated with a specific key and user culture, as specified in [#the-settings-class](#the-settings-class).
+1. A stand-alone settings class that contains the setting values associated with a specific key and user culture.
 
 Like other configuration classes, these are named and populated from the config based on namespace, class name, and the Settings property name. For example, if the namespace is `Microsoft.MyExtension.Configuration` and the configuration class is `MyConfiguration`, then the configuration setting name is `Microsoft.MyExtension.Configuration.MyConfiguration.Settings`.
 
@@ -212,67 +207,65 @@ At runtime, the strongly typed settings for a specific key are obtained by using
 
   A boilerplate example is located at [consumption example](#consumption-example).
 
-<a name="custom-domains-dictionary-configuration-the-configuration-class"></a>
-### The configuration class
+* The configuration class
 
-To create a configuration class, derive a class from `StringDictionaryConfiguration&lt;T&gt;`, where `T` is the type of the settings class.
+    To create a configuration class, derive a class from `StringDictionaryConfiguration&lt;T&gt;`, where `T` is the type of the settings class.
 
-Remember to mark the class as MEF exportable if the config will be made available in the normal fashion, as in the following example.
+    Remember to mark the class as MEF exportable if the config will be made available in the normal fashion, as in the following example.
 
-```cs
-namespace Microsoft.MyExtension.Configuration
-{
-    [Export]
-    public class MyConfiguration : DictionaryConfiguration<MySettings>
+    ```cs
+    namespace Microsoft.MyExtension.Configuration
     {
+        [Export]
+        public class MyConfiguration : DictionaryConfiguration<MySettings>
+        {
+        }
     }
-}
-```
+    ```
 
-Nested objects, like `Billing.EA.ShowPricing`, are fully supported, as in the example code located at [consumption example](#consumption-example).
+    Nested objects, like `Billing.EA.ShowPricing`, are fully supported, as in the example code located at [consumption example](#consumption-example).
 
-<a name="custom-domains-dictionary-configuration-the-settings-class"></a>
-### The settings class
+* The settings class
 
-The settings class is a data transport object. The following example  contains the configuration class name `MySettings`, in addition to the settings class's namespace `Microsoft.MyExtension.Configuration`.
+    The settings class is a data transport object. The following example  contains the configuration class name `MySettings`, in addition to the settings class's namespace `Microsoft.MyExtension.Configuration`.
 
-All properties that are populated from the JSON blob in the configuration file are marked as `[JsonProperty]` so that the configuration system `ConfigurationSettingKind.Json` option can be used. If the properties are not marked, they will not be deserialized and will remain null.
+    All properties that are populated from the JSON blob in the configuration file are marked as `[JsonProperty]` so that the configuration system `ConfigurationSettingKind.Json` option can be used. If the properties are not marked, they will not be deserialized and will remain null.
 
-```
-<table>
-    <thead><tr><th>Example settings class</th><th>Example config*</th></tr></thead>
-    <tr>
-        <td>
-            <pre>
-namespace Microsoft.MyExtension.Configuration
-{
-    public class MySettings
+    ```
+    <table>
+        <thead><tr><th>Example settings class</th><th>Example config*</th></tr></thead>
+        <tr>
+            <td>
+                <pre>
+    namespace Microsoft.MyExtension.Configuration
     {
-        [JsonProperty]
-        public bool ShowPricing { get; private set; }
+        public class MySettings
+        {
+            [JsonProperty]
+            public bool ShowPricing { get; private set; }
+        }
     }
-}
-            </pre>
-        </td>
-        <td>
-<pre>
-&lt;add key="Microsoft.MyExtension.Configuration.MyConfiguration.Settings" value="{
-    'default': {
-        'showPricing': true
-    },
-    'someOtherKey' : {
-        'showPricing': false
-    }
-}" /&gt;
-</pre>
-        </td>
-    </tr>
-</table>
-```
+                </pre>
+            </td>
+            <td>
+    <pre>
+    &lt;add key="Microsoft.MyExtension.Configuration.MyConfiguration.Settings" value="{
+        'default': {
+            'showPricing': true
+        },
+        'someOtherKey' : {
+            'showPricing': false
+        }
+    }" /&gt;
+    </pre>
+            </td>
+        </tr>
+    </table>
+    ```
 
-**NOTE**: The deserializer handles camel-case to pascal-case conversion when the code uses JSON property name conventions in the config file and C# name conventions in the configuration classes.
+    **NOTE**: The deserializer handles camel-case to pascal-case conversion when the code uses JSON property name conventions in the config file and C# name conventions in the configuration classes.
  
-<a name="custom-domains-dictionary-configuration-the-settings-class-use-of-the-link-attribute"></a>
+<a name="custom-domains-dictionary-configuration-use-of-the-link-attribute"></a>
 #### Use of the Link attribute
 
 If the property is marked `[Link]` then link expansion logic will be applied in the following
@@ -291,7 +284,7 @@ An exception will be thrown if the target of a `[Link]` attribute is not in one 
 
 1. A http or https URL
 
-<a name="custom-domains-dictionary-configuration-the-settings-class-the-default-key"></a>
+<a name="custom-domains-dictionary-configuration-the-default-key"></a>
 #### The &#39;default&#39; key
 
 If no exact match is found for the specified key (or the caller passes null), Get returns the settings associated with a key whose name is `default`.
@@ -496,13 +489,11 @@ The following template contains questions that your team answers previous to  th
 <a name="custom-domains-branding-and-chrome"></a>
 ## Branding and Chrome
 
-The following is 
+The following image is the Azure Dashboard.
 
+![alt-text](branding-and-chrome.png "Branding and Chrome")
 
-![alt-text]()
-
-
-The following table is .
+The following table specifies the parts in the dashboard image.
 
 | Setting name / notes | Description | Public Value | Your value |
 | -------------------- | ----------- | ------------ | ---------- |
@@ -770,13 +761,12 @@ The default dashboard JSON controls what parts appear on the dashboard for new u
 <a name="custom-domains-tile-gallery"></a>
 ## Tile Gallery
 
-The tile gallery is visible when the user clicks on Edit dashboard. It displays  a collection of tiles that can be dragged and dropped on the dashboard. Available tiles can be searched by Category, by Type, by resource group, by tag, or by using the Search string.
+The tile gallery is visible when the user clicks on `Edit dashboard`. It displays a collection of tiles that can be dragged and dropped on the dashboard. Available tiles can be searched by Category, by Type, by resource group, by tag, or by using the Search string.
 
 * The `hidePartsGalleryPivot` flag disables all the search types except the Category search. The Category selector will be displayed only if any tile has a category assigned to it.
 
-* The `hiddenGalleryParts` list allows this extension to hide specific parts that are made available by other extensions. For example, by default, the Service Health part will always be shown. This part can be hidden by adding it to this list.
+* The `hiddenGalleryParts` list allows this extension to hide specific parts that are made available by other extensions. For example, by default, the Service Health part is always displayed, but it can be hidden by adding it to this list.
  
-
 <a name="custom-domains-override-links"></a>
 ## Override links
 
@@ -873,9 +863,6 @@ Links are separated into the following three sections.
 | supportedBrowserMatrix |	[https://go.microsoft.com/fwLink/?LinkID=394683](https://go.microsoft.com/fwLink/?LinkID=394683)	 | same |
 | unsupportedLayoutHelp	 |[https://go.microsoft.com/fwLink/?LinkID=394683]()	 | same |
  
-
-
-
  ## Best Practices
 
 <a name="custom-domains-override-links-using-portalcontext-trustedauthorityhost-properly"></a>
