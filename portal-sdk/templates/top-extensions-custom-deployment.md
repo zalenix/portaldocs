@@ -13,8 +13,7 @@ Developers that intend to deploy extensions by using legacy or Do-It-Yourself (D
 
 <!--TODO:  Determine which Ibiza team is best represented by the word "we". -->
 We recommend that extensions use a CDN, such as Azure CDN, to move the most commonly-downloaded resources as close as possible to the end user. 
-
-In general, it is best to set up servers in every region. However, there is some flexibility. If the extension content is primarily static and all of its controller access is conducted by ARM by using CORS, then CDN works well.  The caveat is that when the CDN goes down, then the fallback will be not pleasing to your users.
+Typically, it is best to set up servers in every region, although there is some flexibility. If the extension content is primarily static and all of its controller access is conducted by ARM by using CORS, then CDN works well.  However, when the CDN goes down, then the fallback will be not pleasing to your users.
 
 We also recommend that extensions deploy broadly across all regions in an active-active configuration and use a technology with a "Performance" profile, such as the Azure Traffic Manager that is located at [https://azure.microsoft.com/en-us/documentation/articles/traffic-manager-overview](https://azure.microsoft.com/en-us/documentation/articles/traffic-manager-overview), to direct the user to the server closest to them. This will give users the best experience, especially if the extension communicates with a resource provider that is also deployed broadly across regions. Because ARM is deployed in every region, that traffic for a user will stay entirely within one region, therefore reducing latency.
 
