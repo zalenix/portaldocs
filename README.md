@@ -80,17 +80,17 @@ The primary UI building block is a called a blade. A blade is like a page. It ge
 
 * [Overview](/portal-sdk/generated/top-extensions-blades.md)
 
-* [TemplateBlade](/portal-sdk/generated/top-blades-template.md)
+* [Template Blade](/portal-sdk/generated/top-blades-template.md)
 
-* [MenuBlade](/portal-sdk/generated/top-blades-menu.md)
+* [Menu Blade](/portal-sdk/generated/top-blades-menu.md)
 
-* [ResourceMenuBlade](/portal-sdk/generated/top-blades-resourcemenu.md)
+* [ResourceMenu Blade](/portal-sdk/generated/top-blades-resourcemenu.md)
 
-* [FrameBlade](/portal-sdk/generated/top-blades-frame.md)
+* [Frame Blade](/portal-sdk/generated/top-blades-frame.md)
 
 * [Open and close blades programmatically](/portal-sdk/generated/top-blades-opening-and-closing.md)
 
-* [Advanced TemplateBlade topics](/portal-sdk/generated/top-blades-advanced.md)
+* [Advanced blade topics](/portal-sdk/generated/top-blades-advanced.md)
 
 * [Blade settings](/portal-sdk/generated/top-blades-settings.md)
 
