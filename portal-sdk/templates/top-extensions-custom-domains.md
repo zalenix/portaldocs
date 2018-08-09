@@ -308,7 +308,7 @@ Config4|A1       |A2       |Assigning null is the same as skipping the property
 
 In many cases, the domain-based configuration is needed in client-side **TypeScript**. While the extension developer is free to do this any way they want, we recommend the following for extensions following our recommended practices / templates:
 
-1. In ExtensionExtensionDefinition.cs, add your configuration class to your ImportContructor and save it away for later use
+1. In ExtensionExtensionDefinition.cs, add the configuration class to the ImportContructor and save it away for later use
 
 2. Override `IReadOnlyDictionary&lt;string, object&gt; GetExtensionConfiguration(PortalRequestContext context)` 
 and use this to extend the environmental object being returned to the client. For example:
@@ -446,13 +446,13 @@ The following three examples demonstrate how to
 
 ## Custom Domain - Questionnaire Template
 
-The following template contains questions that your team answers previous to  the granting of your custom domain. You may want to make a copy and fill the details.
+The following template contains questions that your team answers previous to  the granting of the  custom domain. You may want to make a copy and fill the details.
 
 1. Why do you need a Custom Domain?
 
 1. What is the name of the extension in Ibiza Portal?
 
-1. When do you expect your extension to be ready for deployment?
+1. When do you expect the extension to be ready for deployment?
 
 1. What timelines are you looking to go live? 
 
@@ -467,52 +467,59 @@ The following template contains questions that your team answers previous to  th
 
 1. URL
 
-	| Setting name / notes	| Public Value	        | Your value                       |
+	| Setting name / notes	| Public Value	        | Extension value                  |
     | --------------------- | --------------------  | -------------------------------- |
     | Production URL        | `portal.azure.com`    | `aad.portal.azure.com`           |
     | Dogfood URL           | `df.portal.azure.com` | `df-aad.onecloud.azure-test.net` |
  
 ## Branding and Chrome
 
-The following image is the Azure Dashboard.
+<!-- TODO:  Determine whether the Custom Domain Questionnaire should include a screen shot of the new extension that is similar to the one described in this section. -->
+
+The following image is the Azure Dashboard. The titles and labels that it displays are from settings in the extension and its configuration files.
 
 ![alt-text](../media/top-extensions-custom-domains/branding-and-chrome.png "Branding and Chrome")
 
 The following table specifies the parts in the dashboard image.
 
-| Setting name / notes | Description | Public Value | Your value |
-| -------------------- | ----------- | ------------ | ---------- |
-| Product Name | The text that appears on the top bar | Microsoft Azure | Azure Active Directory admin center (don't translate Azure Active Directory) |
-| Title | The text that appears on the Browser tab/title bar.  (written to the page’s `<TITLE>` element) | Microsoft Azure | Azure Active Directory admin center |
-| Description | SEO text that is included in the page source (not end-user visible) | Microsoft Azure Management Portal | Azure Active Directory admin center for administrators |
-| defaultTheme | The default color theme for the portal | blue |  light |
-| hideCreateButton | Hides the Create ("+ New") Button | false |  true |
-| hideDashboardShare | Hides the Dashboard Share Button | false | true |
+| Setting or feature flag              | Description  | Public Value | Extension value |
+| ---------------------- | ----------- | ------------ | ----------   |
+| URL                    |             |              |              |
+| Title                  | The text that appears on the Browser tab/title bar. It is located in the page’s `<TITLE>` element) | Microsoft Azure | Azure Active Directory admin center |
+| internalonly           | Controls whether the Orange ‘Preview’ tag appears to the left of the site name )  | false  | false | 
+| Product Name           | The text that appears on the top bar | Microsoft Azure | Azure Active Directory admin center  |
+| hideSearchBox          | Hides the “Search resources” box  | false | true |
+| feedback |  A value of `False` hides the  feedback  icon on top bar  | true | true |  
+| hideDashboardShare     | Hides the Dashboard Share Button  | false | true |
+| hideCreateButton       | Hides the Create ("+ New") Button | false | true |
+| defaultTheme           | The default color theme for the portal | blue |  light |
+| Description            | SEO text that is included in the page source that is not visible to the end-user | Microsoft Azure Management Portal | Azure Active Directory admin center for administrators |
 | hidePartsGalleryPivots | Hides parts types picker from parts gallery. Does not disable the category picker  | false | true |
-| hideSearchBox | Hides the “Search resources” box | false | true |
-| hiddenGalleryParts | Hides listed parts from the parts gallery (e.g. All Resources, Service Health, …)  | empty | (only include markdown, clock and video, help & support) |
+| hiddenGalleryParts     | Hides listed parts from the parts gallery, like `All Resources`, `Service Health`, and others  | empty | Only include markdown, clock and video, help & support |
  
 ## Feature flags
 
-Recommended details are prepopulated. 
+These feature flags impact dashboard settings that are not immediately visible. The recommended values are prepopulated, although you can modify them for your extension.
 
-| Setting name / notes	    | Public Value  | Your Value 	(recommended values shown)  | 	Notes  | 
-| ------------------------- | ------------  | --------------------------------------  | -------- |
-| feedback	| true	| true |  	False hides feedback smiley icon on top bar (see screenshot above).  | 
-| hidesupport	 | (not set) | 	false	 | Hides support functionality in property and other select dialogs.  | 
-| internalonly | 	false	 | false | 	Controls whether the Orange ‘Preview’ tag appears to the left of the site name (see screenshot above)  | 
-| nps | 	true | 	true | 	Controls whether the Net Promoter Score (‘How likely are you to recommend this site?’) prompt can appear for the site. Recommend set to false.  | 
-| hubsextension_skipeventpoll	 | (not set)	 | true	 | Disables ‘what’s new’ and subscription level notifications (such as deployment complete for VMs). Recommend set to true unless showing all resource types from all extensions. | 
- 
+| Setting                     | Description  | Public Value  | Recommended Value  | 
+| --------------------------- | ------------ | --------------------------------------  | -------- |
+| hidesupport                 | Hides support functionality in property and other select dialogs. | Not set | false |
+| nps                         | Controls whether the Net Promoter Score (‘How likely are you to recommend this site?’) prompt can be displayed for the site. | true |false  | 	
+| hubsextension_skipeventpoll | Disables ‘what’s new’ and subscription level notifications like  deployment complete for VMs  | Not set  | Recommend set to true unless showing all resource types from all extensions.
+
 ## Curation
 
-Curation controls the visibility and grouping of browsable asset types in the Favorites and Browse portions of left nav (see Terminology screenshot below). A browsable asset type is one defined in your (or someone else’s) PDL using the <Browse> tag.
-
-Your cloud can customize how browseable assets appear in the Favorites and Category sections. This is all optional (you can just inherit from production if you want).
+Curation controls the visibility and grouping of browsable asset types in the **Favorites and Browse** portions of the left navigation bar, as in the following image.
 
 ![alt-text](../media/top-extensions-custom-domains/curation.png "Categories and asset types")
-	 
-Curation allows the listed items to be added, removed, and reordered. It is important to note that Curation only hides items from the left nav, not from code or deep links. This means, for (fictional) example, you can hide the ability to create a new Storage Accounts from users while still allowing your extension to open the Storage Accounts property and usage logs blades for the storage account you created behind the scenes for one of your assets.
+ 
+A browsable asset type is one that is defined in the  `PDL` file by  using the <Browse> tag.
+
+Your cloud can customize how browseable assets are displayed in the **Favorites and Category** sections. This is optional because the extension can inherit from the production environment.
+
+Curation allows the listed items to be added, removed, and reordered. Curation only hides items from the left nav, as opposed to code or deep links. This means, for example, that you can hide the ability to create new Storage Accounts from users while still allowing the extension to open the Storage Accounts property and usage logs blades for the storage account that was  created behind the scenes for one of the extension's assets.
+
+<!-- TODO:  If the storage account example is fictitious, locate one that is not fictitious. -->
  
 ### Category Curation
 
@@ -524,8 +531,8 @@ Take the production curation definition and programmatically modify it. For exam
 		Note: Empty categories are automatically hidden.
 		
 		The most common configurations are:
-			§ Community Clouds that show just assets from your extension, Help & Support, and that will automatically add new browsable assets 
-Use Curation by AssetType listing just items from your extension (plus some items from Help & Support if desired), combined with Curation by Extension to allow new asset types you deploy to appear while your updates to your Curation by AssetType are waiting on the next Shell deployment, combined with a DiscoveryPolicy of Hide to prevent new asset types from other extensions appearing.
+			§ Community Clouds that display only  assets from the  extension, Help & Support, and that will automatically add new browsable assets 
+Use Curation by AssetType listing just items from the extension (plus some items from Help & Support if desired), combined with Curation by Extension to allow new asset types you deploy to be displayed  while the  updates to your Curation by AssetType are waiting on the next Shell deployment, combined with a DiscoveryPolicy of Hide to prevent new asset types from other extensions appearing.
 		
 		- All AAD extensions except "KeyVault" and "Help + Support"
 		- Default all items to go under "Security + Identity" category (including help and support)
@@ -766,7 +773,7 @@ Each link can be specified as one of the following five values.
 
 * The word "same"
 
-    The default production value should be used. If the default production value changes, that change is automatically propagated to your extension.
+    The default production value should be used. If the default production value changes, that change is automatically propagated to the extension.
 
 Links are separated into the following three sections.
 
@@ -786,7 +793,7 @@ Links are separated into the following three sections.
 
 ### Shell Links
 
-| Setting name / notes | Public Value | Your Value |
+| Setting name / notes | Public Value | Extension Value |
 | -------------------- | ------------ | ---------- |
 | accessDetails<sup>2</sup> | #blade/HubsExtension/MyAccessBlade/resourceId/ |	blank (verify that menu item is hidden) | 
 | accountPortal<sup>1</sup> | https://account.windowsazure.com/ | blank (verify that menu item is hidden) | 
@@ -805,7 +812,7 @@ Links are separated into the following three sections.
  
 ### Hubs links
 
-| Setting name / notes  | Public Value |	Your Value |
+| Setting name / notes  | Public Value | Extension Value |
 | --------------------- | ------------ | ---------- |
 | createNewSubscription     | [https://go.microsoft.com/fwLink/?LinkID=522331](https://go.microsoft.com/fwLink/?LinkID=522331)	 | same |
 | manageAzureResourceHelp   | [https://go.microsoft.com/fwLink/?LinkID=394637](https://go.microsoft.com/fwLink/?LinkID=394637)	 | same |
@@ -827,7 +834,7 @@ Links are separated into the following three sections.
  
 ### Error Page Links
 	
-| Setting name / notes | Public Value |	Your Value |
+| Setting name / notes | Public Value |	Extension Value |
 | -------------------- | ------------ | ---------- |
 | classicPortal<sup>1</sup>	   | https://manage.windowsazure.com/	| same |
 | contactSupport |	[https://go.microsoft.com/fwLink/?LinkID=733312](https://go.microsoft.com/fwLink/?LinkID=733312)	 | same |
