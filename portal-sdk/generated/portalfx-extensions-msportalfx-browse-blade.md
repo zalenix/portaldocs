@@ -92,6 +92,18 @@ Then, run **Mocha** against the generated JavaScript file using the following co
 
 **NOTE**: Using an elevated command prompt may cause **Chrome** to crash.  Use a non-elevated command prompt for best results.
 
+<a name="write-a-browse-blade-test-running-tests-in-the-dogfood-environment"></a>
+### Running tests in the DOGFOOD environment
+
+Update the following configuration settings in the `config.json` file To run tests against the Dogfood test environment. 
+
+```json
+{
+  portalUrl: https://df.onecloud.azure-test.net/,
+  signInUrl: https://login.windows-ppe.net/
+}
+```
+
 <a name="write-a-browse-blade-test-output"></a>
 ### Output
 
