@@ -1,2 +1,2 @@
 
-The page you requested has moved to [top-style-guide-html-css-sanitization.md](top-style-guide-html-css-sanitization.md).
+The page you requested has moved to [top-extensions-style-guide.md#html-and-css-sanitization](top-extensions-style-guide.md#html-and-css-sanitization).

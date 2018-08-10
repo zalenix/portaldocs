@@ -85,7 +85,7 @@ SVG sanitization follows the rules applied to HTML sanitization, as they are bot
 
 Some SVG functionality, like certain filters, and gradients, are known to cause significant browser rendering slowdowns, as specified in Criterion 2.  As such, they are sanitized out. The build tools should detect those early and mitigate them when possible. Extension writers should rely on  [StackOverflow](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza) if the sanitization of SVG elements causes a blocking issue.
 
-For more information about SVG sanitization, see [top-style-guide-iconography.md](top-style-guide-iconography.md).
+For more information about SVG sanitization, see [#iconography](#iconography).
 
 <a name="styling-an-extension-adding-custom-css"></a>
 ## Adding custom css
@@ -5220,7 +5220,7 @@ Do not use JavaScript reserved words, as specified in [https://docs.microsoft.co
 <a name="styling-an-extension-best-practices-icon-incorrectly-displayed"></a>
 ### Icon incorrectly displayed
 
-***My icon is a dark square. What happened? ***
+***My icon is a dark square. What happened?***
 
 DESCRIPTION:
 

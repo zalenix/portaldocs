@@ -2,7 +2,7 @@
 <a name="icon-incorrectly-displayed"></a>
 ### Icon incorrectly displayed
 
-***My icon is a dark square. What happened? ***
+***My icon is a dark square. What happened?***
 
 DESCRIPTION:
 
