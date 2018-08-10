@@ -23,6 +23,9 @@ There are many different ways to test an extension.
 
 The test framework interacts with the Portal as a user would, and helps developers make performant and robust extensions when they decrease breaking changes to partner team CI.
 
+The test framework searches for a `config.json` file in the current working directory, which is typically the directory from which  the test is invoked.  If the file is not found, then it will check the parent folder for the file.
+
+
 ### General Architecture
 
 **MsPortalFx-Test** is arranged into three layers of abstraction. The names of the layers may not be consistent in all instances, but the general idea is the same.  There may also be some future refactoring to easily differentiate between the layers.
@@ -44,7 +47,7 @@ The following table contains several topics that are associated with running  **
 | Document | Description |
 | -------- | ----------- |
 | [portalfx-extensions-msportalfx-install-and-test.md](portalfx-extensions-msportalfx-install-and-test.md) | Installation and Visual Studio Testing |
-| [portalfx-extensions-msportalfx-npm-tests.md](portalfx-extensions-msportalfx-npm-tests.md) | Running npm tests |
+| [portalfx-extensions-msportalfx-mocha-tests.md](portalfx-extensions-msportalfx-mocha-tests.md) | Running npm tests with mocha |
 | [portalfx-extensions-msportalfx-cloudtest-create-browse.md](portalfx-extensions-msportalfx-cloudtest-create-browse.md) | Running tests in cloudtest.  Create and Browse testing |
 | [portalfx-extensions-msportalfx-browse-blade.md](portalfx-extensions-msportalfx-browse-blade.md) |  Write a browse blade test |
 | [portalfx-extensions-msportalfx-resource.md](portalfx-extensions-msportalfx-resource.md) | Create and test a resource |
@@ -53,7 +56,7 @@ The following table contains several topics that are associated with running  **
 | [portalfx-extensions-msportalfx-components.md](portalfx-extensions-msportalfx-components.md) | Parts, components and other topics  |
 | [portalfx-extensions-msportalfx-contribute.md](portalfx-extensions-msportalfx-contribute.md) | Enlisting a contribution into **msportalfx-test**   |
 
-**NOTE**: `https://github.com/azure/msportalfx-test.git` has a README.md that is the same as this document.
+**NOTE**: `https://github.com/azure/msportalfx-test.git` contains a `README.md` file that is similar to this document. This document supercedes the `README.md` file  in the **msportalfx-test** download location.
 
 When testing is complete, you can send a pull request by using the procedures specified in [top-extensions-publishing.md](top-extensions-publishing.md).
 
@@ -84,8 +87,94 @@ You can generate the documentation in one of two ways.
 
     The output of the composed `TEMPLATE.md` file will be written to the `./README.md` file, and the generated API reference from your jsdocs will be written to `/docs/apiref.md`.
 
-
 If you have questions, you can send an email to <a href="mailto:ibizadiscuss@microsoft.com">ibizadiscuss@microsoft.com</a>.
+
+### PortalContext
+
+This file contains configuration values that are used by the test framework to establish the extension context. Some values are described in  [https://github.com/SeleniumHQ/selenium/wiki/DesiredCapabilities](https://github.com/SeleniumHQ/selenium/wiki/DesiredCapabilities). Test developers can set values programmatically, as in the following example, instead of storing them in the `config.json` file. 
+
+**NOTE**: Never store passwords in the `config.json` file.
+
+```ts
+﻿import TestExtension = require("./TestExtension");
+import Feature = require("./Feature");
+import BrowserResolution = require("./BrowserResolution");
+import Timeout = require("./Timeout");
+
+/**
+ * Represents The set of options used to configure a Portal instance.
+ */
+interface PortalContext {
+    /**
+     * The set of capabilities enabled in the webdriver session. 
+     * For a list of available capabilities, see https://github.com/SeleniumHQ/selenium/wiki/DesiredCapabilities
+     */    
+    capabilities: {
+        /**
+         * The name of the browser being used; should be one of {chrome} 
+         */
+        browserName: string;
+
+        /**
+         * Chrome-specific supported capabilities. 
+         */
+        chromeOptions: {
+            /**
+             * List of command-line arguments to use when starting Chrome.
+             */
+            args: string[]
+        };
+
+        /**
+         * The desired starting browser's resolution in pixels.
+         */
+        browserResolution: BrowserResolution;
+    },
+    /**
+     * The path to the ChromeDriver binary. 
+     */
+    chromeDriverPath?: string;
+    /**
+     * The url of the Portal.
+     */
+    portalUrl: string;
+    /**
+     * The url of the page where signin is performed.
+     */
+    signInUrl?: string;
+    /**
+     * Email of the user used to sign in to the Portal.
+     */
+    signInEmail?: string;
+    /**
+     * Password of the user used to sign in to the Portal.
+     */
+    signInPassword?: string;    
+    /**
+     * The set of features to enable while navigating within the Portal.
+     */
+    features?: Feature[];
+    /**
+     * The list of patch files to load within the Portal.
+     */
+    patches?: string[];
+    /**
+     * The set of extensions to side load while navigating within the Portal.
+     */
+    testExtensions?: TestExtension[];
+    /**
+     * The set of timeouts used to override the default timeouts.
+     * e.g. 
+     * timeouts: {
+     *      timeout: 15000  //Overrides the default short timeout of 10000 (10 seconds).
+     *      longTimeout: 70000 //Overrides the default long timetout of 60000 (60 seconds).
+     * }
+     */
+    timeouts?: Timeout;
+}
+
+export = PortalContext;
+```
 
 ### More Examples
 
