@@ -1,6 +1,12 @@
 
 # Contribute to the documentation
 
+## Correcting minor issues in documents
+
+If your correcting a minor issue in a document like a typo or otherwise please ensure:
+- That you fork from `dev` not master and submit the pull request against dev.
+- that you make the change to the markdown under the `*/templates/*` folder and *not* under the `*/generated/*` folder.
+
 ## Prerequisite
 
 1. Verify that npm version is 3.10.6 or greater:
