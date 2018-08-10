@@ -1,5 +1,5 @@
 
-# Styling an Extension 
+# Styling an Extension
 
 ## Overview
 
@@ -76,7 +76,7 @@ SVG sanitization follows the rules applied to HTML sanitization, as they are bot
 
 Some SVG functionality, like certain filters, and gradients, are known to cause significant browser rendering slowdowns, as specified in Criterion 2.  As such, they are sanitized out. The build tools should detect those early and mitigate them when possible. Extension writers should rely on  [StackOverflow](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza) if the sanitization of SVG elements causes a blocking issue.
 
-For more information about SVG sanitization, see [top-style-guide-iconography.md](top-style-guide-iconography.md).
+For more information about SVG sanitization, see [#iconography](#iconography).
 
 ## Adding custom css
 

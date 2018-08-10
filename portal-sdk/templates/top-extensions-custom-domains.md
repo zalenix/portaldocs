@@ -1,8 +1,10 @@
 # Custom Domains
 
+* [Tile gallery](#tile-gallery)
+
 * [Domain based configuration](#domain-based-configuration)
 
-* [Exposing config settings to the client](#exposing-config-settings-to-the-client)
+* [Exposing configuration settings](#exposing-configuration-settings)
 
 * [Dictionary configuration](#dictionary-configuration) 
 
@@ -20,6 +22,16 @@
 
 * [Override Links](#override-links)
 
+## Tile Gallery
+
+<!-- TODO: Determine what the tile gallery has to do with custom domains and/ or the questionnaire template -->
+
+The tile gallery is visible when the user clicks on `Edit dashboard`. It displays a collection of tiles that can be dragged and dropped on the dashboard. Available tiles can be searched by Category, by Type, by resource group, by tag, or by using the Search string.
+
+* The `hidePartsGalleryPivot` flag disables all the search types except the Category search. The Category selector will be displayed only if any tile has a category assigned to it.
+
+* The `hiddenGalleryParts` list allows this extension to hide specific parts that are made available by other extensions. For example, by default, the Service Health part is always displayed, but it can be hidden by adding it to this list.
+ 
 ## Domain based configuration
 
 Domain-based configuration allows the Portal and Extensions to dynamically obtain settings based on the URL that was used to access the Portal. For example, accessing the Portal by using the `contoso.portal.azure.com` URL displays different values for domain-based settings than the `portal.azure.com` URL displays.
@@ -98,7 +110,7 @@ The Server-side `PortalContext.TrustedAuthorityHost` function returns the host n
  
 **NOTE**: If the extension needs to change its configuration based on the domain of the caller, the recommended solution is to use domain-based configuration, which is designed specifically for this sort of work.  It is preferred over coding directly against values returned by `PortalContext.TrustedAuthorityHost`.
 
-## Exposing config settings to the client
+## Exposing configuration settings
 
 Configuration settings are commonly used to control application behavior like timeout values, page size, endpoints, ARM version number, and other items. With the .NET framework, managed code can easily load configurations; however, most of the implementation of a Portal extension is client-side JavaScript.
 
@@ -259,31 +271,33 @@ At runtime, the strongly typed settings for a specific key are obtained by using
  
 #### Use of the Link attribute
 
-If the property is marked `[Link]` then link expansion logic will be applied in the following
+Expansion logic is required for properties that are marked `[Link]`. The format string is specified in the `LinkTemplate` property that is located at the root of the object. A `LinkTemplate` value of `https://go.microsoft.com/fwLink/?LinkID={linkId}&amp;clcid=0x{lcid}` is the correct template for FwLinks.
 
-If the string is numeric, it will be expanded according to the format string specified in the `LinkTemplate` property at the root of the object. Occurrences of `{linkId}` in the string will be expanded to the numeric value. If no `LinkTemplate` property is specified, the value will be left unexpanded.
+Expansion in the format string is applied according to the following rules.
 
-Occurrences in the string of `{lcid}` will be replaced with the hex representation of the user's preferred .NET LCID value (for example, 409 for US English). Occurrences in the string of `{culture}` will be replaced with the user's preferred .NET culture code (for example, en-US for US English).
+1. If the string is numeric, then occurrences of `{linkId}` in the string are expanded to the numeric value. If no `LinkTemplate` property is specified, the value will be left unexpanded.
 
-A LinkTemplate value of `https://go.microsoft.com/fwLink/?LinkID={linkId}&amp;clcid=0x{lcid}` is the correct template for FwLinks.
+1. Occurrences of `{lcid}` are replaced with the hex representation of the user's preferred .NET LCID value.  For example, 409 is the .NET LCID value for US English. 
+
+1. Occurrences  of `{culture}` are replaced with the user's preferred .NET culture code. For example, en-US is the .NET culture code for US English.
 
 An exception will be thrown if the target of a `[Link]` attribute is not in one of the following string formats.
 
-1. Numeric (e.g. '12345' )
+* Numeric, for example,  '12345' 
 
-1. A URL hash-fragment (e.g. #create\Microsoft.Support)
+* A URL hash-fragment, like "#create\Microsoft.Support"
 
-1. A http or https URL
+* A http or https URL
 
-#### The 'default' key
+#### The default key
 
-If no exact match is found for the specified key (or the caller passes null), Get returns the settings associated with a key whose name is `default`.
+If no exact match is found for the specified key, or if the caller sends a value of null, the `Get` function returns the settings associated with a key whose name is `default`.
 
 ### Setting inheritance
 
-`DictionaryConfiguration` supports a simplistic one-level inheritance model to avoid having to repeat unchanged settings in 'subclassed' config. 
+`DictionaryConfiguration` supports a simplistic one-level inheritance model to avoid repeating unchanged settings in 'subclassed' config. 
 
-If a property inside the settings for a non-default key is missing or explicitly set to null,  the value for that property is set to the value from the default key. For example:
+If a property inside the settings for a non-default key is missing or explicitly set to null,  the value for that property is set to the value from the default key, as in the following example.
 
 ``` xml
     <add key="Microsoft.Portal.Framework.WebsiteDomainBasedConfiguration.Settings" value="{
@@ -294,14 +308,16 @@ If a property inside the settings for a non-default key is missing or explicitly
     }"/>
 ```
 
-Will return:
+These settings return the following values.
 
-| Key    | Setting 1 | Setting 2 |Notes |
-Default|A1       |A2       |
-Config1|A1       |A1       |Since there is no config1 entry, the default is returned
-Config2|B1       |B2       |Both values were overridden
-Config3|C1       |A2       |Only setting1 was overridden
-Config4|A1       |A2       |Assigning null is the same as skipping the property
+| Key     | Setting 1 | Setting 2 | Notes |
+| ------- | --------- | --------- | ----- |
+| Default | A1        | A2        |       |
+| Config1 | A1        | A1        | Since there is no config1 entry, the default is returned |
+| Config2 | B1        | B2        | Both values were overridden |
+| Config3 | C1        | A2        | Only setting1 was overridden |
+| Config4 | A1        | A2        | Assigning null is the same as skipping the property |
+
 -----------------------------------
 
 ## Exporting domain based configuration values to the client
@@ -456,14 +472,14 @@ The following template contains questions that your team answers previous to  th
 
 1. What timelines are you looking to go live? 
 
-    | Requirement | Estimated Completion Date |
-    | ----------- | ------------------------- |
-    | Azure Portal team PM Lead approval |    |
-    | Completed Questionnaire |               |
-    | Completed Default Dashboard Json |      |
-    | Planning for Dev work |   1 week        |
-    | Dev work                    | Requires 3-4 weeks after scheduling subject to resource availability | 
-    | Deployments                 | Post dev work 2-3 weeks to Prod based on Safe deployment schedule | 
+    | Requirement                        | Estimated Completion Date |
+    | ---------------------------------- | ------------------------- |
+    | Azure Portal team PM Lead approval |                           |
+    | Completed Questionnaire            |                           |
+    | Completed Default Dashboard Json   |                           |
+    | Planning for Dev work              | 1 week                    |
+    | Dev work                           | Requires 3-4 weeks after scheduling, subject to resource availability | 
+    | Deployments                        | Post dev work 2-3 weeks to Prod based on Safe deployment schedule | 
 
 1. URL
 
@@ -472,7 +488,7 @@ The following template contains questions that your team answers previous to  th
     | Production URL        | `portal.azure.com`    | `aad.portal.azure.com`           |
     | Dogfood URL           | `df.portal.azure.com` | `df-aad.onecloud.azure-test.net` |
  
-## Branding and Chrome
+### Branding and Chrome
 
 <!-- TODO:  Determine whether the Custom Domain Questionnaire should include a screen shot of the new extension that is similar to the one described in this section. -->
 
@@ -497,7 +513,7 @@ The following table specifies the parts in the dashboard image.
 | hidePartsGalleryPivots | Hides parts types picker from parts gallery. Does not disable the category picker  | false | true |
 | hiddenGalleryParts     | Hides listed parts from the parts gallery, like `All Resources`, `Service Health`, and others  | empty | Only include markdown, clock and video, help & support |
  
-## Feature flags
+### Feature flags
 
 These feature flags impact dashboard settings that are not immediately visible. The recommended values are prepopulated, although you can modify them for your extension.
 
@@ -507,38 +523,39 @@ These feature flags impact dashboard settings that are not immediately visible. 
 | nps                         | Controls whether the Net Promoter Score (‘How likely are you to recommend this site?’) prompt can be displayed for the site. | true |false  | 	
 | hubsextension_skipeventpoll | Disables ‘what’s new’ and subscription level notifications like  deployment complete for VMs  | Not set  | Recommend set to true unless showing all resource types from all extensions.
 
-## Curation
+### Curation
 
-Curation controls the visibility and grouping of browsable asset types in the **Favorites and Browse** portions of the left navigation bar, as in the following image.
+A browsable asset type is one that is defined in the `PDL` file by using the `Browse` tag. Curation controls the visibility and grouping of browsable asset types in the **Favorites and Browse** portions of the left navigation bar, as in the following image.
 
 ![alt-text](../media/top-extensions-custom-domains/curation.png "Categories and asset types")
- 
-A browsable asset type is one that is defined in the  `PDL` file by  using the <Browse> tag.
 
-Your cloud can customize how browseable assets are displayed in the **Favorites and Category** sections. This is optional because the extension can inherit from the production environment.
+Curation allows the listed items to be added, removed, and reordered. Curation hides items only from the left navigation bar, as opposed to hiding items from code or making them accessible by using deep links. For example, you can hide the ability to create new storage accounts from users, while still allowing the extension to open the `Storage Accounts` property and then open the `usage logs` blades for a storage account that was created  for one of the extension's assets.
 
-Curation allows the listed items to be added, removed, and reordered. Curation only hides items from the left nav, as opposed to code or deep links. This means, for example, that you can hide the ability to create new Storage Accounts from users while still allowing the extension to open the Storage Accounts property and usage logs blades for the storage account that was  created behind the scenes for one of the extension's assets.
+Your cloud can customize how browseable assets are displayed in the **Favorites and Category** section. This is optional because the extension can inherit from the production environment.
 
 <!-- TODO:  If the storage account example is fictitious, locate one that is not fictitious. -->
  
-### Category Curation
+#### Category Curation
 
-The Category curation model provides a significant degree of flexibility, which can be overwhelming at first as the following options are NOT mutually exclusive:
-  
-		○ Based on Production
-Take the production curation definition and programmatically modify it. For example, ‘Remove everything except assets from these 3 extensions’ or ‘Change the Category that items from extension3 live under’.
-			 
-		Note: Empty categories are automatically hidden.
+The Category curation model provides a significant degree of flexibility, which can be overwhelming because options are NOT mutually exclusive. For example, the production curation definition can be programmatically modified in the following ways.
+
+* Remove everything except assets from three extensions
+
+* For the third extension in the previous example, change the category in which items are located.
+ 
+**NOTE**: Empty categories are automatically hidden.
+ 
+The most common configurations are as follows.
+
+* Community Clouds that display Help & Support, that automatically add new browsable assets, and that display only assets from the extension.
+
+Use `Curation by AssetType` to list only items from the extension, and perhaps some items from `Help & Support`. It can be combined with `Curation by Extension` to allow new asset types you deploy to be displayed  while the  updates to your `Curation by AssetType` are waiting on the next Shell deployment, combined with a DiscoveryPolicy of Hide to prevent new asset types from other extensions appearing.
 		
-		The most common configurations are:
-			§ Community Clouds that display only  assets from the  extension, Help & Support, and that will automatically add new browsable assets 
-Use Curation by AssetType listing just items from the extension (plus some items from Help & Support if desired), combined with Curation by Extension to allow new asset types you deploy to be displayed  while the  updates to your Curation by AssetType are waiting on the next Shell deployment, combined with a DiscoveryPolicy of Hide to prevent new asset types from other extensions appearing.
-		
-		- All AAD extensions except "KeyVault" and "Help + Support"
-		- Default all items to go under "Security + Identity" category (including help and support)
-	
-	 
-### Default Favorites
+* All AAD extensions except "KeyVault" and "Help + Support"
+
+* Default all items to go under "Security + Identity" category (including help and support)
+ 
+#### Default Favorites
 
 When a new user visits your Community Cloud for the first time, the system places a number of assets types in the far left drawer. You can control which items are placed here and the order in which they are displayed. The only restriction is that these items must also exist in the Category Curation.
 	 
@@ -558,7 +575,7 @@ When a new user visits your Community Cloud for the first time, the system place
 	
 Items will be added in the order listed.
  
-### Default Dashboard
+#### Default Dashboard
 
 The default dashboard JSON controls what parts appear on the dashboard for new users. Existing users need to use the `Reset Dashboard` option to see updated versions of the default dashboard. The following steps generate the JSON. 
 
@@ -745,14 +762,7 @@ The default dashboard JSON controls what parts appear on the dashboard for new u
     [https://microsoft.sharepoint.com/teams/azureteams/aapt/azureux/portalfx/_layouts/OneNote.aspx?id=%2Fteams%2Fazureteams%2Faapt%2Fazureux%2Fportalfx%2FSiteAssets%2FPortalFx%20Notebook&wd=target%28Execution%2FFundamentals%2FDeployments.one%7C9B8BE2F4-DDEF-4504-982B-560AF50A892C%2FCustom%20Domain%20-%20Questionnaire%20Template%7C90BDECEB-D69D-4BA0-B60A-8A9EBB877CC4%2F%29](https://microsoft.sharepoint.com/teams/azureteams/aapt/azureux/portalfx/_layouts/OneNote.aspx?id=%2Fteams%2Fazureteams%2Faapt%2Fazureux%2Fportalfx%2FSiteAssets%2FPortalFx%20Notebook&wd=target%28Execution%2FFundamentals%2FDeployments.one%7C9B8BE2F4-DDEF-4504-982B-560AF50A892C%2FCustom%20Domain%20-%20Questionnaire%20Template%7C90BDECEB-D69D-4BA0-B60A-8A9EBB877CC4%2F%29)
     -->
 
-## Tile Gallery
 
-The tile gallery is visible when the user clicks on `Edit dashboard`. It displays a collection of tiles that can be dragged and dropped on the dashboard. Available tiles can be searched by Category, by Type, by resource group, by tag, or by using the Search string.
-
-* The `hidePartsGalleryPivot` flag disables all the search types except the Category search. The Category selector will be displayed only if any tile has a category assigned to it.
-
-* The `hiddenGalleryParts` list allows this extension to hide specific parts that are made available by other extensions. For example, by default, the Service Health part is always displayed, but it can be hidden by adding it to this list.
- 
 ## Override links
 
 Your cloud has the option of using settings to override specific links that are displayed by the system. Overriding is optional, and in many cases no overrides are required. Where supported, settings use FwLinks for links instead of absolute URLs because FwLinks do not require the Shell to be redeployed in order for the extension to change the destination. Also, FwLinks support the user’s in-product language selection, which is often different from the browser’s default language.  For example, if the user has set the language in the Portal to Chinese, it should display Chinese-language pages.
