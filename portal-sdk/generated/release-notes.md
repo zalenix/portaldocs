@@ -1,4 +1,8 @@
-# Release Notes since 4/10/2018
+# Release Notes since 4/11/2018
+
+## 5.0.302.1256
+0 Breaking Changes, 4 Features added and 1 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2823415'>2823415</a></td><td>Bug Fix</td><td>[OptionPicker] disabled control / disabled items should not be clickable</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2818816'>2818816</a></td><td>Feature</td><td>Turn prewarming and preorder on by default</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2712020'>2712020</a></td><td>Feature</td><td>Remove Runners and AIMS Alerts projects from the build</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2559540'>2559540</a></td><td>Feature</td><td>Enable support for specifying body in batch requests</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2515724'>2515724</a></td><td>Feature</td><td>Change Refresh Token cert to dSMS-managed (auto-rotating)</td></tr></table>
 
 ## 5.0.302.1254
 0 Breaking Changes, 0 Features added and 2 Bugs Fixed
