@@ -256,14 +256,14 @@ function generateDynamicDocs(portalFxLogs, outputDir, prodSdkVersionTags) {
     }
 
     return Q.allSettled(downloadUrlPromises).then(function (results) {
-        writeDocsToFile(aggregate, outputDir);
+        writeDocsToFile(aggregate, outputDir, prodSdkVersionTags);
     });
 }
 
 /**
  * Takes the aggregate content for all versions and writes it to release-notes.md, breaking-changes.md and downloads.md
  */
-function writeDocsToFile(aggregate, outputDir) {
+function writeDocsToFile(aggregate, outputDir, prodSdkVersionTags) {
     var releaseNotesFile = fs.createWriteStream(path.resolve(outputDir, "release-notes.md"));
     var breakingChangesFile = fs.createWriteStream(path.resolve(outputDir, "breaking-changes.md"));
     var downloadsDoc = fs.createWriteStream(path.resolve(outputDir, "downloads.md"));
@@ -278,7 +278,14 @@ function writeDocsToFile(aggregate, outputDir) {
 
     releaseNotesFile.write(util.format("# Release Notes since %s", fourMonthsAgo.toLocaleDateString("en-US")));
     breakingChangesFile.write(util.format("# Breaking Changes since %s \n* Additional Q&A about breaking changes can be found [here](./breaking-changes.md) \n* To ask a question about breaking changes [use this](https://aka.ms/ask/ibiza-breaking-change)  \n", fourMonthsAgo.toLocaleDateString("en-US")));
-    downloadsDoc.write(util.format("# Download Portal SDK \n Download Latest Release: <a href=\"%s\">%s</a>\n<table><tr><th>Download</th><th>Detail</th><th>Breaking Changes</th></tr>", aggregate[latestDownloadableSdkVersion].downloadUrl, latestDownloadableSdkVersion));
+    const downloadLinks = util.format("Download Latest Release: <a href=\"%s\">%s</a>", aggregate[latestDownloadableSdkVersion].downloadUrl, latestDownloadableSdkVersion);
+    const sortedProdSdkVersionTag = Object.keys(prodSdkVersionTags).sort(versioncompare).reverse();
+    let perCloudDownloadLinks = "";
+    sortedProdSdkVersionTag.forEach(function (version) {
+        perCloudDownloadLinks += util.format("<br/> Download <a href=\"%s\">%s</a> : %s", aggregate[version].downloadUrl, version, prodSdkVersionTags[version].join(","));
+    });
+
+    downloadsDoc.write(util.format("# Download Portal SDK <br/> %s <br/> <table><tr><th>Download</th><th>Detail</th><th>Breaking Changes</th></tr>", perCloudDownloadLinks || downloadLinks));
 
     sortedVersions.forEach(function (version) {
         var result = aggregate[version];
