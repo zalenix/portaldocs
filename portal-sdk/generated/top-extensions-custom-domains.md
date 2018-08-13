@@ -1,19 +1,17 @@
 <a name="custom-domains"></a>
 # Custom Domains
 
-* [Tile gallery](#tile-gallery)
-
 * [Domain based configuration](#domain-based-configuration)
 
 * [Exposing configuration settings](#exposing-configuration-settings)
 
 * [Dictionary configuration](#dictionary-configuration) 
 
-* [Exporting domain based configuration values to the client](#exporting-domain-based-configuration-values-to-the-client) 
+* [Branding and Chrome](#branding-and-chrome)
 
 * [Custom Domain Questionnaire Template](#custom-domain-questionnaire-template) 
 
-* [Branding and Chrome](#branding-and-chrome)
+* [Tile gallery](#tile-gallery)
 
 * [Feature flags](#feature-flags)
 
@@ -22,17 +20,6 @@
 * [Tile Gallery](#tile-gallery) 
 
 * [Override Links](#override-links)
-
-<a name="custom-domains-tile-gallery"></a>
-## Tile Gallery
-
-<!-- TODO: Determine what the tile gallery has to do with custom domains and/ or the questionnaire template -->
-
-The tile gallery is visible when the user clicks on `Edit dashboard`. It displays a collection of tiles that can be dragged and dropped on the dashboard. Available tiles can be searched by Category, by Type, by resource group, by tag, or by using the Search string.
-
-* The `hidePartsGalleryPivot` flag disables all the search types except the Category search. The Category selector will be displayed only if any tile has a category assigned to it.
-
-* The `hiddenGalleryParts` list allows this extension to hide specific parts that are made available by other extensions. For example, by default, the Service Health part is always displayed, but it can be hidden by adding it to this list.
  
 <a name="custom-domains-domain-based-configuration"></a>
 ## Domain based configuration
@@ -53,7 +40,7 @@ Extensions that are called contain additional code that pushes values to the bro
 
 **NOTE**: Domain-based configuration is based on the domain host address of the Shell, instead of the extension. Extensions do not need to support additional host names in order to take advantage of domain-based configuration.
 
-* [Domain based configuration APIs](#domain-based-configuration-apis)
+* [Configuration APIs](#configuration-apis)
 
 * [Exposing config settings to the client](#exposing-config-settings-to-the-client)
 
@@ -61,8 +48,8 @@ Extensions that are called contain additional code that pushes values to the bro
 
 If you have any questions, reach out to Ibiza team at [https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza).
 
-<a name="custom-domains-configuration-apis"></a>
-## Configuration APIs
+<a name="custom-domains-domain-based-configuration-configuration-apis"></a>
+### Configuration APIs
 
  The Shell provides two APIs to support domain-based configuration. The following is the recommended implementation methodology, although partners and developers can implement domain-based configuration in many ways.
 
@@ -70,8 +57,8 @@ If you have any questions, reach out to Ibiza team at [https://stackoverflow.mic
 
 * [The TrustedAuthorityHost function](#the-trustedAuthorityHost-function)
 
-<a name="custom-domains-configuration-apis-the-getsharedsettings-function"></a>
-### The getSharedSettings function
+<a name="custom-domains-domain-based-configuration-configuration-apis-the-getsharedsettings-function"></a>
+#### The getSharedSettings function
 
 In the `MsPortalFx.Settings.getSharedSettings()` function, selected values from Shell are exposed through an RPC call for the following reasons.
 
@@ -109,8 +96,8 @@ Links are automatically expanded according to the user's domain, tenant, and lan
 
 The consuming extension should support all three formats if they take a dependency.
  
-<a name="custom-domains-configuration-apis-the-trustedauthorityhost-function"></a>
-### The TrustedAuthorityHost function
+<a name="custom-domains-domain-based-configuration-configuration-apis-the-trustedauthorityhost-function"></a>
+#### The TrustedAuthorityHost function
 
 The Server-side `PortalContext.TrustedAuthorityHost` function returns the host name under which the extension was loaded. For example, an extension named may need to know if it is being called from `portal.azure.com` or `Contoso.azure.com`. In the first case `TrustedAuthorityHost` will contain "portal.azure.com" and in the second, "contoso.azure.com".
  
@@ -129,6 +116,32 @@ By allowing the client code in extensions to gain access to configuration settin
 
 1. The client script loads the configuration from `window.fx.environment` that implements the `FxEnvironment` interface. To declare the new configuration entry, the file `FxEnvironmentExtensions.d.ts` in the `Definitions` folder should be updated for each property that is exposed to the client.
 
+In many cases, the domain-based configuration is needed in client-side **TypeScript**. The  extension developer can use the following script to download these values, although they have a number of development options.
+
+1. In `ExtensionExtensionDefinition.cs`, add the configuration class to the `ImportContructor`.
+
+1. Override `IReadOnlyDictionary&lt;string, object&gt; GetExtensionConfiguration(PortalRequestContext context)`  to extend the environment object that is returned to the client, as in the following code.
+
+    ```cs
+        public over`ride IReadOnlyDictionary<string, object> GetExtensionConfiguration(PortalRequestContext context)
+        {
+            var extensionConfig = base.GetExtensionConfiguration(context);
+            var settings = this.myConfig.GetSettings(context.TrustedAuthorityHost, CultureInfo.CurrentUICulture);
+
+            var mergedConfig = new Dictionary<string, object>()
+            {
+                {"links", settings.Links},
+                {"someSetting", settings.someSetting},
+            };
+
+            mergedConfig.AddRange(extensionConfig);
+
+        return mergedConfig;
+    }
+    ```
+
+1. Update `ExtensionFxEnvironment.d.ts` to include TypeScript definitions for the new values that are being downloaded to the client. A list of settings and feature flags is specified in [#branding-and-chrome](#branding-and-chrome).
+
 <a name="custom-domains-exposing-configuration-settings-configuration-procedure"></a>
 ### Configuration procedure
 
@@ -142,7 +155,9 @@ This procedure assumes that a Portal extension named "MyExtension" is being cust
 
     <!--TODO: Customize the sample code to match the description -->
 
-     gitdown": "include-section", "file": "SamplesExtension/Extension/Configuration/ArmConfiguration.cs", "section": "config#configurationsettings"}
+    <!--
+    gitdown": "include-section", "file": "SamplesExtension/Extension/Configuration/ArmConfiguration.cs", "section": "config#configurationsettings"}
+-->
 
 1. Save the file.
 
@@ -278,8 +293,8 @@ At runtime, the strongly typed settings for a specific key are obtained by using
 
     **NOTE**: The deserializer handles camel-case to pascal-case conversion when the code uses JSON property name conventions in the config file and C# name conventions in the configuration classes.
  
-<a name="custom-domains-dictionary-configuration-use-of-the-link-attribute"></a>
-#### Use of the Link attribute
+<a name="custom-domains-dictionary-configuration-the-link-attribute"></a>
+### The link attribute
 
 Expansion logic is required for properties that are marked `[Link]`. The format string is specified in the `LinkTemplate` property that is located at the root of the object. A `LinkTemplate` value of `https://go.microsoft.com/fwLink/?LinkID={linkId}&amp;clcid=0x{lcid}` is the correct template for FwLinks.
 
@@ -300,7 +315,7 @@ An exception will be thrown if the target of a `[Link]` attribute is not in one 
 * A http or https URL
 
 <a name="custom-domains-dictionary-configuration-the-default-key"></a>
-#### The default key
+### The default key
 
 If no exact match is found for the specified key, or if the caller sends a value of null, the `Get` function returns the settings associated with a key whose name is `default`.
 
@@ -330,262 +345,87 @@ These settings return the following values.
 | Config3 | C1        | A2        | Only setting1 was overridden |
 | Config4 | A1        | A2        | Assigning null is the same as skipping the property |
 
------------------------------------
 
-<a name="custom-domains-exporting-domain-based-configuration-values-to-the-client"></a>
-## Exporting domain based configuration values to the client
-
-In many cases, the domain-based configuration is needed in client-side **TypeScript**. While the extension developer is free to do this any way they want, we recommend the following for extensions following our recommended practices / templates:
-
-1. In ExtensionExtensionDefinition.cs, add the configuration class to the ImportContructor and save it away for later use
-
-2. Override `IReadOnlyDictionary&lt;string, object&gt; GetExtensionConfiguration(PortalRequestContext context)` 
-and use this to extend the environmental object being returned to the client. For example:
-
-```cs
-    public override IReadOnlyDictionary<string, object> GetExtensionConfiguration(PortalRequestContext context)
-    {
-        var extensionConfig = base.GetExtensionConfiguration(context);
-        var settings = this.myConfig.GetSettings(context.TrustedAuthorityHost, CultureInfo.CurrentUICulture);
-
-        var mergedConfig = new Dictionary<string, object>()
-        {
-            {"links", settings.Links},
-            {"someSetting", settings.someSetting},
-        };
-
-        mergedConfig.AddRange(extensionConfig);
-
-    return mergedConfig;
-}
-```
-
-3. Update `ExtensionFxEnvironment.d.ts` to include TypeScript definitions for the new values you are downloading to the client.
-
-
-
-<a name="custom-domains-exporting-domain-based-configuration-values-to-the-client-consumption-example"></a>
-### Consumption example
-
-The following three examples demonstrate how to 
-
-* Consumption example 
-
-    ```cs
-    [ImportingConstructor]
-    public MyConsumingClass(PortalContext portalContext, MyConfiguration myConfiguration)
-    {
-        this.portalContext = portalContext;
-        this.myConfiguration = myConfiguration;
-    }
-    ...
-    public void DoSomthing()
-    {
-        var settings = this.myConfiguration.Get(this.portalContext.TrustedAuthorityHost, CultureInfo.CurrentUICulture);
-        if (settings.ShowPricing) {...};
-        string expandedUrl = settings.GettingStarted;
-    }
-    ```
-
-* Configuration and settings classes
-
-    ```cs
-    namespace Microsoft.MyExtension.Configuration
-    {
-        [Export]
-        public class MyConfiguration : DictionaryConfiguration<MySettings>
-        {
-        }
-
-        /// <summary>Configuration that can vary by the domain by which the user accesses the portal (or some other string)</summary>
-        public class MySettings
-        {
-            [JsonProperty]
-            public string LinkTemplate { get; private set; }
-    
-            [JsonProperty]
-            public MyLinks Links { get; private set; }
-    
-            [JsonProperty]
-            public bool ShowPricing{ get; private set; }
-        }
-
-        /// <summary>Links don't have to be a separate class, I just like to group them separately to other settings</summary>
-        public class MyLinks
-        {
-            [JsonProperty, Link]
-            public string GettingStarted { get; private set; }
-    
-            [JsonProperty, Link]
-            public string Support { get; private set; }
-    
-            [JsonProperty, Link]
-            public string TermsAndConditions { get; private set; }
-        }
-    }
-    ```
-
-* Corresponding example config settings
-
-    This example supports a deployment that returns different run-time configuration values for the settings class. Which value is returned is dependent on whether the portal was accessed through portal.azure.com, example.microsoft.com, fujitsu.portal.azure.com, or hostfileoverride.com.
-
-    The configuration block is in the following code.
-
-    ```xml
-    <add key="Microsoft.MyExtension.Configuration.MyConfiguration.Settings" value="{
-        'default': {
-            'linkTemplate': 'https://go.microsoft.com/fwLink/?LinkID={linkId}&amp;clcid=0x{lcid}',
-            'links': {
-                'gettingStarted': '111111',
-                'support': '#create/Microsoft.Support',
-                'termsAndConditions': 'https://microsoft.com',
-            },
-            'ShowPricing': true,
-        },
-        'fujitsu.portal.azure.com' : {
-            'links': {
-                'gettingStarted': '222222',
-                'support': '',
-                'termsAndConditions': 'https://fujitsu.com',
-            },
-            'ShowPricing': false,
-        },
-        'example.microsoft.com': {
-            'ShowPricing': false,
-        }
-        }"/>
-    ```
-
-    The following code would call the previous code block.
-
-    ```cs
-        var config = this.myConfiguration.Get(this.portalContext.TrustedAuthorityHost, CultureInfo.CurrentUICulture);
-    ``` 
-
-    The call to the code block gives the following results.
-
-    URL user used to access the portal|User's culture|config.showPricing|config.links.gettingStarted|config.links.support|config.links.termsAndConditions
-    ----------------------------------|--------------|------------------|---------------------------|--------------------|-------------------------------
-    portal.azure.com        |en-us  |true |https://go.microsoft.com/fwLink/?LinkID=111111&clcid=0x409|#create/Microsoft.Support|https://microsoft.com
-    portal.azure.com        |zh-hans|true |https://go.microsoft.com/fwLink/?LinkID=111111&clcid=0x4|#create/Microsoft.Support|https://microsoft.com
-    fujitsu.portal.azure.com|en-us  |false|https://go.microsoft.com/fwLink/?LinkID=222222&clcid=0x409||https://fujitsu.com
-    example.micrtosoft.com  |en-us  |false|https://go.microsoft.com/fwLink/?LinkID=111111&clcid=0x409|#create/Microsoft.Support|https://microsoft.com
-    hostFileOverride.com    |en-us  |true |https://go.microsoft.com/fwLink/?LinkID=111111&clcid=0x409|#create/Microsoft.Support|https://microsoft.com
- 
-***NOTE**: The only URL that matters is the one through which the Portal is accessed. The URL that is used to access the extension is not relevant and does not change.
-
-<a name="custom-domains-custom-domain-questionnaire-template"></a>
-## Custom Domain - Questionnaire Template
-
-The following template contains questions that your team answers previous to  the granting of the  custom domain. You may want to make a copy and fill the details.
-
-1. Why do you need a Custom Domain?
-
-1. What is the name of the extension in Ibiza Portal?
-
-1. When do you expect the extension to be ready for deployment?
-
-1. What timelines are you looking to go live? 
-
-    | Requirement                        | Estimated Completion Date |
-    | ---------------------------------- | ------------------------- |
-    | Azure Portal team PM Lead approval |                           |
-    | Completed Questionnaire            |                           |
-    | Completed Default Dashboard Json   |                           |
-    | Planning for Dev work              | 1 week                    |
-    | Dev work                           | Requires 3-4 weeks after scheduling, subject to resource availability | 
-    | Deployments                        | Post dev work 2-3 weeks to Prod based on Safe deployment schedule | 
-
-1. URL
-
-	| Setting name / notes	| Public Value	        | Extension value                  |
-    | --------------------- | --------------------  | -------------------------------- |
-    | Production URL        | `portal.azure.com`    | `aad.portal.azure.com`           |
-    | Dogfood URL           | `df.portal.azure.com` | `df-aad.onecloud.azure-test.net` |
- 
-<a name="custom-domains-custom-domain-questionnaire-template-branding-and-chrome"></a>
-### Branding and Chrome
+<a name="custom-domains-branding-and-chrome"></a>
+## Branding and Chrome
 
 <!-- TODO:  Determine whether the Custom Domain Questionnaire should include a screen shot of the new extension that is similar to the one described in this section. -->
 
-The following image is the Azure Dashboard. The titles and labels that it displays are from settings in the extension and its configuration files.
+The following image is the Azure Dashboard. The titles and labels that it displays are the settings in the extension and its configuration files.
 
 ![alt-text](../media/top-extensions-custom-domains/branding-and-chrome.png "Branding and Chrome")
 
 The following table specifies the parts in the dashboard image.
 
-| Setting or feature flag              | Description  | Public Value | Extension value |
-| ---------------------- | ----------- | ------------ | ----------   |
-| URL                    |             |              |              |
-| Title                  | The text that appears on the Browser tab/title bar. It is located in the page’s `<TITLE>` element) | Microsoft Azure | Azure Active Directory admin center |
-| internalonly           | Controls whether the Orange ‘Preview’ tag appears to the left of the site name )  | false  | false | 
-| Product Name           | The text that appears on the top bar | Microsoft Azure | Azure Active Directory admin center  |
-| hideSearchBox          | Hides the “Search resources” box  | false | true |
-| feedback |  A value of `False` hides the  feedback  icon on top bar  | true | true |  
-| hideDashboardShare     | Hides the Dashboard Share Button  | false | true |
-| hideCreateButton       | Hides the Create ("+ New") Button | false | true |
-| defaultTheme           | The default color theme for the portal | blue |  light |
-| Description            | SEO text that is included in the page source that is not visible to the end-user | Microsoft Azure Management Portal | Azure Active Directory admin center for administrators |
-| hidePartsGalleryPivots | Hides parts types picker from parts gallery. Does not disable the category picker  | false | true |
-| hiddenGalleryParts     | Hides listed parts from the parts gallery, like `All Resources`, `Service Health`, and others  | empty | Only include markdown, clock and video, help & support |
- 
-<a name="custom-domains-custom-domain-questionnaire-template-feature-flags"></a>
-### Feature flags
+<!-- TODO: Determine whether "Public value" can be changed to "Default value". -->
+
+| Setting or feature flag              | Description  | Default Value |
+| ---------------------- | ----------- | ------------ | 
+| URL                    | The address of the extension. |              |              |
+| Title                  | The text that appears on the Browser tab/title bar. It is located in the page’s `<TITLE>` element | Micro`soft Azure |
+| internalonly           | Controls whether the Orange ‘Preview’ tag appears to the left of the site name  | false  | 
+| Product Name           | The text that appears on the top bar | Microsoft Azure | 
+| hideSearchBox          | Hides the “Search resources” box  | false |
+| feedback |  A value of `False` hides the  feedback  icon on top bar  | true |
+| hideDashboardShare     | Hides the Dashboard Share Button  | false | 
+| hideCreateButton       | Hides the Create ("+ New") Button | false | 
+| defaultTheme           | The default color theme for the portal | blue |  
+
+* Feature flags
 
 These feature flags impact dashboard settings that are not immediately visible. The recommended values are prepopulated, although you can modify them for your extension.
 
-| Setting                     | Description  | Public Value  | Recommended Value  | 
-| --------------------------- | ------------ | --------------------------------------  | -------- |
-| hidesupport                 | Hides support functionality in property and other select dialogs. | Not set | false |
-| nps                         | Controls whether the Net Promoter Score (‘How likely are you to recommend this site?’) prompt can be displayed for the site. | true |false  | 	
-| hubsextension_skipeventpoll | Disables ‘what’s new’ and subscription level notifications like  deployment complete for VMs  | Not set  | Recommend set to true unless showing all resource types from all extensions.
+| Setting  | Description  | Public Value  | 
+| -------- | ------------ | --------------------------------------  | 
+| hidesupport                 | Hides support functionality in property and other select dialogs. | Not set | 
+| nps                         | Controls whether the Net Promoter Score (‘How likely are you to recommend this site?’) prompt can be displayed for the site. | true |
+| hubsextension_skipeventpoll | Disables ‘what’s new’ and subscription level notifications like  deployment complete for VMs  | Not set  | 
+| Description            | SEO text that is included in the page source that is not visible to the end-user | Microsoft Azure Management Portal | 
 
-<a name="custom-domains-custom-domain-questionnaire-template-curation"></a>
-### Curation
+<a name="custom-domains-curation"></a>
+## Curation
 
-A browsable asset type is one that is defined in the `PDL` file by using the `Browse` tag. Curation controls the visibility and grouping of browsable asset types in the **Favorites and Browse** portions of the left navigation bar, as in the following image.
+Curation allows items that are displayed on the left navigation bar to be added, removed, and reordered. This is an alternative to hiding items programmatically or making them accessible by using deep links. For example, you can hide the ability to create new storage accounts from users, while still allowing the extension to open the `Storage Accounts` property and then open the `usage logs` blades for a storage account that was created for one of the extension's assets. Curation is optional because the extension can inherit from the production environment.
+
+<!-- TODO:  If the storage account example is fictitious, locate one that is not fictitious. -->
+
+A browsable asset type is one that is defined in the `PDL` file by using the `Browse` tag. Curation controls the visibility and grouping of browsable asset types in the **Favorites and Browse** portions of the left navigation bar, or the  **Favorites and Category** section, as in the following image.
 
 ![alt-text](../media/top-extensions-custom-domains/curation.png "Categories and asset types")
 
-Curation allows the listed items to be added, removed, and reordered. Curation hides items only from the left navigation bar, as opposed to hiding items from code or making them accessible by using deep links. For example, you can hide the ability to create new storage accounts from users, while still allowing the extension to open the `Storage Accounts` property and then open the `usage logs` blades for a storage account that was created  for one of the extension's assets.
-
-Your cloud can customize how browseable assets are displayed in the **Favorites and Category** section. This is optional because the extension can inherit from the production environment.
-
-<!-- TODO:  If the storage account example is fictitious, locate one that is not fictitious. -->
+<!-- TODO: Determine whether  "Public value" can be changed to "Default value". -->
  
-<a name="custom-domains-custom-domain-questionnaire-template-curation-category-curation"></a>
-#### Category Curation
+<a name="custom-domains-curation-curation"></a>
+### Curation
 
-The Category curation model provides a significant degree of flexibility, which can be overwhelming because options are NOT mutually exclusive. For example, the production curation definition can be programmatically modified in the following ways.
+Curation provides a significant degree of flexibility, which can be overwhelming because options are NOT mutually exclusive. For example, the production curation definition can be programmatically modified in the following ways.
 
-* Remove everything except assets from three extensions
+* Remove everything except the assets from three extensions
 
-* For the third extension in the previous example, change the category in which items are located.
+* For the third extension in the example, change the category in which items are located.
  
 **NOTE**: Empty categories are automatically hidden.
  
-The most common configurations are as follows.
+The most common configurations are Community Clouds that display `Help & Support`, configs that automatically add new browsable assets, and configs that display only assets from the extension.
 
-* Community Clouds that display Help & Support, that automatically add new browsable assets, and that display only assets from the extension.
-
-Use `Curation by AssetType` to list only items from the extension, and perhaps some items from `Help & Support`. It can be combined with `Curation by Extension` to allow new asset types you deploy to be displayed  while the  updates to your `Curation by AssetType` are waiting on the next Shell deployment, combined with a DiscoveryPolicy of Hide to prevent new asset types from other extensions appearing.
+Use `Curation by AssetType` to list only items from the extension, and perhaps some items from `Help & Support`. It can be combined with `Curation by Extension` to allow new asset types you deploy to be displayed  while the  updates to your `Curation by AssetType` are waiting on the next Shell deployment, combined with a `DiscoveryPolicy` of "Hide" to prevent the display of new asset types from other extensions.
 		
 * All AAD extensions except "KeyVault" and "Help + Support"
 
-* Default all items to go under "Security + Identity" category (including help and support)
+* Default all items to go under "Security + Identity" category, including "Help + Support"
  
-<a name="custom-domains-custom-domain-questionnaire-template-curation-default-favorites"></a>
+<a name="custom-domains-curation-curation-default-favorites"></a>
 #### Default Favorites
 
-When a new user visits your Community Cloud for the first time, the system places a number of assets types in the far left drawer. You can control which items are placed here and the order in which they are displayed. The only restriction is that these items must also exist in the Category Curation.
-	 
-| Extension Name | Asset ID | Comments |
-| -------------- | -------- | -------- |
-| MICROSOFT_AAD_IAM | AzureActiveDirectory  |  |
+When a new user visits your Community Cloud for the first time, the system places several asset types in the far left drawer. You can control which items are placed there, in addtion to the order in which they are displayed. The only restriction is that these items must also exist in the Category Curation.
+ 
+| Extension Name    | Asset ID                       | Comments            |
+| ----------------- | ------------------------------ | ------------------- |
+| MICROSOFT_AAD_IAM | AzureActiveDirectory           |                     |
 | MICROSOFT_AAD_IAM | AzureActiveDirectoryQuickStart | Not implemented yet | 
-| MICROSOFT_AAD_IAM | UserManagement |  | 
-| MICROSOFT_AAD_IAM | Application |  | 
-| MICROSOFT_AAD_IAM | Licenses | Not implemented yet | 
+| MICROSOFT_AAD_IAM | UserManagement                 |                     | 
+| MICROSOFT_AAD_IAM | Application                    |                     | 
+| MICROSOFT_AAD_IAM | Licenses                       | Not implemented yet | 
  
 * Azure Active Directory
 * Quick start
@@ -593,9 +433,27 @@ When a new user visits your Community Cloud for the first time, the system place
 * Enterprise apps
 * Licenses
 	
-Items will be added in the order listed.
+<a name="custom-domains-curation-curation-tile-gallery"></a>
+#### Tile Gallery
+
+<!-- TODO: Determine what the tile gallery has to do with custom domains and/ or the questionnaire template -->
+
+The tile gallery is visible when the user clicks on `Edit dashboard`. It displays a collection of tiles that can be dragged and dropped on the dashboard. Available tiles can be searched by Category, by Type, by resource group, by tag, or by using the Search string.
+
+* The `hidePartsGalleryPivot` flag disables all the search types except the Category search. The Category selector will be displayed only if any tile has a category assigned to it.
+
+* The `hiddenGalleryParts` list allows this extension to hide specific parts that are made available by other extensions. For example, by default, the Service Health part is always displayed, but it can be hidden by adding it to this list.
+
+Items are added in the order listed.
  
-<a name="custom-domains-custom-domain-questionnaire-template-curation-default-dashboard"></a>
+
+| Setting or feature flag              | Description  | Default Value |
+| ---------------------- | ----------- | ------------ | 
+| hidePartsGalleryPivots | Hides parts types picker from parts gallery. Does not disable the category picker  | false | 
+| hiddenGalleryParts     | Hides listed parts from the parts gallery, like `All Resources`, `Service Health`, and others  | empty | 
+
+
+<a name="custom-domains-curation-curation-default-dashboard"></a>
 #### Default Dashboard
 
 The default dashboard JSON controls what parts appear on the dashboard for new users. Existing users need to use the `Reset Dashboard` option to see updated versions of the default dashboard. The following steps generate the JSON. 
@@ -879,10 +737,183 @@ Links are separated into the following three sections.
 | portalVideo |	[https://go.microsoft.com/fwLink/?LinkID=394684](https://go.microsoft.com/fwLink/?LinkID=394684) |	 blank |
 | supportedBrowserMatrix |	[https://go.microsoft.com/fwLink/?LinkID=394683](https://go.microsoft.com/fwLink/?LinkID=394683)	 | same |
 | unsupportedLayoutHelp	 |[https://go.microsoft.com/fwLink/?LinkID=394683]()	 | same |
+
+
+
+<a name="custom-domains-override-links-consumption-example"></a>
+### Consumption example
+
+The following three examples demonstrate how to 
+
+* Consumption example 
+
+    ```cs
+    [ImportingConstructor]
+    public MyConsumingClass(PortalContext portalContext, MyConfiguration myConfiguration)
+    {
+        this.portalContext = portalContext;
+        this.myConfiguration = myConfiguration;
+    }
+    ...
+    public void DoSomthing()
+    {
+        var settings = this.myConfiguration.Get(this.portalContext.TrustedAuthorityHost, CultureInfo.CurrentUICulture);
+        if (settings.ShowPricing) {...};
+        string expandedUrl = settings.GettingStarted;
+    }
+    ```
+
+* Configuration and settings classes
+
+    ```cs
+    namespace Microsoft.MyExtension.Configuration
+    {
+        [Export]
+        public class MyConfiguration : DictionaryConfiguration<MySettings>
+        {
+        }
+
+        /// <summary>Configuration that can vary by the domain by which the user accesses the portal (or some other string)</summary>
+        public class MySettings
+        {
+            [JsonProperty]
+            public string LinkTemplate { get; private set; }
+    
+            [JsonProperty]
+            public MyLinks Links { get; private set; }
+    
+            [JsonProperty]
+            public bool ShowPricing{ get; private set; }
+        }
+
+        /// <summary>Links don't have to be a separate class, I just like to group them separately to other settings</summary>
+        public class MyLinks
+        {
+            [JsonProperty, Link]
+            public string GettingStarted { get; private set; }
+    
+            [JsonProperty, Link]
+            public string Support { get; private set; }
+    
+            [JsonProperty, Link]
+            public string TermsAndConditions { get; private set; }
+        }
+    }
+    ```
+
+* Corresponding example config settings
+
+    This example supports a deployment that returns different run-time configuration values for the settings class. The value that is returned is dependent on whether the portal was accessed through `portal.azure.com`, `example.microsoft.com`, `fujitsu.portal.azure.com`, or `hostfileoverride.com`. The configuration block is in the following code.
+
+    ```xml
+    <add key="Microsoft.MyExtension.Configuration.MyConfiguration.Settings" value="{
+        'default': {
+            'linkTemplate': 'https://go.microsoft.com/fwLink/?LinkID={linkId}&amp;clcid=0x{lcid}',
+            'links': {
+                'gettingStarted': '111111',
+                'support': '#create/Microsoft.Support',
+                'termsAndConditions': 'https://microsoft.com',
+            },
+            'ShowPricing': true,
+        },
+        'fujitsu.portal.azure.com' : {
+            'links': {
+                'gettingStarted': '222222',
+                'support': '',
+                'termsAndConditions': 'https://fujitsu.com',
+            },
+            'ShowPricing': false,
+        },
+        'example.microsoft.com': {
+            'ShowPricing': false,
+        }
+        }"/>
+    ```
+
+    The following code calls the configuration code block.
+
+    ```cs
+        var config = this.myConfiguration.Get(this.portalContext.TrustedAuthorityHost, CultureInfo.CurrentUICulture);
+    ```
+
+    The call to the code block results in the following values.
+
+    | URL                        | User's culture | config.showPricing | gettingStarted  | support |termsAndConditions |
+    | ------------------------------------ | --------------|------------------|---------------------------|--------------------|-------------------------------
+    | `portal.azure.com`         | en-us   | true  | [https://go.microsoft.com/fwLink/?LinkID=111111&clcid=0x409](https://go.microsoft.com/fwLink/?LinkID=111111&clcid=0x409) | #create/Microsoft.Support | [https://microsoft.com](https://microsoft.com) |
+    | `portal.azure.com`         | zh-hans | true  | [https://go.microsoft.com/fwLink/?LinkID=111111&clcid=0x4](https://go.microsoft.com/fwLink/?LinkID=111111&clcid=0x4) | #create/Microsoft.Support | [https://microsoft.com](https://microsoft.com) |
+    | `fujitsu.portal.azure.com` | en-us   | false | [https://go.microsoft.com/fwLink/?LinkID=222222&clcid=0x409](https://go.microsoft.com/fwLink/?LinkID=222222&clcid=0x409) | | [https://fujitsu.com](https://fujitsu.com)
+    | `example.microsoft.com`    | en-us   | false | [https://go.microsoft.com/fwLink/?LinkID=111111&clcid=0x409](https://go.microsoft.com/fwLink/?LinkID=111111&clcid=0x409) | #create/Microsoft.Support  | [https://microsoft.com](https://microsoft.com) |
+    | `hostFileOverride.com`     | en-us   | true  | [https://go.microsoft.com/fwLink/?LinkID=111111&clcid=0x409](https://go.microsoft.com/fwLink/?LinkID=111111&clcid=0x409) | #create/Microsoft.Support | [https://microsoft.com](https://microsoft.com) |
+ 
+**NOTE**: The only URL that matters is the one that the user uses to access the Portal. The URL that is used to access the extension is not relevant and does not change.
+
+**NOTE**: `gettingStarted`, `support`, and `termsAndConditions` are members of the  `links` parameter in the `config` variable.
+
+
+
+<a name="custom-domains-custom-domain-questionnaire-template"></a>
+## Custom Domain - Questionnaire Template
+
+The following template contains questions that your team answers previous to  the granting of the  custom domain. You may want to make a copy and fill the details.
+
+1. Why do you need a Custom Domain?
+
+1. What is the name of the extension in Ibiza Portal?
+
+1. When do you expect the extension to be ready for deployment?
+
+1. What timelines are you looking to go live? 
+
+    | Requirement                        | Estimated Completion Date |
+    | ---------------------------------- | ------------------------- |
+    | Azure Portal team PM Lead approval |                           |
+    | Completed Questionnaire            |                           |
+    | Completed Default Dashboard Json   |                           |
+    | Planning for Dev work              | 1 week                    |
+    | Dev work                           | Requires 3-4 weeks after scheduling, subject to resource availability | 
+    | Deployments                        | Post dev work 2-3 weeks to Prod based on Safe deployment schedule | 
+
+1. URL
+
+	| Setting name / notes	| Public Value	        | Extension value                  |
+    | --------------------- | --------------------  | -------------------------------- |
+    | Production URL        | `portal.azure.com`    | `aad.portal.azure.com`           |
+    | Dogfood URL           | `df.portal.azure.com` | `df-aad.onecloud.azure-test.net` |
+
+1. Branding and Chrome Values
+
+Recommended extension values are located in [portalfx-extensions-bp-custom-domains.md# branding-and-chrome-values](portalfx-extensions-bp-custom-domains.md#branding-and-chrome-values). Include the values for  settings and feature flags for your extension in the following list by making a copy and adding the appropriate details.
+
+| Setting or feature flag     | Extension value |
+| ---------------------- | ---------------   |
+| URL                    | The address of the extension |       
+| Title                  | Azure Active Directory admin center |
+| internalonly           | false | 
+| Product Name           | Azure Active Directory admin center  |
+| hideSearchBox          | true |
+| feedback               | true |  
+| hideDashboardShare     | true |
+| hideCreateButton       | true |
+| defaultTheme           | light |
+| Description            | Azure Active Directory admin center for administrators |
+| hidePartsGalleryPivots | true |
+| hiddenGalleryParts     | Only include markdown, clock and video, help & support |
+
+* Feature flags
+
+These feature flags impact dashboard settings that are not immediately visible. The recommended values are prepopulated, although you can modify them for your extension.
+
+| Setting                     | Recommended Value  | 
+| --------------------------- | -------- |
+| hidesupport                 | false |
+| nps                         | false |
+| hubsextension_skipeventpoll | True, unless showing all resource types from all extensions. |
+
  
  ## Best Practices
 
-<a name="custom-domains-override-links-using-portalcontext-trustedauthorityhost-properly"></a>
+<a name="custom-domains-custom-domain-questionnaire-template-using-portalcontext-trustedauthorityhost-properly"></a>
 ### Using PortalContext.TrustedAuthorityHost properly
 
 Do not use PortalContext.TrustedAuthorityHost directly, as in the following example. 
@@ -897,7 +928,7 @@ if (PortalContext.TrustedAuthorityHost.startsWith("contoso"))
 
 This is an anti-pattern for several reasons. The code becomes peppered with Cloud specific 'if' blocks that are hard to test, maintain, and find. This increases in complexity as the number of supported Clouds increases. Also, if another cloud that requires any of this logic comes online, the code has to be updated. Instead, use domain-based configuration to create a setting that varies by `PortalContext.TrustedAuthorityHost`, which is available at run time and returns the host name under which the extension was loaded.
 
-<a name="custom-domains-override-links-dynamic-pdl-changes"></a>
+<a name="custom-domains-custom-domain-questionnaire-template-dynamic-pdl-changes"></a>
 ### Dynamic PDL changes
 
 Never change the PDL that your extension serves based on the host of the caller, or based on feature flags that change based on callers.
@@ -907,6 +938,36 @@ Never change the PDL that your extension serves based on the host of the caller,
 1. When the Shell directly requests the PDL from each extension, it does so on its own behalf and not on behalf of any specific user. In such cases, `PortalContext.TrustedAuthorityHost` is a constant.
 
 1. Changing the default feature flags that are sent to the extension requires Shell config changes and redeployment.
+
+<a name="custom-domains-custom-domain-questionnaire-template-branding-and-chrome-values"></a>
+### Branding and Chrome Values
+
+The following values are recommended, but not required, values for  setting and feature flags for  extension branding and chrome.
+
+| Setting or feature flag     | Extension value |
+| ---------------------- | ---------------   |
+| URL                    | The address of the extension |       
+| Title                  | Azure Active Directory admin center |
+| internalonly           | false | 
+| Product Name           | Azure Active Directory admin center  |
+| hideSearchBox          | true |
+| feedback               | true |  
+| hideDashboardShare     | true |
+| hideCreateButton       | true |
+| defaultTheme           | light |
+| Description            | Azure Active Directory admin center for administrators |
+| hidePartsGalleryPivots | true |
+| hiddenGalleryParts     | Only include markdown, clock and video, help & support |
+
+* Feature flags
+
+These feature flags impact dashboard settings that are not immediately visible. The recommended values are prepopulated, although you can modify them for your extension.
+
+| Setting                     | Recommended Value  | 
+| --------------------------- | -------- |
+| hidesupport                 | false |
+| nps                         | false | 	
+| hubsextension_skipeventpoll | True, unless showing all resource types from all extensions. |
 
 
  
