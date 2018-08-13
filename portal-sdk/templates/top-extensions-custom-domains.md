@@ -148,7 +148,9 @@ This procedure assumes that a Portal extension named "MyExtension" is being cust
 
     <!--TODO: Customize the sample code to match the description -->
 
-     {"gitdown": "include-section", "file": "SamplesExtension/Extension/Configuration/ArmConfiguration.cs", "section": "config#configurationsettings"}
+    <!--
+    gitdown": "include-section", "file": "SamplesExtension/Extension/Configuration/ArmConfiguration.cs", "section": "config#configurationsettings"}
+-->
 
 1. Save the file.
 
