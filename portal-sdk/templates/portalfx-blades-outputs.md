@@ -22,7 +22,7 @@ In this example, the parent blade defines a `BladeAction` which passes an `id` p
 </CustomPart>
 ```
  <!--
-{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Bindings/OutputBindings/OutputBindings.pdl", "section": "portalfx-blades-outputs#parent-part"}
+gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Bindings/OutputBindings/OutputBindings.pdl", "section": "portalfx-blades-outputs#parent-part"}
 -->
 
  
