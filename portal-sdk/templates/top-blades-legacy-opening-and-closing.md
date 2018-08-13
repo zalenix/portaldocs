@@ -32,9 +32,8 @@ The same pattern can be used for commands, as in the sample located at `<dir>\Cl
 </Command>
 ```
 
-<!--
-gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Commands/OpenBladeCommand/OpenBladeCommand.ts", "section": "top-blades-legacy#command"}
--->
+{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V1/Commands/OpenBladeCommand/OpenBladeCommand.pdl", "section": "top-blades-legacy#command"}
+
 
 **NOTE**: Typically, an extension sends information from the part or the command to the opened blade, which is not demonstrated in the previous code samples.
 
