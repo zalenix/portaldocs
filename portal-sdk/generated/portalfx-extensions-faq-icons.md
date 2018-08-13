@@ -2,7 +2,7 @@
 <a name="icon-incorrectly-displayed"></a>
 ### Icon incorrectly displayed
 
-***My icon is a dark square. What happened?***
+***The extension icon is displayed as a dark square. What happened?***
 
 DESCRIPTION:
 
@@ -13,6 +13,8 @@ The extension probably circumvents the build-time icon pre-processing that  prep
 SOLUTION: 
 
 Include the icon in your project normally. Build and  look at the generated file.  Find and copy the  fresh sanitized svg markup, and replace it.
+
+For more information, see [top-extensions-style-guide.md#preserve-icon-colors-over-theme-changes](top-extensions-style-guide.md#preserve-icon-colors-over-theme-changes).
 
 * * *
  
