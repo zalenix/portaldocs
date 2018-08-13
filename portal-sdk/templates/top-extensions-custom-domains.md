@@ -2,6 +2,8 @@
 
 * [Domain based configuration](#domain-based-configuration)
 
+* [Configuration APIs](#configuration-apis)
+
 * [Exposing configuration settings](#exposing-configuration-settings)
 
 * [Dictionary configuration](#dictionary-configuration) 
@@ -12,12 +14,10 @@
 
 * [Override Links](#override-links)
 
-* [Consumption example](#consumption-example)
+* [Sample configuration](#sample-configuration)
 
 * [Custom Domain Questionnaire Template](#custom-domain-questionnaire-template) 
 
-
- 
 ## Domain based configuration
 
 Domain-based configuration allows the Portal and Extensions to dynamically obtain settings based on the URL that was used to access the Portal. For example, accessing the Portal by using the `contoso.portal.azure.com` URL displays different values for domain-based settings than the `portal.azure.com` URL displays.
@@ -28,7 +28,7 @@ Some partner needs can be met at the deployment level. For example, national clo
 
 While domain-based configuration is not required to support national clouds, there is great overlap between settings that are changed for community clouds. It is often easier to store settings like links in domain-based configuration. Additionally, domain-based configuration includes support for expanding links from link redirection, or from shortener services such as **FwLink** and `aka.ms` services.
 
-Extensions that are called contain additional code that pushes values to the browser.  The consumption example located at [consumption example](#consumption-example) demonstrates the pattern that wires up server-side domain-based configuration.
+Extensions that are called contain additional code that pushes values to the browser.  The sample code located at [Sample configuration](#sample-configuration) demonstrates the pattern that wires up server-side domain-based configuration.
 
 **NOTE**: Settings like ARM endpoints are not typically candidates for domain-based configuration.
 
@@ -36,19 +36,17 @@ Extensions that are called contain additional code that pushes values to the bro
 
 **NOTE**: Domain-based configuration is based on the domain host address of the Shell, instead of the extension. Extensions do not need to support additional host names in order to take advantage of domain-based configuration.
 
-* [Configuration APIs](#configuration-apis)
-
 If you have any questions, reach out to Ibiza team at [https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza).
 
-### Configuration APIs
+## Configuration APIs
 
- The Shell provides two APIs to support domain-based configuration. The following is the recommended implementation methodology, although partners and developers can implement domain-based configuration in many ways.
+ The Shell provides two APIs that support domain-based configuration. The following is the recommended implementation methodology, although partners and developers can implement domain-based configuration in many ways.
 
 * [The getSharedSettings function](#the-getSharedSettings-function)
 
 * [The TrustedAuthorityHost function](#the-trustedAuthorityHost-function)
 
-#### The getSharedSettings function
+### The getSharedSettings function
 
 In the `MsPortalFx.Settings.getSharedSettings()` function, selected values from Shell are exposed through an RPC call for the following reasons.
 
@@ -86,7 +84,7 @@ Links are automatically expanded according to the user's domain, tenant, and lan
 
 The consuming extension should support all three formats if they take a dependency.
  
-#### The TrustedAuthorityHost function
+### The TrustedAuthorityHost function
 
 The Server-side `PortalContext.TrustedAuthorityHost` function returns the host name under which the extension was loaded. For example, an extension named may need to know if it is being called from `portal.azure.com` or `Contoso.azure.com`. In the first case `TrustedAuthorityHost` will contain "portal.azure.com" and in the second, "contoso.azure.com".
  
@@ -219,7 +217,7 @@ At runtime, the strongly typed settings for a specific key are obtained by using
  
  The `culture` parameter is optional, and is used when expanding settings that are marked with the special `[Link]` attribute. If the `culture` parameter  is not specified, the default is  `CultureInfo.CurrentUICulture`.
 
-  A boilerplate example is located at [consumption example](#consumption-example).
+  A boilerplate example is located at [Sample configuration](#sample-configuration).
 
 * The configuration class
 
@@ -237,7 +235,7 @@ At runtime, the strongly typed settings for a specific key are obtained by using
     }
     ```
 
-    Nested objects, like `Billing.EA.ShowPricing`, are fully supported, as in the example code located at [consumption example](#consumption-example).
+    Nested objects, like `Billing.EA.ShowPricing`, are fully supported, as in the sample code located at [Sample configuration](#sample-configuration).
 
 * The settings class
 
@@ -707,11 +705,11 @@ Links are separated into the following three sections.
 
 
 
-## Consumption example
+## Sample configuration
 
-The following three examples demonstrate how to 
+The following three examples demonstrate how to use the settings that are associated with custom domains.
 
-* Consumption example 
+* Consuming example 
 
     ```cs
     [ImportingConstructor]
