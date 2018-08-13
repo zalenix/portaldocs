@@ -8,17 +8,15 @@
 
 * [Branding and Chrome](#branding-and-chrome)
 
-* [Custom Domain Questionnaire Template](#custom-domain-questionnaire-template) 
-
-* [Tile gallery](#tile-gallery)
-
-* [Feature flags](#feature-flags)
-
 * [Curation](#curation)
 
-* [Tile Gallery](#tile-gallery) 
-
 * [Override Links](#override-links)
+
+* [Consumption example](#consumption-example)
+
+* [Custom Domain Questionnaire Template](#custom-domain-questionnaire-template) 
+
+
  
 ## Domain based configuration
 
@@ -39,10 +37,6 @@ Extensions that are called contain additional code that pushes values to the bro
 **NOTE**: Domain-based configuration is based on the domain host address of the Shell, instead of the extension. Extensions do not need to support additional host names in order to take advantage of domain-based configuration.
 
 * [Configuration APIs](#configuration-apis)
-
-* [Exposing config settings to the client](#exposing-config-settings-to-the-client)
-
-* [Dictionary configuration](#dictionary-configuration)
 
 If you have any questions, reach out to Ibiza team at [https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza).
 
@@ -117,7 +111,7 @@ In many cases, the domain-based configuration is needed in client-side **TypeScr
 1. Override `IReadOnlyDictionary&lt;string, object&gt; GetExtensionConfiguration(PortalRequestContext context)`  to extend the environment object that is returned to the client, as in the following code.
 
     ```cs
-        public over`ride IReadOnlyDictionary<string, object> GetExtensionConfiguration(PortalRequestContext context)
+        public override IReadOnlyDictionary<string, object> GetExtensionConfiguration(PortalRequestContext context)
         {
             var extensionConfig = base.GetExtensionConfiguration(context);
             var settings = this.myConfig.GetSettings(context.TrustedAuthorityHost, CultureInfo.CurrentUICulture);
@@ -334,8 +328,7 @@ These settings return the following values.
 | Config3 | C1        | A2        | Only setting1 was overridden |
 | Config4 | A1        | A2        | Assigning null is the same as skipping the property |
 
-
-## Branding and Chrome
+## Branding and chrome
 
 <!-- TODO:  Determine whether the Custom Domain Questionnaire should include a screen shot of the new extension that is similar to the one described in this section. -->
 
@@ -382,7 +375,7 @@ A browsable asset type is one that is defined in the `PDL` file by using the `Br
 
 <!-- TODO: Determine whether  "Public value" can be changed to "Default value". -->
  
-###  Curation
+### Curation categories
 
 Curation provides a significant degree of flexibility, which can be overwhelming because options are NOT mutually exclusive. For example, the production curation definition can be programmatically modified in the following ways.
 
@@ -400,25 +393,22 @@ Use `Curation by AssetType` to list only items from the extension, and perhaps s
 
 * Default all items to go under "Security + Identity" category, including "Help + Support"
  
-#### Default Favorites
+### Default Favorites
 
-When a new user visits your Community Cloud for the first time, the system places several asset types in the far left drawer. You can control which items are placed there, in addtion to the order in which they are displayed. The only restriction is that these items must also exist in the Category Curation.
+When a new user visits your Community Cloud for the first time, the system places several asset types in the far left navigation bar. The extension can also control which items are placed there, in addtion to the order in which they are displayed. The only restriction is that these items must also exist in the Category Curation.
+
+Is as follows.
  
-| Extension Name    | Asset ID                       | Comments            |
-| ----------------- | ------------------------------ | ------------------- |
-| MICROSOFT_AAD_IAM | AzureActiveDirectory           |                     |
-| MICROSOFT_AAD_IAM | AzureActiveDirectoryQuickStart | Not implemented yet | 
-| MICROSOFT_AAD_IAM | UserManagement                 |                     | 
-| MICROSOFT_AAD_IAM | Application                    |                     | 
-| MICROSOFT_AAD_IAM | Licenses                       | Not implemented yet | 
- 
-* Azure Active Directory
-* Quick start
-* Users and groups
-* Enterprise apps
-* Licenses
-	
-#### Tile Gallery
+ <!-- TODO:  Determine whether  AzureActiveDirectoryQuickStart  and  Licenses   are implemented yet  -->
+| Extension Name    | Asset ID                       | 
+| ----------------- | ------------------------------ | 
+| MICROSOFT_AAD_IAM | AzureActiveDirectory           |               
+| MICROSOFT_AAD_IAM | AzureActiveDirectoryQuickStart |   
+| MICROSOFT_AAD_IAM | UserManagement                 |                      
+| MICROSOFT_AAD_IAM | Application                    |                      
+| MICROSOFT_AAD_IAM | Licenses                       | 
+
+### Tile Gallery
 
 <!-- TODO: Determine what the tile gallery has to do with custom domains and/ or the questionnaire template -->
 
@@ -430,14 +420,13 @@ The tile gallery is visible when the user clicks on `Edit dashboard`. It display
 
 Items are added in the order listed.
  
-
 | Setting or feature flag              | Description  | Default Value |
 | ---------------------- | ----------- | ------------ | 
 | hidePartsGalleryPivots | Hides parts types picker from parts gallery. Does not disable the category picker  | false | 
 | hiddenGalleryParts     | Hides listed parts from the parts gallery, like `All Resources`, `Service Health`, and others  | empty | 
 
 
-#### Default Dashboard
+### Default Dashboard
 
 The default dashboard JSON controls what parts appear on the dashboard for new users. Existing users need to use the `Reset Dashboard` option to see updated versions of the default dashboard. The following steps generate the JSON. 
 
@@ -624,7 +613,6 @@ The default dashboard JSON controls what parts appear on the dashboard for new u
     [https://microsoft.sharepoint.com/teams/azureteams/aapt/azureux/portalfx/_layouts/OneNote.aspx?id=%2Fteams%2Fazureteams%2Faapt%2Fazureux%2Fportalfx%2FSiteAssets%2FPortalFx%20Notebook&wd=target%28Execution%2FFundamentals%2FDeployments.one%7C9B8BE2F4-DDEF-4504-982B-560AF50A892C%2FCustom%20Domain%20-%20Questionnaire%20Template%7C90BDECEB-D69D-4BA0-B60A-8A9EBB877CC4%2F%29](https://microsoft.sharepoint.com/teams/azureteams/aapt/azureux/portalfx/_layouts/OneNote.aspx?id=%2Fteams%2Fazureteams%2Faapt%2Fazureux%2Fportalfx%2FSiteAssets%2FPortalFx%20Notebook&wd=target%28Execution%2FFundamentals%2FDeployments.one%7C9B8BE2F4-DDEF-4504-982B-560AF50A892C%2FCustom%20Domain%20-%20Questionnaire%20Template%7C90BDECEB-D69D-4BA0-B60A-8A9EBB877CC4%2F%29)
     -->
 
-
 ## Override links
 
 Your cloud has the option of using settings to override specific links that are displayed by the system. Overriding is optional, and in many cases no overrides are required. Where supported, settings use FwLinks for links instead of absolute URLs because FwLinks do not require the Shell to be redeployed in order for the extension to change the destination. Also, FwLinks support the user’s in-product language selection, which is often different from the browser’s default language.  For example, if the user has set the language in the Portal to Chinese, it should display Chinese-language pages.
@@ -719,7 +707,7 @@ Links are separated into the following three sections.
 
 
 
-### Consumption example
+## Consumption example
 
 The following three examples demonstrate how to 
 
@@ -828,9 +816,7 @@ The following three examples demonstrate how to
 
 **NOTE**: `gettingStarted`, `support`, and `termsAndConditions` are members of the  `links` parameter in the `config` variable.
 
-
-
-## Custom Domain - Questionnaire Template
+## Custom domain questionnaire template
 
 The following template contains questions that your team answers previous to  the granting of the  custom domain. You may want to make a copy and fill the details.
 
