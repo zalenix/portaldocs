@@ -35,7 +35,7 @@ To create a FrameBlade, you need to create 3 artifacts.
 
 1. Register the FrameBlade with your extension by creating a TypeScript class with the @FrameBlade decorator. The samples extension file for this is located at   `<dir>/Client/V2/Blades/FrameBlade/SampleFrameBlade.ts` and in the following example.
 
-    ```typescript
+```typescript
 
 /**
  * View model for a FrameBlade.
@@ -59,10 +59,10 @@ export class SampleFrameBlade {
 
 ```
 
-1. Create an html page that will serve as the main contents of your iframe.  The samples extension file for this is located at `<dir>/Content/SamplesExtension/framebladepage.html` and in the following example.
+2. Create an html page that will serve as the main contents of your iframe.  The samples extension file for this is located at `<dir>/Content/SamplesExtension/framebladepage.html` and in the following example.
 
-    ```html
-    ﻿<!DOCTYPE html>
+```html
+﻿<!DOCTYPE html>
 <html>
 
 <head>
@@ -81,12 +81,12 @@ export class SampleFrameBlade {
 
 </html>
 
-    ```
+```
 
-1. Create a script that will communicate with your extension by using post messages. This is how your extension can get the auth token, respond to theme changes, and other tasks. The samples extension file for this is located        is located at  `<dir>/Content/Scripts/framepage.js`, and is also in the following example.
+3. Create a script that will communicate with your extension by using post messages. This is how your extension can get the auth token, respond to theme changes, and other tasks. The samples extension file for this is located        is located at  `<dir>/Content/Scripts/framepage.js`, and is also in the following example.
 
-    ```js
-    (function() {
+```js
+(function() {
     "use strict";
 
     // ---------------------------------------------------------------------------------------------
@@ -215,8 +215,9 @@ export class SampleFrameBlade {
     postMessageToParent("getAuthToken");
 })();
 
-    ```
+```
 
+<a name="changing-ui-themes"></a>
 ## Changing UI themes
 
 When using a FrameBlade, extension developers can implement themes. Typically, the user selects a theme, which in turn is sent to the UI IFrame. The following code snippet demonstrates how to pass the selected theme to the UI IFrame using the **postMessage** method.
