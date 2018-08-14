@@ -173,18 +173,18 @@ locationDropDown.value(locationDropDown.fetchedValues().first((value)=> value.na
 ```ts
 import * as SubscriptionDropDown from "Fx/Controls/SubscriptionDropDown";
 ```
-{"gitdown": "include-section", "file": "../../../src/SDK/devkit/VS/PT/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#subscriptionDropDown"}
+{"gitdown": "include-section", "file": "../Samples/VS/PT/Default/Extension/Client/Resource/Create/ViewModels/CreateBlade.ts", "section": "config#subscriptionDropDown"}
 
 #### Resource groups dropdown
 ```ts
 import * as ResourceGroupDropDown from "Fx/Controls/ResourceGroupDropDown";
 ```
-{"gitdown": "include-section", "file": "../../../src/SDK/devkit/VS/PT/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#resourceGroupDropDown"}
+{"gitdown": "include-section", "file": "../Samples/VS/PT/Default/Extension/Client/Resource/Create/ViewModels/CreateBlade.ts", "section": "config#resourceGroupDropDown"}
 #### Locations dropdown
 ```ts
 import * as LocationDropDown from "Fx/Controls/LocationDropDown";
 ```
-{"gitdown": "include-section", "file": "../../../src/SDK/devkit/VS/PT/Default/Extension/Client/Resource/Create/ViewModels/CreateBladeViewModel.ts", "section": "config#locationDropDown"}
+{"gitdown": "include-section", "file": "../Samples/VS/PT/Default/Extension/Client/Resource/Create/ViewModels/CreateBlade.ts", "section": "config#locationDropDown"}
 
 ### ARM dropdown options
 Each ARM dropdown can disable, hide, group, and sort.
