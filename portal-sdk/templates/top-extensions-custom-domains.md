@@ -1,12 +1,12 @@
-# Custom Domains
+# Domain-based configuration
 
-* [Domain based configuration](#domain-based-configuration)
+* [Overview](#overview)
 
 * [Configuration APIs](#configuration-apis)
 
-* [Exposing configuration settings](#exposing-configuration-settings)
+* [Expose configuration settings](#expose-configuration-settings)
 
-* [Dictionary configuration](#dictionary-configuration) 
+* [Configure the dictionary](#configure-the-dictionary)
 
 * [Branding and Chrome](#branding-and-chrome)
 
@@ -18,23 +18,21 @@
 
 * [Custom Domain Questionnaire Template](#custom-domain-questionnaire-template) 
 
-## Domain based configuration
+## Overview
 
-Domain-based configuration allows the Portal and Extensions to dynamically obtain settings based on the URL that was used to access the Portal. For example, accessing the Portal by using the `contoso.portal.azure.com` URL displays different values for domain-based settings than the `portal.azure.com` URL displays.
+Custom domains, or domain-based configurations, allow the Portal and extensions to dynamically obtain settings that are based on the URL that was used to access the Portal. Domain-based configuration is based on the domain host address of the Shell, instead of the extension. For example, accessing the Portal by using the `contoso.portal.azure.com` URL displays different values for domain-based settings than the `portal.azure.com` URL displays.  Extensions do not need to support additional host names in order to take advantage of domain-based configuration.
 
-The first-party or third-party developer identifies the functionality that an extension will use, based on the domain in which the extension is running. Once the partner and developer have identified the configurations for the extension, the developer creates a supporting `DictionaryConfiguration` class as specified in [Dictionary Configuration](#dictionary-configuration). The dictionary key is the host name the Shell was loaded under, which is available at run time by using `PortalContext` and `TrustedAuthorityHost`.
+Some partner needs are met at the deployment level. For example, national clouds like China, Germany, or Government, can use normal configuration with no dynamic tests at runtime.  Items that are based on which domain  is running the extension include  ARM and RP URLs, or AAD client application IDs.  
 
-Some partner needs can be met at the deployment level. For example, national clouds like China, Germany, or Government, can use normal configuration with no dynamic tests at runtime.  Examples that are based on which domain  is running the extension include  ARM and RP URLs, or AAD client application IDs.  In other instances, a single deployment of an extension supports multiple domains.  For example, community clouds, like Fujitsu A5, use domain-based configuration.  In these instances, functionality is selected based on the Trusted Authority for the calling extension, as specified in [#The-TrustedAuthorityHost-function](#the-trustedauthorityhost-function). 
+In other instances, a single deployment of an extension supports multiple domains.  For example, community clouds, like Fujitsu A5, use domain-based configuration.  In these instances, functionality is selected based on the Trusted Authority for the calling extension, as specified in [#The-trustedAuthorityHost-function](#the-trustedauthorityhost-function). Although domain-based configuration is not required to support national clouds, there is great overlap between settings that are selected for community clouds. It is easier to store settings like links in domain-based configuration, which includes support for expanding links from link redirection, or from friendly name services such as **FwLink** and `aka.ms` services.
 
-While domain-based configuration is not required to support national clouds, there is great overlap between settings that are changed for community clouds. It is often easier to store settings like links in domain-based configuration. Additionally, domain-based configuration includes support for expanding links from link redirection, or from shortener services such as **FwLink** and `aka.ms` services.
+During development, the first-party or third-party developer identifies the extension functionality that depends on the domain in which the extension is running. Once the partner and developer have identified the configurations that provide this functionality for the extension, the developer creates a supporting `DictionaryConfiguration` class as specified in [Configure the dictionary](#configure-the-dictionary). The dictionary key is the host name the Shell was loaded under, which is available at run time by using the `PortalContext` and `TrustedAuthorityHost` functions.
 
-Extensions that are called contain additional code that pushes values to the browser.  The sample code located at [Sample configuration](#sample-configuration) demonstrates the pattern that wires up server-side domain-based configuration.
+It is recommended that domain-based configuration class names have the characters `DomainBasedConfiguration` appended to them. Some examples are `ErrorApplicationDomainBasedConfiguration`, `HubsDomainBasedConfiguration`, and `WebsiteDomainBasedConfiguration`. However, this naming convention is not required.
+
+Extensions that are called contain additional code that pushes values to the browser.  The sample code located at [Sample configuration](#sample-configuration) demonstrates the pattern that initializes server-side domain-based configuration.
 
 **NOTE**: Settings like ARM endpoints are not typically candidates for domain-based configuration.
-
-**NOTE**: It is recommended that domain-based configuration class names have the characters `DomainBasedConfiguration` appended to them. Some examples are `ErrorApplicationDomainBasedConfiguration`, `HubsDomainBasedConfiguration`, and `WebsiteDomainBasedConfiguration`. However, this naming convention is not required.
-
-**NOTE**: Domain-based configuration is based on the domain host address of the Shell, instead of the extension. Extensions do not need to support additional host names in order to take advantage of domain-based configuration.
 
 If you have any questions, reach out to Ibiza team at [https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza).
 
@@ -44,13 +42,13 @@ If you have any questions, reach out to Ibiza team at [https://stackoverflow.mic
 
 * [The getSharedSettings function](#the-getSharedSettings-function)
 
-* [The TrustedAuthorityHost function](#the-trustedAuthorityHost-function)
+* [The trustedAuthorityHost function](#the-trustedAuthorityHost-function)
 
 ### The getSharedSettings function
 
 In the `MsPortalFx.Settings.getSharedSettings()` function, selected values from Shell are exposed through an RPC call for the following reasons.
 
- 1. Each extension does not have to have its own copy of commonly defined values, such as the support URL.
+ 1. Extensions do not need individual copies of commonly defined values, such as the support URL.
 
  1. Changes to shared settings do not require simultaneous redeployment of extensions.
  
@@ -84,25 +82,27 @@ Links are automatically expanded according to the user's domain, tenant, and lan
 
 The consuming extension should support all three formats if they take a dependency.
  
-### The TrustedAuthorityHost function
+### The trustedAuthorityHost function
 
-The Server-side `PortalContext.TrustedAuthorityHost` function returns the host name under which the extension was loaded. For example, an extension named may need to know if it is being called from `portal.azure.com` or `Contoso.azure.com`. In the first case `TrustedAuthorityHost` will contain "portal.azure.com" and in the second, "contoso.azure.com".
+The Server-side `PortalContext.TrustedAuthorityHost` function returns the host name under which the extension was loaded. For example, an extension may need to know if it is being called from `portal.azure.com` or `Contoso.azure.com`. In the first case `TrustedAuthorityHost` will contain `portal.azure.com` and in the second, `contoso.azure.com`.
  
 **NOTE**: If the extension needs to change its configuration based on the domain of the caller, the recommended solution is to use domain-based configuration, which is designed specifically for this sort of work.  It is preferred over coding directly against values returned by `PortalContext.TrustedAuthorityHost`.
 
-## Exposing configuration settings
+## Expose configuration settings
 
-Configuration settings are commonly used to control application behavior like timeout values, page size, endpoints, ARM version number, and other items. With the .NET framework, managed code can easily load configurations; however, most of the implementation of a Portal extension is client-side JavaScript.
+Configuration settings are typically used to control application behavior like timeout values, page size, endpoints, ARM version number, and other items. With the .NET framework, managed code can easily load configurations; however, most of the extension implementation is client-side JavaScript.
 
-By allowing the client code in extensions to gain access to configuration settings, the Portal framework provides a way to get the extension configuration and expose it in `window.fx.environment`, as in the following steps.
+By allowing the client code in extensions to gain access to configuration settings, the Portal framework provides a method to get the extension configuration and expose it in `window.fx.environment`, as in the following steps.
 
-1. The Portal framework initializes the instance of the  `ApplicationConfiguration` class, which is located in the   **Configuration** folder in the VS project for the extension. The instance will try to populate all properties by finding their configurations in the `appSettings` section of the  `web.config` file. For each property, the Portal framework will use the key "{ApplicationConfiguration class full name}.{property name}" unless a different name is specified in the associated `ConfigurationSetting` attribute that applied that property in the `ApplicationConfiguration` class.
+1. The Portal framework initializes the instance of the  `ApplicationConfiguration` class, which is located in the  **Configuration** folder in the **VS** project for the extension. The instance will try to populate all properties by finding their configurations in the `appSettings` section of the  `web.config` file. For each property, the Portal framework will use the key "{ApplicationConfiguration class full name}.{property name}" unless a different name is specified in the associated `ConfigurationSetting` attribute that applied that property in the `ApplicationConfiguration` class.
 
 1. The Portal framework creates an instance of `window.fx.environment` for the client script. It uses the mapping in the `ExtensionConfiguration` dictionary in the `Definition.cs` file that is located in the `Controllers` folder.
 
 1. The client script loads the configuration from `window.fx.environment` that implements the `FxEnvironment` interface. To declare the new configuration entry, the file `FxEnvironmentExtensions.d.ts` in the `Definitions` folder should be updated for each property that is exposed to the client.
 
-In many cases, the domain-based configuration is needed in client-side **TypeScript**. The  extension developer can use the following script to download these values, although they have a number of development options.
+In many cases, the domain-based configuration is needed in client-side **TypeScript**. The extension developer can use the following script to download these values to the client, although there a number of ways to accomplish the same effect.
+
+<!-- TODO:  Correct the code typos in the following sentence by locating the code. -->
 
 1. In `ExtensionExtensionDefinition.cs`, add the configuration class to the `ImportContructor`.
 
@@ -126,31 +126,31 @@ In many cases, the domain-based configuration is needed in client-side **TypeScr
     }
     ```
 
-1. Update `ExtensionFxEnvironment.d.ts` to include TypeScript definitions for the new values that are being downloaded to the client. A list of settings and feature flags is specified in [#branding-and-chrome](#branding-and-chrome).
+1. Update `ExtensionFxEnvironment.d.ts` to include **TypeScript** definitions for the new values that are being downloaded to the client. The settings and feature flags are specified in [#branding-and-chrome](#branding-and-chrome).
 
 ### Configuration procedure
 
-This procedure assumes that a Portal extension named "MyExtension" is being customized to add a new configuration called "PageSize". The source for the samples is located in the `Documents\PortalSDK\FrameworkPortal\Extensions\SamplesExtension` folder.
+<!-- TODO:  Validate the address on the sample source. -->
+
+In this  procedure, a Portal extension named `MyExtension` is customized to add a new configuration named "PageSize". 
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. 
 
 1. Open the `ApplicationConfiguration.cs` file that is located in the  `Configuration` folder.
 
-1. Add a new property named `PageSize` to the sample code that is located at `SamplesExtension\Extension\` directory, and to the code that is located at `<dirParent>\Extension\Configuration\ArmConfiguration.cs`. The sample is included in the following code.
+1. Add a new property named `PageSize` to the sample code that is located in the  `<dir>` directory, and to the code that is located at `<dir>Configuration\ArmConfiguration.cs`. The sample is included in the following code.
 
     <!--TODO: Customize the sample code to match the description -->
 
     <!--
-    gitdown": "include-section", "file": "SamplesExtension/Extension/Configuration/ArmConfiguration.cs", "section": "config#configurationsettings"}
--->
+    gitdown": "include-section", "file": "SamplesExtension/Extension/Configuration/ArmConfiguration.cs", "section": "config#configurationsettings"
+    -->
 
 1. Save the file.
 
     **NOTE**: The namespace is `Microsoft.Portal.Extensions.MyExtension`, the full name of the class is `Microsoft.Portal.Extensions.MyExtension.ApplicationConfiguration`, and the configuration key is `Microsoft.Portal.Extensions.MyExtension.ApplicationConfiguration.PageSize`.
 
-1. Open the `web.config` file of the extension.
-
-1. Locate the `appSettings` section. Add a new entry for PageSize.
+1. Open the `web.config` file of the extension, and locate the `appSettings` section. Add a new entry for `PageSize`.
 
     ```xml
     ...
@@ -163,7 +163,7 @@ This procedure assumes that a Portal extension named "MyExtension" is being cust
 
 1. Save and close the `web.config` file.
 
-1. Open the `Definition.cs` file that is located in the `Controllers` folder. Add a new mapping in `ExtensionConfiguration` property.
+1. Open the `Definition.cs` file that is located in the `<dir>Controllers` folder, and add a new mapping in the `ExtensionConfiguration` property.
 
     ```csharp
         /// <summary>
@@ -182,7 +182,7 @@ This procedure assumes that a Portal extension named "MyExtension" is being cust
         }
     ```
 
-1. Open the `FxEnvironmentExtensions.d.ts` file that is located in the  `Definitions` folder, and add the `pageSize` property in the environment interface.
+1. Open the `FxEnvironmentExtensions.d.ts` file that is located in the `<dir>Definitions` folder, and add the `pageSize` property to the environment interface.
 
     ```ts
         interface FxEnvironment {
@@ -191,25 +191,25 @@ This procedure assumes that a Portal extension named "MyExtension" is being cust
         } 
     ```
 
-1. The new configuration entry is now defined. To use the configuration, add code like the following in the script.
+The new configuration entry is now defined. To use the configuration, add the following code to the script.
 
-    ```JavaScript
-        var pageSize = window.fx.environment && window.fx.environment.pageSize || 10;
-    ```
+```js
+    var pageSize = window.fx.environment && window.fx.environment.pageSize || 10;
+```
 
-An extended version of this procedure is used to transfer domain based configurations, like correctly formatted FwLinks, to the client. 
+An extended version of this procedure can be used to transfer domain-based-configurations, like correctly formatted FwLinks, to the client.
 
-## Dictionary configuration
+## Configure the dictionary
 
-The `DictionaryConfiguration` class allows strongly-typed JSON blobs to be defined in the configuration file, and selected based on an arbitrary, case-insensitive string key. For example, the Shell and Hubs use the class to select between domain-specific configuration sets. Two configuration classes can be created.
+The `DictionaryConfiguration` class allows strongly-typed JSON blobs to be defined in the configuration file, and selected based on an arbitrary, case-insensitive key. For example, the Shell and Hubs use the class to choose between the following two types of domain-specific configuration sets. 
 
-1. A configuration class that is derived from `DictionaryCollection` that manages and exposes the instances.
+* A configuration class that is derived from `DictionaryCollection` that manages and exposes the instances, as specified in [#the-configuration-class](#the-configuration-class).
 
-1. A stand-alone settings class that contains the setting values associated with a specific key and user culture.
+* A stand-alone settings class that contains the values that are associated with a specific key and user culture, as specified in [#the-settings-class](#the-settings-class).
 
-Like other configuration classes, these are named and populated from the config based on namespace, class name, and the Settings property name. For example, if the namespace is `Microsoft.MyExtension.Configuration` and the configuration class is `MyConfiguration`, then the configuration setting name is `Microsoft.MyExtension.Configuration.MyConfiguration.Settings`.
+Like other classes, these are named and populated from the configuration based on namespace, class name, and the Settings property name. For example, if the namespace is `Microsoft.MyExtension.Configuration` and the configuration class is `MyConfiguration`, then the configuration setting name is `Microsoft.MyExtension.Configuration.MyConfiguration.Settings`.
 
-Instances of configuration classes are normally obtained through MEF constructors, and this is unchanged for `StringDictionaryConfiguration` and its sub-classes.
+Instances of configuration classes are normally obtained through MEF constructors, and this is unchanged for `StringDictionaryConfiguration` and its sub-classes. The `DictionaryConfiguration` class supports a one-level inheritance model to avoid repeating unchanged settings in subclassed configurations.
 
 At runtime, the strongly typed settings for a specific key are obtained by using the `GetSettings` method that is inherited by the configuration class, as in the following code.
 
@@ -217,95 +217,33 @@ At runtime, the strongly typed settings for a specific key are obtained by using
  
  The `culture` parameter is optional, and is used when expanding settings that are marked with the special `[Link]` attribute. If the `culture` parameter  is not specified, the default is  `CultureInfo.CurrentUICulture`.
 
-  A boilerplate example is located at [Sample configuration](#sample-configuration).
+A example of deriving a configuration class is located at [Sample configuration](#sample-configuration).
 
-* The configuration class
+### The configuration class
 
-    To create a configuration class, derive a class from `StringDictionaryConfiguration&lt;T&gt;`, where `T` is the type of the settings class.
+To create a configuration class, derive a class from `StringDictionaryConfiguration&lt;T&gt;`, where `T` is the type of the settings class.
 
-    Remember to mark the class as MEF exportable if the config will be made available in the normal fashion, as in the following example.
+Remember to mark the class as MEF exportable if the config will be made available in the normal fashion, as in the following example.
 
-    ```cs
-    namespace Microsoft.MyExtension.Configuration
+```cs
+namespace Microsoft.MyExtension.Configuration
+{
+    [Export]
+    public class MyConfiguration : DictionaryConfiguration<MySettings>
     {
-        [Export]
-        public class MyConfiguration : DictionaryConfiguration<MySettings>
-        {
-        }
     }
-    ```
+}
+```
 
-    Nested objects, like `Billing.EA.ShowPricing`, are fully supported, as in the sample code located at [Sample configuration](#sample-configuration).
+Nested objects, like `Billing.EA.ShowPricing`, are fully supported, as in the sample code located at [Sample configuration](#sample-configuration).
 
-* The settings class
+### The settings class
 
-    The settings class is a data transport object. The following example  contains the configuration class name `MySettings`, in addition to the settings class's namespace `Microsoft.MyExtension.Configuration`.
+The settings class is a data transport object. In this example, the configuration class name is  `MySettings`, and the settings class's namespace is `Microsoft.MyExtension.Configuration`.
 
-    All properties that are populated from the JSON blob in the configuration file are marked as `[JsonProperty]` so that the configuration system `ConfigurationSettingKind.Json` option can be used. If the properties are not marked, they will not be deserialized and will remain null.
+All properties that are populated from the JSON blob in the configuration file are marked as `[JsonProperty]` so that the configuration system `ConfigurationSettingKind.Json` option can be used. If the properties are not marked, they will not be deserialized and will remain null.
 
-    ```
-    <table>
-        <thead><tr><th>Example settings class</th><th>Example config*</th></tr></thead>
-        <tr>
-            <td>
-                <pre>
-    namespace Microsoft.MyExtension.Configuration
-    {
-        public class MySettings
-        {
-            [JsonProperty]
-            public bool ShowPricing { get; private set; }
-        }
-    }
-                </pre>
-            </td>
-            <td>
-    <pre>
-    &lt;add key="Microsoft.MyExtension.Configuration.MyConfiguration.Settings" value="{
-        'default': {
-            'showPricing': true
-        },
-        'someOtherKey' : {
-            'showPricing': false
-        }
-    }" /&gt;
-    </pre>
-            </td>
-        </tr>
-    </table>
-    ```
-
-    **NOTE**: The deserializer handles camel-case to pascal-case conversion when the code uses JSON property name conventions in the config file and C# name conventions in the configuration classes.
- 
-### The link attribute
-
-Expansion logic is required for properties that are marked `[Link]`. The format string is specified in the `LinkTemplate` property that is located at the root of the object. A `LinkTemplate` value of `https://go.microsoft.com/fwLink/?LinkID={linkId}&amp;clcid=0x{lcid}` is the correct template for FwLinks.
-
-Expansion in the format string is applied according to the following rules.
-
-1. If the string is numeric, then occurrences of `{linkId}` in the string are expanded to the numeric value. If no `LinkTemplate` property is specified, the value will be left unexpanded.
-
-1. Occurrences of `{lcid}` are replaced with the hex representation of the user's preferred .NET LCID value.  For example, 409 is the .NET LCID value for US English. 
-
-1. Occurrences  of `{culture}` are replaced with the user's preferred .NET culture code. For example, en-US is the .NET culture code for US English.
-
-An exception will be thrown if the target of a `[Link]` attribute is not in one of the following string formats.
-
-* Numeric, for example,  '12345' 
-
-* A URL hash-fragment, like "#create\Microsoft.Support"
-
-* A http or https URL
-
-### The default key
-
-If no exact match is found for the specified key, or if the caller sends a value of null, the `Get` function returns the settings associated with a key whose name is `default`.
-
-### Setting inheritance
-
-`DictionaryConfiguration` supports a simplistic one-level inheritance model to avoid repeating unchanged settings in 'subclassed' config. 
-
-If a property inside the settings for a non-default key is missing or explicitly set to null,  the value for that property is set to the value from the default key, as in the following example.
+If no exact match is found for the specified key, or if the caller sends a value of null, the `Get` function returns the settings associated with a key whose name is `default`. If a property inside the settings for a non-default key is missing or explicitly set to null,  the value for that property inherits its value from the default key, as in the following example.
 
 ``` xml
     <add key="Microsoft.Portal.Framework.WebsiteDomainBasedConfiguration.Settings" value="{
@@ -325,6 +263,62 @@ These settings return the following values.
 | Config2 | B1        | B2        | Both values were overridden |
 | Config3 | C1        | A2        | Only setting1 was overridden |
 | Config4 | A1        | A2        | Assigning null is the same as skipping the property |
+
+The following code contains the Json properties and the settings for the default values.
+
+```
+<table>
+    <thead><tr><th>Example settings class</th><th>Example config*</th></tr></thead>
+    <tr>
+        <td>
+            <pre>
+namespace Microsoft.MyExtension.Configuration
+{
+    public class MySettings
+    {
+        [JsonProperty]
+        public bool ShowPricing { get; private set; }
+    }
+}
+            </pre>
+        </td>
+        <td>
+<pre>
+&lt;add key="Microsoft.MyExtension.Configuration.MyConfiguration.Settings" value="{
+    'default': {
+        'showPricing': true
+    },
+    'someOtherKey' : {
+        'showPricing': false
+    }
+}" /&gt;
+</pre>
+        </td>
+    </tr>
+</table>
+```
+
+**NOTE**: The deserializer handles camel-case to pascal-case conversion when the code uses JSON property name conventions in the config file and C# name conventions in the configuration classes.
+
+#### The link attribute
+
+Expansion logic is required for properties that are marked `[Link]`. The format string is specified in the `LinkTemplate` property that is located at the root of the object. A `LinkTemplate` value of `https://go.microsoft.com/fwLink/?LinkID={linkId}&amp;clcid=0x{lcid}` is the correct template for FwLinks.
+
+Expansion in the format string is applied according to the following rules.
+
+1. If the string is numeric, then occurrences of `{linkId}` in the string are expanded to the numeric value. If no `LinkTemplate` property is specified, the value will be left unexpanded.
+
+1. Occurrences of `{lcid}` are replaced with the hex representation of the user's preferred .NET LCID value.  For example, 409 is the .NET LCID value for US English. 
+
+1. Occurrences of `{culture}` are replaced with the user's preferred .NET culture code. For example, en-US is the .NET culture code for US English.
+
+An exception will be thrown if the target of a `[Link]` attribute is not in one of the following string formats.
+
+* Numeric, for example, '12345' 
+
+* A URL hash-fragment, like "#create\Microsoft.Support"
+
+* A http or https URL
 
 ## Branding and chrome
 
