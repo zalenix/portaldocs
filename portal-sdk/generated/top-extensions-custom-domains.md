@@ -1,11 +1,13 @@
-<a name="custom-domains"></a>
-# Custom Domains
+<a name="domain-based-configuration"></a>
+# Domain-based configuration
 
-* [Domain based configuration](#domain-based-configuration)
+* [Overview](#overview)
 
-* [Exposing configuration settings](#exposing-configuration-settings)
+* [Configuration APIs](#configuration-apis)
 
-* [Dictionary configuration](#dictionary-configuration) 
+* [Expose configuration settings](#expose-configuration-settings)
+
+* [Configure the dictionary](#configure-the-dictionary)
 
 * [Branding and Chrome](#branding-and-chrome)
 
@@ -13,50 +15,44 @@
 
 * [Override Links](#override-links)
 
-* [Consumption example](#consumption-example)
+* [Sample configuration](#sample-configuration)
 
 * [Custom Domain Questionnaire Template](#custom-domain-questionnaire-template) 
 
+<a name="domain-based-configuration-overview"></a>
+## Overview
 
- 
-<a name="custom-domains-domain-based-configuration"></a>
-## Domain based configuration
+Custom domains, or domain-based configurations, allow the Portal and extensions to dynamically obtain settings that are based on the URL that was used to access the Portal. Domain-based configuration is based on the domain host address of the Shell, instead of the extension. For example, accessing the Portal by using the `contoso.portal.azure.com` URL displays different values for domain-based settings than the `portal.azure.com` URL displays.  Extensions do not need to support additional host names in order to take advantage of domain-based configuration.
 
-Domain-based configuration allows the Portal and Extensions to dynamically obtain settings based on the URL that was used to access the Portal. For example, accessing the Portal by using the `contoso.portal.azure.com` URL displays different values for domain-based settings than the `portal.azure.com` URL displays.
+Some partner needs are met at the deployment level. For example, national clouds like China, Germany, or Government, can use normal configuration with no dynamic tests at runtime.  Items that are based on which domain  is running the extension include  ARM and RP URLs, or AAD client application IDs.  
 
-The first-party or third-party developer identifies the functionality that an extension will use, based on the domain in which the extension is running. Once the partner and developer have identified the configurations for the extension, the developer creates a supporting `DictionaryConfiguration` class as specified in [Dictionary Configuration](#dictionary-configuration). The dictionary key is the host name the Shell was loaded under, which is available at run time by using `PortalContext` and `TrustedAuthorityHost`.
+In other instances, a single deployment of an extension supports multiple domains.  For example, community clouds, like Fujitsu A5, use domain-based configuration.  In these instances, functionality is selected based on the Trusted Authority for the calling extension, as specified in [#The-trustedAuthorityHost-function](#the-trustedauthorityhost-function). Although domain-based configuration is not required to support national clouds, there is great overlap between settings that are selected for community clouds. It is easier to store settings like links in domain-based configuration, which includes support for expanding links from link redirection, or from friendly name services such as **FwLink** and `aka.ms` services.
 
-Some partner needs can be met at the deployment level. For example, national clouds like China, Germany, or Government, can use normal configuration with no dynamic tests at runtime.  Examples that are based on which domain  is running the extension include  ARM and RP URLs, or AAD client application IDs.  In other instances, a single deployment of an extension supports multiple domains.  For example, community clouds, like Fujitsu A5, use domain-based configuration.  In these instances, functionality is selected based on the Trusted Authority for the calling extension, as specified in [#The-TrustedAuthorityHost-function](#the-trustedauthorityhost-function). 
+During development, the first-party or third-party developer identifies the extension functionality that depends on the domain in which the extension is running. Once the partner and developer have identified the configurations that provide this functionality for the extension, the developer creates a supporting `DictionaryConfiguration` class as specified in [Configure the dictionary](#configure-the-dictionary). The dictionary key is the host name the Shell was loaded under, which is available at run time by using the `PortalContext` and `TrustedAuthorityHost` functions.
 
-While domain-based configuration is not required to support national clouds, there is great overlap between settings that are changed for community clouds. It is often easier to store settings like links in domain-based configuration. Additionally, domain-based configuration includes support for expanding links from link redirection, or from shortener services such as **FwLink** and `aka.ms` services.
+It is recommended that domain-based configuration class names have the characters `DomainBasedConfiguration` appended to them. Some examples are `ErrorApplicationDomainBasedConfiguration`, `HubsDomainBasedConfiguration`, and `WebsiteDomainBasedConfiguration`. However, this naming convention is not required.
 
-Extensions that are called contain additional code that pushes values to the browser.  The consumption example located at [consumption example](#consumption-example) demonstrates the pattern that wires up server-side domain-based configuration.
+Extensions that are called contain additional code that pushes values to the browser.  The sample code located at [Sample configuration](#sample-configuration) demonstrates the pattern that initializes server-side domain-based configuration.
 
 **NOTE**: Settings like ARM endpoints are not typically candidates for domain-based configuration.
 
-**NOTE**: It is recommended that domain-based configuration class names have the characters `DomainBasedConfiguration` appended to them. Some examples are `ErrorApplicationDomainBasedConfiguration`, `HubsDomainBasedConfiguration`, and `WebsiteDomainBasedConfiguration`. However, this naming convention is not required.
-
-**NOTE**: Domain-based configuration is based on the domain host address of the Shell, instead of the extension. Extensions do not need to support additional host names in order to take advantage of domain-based configuration.
-
-* [Configuration APIs](#configuration-apis)
-
 If you have any questions, reach out to Ibiza team at [https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza).
 
-<a name="custom-domains-domain-based-configuration-configuration-apis"></a>
-### Configuration APIs
+<a name="domain-based-configuration-configuration-apis"></a>
+## Configuration APIs
 
- The Shell provides two APIs to support domain-based configuration. The following is the recommended implementation methodology, although partners and developers can implement domain-based configuration in many ways.
+ The Shell provides two APIs that support domain-based configuration. The following is the recommended implementation methodology, although partners and developers can implement domain-based configuration in many ways.
 
 * [The getSharedSettings function](#the-getSharedSettings-function)
 
-* [The TrustedAuthorityHost function](#the-trustedAuthorityHost-function)
+* [The trustedAuthorityHost function](#the-trustedAuthorityHost-function)
 
-<a name="custom-domains-domain-based-configuration-configuration-apis-the-getsharedsettings-function"></a>
-#### The getSharedSettings function
+<a name="domain-based-configuration-configuration-apis-the-getsharedsettings-function"></a>
+### The getSharedSettings function
 
 In the `MsPortalFx.Settings.getSharedSettings()` function, selected values from Shell are exposed through an RPC call for the following reasons.
 
- 1. Each extension does not have to have its own copy of commonly defined values, such as the support URL.
+ 1. Extensions do not need individual copies of commonly defined values, such as the support URL.
 
  1. Changes to shared settings do not require simultaneous redeployment of extensions.
  
@@ -90,27 +86,29 @@ Links are automatically expanded according to the user's domain, tenant, and lan
 
 The consuming extension should support all three formats if they take a dependency.
  
-<a name="custom-domains-domain-based-configuration-configuration-apis-the-trustedauthorityhost-function"></a>
-#### The TrustedAuthorityHost function
+<a name="domain-based-configuration-configuration-apis-the-trustedauthorityhost-function"></a>
+### The trustedAuthorityHost function
 
-The Server-side `PortalContext.TrustedAuthorityHost` function returns the host name under which the extension was loaded. For example, an extension named may need to know if it is being called from `portal.azure.com` or `Contoso.azure.com`. In the first case `TrustedAuthorityHost` will contain "portal.azure.com" and in the second, "contoso.azure.com".
+The Server-side `PortalContext.TrustedAuthorityHost` function returns the host name under which the extension was loaded. For example, an extension may need to know if it is being called from `portal.azure.com` or `Contoso.azure.com`. In the first case `TrustedAuthorityHost` will contain `portal.azure.com` and in the second, `contoso.azure.com`.
  
 **NOTE**: If the extension needs to change its configuration based on the domain of the caller, the recommended solution is to use domain-based configuration, which is designed specifically for this sort of work.  It is preferred over coding directly against values returned by `PortalContext.TrustedAuthorityHost`.
 
-<a name="custom-domains-exposing-configuration-settings"></a>
-## Exposing configuration settings
+<a name="domain-based-configuration-expose-configuration-settings"></a>
+## Expose configuration settings
 
-Configuration settings are commonly used to control application behavior like timeout values, page size, endpoints, ARM version number, and other items. With the .NET framework, managed code can easily load configurations; however, most of the implementation of a Portal extension is client-side JavaScript.
+Configuration settings are typically used to control application behavior like timeout values, page size, endpoints, ARM version number, and other items. With the .NET framework, managed code can easily load configurations; however, most of the extension implementation is client-side JavaScript.
 
-By allowing the client code in extensions to gain access to configuration settings, the Portal framework provides a way to get the extension configuration and expose it in `window.fx.environment`, as in the following steps.
+By allowing the client code in extensions to gain access to configuration settings, the Portal framework provides a method to get the extension configuration and expose it in `window.fx.environment`, as in the following steps.
 
-1. The Portal framework initializes the instance of the  `ApplicationConfiguration` class, which is located in the   **Configuration** folder in the VS project for the extension. The instance will try to populate all properties by finding their configurations in the `appSettings` section of the  `web.config` file. For each property, the Portal framework will use the key "{ApplicationConfiguration class full name}.{property name}" unless a different name is specified in the associated `ConfigurationSetting` attribute that applied that property in the `ApplicationConfiguration` class.
+1. The Portal framework initializes the instance of the  `ApplicationConfiguration` class, which is located in the  **Configuration** folder in the **VS** project for the extension. The instance will try to populate all properties by finding their configurations in the `appSettings` section of the  `web.config` file. For each property, the Portal framework will use the key "{ApplicationConfiguration class full name}.{property name}" unless a different name is specified in the associated `ConfigurationSetting` attribute that applied that property in the `ApplicationConfiguration` class.
 
 1. The Portal framework creates an instance of `window.fx.environment` for the client script. It uses the mapping in the `ExtensionConfiguration` dictionary in the `Definition.cs` file that is located in the `Controllers` folder.
 
 1. The client script loads the configuration from `window.fx.environment` that implements the `FxEnvironment` interface. To declare the new configuration entry, the file `FxEnvironmentExtensions.d.ts` in the `Definitions` folder should be updated for each property that is exposed to the client.
 
-In many cases, the domain-based configuration is needed in client-side **TypeScript**. The  extension developer can use the following script to download these values, although they have a number of development options.
+In many cases, the domain-based configuration is needed in client-side **TypeScript**. The extension developer can use the following script to download these values to the client, although there a number of ways to accomplish the same effect.
+
+<!-- TODO:  Correct the code typos in the following sentence by locating the code. -->
 
 1. In `ExtensionExtensionDefinition.cs`, add the configuration class to the `ImportContructor`.
 
@@ -134,32 +132,32 @@ In many cases, the domain-based configuration is needed in client-side **TypeScr
     }
     ```
 
-1. Update `ExtensionFxEnvironment.d.ts` to include TypeScript definitions for the new values that are being downloaded to the client. A list of settings and feature flags is specified in [#branding-and-chrome](#branding-and-chrome).
+1. Update `ExtensionFxEnvironment.d.ts` to include **TypeScript** definitions for the new values that are being downloaded to the client. The settings and feature flags are specified in [#branding-and-chrome](#branding-and-chrome).
 
-<a name="custom-domains-exposing-configuration-settings-configuration-procedure"></a>
+<a name="domain-based-configuration-expose-configuration-settings-configuration-procedure"></a>
 ### Configuration procedure
 
-This procedure assumes that a Portal extension named "MyExtension" is being customized to add a new configuration called "PageSize". The source for the samples is located in the `Documents\PortalSDK\FrameworkPortal\Extensions\SamplesExtension` folder.
+<!-- TODO:  Validate the address on the sample source. -->
+
+In this  procedure, a Portal extension named `MyExtension` is customized to add a new configuration named "PageSize". 
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. 
 
 1. Open the `ApplicationConfiguration.cs` file that is located in the  `Configuration` folder.
 
-1. Add a new property named `PageSize` to the sample code that is located at `SamplesExtension\Extension\` directory, and to the code that is located at `<dirParent>\Extension\Configuration\ArmConfiguration.cs`. The sample is included in the following code.
+1. Add a new property named `PageSize` to the sample code that is located in the  `<dir>` directory, and to the code that is located at `<dir>Configuration\ArmConfiguration.cs`. The sample is included in the following code.
 
     <!--TODO: Customize the sample code to match the description -->
 
     <!--
-    gitdown": "include-section", "file": "SamplesExtension/Extension/Configuration/ArmConfiguration.cs", "section": "config#configurationsettings"}
--->
+    gitdown": "include-section", "file": "SamplesExtension/Extension/Configuration/ArmConfiguration.cs", "section": "config#configurationsettings"
+    -->
 
 1. Save the file.
 
     **NOTE**: The namespace is `Microsoft.Portal.Extensions.MyExtension`, the full name of the class is `Microsoft.Portal.Extensions.MyExtension.ApplicationConfiguration`, and the configuration key is `Microsoft.Portal.Extensions.MyExtension.ApplicationConfiguration.PageSize`.
 
-1. Open the `web.config` file of the extension.
-
-1. Locate the `appSettings` section. Add a new entry for PageSize.
+1. Open the `web.config` file of the extension, and locate the `appSettings` section. Add a new entry for `PageSize`.
 
     ```xml
     ...
@@ -172,7 +170,7 @@ This procedure assumes that a Portal extension named "MyExtension" is being cust
 
 1. Save and close the `web.config` file.
 
-1. Open the `Definition.cs` file that is located in the `Controllers` folder. Add a new mapping in `ExtensionConfiguration` property.
+1. Open the `Definition.cs` file that is located in the `<dir>Controllers` folder, and add a new mapping in the `ExtensionConfiguration` property.
 
     ```csharp
         /// <summary>
@@ -191,7 +189,7 @@ This procedure assumes that a Portal extension named "MyExtension" is being cust
         }
     ```
 
-1. Open the `FxEnvironmentExtensions.d.ts` file that is located in the  `Definitions` folder, and add the `pageSize` property in the environment interface.
+1. Open the `FxEnvironmentExtensions.d.ts` file that is located in the `<dir>Definitions` folder, and add the `pageSize` property to the environment interface.
 
     ```ts
         interface FxEnvironment {
@@ -200,26 +198,26 @@ This procedure assumes that a Portal extension named "MyExtension" is being cust
         } 
     ```
 
-1. The new configuration entry is now defined. To use the configuration, add code like the following in the script.
+The new configuration entry is now defined. To use the configuration, add the following code to the script.
 
-    ```JavaScript
-        var pageSize = window.fx.environment && window.fx.environment.pageSize || 10;
-    ```
+```js
+    var pageSize = window.fx.environment && window.fx.environment.pageSize || 10;
+```
 
-An extended version of this procedure is used to transfer domain based configurations, like correctly formatted FwLinks, to the client. 
+An extended version of this procedure can be used to transfer domain-based-configurations, like correctly formatted FwLinks, to the client.
 
-<a name="custom-domains-dictionary-configuration"></a>
-## Dictionary configuration
+<a name="domain-based-configuration-configure-the-dictionary"></a>
+## Configure the dictionary
 
-The `DictionaryConfiguration` class allows strongly-typed JSON blobs to be defined in the configuration file, and selected based on an arbitrary, case-insensitive string key. For example, the Shell and Hubs use the class to select between domain-specific configuration sets. Two configuration classes can be created.
+The `DictionaryConfiguration` class allows strongly-typed JSON blobs to be defined in the configuration file, and selected based on an arbitrary, case-insensitive key. For example, the Shell and Hubs use the class to choose between the following two types of domain-specific configuration sets. 
 
-1. A configuration class that is derived from `DictionaryCollection` that manages and exposes the instances.
+* A configuration class that is derived from `DictionaryCollection` that manages and exposes the instances, as specified in [#the-configuration-class](#the-configuration-class).
 
-1. A stand-alone settings class that contains the setting values associated with a specific key and user culture.
+* A stand-alone settings class that contains the values that are associated with a specific key and user culture, as specified in [#the-settings-class](#the-settings-class).
 
-Like other configuration classes, these are named and populated from the config based on namespace, class name, and the Settings property name. For example, if the namespace is `Microsoft.MyExtension.Configuration` and the configuration class is `MyConfiguration`, then the configuration setting name is `Microsoft.MyExtension.Configuration.MyConfiguration.Settings`.
+Like other classes, these are named and populated from the configuration based on namespace, class name, and the Settings property name. For example, if the namespace is `Microsoft.MyExtension.Configuration` and the configuration class is `MyConfiguration`, then the configuration setting name is `Microsoft.MyExtension.Configuration.MyConfiguration.Settings`.
 
-Instances of configuration classes are normally obtained through MEF constructors, and this is unchanged for `StringDictionaryConfiguration` and its sub-classes.
+Instances of configuration classes are normally obtained through MEF constructors, and this is unchanged for `StringDictionaryConfiguration` and its sub-classes. The `DictionaryConfiguration` class supports a one-level inheritance model to avoid repeating unchanged settings in subclassed configurations.
 
 At runtime, the strongly typed settings for a specific key are obtained by using the `GetSettings` method that is inherited by the configuration class, as in the following code.
 
@@ -227,98 +225,35 @@ At runtime, the strongly typed settings for a specific key are obtained by using
  
  The `culture` parameter is optional, and is used when expanding settings that are marked with the special `[Link]` attribute. If the `culture` parameter  is not specified, the default is  `CultureInfo.CurrentUICulture`.
 
-  A boilerplate example is located at [consumption example](#consumption-example).
+A example of deriving a configuration class is located at [Sample configuration](#sample-configuration).
 
-* The configuration class
+<a name="domain-based-configuration-configure-the-dictionary-the-configuration-class"></a>
+### The configuration class
 
-    To create a configuration class, derive a class from `StringDictionaryConfiguration&lt;T&gt;`, where `T` is the type of the settings class.
+To create a configuration class, derive a class from `StringDictionaryConfiguration&lt;T&gt;`, where `T` is the type of the settings class.
 
-    Remember to mark the class as MEF exportable if the config will be made available in the normal fashion, as in the following example.
+Remember to mark the class as MEF exportable if the config will be made available in the normal fashion, as in the following example.
 
-    ```cs
-    namespace Microsoft.MyExtension.Configuration
+```cs
+namespace Microsoft.MyExtension.Configuration
+{
+    [Export]
+    public class MyConfiguration : DictionaryConfiguration<MySettings>
     {
-        [Export]
-        public class MyConfiguration : DictionaryConfiguration<MySettings>
-        {
-        }
     }
-    ```
+}
+```
 
-    Nested objects, like `Billing.EA.ShowPricing`, are fully supported, as in the example code located at [consumption example](#consumption-example).
+Nested objects, like `Billing.EA.ShowPricing`, are fully supported, as in the sample code located at [Sample configuration](#sample-configuration).
 
-* The settings class
+<a name="domain-based-configuration-configure-the-dictionary-the-settings-class"></a>
+### The settings class
 
-    The settings class is a data transport object. The following example  contains the configuration class name `MySettings`, in addition to the settings class's namespace `Microsoft.MyExtension.Configuration`.
+The settings class is a data transport object. In this example, the configuration class name is  `MySettings`, and the settings class's namespace is `Microsoft.MyExtension.Configuration`.
 
-    All properties that are populated from the JSON blob in the configuration file are marked as `[JsonProperty]` so that the configuration system `ConfigurationSettingKind.Json` option can be used. If the properties are not marked, they will not be deserialized and will remain null.
+All properties that are populated from the JSON blob in the configuration file are marked as `[JsonProperty]` so that the configuration system `ConfigurationSettingKind.Json` option can be used. If the properties are not marked, they will not be deserialized and will remain null.
 
-    ```
-    <table>
-        <thead><tr><th>Example settings class</th><th>Example config*</th></tr></thead>
-        <tr>
-            <td>
-                <pre>
-    namespace Microsoft.MyExtension.Configuration
-    {
-        public class MySettings
-        {
-            [JsonProperty]
-            public bool ShowPricing { get; private set; }
-        }
-    }
-                </pre>
-            </td>
-            <td>
-    <pre>
-    &lt;add key="Microsoft.MyExtension.Configuration.MyConfiguration.Settings" value="{
-        'default': {
-            'showPricing': true
-        },
-        'someOtherKey' : {
-            'showPricing': false
-        }
-    }" /&gt;
-    </pre>
-            </td>
-        </tr>
-    </table>
-    ```
-
-    **NOTE**: The deserializer handles camel-case to pascal-case conversion when the code uses JSON property name conventions in the config file and C# name conventions in the configuration classes.
- 
-<a name="custom-domains-dictionary-configuration-the-link-attribute"></a>
-### The link attribute
-
-Expansion logic is required for properties that are marked `[Link]`. The format string is specified in the `LinkTemplate` property that is located at the root of the object. A `LinkTemplate` value of `https://go.microsoft.com/fwLink/?LinkID={linkId}&amp;clcid=0x{lcid}` is the correct template for FwLinks.
-
-Expansion in the format string is applied according to the following rules.
-
-1. If the string is numeric, then occurrences of `{linkId}` in the string are expanded to the numeric value. If no `LinkTemplate` property is specified, the value will be left unexpanded.
-
-1. Occurrences of `{lcid}` are replaced with the hex representation of the user's preferred .NET LCID value.  For example, 409 is the .NET LCID value for US English. 
-
-1. Occurrences  of `{culture}` are replaced with the user's preferred .NET culture code. For example, en-US is the .NET culture code for US English.
-
-An exception will be thrown if the target of a `[Link]` attribute is not in one of the following string formats.
-
-* Numeric, for example,  '12345' 
-
-* A URL hash-fragment, like "#create\Microsoft.Support"
-
-* A http or https URL
-
-<a name="custom-domains-dictionary-configuration-the-default-key"></a>
-### The default key
-
-If no exact match is found for the specified key, or if the caller sends a value of null, the `Get` function returns the settings associated with a key whose name is `default`.
-
-<a name="custom-domains-dictionary-configuration-setting-inheritance"></a>
-### Setting inheritance
-
-`DictionaryConfiguration` supports a simplistic one-level inheritance model to avoid repeating unchanged settings in 'subclassed' config. 
-
-If a property inside the settings for a non-default key is missing or explicitly set to null,  the value for that property is set to the value from the default key, as in the following example.
+If no exact match is found for the specified key, or if the caller sends a value of null, the `Get` function returns the settings associated with a key whose name is `default`. If a property inside the settings for a non-default key is missing or explicitly set to null,  the value for that property inherits its value from the default key, as in the following example.
 
 ``` xml
     <add key="Microsoft.Portal.Framework.WebsiteDomainBasedConfiguration.Settings" value="{
@@ -339,7 +274,64 @@ These settings return the following values.
 | Config3 | C1        | A2        | Only setting1 was overridden |
 | Config4 | A1        | A2        | Assigning null is the same as skipping the property |
 
-<a name="custom-domains-branding-and-chrome"></a>
+The following code contains the Json properties and the settings for the default values.
+
+```
+<table>
+    <thead><tr><th>Example settings class</th><th>Example config*</th></tr></thead>
+    <tr>
+        <td>
+            <pre>
+namespace Microsoft.MyExtension.Configuration
+{
+    public class MySettings
+    {
+        [JsonProperty]
+        public bool ShowPricing { get; private set; }
+    }
+}
+            </pre>
+        </td>
+        <td>
+<pre>
+&lt;add key="Microsoft.MyExtension.Configuration.MyConfiguration.Settings" value="{
+    'default': {
+        'showPricing': true
+    },
+    'someOtherKey' : {
+        'showPricing': false
+    }
+}" /&gt;
+</pre>
+        </td>
+    </tr>
+</table>
+```
+
+**NOTE**: The deserializer handles camel-case to pascal-case conversion when the code uses JSON property name conventions in the config file and C# name conventions in the configuration classes.
+
+<a name="domain-based-configuration-configure-the-dictionary-the-settings-class-the-link-attribute"></a>
+#### The link attribute
+
+Expansion logic is required for properties that are marked `[Link]`. The format string is specified in the `LinkTemplate` property that is located at the root of the object. A `LinkTemplate` value of `https://go.microsoft.com/fwLink/?LinkID={linkId}&amp;clcid=0x{lcid}` is the correct template for FwLinks.
+
+Expansion in the format string is applied according to the following rules.
+
+1. If the string is numeric, then occurrences of `{linkId}` in the string are expanded to the numeric value. If no `LinkTemplate` property is specified, the value will be left unexpanded.
+
+1. Occurrences of `{lcid}` are replaced with the hex representation of the user's preferred .NET LCID value.  For example, 409 is the .NET LCID value for US English. 
+
+1. Occurrences of `{culture}` are replaced with the user's preferred .NET culture code. For example, en-US is the .NET culture code for US English.
+
+An exception will be thrown if the target of a `[Link]` attribute is not in one of the following string formats.
+
+* Numeric, for example, '12345' 
+
+* A URL hash-fragment, like "#create\Microsoft.Support"
+
+* A http or https URL
+
+<a name="domain-based-configuration-branding-and-chrome"></a>
 ## Branding and chrome
 
 <!-- TODO:  Determine whether the Custom Domain Questionnaire should include a screen shot of the new extension that is similar to the one described in this section. -->
@@ -375,7 +367,7 @@ These feature flags impact dashboard settings that are not immediately visible. 
 | hubsextension_skipeventpoll | Disables ‘what’s new’ and subscription level notifications like  deployment complete for VMs  | Not set  | 
 | Description            | SEO text that is included in the page source that is not visible to the end-user | Microsoft Azure Management Portal | 
 
-<a name="custom-domains-curation"></a>
+<a name="domain-based-configuration-curation"></a>
 ## Curation
 
 Curation allows items that are displayed on the left navigation bar to be added, removed, and reordered. This is an alternative to hiding items programmatically or making them accessible by using deep links. For example, you can hide the ability to create new storage accounts from users, while still allowing the extension to open the `Storage Accounts` property and then open the `usage logs` blades for a storage account that was created for one of the extension's assets. Curation is optional because the extension can inherit from the production environment.
@@ -388,7 +380,7 @@ A browsable asset type is one that is defined in the `PDL` file by using the `Br
 
 <!-- TODO: Determine whether  "Public value" can be changed to "Default value". -->
  
-<a name="custom-domains-curation-curation-categories"></a>
+<a name="domain-based-configuration-curation-curation-categories"></a>
 ### Curation categories
 
 Curation provides a significant degree of flexibility, which can be overwhelming because options are NOT mutually exclusive. For example, the production curation definition can be programmatically modified in the following ways.
@@ -407,7 +399,7 @@ Use `Curation by AssetType` to list only items from the extension, and perhaps s
 
 * Default all items to go under "Security + Identity" category, including "Help + Support"
  
-<a name="custom-domains-curation-default-favorites"></a>
+<a name="domain-based-configuration-curation-default-favorites"></a>
 ### Default Favorites
 
 When a new user visits your Community Cloud for the first time, the system places several asset types in the far left navigation bar. The extension can also control which items are placed there, in addtion to the order in which they are displayed. The only restriction is that these items must also exist in the Category Curation.
@@ -423,7 +415,7 @@ Is as follows.
 | MICROSOFT_AAD_IAM | Application                    |                      
 | MICROSOFT_AAD_IAM | Licenses                       | 
 
-<a name="custom-domains-curation-tile-gallery"></a>
+<a name="domain-based-configuration-curation-tile-gallery"></a>
 ### Tile Gallery
 
 <!-- TODO: Determine what the tile gallery has to do with custom domains and/ or the questionnaire template -->
@@ -442,7 +434,7 @@ Items are added in the order listed.
 | hiddenGalleryParts     | Hides listed parts from the parts gallery, like `All Resources`, `Service Health`, and others  | empty | 
 
 
-<a name="custom-domains-curation-default-dashboard"></a>
+<a name="domain-based-configuration-curation-default-dashboard"></a>
 ### Default Dashboard
 
 The default dashboard JSON controls what parts appear on the dashboard for new users. Existing users need to use the `Reset Dashboard` option to see updated versions of the default dashboard. The following steps generate the JSON. 
@@ -630,7 +622,7 @@ The default dashboard JSON controls what parts appear on the dashboard for new u
     [https://microsoft.sharepoint.com/teams/azureteams/aapt/azureux/portalfx/_layouts/OneNote.aspx?id=%2Fteams%2Fazureteams%2Faapt%2Fazureux%2Fportalfx%2FSiteAssets%2FPortalFx%20Notebook&wd=target%28Execution%2FFundamentals%2FDeployments.one%7C9B8BE2F4-DDEF-4504-982B-560AF50A892C%2FCustom%20Domain%20-%20Questionnaire%20Template%7C90BDECEB-D69D-4BA0-B60A-8A9EBB877CC4%2F%29](https://microsoft.sharepoint.com/teams/azureteams/aapt/azureux/portalfx/_layouts/OneNote.aspx?id=%2Fteams%2Fazureteams%2Faapt%2Fazureux%2Fportalfx%2FSiteAssets%2FPortalFx%20Notebook&wd=target%28Execution%2FFundamentals%2FDeployments.one%7C9B8BE2F4-DDEF-4504-982B-560AF50A892C%2FCustom%20Domain%20-%20Questionnaire%20Template%7C90BDECEB-D69D-4BA0-B60A-8A9EBB877CC4%2F%29)
     -->
 
-<a name="custom-domains-override-links"></a>
+<a name="domain-based-configuration-override-links"></a>
 ## Override links
 
 Your cloud has the option of using settings to override specific links that are displayed by the system. Overriding is optional, and in many cases no overrides are required. Where supported, settings use FwLinks for links instead of absolute URLs because FwLinks do not require the Shell to be redeployed in order for the extension to change the destination. Also, FwLinks support the user’s in-product language selection, which is often different from the browser’s default language.  For example, if the user has set the language in the Portal to Chinese, it should display Chinese-language pages.
@@ -669,7 +661,7 @@ Links are separated into the following three sections.
 
 * * *
 
-<a name="custom-domains-override-links-shell-links"></a>
+<a name="domain-based-configuration-override-links-shell-links"></a>
 ### Shell Links
 
 | Setting name / notes | Public Value | Extension Value |
@@ -689,7 +681,7 @@ Links are separated into the following three sections.
 | joinResearchPanel | [https://uriux.fluidsurveys.com/s/MicrosoftReseachPanel/](https://uriux.fluidsurveys.com/s/MicrosoftReseachPanel) | same |
 | learnAzureCli<sup>2</sup> | 	[https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-azure-resource-manager/](https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-azure-resource-manager/)	 | same |
  
-<a name="custom-domains-override-links-hubs-links"></a>
+<a name="domain-based-configuration-override-links-hubs-links"></a>
 ### Hubs links
 
 | Setting name / notes  | Public Value | Extension Value |
@@ -712,7 +704,7 @@ Links are separated into the following three sections.
 | pricingHelp<sup>2</sup> | [https://go.microsoft.com/fwLink/?LinkID=829091](https://go.microsoft.com/fwLink/?LinkID=829091)  | same |
 | azureStatus<sup>2</sup> | [https://status.azure.com]()  | same |
  
-<a name="custom-domains-override-links-error-page-links"></a>
+<a name="domain-based-configuration-override-links-error-page-links"></a>
 ### Error Page Links
 	
 | Setting name / notes | Public Value |	Extension Value |
@@ -728,12 +720,12 @@ Links are separated into the following three sections.
 
 
 
-<a name="custom-domains-consumption-example"></a>
-## Consumption example
+<a name="domain-based-configuration-sample-configuration"></a>
+## Sample configuration
 
-The following three examples demonstrate how to 
+The following three examples demonstrate how to use the settings that are associated with custom domains.
 
-* Consumption example 
+* Consuming example 
 
     ```cs
     [ImportingConstructor]
@@ -838,7 +830,7 @@ The following three examples demonstrate how to
 
 **NOTE**: `gettingStarted`, `support`, and `termsAndConditions` are members of the  `links` parameter in the `config` variable.
 
-<a name="custom-domains-custom-domain-questionnaire-template"></a>
+<a name="domain-based-configuration-custom-domain-questionnaire-template"></a>
 ## Custom domain questionnaire template
 
 The following template contains questions that your team answers previous to  the granting of the  custom domain. You may want to make a copy and fill the details.
@@ -899,7 +891,7 @@ These feature flags impact dashboard settings that are not immediately visible. 
  
  ## Best Practices
 
-<a name="custom-domains-custom-domain-questionnaire-template-using-portalcontext-trustedauthorityhost-properly"></a>
+<a name="domain-based-configuration-custom-domain-questionnaire-template-using-portalcontext-trustedauthorityhost-properly"></a>
 ### Using PortalContext.TrustedAuthorityHost properly
 
 Do not use PortalContext.TrustedAuthorityHost directly, as in the following example. 
@@ -914,7 +906,7 @@ if (PortalContext.TrustedAuthorityHost.startsWith("contoso"))
 
 This is an anti-pattern for several reasons. The code becomes peppered with Cloud specific 'if' blocks that are hard to test, maintain, and find. This increases in complexity as the number of supported Clouds increases. Also, if another cloud that requires any of this logic comes online, the code has to be updated. Instead, use domain-based configuration to create a setting that varies by `PortalContext.TrustedAuthorityHost`, which is available at run time and returns the host name under which the extension was loaded.
 
-<a name="custom-domains-custom-domain-questionnaire-template-dynamic-pdl-changes"></a>
+<a name="domain-based-configuration-custom-domain-questionnaire-template-dynamic-pdl-changes"></a>
 ### Dynamic PDL changes
 
 Never change the PDL that your extension serves based on the host of the caller, or based on feature flags that change based on callers.
@@ -925,7 +917,7 @@ Never change the PDL that your extension serves based on the host of the caller,
 
 1. Changing the default feature flags that are sent to the extension requires Shell config changes and redeployment.
 
-<a name="custom-domains-custom-domain-questionnaire-template-branding-and-chrome-values"></a>
+<a name="domain-based-configuration-custom-domain-questionnaire-template-branding-and-chrome-values"></a>
 ### Branding and Chrome Values
 
 The following values are recommended, but not required, values for  setting and feature flags for  extension branding and chrome.
@@ -957,10 +949,10 @@ These feature flags impact dashboard settings that are not immediately visible. 
 
 
  
-<a name="custom-domains-frequently-asked-questions"></a>
+<a name="domain-based-configuration-frequently-asked-questions"></a>
 ## Frequently Asked Questions
 
-<a name="custom-domains-frequently-asked-questions-site-is-not-accessible"></a>
+<a name="domain-based-configuration-frequently-asked-questions-site-is-not-accessible"></a>
 ### Site is not accessible
 
 ***My site is not accessible from a custom URL in DogFood***
@@ -969,7 +961,7 @@ SOLUTION:  Verify that the configuration setting  `Microsoft.Portal.Framework.Fr
 
 * * * 
 
-<a name="custom-domains-frequently-asked-questions-default-favorites-list-do-not-match-the-submitted-list"></a>
+<a name="domain-based-configuration-frequently-asked-questions-default-favorites-list-do-not-match-the-submitted-list"></a>
 ### Default favorites list do not match the submitted list
 
 ***I changed the default favorites definition, but am still seeing the old one.***
@@ -978,7 +970,7 @@ SOLUTION: Default favorites are user-configurable and stored in `User Settings`.
 
 * * *
 
-<a name="custom-domains-frequently-asked-questions-shared-url-for-cloud-and-production"></a>
+<a name="domain-based-configuration-frequently-asked-questions-shared-url-for-cloud-and-production"></a>
 ### Shared URL for cloud and production
 
 ***Can I point my Community Cloud and Production to the same extension URL?***
