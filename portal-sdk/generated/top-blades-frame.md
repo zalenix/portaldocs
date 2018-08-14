@@ -36,97 +36,29 @@ To create a FrameBlade, you need to create 3 artifacts.
 1. Register the FrameBlade with your extension by creating a TypeScript class with the @FrameBlade decorator. The samples extension file for this is located at 
   `<dir>/Client/V2/Blades/FrameBlade/SampleFrameBlade.ts` and in the following example.
 
-  import * as ClientResources from "ClientResources";
-import { DialogButtons } from "Fx/Composition/Dialog";
-import * as FrameBlade from "Fx/Composition/FrameBlade";
-import * as BladesArea from "../BladesArea";
+  ```typescript
 
-export = Main;
+/**
+ * View model for a FrameBlade.
+ */
+@FrameBlade.Decorator()
+export class SampleFrameBlade {
+    public title = ClientResources.sampleFrameBladeTitle;
+    public subtitle: string;  // This FrameBlade doesn't make use of a subtitle.
 
-module Main {
-    "use strict";
+    public viewModel: FrameBlade.ViewModel;
 
-    import Toolbars = MsPortalFx.ViewModels.Toolbars;
-    import Toolbar = Toolbars.Toolbar;
+    public context: FrameBlade.Context<void, BladesArea.DataContext>;
 
-    function mockAsyncOperationToGetDataToSendToFrame() {
-        return Q.delay(2000).then(() => {
-            return {
-                title: ClientResources.sampleFrameBladeTitle,
-            };
+    public onInitialize() {
+        const { container } = this.context;
+
+        const viewModel = this.viewModel = new FrameBlade.ViewModel(container, {
+            src: MsPortalFx.Base.Resources.getContentUri("/Content/SamplesExtension/framebladepage.html")
         });
-    }
-
-//top-blades-frameblades#viewmodel
-    /**
-     * View model for a FrameBlade.
-     */
-    @FrameBlade.Decorator()
-    export class SampleFrameBlade {
-        public title = ClientResources.sampleFrameBladeTitle;
-        public subtitle: string;  // This FrameBlade doesn't make use of a subtitle.
-
-        public viewModel: FrameBlade.ViewModel;
-
-        public context: FrameBlade.Context<void, BladesArea.DataContext>;
-
-        public onInitialize() {
-            const { container } = this.context;
-
-            const viewModel = this.viewModel = new FrameBlade.ViewModel(container, {
-                src: MsPortalFx.Base.Resources.getContentUri("/Content/SamplesExtension/framebladepage.html"),
-            });
 			
-//top-blades-frameblades#viewmodel
 
-            // You can add command bars to FrameBlades.
-            const commandBar = new Toolbar(container);
-            commandBar.setItems([this._openLinkButton(), this._openDialogButton()]);
-            container.commandBar = commandBar;
-
-            // This is an example of how to listen for messages from your iframe.
-            viewModel.on("getAuthToken", () => {
-                // This is an example of how to post a message back to your iframe.
-                MsPortalFx.Base.Security.getAuthorizationToken().then((token) => {
-                    const header = token.header;
-                    viewModel.postMessage("getAuthTokenResponse", header);
-                });
-            });
-
-            return mockAsyncOperationToGetDataToSendToFrame().then(info => {
-                viewModel.postMessage("frametitle", info.title);
-            });
-        }
-
-        private _openLinkButton(): Toolbars.OpenLinkButton {
-            const button = new Toolbars.OpenLinkButton("http://microsoft.com");
-
-            button.label(ClientResources.ToolbarButton.openLink);
-            button.icon(MsPortalFx.Base.Images.Hyperlink());
-
-            return button;
-        }
-
-        private _openDialogButton(): Toolbars.CommandButton<void> {
-            const { container } = this.context;
-            return new Toolbars.CommandButton<void>({
-                label: "Open a dialog",
-                command: {
-                    canExecute: ko.observable(true),
-                    execute: () => {
-                        return container.openDialog({
-                            telemetryName: "FrameBladeDialog",
-                            title: ClientResources.sampleFrameBladeDialogTitle,
-                            content: ClientResources.sampleFrameBladeDialogContent,
-                            buttons: DialogButtons.Ok,
-                        });
-                    },
-                },
-            });
-        }
-    }
-}
-
+```
 
 1. Create an html page that will serve as the main contents of your iframe.  The samples extension file for this is located at `<dir>/Content/SamplesExtension/framebladepage.html` and in the following example.
 
@@ -286,7 +218,6 @@ module Main {
 
 ```
 
-<a name="changing-ui-themes"></a>
 ## Changing UI themes
 
 When using a FrameBlade, extension developers can implement themes. Typically, the user selects a theme, which in turn is sent to the UI IFrame. The following code snippet demonstrates how to pass the selected theme to the UI IFrame using the **postMessage** method.
