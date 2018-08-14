@@ -12,11 +12,11 @@
 
 * [Curation](#curation)
 
-* [Override Links](#override-links)
+* [Default dashboard](#default-dashboard)
 
 * [Sample configuration](#sample-configuration)
 
-* [Custom Domain Questionnaire Template](#custom-domain-questionnaire-template) 
+* [Questionnaire Template](#questionnaire-template) 
 
 ## Overview
 
@@ -26,6 +26,8 @@ Some partner needs are met at the deployment level. For example, national clouds
 
 In other instances, a single deployment of an extension supports multiple domains.  For example, community clouds, like Fujitsu A5, use domain-based configuration.  In these instances, functionality is selected based on the Trusted Authority for the calling extension, as specified in [#The-trustedAuthorityHost-function](#the-trustedauthorityhost-function). Although domain-based configuration is not required to support national clouds, there is great overlap between settings that are selected for community clouds. It is easier to store settings like links in domain-based configuration, which includes support for expanding links from link redirection, or from friendly name services such as **FwLink** and `aka.ms` services.
 
+<!-- TODO:  Determine paragraph that indicates how to meet with Adam and Leon, and what the takeaways are. -->
+
 During development, the first-party or third-party developer identifies the extension functionality that depends on the domain in which the extension is running. Once the partner and developer have identified the configurations that provide this functionality for the extension, the developer creates a supporting `DictionaryConfiguration` class as specified in [Configure the dictionary](#configure-the-dictionary). The dictionary key is the host name the Shell was loaded under, which is available at run time by using the `PortalContext` and `TrustedAuthorityHost` functions.
 
 It is recommended that domain-based configuration class names have the characters `DomainBasedConfiguration` appended to them. Some examples are `ErrorApplicationDomainBasedConfiguration`, `HubsDomainBasedConfiguration`, and `WebsiteDomainBasedConfiguration`. However, this naming convention is not required.
@@ -34,15 +36,25 @@ Extensions that are called contain additional code that pushes values to the bro
 
 **NOTE**: Settings like ARM endpoints are not typically candidates for domain-based configuration.
 
+If you and your team have an interest in custom domains, you should read this guide carefully to determine the settings and flags that define the look and feel of your custom sites. The Ibiza team relies on you to manage the extension registration and configuration processes.
+
+**NOTE**: All custom domains must be approved by <a href="mailto:ibiza-onboarding@microsoft.com?subject=Custom Domains">Leon Welicki and Adam Abdelhamed</a> before any work can commence on the extension. Please schedule time with them to discuss the details about the extension and get an approval. 
+
 If you have any questions, reach out to Ibiza team at [https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza).
 
 ## Configuration APIs
 
  The Shell provides two APIs that support domain-based configuration. The following is the recommended implementation methodology, although partners and developers can implement domain-based configuration in many ways.
 
+* [The trustedAuthorityHost function](#the-trustedAuthorityHost-function)
+
 * [The getSharedSettings function](#the-getSharedSettings-function)
 
-* [The trustedAuthorityHost function](#the-trustedAuthorityHost-function)
+### The trustedAuthorityHost function
+
+The Server-side `PortalContext.TrustedAuthorityHost` function returns the host name under which the extension was loaded. For example, an extension may need to know if it is being called from `portal.azure.com` or `Contoso.azure.com`. In the first case `TrustedAuthorityHost` will contain `portal.azure.com` and in the second, `contoso.azure.com`.
+ 
+**NOTE**: If the extension needs to change its configuration based on the domain of the caller, the recommended solution is to use domain-based configuration, which is designed specifically for this sort of work.  It is preferred over coding directly against values returned by `PortalContext.TrustedAuthorityHost`.
 
 ### The getSharedSettings function
 
@@ -80,13 +92,122 @@ Links are automatically expanded according to the user's domain, tenant, and lan
 
     In this instance, the feature is not supported for that user / tenant / environment combination.
 
-The consuming extension should support all three formats if they take a dependency.
- 
-### The trustedAuthorityHost function
+The extension should support all three formats if they take a dependency.
 
-The Server-side `PortalContext.TrustedAuthorityHost` function returns the host name under which the extension was loaded. For example, an extension may need to know if it is being called from `portal.azure.com` or `Contoso.azure.com`. In the first case `TrustedAuthorityHost` will contain `portal.azure.com` and in the second, `contoso.azure.com`.
- 
-**NOTE**: If the extension needs to change its configuration based on the domain of the caller, the recommended solution is to use domain-based configuration, which is designed specifically for this sort of work.  It is preferred over coding directly against values returned by `PortalContext.TrustedAuthorityHost`.
+#### The link attribute
+
+Expansion logic is required for properties that are marked `[Link]`. The format string is specified in the `LinkTemplate` property that is located at the root of the object. A `LinkTemplate` value of `https://go.microsoft.com/fwLink/?LinkID={linkId}&amp;clcid=0x{lcid}` is the correct template for FwLinks.
+
+Expansion in the format string is applied according to the following rules.
+
+1. If the string is numeric, then occurrences of `{linkId}` in the string are expanded to the numeric value. If no `LinkTemplate` property is specified, the value will be left unexpanded.
+
+1. Occurrences of `{lcid}` are replaced with the hex representation of the user's preferred .NET LCID value.  For example, 409 is the .NET LCID value for US English. 
+
+1. Occurrences of `{culture}` are replaced with the user's preferred .NET culture code. For example, en-US is the .NET culture code for US English.
+
+An exception will be thrown if the target of a `[Link]` attribute is not in one of the following string formats.
+
+* Numeric, for example, '12345' 
+
+* A URL hash-fragment, like "#create\Microsoft.Support"
+
+* A http or https URL
+
+
+#### Override links
+
+Your cloud has the option of using settings to override specific links that are displayed by the system. Overriding is optional, and in many cases no overrides are required. Where supported, settings use FwLinks for links instead of absolute URLs because FwLinks do not require the Shell to be redeployed in order for the extension to change the destination. Also, FwLinks support the user’s in-product language selection, which is often different from the browser’s default language.  For example, if the user has set the language in the Portal to Chinese, it should display Chinese-language pages.
+
+Each link can be specified as one of the following five values.
+
+* A numeric FwLink ID
+
+* A blade reference
+
+* An absolute URL
+
+    Absolute URL's can be assigned friendly names by using the site located at [http://aka.ms](http://aka.ms).
+
+* The word "blank"
+
+    The link should be hidden and not displayed to the user.
+
+* The word "same"
+
+    The default production value should be used. If the default production value changes, that change is automatically propagated to the extension.
+
+Links are separated into the following three sections.
+
+* [Shell Links](#shell-links)
+
+* [Hubs links](#hubs-links) 
+
+* [Error Page Links](#error-page-links)
+
+<sup>1</sup> Items do not support FwLinks or blade references because  they are  download links, or they are base URLs to which  parameter or path information is added dynamically at run-time.
+
+<sup>2</sup> Items may not currently support the "blank" setting, or they may not support  values of the types other than the ones listed in the `Public Value` column. If you need to use them, reach out to  <a href="mailto:ibizapxfm@microsoft.com?subject=Settings and Links">ibizapxfm@microsoft.com</a> so that we can work with the owner team.
+
+**NOTE**: Changing to support the unsupported values may result in a delay in delivery time.
+
+* * *
+
+#### Shell Links
+
+<!-- TODO:  Determine whether the "Extension value" column was intended to be a recommended value.-->
+
+| Setting name / notes | Public Value | Extension Value |
+| -------------------- | ------------ | ---------- |
+| accessDetails<sup>2</sup> | #blade/HubsExtension/MyAccessBlade/resourceId/ |	blank (verify that menu item is hidden) | 
+| accountPortal<sup>1</sup> | https://account.windowsazure.com/ | blank (verify that menu item is hidden) | 
+| classicPortal<sup>1</sup> | https://manage.windowsazure.com/	 | same  | 
+| createSupportRequest | #create/Microsoft.Support | same |
+| giveFeedback | [https://go.microsoft.com/fwLink/?LinkID=522329](https://go.microsoft.com/fwLink/?LinkID=522329) | [https://go.microsoft.com/fwlink/?linkid=838978](https://go.microsoft.com/fwlink/?linkid=838978) | 
+| helpAndSupport | 	#blade/Microsoft_Azure_Support/HelpAndSupportBlade | same | 
+| learnRelatedResources	| [https://go.microsoft.com/fwLink/?LinkID=618605](https://go.microsoft.com/fwLink/?LinkID=618605) | same  | 
+| learnSharedDashboard | [https://go.microsoft.com/fwLink/?LinkID=746967](https://go.microsoft.com/fwLink/?LinkID=746967) | same  | 
+| manageSupportRequests | #blade/HubsExtension/BrowseServiceBlade/        assetTypeId/Microsoft_Azure_Support_SupportRequest | same |
+| privacyAndTerms | [https://go.microsoft.com/fwLink/?LinkID=522330](https://go.microsoft.com/fwLink/?LinkID=522330)	 | same | 
+| resourceGroupOverview	| [https://go.microsoft.com/fwLink/?LinkID=394393](https://go.microsoft.com/fwLink/?LinkID=394393) | same  | 
+| survey	| [https://go.microsoft.com/fwLink/?LinkID=733278](https://go.microsoft.com/fwLink/?LinkID=733278)  | 	??? Gauge team to follow up on this | 
+| joinResearchPanel | [https://uriux.fluidsurveys.com/s/MicrosoftReseachPanel/](https://uriux.fluidsurveys.com/s/MicrosoftReseachPanel) | same |
+| learnAzureCli<sup>2</sup> | 	[https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-azure-resource-manager/](https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-azure-resource-manager/)	 | same |
+ 
+#### Hubs links
+
+| Setting name / notes  | Public Value | Extension Value |
+| --------------------- | ------------ | ---------- |
+| createNewSubscription     | [https://go.microsoft.com/fwLink/?LinkID=522331](https://go.microsoft.com/fwLink/?LinkID=522331)	 | same |
+| manageAzureResourceHelp   | [https://go.microsoft.com/fwLink/?LinkID=394637](https://go.microsoft.com/fwLink/?LinkID=394637)	 | same |
+| moveResourcesDoc<sup>2</sup>	| [https://go.microsoft.com/fwLink/?LinkID=747963](https://go.microsoft.com/fwLink/?LinkID=747963)	 | same |
+| resourceGroupInstallClientLibraries (not found)	| [https://go.microsoft.com/fwLink/?LinkID=234674](https://go.microsoft.com/fwLink/?LinkID=234674)	 | same |
+| resourceGroupInstallPowerShell<sup>1</sup>	| [https://go.microsoft.com/fwLink/?LinkID=https://go.microsoft.com/?linkid=9811175](https://go.microsoft.com/fwLink/?LinkID=https://go.microsoft.com/?linkid=9811175)			(download link) | same |
+| resourceGroupInstallTools (page not found) | [https://go.microsoft.com/fwLink/?LinkID=94686](https://go.microsoft.com/fwLink/?LinkID=94686)	 | same |
+| resourceGroupIntroduction	| [https://go.microsoft.com/fwLink/?LinkID=394393](https://go.microsoft.com/fwLink/?LinkID=394393)	 | same |
+| resourceGroupIntroductionVideo	| [https://go.microsoft.com/fwLink/?LinkID=394394](https://go.microsoft.com/fwLink/?LinkID=394394)	 | same |
+| resourceGroupResourceManagement	| [https://go.microsoft.com/fwLink/?LinkID=394396](https://go.microsoft.com/fwLink/?LinkID=394396)	 | same |
+| resourceGroupSample	| [https://go.microsoft.com/fwLink/?LinkID=394397](https://go.microsoft.com/fwLink/?LinkID=394397)	 | same |
+| resourceGroupTemplate	| [https://go.microsoft.com/fwLink/?LinkID=394395](https://go.microsoft.com/fwLink/?LinkID=394395)	 | same |
+| subCerts	| [https://go.microsoft.com/fwLink/?LinkID=734721](https://go.microsoft.com/fwLink/?LinkID=734721)	 | same |
+| tourHelp	| [https://go.microsoft.com/fwLink/?LinkID=626007](https://go.microsoft.com/fwLink/?LinkID=626007)	 | same |
+| templateDeployment	| [https://go.microsoft.com/fwLink/?LinkID=733371](https://go.microsoft.com/fwLink/?LinkID=733371)	 | same |
+| tagsHelp<sup>2</sup> | [https://go.microsoft.com/fwLink/?LinkID=822935](https://go.microsoft.com/fwLink/?LinkID=822935)  | same |
+| pricingHelp<sup>2</sup> | [https://go.microsoft.com/fwLink/?LinkID=829091](https://go.microsoft.com/fwLink/?LinkID=829091)  | same |
+| azureStatus<sup>2</sup> | [https://status.azure.com]()  | same |
+ 
+#### Error Page Links
+	
+| Setting name / notes | Public Value |	Extension Value |
+| -------------------- | ------------ | ---------- |
+| classicPortal<sup>1</sup>	   | https://manage.windowsazure.com/	| same |
+| contactSupport |	[https://go.microsoft.com/fwLink/?LinkID=733312](https://go.microsoft.com/fwLink/?LinkID=733312)	 | same |
+| html5StorageExceededHelp |	[https://go.microsoft.com/fwLink/?LinkID=522344](https://go.microsoft.com/fwLink/?LinkID=522344)	 | same |
+| javaScriptDisabledHelp |	[https://go.microsoft.com/fwLink/?LinkID=530268](https://go.microsoft.com/fwLink/?LinkID=530268)	 | same |
+| noHtml5StorageHelp |	[https://go.microsoft.com/fwLink/?LinkID=522344](https://go.microsoft.com/fwLink/?LinkID=522344)	 | same |
+| portalVideo |	[https://go.microsoft.com/fwLink/?LinkID=394684](https://go.microsoft.com/fwLink/?LinkID=394684) |	 blank |
+| supportedBrowserMatrix |	[https://go.microsoft.com/fwLink/?LinkID=394683](https://go.microsoft.com/fwLink/?LinkID=394683)	 | same |
+| unsupportedLayoutHelp	 |[https://go.microsoft.com/fwLink/?LinkID=394683]()	 | same |
 
 ## Expose configuration settings
 
@@ -300,31 +421,11 @@ namespace Microsoft.MyExtension.Configuration
 
 **NOTE**: The deserializer handles camel-case to pascal-case conversion when the code uses JSON property name conventions in the config file and C# name conventions in the configuration classes.
 
-#### The link attribute
-
-Expansion logic is required for properties that are marked `[Link]`. The format string is specified in the `LinkTemplate` property that is located at the root of the object. A `LinkTemplate` value of `https://go.microsoft.com/fwLink/?LinkID={linkId}&amp;clcid=0x{lcid}` is the correct template for FwLinks.
-
-Expansion in the format string is applied according to the following rules.
-
-1. If the string is numeric, then occurrences of `{linkId}` in the string are expanded to the numeric value. If no `LinkTemplate` property is specified, the value will be left unexpanded.
-
-1. Occurrences of `{lcid}` are replaced with the hex representation of the user's preferred .NET LCID value.  For example, 409 is the .NET LCID value for US English. 
-
-1. Occurrences of `{culture}` are replaced with the user's preferred .NET culture code. For example, en-US is the .NET culture code for US English.
-
-An exception will be thrown if the target of a `[Link]` attribute is not in one of the following string formats.
-
-* Numeric, for example, '12345' 
-
-* A URL hash-fragment, like "#create\Microsoft.Support"
-
-* A http or https URL
-
 ## Branding and chrome
 
-<!-- TODO:  Determine whether the Custom Domain Questionnaire should include a screen shot of the new extension that is similar to the one described in this section. -->
+<!-- TODO: Determine whether the Custom Domain Questionnaire should include a screen shot of the new extension that is similar to the one described in this section. -->
 
-The following image is the Azure Dashboard. The titles and labels that it displays are the settings in the extension and its configuration files.
+Custom domains can create or set their own branding and chrome, by specifying various settings and feature flags.  The titles and labels that are displayed are controlled by the settings in the extension and its configuration files, as in the following image.
 
 ![alt-text](../media/top-extensions-custom-domains/branding-and-chrome.png "Branding and Chrome")
 
@@ -334,7 +435,7 @@ The following table specifies the parts in the dashboard image.
 
 | Setting or feature flag              | Description  | Default Value |
 | ---------------------- | ----------- | ------------ | 
-| URL                    | The address of the extension. |              |              |
+| URL                    | The address of the extension. |   |        |
 | Title                  | The text that appears on the Browser tab/title bar. It is located in the page’s `<TITLE>` element | Micro`soft Azure |
 | internalonly           | Controls whether the Orange ‘Preview’ tag appears to the left of the site name  | false  | 
 | Product Name           | The text that appears on the top bar | Microsoft Azure | 
@@ -389,7 +490,7 @@ Use `Curation by AssetType` to list only items from the extension, and perhaps s
 
 When a new user visits your Community Cloud for the first time, the system places several asset types in the far left navigation bar. The extension can also control which items are placed there, in addtion to the order in which they are displayed. The only restriction is that these items must also exist in the Category Curation.
 
-Is as follows.
+A list of items is as follows.
  
  <!-- TODO:  Determine whether  AzureActiveDirectoryQuickStart  and  Licenses   are implemented yet  -->
 | Extension Name    | Asset ID                       | 
@@ -410,25 +511,24 @@ The tile gallery is visible when the user clicks on `Edit dashboard`. It display
 
 * The `hiddenGalleryParts` list allows this extension to hide specific parts that are made available by other extensions. For example, by default, the Service Health part is always displayed, but it can be hidden by adding it to this list.
 
-Items are added in the order listed.
- 
-| Setting or feature flag              | Description  | Default Value |
-| ---------------------- | ----------- | ------------ | 
-| hidePartsGalleryPivots | Hides parts types picker from parts gallery. Does not disable the category picker  | false | 
-| hiddenGalleryParts     | Hides listed parts from the parts gallery, like `All Resources`, `Service Health`, and others  | empty | 
+| Setting or feature flag | Description  | Default Value |
+| ----------------------- | ------------ | ------------- |
+| hidePartsGalleryPivots  | Hides parts types picker from parts gallery. Does not disable the category picker  | false |
+| hiddenGalleryParts      | Hides listed parts from the parts gallery, like `All Resources`, `Service Health`, and others  | empty |
 
+## Default Dashboard
 
-### Default Dashboard
+The default dashboard JSON controls what parts are displayed on the dashboard for new users. Existing users will use the `Reset Dashboard` option to view updated versions of the default dashboard. 
 
-The default dashboard JSON controls what parts appear on the dashboard for new users. Existing users need to use the `Reset Dashboard` option to see updated versions of the default dashboard. The following steps generate the JSON. 
+The following steps generate the JSON for the dashboard.
 
 1. Use the Portal’s `customize` mode to manually create the dashboard.  Pin or drag and drop the dashboard contents into place.
 
 1. Use the Portal’s `Share` feature to publish the dashboard to an Azure subscription.
 
- **NOTE**: The subscription is  not related to your content; this is just a means to an end.
+ **NOTE**: The subscription is not related to your content.
 
-1. Navigate to `More Services -> Resource Explorer` and find the dashboard that was  just published. The `Resource Explorer` will display the JSON representation of the dashboard.  You can review and adjust  the tile sizes, positions, and settings.  
+1. Navigate to `More Services -> Resource Explorer` and find the dashboard that was  just published. The `Resource Explorer` will display the JSON representation of the dashboard.  You can review and adjust the tile sizes, positions, and settings.  
 
 1. Inspect the JSON to confirm that it contains no user-specific values, because this dashboard will be applied to all new users.
 
@@ -605,105 +705,11 @@ The default dashboard JSON controls what parts appear on the dashboard for new u
     [https://microsoft.sharepoint.com/teams/azureteams/aapt/azureux/portalfx/_layouts/OneNote.aspx?id=%2Fteams%2Fazureteams%2Faapt%2Fazureux%2Fportalfx%2FSiteAssets%2FPortalFx%20Notebook&wd=target%28Execution%2FFundamentals%2FDeployments.one%7C9B8BE2F4-DDEF-4504-982B-560AF50A892C%2FCustom%20Domain%20-%20Questionnaire%20Template%7C90BDECEB-D69D-4BA0-B60A-8A9EBB877CC4%2F%29](https://microsoft.sharepoint.com/teams/azureteams/aapt/azureux/portalfx/_layouts/OneNote.aspx?id=%2Fteams%2Fazureteams%2Faapt%2Fazureux%2Fportalfx%2FSiteAssets%2FPortalFx%20Notebook&wd=target%28Execution%2FFundamentals%2FDeployments.one%7C9B8BE2F4-DDEF-4504-982B-560AF50A892C%2FCustom%20Domain%20-%20Questionnaire%20Template%7C90BDECEB-D69D-4BA0-B60A-8A9EBB877CC4%2F%29)
     -->
 
-## Override links
-
-Your cloud has the option of using settings to override specific links that are displayed by the system. Overriding is optional, and in many cases no overrides are required. Where supported, settings use FwLinks for links instead of absolute URLs because FwLinks do not require the Shell to be redeployed in order for the extension to change the destination. Also, FwLinks support the user’s in-product language selection, which is often different from the browser’s default language.  For example, if the user has set the language in the Portal to Chinese, it should display Chinese-language pages.
-
-Each link can be specified as one of the following five values.
-
-* A numeric FwLink ID
-
-* A blade reference
-
-* An absolute URL
-
-    Absolute URL's can be assigned friendly names by using the site located at [http://aka.ms](http://aka.ms).
-
-* The word "blank"
-
-    The link should be hidden and not displayed to the user.
-
-* The word "same"
-
-    The default production value should be used. If the default production value changes, that change is automatically propagated to the extension.
-
-Links are separated into the following three sections.
-
-* [Shell Links](#shell-links)
-
-* [Hubs links](#hubs-links) 
-
-* [Error Page Links](#error-page-links)
-
-<sup>1</sup> Items do not support FwLinks or blade references because  they are  download links, or they are base URLs to which  parameter or path information is added dynamically at run-time.
-
-<sup>2</sup> Items may not currently support the "blank" setting, or they may not support  values of the types other than the ones listed in the `Public Value` column. If you need to use them, reach out to  <a href="mailto:ibizapxfm@microsoft.com?subject=Settings and Links">ibizapxfm@microsoft.com</a>so that we can work with the owner team.
-
-**NOTE**: Changing to support the unsupported values may result in a delay in delivery time.
-
-* * *
-
-### Shell Links
-
-| Setting name / notes | Public Value | Extension Value |
-| -------------------- | ------------ | ---------- |
-| accessDetails<sup>2</sup> | #blade/HubsExtension/MyAccessBlade/resourceId/ |	blank (verify that menu item is hidden) | 
-| accountPortal<sup>1</sup> | https://account.windowsazure.com/ | blank (verify that menu item is hidden) | 
-| classicPortal<sup>1</sup> | https://manage.windowsazure.com/	 | same  | 
-| createSupportRequest | #create/Microsoft.Support | same |
-| giveFeedback | [https://go.microsoft.com/fwLink/?LinkID=522329](https://go.microsoft.com/fwLink/?LinkID=522329) | [https://go.microsoft.com/fwlink/?linkid=838978](https://go.microsoft.com/fwlink/?linkid=838978) | 
-| helpAndSupport | 	#blade/Microsoft_Azure_Support/HelpAndSupportBlade | same | 
-| learnRelatedResources	| [https://go.microsoft.com/fwLink/?LinkID=618605](https://go.microsoft.com/fwLink/?LinkID=618605) | same  | 
-| learnSharedDashboard | [https://go.microsoft.com/fwLink/?LinkID=746967](https://go.microsoft.com/fwLink/?LinkID=746967) | same  | 
-| manageSupportRequests | #blade/HubsExtension/BrowseServiceBlade/        assetTypeId/Microsoft_Azure_Support_SupportRequest | same |
-| privacyAndTerms | [https://go.microsoft.com/fwLink/?LinkID=522330](https://go.microsoft.com/fwLink/?LinkID=522330)	 | same | 
-| resourceGroupOverview	| [https://go.microsoft.com/fwLink/?LinkID=394393](https://go.microsoft.com/fwLink/?LinkID=394393) | same  | 
-| survey	| [https://go.microsoft.com/fwLink/?LinkID=733278](https://go.microsoft.com/fwLink/?LinkID=733278)  | 	??? Gauge team to follow up on this | 
-| joinResearchPanel | [https://uriux.fluidsurveys.com/s/MicrosoftReseachPanel/](https://uriux.fluidsurveys.com/s/MicrosoftReseachPanel) | same |
-| learnAzureCli<sup>2</sup> | 	[https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-azure-resource-manager/](https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-azure-resource-manager/)	 | same |
- 
-### Hubs links
-
-| Setting name / notes  | Public Value | Extension Value |
-| --------------------- | ------------ | ---------- |
-| createNewSubscription     | [https://go.microsoft.com/fwLink/?LinkID=522331](https://go.microsoft.com/fwLink/?LinkID=522331)	 | same |
-| manageAzureResourceHelp   | [https://go.microsoft.com/fwLink/?LinkID=394637](https://go.microsoft.com/fwLink/?LinkID=394637)	 | same |
-| moveResourcesDoc<sup>2</sup>	| [https://go.microsoft.com/fwLink/?LinkID=747963](https://go.microsoft.com/fwLink/?LinkID=747963)	 | same |
-| resourceGroupInstallClientLibraries (not found)	| [https://go.microsoft.com/fwLink/?LinkID=234674](https://go.microsoft.com/fwLink/?LinkID=234674)	 | same |
-| resourceGroupInstallPowerShell<sup>1</sup>	| [https://go.microsoft.com/fwLink/?LinkID=https://go.microsoft.com/?linkid=9811175](https://go.microsoft.com/fwLink/?LinkID=https://go.microsoft.com/?linkid=9811175)			(download link) | same |
-| resourceGroupInstallTools (page not found) | [https://go.microsoft.com/fwLink/?LinkID=94686](https://go.microsoft.com/fwLink/?LinkID=94686)	 | same |
-| resourceGroupIntroduction	| [https://go.microsoft.com/fwLink/?LinkID=394393](https://go.microsoft.com/fwLink/?LinkID=394393)	 | same |
-| resourceGroupIntroductionVideo	| [https://go.microsoft.com/fwLink/?LinkID=394394](https://go.microsoft.com/fwLink/?LinkID=394394)	 | same |
-| resourceGroupResourceManagement	| [https://go.microsoft.com/fwLink/?LinkID=394396](https://go.microsoft.com/fwLink/?LinkID=394396)	 | same |
-| resourceGroupSample	| [https://go.microsoft.com/fwLink/?LinkID=394397](https://go.microsoft.com/fwLink/?LinkID=394397)	 | same |
-| resourceGroupTemplate	| [https://go.microsoft.com/fwLink/?LinkID=394395](https://go.microsoft.com/fwLink/?LinkID=394395)	 | same |
-| subCerts	| [https://go.microsoft.com/fwLink/?LinkID=734721](https://go.microsoft.com/fwLink/?LinkID=734721)	 | same |
-| tourHelp	| [https://go.microsoft.com/fwLink/?LinkID=626007](https://go.microsoft.com/fwLink/?LinkID=626007)	 | same |
-| templateDeployment	| [https://go.microsoft.com/fwLink/?LinkID=733371](https://go.microsoft.com/fwLink/?LinkID=733371)	 | same |
-| tagsHelp<sup>2</sup> | [https://go.microsoft.com/fwLink/?LinkID=822935](https://go.microsoft.com/fwLink/?LinkID=822935)  | same |
-| pricingHelp<sup>2</sup> | [https://go.microsoft.com/fwLink/?LinkID=829091](https://go.microsoft.com/fwLink/?LinkID=829091)  | same |
-| azureStatus<sup>2</sup> | [https://status.azure.com]()  | same |
- 
-### Error Page Links
-	
-| Setting name / notes | Public Value |	Extension Value |
-| -------------------- | ------------ | ---------- |
-| classicPortal<sup>1</sup>	   | https://manage.windowsazure.com/	| same |
-| contactSupport |	[https://go.microsoft.com/fwLink/?LinkID=733312](https://go.microsoft.com/fwLink/?LinkID=733312)	 | same |
-| html5StorageExceededHelp |	[https://go.microsoft.com/fwLink/?LinkID=522344](https://go.microsoft.com/fwLink/?LinkID=522344)	 | same |
-| javaScriptDisabledHelp |	[https://go.microsoft.com/fwLink/?LinkID=530268](https://go.microsoft.com/fwLink/?LinkID=530268)	 | same |
-| noHtml5StorageHelp |	[https://go.microsoft.com/fwLink/?LinkID=522344](https://go.microsoft.com/fwLink/?LinkID=522344)	 | same |
-| portalVideo |	[https://go.microsoft.com/fwLink/?LinkID=394684](https://go.microsoft.com/fwLink/?LinkID=394684) |	 blank |
-| supportedBrowserMatrix |	[https://go.microsoft.com/fwLink/?LinkID=394683](https://go.microsoft.com/fwLink/?LinkID=394683)	 | same |
-| unsupportedLayoutHelp	 |[https://go.microsoft.com/fwLink/?LinkID=394683]()	 | same |
-
-
-
 ## Sample configuration
 
 The following three examples demonstrate how to use the settings that are associated with custom domains.
 
-* Consuming example 
+* Extension code
 
     ```cs
     [ImportingConstructor]
@@ -722,6 +728,8 @@ The following three examples demonstrate how to use the settings that are associ
     ```
 
 * Configuration and settings classes
+
+    This example is for extensions that usenormal configuration with no dynamic tests at runtime.  
 
     ```cs
     namespace Microsoft.MyExtension.Configuration
@@ -761,7 +769,9 @@ The following three examples demonstrate how to use the settings that are associ
 
 * Corresponding example config settings
 
-    This example supports a deployment that returns different run-time configuration values for the settings class. The value that is returned is dependent on whether the portal was accessed through `portal.azure.com`, `example.microsoft.com`, `fujitsu.portal.azure.com`, or `hostfileoverride.com`. The configuration block is in the following code.
+    This example is for an extension that supports multiple domains, and selects  functionality  based on its Trusted Authority. The deployment returns different run-time configuration values for the settings class, depending on  whether the portal was accessed through `portal.azure.com`, `example.microsoft.com`, `fujitsu.portal.azure.com`, or `hostfileoverride.com`. 
+    
+    The configuration block is in the following code.
 
     ```xml
     <add key="Microsoft.MyExtension.Configuration.MyConfiguration.Settings" value="{
@@ -808,9 +818,13 @@ The following three examples demonstrate how to use the settings that are associ
 
 **NOTE**: `gettingStarted`, `support`, and `termsAndConditions` are members of the  `links` parameter in the `config` variable.
 
-## Custom domain questionnaire template
+## Questionnaire template
 
-The following template contains questions that your team answers previous to  the granting of the  custom domain. You may want to make a copy and fill the details.
+The following template contains questions that your team answers previous to the granting of the custom domain. You should determine the settings and values for your extension previous to filling out the questionnaire, by reviewing the values in the tables located in the [Override links](#override-links),  [Branding and chrome](#branding-and-chrome), and [Tile Gallery](#tile-gallery) sections. You may also want to use settings that were specified in [Default Dashboard](#default-dashboard), if you decide to create one.
+
+You and your team should reach out to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Custom Domains">Leon Welicki and Adam Abdelhamed</a> in the process of answering the questionnaire.
+
+The main questions to answer, other than the settings and values, are the following.
 
 1. Why do you need a Custom Domain?
 
@@ -818,7 +832,7 @@ The following template contains questions that your team answers previous to  th
 
 1. When do you expect the extension to be ready for deployment?
 
-1. What timelines are you looking to go live? 
+1. What are the expected timelines for various tasks and coordination? 
 
     | Requirement                        | Estimated Completion Date |
     | ---------------------------------- | ------------------------- |
@@ -826,10 +840,10 @@ The following template contains questions that your team answers previous to  th
     | Completed Questionnaire            |                           |
     | Completed Default Dashboard Json   |                           |
     | Planning for Dev work              | 1 week                    |
-    | Dev work                           | Requires 3-4 weeks after scheduling, subject to resource availability | 
+    | Dev work                           | 3-4 weeks after scheduling, subject to resource availability | 
     | Deployments                        | Post dev work 2-3 weeks to Prod based on Safe deployment schedule | 
 
-1. URL
+1. What URL's will your extension require for the custom domain?
 
 	| Setting name / notes	| Public Value	        | Extension value                  |
     | --------------------- | --------------------  | -------------------------------- |
@@ -838,34 +852,11 @@ The following template contains questions that your team answers previous to  th
 
 1. Branding and Chrome Values
 
-Recommended extension values are located in [portalfx-extensions-bp-custom-domains.md# branding-and-chrome-values](portalfx-extensions-bp-custom-domains.md#branding-and-chrome-values). Include the values for  settings and feature flags for your extension in the following list by making a copy and adding the appropriate details.
+    The unique values for settings and feature flags for your extension should be included in the  list specified in [#branding-and-chrome](#branding-and-chrome) and [#tile-gallery](#tile-gallery).  You can make a copy of the tables, or you can reach out to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Custom Domains">Leon Welicki and Adam Abdelhamed</a>.
 
-| Setting or feature flag     | Extension value |
-| ---------------------- | ---------------   |
-| URL                    | The address of the extension |       
-| Title                  | Azure Active Directory admin center |
-| internalonly           | false | 
-| Product Name           | Azure Active Directory admin center  |
-| hideSearchBox          | true |
-| feedback               | true |  
-| hideDashboardShare     | true |
-| hideCreateButton       | true |
-| defaultTheme           | light |
-| Description            | Azure Active Directory admin center for administrators |
-| hidePartsGalleryPivots | true |
-| hiddenGalleryParts     | Only include markdown, clock and video, help & support |
+    <!-- TODO: Re-work this because we cannot recommend values for their extensions.  -->
+    Recommended extension values are located in [portalfx-extensions-bp-custom-domains.md# branding-and-chrome-values](portalfx-extensions-bp-custom-domains.md#branding-and-chrome-values). 
 
-* Feature flags
-
-These feature flags impact dashboard settings that are not immediately visible. The recommended values are prepopulated, although you can modify them for your extension.
-
-| Setting                     | Recommended Value  | 
-| --------------------------- | -------- |
-| hidesupport                 | false |
-| nps                         | false |
-| hubsextension_skipeventpoll | True, unless showing all resource types from all extensions. |
-
- 
- {"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-custom-domains.md"}
+ <!--gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-custom-domains.md"} -->
 
  {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-custom-domains.md"}
