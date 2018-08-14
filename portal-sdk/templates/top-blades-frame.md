@@ -32,24 +32,23 @@ To create a FrameBlade, you need to create 3 artifacts.
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
-1. Register the FrameBlade with your extension by creating a TypeScript class with the @FrameBlade decorator. The samples extension file for this is located at 
-  `<dir>/Client/V2/Blades/FrameBlade/SampleFrameBlade.ts` and in the following example.
+1. Register the FrameBlade with your extension by creating a TypeScript class with the @FrameBlade decorator. The samples extension file for this is located at   `<dir>/Client/V2/Blades/FrameBlade/SampleFrameBlade.ts` and in the following example.
 
-  {"gitdown": "include-file", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/FrameBlade/SampleFrameBlade.ts"}
+    {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V2/Blades/FrameBlade/SampleFrameBlade.ts", "section": "top-blades-frame#viewmodel"}
 
 1. Create an html page that will serve as the main contents of your iframe.  The samples extension file for this is located at `<dir>/Content/SamplesExtension/framebladepage.html` and in the following example.
 
-```html
-{"gitdown": "include-file", "file": 
-"../Samples/SamplesExtension/Extension/Content/SamplesExtension/framebladepage.html"}
-```
+    ```html
+    {"gitdown": "include-file", "file": 
+    "../Samples/SamplesExtension/Extension/Content/SamplesExtension/framebladepage.html"}
+    ```
 
 1. Create a script that will communicate with your extension by using post messages. This is how your extension can get the auth token, respond to theme changes, and other tasks. The samples extension file for this is located        is located at  `<dir>/Content/Scripts/framepage.js`, and is also in the following example.
 
-```js
-{"gitdown": "include-file", "file": 
-"../Samples/SamplesExtension/Extension/Content/Scripts/framepage.js"}
-```
+    ```js
+    {"gitdown": "include-file", "file": 
+    "../Samples/SamplesExtension/Extension/Content/Scripts/framepage.js"}
+    ```
 
 ## Changing UI themes
 
