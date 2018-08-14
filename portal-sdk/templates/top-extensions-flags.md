@@ -19,11 +19,11 @@ The following table specifies the types of query string flags that are used with
 | ------------------ | ------- | -------- |
 | Trace mode         | Temporarily set server characteristics, toggle a behavior, or enable event logging. For the most part, trace mode does   not require changes to extension code. The exception is certain types of logging, as specified in [portalfx-logging-from-typescript-and-dotnet.md](portalfx-logging-from-typescript-and-dotnet.md). <br> Invoked with  `https://portal.azure.com/?trace=<settingName>`.   | [#trace-mode-flags](#trace-mode-flags) |
 | Extension Flags | Allow developers to specify features that they maintain. <br>Invoked with `https://portal.azure.com/?<extensionName>_<extensionFlag>=<value>`.   |  [#extension-flags](#extension-flags)  |
-| Shell flags        | Connect the developer's extension to features that are maintained by the Azure Portal team. Shell features do not require changes to the code in the developer's extension.<br> Invoked with  `https://portal.azure.com/?feature.<featureName>=<value>`.   |  [p#shell-feature-flags](#shell-feature-flags) |
+| Shell flags        | Connect the developer's extension to features that are maintained by the Azure Portal team. Shell features do not require changes to the code in the developer's extension.<br> Invoked with  `https://portal.azure.com/?feature.<featureName>=<value>`.   |  [#shell-feature-flags](#shell-feature-flags) |
   
+
 <!-- The following sentence is from portalfx-domain-based-configuration-pattern.md. -->
   Changing the default feature flags that are sent to the extension requires Shell configuration changes and redeployment.
-
 
 ## Trace Mode Flags
    
@@ -55,7 +55,6 @@ Trace modes are enabled by appending them to the query string, as in the followi
 **partsettings.viewModelOrPartName**: Shows writes and reads of settings for the specified part. This trace can use the `viewmodel` name or the part name to filter the trace. 
 
 **usersettings**:  Show all writes and reads to the user settings service. Great for debugging issues that require a 'reset desktop'. 
-
 
 ## Extension Flags
 
@@ -216,8 +215,6 @@ For more information about extension flags, see [https://docs.microsoft.com/en-u
 You can ask questions on Stackoverflow with the tag [ibiza](https://stackoverflow.microsoft.com/questions/tagged/ibiza).
 
 
-
-
 ## Shell feature flags
 
 The Ibiza Fx team supports the following Shell feature flags. These flags are only available to the Shell, unless they are configured to be shared. Unless otherwise noted, a value of `true` enables the feature, and a value of `false` disables it. 
@@ -227,7 +224,7 @@ The Ibiza Fx team supports the following Shell feature flags. These flags are on
 
 Shell feature flags are invoked with the syntax: `https://portal.azure.com/?feature.<featureName>=true`.
 
-The keyboard shortcut CTRL+ALT+D toggles the visibility of the debug tool, as specified in [top-extensions-debugging.md#overview](top-extensions-debugging.md#overview). The yellow sticky that is located at the bottom on the right side of the window can be used to toggle trace mode flags and shell feature flags.
+The keyboard shortcut CTRL+ALT+D toggles the visibility of the debug tool, as specified in [top-extensions-debugging.md#debug-mode](top-extensions-debugging.md#debug-mode). The yellow sticky that is located at the bottom on the right side of the window can be used to toggle trace mode flags and shell feature flags.
 
 ### The extensionName flag
 
@@ -236,7 +233,7 @@ The name of the extension can be used as a feature flag. The extension name can 
  This flag is used to enable or disable an extension, use a different configuration file for an extension, and provide other run-time functionality.  A value of `true` will temporarily enable a disabled extension, and allows the use of other flags. A value of `false` will temporarily disable the extension and leave it in hidden mode. The syntax for the extensionName flag is `https://portal.azure.com?Microsoft_Azure_DevTestLab=true`. It requires the `canmodifystamps` flag to contain a value of `true` in order to be in effect.  For more information, see [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
 
 The name of the extension can be used in the query string to access various Shell flags. These are flags that are independent of the **canmodifystamps** flag.
-`   &<extensionName>=true,[<otherShellFlags>]`.  How to use the flags that are within the extension is specified in [#extension-flags](#extension-flags));  The Shell flags that require `&<extensionName>=true` are in the following table.
+`   &<extensionName>=true,[<otherShellFlags>]`.  How to use the flags that are within the extension is specified in [#extension-flags](#extension-flags);  The Shell flags that require `&<extensionName>=true` are in the following table.
     
   <!--TODO:  Validate that the parameters are used correctly.  -->
 
@@ -245,7 +242,6 @@ The name of the extension can be used in the query string to access various Shel
   | nocdn | A value of `true` will bypass the CDN when loading resources for the Portal only. A value of `force` will bypass the CDN when loading resources for the Portal and all extensions.|
 | testExtensions | Contains the name of the extension, and the environment in which the extension is located. For example, `?testExtensions={"HelloWorld":"https://localhost:44300/"}` specifies the intent to load the `HelloWorld` extension from the localhost port 44300 into the current session of the Portal. The **name** and **uri**  parameters are as specified in [portalfx-extensions-configuration-overview.md#understanding-the-extension-configuration-in-portal](portalfx-extensions-configuration-overview.md#understanding-the-extension-configuration-in-portal).|
 
-    
 ### The canmodifystamps flag
 
 The **canmodifystamps** flag is used in conjunction with the **extensionName** parameter to pass developer-specified values to the extension, to specify which stage or build number to use, and other purposes. When the **canmodifystamps** flag is set to true, the following run options can be enabled.
@@ -261,7 +257,7 @@ The **canmodifystamps** flag is used in conjunction with the **extensionName** p
   * **extensionName**: The name of the extension.
 
     * **stageName**:  The stage that represents a datacenter, as specified in [top-extensions-hosting-service-scenarios.md#sideloading](top-extensions-hosting-service-scenarios.md#sideloading). Use the name that is deployed to a specific stage, for example, stage1.
-    * **buildNumber**:  The build number as specified in [portalfx-extensions-hosting-service-scenarios.md#sideloading](portalfx-extensions-hosting-service-scenarios.md#sideloading). Replace the dots in the build number with the letter 'd', so that build number 1.0.8.31 is represented by 1d0d8d31.
+    * **buildNumber**:  The build number as specified in [top-extensions-hosting-service-scenarios.md#sideloading](top-extensions-hosting-service-scenarios.md#sideloading). Replace the dots in the build number with the letter 'd', so that build number 1.0.8.31 is represented by 1d0d8d31.
     * **uriFormatPrefix**: The value to use when building the **uriFormat** string. For example, when **uriFormat** is `//{0}.devtest.ext.azure.com`, the query string `https://portal.azure.com?feature.canmodifystamps=true&Microsoft_Azure_DevTestLab=perf` would cause  the `{0}` in the **uriFormat** string to be replaced with `perf` and attempt to load the extension from `https://perf.devtest.ext.azure.com`.
     
 ### Shell flags
@@ -294,7 +290,7 @@ The following are the feature flags that are invoked with the syntax: `feature.<
 | storage     | Add all storage services to the **Storage** category  
 | vm          | Rename **Compute** to **VMs**, and rename **Web + Mobile** to **App Services** |
 
-**feature.canmodifyextensions**:  Required to support loading untrusted extensions for security purposes. For more information, see [portalfx-extensions-production-testing-overview.md#loading-customized-extensions](portalfx-extensions-production-testing-overview.md#loading-customized-extensions).
+**feature.canmodifyextensions**:  Required to support loading untrusted extensions for security purposes. For more information, see [top-extensions-sideloading.md#loading-customized-extensions](top-extensions-sideloading.md#loading-customized-extensions).
 
 <!--TODO: Determine whether the following flag is associated with msportalfx-test.md#msportalfx-test-running-ci-->
 
@@ -417,5 +413,6 @@ The following are the feature flags that are invoked with the syntax: `feature.<
 
 
 
-
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-flags.md"}
+<!--
+gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-flags.md"}
+-->
