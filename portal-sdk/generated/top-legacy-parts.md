@@ -27,7 +27,7 @@ The following sections cover these topics.
 
 * [Per user part settings](#per-user-part-settings)
 
-* [The 'no data' message](#the-"no-data"-message)
+* [The 'no data' message](#the-no-data-message)
 
 * [Pinning parts](#pinning-parts)
 
@@ -78,7 +78,7 @@ The following procedure demonstrates how to use a button part.
 
 ```
 
-1. The ViewModel that is associated with the pdl will plug data into the part. The ViewModel is located at `<dir>\Client\V1\Parts\Intrinsic\ViewModels\ButtonPartViewModel.ts`  For this step, the data is just the label and icon, but for more data-oriented parts, the data can be gathered from a server, like a resource provider. The ViewModel is in the following code.
+2. The ViewModel that is associated with the pdl will plug data into the part. The ViewModel is located at `<dir>\Client\V1\Parts\Intrinsic\ViewModels\ButtonPartViewModel.ts`  For this step, the data is just the label and icon, but for more data-oriented parts, the data can be gathered from a server, like a resource provider. The ViewModel is in the following code.
 
  ```typescript
 
@@ -292,81 +292,81 @@ A working copy is located at [http://aka.ms/portalfx/samples#blade/SamplesExtens
 
     <!-- determine why this section stops the gitHub build.-->
 
-    ```xml
+    	```xml
 
-<CustomPart Name="LargePart"
-            ViewModel="{ViewModel Name=PartSizesLargePartViewModel, Module=./PartSizes/ViewModels/PartSizesViewModels}"
-            Template="{Html Source='Templates\\SizeAwarePart.html'}"
-            InitialSize="Large">
+	<CustomPart Name="LargePart"
+        	    ViewModel="{ViewModel Name=PartSizesLargePartViewModel, Module=./PartSizes/ViewModels/PartSizesViewModels}"
+            	Template="{Html Source='Templates\\SizeAwarePart.html'}"
+            	InitialSize="Large">
 
-```
+	```
 
-1. The following part supports multiple, standard sizes.
+2. The following part supports multiple, standard sizes.
 
     <!-- determine why this section stops the gitHub build.-->
 
     ```xml
 
-<CustomPart Name="MiniPart"
-            ViewModel="{ViewModel Name=PartSizesMiniPartViewModel, Module=./PartSizes/ViewModels/PartSizesViewModels}"
-            Template="{Html Source='Templates\\SizeAwarePart.html'}"
-            InitialSize="Mini">
-  <CustomPart.SupportedSizes>
-    <PartSize>Mini</PartSize>
-    <PartSize>Normal</PartSize>
-  </CustomPart.SupportedSizes>
-</CustomPart>
+	<CustomPart Name="MiniPart"
+        	    ViewModel="{ViewModel Name=PartSizesMiniPartViewModel, Module=./PartSizes/ViewModels/PartSizesViewModels}"
+            	Template="{Html Source='Templates\\SizeAwarePart.html'}"
+            	InitialSize="Mini">
+  	<CustomPart.SupportedSizes>
+    	<PartSize>Mini</PartSize>
+    	<PartSize>Normal</PartSize>
+  	</CustomPart.SupportedSizes>
+	</CustomPart>
 
-```
+	```
 
-1. The following part defaults to an arbitrary size, and can be resized by the user.  The Framework automatically adds a drag handle to this part because of the value `ResizeMode="User"`.
+3. The following part defaults to an arbitrary size, and can be resized by the user.  The Framework automatically adds a drag handle to this part because of the value `ResizeMode="User"`.
 
-    ```xml
+ 	   ```xml
 
-<CustomPart Name="CustomSizeUserResizePart"
-            ViewModel="{ViewModel Name=PartSizesCustomSizeUserResizePartViewModel, Module=./PartSizes/ViewModels/PartSizesViewModels}"
-            Template="{Html Source='Templates\\SizeAwarePart.html'}"
-            InitialSize="Custom"
-            InitialWidth="5"
-            InitialHeight="2"
-            ResizeMode="User">
-</CustomPart>
+	<CustomPart Name="CustomSizeUserResizePart"
+        	    ViewModel="{ViewModel Name=PartSizesCustomSizeUserResizePartViewModel, Module=./PartSizes/ViewModels/PartSizesViewModels}"
+            	Template="{Html Source='Templates\\SizeAwarePart.html'}"
+            	InitialSize="Custom"
+            	InitialWidth="5"
+            	InitialHeight="2"
+            	ResizeMode="User">
+	</CustomPart>
 
-```
+	```
 
-1. The following part defaults to an arbitrary size, and can be resized programatically.  
+4.The following part defaults to an arbitrary size, and can be resized programatically.  
 
      ```xml
 
-<CustomPart Name="CustomSizeProgrammaticResizePart"
-            ViewModel="{ViewModel Name=PartSizesCustomSizeProgrammaticResizePartViewModel, Module=./PartSizes/ViewModels/PartSizesViewModels}"
-            Template="{Html Source='Templates\\SizeAwareResizablePart.html'}"
-            InitialSize="Custom"
-            InitialWidth="6"
-            InitialHeight="3"
-            ResizeMode="Programmatic">
-  <CustomPart.SupportedSizes>
-    <PartSize>Tall</PartSize>
-    <PartSize>Mini</PartSize>
-    <PartSize>Wide</PartSize>
-    <PartSize>Large</PartSize>
-  </CustomPart.SupportedSizes>
-</CustomPart>
+	<CustomPart Name="CustomSizeProgrammaticResizePart"
+        	    ViewModel="{ViewModel Name=PartSizesCustomSizeProgrammaticResizePartViewModel, Module=./PartSizes/ViewModels/PartSizesViewModels}"
+            	Template="{Html Source='Templates\\SizeAwareResizablePart.html'}"
+            	InitialSize="Custom"
+            	InitialWidth="6"
+            	InitialHeight="3"
+            	ResizeMode="Programmatic">
+  	<CustomPart.SupportedSizes>
+    	<PartSize>Tall</PartSize>
+    	<PartSize>Mini</PartSize>
+    	<PartSize>Wide</PartSize>
+    	<PartSize>Large</PartSize>
+  	</CustomPart.SupportedSizes>
+	</CustomPart>
 
-```
+	```
 
-1. The following code demonstrates  how to programatically resize the part from within the associated ViewModel.  The parameters are specified in grid units instead of pixels. The code is located at `<dir>\Client\V1\Parts\PartSizes\ViewModels\PartSizesViewModels.ts`.
+5. The following code demonstrates  how to programatically resize the part from within the associated ViewModel.  The parameters are specified in grid units instead of pixels. The code is located at `<dir>\Client\V1\Parts\PartSizes\ViewModels\PartSizesViewModels.ts`.
 
 
-      ```typescript
+     	 ```typescript
 
-onClick: () => {
-    container.resizeTo(resizeA.width, resizeA.height);
-},
-        });
+	onClick: () => {
+    	container.resizeTo(resizeA.width, resizeA.height);
+	},
+        	});
 
         
-```
+	```
 
 <a name="parts-overview-per-user-part-settings"></a>
 ### Per user part settings
