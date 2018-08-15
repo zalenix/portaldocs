@@ -261,7 +261,7 @@ This example is based on the sample located at `<dir>\Client\V1\Hubs\Browse\Brow
 
  The **CanUseOldInputVersion** attribute can be set to `true` to specify that the part can process older versions of inputs. It should be used in conjunction with the  part property named `version`, as in the following example.
 
-    {"gitdown": "include-file", "file": "../Samples/SamplesExtension/Extension/Client/V1/Hubs/Browse/Browse.pdl"}
+{"gitdown": "include-file", "file": "../Samples/SamplesExtension/Extension/Client/V1/Hubs/Browse/Browse.pdl"}
 
 ```xml
 <Part Name="RobotPart"
@@ -299,7 +299,7 @@ Globally-defined parts can not specify constant bindings, but the flow is mostly
 </CustomPart>
 ```
 
-  The following code demonstrates how to process explicitly-versioned inputs, in addition to the version of the parts that existed previous to the addition of explicit versioning support.
+The following code demonstrates how to process explicitly-versioned inputs, in addition to the version of the parts that existed previous to the addition of explicit versioning support.
 
 ```javascript
 public onInputsSet(inputs: Def.InputsContract, settings: Def.SettingsContract): MsPortalFx.Base.Promise {
@@ -338,7 +338,6 @@ public onInputsSet(inputs: Def.InputsContract, settings: Def.SettingsContract): 
         return this._view.fetch(name);
     }
 ```
-
 
 ### Permanently discontinue a part 
 
