@@ -31,6 +31,18 @@ The following sections cover these topics.
 
 * [Pinning parts](#pinning-parts)
 
+* [Preventing pinning](#preventing-pinning)
+
+* [Versioning](#versioning)
+
+* [Permanently discontinue a part](#permanently-discontinue-a-part)
+
+* [Removing a part from a blade default layout](#removing-a-part-from-a-blade-default-layout)
+
+* [Handling part errors](#handling-part-errors)
+
+* [Handling assets that no longer exist](#handling-assets-that-no-longer-exist)
+
 * * * 
 
 <a name="parts-overview-traditional-parts-and-template-blades"></a>
@@ -65,7 +77,7 @@ The following procedure demonstrates how to use a button part.
 
 1. Declare the part in the global `<Definition>` section of the PDL for the extension, as in the following example.
 
-  ```xml
+```xml
 
 <!-- Name - Give your part a unique name -->
 <!-- PartKind - This is where you declare that you're using a built in part type -->
@@ -78,9 +90,9 @@ The following procedure demonstrates how to use a button part.
 
 ```
 
-1. The ViewModel that is associated with the pdl will plug data into the part. The ViewModel is located at `<dir>\Client\V1\Parts\Intrinsic\ViewModels\ButtonPartViewModel.ts`  For this step, the data is just the label and icon, but for more data-oriented parts, the data can be gathered from a server, like a resource provider. The ViewModel is in the following code.
+2. The ViewModel that is associated with the pdl will plug data into the part. The ViewModel is located at `<dir>\Client\V1\Parts\Intrinsic\ViewModels\ButtonPartViewModel.ts`  For this step, the data is just the label and icon, but for more data-oriented parts, the data can be gathered from a server, like a resource provider. The ViewModel is in the following code.
 
- ```typescript
+```typescript
 
 /**
 * This sample uses the base class implementation. You can also implement the
@@ -123,7 +135,7 @@ The following procedure demonstrates how to use a custom part.
 
 1. Declare the part in the global `<Definition>` section of the PDL for the extension, as in the following example.
 
-   ```xml
+```xml
 
 <CustomPart Name="ExampleCustomPart"
             ViewModel="{ViewModel Name=ExampleCustomPartViewModel, Module=./Custom/ViewModels/ExampleCustomPartViewModel}"
@@ -134,9 +146,9 @@ The following procedure demonstrates how to use a custom part.
 
 ```
 
-1. The pdl points to the html template.
+2. The pdl points to the html template.
 
-  ```xml
+```xml
 
 <h3>This is a custom part</h3>
 
@@ -162,9 +174,9 @@ That's too many clicks!
 
 ```
 
-1. The HTML template is bound to the following ViewModel by using **Knockout**, which is also referred to in the pdl.
+3. The HTML template is bound to the following ViewModel by using **Knockout**, which is also referred to in the pdl.
 
-  ```typescript
+```typescript
 
 /**
 * Example view model for a custom part
@@ -210,6 +222,7 @@ export class ExampleCustomPartViewModel {
 
 ```
 
+<a name="parts-overview-integrating-parts-into-the-part-gallery"></a>
 ### Integrating parts into the part gallery
 
 Tiles are added to dashboards by using the part gallery, which is also known as the tile gallery.  The tile gallery is displayed  when the **Edit Dashboard** command is clicked, or when parts on the dashboard are rearranged or resized.
@@ -282,6 +295,7 @@ container.registerSelectable(
 
 If the part that is being developed is associated with an Ibiza asset like an ARM resource, then it should be associated with an asset type and have a single input definition whose `IsAssetId` property is `true`.  If this is not the case then the part will appear in the **General** category of the part gallery.
  
+<a name="parts-overview-defining-the-sizing-behavior"></a>
 ### Defining the sizing behavior
 
 There is a significant amount of flexibility when sizing extension tiles. All size options are included in the `<CustomPart>` tag in the PDL file located at `<dir>\Client/V1/Parts/PartSizes/PartSizes.pdl`.
@@ -292,7 +306,7 @@ A working copy is located at [http://aka.ms/portalfx/samples#blade/SamplesExtens
 
     <!-- determine why this section stops the gitHub build.-->
 
-    ```xml
+```xml
 
 <CustomPart Name="LargePart"
             ViewModel="{ViewModel Name=PartSizesLargePartViewModel, Module=./PartSizes/ViewModels/PartSizesViewModels}"
@@ -301,11 +315,11 @@ A working copy is located at [http://aka.ms/portalfx/samples#blade/SamplesExtens
 
 ```
 
-1. The following part supports multiple, standard sizes.
+2. The following part supports multiple, standard sizes.
 
     <!-- determine why this section stops the gitHub build.-->
 
-    ```xml
+```xml
 
 <CustomPart Name="MiniPart"
             ViewModel="{ViewModel Name=PartSizesMiniPartViewModel, Module=./PartSizes/ViewModels/PartSizesViewModels}"
@@ -319,9 +333,9 @@ A working copy is located at [http://aka.ms/portalfx/samples#blade/SamplesExtens
 
 ```
 
-1. The following part defaults to an arbitrary size, and can be resized by the user.  The Framework automatically adds a drag handle to this part because of the value `ResizeMode="User"`.
+3. The following part defaults to an arbitrary size, and can be resized by the user.  The Framework automatically adds a drag handle to this part because of the value `ResizeMode="User"`.
 
-    ```xml
+```xml
 
 <CustomPart Name="CustomSizeUserResizePart"
             ViewModel="{ViewModel Name=PartSizesCustomSizeUserResizePartViewModel, Module=./PartSizes/ViewModels/PartSizesViewModels}"
@@ -334,9 +348,9 @@ A working copy is located at [http://aka.ms/portalfx/samples#blade/SamplesExtens
 
 ```
 
-1. The following part defaults to an arbitrary size, and can be resized programatically.  
+4. The following part defaults to an arbitrary size, and can be resized programatically.  
 
-     ```xml
+```xml
 
 <CustomPart Name="CustomSizeProgrammaticResizePart"
             ViewModel="{ViewModel Name=PartSizesCustomSizeProgrammaticResizePartViewModel, Module=./PartSizes/ViewModels/PartSizesViewModels}"
@@ -355,10 +369,9 @@ A working copy is located at [http://aka.ms/portalfx/samples#blade/SamplesExtens
 
 ```
 
-1. The following code demonstrates  how to programatically resize the part from within the associated ViewModel.  The parameters are specified in grid units instead of pixels. The code is located at `<dir>\Client\V1\Parts\PartSizes\ViewModels\PartSizesViewModels.ts`.
+5. The following code demonstrates  how to programatically resize the part from within the associated ViewModel.  The parameters are specified in grid units instead of pixels. The code is located at `<dir>\Client\V1\Parts\PartSizes\ViewModels\PartSizesViewModels.ts`.
 
-
-      ```typescript
+```typescript
 
 onClick: () => {
     container.resizeTo(resizeA.width, resizeA.height);
@@ -632,8 +645,8 @@ Parts are not individually flagged as not being pinnable.  Rather, a blade that 
 For more information, about sharing parts, see [portalfx-extensibility-pde.md](portalfx-extensibility-pde.md).
 
 
-<a name="parts-versioning"></a>
-## Versioning
+<a name="parts-overview-versioning"></a>
+### Versioning
 
 When users customize or pin a part, the following states are stored and used the next time the part is loaded from a customized context.
 
@@ -654,260 +667,9 @@ Likewise, other extensions may have taken dependencies on less-recent editions o
 This example is based on the sample located at `<dir>\Client\V1\Hubs\Browse\Browse.pdl`. It builds on the ViewModel located at `<dir>\Client\V1\Hubs\Browse\ViewModels\RobotPartViewmodel.ts`.
 
  The **CanUseOldInputVersion** attribute can be set to `true` to specify that the part can process older versions of inputs. It should be used in conjunction with the  part property named `version`, as in the following example.
-
-<!-- TODO:  Determine whether the following sample is causing GitHub to stop the build. -->
-    <?xml version="1.0" encoding="utf-8" ?>
-<Definition xmlns="http://schemas.microsoft.com/aux/2013/pdl"
-            Area="V1/Hubs"
-            ModulePath="./Browse/ViewModels">
-
   <!--
-    The following example shows you how to integrate with browse.  Browse and notifications
-    require defining an AssetType for the given resource:
-  -->
-
-  <AssetType Name="Robot"
-             SingularDisplayName="{Resource AssetTypeNames.Robot.singular, Module=ClientResources}"
-             PluralDisplayName="{Resource AssetTypeNames.Robot.plural, Module=ClientResources}"
-             LowerSingularDisplayName="{Resource AssetTypeNames.Robot.lowerSingular, Module=ClientResources}"
-             LowerPluralDisplayName="{Resource AssetTypeNames.Robot.lowerPlural, Module=ClientResources}"
-             Icon="{Svg IsLogo=true, File=../../../Svg/robot.svg}"
-             BladeName="RobotMenuBlade"
-             PartName="RobotPart">
-    <Browse ServiceViewModel="{ViewModel Name=RobotBrowseService, Module=./Browse/Services/RobotBrowseService}" />
-    <GridColumns ServiceViewModel="{ViewModel Name=RobotGridColumnsService, Module=./Browse/Services/RobotGridColumnsService}" />
-  </AssetType>
-
-    <!--
-    The command group provides a way to group common command which can execute
-    against a blade, part, or asset type
-
-    This command group is used by the robot in the browse grid, so the source for the ID property
-    is the asset expansion property "$MSPORTALFX$assetDetails$assetId".
-  -->
-  <CommandGroup Name="RobotCommands">
-    <Command Name="RobotMaintenanceCommand"
-             Text="{Resource sendToMaintenanceCommand, Module=ClientResources}"
-             ViewModel="SendToMaintenanceCommandViewModel"
-             AssetType="Robot"
-             AssetIdProperty="id">
-      <Property Name="id"
-                Source="{DataInput Property=$MSPORTALFX$assetDetails$assetId}" />
-    </Command>
-    <Command Name="RobotHistoryCommand"
-             Kind="Blade"
-             Text="{Resource maintenanceHistory, Module=ClientResources}"
-             ViewModel="MaintenanceHistoryCommandViewModel"
-             AssetType="Robot"
-             AssetIdProperty="id">
-      <Property Name="id"
-                Source="{DataInput Property=$MSPORTALFX$assetDetails$assetId}" />
-      <BladeAction Blade="RobotMaintenanceHistory">
-        <BladeInput Parameter="id"
-                    Source="id" />
-      </BladeAction>
-    </Command>
-    <Command Name="CloneRobotCommand"
-             Text="{Resource cloneRobotCommand, Module=ClientResources}"
-             ViewModel="CloneRobotCommandViewModel"
-             AssetType="Robot"
-             AssetIdProperty="id">
-      <Property Name="id"
-                Source="{DataInput Property=$MSPORTALFX$assetDetails$assetId}" />
-    </Command>
-    <Command Name="DeleteRobotCommand"
-             Text="{Resource deleteRobotCommand, Module=ClientResources}"
-             ViewModel="DeleteRobotCommandViewModel"
-             AssetType="Robot"
-             AssetIdProperty="id">
-      <Property Name="id"
-                Source="{DataInput Property=$MSPORTALFX$assetDetails$assetId}" />
-    </Command>
-  </CommandGroup>
-
-  <!--
-    This part represents an overview of a robot, and is available to be used
-    on the startboard, or inside of a blade.  You refer to this part in the AssetType
-    declaration above, so it can be used by notifications and browse.
-  -->
-  <Part Name="RobotPart"
-        ViewModel="RobotPartViewModel"
-        CanUseOldInputVersions="true"
-        PartKind="Button"
-        AssetType="Robot"
-        AssetIdProperty="name">
-    <Part.Properties>
-      <Property Name="version"
-                Source="{Constant 2}" />
-      <Property Name="name"
-                Source="{DataInput Property=id}" />
-    </Part.Properties>
-    <BladeAction Blade="RobotBlade">
-      <!--
-        Currently, parts which accept inputs from notifications and browse require
-        the input property to the part or blade be named 'id'.
-      -->
-      <BladeInput
-          Source="name"
-          Parameter="id" />
-    </BladeAction>
-
-    <!--
-      Associate the commands with the part.
-
-      Here we re-bind the "id" property to the part's "name" property instead of the asset expansion property.
-      This rewires the binding for this instance of the command.
-    -->
-    <CommandGroupReference Name="RobotCommands">
-      <CommandBindings Command="RobotMaintenanceCommand">
-        <Binding Property="id"
-                 Source="{DataInput Property=id}" />
-      </CommandBindings>
-      <CommandBindings Command="RobotHistoryCommand">
-        <Binding Property="id"
-                 Source="{DataInput Property=id}" />
-      </CommandBindings>
-      <CommandBindings Command="CloneRobotCommand">
-        <Binding Property="id"
-                 Source="{DataInput Property=id}" />
-      </CommandBindings>
-      <CommandBindings Command="DeleteRobotCommand">
-        <Binding Property="id"
-                 Source="{DataInput Property=id}" />
-      </CommandBindings>
-    </CommandGroupReference>
-  </Part>
-
-    <!--
-    The following blade represents the details view for a robot.
-  -->
-  <MenuBlade Name="RobotMenuBlade"
-             ViewModel="RobotMenuBladeViewModel">
-    <MenuBlade.Parameters>
-      <Parameter Name="id"
-                 Type="Key"/>
-    </MenuBlade.Parameters>
-  </MenuBlade>
-
-  <!--
-    The following blade represents the details view for a robot.
-  -->
-  <!-- portalfx-blades-properties#property-element -->
-  <Blade Name="RobotBlade"
-         ViewModel="RobotBladeViewModel"
-         AssetType="Robot"
-         AssetIdProperty="name">
-    <Blade.Parameters>
-      <Parameter Name="id"
-                 Type="Key"/>
-    </Blade.Parameters>
-
-    <Blade.Properties>
-      <!--
-        Results from a browse or notification always pass a property named 'id' into the blade
-      -->
-      <Property Name="name"
-                Source="{BladeParameter Name=id}"/>
-    </Blade.Properties>
-    <!-- portalfx-blades-properties#property-element -->
-    <!--
-      Specify which part should be pinned to the startboard when a user pins the blade
-    -->
-    <PinnedPart PartType="RobotPart" />
-
-    <!--
-      Associate the commands with the blade.
-
-      Here we re-bind the "id" property to the blade's "ID" parameter instead of the asset expansion property.
-      This rewires the binding for this instance of the command.
-    -->
-    <CommandGroupReference Name="RobotCommands">
-      <CommandBindings Command="RobotMaintenanceCommand">
-        <Binding Property="id"
-                 Source="{DataInput Property=id}" />
-      </CommandBindings>
-      <CommandBindings Command="RobotHistoryCommand">
-        <Binding Property="id"
-                 Source="{DataInput Property=id}" />
-      </CommandBindings>
-      <CommandBindings Command="CloneRobotCommand">
-        <Binding Property="id"
-                 Source="{DataInput Property=id}" />
-      </CommandBindings>
-      <CommandBindings Command="DeleteRobotCommand">
-        <Binding Property="id"
-                 Source="{DataInput Property=id}" />
-      </CommandBindings>
-    </CommandGroupReference>
-
-    <Lens Name="RobotBladeLens">
-
-      <!--
-        This part expects a property binding from the blade named "id", which is
-        passed as an input from a grid, a notification, or a browse result.
-      -->
-      <CustomPart Name="RobotSummary"
-                  ViewModel="RobotSummaryViewModel"
-                  Template="{Html Source='Templates\\Robot.html'}"
-                  InitialSize="FullWidthFitHeight"
-                  AssetType="Robot"
-                  AssetIdProperty="name">
-        <CustomPart.Properties>
-          <Property Name="name"
-                    Source="{BladeParameter Name=id}" />
-        </CustomPart.Properties>
-      </CustomPart>
-
-    </Lens>
-
-    <Lens Name="RobotAssetTypeApiLens">
-
-      <!--
-        This part expects a property binding from the blade named "id", which is
-        passed as an input from a grid, a notification, or a browse result.
-        This part demonstrates how an extension can ask the shell for asset type
-        information for an asset type.
-      -->
-      <CustomPart Name="RobotAssetTypeApiPart"
-                  ViewModel="RobotAssetTypeApiPartViewModel"
-                  Template="{Html Source='Templates\\RobotAssetTypeApi.html'}"
-                  InitialSize="FullWidthFitHeight"
-                  AssetType="Robot"
-                  AssetIdProperty="name">
-        <CustomPart.Properties>
-          <Property Name="name"
-                    Source="{BladeParameter Name=id}" />
-        </CustomPart.Properties>
-      </CustomPart>
-
-    </Lens>
-
-    <Lens Name="RobertConfigLens" Title="{Resource generalGalleryPartTitle, Module=ClientResources}">
-      <PartReference Name="RobertGeneralGalleryPart" PartType="GeneralGalleryPart" />
-      <PartReference Name="RobertGeneralGalleryPdlPart" PartType="PdlGeneralGalleryPart" />
-    </Lens>
-
-    <Lens Name="RobertAdaptedConfigLens" Title="{Resource adaptedGalleryPartTitle, Module=ClientResources}">
-      <PartReference Name="RoberAdaptedGalleryPart" PartType="AdaptedGalleryPart" />
-      <PartReference Name="RoberAdaptedGalleryPdlPart" PartType="PdlAdaptedGalleryPart" />
-    </Lens>
-
-  </Blade>
-
-  <Blade Name="RobotMaintenanceHistory"
-         ViewModel="RobotMaintenanceHistoryBladeViewModel">
-    <Blade.Parameters>
-      <Parameter Name="id"
-                 Type="Key" />
-    </Blade.Parameters>
-    <Blade.Properties>
-      <Property Name="id"
-                Source="{BladeParameter id}" />
-    </Blade.Properties>
-  </Blade>
-
-</Definition>
-
+gitdown": "include-file", "file": "../Samples/SamplesExtension/Extension/Client/V1/Hubs/Browse/Browse.pdl
+-->
 
 ```xml
 <Part Name="RobotPart"
@@ -945,7 +707,7 @@ Globally-defined parts can not specify constant bindings, but the flow is mostly
 </CustomPart>
 ```
 
-  The following code demonstrates how to process explicitly-versioned inputs, in addition to the version of the parts that existed previous to the addition of explicit versioning support.
+The following code demonstrates how to process explicitly-versioned inputs, in addition to the version of the parts that existed previous to the addition of explicit versioning support.
 
 ```javascript
 public onInputsSet(inputs: Def.InputsContract, settings: Def.SettingsContract): MsPortalFx.Base.Promise {
@@ -985,24 +747,103 @@ public onInputsSet(inputs: Def.InputsContract, settings: Def.SettingsContract): 
     }
 ```
 
-
-<a name="parts-versioning-permanently-discontinue-a-part"></a>
+<a name="parts-overview-permanently-discontinue-a-part"></a>
 ### Permanently discontinue a part
 
 Developers occasionally build and ship parts, and later  discontinue their functionality. However, there may be cases where these parts were pinned and  incorporated into the layout of a user's dashboard.
 
 Azure customers have informed the Azure team that parts disappearing automatically from their startboards is an extremely dissatisfactory experience. To address this customer request, Azure has created a process that allows developers to permanently discontinue a part while providing a good user experience that uses customizations.
 
-To discontinue a part, developers delete the majority of the code, but leave enough in place so that the tile still loads.  Then use the `container.noDataMessage()` api to inform the user that the part is no longer supported.
+To discontinue a part, developers delete the majority of the code from the `ViewModel`, but leave the constructor and `onInputsSet`.  in place so that the tile still loads. 
 
-This ensures that customers are informed that this part is no longer supported, and that parts that fail will not be displayed on their dashboards.
+Then use the `container.noDataMessage()` in the constructor to inform the user that the part is no longer supported, and return empty promise from `onInputsSet`.
 
-<a name="parts-versioning-removing-a-part-from-a-blade-default-layout"></a>
+This ensures that customers are informed that this part is no longer supported, and that parts that fail will not be displayed on their dashboards.  An example is in the following code.
+
+```
+export class DocumentCountUsagePartViewModel extends MsPortalFx.ViewModels.Parts.SingleValueGauge.ViewModel {
+    constructor(container: MsPortalFx.ViewModels.PartContainerContract, initialState: any, dataContext: DataContext) {
+        super();
+        container.noDataMessage(ClientResources.tileRemoved);
+    }
+
+    public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
+        return Q();
+    }
+}
+```
+
+In the PDL code, make the part global by moving it from inside `<Blade>/<Lens>` tags to be the child of the `<Definition />` tag in the global `*.pdl` file. Then, rename this part, and create a  `<RedirectPart />` tag that uses the old name.
+The following example is the code before and after it was rewritten to obsolete the old part.
+
+* Before
+    ```
+    <Definition...>
+        <Blade Name="MyBlade" ...>
+            <Lens Name="MyLens" ...>
+                <Part Name="DocumentCountUsagePartViewModel"
+                    PartKind="SingleValueGauge"
+                    ViewModel="DocumentCountUsagePartViewModel"
+                    InitialSize="Wide"
+                    AssetType="SearchService"
+                    AssetIdProperty="resourceId">
+                    <Part.Permissions>
+                        <PermissionReference AssetType="SearchService" Permission="read"/>
+                    </Part.Permissions>
+                    <Part.Properties>
+                        <Property Name="resourceId">
+                            <BladeParameter Name="id"/>
+                        </Property>
+                    </Part.Properties>
+                </Part>
+            </Lens>
+        </Blade>
+    </Definition>
+    ```
+
+* After
+
+    ```
+    <Definition...>
+        <Blade Name="MyBlade" ...>
+            <Lens Name="MyLens" ...>
+
+            </Lens>
+        </Blade>
+
+        <RedirectPart
+            Name="DocumentCountUsagePart"
+            Blade="MyBlade"
+            Lens="MyLens">
+            <NewPart PartType="DocumentCountUsagePartGlobal" />
+        </RedirectPart>
+
+        <Part Name="DocumentCountUsagePartViewModelGlobal"
+                    PartKind="SingleValueGauge"
+                    ViewModel="DocumentCountUsagePartViewModel"
+                    InitialSize="Wide"
+                    AssetType="SearchService"
+                    AssetIdProperty="resourceId">
+                <Part.Permissions>
+                    <PermissionReference AssetType="SearchService" Permission="read"/>
+                </Part.Permissions>
+                <Part.Properties>
+                    <Property Name="resourceId"/>
+                </Part.Properties>
+            </Part>
+
+    </Definition>
+    ```
+
+
+**NOTE**: The `<BladeParameter />` element was removed from the `<Property />`  tag because it is not allowed for global parts.
+
+<a name="parts-overview-removing-a-part-from-a-blade-default-layout"></a>
 ### Removing a part from a blade default layout
 
 An unlocked blade's default layout should consist of tiles that provide the most  value to users and still meet extension performance goals out-of-the-box.  That layout may change over time, and your team may decide that a part that was included in a blade's default layout should be removed.
 
-1. If the part was defined inline as a `<Part/>` or `<CustomPart>` element within a `<Blade/>` and `<Lens/>`, then the part should be moved out of the blade and into the global part catalog for the extension. Otherwise, if the  part is already defined in the global part catalog, or is defined in another extension, then the pdl file may contain a  `<PartReference/>` tag for the blade, instead of  a `<Part/>` tag.
+If the part was defined inline as a `<Part/>` or `<CustomPart>` element within a `<Blade/>` and `<Lens/>`, then the part should be moved out of the blade and into the global part catalog for the extension. Otherwise, if the  part is already defined in the global part catalog, or is defined in another extension, then the pdl file may contain a  `<PartReference/>` tag for the blade, instead of  a `<Part/>` tag.
 
 **NOTE**: It is best practice to use **Typescript** or no-pdl parts.
 
@@ -1017,17 +858,17 @@ The following procedure to remove a part from a blade  layout.
               Blade="EXACT BLADE NAME THAT THE PART WAS DEFINED IN"
               Lens="OPTIONAL - EXACT LENS NAME THE PART WAS DEFINED IN"
               Extension="OPTIONAL - ONLY APPLICABLE IF THE PART IS DEFINED IN A DIFFERENT EXTENSION">
-    <NewPart Name="NAME OF THE NEW GLOBAL PART THAT DEFINES THE PART BEHAVIOR" />
+    <NewPart PartType="NAME OF THE NEW GLOBAL PART THAT DEFINES THE PART BEHAVIOR" />
 </RedirectPart>
 ```
 
 <!-- The following section is used in more than one document. -->
   
  
-<a name="parts-versioning-improving-part-responsiveness"></a>
+<a name="parts-overview-improving-part-responsiveness"></a>
 ### Improving Part responsiveness
 
-<a name="parts-versioning-improving-part-responsiveness-overview"></a>
+<a name="parts-overview-improving-part-responsiveness-overview"></a>
 #### Overview
 
 As a Part loads, by default, the user is presented with a *blocking* loading indicator:
@@ -1122,7 +963,7 @@ In all cases above, the promise returned from `onInputsSet` still determines the
 Also, if the promise returned from `onInputsSet` is rejected (due to the rejection of either the fast- or slow-loading data promise), the Part will transition to show the default error UX (a "sad cloud").
 This treatment of the promise returned from `onInputsSet` behaves consistently, whether or not the Part makes use of `container.revealContent()`.  In this way, `container.revealContent()` is a *simple, additive* change you should use to optimize your Part's behavior.
 
-<a name="parts-versioning-improving-part-responsiveness-anti-patterns"></a>
+<a name="parts-overview-improving-part-responsiveness-anti-patterns"></a>
 #### Anti-patterns
 
 It is important that loading indicators are consistently applied across the Parts/Blades of all extensions.  To achieve this:
@@ -1144,7 +985,7 @@ public onInputsSet(inputs: MyPartInputs): Promise {
 ```
 
 
-<a name="parts-versioning-handling-part-errors"></a>
+<a name="parts-overview-handling-part-errors"></a>
 ### Handling part errors
 
 Occasionally while loading parts, an extension may encounter an unrecoverable error. In that case, the part may be placed into a failure state, as in the following image.
@@ -1152,7 +993,7 @@ Occasionally while loading parts, an extension may encounter an unrecoverable er
 ![alt-text](../media/portalfx-debugging/failure.png "Failed part")
 
 Parts should only be placed into a failed state if there was a system fault and no action can be taken by the user to correct the error. If the user can correct the error, then the extension should display guidance about the error, as in the  example located at `<dir>\Client\V1\Parts\Lifecycle\ViewModels\PartLifecycleViewModels.ts`, and in the following code.
-
+<!--TODO:  Determine whether the samples should match exactly. -->
 ```ts
 constructor(container: MsPortalFx.ViewModels.PartContainer, initialState: any, dataContext: DataContext) {
     container.fail(SamplesExtension.Resources.Strings.failedToLoad);
@@ -1161,8 +1002,8 @@ constructor(container: MsPortalFx.ViewModels.PartContainer, initialState: any, d
 
 When the error is  fixed,  then the extension can call `container.recover()` to return the part to its normal display state. One example is that the extension is polling for data, and the first poll does not retrieve results, but a subsequent poll returns valid results.
 
-<a name="parts-handling-assets-that-no-longer-exist"></a>
-## Handling assets that no longer exist
+<a name="parts-overview-handling-assets-that-no-longer-exist"></a>
+### Handling assets that no longer exist
 
 Many parts represent assets like ARM resources that can be deleted from the UI, PowerShell, or the calling REST APIs.  A stateless UI system handles this deletion by loading only assets that exist at the time the UI starts up.  Because Ibiza contains the state for all user customizations, this 'Not Found' case is handled in a few specific places. Some examples are as follows.
 
@@ -1215,18 +1056,3 @@ For example, if the error is caused because the user's credentials are not known
 1. The part can handle the error and show a message that says ‘click here to enter credentials’. Clicking the part would launch a blade with the credentials form.
 
  
-
- ## Frequently asked questions
-
-<a name="parts-best-practices-"></a>
-### 
-
-* * * 
-
- ## Glossary
-
-This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
-
-| Term                | Meaning |
-| ------------------- | --- |
-|  | |
