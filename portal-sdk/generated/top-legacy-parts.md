@@ -306,7 +306,7 @@ A working copy is located at [http://aka.ms/portalfx/samples#blade/SamplesExtens
 
     <!-- determine why this section stops the gitHub build.-->
 
-    ```xml
+```xml
 
 <CustomPart Name="LargePart"
             ViewModel="{ViewModel Name=PartSizesLargePartViewModel, Module=./PartSizes/ViewModels/PartSizesViewModels}"
@@ -315,11 +315,11 @@ A working copy is located at [http://aka.ms/portalfx/samples#blade/SamplesExtens
 
 ```
 
-1. The following part supports multiple, standard sizes.
+2. The following part supports multiple, standard sizes.
 
     <!-- determine why this section stops the gitHub build.-->
 
-    ```xml
+```xml
 
 <CustomPart Name="MiniPart"
             ViewModel="{ViewModel Name=PartSizesMiniPartViewModel, Module=./PartSizes/ViewModels/PartSizesViewModels}"
@@ -333,9 +333,9 @@ A working copy is located at [http://aka.ms/portalfx/samples#blade/SamplesExtens
 
 ```
 
-1. The following part defaults to an arbitrary size, and can be resized by the user.  The Framework automatically adds a drag handle to this part because of the value `ResizeMode="User"`.
+3. The following part defaults to an arbitrary size, and can be resized by the user.  The Framework automatically adds a drag handle to this part because of the value `ResizeMode="User"`.
 
-    ```xml
+```xml
 
 <CustomPart Name="CustomSizeUserResizePart"
             ViewModel="{ViewModel Name=PartSizesCustomSizeUserResizePartViewModel, Module=./PartSizes/ViewModels/PartSizesViewModels}"
@@ -348,9 +348,9 @@ A working copy is located at [http://aka.ms/portalfx/samples#blade/SamplesExtens
 
 ```
 
-1. The following part defaults to an arbitrary size, and can be resized programatically.  
+4. The following part defaults to an arbitrary size, and can be resized programatically.  
 
-     ```xml
+```xml
 
 <CustomPart Name="CustomSizeProgrammaticResizePart"
             ViewModel="{ViewModel Name=PartSizesCustomSizeProgrammaticResizePartViewModel, Module=./PartSizes/ViewModels/PartSizesViewModels}"
@@ -369,10 +369,9 @@ A working copy is located at [http://aka.ms/portalfx/samples#blade/SamplesExtens
 
 ```
 
-1. The following code demonstrates  how to programatically resize the part from within the associated ViewModel.  The parameters are specified in grid units instead of pixels. The code is located at `<dir>\Client\V1\Parts\PartSizes\ViewModels\PartSizesViewModels.ts`.
+5. The following code demonstrates  how to programatically resize the part from within the associated ViewModel.  The parameters are specified in grid units instead of pixels. The code is located at `<dir>\Client\V1\Parts\PartSizes\ViewModels\PartSizesViewModels.ts`.
 
-
-      ```typescript
+```typescript
 
 onClick: () => {
     container.resizeTo(resizeA.width, resizeA.height);
@@ -382,6 +381,7 @@ onClick: () => {
         
 ```
 
+<a name="parts-overview-per-user-part-settings"></a>
 ### Per user part settings
 
 Extensions can read and write settings that are saved whenever the user saves a dashboard.  Private dashboards are located in the Ibiza user settings service.  Shared dashboards are stored in ARM as Azure resources inside the **MS.Portal** resource provider.
@@ -577,7 +577,8 @@ function timeRangeToString(timeRange: FxConfiguration.TimeRange): string {
 
 ```
 
-### The "no data" message
+<a name="parts-overview-the-no-data-message"></a>
+### The &quot;no data&quot; message
 
 Sometimes parts are displayed for which no data is available. For example, an extension may display a prototype 'deployment history' that contains sample data, previous to the time when the user  enables  deployments for the extension. To support this, part `container` objects use the `noDataMessage` property.
 
@@ -591,6 +592,7 @@ In this example, the part is grayed-out and is non-interactive. The message is d
 
 This feature informs the user that the feature exists, although no data is available yet. If the extension needs to disable a part while the  data is loading, it should return a promise from the  `onInputsSet` method or use the `container.operations` queue.
 
+<a name="parts-overview-pinning-parts"></a>
 ### Pinning parts
 
 By default, all blades and parts are 'pinnable'.  Pinning a part creates a copy of that part on the [dashboard](portalfx-ui-concepts.md#ui-concepts-the-dashboard).  The part on the dashboard provides a shortcut for users, allowing them to get their most used blades, as in the following example.
@@ -619,6 +621,7 @@ Model data is not sent in bindings because the extension is required to store sp
 
 For more information about keys and data loading in the Portal, see [top-legacy-data.md](top-legacy-data.md).
 
+<a name="parts-overview-preventing-pinning"></a>
 ### Preventing pinning
 
 In some cases, a part should not be pinnable.  Some instances are as follows.
@@ -642,6 +645,7 @@ Parts are not individually flagged as not being pinnable.  Rather, a blade that 
 For more information, about sharing parts, see [portalfx-extensibility-pde.md](portalfx-extensibility-pde.md).
 
 
+<a name="parts-overview-versioning"></a>
 ### Versioning
 
 When users customize or pin a part, the following states are stored and used the next time the part is loaded from a customized context.
@@ -983,7 +987,8 @@ public onInputsSet(inputs: Def.InputsContract, settings: Def.SettingsContract): 
 ```
 
 
-### Permanently discontinue a part 
+<a name="parts-overview-permanently-discontinue-a-part"></a>
+### Permanently discontinue a part
 
 Developers occasionally build and ship parts, and later  discontinue their functionality. However, there may be cases where these parts were pinned and  incorporated into the layout of a user's dashboard.
 
@@ -1073,6 +1078,7 @@ The following example is the code before and after it was rewritten to obsolete 
 
 **NOTE**: The `<BladeParameter />` element was removed from the `<Property />`  tag because it is not allowed for global parts.
 
+<a name="parts-overview-removing-a-part-from-a-blade-default-layout"></a>
 ### Removing a part from a blade default layout
 
 An unlocked blade's default layout should consist of tiles that provide the most  value to users and still meet extension performance goals out-of-the-box.  That layout may change over time, and your team may decide that a part that was included in a blade's default layout should be removed.
@@ -1099,7 +1105,8 @@ The following procedure to remove a part from a blade  layout.
 <!-- The following section is used in more than one document. -->
   
  
-## Revealing part content 
+<a name="parts-revealing-part-content"></a>
+## Revealing part content
 
 When a part loads, or when data is loaded by an asynchronous **AJAX** call that populates the part, the user is presented with the default **blocking loading** indicator similar to the one in the following image.
 
@@ -1148,7 +1155,8 @@ The only difference with no-PDL here is that `onInitialize` replaces `onInputsSe
 
 For no-PDL, this is demonstrated in the sample located at  [https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).
 
-### Displaying a loading indicator UX 
+<a name="parts-revealing-part-content-displaying-a-loading-indicator-ux"></a>
+### Displaying a loading indicator UX
 
 Sometimes, interaction with a blade should be prevented while it is initializing. The Azure SDK supports displaying the loading indicator when data is loaded by an asynchronous **AJAX** call that populates blade objects like dropdowns. In those cases, a shield that contains a loading indicator UX is displayed in the blade to block the display. The shield can be fully transparent or opaque, as in the following code.
 
@@ -1251,6 +1259,7 @@ public dispose(): void {
 
 ```
 
+<a name="parts-revealing-part-content-calling-from-the-constructor"></a>
 ### Calling from the constructor
 
 If the part needs to display content previous to loading any data, the extension should call the `container.revealContent()` method from the ViewModel's `constructor` .  The following example demonstrates  a chart that immediately displays the X-axis and the Y-axis.
@@ -1272,6 +1281,7 @@ export class BarChartPartViewModel implements Def.BarChartPartViewModel.Contract
 }
 ```
 
+<a name="parts-revealing-part-content-calling-from-oninputsset"></a>
 ### Calling from onInputsSet
 
 The `onInputsSet` method behaves consistently when returning a promise , whether or not the part uses the `container.revealContent()` method. Consequently, the `container.revealContent()` method can optimize the behavior of the part that is being developed. There are two methodologies that are used to call the `container.revealContent()` method.
@@ -1316,6 +1326,7 @@ Also, if the promise that was returned from `onInputsSet` is rejected, the part 
 
 ![alt-text](../media/portalfx-parts/default-error-UX.png "Default error UX")
 
+<a name="parts-revealing-part-content-handling-part-errors"></a>
 ### Handling part errors
 
 Occasionally while loading parts, an extension may encounter an unrecoverable error. In that case, the part may be placed into a failure state, as in the following image.
@@ -1332,7 +1343,7 @@ constructor(container: MsPortalFx.ViewModels.PartContainer, initialState: any, d
 
 When the error is  fixed,  then the extension can call `container.recover()` to return the part to its normal display state. One example is that the extension is polling for data, and the first poll does not retrieve results, but a subsequent poll returns valid results.
 
-<a name="parts-overview-handling-assets-that-no-longer-exist"></a>
+<a name="parts-revealing-part-content-handling-assets-that-no-longer-exist"></a>
 ### Handling assets that no longer exist
 
 Many parts represent assets like ARM resources that can be deleted from the UI, PowerShell, or the calling REST APIs.  A stateless UI system handles this deletion by loading only assets that exist at the time the UI starts up.  Because Ibiza contains the state for all user customizations, this 'Not Found' case is handled in a few specific places. Some examples are as follows.
