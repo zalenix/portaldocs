@@ -22,9 +22,9 @@ Learn how the framework is structured and how it is designed to run in multiple 
 
 * [Architecture overview](/portal-sdk/generated/top-extensions-architecture.md)
 
-* [Authentication architecture](/portal-sdk/generated/top-extensions-authentication-architecture.md)
+* [Authentication architecture](/portal-sdk/generated/top-extensions-authentication-flow.md)
 
-* [Authentication](/portal-sdk/generated/top-extensions-authentication.md)
+* [Authentication](/portal-sdk/generated/top-extensions-procedure.md)
 
 ## What's new
 
@@ -122,17 +122,17 @@ When using HTML and framework controls you have some control over styling. These
 
  [Styling and theming](/portal-sdk/generated/top-extensions-style-guide.md)
 
-* [HTML, CSS, and SVG sanitization](/portal-sdk/generated/top-style-guide-html-css-sanitization.md)
+* [HTML, CSS, and SVG sanitization](/portal-sdk/generated/top-extensions-style-guide.md#html-and-css-sanitization)
 
-* [Add custom CSS](/portal-sdk/generated/top-style-guide-custom-css.md)
+* [Add custom CSS](/portal-sdk/generated/top-extensions-style-guide.md#adding-custom-css)
 
-* [Layout classes](/portal-sdk/generated/top-style-guide-layout.md)
+* [Layout classes](/portal-sdk/generated/top-extensions-style-guide.md#layout-classes)
 
-* [Theming](/portal-sdk/generated/top-style-guide-theming.md)
+* [Theming](/portal-sdk/generated/top-extensions-style-guide.md#theming)
 
-* [Typography](/portal-sdk/generated/top-style-guide-typography.md)
+* [Typography](/portal-sdk/generated/top-extensions-style-guide.md#typography)
 
-* [Iconography](/portal-sdk/generated/top-style-guide-iconography.md)
+* [Iconography](/portal-sdk/generated/top-extensions-style-guide.md#iconography)
 
 ### Forms
 
