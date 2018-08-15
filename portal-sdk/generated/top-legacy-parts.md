@@ -123,46 +123,46 @@ The following procedure demonstrates how to use a custom part.
 
 1. Declare the part in the global `<Definition>` section of the PDL for the extension, as in the following example.
 
-   ```xml
+   	```xml
 
-<CustomPart Name="ExampleCustomPart"
-            ViewModel="{ViewModel Name=ExampleCustomPartViewModel, Module=./Custom/ViewModels/ExampleCustomPartViewModel}"
-            Template="{Html Source='Templates\\ExampleCustomPart.html'}"
-            InitialSize="Large">
-  <StyleSheet Source="{Css Source='Styles\\ExampleStyles.css'}" />
-</CustomPart>
+	<CustomPart Name="ExampleCustomPart"
+        	    ViewModel="{ViewModel Name=ExampleCustomPartViewModel, Module=./Custom/ViewModels/ExampleCustomPartViewModel}"
+            		Template="{Html Source='Templates\\ExampleCustomPart.html'}"
+            		InitialSize="Large">
+  	<StyleSheet Source="{Css Source='Styles\\ExampleStyles.css'}" />
+	</CustomPart>
 
-```
+	```
 
-1. The pdl points to the html template.
+2. The pdl points to the html template.
 
-  ```xml
+ 	 ```xml
 
-<h3>This is a custom part</h3>
+	<h3>This is a custom part</h3>
 
-<p>
-Number of clicks: <strong data-bind="text: numberOfClicks"></strong>
-</p>
+	<p>
+	Number of clicks: <strong data-bind="text: numberOfClicks"></strong>
+	</p>
 
-<div data-bind="visible: allowMoreClicks">
-<button data-bind="click: increaseClickCount">Click me</button>
-</div>
+	<div data-bind="visible: allowMoreClicks">
+	<button data-bind="click: increaseClickCount">Click me</button>
+	</div>
 
-<div class="ext-too-many-clicks-box" data-bind="visible: !allowMoreClicks()">
-That's too many clicks!
-<button data-bind="click: resetClickCount">Reset</button>
-</div>
+	<div class="ext-too-many-clicks-box" data-bind="visible: !allowMoreClicks()">
+	That's too many clicks!
+	<button data-bind="click: resetClickCount">Reset</button>
+	</div>
 
-<ul data-bind="foreach: myButtons">
-<li>    
-    <button data-bind="text: displayName, click: $parent.buttonClickHandler"></button>
-    Number of clicks: <strong data-bind="text: clicked"></strong>
-</li>
-</ul>
+	<ul data-bind="foreach: myButtons">
+	<li>    
+    	<button data-bind="text: displayName, click: $parent.buttonClickHandler"></button>
+    	Number of clicks: <strong data-bind="text: clicked"></strong>
+	</li>
+	</ul>
 
-```
+	```
 
-1. The HTML template is bound to the following ViewModel by using **Knockout**, which is also referred to in the pdl.
+3. The HTML template is bound to the following ViewModel by using **Knockout**, which is also referred to in the pdl.
 
   ```typescript
 
