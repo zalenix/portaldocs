@@ -247,12 +247,7 @@ An example of loading an edit scope is in the following code. The sample is also
 
  {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailEdit/ViewModels/DetailViewModels.ts", "section": "top-legacy-editscopes#neweditscopeview"}
 
-
-{"gitdown": "include-file", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailEdit/ViewModels/DetailViewModels.ts"}
-
-
- {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailEdit/ViewModels/DetailViewModels.ts", "section": "top-legacy-editscopes#neweditscopeview"}
-
+* * *
 
 compare the above  to
 
@@ -275,7 +270,10 @@ constructor(container: MsPortalFx.ViewModels.PartContainerContract,
 
  {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailEdit/ViewModels/DetailViewModels.ts", "section": "top-legacy-editscopes#newdata"}
  
+* * *
+
  compare to
+
 
 ```ts
 // update the editScopeView with a new id
