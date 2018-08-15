@@ -245,6 +245,10 @@ An example of loading an edit scope is in the following code. The sample is also
 
 <!-- TODO: Determine whether this inline code should be replaced when the samples code is replaced and linked in gitHub, or whether the links to the SDK samples are sufficient. -->
 
+ {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailEdit/ViewModels/DetailViewModels.ts", "section": "top-legacy-editscopes#neweditscopeview"}
+
+compare to
+
 ```ts
 // create a new editScopeView
 constructor(container: MsPortalFx.ViewModels.PartContainerContract,
@@ -259,7 +263,11 @@ constructor(container: MsPortalFx.ViewModels.PartContainerContract,
 }
 ```
 
-In the following example, the `editScopeView` is refreshed with new data from the data context.
+ In the following example, the `editScopeView` is refreshed with new data from the data context.
+
+ {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailEdit/ViewModels/DetailViewModels.ts", "section": "top-legacy-editscopes#newdata"}
+ 
+ compare to
 
 ```ts
 // update the editScopeView with a new id
@@ -268,6 +276,8 @@ public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
     return this._editScopeView.fetchForExistingData(inputs.editScopeId, inputs.currentItemId);
 }
 ```
+
+ {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailEdit/ViewModels/DetailViewModels.ts", "section": "top-legacy-editscopes#newdata"}
 
 ### Loading the EditScope
 
@@ -434,7 +444,5 @@ The following sample PDL file demonstrates requesting an `editScope`.  The sampl
     </Lens>
 </Blade>
 ```
-
-
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-editscope.md"}
