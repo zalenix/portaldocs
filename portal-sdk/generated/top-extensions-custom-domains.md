@@ -190,7 +190,7 @@ Links are separated into the following three sections.
 | createNewSubscription     | [https://go.microsoft.com/fwLink/?LinkID=522331](https://go.microsoft.com/fwLink/?LinkID=522331)	 | same |
 | manageAzureResourceHelp   | [https://go.microsoft.com/fwLink/?LinkID=394637](https://go.microsoft.com/fwLink/?LinkID=394637)	 | same |
 | moveResourcesDoc<sup>2</sup>	| [https://go.microsoft.com/fwLink/?LinkID=747963](https://go.microsoft.com/fwLink/?LinkID=747963)	 | same |
-| resourceGroupInstallClientLibraries (not found)	| [https://go.microsoft.com/fwLink/?LinkID=234674](https://go.microsoft.com/fwLink/?LinkID=234674)	 | same |
+| resourceGroupInstallClientLibraries (not found)	| `https://go.microsoft.com/fwLink/?LinkID=234674`	 | same |
 | resourceGroupInstallPowerShell<sup>1</sup>	| [https://github.com/Azure/azure-powershell](https://github.com/Azure/azure-powershell)	 | same |
 | resourceGroupInstallTools (page not found) | [http://aka.ms/portalfx/resourceGroupInstallTools](http://aka.ms/portalfx/resourceGroupInstallTools)  | same |
 | resourceGroupIntroduction	| [https://go.microsoft.com/fwLink/?LinkID=394393](https://go.microsoft.com/fwLink/?LinkID=394393)	 | same |
