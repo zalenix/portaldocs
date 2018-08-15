@@ -702,8 +702,6 @@ The following sample PDL file demonstrates requesting an `editScope`.  The sampl
 </Blade>
 ```
 
-
-
 <a name="frequently-asked-questions"></a>
 ## Frequently asked questions
 
