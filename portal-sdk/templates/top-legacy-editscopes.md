@@ -247,7 +247,9 @@ An example of loading an edit scope is in the following code. The sample is also
 
  {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailEdit/ViewModels/DetailViewModels.ts", "section": "top-legacy-editscopes#neweditscopeview"}
 
-compare to
+
+compare the above  to
+
 
 ```ts
 // create a new editScopeView
