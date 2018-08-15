@@ -171,7 +171,7 @@ Links are separated into the following three sections.
 | privacyAndTerms | [https://go.microsoft.com/fwLink/?LinkID=522330](https://go.microsoft.com/fwLink/?LinkID=522330)	 | same | 
 | resourceGroupOverview	| [https://go.microsoft.com/fwLink/?LinkID=394393](https://go.microsoft.com/fwLink/?LinkID=394393) | same  | 
 | survey	| [https://go.microsoft.com/fwLink/?LinkID=733278](https://go.microsoft.com/fwLink/?LinkID=733278)  | 	??? Gauge team to follow up on this | 
-| joinResearchPanel | [https://uriux.fluidsurveys.com/s/MicrosoftReseachPanel/](https://uriux.fluidsurveys.com/s/MicrosoftReseachPanel) | same |
+| joinResearchPanel | [https://www.surveymonkey.com/](https://www.surveymonkey.com/) | same |
 | learnAzureCli<sup>2</sup> | 	[https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-azure-resource-manager/](https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-azure-resource-manager/)	 | same |
  
 #### Hubs links
@@ -182,8 +182,8 @@ Links are separated into the following three sections.
 | manageAzureResourceHelp   | [https://go.microsoft.com/fwLink/?LinkID=394637](https://go.microsoft.com/fwLink/?LinkID=394637)	 | same |
 | moveResourcesDoc<sup>2</sup>	| [https://go.microsoft.com/fwLink/?LinkID=747963](https://go.microsoft.com/fwLink/?LinkID=747963)	 | same |
 | resourceGroupInstallClientLibraries (not found)	| [https://go.microsoft.com/fwLink/?LinkID=234674](https://go.microsoft.com/fwLink/?LinkID=234674)	 | same |
-| resourceGroupInstallPowerShell<sup>1</sup>	| [https://go.microsoft.com/fwLink/?LinkID=https://go.microsoft.com/?linkid=9811175](https://go.microsoft.com/fwLink/?LinkID=https://go.microsoft.com/?linkid=9811175)			(download link) | same |
-| resourceGroupInstallTools (page not found) | [https://go.microsoft.com/fwLink/?LinkID=94686](https://go.microsoft.com/fwLink/?LinkID=94686)	 | same |
+| resourceGroupInstallPowerShell<sup>1</sup>	| [https://github.com/Azure/azure-powershell](https://github.com/Azure/azure-powershell)	 | same |
+| resourceGroupInstallTools (page not found) | [http://aka.ms/portalfx/resourceGroupInstallTools](http://aka.ms/portalfx/resourceGroupInstallTools)  | same |
 | resourceGroupIntroduction	| [https://go.microsoft.com/fwLink/?LinkID=394393](https://go.microsoft.com/fwLink/?LinkID=394393)	 | same |
 | resourceGroupIntroductionVideo	| [https://go.microsoft.com/fwLink/?LinkID=394394](https://go.microsoft.com/fwLink/?LinkID=394394)	 | same |
 | resourceGroupResourceManagement	| [https://go.microsoft.com/fwLink/?LinkID=394396](https://go.microsoft.com/fwLink/?LinkID=394396)	 | same |
@@ -194,7 +194,7 @@ Links are separated into the following three sections.
 | templateDeployment	| [https://go.microsoft.com/fwLink/?LinkID=733371](https://go.microsoft.com/fwLink/?LinkID=733371)	 | same |
 | tagsHelp<sup>2</sup> | [https://go.microsoft.com/fwLink/?LinkID=822935](https://go.microsoft.com/fwLink/?LinkID=822935)  | same |
 | pricingHelp<sup>2</sup> | [https://go.microsoft.com/fwLink/?LinkID=829091](https://go.microsoft.com/fwLink/?LinkID=829091)  | same |
-| azureStatus<sup>2</sup> | [https://status.azure.com]()  | same |
+| azureStatus<sup>2</sup> | [https://status.azure.com](https://status.azure.com)  | same |
  
 #### Error Page Links
 	
@@ -207,7 +207,7 @@ Links are separated into the following three sections.
 | noHtml5StorageHelp |	[https://go.microsoft.com/fwLink/?LinkID=522344](https://go.microsoft.com/fwLink/?LinkID=522344)	 | same |
 | portalVideo |	[https://go.microsoft.com/fwLink/?LinkID=394684](https://go.microsoft.com/fwLink/?LinkID=394684) |	 blank |
 | supportedBrowserMatrix |	[https://go.microsoft.com/fwLink/?LinkID=394683](https://go.microsoft.com/fwLink/?LinkID=394683)	 | same |
-| unsupportedLayoutHelp	 |[https://go.microsoft.com/fwLink/?LinkID=394683]()	 | same |
+| unsupportedLayoutHelp	 |[https://go.microsoft.com/fwLink/?LinkID=394683](https://go.microsoft.com/fwLink/?LinkID=394683)	 | same |
 
 ## Expose configuration settings
 
