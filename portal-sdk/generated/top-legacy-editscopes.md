@@ -370,6 +370,389 @@ An example of loading an edit scope is in the following code. The sample is also
 
 <!-- TODO: Determine whether this inline code should be replaced when the samples code is replaced and linked in gitHub, or whether the links to the SDK samples are sufficient. -->
 
+ ```typescript
+
+
+/**
+ * Initializes the website detail form.
+ */
+constructor(container: MsPortalFx.ViewModels.PartContainerContract, initialState: any, dataContext: MasterDetailArea.DataContext) {
+    super(container);
+
+    this._editScopeView = dataContext.editScopeCache.createView(container);
+
+    // Initialize editScope of the base class.
+    this.editScope = this._editScopeView.editScope;
+
+    // Setup editable form.
+    this._initializeForm(container);
+}
+
+```
+
+
+ /* tslint:disable:no-unused-variable */import ExtensionDefinition = require("../../../../_generated/ExtensionDefinition"); /* tslint:enable:no-unused-variable */
+import MasterDetailArea = require("../../MasterDetailArea");
+import ClientResources = require("ClientResources");
+
+import Dialogs = MsPortalFx.ViewModels.Dialogs;
+import Def = ExtensionDefinition.ViewModels.V1$MasterDetail;
+import WebsiteModel = SamplesExtension.DataModels.WebsiteModel;
+
+/**
+ *  Blade view model that provides the title and icon.
+ */
+export class DetailBladeViewModel
+    extends MsPortalFx.ViewModels.Blade
+    implements Def.DetailBladeViewModel.Contract {
+    /**
+     * Set initial blade view model values.
+     */
+    constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: MasterDetailArea.DataContext) {
+        super();
+        this.title(ClientResources.masterDetailEditDetailBladeTitle);
+        this.subtitle(ClientResources.masterDetailEditDetailBladeSubtitle);
+    }
+}
+
+/**
+ * View model for the form Part.
+ */
+export class DetailPartViewModel
+    extends MsPortalFx.ViewModels.Forms.Form.ViewModel<WebsiteModel>
+    implements Def.DetailPartViewModel.Contract {
+    /**
+     * Form validation.
+     */
+    public generalSection: MsPortalFx.ViewModels.Forms.Section.ViewModel;
+
+    /**
+     * Website's 'name' field.
+     */
+    public websiteNameField: MsPortalFx.ViewModels.Forms.TextBox.ViewModel;
+
+    /**
+     * Website's 'running' field.
+     */
+    public isRunningField: MsPortalFx.ViewModels.Forms.OptionsGroup.ViewModel<boolean>;
+
+    /**
+     * EditScope view.
+     */
+    private _editScopeView: MsPortalFx.Data.EditScopeView<SamplesExtension.DataModels.WebsiteModel, number>;
+	
+//top-legacy-editscopes#neweditscopeview
+
+    /**
+     * Initializes the website detail form.
+     */
+    constructor(container: MsPortalFx.ViewModels.PartContainerContract, initialState: any, dataContext: MasterDetailArea.DataContext) {
+        super(container);
+
+        this._editScopeView = dataContext.editScopeCache.createView(container);
+
+        // Initialize editScope of the base class.
+        this.editScope = this._editScopeView.editScope;
+
+        // Setup editable form.
+        this._initializeForm(container);
+    }
+//top-legacy-editscopes#neweditscopeview
+
+//top-legacy-editscopes#newdata
+    /**
+    * Invoked when the Part's inputs change.
+    */
+    public onInputsSet(inputs: Def.DetailPartViewModel.InputsContract): MsPortalFx.Base.Promise {
+        // Acquires edit scope seeded with an item with id currentItemId.
+        return this._editScopeView.fetchForExistingData(inputs.editScopeId, inputs.currentItemId);
+    }
+//top-legacy-editscopes#newdata
+
+    /**
+     * Setup editable form with an edit scope.
+     */
+    private _initializeForm(container: MsPortalFx.ViewModels.PartContainerContract): void {
+
+        // Form fields.
+        const websiteNameOptions: MsPortalFx.ViewModels.Forms.TextBox.Options = {
+            label: ko.observable(ClientResources.masterDetailEditWebsiteNameLabel),
+            emptyValueText: ko.observable(ClientResources.masterDetailEditWebsiteNameInitial),
+            validations: ko.observableArray([
+                new MsPortalFx.ViewModels.RequiredValidation(ClientResources.masterDetailEditWebsiteNameRequired),
+                new MsPortalFx.ViewModels.RegExMatchValidation("^[a-zA-Z _]+$", ClientResources.masterDetailEditWebsiteNameValidation),
+            ]),
+        };
+        this.websiteNameField = new MsPortalFx.ViewModels.Forms.TextBox.ViewModel(container, this, "name", websiteNameOptions);
+
+        const isRunningOptions: MsPortalFx.ViewModels.Forms.OptionsGroup.Options<boolean> = {
+            label: ko.observable(ClientResources.masterDetailEditRunningLabel),
+            options: ko.observableArray([
+                {
+                    text: ko.observable(ClientResources.masterDetailEditRunningOn),
+                    value: true,
+                },
+                {
+                    text: ko.observable(ClientResources.masterDetailEditRunningOff),
+                    value: false,
+                },
+            ]),
+        };
+        this.isRunningField = new MsPortalFx.ViewModels.Forms.OptionsGroup.ViewModel<boolean>(container, this, "running", isRunningOptions);
+
+        const generalSectionOptions: MsPortalFx.ViewModels.Forms.Section.Options = {
+            children: ko.observableArray([
+                this.websiteNameField,
+                this.isRunningField,
+            ]),
+        };
+
+        this.generalSection = new MsPortalFx.ViewModels.Forms.Section.ViewModel(container, generalSectionOptions);
+    }
+}
+
+/**
+ * View model for the blade save changes command.
+ */
+export class SaveItemCommand
+    extends MsPortalFx.ViewModels.Command
+    implements Def.SaveItemCommand.Contract {
+
+    private _dataContext: MasterDetailArea.DataContext;
+    private _editScopeView: MsPortalFx.Data.EditScopeView<SamplesExtension.DataModels.WebsiteModel, number>;
+    private _currentItemId: KnockoutObservable<number> = ko.observable<number>();
+    private _formValid: KnockoutObservable<boolean> = ko.observable<boolean>();
+
+    /**
+     * Initializes the command.
+     */
+    constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: MasterDetailArea.DataContext) {
+        super();
+        this._dataContext = dataContext;
+        this._editScopeView = dataContext.editScopeCache.createView(container);
+        this.enabled = ko.pureComputed((): boolean => {
+            // EditScopeId and currentItemId have to be already acquired, editscope dirty and the form valid to
+            // command be enabled.
+            return !this._editScopeView.loading() &&
+                this._editScopeView.editScope() &&
+                this._editScopeView.editScope().dirty() &&
+                !this._editScopeView.editScope().saving() &&
+                this._formValid();
+        });
+        this.icon(MsPortalFx.Base.Images.Save());
+    }
+
+    /**
+     * Invoked when the Commands input properties change.
+     */
+    public onInputsSet(inputs: Def.SaveItemCommand.InputsContract): MsPortalFx.Base.Promise {
+        this._formValid(inputs.formValid);
+        this._currentItemId(inputs.currentItemId);
+        return this._editScopeView.fetchForExistingData(inputs.editScopeId, inputs.currentItemId);
+    }
+
+    /**
+     * Show dialog to the user and act according to his choice.
+     */
+    public execute(): void {
+        const editScope = this._editScopeView.editScope();
+        if (editScope) {
+            editScope.saveChanges().then(null, () => {
+                this._addUpdateErrorNotification();
+            });
+        }
+    }
+
+    /**
+     * Add notification about website update error.
+     */
+    private _addUpdateErrorNotification(): void {
+        MsPortalFx.Hubs.Notifications.ClientNotification.publish({
+            title: ClientResources.masterDetailEditUpdateErrorLabel,
+            description: ClientResources.masterDetailEditUpdateErrorMessage,
+            status: MsPortalFx.Hubs.Notifications.NotificationStatus.Error,
+        });
+    }
+}
+
+/**
+ * View model for the blade discard changes command.
+ */
+export class DiscardChangesCommand
+    extends MsPortalFx.ViewModels.Command
+    implements Def.DiscardChangesCommand.Contract {
+
+    private _editScopeView: MsPortalFx.Data.EditScopeView<SamplesExtension.DataModels.WebsiteModel, number>;
+    private _currentItemId = ko.observable<number>();
+
+    /**
+     * Initializes the command.
+     */
+    constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: MasterDetailArea.DataContext) {
+        super();
+        this._editScopeView = dataContext.editScopeCache.createView(container);
+        this.enabled = ko.pureComputed((): boolean => {
+            // EditScopeId and currentItemId have to be already acquired and editscope dirty to command be enabled.
+            return this._currentItemId() &&
+                !this._editScopeView.loading() &&
+                this._editScopeView.editScope() &&
+                this._editScopeView.editScope().dirty() &&
+                !this._editScopeView.editScope().saving();
+        });
+        this.icon(MsPortalFx.Base.Images.Discard());
+    }
+
+    /**
+     * Invoked when the Commands input properties change.
+     */
+    public onInputsSet(inputs: Def.DiscardChangesCommand.InputsContract): MsPortalFx.Base.Promise {
+        this._currentItemId(inputs.currentItemId);
+        return this._editScopeView.fetchForExistingData(inputs.editScopeId, inputs.currentItemId);
+    }
+
+    /**
+     * Show dialog to the user and act according to his choice.
+     */
+    public execute(): void {
+        this.dialog(new Dialogs.MessageBox(
+            ClientResources.discardChangesDialogTitle,
+            ClientResources.discardChangesDialogQuery,
+            Dialogs.MessageBoxButtons.YesNo
+            ));
+    }
+
+    /**
+     * Depending on user's decision revert edit scope.
+     */
+    public dialogClick(result: Dialogs.DialogResult): void {
+        if (result === Dialogs.DialogResult.Yes) {
+            this._editScopeView.editScope().revertAll();
+            this.status(MsPortalFx.ViewModels.CommandStatus.None);
+        } else {
+            this.status(MsPortalFx.ViewModels.CommandStatus.None);
+        }
+    }
+}
+
+/**
+ * View model for the blade refresh command.
+ */
+export class RefreshCommand
+    extends MsPortalFx.ViewModels.Command
+    implements Def.RefreshCommand.Contract {
+
+    private _editScopeView: MsPortalFx.Data.EditScopeView<SamplesExtension.DataModels.WebsiteModel, number>;
+    private _currentItemId: KnockoutObservable<number> = ko.observable<number>();
+
+    private _confirmMessageBox: Dialogs.MessageBox;
+    private _failedMessageBox: Dialogs.MessageBox;
+
+    /**
+     * Initializes the command.
+     */
+    constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: MasterDetailArea.DataContext) {
+        super();
+        this._editScopeView = dataContext.editScopeCache.createView(container);
+        this.enabled = ko.pureComputed((): boolean => {
+            // EditScopeId and currentItemId have to be already acquired, editscope dirty and the form valid to
+            // command be enabled.
+            return !this._editScopeView.loading() &&
+                this._editScopeView.editScope() &&
+                !this._editScopeView.editScope().refreshing() &&
+                !this._editScopeView.editScope().saving();
+        });
+        this.icon(MsPortalFx.Base.Images.Refresh());
+
+        this._confirmMessageBox = new Dialogs.MessageBox(
+            ClientResources.refreshDialogTitle,
+            ClientResources.refreshDialogQuery,
+            Dialogs.MessageBoxButtons.YesNo
+            );
+        this._failedMessageBox = new Dialogs.MessageBox(
+            ClientResources.refreshFailedDialogTitle,
+            ClientResources.refreshFailedDialogText,
+            Dialogs.MessageBoxButtons.OK);
+    }
+
+    /**
+     * Invoked when the Commands input properties change.
+     */
+    public onInputsSet(inputs: Def.RefreshCommand.InputsContract): MsPortalFx.Base.Promise {
+        this._currentItemId(inputs.currentItemId);
+        return this._editScopeView.fetchForExistingData(inputs.editScopeId, inputs.currentItemId);
+    }
+
+    /**
+     * Show dialog to the user and act according to his choice.
+     */
+    public execute(): void {
+        if (this._editScopeView.editScope().dirty()) {
+            this.dialog(this._confirmMessageBox);
+        } else {
+            this._refresh();
+        }
+    }
+
+    /**
+     * Depending on user's decision revert edit scope.
+     */
+    public dialogClick(result: Dialogs.DialogResult): void {
+        const currentDialog = this.dialog();
+
+        switch (currentDialog) {
+            case this._confirmMessageBox:
+                if (result === Dialogs.DialogResult.Yes) {
+                    this._refresh();
+                }
+                break;
+
+            case this._failedMessageBox:
+                this.status(MsPortalFx.ViewModels.CommandStatus.None);
+                this.dialog(null);
+                break;
+        }
+    }
+
+    private _refresh(): void {
+        const editScope = this._editScopeView.editScope();
+        editScope.refresh().then(
+            () => {
+                this.status(MsPortalFx.ViewModels.CommandStatus.None);
+                this.dialog(null);
+            },
+            () => {
+                this.dialog(this._failedMessageBox);
+            });
+    }
+}
+
+
+
+
+ ```typescript
+
+
+/**
+ * Initializes the website detail form.
+ */
+constructor(container: MsPortalFx.ViewModels.PartContainerContract, initialState: any, dataContext: MasterDetailArea.DataContext) {
+    super(container);
+
+    this._editScopeView = dataContext.editScopeCache.createView(container);
+
+    // Initialize editScope of the base class.
+    this.editScope = this._editScopeView.editScope;
+
+    // Setup editable form.
+    this._initializeForm(container);
+}
+
+```
+
+
+compare the above  to
+
+
 ```ts
 // create a new editScopeView
 constructor(container: MsPortalFx.ViewModels.PartContainerContract,
@@ -384,7 +767,21 @@ constructor(container: MsPortalFx.ViewModels.PartContainerContract,
 }
 ```
 
-In the following example, the `editScopeView` is refreshed with new data from the data context.
+ In the following example, the `editScopeView` is refreshed with new data from the data context.
+
+ ```typescript
+
+/**
+* Invoked when the Part's inputs change.
+*/
+public onInputsSet(inputs: Def.DetailPartViewModel.InputsContract): MsPortalFx.Base.Promise {
+    // Acquires edit scope seeded with an item with id currentItemId.
+    return this._editScopeView.fetchForExistingData(inputs.editScopeId, inputs.currentItemId);
+}
+
+```
+ 
+ compare to
 
 ```ts
 // update the editScopeView with a new id
@@ -392,6 +789,18 @@ public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
     // Acquires edit scope seeded with an item with id currentItemId.
     return this._editScopeView.fetchForExistingData(inputs.editScopeId, inputs.currentItemId);
 }
+```
+
+ ```typescript
+
+/**
+* Invoked when the Part's inputs change.
+*/
+public onInputsSet(inputs: Def.DetailPartViewModel.InputsContract): MsPortalFx.Base.Promise {
+    // Acquires edit scope seeded with an item with id currentItemId.
+    return this._editScopeView.fetchForExistingData(inputs.editScopeId, inputs.currentItemId);
+}
+
 ```
 
 ### Loading the EditScope
