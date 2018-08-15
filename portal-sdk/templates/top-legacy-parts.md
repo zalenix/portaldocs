@@ -260,8 +260,9 @@ Likewise, other extensions may have taken dependencies on less-recent editions o
 This example is based on the sample located at `<dir>\Client\V1\Hubs\Browse\Browse.pdl`. It builds on the ViewModel located at `<dir>\Client\V1\Hubs\Browse\ViewModels\RobotPartViewmodel.ts`.
 
  The **CanUseOldInputVersion** attribute can be set to `true` to specify that the part can process older versions of inputs. It should be used in conjunction with the  part property named `version`, as in the following example.
-
-{"gitdown": "include-file", "file": "../Samples/SamplesExtension/Extension/Client/V1/Hubs/Browse/Browse.pdl"}
+  <!--
+gitdown": "include-file", "file": "../Samples/SamplesExtension/Extension/Client/V1/Hubs/Browse/Browse.pdl
+-->
 
 ```xml
 <Part Name="RobotPart"
