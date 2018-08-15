@@ -467,7 +467,7 @@ A browsable asset type is one that is defined in the `PDL` file by using the `Br
 ![alt-text](../media/top-extensions-custom-domains/curation.png "Categories and asset types")
 
 <!-- TODO: Determine whether  "Public value" can be changed to "Default value". -->
- 
+
 ### Curation categories
 
 Curation provides a significant degree of flexibility, which can be overwhelming because options are NOT mutually exclusive. For example, the production curation definition can be programmatically modified in the following ways.
@@ -532,7 +532,7 @@ The following steps generate the JSON for the dashboard.
 
 1. Inspect the JSON to confirm that it contains no user-specific values, because this dashboard will be applied to all new users.
 
-1. Paste the following `AzureActiveDirectoryDashboardv2.json` File from AAD into the Default Dashboard JSON. The file is also located at [](). 
+1. Paste the following `AzureActiveDirectoryDashboardv2.json` File from AAD into the Default Dashboard JSON. The file is also located at [top-extensions-codestub.md](top-extensions-codestub.md). 
 
     ```
     {
