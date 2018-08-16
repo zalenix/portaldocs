@@ -76,7 +76,7 @@ The `options` object contains the following variables.
 
  * **getAllOperations**: Optional. Flag that specifies whether to report on all operations. Operations are also reported on success. Polling is done every ten seconds for the first minute, then every minute for the next five minutes, then every five minutes afterwards. If polling fails because of a timeout or because of an ARM internal server error, the API will retry up to three times. If the value is set to true, the promise will continuously report ARM operations as progress occurs. The default value is false.
 
-The result that is returned when the promise resolves or reports on progress is described in [#template-deployment-result](#template-deployment-result).
+The result that is returned when the promise resolves or reports on progress is described in [#template-deployment-and-polling-results](#template-deployment-and-polling-results).
 
 <a name="template-deployment-and-polling-results"></a>
 ## Template deployment and polling results
@@ -94,10 +94,10 @@ The result that is returned when the promise resolves contains the following str
 <a name="sample-code"></a>
 ## Sample code
 
-<a name="sample-code-1-requesting-a-template-deployment"></a>
-##### >
-<li>Requesting a template deployment</li>
-<
+The following samples request a template deployment, and provide for the three different types of results, depending on the value of the  `deploymentMode` parameter.
+
+<a name="sample-code-requesting-a-template-deployment"></a>
+### Requesting a template deployment
 
 ```ts
 // Prepare the template deployment options.
@@ -129,7 +129,7 @@ MsPortalFx.Azure.ResourceManager.deployTemplate(options)
     });
 ```
 
-<a name="sample-code-2-deploy-a-template-and-await-completion"></a>
+<a name="sample-code-requesting-a-template-deployment-2-deploy-a-template-and-await-completion"></a>
 ##### >
 <li>Deploy a template and await completion</li>
 <
@@ -157,7 +157,7 @@ MsPortalFx.Azure.ResourceManager.deployTemplate(options)
     });
 ```
 
-<a name="sample-code-3-deploy-a-template-and-await-completion-while-getting-all-operations"></a>
+<a name="sample-code-requesting-a-template-deployment-3-deploy-a-template-and-await-completion-while-getting-all-operations"></a>
 ##### >
 <li>Deploy a template and await completion (while getting all operations)</li>
 <
@@ -182,7 +182,7 @@ MsPortalFx.Azure.ResourceManager.deployTemplate(options)
     });
 ```
 
-<a name="sample-code-4-requesting-a-template-deployment-and-separately-polling-for-updates-and-operations"></a>
+<a name="sample-code-requesting-a-template-deployment-4-requesting-a-template-deployment-and-separately-polling-for-updates-and-operations"></a>
 ##### >
 <li>Requesting a template deployment and separately polling for updates (and operations)</li>
 <
