@@ -334,7 +334,7 @@ A working copy is located at [http://aka.ms/portalfx/samples#blade/SamplesExtens
 
 4.The following part defaults to an arbitrary size, and can be resized programatically.  
 
-     ```xml
+```xml
 
 	<CustomPart Name="CustomSizeProgrammaticResizePart"
         	    ViewModel="{ViewModel Name=PartSizesCustomSizeProgrammaticResizePartViewModel, Module=./PartSizes/ViewModels/PartSizesViewModels}"
@@ -350,7 +350,7 @@ A working copy is located at [http://aka.ms/portalfx/samples#blade/SamplesExtens
     	<PartSize>Large</PartSize>
   	</CustomPart.SupportedSizes>
 	</CustomPart>
-      ```
+```
 
 5. The following code demonstrates  how to programatically resize the part from within the associated ViewModel.  The parameters are specified in grid units instead of pixels. The code is located at `<dir>\Client\V1\Parts\PartSizes\ViewModels\PartSizesViewModels.ts`.
 
@@ -649,6 +649,7 @@ This example is based on the sample located at `<dir>\Client\V1\Hubs\Browse\Brow
  The **CanUseOldInputVersion** attribute can be set to `true` to specify that the part can process older versions of inputs. It should be used in conjunction with the  part property named `version`, as in the following example.
 
 <!-- TODO:  Determine whether the following sample is causing GitHub to stop the build. -->
+```xml
     <?xml version="1.0" encoding="utf-8" ?>
 <Definition xmlns="http://schemas.microsoft.com/aux/2013/pdl"
             Area="V1/Hubs"
@@ -670,7 +671,7 @@ This example is based on the sample located at `<dir>\Client\V1\Hubs\Browse\Brow
     <Browse ServiceViewModel="{ViewModel Name=RobotBrowseService, Module=./Browse/Services/RobotBrowseService}" />
     <GridColumns ServiceViewModel="{ViewModel Name=RobotGridColumnsService, Module=./Browse/Services/RobotGridColumnsService}" />
   </AssetType>
-
+```
     <!--
     The command group provides a way to group common command which can execute
     against a blade, part, or asset type
