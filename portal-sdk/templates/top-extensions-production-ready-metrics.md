@@ -43,10 +43,6 @@ For more information about performance and reliability, see the following resour
 
     [portalfx-performance.md](portalfx-performance.md)
 
-* Portal COP (Telemetry)
-
-    [portalfx-performance-portalcop.md](portalfx-performance-portalcop.md)
-
 ###	Reliability
 
 Every extension meets the reliability Service Level Agreement (SLA). There are some reliability metrics to meet previous to enabling the extension in the production environment; however, extensions must be enabled in MPAC in order to start tracking reliability. Meeting the reliability bar is a requirement for public preview or GA.

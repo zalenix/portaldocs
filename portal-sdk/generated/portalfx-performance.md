@@ -331,7 +331,6 @@ Sure! Book in some time in the Azure performance office hours.
     - Don't aggressively update UI-bound observables
         - Accumulate the changes and then update the observable
         - Manually throttle or use `.extend({ rateLimit: 250 });` when initializing the observable
-- Run portalcop to identify and resolve common performance issues
 
 <a name="performance-profiling"></a>
 # Performance profiling

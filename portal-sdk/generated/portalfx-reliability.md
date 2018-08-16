@@ -70,7 +70,6 @@ There are a few items that the FX team advises all extensions to follow.
 The FX provides an [Extension Hosting Service](portalfx-extension-hosting-service.md) which handles Geo-distribution.
 To assess your extensions performance by data center see the [Extension performance/reliability report][Ext-Perf/Rel-Report]
 - Turning on [IIS compression](https://technet.microsoft.com/en-us/library/cc730629(v=ws.10).aspx)
-- [Run portalcop to identify and resolve common performance issues](portalfx-performance-portalcop.md)
 
 <a name="overview-checklist-code-optimisations-to-improve-extension-reliability"></a>
 ### Code optimisations to improve extension reliability
