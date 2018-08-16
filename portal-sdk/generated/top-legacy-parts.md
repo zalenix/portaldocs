@@ -671,14 +671,13 @@ This example is based on the sample located at `<dir>\Client\V1\Hubs\Browse\Brow
     <Browse ServiceViewModel="{ViewModel Name=RobotBrowseService, Module=./Browse/Services/RobotBrowseService}" />
     <GridColumns ServiceViewModel="{ViewModel Name=RobotGridColumnsService, Module=./Browse/Services/RobotGridColumnsService}" />
   </AssetType>
-```
-    <!--
-    The command group provides a way to group common command which can execute
+	
+  <!-- The command group provides a way to group common command which can execute
     against a blade, part, or asset type
 
     This command group is used by the robot in the browse grid, so the source for the ID property
-    is the asset expansion property "$MSPORTALFX$assetDetails$assetId".
-  -->
+    is the asset expansion property "$MSPORTALFX$assetDetails$assetId".   -->
+	
   <CommandGroup Name="RobotCommands">
     <Command Name="RobotMaintenanceCommand"
              Text="{Resource sendToMaintenanceCommand, Module=ClientResources}"
@@ -719,11 +718,9 @@ This example is based on the sample located at `<dir>\Client\V1\Hubs\Browse\Brow
     </Command>
   </CommandGroup>
 
-  <!--
-    This part represents an overview of a robot, and is available to be used
+  <!-- This part represents an overview of a robot, and is available to be used
     on the startboard, or inside of a blade.  You refer to this part in the AssetType
-    declaration above, so it can be used by notifications and browse.
-  -->
+    declaration above, so it can be used by notifications and browse.   -->
   <Part Name="RobotPart"
         ViewModel="RobotPartViewModel"
         CanUseOldInputVersions="true"
@@ -737,21 +734,18 @@ This example is based on the sample located at `<dir>\Client\V1\Hubs\Browse\Brow
                 Source="{DataInput Property=id}" />
     </Part.Properties>
     <BladeAction Blade="RobotBlade">
-      <!--
-        Currently, parts which accept inputs from notifications and browse require
-        the input property to the part or blade be named 'id'.
-      -->
+	
+      <!--  Currently, parts which accept inputs from notifications and browse require
+        the input property to the part or blade be named 'id'.     -->
       <BladeInput
           Source="name"
           Parameter="id" />
     </BladeAction>
 
-    <!--
-      Associate the commands with the part.
+    <!-- Associate the commands with the part.
 
       Here we re-bind the "id" property to the part's "name" property instead of the asset expansion property.
-      This rewires the binding for this instance of the command.
-    -->
+      This rewires the binding for this instance of the command. -->
     <CommandGroupReference Name="RobotCommands">
       <CommandBindings Command="RobotMaintenanceCommand">
         <Binding Property="id"
@@ -772,7 +766,7 @@ This example is based on the sample located at `<dir>\Client\V1\Hubs\Browse\Brow
     </CommandGroupReference>
   </Part>
 
-    <!--
+  <!--
     The following blade represents the details view for a robot.
   -->
   <MenuBlade Name="RobotMenuBlade"
@@ -797,7 +791,7 @@ This example is based on the sample located at `<dir>\Client\V1\Hubs\Browse\Brow
     </Blade.Parameters>
 
     <Blade.Properties>
-      <!--
+    <!--
         Results from a browse or notification always pass a property named 'id' into the blade
       -->
       <Property Name="name"
@@ -902,8 +896,6 @@ This example is based on the sample located at `<dir>\Client\V1\Hubs\Browse\Brow
 
 </Definition>
 
-
-```xml
 <Part Name="RobotPart"
       ViewModel="{ViewModel Name=RobotPartViewModel, Module=./Browse/ViewModels/RobotPartViewModel}"
       CanUseOldInputVersions="true"
