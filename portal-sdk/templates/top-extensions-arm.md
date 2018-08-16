@@ -53,7 +53,7 @@ The `options` object contains the following variables.
 
  * **suppressDefaultNotifications**: Optional. A flag that specifies whether to suppress default deployment notifications. Defaults to false.
 
-## Poll for Updates
+## Poll for updates
 
 The API is used to poll for deployment updates if you have the correlation id of an existing deployment.  This id is returned when a deployment request is accepted by ARM. The API returns a promise that is resolved or rejected when the deployment succeeds or fails.  The code that polls for deployment is the following.
 
@@ -89,125 +89,129 @@ The result that is returned when the promise resolves contains the following str
 
 ## Sample code
 
-The following samples request a template deployment, and provide for the three different types of results, depending on the value of the  `deploymentMode` parameter.
+The following samples request a template deployment, and provide for the three different types of results, depending on the value of the `deploymentMode` parameter.
 
-### Requesting a template deployment
+* Requesting a template deployment
 
-```ts
-// Prepare the template deployment options.
-var deploymentOptions: MsPortalFx.Azure.ResourceManager.TemplateDeploymentOptions = {
-    subscriptionId: "1e215951-cf63-4cd9-b5c5-748a1f97e984",
-    deploymentName: "Samples.Engine",
-    resourceGroupName: "armDeploymentTestRG",
-    resourceGroupLocation: "centralus",
-    resourceProviders: [ "EngineRP" ],
-    templateLinkUri: "http://uri-of-arm-template"
-    // Or -> templateJson: "json",
-    parameters: {
-        name: "engine-test-1",
-        displacement: "disp-1",
-        model: "engine-v1"
-    },
-    // Defaults to -> suppressDefaultNotifications: false,
-    // Defaults to -> deploymentMode: MsPortalFx.Azure.ResourceManager.TemplateDeploymentMode.RequestDeploymentOnly
-};
+    ```ts
+    // Prepare the template deployment options.
+    var deploymentOptions: MsPortalFx.Azure.ResourceManager.TemplateDeploymentOptions = {
+        subscriptionId: "1e215951-cf63-4cd9-b5c5-748a1f97e984",
+        deploymentName: "Samples.Engine",
+        resourceGroupName: "armDeploymentTestRG",
+        resourceGroupLocation: "centralus",
+        resourceProviders: [ "EngineRP" ],
+        templateLinkUri: "http://uri-of-arm-template"
+        // Or -> templateJson: "json",
+        parameters: {
+            name: "engine-test-1",
+            displacement: "disp-1",
+            model: "engine-v1"
+        },
+        // Defaults to -> suppressDefaultNotifications: false,
+        // Defaults to -> deploymentMode: MsPortalFx.Azure.ResourceManager.TemplateDeploymentMode.RequestDeploymentOnly
+    };
 
-// Deploy the template.
-MsPortalFx.Azure.ResourceManager.deployTemplate(options)
-    .then((result: MsPortalFx.Azure.ResourceManager.TemplateDeploymentResult) => {
-        // ARM accepted the deployment request.
-        // Store the correlation id if you want to poll for deployment updates afterwards.
-        // Do something with the result. 
-    }, (error: any) => {
-        // Something went wrong!
-    });
-```
+    // Deploy the template.
+    MsPortalFx.Azure.ResourceManager.deployTemplate(options)
+        .then((result: MsPortalFx.Azure.ResourceManager.TemplateDeploymentResult) => {
+            // ARM accepted the deployment request.
+            // Store the correlation id if you want to poll for deployment updates afterwards.
+            // Do something with the result. 
+        }, (error: any) => {
+            // Something went wrong!
+        });
+    ```
 
-##### 2. Deploy a template and await completion
+* Deploy a template and await completion
 
+    This code should be used when the extension will await completion of the request, as specified in the template deployment options in the code.
 
+    If your extension's UI reflects the deployment progress, the extension should persist the correlation id  because the user can abandon a session and return to it. If such is the case, the extension should continue reflecting deployment progress when it is reloaded.
 
-In the modes in #2 and #3, if you have some UI that reflects the deployment progress, and if the request goes through and ARM responds back with the correlation id, it's still advisable to store it somewhere because the user can still abandon the session, and you'll need to continue reflecting progress on reload.
+    ```ts
+    // Prepare the template deployment options.
+    var deploymentOptions: MsPortalFx.Azure.ResourceManager.TemplateDeploymentOptions = {
+        // Same options as in sample #1, except:
+        deploymentMode: MsPortalFx.Azure.ResourceManager.TemplateDeploymentMode.DeployAndAwaitCompletion
+    };
 
-```ts
-// Prepare the template deployment options.
-var deploymentOptions: MsPortalFx.Azure.ResourceManager.TemplateDeploymentOptions = {
-    // Same options as in sample #1, except:
-    deploymentMode: MsPortalFx.Azure.ResourceManager.TemplateDeploymentMode.DeployAndAwaitCompletion
-};
+    // Deploy the template.
+    MsPortalFx.Azure.ResourceManager.deployTemplate(options)
+        .progress((progress: MsPortalFx.Azure.ResourceManager.TemplateDeploymentResult) => {
+            // Will be called only once, when ARM accepts the deployment request.
+            // Store the correlation id if you have UI that reflects the progress and the user abandons the session.
+        }).then((result: MsPortalFx.Azure.ResourceManager.TemplateDeploymentResult) => {
+            // Deployment is complete. 
+        }, (error: any) => {
+            // Something went wrong!
+        });
+    ```
 
-// Deploy the template.
-MsPortalFx.Azure.ResourceManager.deployTemplate(options)
-    .progress((progress: MsPortalFx.Azure.ResourceManager.TemplateDeploymentResult) => {
-        // Will be called only once, when ARM accepts the deployment request.
-        // Store the correlation id if you have UI that reflects the progress and the user abandons the session.
-    }).then((result: MsPortalFx.Azure.ResourceManager.TemplateDeploymentResult) => {
-        // Deployment is complete. 
-    }, (error: any) => {
-        // Something went wrong!
-    });
-```
+* Deploy a template and get all operations
 
-##### 3. Deploy a template and await completion (while getting all operations)
+    This code should be used when the extension will get all operations and await completion of the request, as specified in the template deployment options in the code.
 
-```ts
-// Prepare the template deployment options.
-var deploymentOptions: MsPortalFx.Azure.ResourceManager.TemplateDeploymentOptions = {
-    // Same options as in sample #1, except:
-    deploymentMode: MsPortalFx.Azure.ResourceManager.TemplateDeploymentMode.DeployAndGetAllOperations
-};
+    If your extension's UI reflects the deployment progress, the extension should persist the correlation id  because the user can abandon a session and return to it. If such is the case, the extension should continue reflecting deployment progress when it is reloaded.
 
-// Deploy the template.
-MsPortalFx.Azure.ResourceManager.deployTemplate(options)
-    .progress((progress: MsPortalFx.Azure.ResourceManager.TemplateDeploymentResult) => {
-        // First time will be called when ARM accepts the deployment request. 
-        // Store the correlation id if you have UI that reflects the progress for the case when the user abandons the session.
-        // Subsequent calls will continuously reports progress (and operations) while the deployment is in progress.
-    }).then((result: MsPortalFx.Azure.ResourceManager.TemplateDeploymentResult) => {
-        // Deployment is complete.
-    }, (error: any) => {
-        // Something went wrong!
-    });
-```
+    ```ts
+    // Prepare the template deployment options.
+    var deploymentOptions: MsPortalFx.Azure.ResourceManager.TemplateDeploymentOptions = {
+        // Same options as in sample #1, except:
+        deploymentMode: MsPortalFx.Azure.ResourceManager.TemplateDeploymentMode.DeployAndGetAllOperations
+    };
 
-##### 4. Requesting a template deployment and separately polling for updates (and operations)
+    // Deploy the template.
+    MsPortalFx.Azure.ResourceManager.deployTemplate(options)
+        .progress((progress: MsPortalFx.Azure.ResourceManager.TemplateDeploymentResult) => {
+            // First time will be called when ARM accepts the deployment request. 
+            // Store the correlation id if you have UI that reflects the progress for the case when the user abandons the session.
+            // Subsequent calls will continuously reports progress (and operations) while the deployment is in progress.
+        }).then((result: MsPortalFx.Azure.ResourceManager.TemplateDeploymentResult) => {
+            // Deployment is complete.
+        }, (error: any) => {
+            // Something went wrong!
+        });
+    ```
 
-These calls are not cached, so if the user abandons the session by closing the browser or navigating away before the request makes it to ARM, the call to this API will result in nothing.
+* Request a template deployment and poll for updates
 
-```ts
-// Prepare the template deployment options.
-var deploymentOptions: MsPortalFx.Azure.ResourceManager.TemplateDeploymentOptions = {
-    // Same options as in sample #1.
-};
+    These calls are not cached, so if the user abandons the session by closing the browser or navigating away before the request makes it to ARM, the call to this API will result in nothing.
 
-// Deploy the template.
-MsPortalFx.Azure.ResourceManager.deployTemplate(options)
-    .then((deploymentResult: MsPortalFx.Azure.ResourceManager.TemplateDeploymentResult) => {
-        // ARM accepted the deployment request.
-        // Store the correlation id if you have UI that reflects the progress for the case when the user abandons the session.
+    ```ts
+    // Prepare the template deployment options.
+    var deploymentOptions: MsPortalFx.Azure.ResourceManager.TemplateDeploymentOptions = {
+        // Same options as in sample #1.
+    };
 
-        // Prepare polling options.
-        var pollingOptions: MsPortalFx.Azure.ResourceManager.TemplateDeploymentPollingOption = {
-            // Use the same info from the original deployment.
-            subscriptionId: deploymentOptions.subscriptionId,
-            deploymentName: deploymentOptions.deploymentName,
-            resourceGroupName: deploymentOptions.resourceGroupName,
-            // Use the correlation id returned.
-            correlationId: deploymentResult.correlationId,
-            // Optional:
-            getAllOperations: true
-        };
+    // Deploy the template.
+    MsPortalFx.Azure.ResourceManager.deployTemplate(options)
+        .then((deploymentResult: MsPortalFx.Azure.ResourceManager.TemplateDeploymentResult) => {
+            // ARM accepted the deployment request.
+            // Store the correlation id if you have UI that reflects the progress for the case when the user abandons the session.
 
-        // Poll for updates.
-        MsPortalFx.Azure.ResourceManager.pollForDeployment(pollingOptions)
-            .progress((progress: MsPortalFx.Azure.ResourceManager.TemplateDeploymentResult) => {
-                // Continuously reports progress (and operations) while the deployment is in progress.
-            }).then((pollingResult: MsPortalFx.Azure.ResourceManager.TemplateDeploymentResult) => {
-                // Deployment is complete.
-            }, (error: any) => {
-                // Something went wrong!
-            });
-    }, (error: any) => {
-        // Something went wrong!
-    });
-```
+            // Prepare polling options.
+            var pollingOptions: MsPortalFx.Azure.ResourceManager.TemplateDeploymentPollingOption = {
+                // Use the same info from the original deployment.
+                subscriptionId: deploymentOptions.subscriptionId,
+                deploymentName: deploymentOptions.deploymentName,
+                resourceGroupName: deploymentOptions.resourceGroupName,
+                // Use the correlation id returned.
+                correlationId: deploymentResult.correlationId,
+                // Optional:
+                getAllOperations: true
+            };
+
+            // Poll for updates.
+            MsPortalFx.Azure.ResourceManager.pollForDeployment(pollingOptions)
+                .progress((progress: MsPortalFx.Azure.ResourceManager.TemplateDeploymentResult) => {
+                    // Continuously reports progress (and operations) while the deployment is in progress.
+                }).then((pollingResult: MsPortalFx.Azure.ResourceManager.TemplateDeploymentResult) => {
+                    // Deployment is complete.
+                }, (error: any) => {
+                    // Something went wrong!
+                });
+        }, (error: any) => {
+            // Something went wrong!
+        });
+    ```
