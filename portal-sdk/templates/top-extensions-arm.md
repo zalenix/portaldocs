@@ -73,7 +73,7 @@ The `options` object contains the following variables.
 
  * **getAllOperations**: Optional. Flag that specifies whether to report on all operations. Operations are also reported on success. Polling is done every ten seconds for the first minute, then every minute for the next five minutes, then every five minutes afterwards. If polling fails because of a timeout or because of an ARM internal server error, the API will retry up to three times. If the value is set to true, the promise will continuously report ARM operations as progress occurs. The default value is false.
 
-The result that is returned when the promise resolves or reports on progress is described in [#template-deployment-result](#template-deployment-result).
+The result that is returned when the promise resolves or reports on progress is described in [#template-deployment-and-polling-results](#template-deployment-and-polling-results).
 
 ## Template deployment and polling results
 
@@ -89,7 +89,9 @@ The result that is returned when the promise resolves contains the following str
 
 ## Sample code
 
-##### 1. Requesting a template deployment
+The following samples request a template deployment, and provide for the three different types of results, depending on the value of the  `deploymentMode` parameter.
+
+### Requesting a template deployment
 
 ```ts
 // Prepare the template deployment options.
