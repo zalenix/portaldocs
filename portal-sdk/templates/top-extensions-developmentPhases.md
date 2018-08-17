@@ -5,8 +5,7 @@ Typically, there are three typical types of releases for an extension: private p
 
 ### Private Preview
 
-The extension is in private preview stage when it has been registered into the Azure Portal configuration. 
-The goal is to hide the extension from the general public, but show it to a limited audience. After registration, the new extension can be discovered on the browse page, also known as the `All services` menu, as in the following image.
+The extension is in private preview stage when it has been registered into the Azure Portal configuration. The goal is to hide the extension from the general public, but show it to a limited audience. After registration, the new extension can be discovered on the browse page, also known as the `All services` menu, as in the following image.
 
 ![alt-text](../media/top-extensions-developmentPhases/browseMenu.png "Browse Menu")
 
@@ -16,10 +15,10 @@ The extension is still in hidden/ disabled state, and the preview tag in the the
 
 1. Using `private=true` in the extension's `.pdl` file.  This option is recommended as this can be controlled by the extension owners, while the first option requires a config update and a deployment by Portal team which takes time due to safe deployment practices.
 
-In this private preview state, the extension is not visible to all the customers of Azure Portal; instead, the developer and their team have acquired a small team of reviewers with which to collaborate on the development and testing of the extension. 
+In this private preview state, the extension is not visible to all the customers of Azure Portal; instead, the developers and their team have acquired a small team of reviewers with which to collaborate on the development and testing of the extension. 
 
 <!--Determine whether this URL is above and beyond any standard private preview access. -->
-Some teams also leverage this phase for testing the business model by providing a specific URL to their customers that allows them to access this extension. For more information about providing access to a limited set of customers, see [top-extensions-flags.md](top-extensions-flags.md).
+Some teams also leverage this phase for testing the business model by providing a specific URL to their customers that allows them to access this extension. 
 
 The developer can then modify the extension until it meets specific criteria for usability, reliability, performance, and other factors. The criteria are located at [top-extensions-production-ready-metrics.md](top-extensions-production-ready-metrics.md). 
 
@@ -33,19 +32,19 @@ This process is separate from onboarding to Azure.
 
 The public preview state assumes that the extension met the production-ready metrics for the private preview phase, and that the private preview phase validated the business model of the service. This includes new user experiences, or entry points, within an existing extension.
 
-In this phase you can set the extension to the enabled state while leaving the `Preview=true` that was set in private preview stage. This can be done by either removing the `disabled : true` attribute from the extension configuration file, or removing the `Private =true` flag from the asset's PDL file, as specified in [Private Preview](#private-preview). 
+In this phase you can set the extension to the enabled state while leaving the `Preview=true` that was set in private preview stage. This can be done by either removing the `disable: true` attribute from the extension configuration file, or removing the `Private=true` flag from the asset's PDL file, as specified in [Private Preview](#private-preview). 
 
 Developers are required to check the quality of the extension. The Azure Portal has standardized ways of measuring reliability and performance at key areas. When an extension is in the  private preview stage, then this data has already been collected.  For more information about quality checks and Portal tools, see [top-extensions-production-ready-metrics.md](top-extensions-production-ready-metrics.md).  
 
 If the extension will be integrated into the Marketplace, then the hidden/ disabled rules follow Marketplace guidance. For more information about hiding Marketplace items, reach out to  <a href="mailto:1store@microsoft.com?subject=Marketplace Onboarding Request&body=Hello, I would like to onboard the attached package to the production environment. The .azkpg package is named <packageName>. ">1store.com</a>.
 
-In the public preview state, the extension undergoes more development and review, and it can be used by all customers in Azure Portal.  The production-ready metrics for the public preview state are the same as the production-ready metrics for the private preview state, except for Usability. Public Preview requires extensions to have a score of 7/10, whereas GA requires extensions to have a score of 8/10.  An extension that meets the production-ready metrics with this public audience can be moved from public preview to Global Availability. The criteria that are used to validate promoting the extension out of the public preview state are located at [top-extensions-production-ready-metrics.md](top-extensions-production-ready-metrics.md).
+In the public preview state, the extension undergoes more development and review, and it can be used by all customers in Azure Portal.  The production-ready metrics for the public preview state are the same as the production-ready metrics for the private preview state, except for Usability. Public Preview requires extensions to have a score of 7/10, whereas GA requires extensions to have a score of 8/10.  An extension that meets the production-ready metrics with this public audience can be moved from public preview to General Availability. The criteria that are used to validate promoting the extension out of the public preview state are located at [top-extensions-production-ready-metrics.md](top-extensions-production-ready-metrics.md).
 
 The icon to the right of the extension indicates whether the extension is in the private preview state or the public preview state, as in the following image.
 
  ![alt-text](../media/portalfx-extensions-onboarding/previewMode.png "Private Preview State")
 
-* **NOTE**: Any user that receives this URL will be able to see the new extension. Any users who receives a deep link to blades within the extension will be able to see the new experience.
+**NOTE**: Any user that receives this URL will be able to see the new extension. Any users who receives a deep link to blades within the extension will be able to see the new experience.
 
 ### General Availability
 
