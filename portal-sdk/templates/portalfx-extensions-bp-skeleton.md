@@ -4,7 +4,7 @@
 
 This document contains best practices that are associated with the topic whose name is a node in the filename. Best practices are procedures other than the typical guidance for the topic or subtopic, and therefore were not mentioned in the overall discussion of the topic or subtopic. They also were not included in a procedure or checklist document for the topic. If there are no best practices for a topic, this optional document can be added when appropriate.
 
-Best practices often result in improved performance, smaller software footprint, increased reusability and maintainability, or similar factors. Some practices are documented in industry practice, like the ***Testing Computer Software*** textbook that is located at [https://www.researchgate.net/publication/220689439_Testing_computer_software_2_ed](https://www.researchgate.net/publication/220689439_Testing_computer_software_2_ed). Although [Stackoverflow](https://stackoverflow.microsoft.com) contains good ideas, it is a forum centered more around answering questions than providing best practices.
+Best practices often result in improved performance, smaller software footprint, increased reusability and maintainability, or similar factors. Practices that are documented in industry practice are probably not included here. Although [Stackoverflow](https://stackoverflow.microsoft.com) contains good ideas, it is a forum centered more around answering questions than providing best practices.
 
 In the discussion, mention why these practices are considered best practices, or are good practice for the industry or within software development.  If some of these practices are results of usability studies, a sentence like the following is appropriate.
 
