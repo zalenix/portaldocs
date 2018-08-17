@@ -13,6 +13,12 @@ An Azure Resource Manager Template, as specified in [http://aka.ms/portalfx/quic
 
 * Poll for deployment updates to know whether the deployment has been accepted, is running, succeeded, or failed. You can also poll for operations, where ARM returns a snapshot of current operations and their statuses. One of these polls will inform you whether the provisioning of your resource(s) has completed.
 
+* [Deploy ARM templates](#deploy-arm-templates)
+* [Poll for updates](#poll-for-updates)
+* [Template deployment and polling results](#template-deployment-and-polling-results)
+* [Move resources](#move-resources)
+* [Deployment and polling samples](#deployment-and-polling-samples)
+
 ## Deploy ARM templates
 
 The code that deploys an ARM template is the following.
@@ -87,7 +93,55 @@ The result that is returned when the promise resolves contains the following str
 
  * **operations**: When available, the list of deployment operations. This is only returned if the `deploymentMode` is set to `DeployAndGetAllOperations` for deployment requests, or if `getAllOperations` is set to true for polling requests.
 
-## Sample code
+## Move resources
+
+Resources can be moved between resource groups or subscriptions in the Properties blade and in Essentials. For consistency, every resource that can be moved, directly or indirectly, by the ARM `/moveResources` API must have Properties  entry points and Essentials entry points.  Resource blades can also contain the `move` command.  To create the entry points, you can use the following code.
+
+1. Specify an "edit blade" option on the Properties blade for your resource group and subscription name properties.
+
+    ```ts
+    var subscriptionNamePropertyOptions = {
+        label: strings.subscriptionName,
+        value: subscriptionName,
+        editBlade: MsPortalFx.Azure.ResourceManager.getMoveResourceBlade(
+            resourceId,
+            MsPortalFx.Azure.ResourceManager.MoveType.Subscription)
+    };
+    partProperties.push(new FxPropertiesPart.CopyFieldProperty(this._container, subscriptionPropertyOptions));
+    ```
+
+1.  Add the `supportsResourceMove` option to the Essentials blade.
+
+    ```ts
+    var resourceSummaryOptions = <MsPortalFx.ViewModels.Parts.ResourceSummary.Options2>{
+        getQuickStartSelection: getQuickStartSelection,
+        getSettingsSelection: getAllSettingsSelection,
+        getKeysSelection: getKeysSelection,
+        supportsResourceMove: MsPortalFx.Azure.ResourceManager.MoveType.SubscriptionAndResourceGroup,
+        status: {
+            value: statusValue,
+            isLoading: statusIsLoading
+        },
+        staticProperties: properties
+    }
+    ```
+
+1.  If the  `Move resource` PDL command is not on the resource blade of your extension, it should be added to  the  `MoveResourceButton` button on the command bar, as in the following code.
+
+```ts
+    import MoveResorceButton = require("Fx/Controls/Toolbar/MoveResourceToolbarButton");
+
+    const moveResourceButton = new MoveResorceButton.ViewModel(container, 
+    { 
+        resourceId: "subscriptions/{subId}/resourcegroups/{resourceGroupId}/providers/{providerId}/{resourcetype}/{resourceName}"
+    });
+    const toolBar = new Toolbars.Toolbar(container);
+    toolBar.setItems([moveResourceButton]);
+```
+
+    **NOTE**: This method of adding the `move` command is strongly recommended, because Azure is deprecating PDL support.
+
+## Deployment and polling samples 
 
 The following samples request a template deployment, and provide for the three different types of results, depending on the value of the `deploymentMode` parameter.
 
