@@ -45,10 +45,6 @@ For more information about performance and reliability, see the following resour
 
     [portalfx-performance.md](portalfx-performance.md)
 
-* Portal COP (Telemetry)
-
-    [portalfx-performance-portalcop.md](portalfx-performance-portalcop.md)
-
 <a name="production-ready-metrics-and-quality-metrics-reliability"></a>
 ### Reliability
 
