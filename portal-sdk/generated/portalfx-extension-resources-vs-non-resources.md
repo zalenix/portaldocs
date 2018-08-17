@@ -1,58 +1,67 @@
 
-<a name="developing-extensions-for-azure-resources-vs-non-azure-resources"></a>
-# Developing Extensions for Azure Resources vs. Non-Azure Resources
-
-<a name="developing-extensions-for-azure-resources-vs-non-azure-resources-azure-resources"></a>
+<a name="azure-resources"></a>
 ## Azure Resources
 
-The SDK has several framework features that make it easier to implement UX that is consistent across all resource types.  Most of these features are free once you've implemented the [Asset Model](portalfx-assets.md).
+The Azure framework has several features that make it easier to implement user experiences (UX) that are consistent across all resource types.  Most of these features are included in your subscription, as specified in the Asset model located at [portalfx-assets.md](portalfx-assets.md). The majority of the topics that are located in [http://aka.ms/portaldocs](http://aka.ms/portaldocs) specify how to build these types of extensions.
 
-* [Browse](top-extensions-browse.md) - Integrates your resource type into the portal's main menu that categorizes and lists resources.
+* [Browse](top-extensions-browse.md) 
 
-* [Resource Menu](top-blades-resourcemenu.md) - Provides a base implementation of a menu blade, with standard resource features (e.g. RBAC, Locks, Audit Logs) automatically injected into the menu. 
+    Integrates your resource type into the Portal's main resource menu.
 
-* Search - Azure resources are automatically integrated into the potal's global search
+* [Resource Menu](top-blades-resourcemenu.md) 
 
-* [Tile Gallery Integration](portalfx-ux-tile-gallery.md) - Exposes tiles for your resource in the portal's tile gallery
+    Provides a base implementation of a menu blade that automatically injects standard resource features like RBAC, locks, or audit logs,into the menu.
 
-The majority of the docs apply to these types of extensions.  The next few sections talk about building the less common, but still awesome, non Azure resource based extension.
+* Search
 
-<a name="developing-extensions-for-azure-resources-vs-non-azure-resources-non-azure-resources"></a>
+    Azure resources are automatically integrated into the Portal global search. Global search is implemented by querying ARM APIs.
+
+* [Tile Gallery Integration](portalfx-ux-tile-gallery.md) 
+
+    Displays your resource tiles in the Portal  tile gallery.
+
+The following Portal capabilities require the use of ARM resources.
+
+* Server side notifications
+
+ These are provided by the Azure event service, which only supports Azure resources.
+
+* Shared dashboards
+
+ Requires an Azure subscription.
+
+* No-code browse 
+
+    No-code browse leverages ARM to reduce the amount of code.  You can still implement the browse experience, as specified in [top-extensions-browse.md#building-browse-experiences](top-extensions-browse.md#building-browse-experiences), but it requires writing more code.
+
+  The next few sections describe non-Azure-resource-based extensions, which are less common than extensions that manage resources using the Azure Resource Manager.
+  
+<a name="non-azure-resources"></a>
 ## Non-Azure Resources
 
-If you are developing an extension that is not acting as a front end for a standard Azure Resource Provider then this section describes a general strategy for designing such an extension. It also calls out which capabilities are not available to these types of extensions.
+This document describes a general strategy for designing extensions that do not act as a front end for a standard Azure Resource Provider. It also describes which capabilities are not available to these types of extensions.
 
-__Time Saving Note__ - If you are developing this type of extension then your life will be better if all blades in your extension are built using [top-blades-template.md](top-blades-template.md).  If you are using `<Blade>` then you should ask youself why. That is a legacy part of the SDK.
-
-<a name="developing-extensions-for-azure-resources-vs-non-azure-resources-non-azure-resources-marketplace-integration"></a>
-### Marketplace integration
-
-You do not need to have an Azure resource provider to integrate with the marketplace and the portal's create flows, as specified in [top-extensions-create.md](top-extensions-create.md).
-
-<a name="developing-extensions-for-azure-resources-vs-non-azure-resources-non-azure-resources-browse-service-entry-point"></a>
-### Browse (Service entry point)
-
-The [Browse](top-extensions-browse.md) experience can serve as a user's main entry point to your non-resource extension. You have two options:
-
-1. Use the [asset model](top-extensions-browse.md#defining-an-asset-type-permalink-asset-type-non-arm), which lets you define your browsable asset even though it is not an Azure resource. This option is good if __your service conceptually exposes a single, top level, list of entities (e.g. Accounts, Workspaces, etc.)__.
-2. Use the [custom browse](top-extensions-browse.md#building-browse-experiences) option in browse.  __This option is useful if your service has many top level capabilities__. If you choose this option then it's highly recommended that you use a [menu blade](top-blades-menu.md) to expose your service's capabilities. The [Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade) experience shows this pattern in production.
-
-<a name="developing-extensions-for-azure-resources-vs-non-azure-resources-non-azure-resources-menu-blades"></a>
-### Menu blades
-
-[Menu blades](top-blades-menu.md) are a framework component that can be used to build blades that have a menu on the left and content on the right.  The look and feel of these blades is exactly like the resource menu blades that Azure resources have, except that the menu blade will not have items injected automatically. Usability and customer feedback has shown that this way of exposing features is more effective than previous patterns.
-
-<a name="developing-extensions-for-azure-resources-vs-non-azure-resources-non-azure-resources-dashboard-integration"></a>
-### Dashboard integration
-
-If you are interested in contributing tiles (a.k.a. parts) to the dashboard via the [tile gallery](portalfx-ux-tile-gallery.md) you can do that, even if your service is not Azure based. Note that these non-Azure tiles will all be shown in the 'General' pivot.  The other pivots only support Azure resources. Note that the dashboard sharing feature requires an Azure subscription.  Users without an Azure subscription can have multiple, private dashboards.
-
-<a name="developing-extensions-for-azure-resources-vs-non-azure-resources-non-azure-resources-portal-capabilities-that-require-being-backed-by-an-arm-resource"></a>
-### Portal capabilities that require being backed by an ARM resource
-
+**NOTE**:   Given the complexity associated with the `<Blade>` model, extension authors are encouraged to develop Non-Azure resource extensions by using template blades as specified in [top-blades-template.md](top-blades-template.md).  If you are using the legacy `<Blade>` model, then more information is available in [top-blades-legacy.md](top-blades-legacy.md).
 Non-Azure resource based extensions cannot use the following framework features:
 
-1. __Server side notifications__ - These come from the Azure event service, which only supports Azure resources.
-1. __Shared dashboards__ - Requires an Azure subscription.
-1. __Global Search__ - Global search is implemented by querying ARM APIs
-1. __No-code browse__ - No-code browse leverages ARM to lower the amount of code to write for browse.  You can still implement browse, but it requires writing more code.
+* Marketplace integration
+
+    You do not need to have an Azure resource provider to integrate an extension with the Marketplace and the Portal's create flows.
+
+    For more information, see [top-extensions-create.md](top-extensions-create.md).
+
+* Browse 
+
+    The Browse experience, as specified in [top-extensions-browse.md](top-extensions-browse.md), can serve as a user's main entry point to your non-resource extension or service.     If your service exposes a single top-level list of entities, like Accounts or Workspaces, then use the asset model as specified in [top-extensions-browse.md#defining-an-asset-type-permalink-asset-type-non-arm](top-extensions-browse.md#defining-an-asset-type-permalink-asset-type-non-arm) to define browsable assets even though they might not be Azure resources.   If your service exposes  many top level capabilities, use the custom browse option as specified in [top-extensions-browse.md#building-browse-experiences](top-extensions-browse.md#building-browse-experiences).
+
+    **NOTE**:  It is  highly recommended that you use a menu blade as specified in [top-blades-menu.md](top-blades-menu.md) to expose your service's capabilities. For a sample demonstration of this pattern in production, see the Azure Security Center that is located at [https://portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade](https://portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade).
+    
+    <!-- Determine whether the menu blade is highly recommended for both scenarios. -->
+    
+* Menu blades
+
+    Menu blades, as specified in [top-blades-menu.md](top-blades-menu.md), can be used to build blades that display a menu on the left and content on the right.  The look and feel of these blades is exactly like the Azure resource menu blades, except that there is no automatic injection of items. 
+
+* Dashboard integration
+
+    You can contribute tiles to the dashboard by using the tile gallery, as specified in [portalfx-ux-tile-gallery.md](portalfx-ux-tile-gallery.md), even if your service is not Azure based. These non-Azure tiles are displayed in the 'General' pivot, as opposed to other pivots that support only Azure resources. The dashboard-sharing feature requires an Azure subscription.  Users without subscriptions can have multiple, private dashboards.
