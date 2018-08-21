@@ -148,7 +148,7 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 
 * [Add your resource or service into the Browse menu](/portal-sdk/generated/top-extensions-browse.md)
 
-* [Common UX for Azure Resource Manager (ARM) based services](/portal-sdk/generated/top-extensions-arm.md)
+* [Common UX for Azure Resource Manager (ARM) based services](/portal-sdk/generated/top-extensions-resource-manager.md)
 
 [Ask about browse integration on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-browse)
 
