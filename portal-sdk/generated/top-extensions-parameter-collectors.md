@@ -1,5 +1,34 @@
 
-<a name="parameter-collection-procedures"></a>
+<a name="introduction-to-parameter-collection"></a>
+# Introduction to Parameter Collection
+
+<a name="introduction-to-parameter-collection-overview"></a>
+## Overview
+
+The Parameter Collection Framework provides the platform and building blocks for user experiences that collect data from the user. The sequence of UI elements consists of forms, wizards, pickers, buttons, commands, and other elements,  and are referred to as parameter collection flows. The framework simplifies the development of flows and enables  developers to focus on extension business logic.
+
+Parameter collection is a dialog process between two entities.  The collector asks the provider a question and expects it to return some data. The provider can also behave as a collector if it collects data from a third entity, and so on. The following diagram illustrates this process.
+
+![alt-text](../media/portalfx-parameter-collection-overview/collectorsAndProviders.png "Parameter Collectors and Providers")
+
+This series of dialogs can also be perceived as a tree, where the root node is the initial point where the dialog starts.  The root node can  behave only as a collector.  Leaf nodes can  behave only as providers that return data up the tree to the appropriate collector. Inner nodes are both collectors and providers, because they request data from other providers, and return it to  the collector that requested the data. Parameter Collection framework simplifies the internal communication between these pieces.
+
+There are three roles in the Parameter Collection Framework.  The primary roles of collector and provider have already been described. The role of provisioner is a secondary role. If a UI element provisions a  specific  action, then its `ViewModel` has a provisioner role. You can implement custom provisioning logic, or you can leverage the default Framework logic if the provisioning action creates resources by using ARM, as specified in   [http://aka.ms/portalfx/gallerycreate](http://aka.ms/portalfx/gallerycreate).
+
+A `ViewModel` can play more than one role. Depending on the UI element, specific roles are either optional or required. You will define which roles that the `ViewModel` for the  UI element can play, and develop the logic that will be executed when UI element is playing that role. 
+
+The framework provides interfaces, base classes, and blade templates to simplify implementation. It includes classes for forms, wizards, pickers, buttons, commands, and other items that the `ViewModel` will extend. The framework also includes PDL templates that correspond to each object that the extension will display on the UI. To implement any of the roles, create a class that extends the corresponding interface, and send an instance of that role implementation to the base class in your constructor.
+
+<a name="introduction-to-parameter-collection-more-details"></a>
+## More details
+* *Inputs and Outputs:* More details about inputs, outputs and communication between the UI elements.
+* *Role Implementation:* More details about how to implement roles.
+* *Base Classes:* More details about base classes and PDL templates.
+* PCv2 (Obsolete), located at [portalfx-parameter-collection-v2.md](portalfx-parameter-collection-v2.md).
+
+
+
+<a name="introduction-to-parameter-collection-parameter-collection-procedures"></a>
 ## Parameter collection procedures
 
 Implementing a parameter collection flow requires two distinct components.
@@ -16,7 +45,7 @@ This scenario demonstrates code that specifies a  `ParameterCollector` and the a
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. 
 
-<a name="parameter-collection-procedures-parameter-collector"></a>
+<a name="introduction-to-parameter-collection-parameter-collection-procedures-parameter-collector"></a>
 ### Parameter collector
 
 Parameter collectors use the `openBlade` APIs to open provider blades.  They send provider configuraton and initial data, and receive back the results from a parameter provider blade by configuring the compiler-generated blade reference.
@@ -72,7 +101,7 @@ To open a parameter provider blade, perform the following steps.
 
 1. Invoke one of the four `openBlade` APIs as specified in [top-blades-opening-and-closing.md#open-blade-methods](top-blades-opening-and-closing.md#open-blade-methods). The methods are `openBlade`, `openBladeAsync`, `openContextBlade`, and `openContextBladeAsync`.
 
-<a name="parameter-collection-procedures-parameter-provider"></a>
+<a name="introduction-to-parameter-collection-parameter-collection-procedures-parameter-provider"></a>
 ### Parameter provider
 
 Typically a parameter provider blade is opened in a either an `fxclick` handler or in an `onClick` callback, as in the following example.
@@ -216,7 +245,7 @@ The complete list of supported options that can be supplied to the ParameterProv
 
 The full source of this ParameterProvider implementation can be found within the SamplesExtension under SamplesExtension\Extension\Client\ParameterCollection\ParameterProviders.
 
-<a name="implementing-a-parameter-collector-using-pdl-not-recommended"></a>
+<a name="introduction-to-parameter-collection-implementing-a-parameter-collector-using-pdl-not-recommended"></a>
 ## Implementing a Parameter Collector using PDL (not recommended)
 
 To define a Parameter Collector the 'ParameterCollector' attribute is applied in PDL to the BladeAction that is responsible for launching your parameter provider blade
