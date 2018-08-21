@@ -1,5 +1,5 @@
 
-# Introduction to Parameter Collection
+# Parameter Collection
 
 ## Overview
 
@@ -13,9 +13,11 @@ This series of dialogs can also be perceived as a tree, where the root node is t
 
 There are three roles in the Parameter Collection Framework.  The primary roles of collector and provider have already been described. The role of provisioner is a secondary role. If a UI element provisions a  specific  action, then its `ViewModel` has a provisioner role. You can implement custom provisioning logic, or you can leverage the default Framework logic if the provisioning action creates resources by using ARM, as specified in   [http://aka.ms/portalfx/gallerycreate](http://aka.ms/portalfx/gallerycreate).
 
-A `ViewModel` can play more than one role. Depending on the UI element, specific roles are either optional or required. You will define which roles that the `ViewModel` for the  UI element can play, and develop the logic that will be executed when UI element is playing that role. 
+A `ViewModel` can play more than one role. Depending on the UI element, specific roles are either optional or required. You will define the roles that the `ViewModel`  and its UI element can play, and develop the logic that will be executed when the UI element is performing that role. 
 
 The framework provides interfaces, base classes, and blade templates to simplify implementation. It includes classes for forms, wizards, pickers, buttons, commands, and other items that the `ViewModel` will extend. The framework also includes PDL templates that correspond to each object that the extension will display on the UI. To implement any of the roles, create a class that extends the corresponding interface, and send an instance of that role implementation to the base class in your constructor.
+
+<!-- TODO: Determine whether the following sections were ever written.   -->
 
 ## More details
 * *Inputs and Outputs:* More details about inputs, outputs and communication between the UI elements.
