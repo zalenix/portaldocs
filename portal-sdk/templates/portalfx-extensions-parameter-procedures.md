@@ -5,13 +5,17 @@ Implementing a parameter collection flow requires two distinct components.
 
 * [Parameter Collector](#parameter-collector)
     
-    Opens a child blade, supplies initial data to it, and may later receive back completed data.
+    Opens a child blade, supplies initial data to it, and may later receive completed data from the child blade.
 
-* Parameter Provider
+* [Parameter Provider](#parameter-provider)
 
     Receives parameters from its parent blade, then supplies a result object to the parent blade and closes the child blade when the user clicks on an action bar.
 
-## Parameter collector
+This scenario demonstrates code that specifies a  `ParameterCollector` and the associated `ParameterProvider`.
+
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. 
+
+### Parameter collector
 
 Parameter collectors use the `openBlade` APIs to open provider blades.  They send provider configuraton and initial data, and receive back the results from a parameter provider blade by configuring the compiler-generated blade reference.
 
@@ -23,7 +27,7 @@ To open a parameter provider blade, perform the following steps.
     import { ParameterProviderAsTemplateBladeReference } from "../../../../_generated/BladeReferences";
     ```
 
-1.  To send initial data to the provider and optionally receive a result back you can specify callbacks during initialization of the provider blade reference.  Create a new instance of the blade reference, and configure the reference for parameter collection, as in the following code.
+1.  To send initial data to the provider and optionally receive a result, you can specify callbacks during the initialization of the provider blade reference.  Create a new instance of the blade reference and configure it for parameter collection, as in the following code.
 
     ```ts
             const providerReference = new ParameterProviderAsTemplateBladeReference<DataModels.ServerConfig, DataModels.ServerConfig>({
@@ -48,12 +52,12 @@ To open a parameter provider blade, perform the following steps.
 
     The signatures of the options that can be supplied to the `ParameterCollector` constructor are as follows.
 
-
     * **supplyInitialData? (): TResult**: A callback that supplies the initial data for the parameter provider in the child blade each time it opens.  The object that is received by the parameter provider is a  deep clone of the value that you specify, instead of the original instance, because it is sent and sometimes stored in a serialized form.
 
         @return Initial data for the child blade.
 
     * **receiveResult? (result: TResult): void**: A callback to be invoked when the child blade supplies a result and closes.
+
         @param result The result given by the child blade.
 
     * **supplyProviderConfig? (): any**: A callback that supplies additional configuration options for the provider each time it opens. It is used to send non-editable data, for example configuring how a form will be displayed. 
@@ -62,16 +66,13 @@ To open a parameter provider blade, perform the following steps.
 
     * **FormFieldValueAccessor?: FormFieldValueAccessors<TResult>**: Integrates a parameter collector with an EditScope. The collector supplies the initial data to the provider from this `EditScope` property, and automatically inserts the provider's output into this `EditScope` property. Consequently, the  parameter collector behaves as an editor for the specified edit scope property.
 
-        If you specify this option, do not also specify either supplyInitialData or receiveResult.
+    **NOTE**: If the extension uses the **FormFieldValueAccessor** option, then do not specify either the  **supplyInitialData** or the **receiveResult** options.
 
+1. Invoke one of the four `openBlade` APIs as specified in [top-blades-opening-and-closing.md#open-blade-methods](top-blades-opening-and-closing.md#open-blade-methods). The methods are `openBlade`, `openBladeAsync`, `openContextBlade`, and `openContextBladeAsync`.
 
+### Parameter provider
 
-1. Invoke one of the 4 openBlade APIs (openBlade, openBladeAsync, openContextBlade, openContextBladeAsync)
-
-### Configuring the reference for parameter collection
-### Opening the parameter provider blade
-
-Typically a parameter provider blade is opened in a either a fxclick handler or in a onClick callback.
+Typically a parameter provider blade is opened in a either an `fxclick` handler or in an `onClick` callback, as in the following example.
 
 ```ts
     public onClick() {
@@ -79,9 +80,7 @@ Typically a parameter provider blade is opened in a either a fxclick handler or 
     }
 ```
 
-## Implementing a ParameterProvider
-
-To define a Parameter Provider the 'ParameterProvider' attribute is applied in PDL to the Part within the blade that is the target in the BladeAction that previously had a 'ParameterCollector' property defined. Continuing with the scenario presented in the Parameter Collector section above defining the ParameterCollector would be done as so:
+To define a parameter provider, locate the target blade in the `BladeAction` that previously contained a `ParameterCollector` property. Apply the `ParameterProvider` attribute to the `Part`, as in the following example.  
 
 ```xml
 <Blade Name="ParameterProviderFormBlade" ViewModel="{...}">
@@ -98,10 +97,11 @@ To define a Parameter Provider the 'ParameterProvider' attribute is applied in P
 </Blade>
 ```
 
-Here the ParameterProvider property indicates that this part is a provider which will have a property on the view model named parameterProvider that will receiving initial data from the collector (when provided) and returning back a completed result. 
+The `ParameterProvider` property specifies that this part is a provider, and that there is  a property on the `ViewModel` named `parameterProvider`.  This part receives initial data from the collector when it is provided, and returns a completed result.
 
-Continuing with this example parameterProvider now needs to be defined as a property of type ParameterProvider<TResult, TEditScope> on ParameterProviderFormPartViewModel. To ensure the ParameterProvider and ParameterCollector can exchange data the TResult generic type must match the TResult generic type used on the parameter collector model.  In this scenario we define a simple model called ServerConfig for our TResult and for TEditScope  we use a different model of type ServerFormData. Note for many scenarios TResult and TEditScope may infact be the same type, to demonstrate that they can be structurally different we use different types here.
+In the `ViewModel` definition,  the `parameterProvider` attribute is defined as a property of type `ParameterProvider<TResult, TEditScope>` on `ParameterProviderFormPartViewModel`. To ensure that the provider and the collector can exchange data, the `TResult` generic type on the provider matches the `TResult` generic type on the collector, as in the following code that specifies   a  `TResult` type named `ServerConfig` and  a `TEditScope` type named  `ServerFormData`.
 
+**NOTE**: In this example, the types are structurally different, although in many scenarios `TResult` and `TEditScope` can be the same type.
 
 ```ts
 export class ParameterProviderFormPartViewModel extends MsPortalFx.ViewModels.Forms.Form.ViewModel<ProviderModels.ServerConfig> {
@@ -117,10 +117,9 @@ export class ParameterProviderFormPartViewModel extends MsPortalFx.ViewModels.Fo
 }
 ```
 
-When you initialize the ParameterProvider there are two mandatory callbacks that must be specified within the constructor options. These two callbacks are *mapIncomingDataForEditScope* and *mapOutgoingDataForCollector* which allow you to map to and from TResult <> TEditScope.  Continuing with our example the ParameterProvider would be initialized as follows:
+There are two required callbacks that are specified in the constructor options when the   `ParameterProvider` is initialized. They are **mapIncomingDataForEditScope** and **mapOutgoingDataForCollector**, and they map between the `TResult` and the `TEditScope`.  Consequently, the `ParameterProvider` would be initialized as follows.
 
 ```ts
-
 export class ParameterProviderFormPartViewModel extends MsPortalFx.ViewModels.Forms.Form<ProviderModels.ServerConfig> {
 
     public parameterProvider: MsPortalFx.ViewModels.ParameterProvider<ProviderModels.ServerConfig, ProviderModels.ServerFormData>;
@@ -165,13 +164,14 @@ export class ParameterProviderFormPartViewModel extends MsPortalFx.ViewModels.Fo
 }
 
 ```
-Here the data supplied by the collector to this provider of type ServerConfig (TResult) is  mapped to type ServerFormData (TEditScope) for this forms edit scope using callback *mapIncomingDataForEditScope*.  When the provider blade is closed by the user clicking Ok on the Create ActionBar *mapOutgoingDataForCollector* maps the data from the form of type ServerFormData (TEditScope) to ServerConfig(TResult) for the consuming collector which receives this data in its receiveResult callback.
+
+The data  of type ServerConfig (TResult) that is supplied by the collector to the  provider is  mapped to type ServerFormData (TEditScope) for this forms edit scope using callback **mapIncomingDataForEditScope**.  When the provider blade is closed by the user clicking Ok on the Create ActionBar, the **mapOutgoingDataForCollector** method maps the data from the form of type ServerFormData (TEditScope) to ServerConfig(TResult) for the consuming collector which receives this data in its receiveResult callback.
 
 For scenarios where you may want to invoke a provisioning operation that adds a startboard part and collapses the current journey when the provider is dismissed you can specify the *commitResult* callback.
 
 The complete list of supported options that can be supplied to the ParameterProvider constructor are defined are defined with the following signatures:
 
-- **mapIncomingDataForEditScope?(dataFromCollector: TResult): TEditScope**
+* **mapIncomingDataForEditScope?(dataFromCollector: TResult): TEditScope**
 
 	A callback that supplies the initial data for the provider's edit scope. This callback is mandatory, and must account for the possibility of the collector supplying incomplete information (or none at all) by returning the complete initial state for the edit scope.
 
@@ -179,7 +179,7 @@ The complete list of supported options that can be supplied to the ParameterProv
 
 	@return The desired initial edit scope data.
 
-- **mapIncomingDataForEditScopeAsync?(dataFromCollector: TResult): Base.PromiseV<TEditScope>**
+* **mapIncomingDataForEditScopeAsync?(dataFromCollector: TResult): Base.PromiseV<TEditScope>**
 
 	An asynchronous callback that supplies the initial data for the provider's edit scope.
 	This callback is mandatory, and must account for the possibility of the
@@ -189,12 +189,12 @@ The complete list of supported options that can be supplied to the ParameterProv
     @param dataFromCollector The incoming initial data from the parameter collector, or null if the collector did not supply any.
     @return The desired initial edit scope data.
 
-- **editScopeMetadataType?: string**
+* **editScopeMetadataType?: string**
 
 	The metadata type corresponding to the TResult generic parameter. This is used to configure the edit scope.
 
 
-- **mapOutgoingDataForCollector(editScopeData: TEditScope): TResult**
+* **mapOutgoingDataForCollector(editScopeData: TEditScope): TResult**
 
     A mapping function that converts outgoing data from the provider's edit scope into the format you wish to return to the collector.
 
@@ -204,7 +204,7 @@ The complete list of supported options that can be supplied to the ParameterProv
     @return The data that should be returned to the calling parameter collector.
 
 
-- **commitResult? (editScopeData: TEditScope): void**
+* **commitResult? (editScopeData: TEditScope): void**
 
 	A callback invoked when the user dismisses the provider. If you need to begin a provisioning operation that adds a startboard part and collapses the current journey, you can do so in this callback. You should not commence any other server-side operation from this callback, because the blade will have closed before it completes, so the user would not be able to see the result.
 
@@ -324,9 +324,7 @@ The complete list of supported options that can be supplied to the ParameterColl
 
 	If you specify this option, do not also specify either supplyInitialData or receiveResult.
 
-The full source of this ParameterCollector implementation can be found within the SamplesExtension under SamplesExtension\Extension\Client\ParameterCollection\CollectorAsButtonPart
+The full source of this ParameterCollector implementation is located at 
+`<dir>\Client\ParameterCollection\CollectorAsButtonPart`.
 
-
-
-
-Related Documentation: [ARM Provisioning API] (portalfx-provisioning-arm.md)
+Related Documentation: ARM Provisioning API [top-extensions-resource-manager.md](top-extensions-resource-manager.md).
