@@ -16,7 +16,7 @@ An Azure Resource Manager Template, as specified in [http://aka.ms/portalfx/quic
 
 * [Deploy ARM templates](#deploy-arm-templates)
 * [Poll for updates](#poll-for-updates)
-* [Template deployment and polling results](#template-deployment-and-polling-results)
+* [Deploy template and poll for results](#deploy-template-and-poll-for-results)
 * [Move resources](#move-resources)
 * [Deployment and polling samples](#deployment-and-polling-samples)
 
@@ -82,10 +82,10 @@ The `options` object contains the following variables.
 
  * **getAllOperations**: Optional. Flag that specifies whether to report on all operations. Operations are also reported on success. Polling is done every ten seconds for the first minute, then every minute for the next five minutes, then every five minutes afterwards. If polling fails because of a timeout or because of an ARM internal server error, the API will retry up to three times. If the value is set to true, the promise will continuously report ARM operations as progress occurs. The default value is false.
 
-The result that is returned when the promise resolves or reports on progress is described in [#template-deployment-and-polling-results](#template-deployment-and-polling-results).
+The result that is returned when the promise resolves or reports on progress is described in [#deploy-template-and-poll-for-results](#deploy-template-and-poll-for-results).
 
-<a name="template-deployment-and-polling-results"></a>
-## Template deployment and polling results
+<a name="deploy-template-and-poll-for-results"></a>
+## Deploy template and poll for results
 
 The result that is returned when the promise resolves contains the following structure.
 
@@ -144,7 +144,7 @@ Resources can be moved between resource groups or subscriptions in the Propertie
     toolBar.setItems([moveResourceButton]);
 ```
 
-    **NOTE**: This method of adding the `move` command is strongly recommended, because Azure is deprecating PDL support.
+  **NOTE**: This method of adding the `move` command is strongly recommended, because Azure is deprecating PDL support.
 
 <a name="deployment-and-polling-samples"></a>
 ## Deployment and polling samples
