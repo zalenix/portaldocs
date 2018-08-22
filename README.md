@@ -202,7 +202,7 @@ Because your extension is Web code, you can make **AJAX** calls to various servi
 
 ## Testing
 
-The Ibiza team provides limited testing support. Due to resource constraints the C# and Node.js framework is open source. This is so that partners can unblock themselves in case the Ibiza team cannot make requested improvements as quickly as you might expect.
+The Ibiza team provides limited testing support. Due to resource constraints the C# and Node.js frameworks are open source, so that partners can unblock themselves if the Ibiza team cannot make requested improvements as quickly as you might expect.
 
 * [Unit testing support](/portal-sdk/generated/top-extensions-unit-test.md)
 
@@ -214,7 +214,7 @@ The Ibiza team provides limited testing support. Due to resource constraints the
 
 ## Telemetry and alerting
 
-The Ibiza team collects standard telemetry for generic actions like blade opening and commmand execution. It also collects performance, reliability, and user feedback information that facilitate the operation of your extension. You can also write your own events via the telemetry system. Ibiza supports alerting for common operations scenarios.
+The Ibiza team collects standard telemetry for generic actions like blade opening and command execution. We also collect performance, reliability, and user feedback information that facilitates the operation of your extension. You can also write your own events by using the telemetry system. Ibiza supports alerting for common operations scenarios.
 
 * [Portal telemetry overview](/portal-sdk/generated/)
 
@@ -234,7 +234,7 @@ The Ibiza team collects standard telemetry for generic actions like blade openin
 
 ## Experimentation and flighting
 
-It is common for teams to want to experiment with new capabilities. We offer two framework features that make this possible.
+It is common for teams to want to experiment with new capabilities. We offer  framework features that make this possible.
 
 * [Flighting a new version of your extension in MPAC](/portal-sdk/generated/top-extensions-flighting.md)
 
@@ -258,7 +258,7 @@ The Azure portal supports multiple languages and locales. You will need to local
 
 ## Accessibility
 
-The Azure portal strives to meet high accessibility standards to ensure the product is accessible to to users of all levels of ability. There is regular testing and a process with SLAs for getting issues addressed quickly.
+The Azure Portal strives to meet high accessibility standards to ensure the product is accessible to to users of all levels of ability. There is regular testing and a process with SLAs for getting issues addressed quickly.
 
 * [Accessibility guidelines](/portal-sdk/generated/top-extensions-accessibility.md)
 
