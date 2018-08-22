@@ -12,9 +12,13 @@ Implementing a parameter collection flow requires two distinct components.
 
     Receives parameters from its parent blade, then sends a result object to the parent blade and closes the child blade when the user clicks on an action bar.
 
-The following scenario demonstrates code that specifies a  `ParameterCollector` and the associated `ParameterProvider`.
-
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. 
+
+The following scenario demonstrates code that specifies a  `ParameterCollector` and the associated `ParameterProvider`. The complete source of this ParameterProvider implementation is located at `<dir>\Client\V1\ParameterCollection\ParameterProviders`.
+
+* `<dir>\Client\V1\ParameterCollection\ParameterProviders\ViewModels\ProviderViewModels.ts`
+
+* `<dir>\Client\V1\ParameterCollection\ParameterProviders\Templates\ParameterProviderForm.html`
 
 <a name="parameter-collection-procedures-parameter-collector"></a>
 ### Parameter collector
@@ -108,6 +112,69 @@ In the `ViewModel` definition, the `parameterProvider` attribute is defined as a
 
 **NOTE**: In this example, the types are structurally different, although in many scenarios `TResult` and `TEditScope` can be the same type.
 
+```typescript
+
+/**
+* Parameter provider form view model class.
+*/
+export class ParameterProviderFormPartViewModel
+   extends MsPortalFx.ViewModels.Forms.Form.ViewModel<DataModels.ServerConfig>
+   implements ParameterProviderForm.Contract {
+
+   /**
+    * View model for the provider. This is referenced in the corresponding .pdl file.
+    */
+   public parameterProvider: MsPortalFx.ViewModels.ParameterProvider<DataModels.ServerConfig, ProviderModels.ServerFormData>;
+
+   public serverIdentifierTextBox: MsPortalFx.ViewModels.Forms.TextBox.ViewModel;
+
+   public fixedStorageSlider: MsPortalFx.ViewModels.Forms.Slider.ViewModel;
+
+   /**
+    * Constructs an instance of ParameterProviderFormPartViewModel.
+    */
+   constructor(container: MsPortalFx.ViewModels.PartContainerContract, initialState: any, dataContext: ParameterCollectionArea.DataContext) {
+       super(container);
+
+       this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<DataModels.ServerConfig, ProviderModels.ServerFormData>(container, {
+           mapIncomingDataForEditScope: (incoming: DataModels.ServerConfig): ProviderModels.ServerFormData => {
+               // Collectors are not required to supply complete initial data, so
+               // providers must always fill in anything that is missing with defaults.
+               incoming = incoming || <DataModels.ServerConfig>{};
+               incoming.serverName = incoming.serverName || ko.observable("");
+               incoming.diskSpaceBytes = incoming.diskSpaceBytes || ko.observable(defaultDiskSpace);
+
+               return {
+                   serverIdentifier: incoming.serverName,
+                   fixedStorageGigabytes: ko.observable(incoming.diskSpaceBytes() / bytesPerGigabyte),
+               };
+           },
+
+           mapOutgoingDataForCollector: (outgoing: ProviderModels.ServerFormData): DataModels.ServerConfig => {
+               return {
+                   serverName: outgoing.serverIdentifier,
+                   diskSpaceBytes: ko.observable(outgoing.fixedStorageGigabytes() * bytesPerGigabyte),
+               };
+           },
+       });
+
+       // Use the form to edit the edit scope set up by the provider
+       this.editScope = this.parameterProvider.editScope;
+       this.serverIdentifierTextBox = new MsPortalFx.ViewModels.Forms.TextBox.ViewModel(container, this, "serverIdentifier");
+       this.fixedStorageSlider = new MsPortalFx.ViewModels.Forms.Slider.ViewModel(container, this, "fixedStorageGigabytes", { min: ko.observable(50), max: ko.observable(1000), showStepMarkers: ko.observable(false) });
+   }
+
+   public onInputsSet(inputs: ParameterProviderForm.InputsContract): MsPortalFx.Base.Promise {
+       return null;
+   }
+}
+
+```
+
+
+should be this code
+
+
 ```ts
 export class ParameterProviderFormPartViewModel extends MsPortalFx.ViewModels.Forms.Form.ViewModel<ProviderModels.ServerConfig> {
 
@@ -199,22 +266,17 @@ The signatures of the options that can be sent to the `ParameterProvider` constr
 
 * **editScopeMetadataType?: string**: The metadata type that corresponds to the `TResult` generic parameter. This is used to configure the `EditScope`.
 
-* **mapOutgoingDataForCollector(editScopeData: TEditScope): TResult**:     A mapping function that converts outgoing data from the provider's `EditScope` into the format to send to the colector.
+* **mapOutgoingDataForCollector(editScopeData: TEditScope): TResult**: A mapping function that converts outgoing data from the provider's `EditScope` into the format to send to the collector.
 
-    Note that the object received by the parameter collector will be a deep clone of the value you give, rather than the original instance, because it is passed in a serialized form.
+    Note that the object received by the parameter collector is a deep clone of the value that you specify, instead of the original instance, because it is sent in a serialized form.
 
-    @param editScopeData The data currently held by the parameter provider.
+    @param editScopeData The data currently contained in the parameter provider.
+
     @return The data that should be returned to the calling parameter collector.
 
-
-* **commitResult? (editScopeData: TEditScope): void**: 	A callback invoked when the user dismisses the provider. If you need to begin a provisioning operation that adds a startboard part and collapses the current journey, you can do so in this callback. You should not commence any other server-side operation from this callback, because the blade will have closed before it completes, so the user would not be able to see the result.
+* **commitResult? (editScopeData: TEditScope): void**: 	A callback that is invoked when the user dismisses the provider. This callback is specified in scenarios that invoke a provisioning operation that adds a startboard part and collapses the current journey. Do not commence any other server-side operation from this callback, because the blade will close before it completes, and therefore the user would not see the result.
 
 	@param editScopeData The data stored in the provider's `EditScope`.
-
-You can specify the `commitResult` callback for scenarios that invoke a provisioning operation that adds a startboard part and collapses the current journey when the provider is dismissed.
-
-
-The full source of this ParameterProvider implementation can be found within the SamplesExtension under SamplesExtension\Extension\Client\ParameterCollection\ParameterProviders.
 
 <a name="implementing-a-parameter-collector-using-pdl-not-recommended"></a>
 ## Implementing a Parameter Collector using PDL (not recommended)
