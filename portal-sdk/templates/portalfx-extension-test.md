@@ -1,7 +1,1 @@
-
-# Portal Test Frameworks
-
-
-{"gitdown": "include-file", "file": "../templates/portalfx-choosing-test-framework.md"}
-
-{"gitdown": "include-file", "file": "../templates/msportalfx-test.md"}
+The page you requested has moved to [top-extensions-testing.md](top-extensions-testing.md).
