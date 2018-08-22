@@ -71,13 +71,15 @@ As an example, the resource type tag for resource groups is in the following cod
 
 Create a new `ViewModel` for the `AssetViewModel`.  The following is a skeleton for the `AssetViewModel`. For more information on assets, see [portalfx-assets.md](portalfx-assets.md).
 
+
+<!--
 ```ts
 /**
  * The MyResource view model.
  */
 export class MyResourceViewModel
     implements ExtensionDefinition.ViewModels.MyResourceViewModel.Contract {
-
+ Also look at \Client\V1\ResourceTypes\Desktop\AssetViewModels
     /**
      * Initializes a new instance of the desktop view model class.
      *
@@ -89,6 +91,9 @@ export class MyResourceViewModel
     }
 }
  ```
+
+
+-->
 
 After the `AssetViewModel` has been added, there should also be a reference to it from the `AssetType` in the PDL file.
 
