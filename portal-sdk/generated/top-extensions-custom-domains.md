@@ -15,9 +15,13 @@
 
 * [Default dashboard](#default-dashboard)
 
+* [Update Community Clouds](#update-community-clouds)
+
 * [Sample configuration](#sample-configuration)
 
 * [Questionnaire Template](#questionnaire-template) 
+
+* [Pull Request](#pull-request) 
 
 <a name="domain-based-configuration-overview"></a>
 ## Overview
@@ -726,6 +730,25 @@ The following steps generate the JSON for the dashboard.
     [https://microsoft.sharepoint.com/teams/azureteams/aapt/azureux/portalfx/_layouts/OneNote.aspx?id=%2Fteams%2Fazureteams%2Faapt%2Fazureux%2Fportalfx%2FSiteAssets%2FPortalFx%20Notebook&wd=target%28Execution%2FFundamentals%2FDeployments.one%7C9B8BE2F4-DDEF-4504-982B-560AF50A892C%2FCustom%20Domain%20-%20Questionnaire%20Template%7C90BDECEB-D69D-4BA0-B60A-8A9EBB877CC4%2F%29](https://microsoft.sharepoint.com/teams/azureteams/aapt/azureux/portalfx/_layouts/OneNote.aspx?id=%2Fteams%2Fazureteams%2Faapt%2Fazureux%2Fportalfx%2FSiteAssets%2FPortalFx%20Notebook&wd=target%28Execution%2FFundamentals%2FDeployments.one%7C9B8BE2F4-DDEF-4504-982B-560AF50A892C%2FCustom%20Domain%20-%20Questionnaire%20Template%7C90BDECEB-D69D-4BA0-B60A-8A9EBB877CC4%2F%29)
     -->
 
+<a name="domain-based-configuration-update-community-clouds"></a>
+## Update Community Clouds
+
+To add your custom domain to a community cloud, reach out to <a href="mailto:ibizafxpm@microsoft.com?subject=Add Custom Domain to a Community Cloud&body=Hello, we would like to add our new custom domain to a community cloud.">the reviewers</a> and we will set up meetings with you and your team to ensure that the custom domain is added to the appropriate environments.
+<!-- TODO: Locate the distribution list for the reviewers
+Dave Brankin; Benoit Martin; Santhosh Somayajula; David Anson
+ -->
+
+Community clouds are primarily in the Dogfood environment, the PROD environment, or some combination thereof.  Within those environments, there are two extensions currently that serve community clouds or custom domains.  The following table describes the extension, the environment, and the area.  All of the associated json files unless otherwise noted are located at [http://aka.ms/portalfx/domainbasedconfiguration](http://aka.ms/portalfx/domainbasedconfiguration).
+
+| Extension | Environment | Area | Json |
+| --------- | ----------- | ---- | ---- |
+| AAD | Dogfood | Dashboard | `DomainBasedConfiguration.dogfood.json`  |
+| AAD | PROD    | Dashboard | `DomainBasedConfiguration.prod.json`     |
+| AAD | Dogfood/PROD | Add Extensions | [http://aka.ms/portalfx/aad](http://aka.ms/portalfx/aad)
+| AAD | Dogfood/PROD | Add Extensions | [http://aka.ms/portalfx/intune-edu](http://aka.ms/portalfx/intune-edu) |
+| IntuneEducation | Dogfood | Dashboard | `DomainBasedConfiguration.dogfood.json` |
+| IntuneEducation | PROD    | Dashboard | `DomainBasedConfiguration.prod.json` |
+
 <a name="domain-based-configuration-sample-configuration"></a>
 ## Sample configuration
 
@@ -847,7 +870,7 @@ The following template contains questions that your team answers previous to the
 
 You and your team should reach out to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Custom Domains">Leon Welicki and Adam Abdelhamed</a> in the process of answering the questionnaire.
 
-The main questions to answer, other than the settings and values, are the following.
+The main questions to answer, other than the settings and values as described in the [Override links](#override-links), [Branding and chrome](#branding-and-chrome), and [Tile Gallery](#tile-gallery) sections, are the following.
 
 1. Why do you need a Custom Domain?
 
@@ -879,6 +902,11 @@ The main questions to answer, other than the settings and values, are the follow
 
     <!-- TODO: Re-work this because we cannot recommend values for their extensions.  -->
     Recommended extension values are located in [portalfx-extensions-bp-custom-domains.md# branding-and-chrome-values](portalfx-extensions-bp-custom-domains.md#branding-and-chrome-values). 
+
+<a name="domain-based-configuration-pull-request"></a>
+## Pull Request]
+
+The pull request should include the definition of the new domain for the environment in which it will run. Remember to add a meaningful description to the PR, and attach information like RDTasks or screenshots. A sample pull request that modifies the Intune curation file to add a new asset type is located at [http://aka.ms/portalfx/intune-pr](http://aka.ms/portalfx/intune-pr). For more information about sending pull requests, see [top-extensions-publishing.md](top-extensions-publishing.md). 
 
  <!--gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-custom-domains.md"} -->
 
@@ -912,5 +940,6 @@ SOLUTION: Default favorites are user-configurable and stored in `User Settings`.
 Yes, if the only difference between your Community Cloud and Production is branding the hiding of other extensions UI. 
 
 However, a major reuse restriction is that you must serve the same PDL to both Production and your Community Cloud. You can serve different domain-based configuration to the user’s browser,  as specified in `AuxDocs`, and you can review  `PortalContext.TrustedAuthorityHost` to determine the  environment from which the client is calling your extension.  However, you cannot change the behavior of server-to-server calls, and PDL is requested by servers.
+
 
 
