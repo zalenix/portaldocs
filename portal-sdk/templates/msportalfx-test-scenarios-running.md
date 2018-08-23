@@ -1,2 +1,2 @@
 
-The page you requested has moved to [portalfx-extensions-msportalfx-npm-tests.md](portalfx-extensions-msportalfx-npm-tests.md).
+The page you requested has moved to [portalfx-extensions-msportalfx-mocha-tests.md](portalfx-extensions-msportalfx-mocha-tests.md).

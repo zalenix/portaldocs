@@ -1,2 +1,2 @@
 
-The page you requested has moved to [top-style-guide-iconography.md](top-style-guide-iconography.md). 
+The page you requested has moved to [top-extensions-style-guide.md#iconography.md](top-extensions-style-guide#iconography.md). 
