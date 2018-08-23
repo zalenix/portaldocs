@@ -1,4 +1,4 @@
-## Frame Blades
+## FrameBlade
 
 FrameBlades provide an alternative programming model for developing UI in Ibiza. This alternative gives the extension author full control over the DOM via an IFrame. Fx controls cannot be used within FrameBlades. 
 
