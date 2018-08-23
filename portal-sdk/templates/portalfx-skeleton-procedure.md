@@ -19,7 +19,7 @@ This process validates that [state purpose of checklist]. Images of the procedur
 
    If possible, make screenshots that include what the screen should look like, or the changes that the developer should make, as in the following image.
     
-    ![alt-text](../media/portalfx-overview/new-project-template.png "Step Validation")
+    ![alt-text](../media//portalfx-extensions-create-first-extension/new-project-template.png "Step Validation")
 
 1. Step 2 of procedure
 

@@ -17,7 +17,7 @@ For more information about deploying the extension, see [portalfx-deployment.md]
 
 The Portal contains a debug tool to aid with extension development. The keyboard shortcut CTRL+ALT+D toggles the visibility of the debug mode, as in the following image.
 
- ![alt-text](../media/portalfx-debugging/debugMode.png "Portal Debug Tool")
+ ![alt-text](../media/top-extensions-debugging/debugMode.png "Portal Debug Tool")
 
 When visible, the tool overlays stickys onto Portal parts, and onto the Portal window itself. The  yellow blocks provide quick statistics and fast access to specific types of testing functionality.
 
@@ -87,11 +87,11 @@ The Portal tracks the state of the desktop for users as they navigate through th
 
 The default settings can be restored by  using the Settings pane, which is activated by clicking on the `settings` icon in the navigation bar, as in the following image.  
 
- ![alt-text](../media/portalfx-debugging/settings.png "Settings Pane")
+ ![alt-text](../media/top-extensions-debugging/settings.png "Settings Pane")
 
 Next, click the `Restore default settings` option, as in the following image.  
 
- ![alt-text](../media/portalfx-debugging/restoreDefaultSettings.png "Restore Settings")
+ ![alt-text](../media/top-extensions-debugging/restoreDefaultSettings.png "Restore Settings")
 
 The Portal refreshes when the `Apply` button is clicked, and user settings are cleared.
 
@@ -99,11 +99,11 @@ The Portal refreshes when the `Apply` button is clicked, and user settings are c
 
 You can check if the  extension is loaded in the debug panel (CTRL+ALT+D) by clicking 'Loaded extensions', as in the following example.
 
-![alt-text](../media/portalfx-debugging/loadedExtensions.png "Loaded Extensions")
+![alt-text](../media/top-extensions-debugging/loadedExtensions.png "Loaded Extensions")
 
 If the extension throws an error while trying to load, try clicking on the url in the console. That will lead to the location on the client computer where the extension is running. The browser should display a blank web page. If the extension is available for the shell to load, the Portal will display a page similar to the following image.
 
-![alt-text](../media/portalfx-debugging/extensionPageError.png "Blank page returned by an extension")
+![alt-text](../media/top-extensions-debugging/extensionPageError.png "Blank page returned by an extension")
 
 Extensions load failures are logged along with an associated failure code.  This error code is printed out as part of the error message logged by the client trace controller. A list of failure codes and what they mean is located at [portalfx-extensions-status-codes.md](portalfx-extensions-status-codes.md).
 
@@ -116,11 +116,11 @@ Most modern browsers include tools that make it easy to debug JavaScript. To und
 
 To open up the **Internet Explorer** debugger tools, click the **F12** key. The console will not start logging messages unless it is already opened.  After opening the developer tools in the browser, locate and open the console, as in the following image.
 
-![alt-text](../media/portalfx-debugging/browserConsole.png "Browser Console")
+![alt-text](../media/top-extensions-debugging/browserConsole.png "Browser Console")
 
 After opening the console, refresh the Portal to display all messages. Then, do a quick visual scan of the console log. Errors are written to the log in red, as in the following image.
 
-![alt-text](../media/portalfx-debugging/consoleError.png "Error in Console")
+![alt-text](../media/top-extensions-debugging/consoleError.png "Error in Console")
 
 ### Trace Modes
 
@@ -130,7 +130,7 @@ The errors that are presented in the console can be of great assistance in fixin
 
 In most cases, the code that is being debugged is part of the extension. To locate the source code files, press CTRL+P and search for the extension by name: ```<extensionName>ScriptsCore.js```, without the angle brackets, and open the file. All available source files can be searched using CTRL+SHIFT+F, as in the following image.
 
-![alt-text](../media/portalfx-debugging/debugScript.png "Search for extension source")
+![alt-text](../media/top-extensions-debugging/debugScript.png "Search for extension source")
 
 To debug a specific view model, search for the code by class name. You can now set breakpoints, add watch variables, and step through the code as described in  the video guide named ***How to step through your code***, located at [https://developers.google.com/web/tools/chrome-devtools/javascript/step-code](https://developers.google.com/web/tools/chrome-devtools/javascript/step-code).
 

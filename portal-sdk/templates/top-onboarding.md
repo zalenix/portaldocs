@@ -8,7 +8,7 @@ If you are working on an Azure service and want to expose UI to your customers i
 
 Onboarding a service, or developing a Portal extension, has three phases: onboarding, development, and deployment. The process is specified in the following image.
 
-![alt-text](../media/portalfx-extensions-onboarding/azure-onboarding.png "Azure Onboarding Process")
+![alt-text](../media/top-onboarding/azure-onboarding.png "Azure Onboarding Process")
 
 # Phase 1 - Onboarding
 
