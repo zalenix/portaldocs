@@ -1,6 +1,6 @@
 
-<a name="templateblades"></a>
-## TemplateBlades
+<a name="templateblade"></a>
+## TemplateBlade
 
 The `TemplateBlade` is the recommended way of authoring blades in Ibiza. It is the equivalent to windows or pages in other systems.
 
