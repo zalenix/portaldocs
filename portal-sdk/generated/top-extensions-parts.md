@@ -25,7 +25,6 @@ Creating a part is very similar to creating a blade. And like blades, there are 
 import * as PartsArea from "../PartsArea";
 import * as ClientResources from "ClientResources";
 import * as TemplatePart from "Fx/Composition/TemplatePart";
-import { SvgType } from "Fx/Images";
 
 export = Main;
 
@@ -41,7 +40,7 @@ module Main {
             title: ClientResources.simpleTemplatePart,
             category: ClientResources.partGalleryCategorySample,
             thumbnail: {
-                image: SvgType.ArrowDown,
+                image: MsPortalFx.Base.Images.ArrowDown(),
             },
         },
     })
@@ -67,7 +66,6 @@ If you need more control over the DOM and are willing to take on additional burd
 ```
 import { DataContext } from "../PartsArea";
 import * as FramePart from "Fx/Composition/FramePart";
-import { SvgType } from "Fx/Images";
 import * as ClientResources from "ClientResources";
 
 export = Main;
@@ -90,7 +88,7 @@ module Main {
             title: ClientResources.noPdlSampleFramePartTitle,
             category: ClientResources.partGalleryCategorySample,
             thumbnail: {
-                image: SvgType.ArrowUp,
+                image: MsPortalFx.Base.Images.ArrowUp(),
             },
         },
     })
@@ -228,9 +226,7 @@ The following example includes the `galleryMetadata` property that lets the deve
         title: ClientResources.noPdlGeneralGalleryPartTitle,
         category: ClientResources.partGalleryCategorySample,
         thumbnail: {
-            path: "../../../Svg/sample.svg",
-            isLogo: true,
-            stretch: TemplatePart.PartGalleryThumbnailStretch.Fill,
+            image: MsPortalFx.Base.Images.Favorite(),
         },
     },
     parameterMetadata: {

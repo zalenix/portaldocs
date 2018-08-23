@@ -1,11 +1,3 @@
-* [UI Concepts](#ui-concepts)
-    * [The dashboard](#ui-concepts-the-dashboard)
-    * [Blades](#ui-concepts-blades)
-    * [Commands](#ui-concepts-commands)
-    * [Parts](#ui-concepts-parts)
-    * [Top bar](#ui-concepts-top-bar)
-    * [Left nav](#ui-concepts-left-nav)
-    * [Marketplace](#ui-concepts-marketplace)
 
 
 <a name="ui-concepts"></a>
@@ -17,7 +9,7 @@ Before you start building an extension for the portal, take a few minutes to rev
 
 The dashboard is the first thing users see when they sign in to the portal. It's fully customizable - users can resize, re-order, pin, or unpin tiles to create a unique start experience. It also includes an integrated tile gallery, where users can pick and choose from new tiles that display information most relevant to them (and their resources). 
 
-![dashboard][dashboard]
+![alt-text]( ../media/portalfx-ui-concepts/dashboard.png "Dashboard") 
 
 <a name="ui-concepts-blades"></a>
 ### Blades
@@ -50,7 +42,7 @@ You should only use a Blade or Locked Blade when creating Resource blade.
 
 Users click a command to take a specific action in a specific resource. Commands can show dialogs to confirm a direct action, or they can open blades to perform an indirect action. Never use commands as a navigation tool.
 
-![Command][command]
+![alt-text](../media/portalfx-ui-concepts/command.png "Command")
 
 [Learn more](portalfx-commands.md)
 
@@ -63,7 +55,7 @@ Design each tile to work in at least 3 different sizes so they can be easily cus
 
 ![Part][part]
 
-[Learn more](portalfx-parts.md)
+[Learn more](top-extensions-parts.md)
 
 <a name="ui-concepts-top-bar"></a>
 ### Top bar
@@ -94,8 +86,6 @@ Before your package is allowed into the marketplace, you'll need to onboard with
 
 [blade]: ../media/portalfx-ui-concepts/blade.png
 [part]: ../media/portalfx-ui-concepts/part.png
-[command]: ../media/portalfx-ui-concepts/command.png
 [journey]: ../media/portalfx-ui-concepts/journey.png
 [hub]: ../media/portalfx-ui-concepts/hub.png
-[dashboard]: ../media/portalfx-ui-concepts/dashboard.png
 [gallery]: ../media/portalfx-ui-concepts/gallery.png
