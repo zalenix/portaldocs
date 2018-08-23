@@ -1,11 +1,11 @@
 
-<a name="the-resource-menu"></a>
-# The Resource Menu
+<a name="resourcemenublade"></a>
+# ResourceMenuBlade
 
-<a name="the-resource-menu-overview"></a>
+<a name="resourcemenublade-overview"></a>
 ## Overview
 
-The resource menu provides an easy-to-use implementation of a menu blade, as specified in [top-blades-menu.md](top-blades-menu.md), with various common Azure resource menu items readily available. It does this by providing an app-like container for a resource, with a navigation menu on the left. This navigation menu allows an extension to access all of the functionality of the resource, categorized into relevant groups.
+The resource menu provides an easy-to-use implementation of a menu blade, as specified in [top-blades-menublade.md](top-blades-menublade.md), with various common Azure resource menu items readily available. It does this by providing an app-like container for a resource, with a navigation menu on the left. This navigation menu allows an extension to access all of the functionality of the resource, categorized into relevant groups.
 
 **What is required to enable the resource menu?**
 
@@ -36,7 +36,7 @@ If there are any issues please reach out to <a href="mailto:ibiza-menu-blade@mic
 
 The resource menu is a blade which is loaded from the HubsExtension. It  calls the `AssetViewModel` that is  associated with the `AssetType` to determine what menu items to show and what blades those items open. Every extension and resource can leverage this blade without worrying about getting UX consistency and avoid having to implement the same blade multiple times. The resource menu also provides an `options` object on the `getMenuConfig` which exposes various Azure resource-related options such as `Support/Monitoring/Automation Scripts.`  
 
-<a name="the-resource-menu-overview-opt-in-by-using-an-assettype"></a>
+<a name="resourcemenublade-overview-opt-in-by-using-an-assettype"></a>
 ### Opt in by using an AssetType
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>` is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
@@ -70,7 +70,7 @@ As an example, the resource type tag for resource groups is in the following cod
     ApiVersion="2014-04-01-preview" />
 ```
 
-<a name="the-resource-menu-overview-provide-an-assetviewmodel-on-the-assettype"></a>
+<a name="resourcemenublade-overview-provide-an-assetviewmodel-on-the-assettype"></a>
 ### Provide an AssetViewModel on the AssetType
 
 Create a new `ViewModel` for the `AssetViewModel`.  The following is a skeleton for the `AssetViewModel`. For more information on assets, see [portalfx-assets.md](portalfx-assets.md).
@@ -326,7 +326,7 @@ export class MyResourceBlade
 }
 ```
 
-<a name="the-resource-menu-overview-validate-that-the-ux-is-responsive"></a>
+<a name="resourcemenublade-overview-validate-that-the-ux-is-responsive"></a>
 ### Validate that the UX is responsive
 
 Because the resource menu acts as a container for the blades opened by the menu items, the display state is preserved when the user switches between menu items. The developer should validate that blades render the UX properly when the resource menu is maximized, and also when the resource menu is restored to the specified widths.
@@ -334,12 +334,12 @@ Because the resource menu acts as a container for the blades opened by the menu 
 For an example of responsive resources, see the `<dir>Client\V1\ResourceTypes\Desktop\` folder, specifically the `...AssetViewModels\DesktopViewModel.ts` file.
 
 
-<a name="the-resource-menu-frequently-asked-questions"></a>
+<a name="resourcemenublade-frequently-asked-questions"></a>
 ## Frequently asked questions
 
 <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
 
-<a name="the-resource-menu-frequently-asked-questions-the-resource-menu"></a>
+<a name="resourcemenublade-frequently-asked-questions-the-resource-menu"></a>
 ### The Resource menu
 
 ***What is the resource menu?***
@@ -348,7 +348,7 @@ SOLUTION:  The resource menu is a single location for all the resource's functio
 
 * * *
 
-<a name="the-resource-menu-frequently-asked-questions-resource-menu-samples"></a>
+<a name="resourcemenublade-frequently-asked-questions-resource-menu-samples"></a>
 ### Resource menu samples
 
 ***Are there any samples I can refer to?***
@@ -357,7 +357,7 @@ SOLUTION: There are numerous samples that demonstrate how to use the resource me
 
 * * *
 
-<a name="the-resource-menu-frequently-asked-questions-the-support-resource-management-group"></a>
+<a name="resourcemenublade-frequently-asked-questions-the-support-resource-management-group"></a>
 ### The Support Resource Management Group
 
 ***How do I add items to the Support/Resource Management Group?***
@@ -367,7 +367,7 @@ SOLUTION:  You can add items by using a `MenuGroupExtension`. `MenuGroupExtensio
 
 * * * 
 
-<a name="the-resource-menu-frequently-asked-questions-horizontal-scrolling"></a>
+<a name="resourcemenublade-frequently-asked-questions-horizontal-scrolling"></a>
 ### Horizontal scrolling
 
 ***How do I reduce horizontal scrolling and UI movement in my extension?***
