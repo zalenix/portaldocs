@@ -1,4 +1,12 @@
-# Release Notes since 4/22/2018
+# Release Notes since 4/23/2018
+
+## 5.0.302.1701
+0 Breaking Changes, 1 Features added and 4 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2868960'>2868960</a></td><td>Bug Fix</td><td>Failed network requests cause portal to hang while loading</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2834121'>2834121</a></td><td>Feature</td><td>Mark informational AssemblyVersion as signed/unsigned</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2833877'>2833877</a></td><td>Bug Fix</td><td>[Custom deployment] Validations should return true for functions (starts with [ and ends with ])</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2833419'>2833419</a></td><td>Bug Fix</td><td>Null ref in KnownTemplateMetadata</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=1580953'>1580953</a></td><td>Bug Fix</td><td>on merge from mpac to prod, bump the prod version by a different/larger value</td></tr></table>
+
+## 5.0.302.1611
+0 Breaking Changes, 0 Features added and 2 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2850171'>2850171</a></td><td>Bug Fix</td><td>Enable prewarming at 100%</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2734436'>2734436</a></td><td>Bug Fix</td><td>[Partner Request] - Enable cacheing and remove obselete bundle for Microsoft_Azure_PIM extension</td></tr></table>
 
 ## 5.0.302.1411
 0 Breaking Changes, 0 Features added and 2 Bugs Fixed
