@@ -26,19 +26,19 @@
 <a name="domain-based-configuration-overview"></a>
 ## Overview
 
-Custom domains, or domain-based configurations, allow the Portal and extensions to dynamically obtain settings that are based on the URL that was used to access the Portal. Domain-based configuration is based on the domain host address of the Shell, instead of the extension. For example, accessing the Portal by using the `contoso.portal.azure.com` URL displays different values for domain-based settings than the `portal.azure.com` URL displays.  Extensions do not need to support additional host names in order to take advantage of domain-based configuration.
+Custom domains, or domain-based configurations, allow the Portal and extensions to dynamically obtain settings that are based on the URL that was used to access the Portal. Domain-based configuration is based on the domain host address of the Shell, instead of the extension. For example, the domain-based settings are different between the `contoso.portal.azure.com` URL and the `portal.azure.com` URL when using the URL's to access the Portal. In addition, extensions are not required to support additional host names in order to take advantage of domain-based configuration.
 
 Some partner needs are met at the deployment level. For example, national clouds like China, Germany, or Government, can use normal configuration with no dynamic tests at runtime.  Items that are based on which domain  is running the extension include  ARM and RP URLs, or AAD client application IDs.  
 
-In other instances, a single deployment of an extension supports multiple domains.  For example, community clouds, like Fujitsu A5, use domain-based configuration.  In these instances, functionality is selected based on the Trusted Authority for the calling extension, as specified in [#The-trustedAuthorityHost-function](#the-trustedauthorityhost-function). Although domain-based configuration is not required to support national clouds, there is great overlap between settings that are selected for community clouds. It is easier to store settings like links in domain-based configuration, which includes support for expanding links from link redirection, or from friendly name services such as **FwLink** and `aka.ms` services.
+In other instances, a single deployment of an extension supports multiple domains.  For example, community clouds, like Fujitsu A5, use domain-based configuration.  In these instances, functionality is selected based on the Trusted Authority for the calling extension, as specified in [#the-trustedAuthorityHost-function](#the-trustedauthorityhost-function). Although domain-based configuration is not required to support national clouds, there is great overlap between settings for community clouds. It is easier to store settings such as links in domain-based configuration, which allows the Portal to include support for expanding redirected links, or include support for friendly name services such as **FwLink** and **aka.ms**.
 
-<!-- TODO:  Determine paragraph that indicates how to meet with Adam and Leon, and what the takeaways are. -->
+During development, the first-party or third-party developer identifies the extension functionality that is dependent on the domain in which the extension will run. Once the partner and developer have identified the configurations that provide this functionality for the extension, the developer creates a supporting `DictionaryConfiguration` class as specified in [Configure the dictionary](#configure-the-dictionary). The dictionary key is the host name the Shell was loaded under, which is available at run time by using the `PortalContext` and `TrustedAuthorityHost` functions.
 
-During development, the first-party or third-party developer identifies the extension functionality that depends on the domain in which the extension is running. Once the partner and developer have identified the configurations that provide this functionality for the extension, the developer creates a supporting `DictionaryConfiguration` class as specified in [Configure the dictionary](#configure-the-dictionary). The dictionary key is the host name the Shell was loaded under, which is available at run time by using the `PortalContext` and `TrustedAuthorityHost` functions.
-
-It is recommended that domain-based configuration class names have the characters `DomainBasedConfiguration` appended to them. Some examples are `ErrorApplicationDomainBasedConfiguration`, `HubsDomainBasedConfiguration`, and `WebsiteDomainBasedConfiguration`. However, this naming convention is not required.
+It is recommended, but not required, that domain-based configuration class names have the characters `DomainBasedConfiguration` appended to them. Some examples are `ErrorApplicationDomainBasedConfiguration`, `HubsDomainBasedConfiguration`, and `WebsiteDomainBasedConfiguration`. 
 
 Extensions that are called contain additional code that pushes values to the browser.  The sample code located at [Sample configuration](#sample-configuration) demonstrates the pattern that initializes server-side domain-based configuration.
+
+<!-- TODO:  Determine whether FYI: authentication is applicable here. -->
 
 **NOTE**: Settings like ARM endpoints are not typically candidates for domain-based configuration.
 
@@ -60,20 +60,20 @@ If you have any questions, reach out to Ibiza team at [https://stackoverflow.mic
 <a name="domain-based-configuration-configuration-apis-the-trustedauthorityhost-function"></a>
 ### The trustedAuthorityHost function
 
-The Server-side `PortalContext.TrustedAuthorityHost` function returns the host name under which the extension was loaded. For example, an extension may need to know if it is being called from `portal.azure.com` or `Contoso.azure.com`. In the first case `TrustedAuthorityHost` will contain `portal.azure.com` and in the second, `contoso.azure.com`.
+The Server-side `PortalContext.TrustedAuthorityHost` function returns the host name under which the extension was loaded. For example, an extension may need to know if it is being called from `portal.azure.com` or `contoso.azure.com`. In the first case `TrustedAuthorityHost` will contain `portal.azure.com` and in the second, `contoso.azure.com`.
  
 **NOTE**: If the extension needs to change its configuration based on the domain of the caller, the recommended solution is to use domain-based configuration, which is designed specifically for this sort of work.  It is preferred over coding directly against values returned by `PortalContext.TrustedAuthorityHost`.
 
 <a name="domain-based-configuration-configuration-apis-the-getsharedsettings-function"></a>
 ### The getSharedSettings function
 
-In the `MsPortalFx.Settings.getSharedSettings()` function, selected values from Shell are exposed through an RPC call for the following reasons.
+In the `MsPortalFx.Settings.getSharedSettings()` function, selected values from the Shell are exposed through an RPC call for the following reasons.
 
  1. Extensions do not need individual copies of commonly defined values, such as the support URL.
 
  1. Changes to shared settings do not require simultaneous redeployment of extensions.
  
-The first call by the extension to this API results in an RPC call from the extension to Shell. After that, the results are served from a cache.
+The first call by the extension to this API results in an RPC call from the extension to the Shell. After that, the results are served from a cache.
  
 The `MsPortalFx.Settings.getSharedSettings()` API returns an object whose root is empty and reserved for future use, except for a `links` property that contains the following links collection structure, as defined in `src\SDK\Framework\TypeScript\MsPortalFx\SharedSettings.d.ts`.
 
@@ -93,48 +93,52 @@ The `MsPortalFx.Settings.getSharedSettings()` API returns an object whose root i
 
 Links are automatically expanded according to the user's domain, tenant, and language preferences. Links can be any of the following.
 
-*  Full URLs like external links
+*  Full URLs, like external links
 
-*  Fragment URLs like blade links
+*  Fragment URLs, like blade links
 
-*  `String.Empty`
+*  Null, like `String.Empty`
 
     In this instance, the feature is not supported for that user / tenant / environment combination.
 
 The extension should support all three formats if they take a dependency.
+<!-- TODO: Determine who takes which dependency. -->
 
 <a name="domain-based-configuration-configuration-apis-the-getsharedsettings-function-the-link-attribute"></a>
 #### The link attribute
 
-Expansion logic is required for properties that are marked `[Link]`. The format string is specified in the `LinkTemplate` property that is located at the root of the object. A `LinkTemplate` value of `https://go.microsoft.com/fwLink/?LinkID={linkId}&amp;clcid=0x{lcid}` is the correct template for FwLinks.
+<!-- TODO: Determine where the  `{culture}` code should be in the FwLink template. -->
 
-Expansion in the format string is applied according to the following rules.
+Expansion logic is required for properties that are marked `[Link]`. The format string is specified in the `LinkTemplate` property that is located at the root of the object. The **FwLink** template for the  `LinkTemplate` value is `https://go.microsoft.com/fwLink/?LinkID={linkId}&amp;clcid=0x{lcid}`, where format string expansion is applied according to the following rules.
 
 1. If the string is numeric, then occurrences of `{linkId}` in the string are expanded to the numeric value. If no `LinkTemplate` property is specified, the value will be left unexpanded.
 
 1. Occurrences of `{lcid}` are replaced with the hex representation of the user's preferred .NET LCID value.  For example, 409 is the .NET LCID value for US English. 
 
-1. Occurrences of `{culture}` are replaced with the user's preferred .NET culture code. For example, en-US is the .NET culture code for US English.
+1. Occurrences of `{culture}` are replaced with the user's preferred .NET culture code. For example, 'en-US' is the .NET culture code for US English.
 
 An exception will be thrown if the target of a `[Link]` attribute is not in one of the following string formats.
 
 * Numeric, for example, '12345' 
 
-* A URL hash-fragment, like "#create\Microsoft.Support"
+* A URL hash-fragment, like '#create\Microsoft.Support'
 
 * A http or https URL
-
 
 <a name="domain-based-configuration-configuration-apis-the-getsharedsettings-function-override-links"></a>
 #### Override links
 
-Your cloud has the option of using settings to override specific links that are displayed by the system. Overriding is optional, and in many cases no overrides are required. Where supported, settings use FwLinks for links instead of absolute URLs because FwLinks do not require the Shell to be redeployed in order for the extension to change the destination. Also, FwLinks support the user’s in-product language selection, which is often different from the browser’s default language.  For example, if the user has set the language in the Portal to Chinese, it should display Chinese-language pages.
+Your cloud has the option of using configuration settings to override specific links that are displayed by the system. Overriding is optional, and in many cases no overrides are required. Where supported, settings use **FwLinks** instead of absolute URLs because they do not require the Shell to be redeployed if the  destination changes. In addition, **FwLinks** support the user’s in-product language selection, which may be  different from the browser’s default language.  For example, if the user has set the language in the Portal to Chinese, the extension should display Chinese-language pages.
+
+<!-- TODO:  Determine how to use "blank" and "same". Neither one is in the *.json files. This assumes that the "Extension value" column should continue to exist. -->
 
 Each link can be specified as one of the following five values.
 
-* A numeric FwLink ID
+* A numeric **FwLink** ID
+    A **FwLink** ID is typically a six-digit number.
 
 * A blade reference
+    "#create/Microsoft.Support",
 
 * An absolute URL
 
@@ -146,7 +150,7 @@ Each link can be specified as one of the following five values.
 
 * The word "same"
 
-    The default production value should be used. If the default production value changes, that change is automatically propagated to the extension.
+    The default value should be used. If the default value changes, that change is automatically propagated to the extension.
 
 Links are separated into the following three sections.
 
@@ -156,9 +160,9 @@ Links are separated into the following three sections.
 
 * [Error Page Links](#error-page-links)
 
-<sup>1</sup> Items do not support FwLinks or blade references because  they are  download links, or they are base URLs to which  parameter or path information is added dynamically at run-time.
+<sup>1</sup> Settings do not support **FwLinks** or blade references because they are download links, or they are base URLs to which parameter or path information is added dynamically at run-time.
 
-<sup>2</sup> Items may not currently support the "blank" setting, or they may not support  values of the types other than the ones listed in the `Public Value` column. If you need to use them, reach out to  <a href="mailto:ibizapxfm@microsoft.com?subject=Settings and Links">ibizapxfm@microsoft.com</a> so that we can work with the owner team.
+<sup>2</sup> Settings may not currently support the "blank" value, or they may not support values of the types other than the ones listed in the `Default Value` column. If you need to use them, reach out to  <a href="mailto:ibizapxfm@microsoft.com?subject=Settings and Links">ibizapxfm@microsoft.com</a> so that Ibiza can work with the owner team.
 
 **NOTE**: Changing to support the unsupported values may result in a delay in delivery time.
 
@@ -169,7 +173,7 @@ Links are separated into the following three sections.
 
 <!-- TODO:  Determine whether the "Extension value" column was intended to be a recommended value.-->
 
-| Setting name / notes | Public Value | Extension Value |
+| Setting name / notes | Default Value | Extension Value |
 | -------------------- | ------------ | ---------- |
 | accessDetails<sup>2</sup> | #blade/HubsExtension/MyAccessBlade/resourceId/ |	blank (verify that menu item is hidden) | 
 | accountPortal<sup>1</sup> | https://account.windowsazure.com/ | blank (verify that menu item is hidden) | 
@@ -189,7 +193,7 @@ Links are separated into the following three sections.
 <a name="domain-based-configuration-configuration-apis-the-getsharedsettings-function-hubs-links"></a>
 #### Hubs links
 
-| Setting name / notes  | Public Value | Extension Value |
+| Setting name / notes  | Default Value | Extension Value |
 | --------------------- | ------------ | ---------- |
 | createNewSubscription     | [https://go.microsoft.com/fwLink/?LinkID=522331](https://go.microsoft.com/fwLink/?LinkID=522331)	 | same |
 | manageAzureResourceHelp   | [https://go.microsoft.com/fwLink/?LinkID=394637](https://go.microsoft.com/fwLink/?LinkID=394637)	 | same |
@@ -212,7 +216,7 @@ Links are separated into the following three sections.
 <a name="domain-based-configuration-configuration-apis-the-getsharedsettings-function-error-page-links"></a>
 #### Error Page Links
 	
-| Setting name / notes | Public Value |	Extension Value |
+| Setting name / notes | Default Value |	Extension Value |
 | -------------------- | ------------ | ---------- |
 | classicPortal<sup>1</sup>	   | https://manage.windowsazure.com/	| same |
 | contactSupport |	[https://go.microsoft.com/fwLink/?LinkID=733312](https://go.microsoft.com/fwLink/?LinkID=733312)	 | same |
@@ -445,49 +449,45 @@ namespace Microsoft.MyExtension.Configuration
 
 <!-- TODO: Determine whether the Custom Domain Questionnaire should include a screen shot of the new extension that is similar to the one described in this section. -->
 
-Custom domains can create or set their own branding and chrome, by specifying various settings and feature flags.  The titles and labels that are displayed are controlled by the settings in the extension and its configuration files, as in the following image.
+Custom domains can create or set their own branding and chrome by specifying settings and feature flags.  The titles and labels that are displayed are controlled by the settings in the extension and its configuration files, as in the following image.
 
 ![alt-text](../media/top-extensions-custom-domains/branding-and-chrome.png "Branding and Chrome")
 
 The following table specifies the parts in the dashboard image.
 
-<!-- TODO: Determine whether "Public value" can be changed to "Default value". -->
-
-| Setting or feature flag              | Description  | Default Value |
-| ---------------------- | ----------- | ------------ | 
-| URL                    | The address of the extension. |   |        |
-| Title                  | The text that appears on the Browser tab/title bar. It is located in the page’s `<TITLE>` element | Micro`soft Azure |
-| internalonly           | Controls whether the Orange ‘Preview’ tag appears to the left of the site name  | false  | 
-| Product Name           | The text that appears on the top bar | Microsoft Azure | 
-| hideSearchBox          | Hides the “Search resources” box  | false |
-| feedback |  A value of `False` hides the  feedback  icon on top bar  | true |
-| hideDashboardShare     | Hides the Dashboard Share Button  | false | 
-| hideCreateButton       | Hides the Create ("+ New") Button | false | 
-| defaultTheme           | The default color theme for the portal | blue |  
+| Setting or feature flag | Description                                     | Default Value   |
+| ----------------------- | ----------------------------------------------- | --------------- | 
+| defaultTheme            | The default color theme for the portal          | blue            |  
+| feedback                | A value of `False` hides the feedback icon      | true            |
+| hideCreateButton        | Hides the `Create a resource` or `+ New` button | false           | 
+| hideDashboardShare      | Hides the `Dashboard Share` button              | false           | 
+| hideSearchBox           | Hides the `Search resources` box                | false           |
+| internalonly            | Controls whether the `Preview` tag is displayed on the top bar | false | 
+| Product Name            | The text that is displayed on the top bar       | Microsoft Azure | 
+| Title                   | The text that is displayed on the Browser tab/title bar. It is located in the page’s `<TITLE>` element | Microsoft Azure |
+| URL                     | The address of the extension.                   |                 |
 
 * Feature flags
 
-These feature flags impact dashboard settings that are not immediately visible. The recommended values are prepopulated, although you can modify them for your extension.
+The following feature flags impact dashboard settings that are not immediately displayed.
 
-| Setting  | Description  | Public Value  | 
-| -------- | ------------ | --------------------------------------  | 
-| hidesupport                 | Hides support functionality in property and other select dialogs. | Not set | 
-| nps                         | Controls whether the Net Promoter Score (‘How likely are you to recommend this site?’) prompt can be displayed for the site. | true |
-| hubsextension_skipeventpoll | Disables ‘what’s new’ and subscription level notifications like  deployment complete for VMs  | Not set  | 
-| Description            | SEO text that is included in the page source that is not visible to the end-user | Microsoft Azure Management Portal | 
+| Setting                     | Description                                                       | Default Value | 
+| --------------------------- | ----------------------------------------------------------------- | ------------  | 
+| hidesupport                 | Hides support functionality in property and other select dialogs  | Not set           | 
+| nps                         | Controls whether the Net Promoter Score prompt can be displayed   | true               |
+| hubsextension_skipeventpoll | Disables `what’s new` and subscription-level notifications        | Not set           | 
+| Description                 | SEO text that is included in the page source that is not visible to the end-user | Microsoft Azure Management Portal | 
 
 <a name="domain-based-configuration-curation"></a>
 ## Curation
 
-Curation allows items that are displayed on the left navigation bar to be added, removed, and reordered. This is an alternative to hiding items programmatically or making them accessible by using deep links. For example, you can hide the ability to create new storage accounts from users, while still allowing the extension to open the `Storage Accounts` property and then open the `usage logs` blades for a storage account that was created for one of the extension's assets. Curation is optional because the extension can inherit from the production environment.
+Curation allows items that are displayed on the left navigation bar to be added, removed, and reordered. It is optional because the extension can inherit from the production environment. Curation is an alternative to hiding items programmatically, or making them accessible by using deep links. For example, you can hide the ability to create new storage accounts from users, and still allow the extension to open the `Storage Accounts` property and then open the `usage logs` blades for a storage account that was created for one of the extension's assets.
 
 <!-- TODO:  If the storage account example is fictitious, locate one that is not fictitious. -->
 
 A browsable asset type is one that is defined in the `PDL` file by using the `Browse` tag. Curation controls the visibility and grouping of browsable asset types in the **Favorites and Browse** portions of the left navigation bar, or the  **Favorites and Category** section, as in the following image.
 
 ![alt-text](../media/top-extensions-custom-domains/curation.png "Categories and asset types")
-
-<!-- TODO: Determine whether  "Public value" can be changed to "Default value". -->
 
 <a name="domain-based-configuration-curation-curation-categories"></a>
 ### Curation categories
@@ -891,7 +891,7 @@ The main questions to answer, other than the settings and values as described in
 
 1. What URL's will your extension require for the custom domain?
 
-	| Setting name / notes	| Public Value	        | Extension value                  |
+	| Setting name / notes	| Default Value	        | Extension value                  |
     | --------------------- | --------------------  | -------------------------------- |
     | Production URL        | `portal.azure.com`    | `aad.portal.azure.com`           |
     | Dogfood URL           | `df.portal.azure.com` | `df-aad.onecloud.azure-test.net` |
@@ -904,7 +904,7 @@ The main questions to answer, other than the settings and values as described in
     Recommended extension values are located in [portalfx-extensions-bp-custom-domains.md# branding-and-chrome-values](portalfx-extensions-bp-custom-domains.md#branding-and-chrome-values). 
 
 <a name="domain-based-configuration-pull-request"></a>
-## Pull Request]
+## Pull Request
 
 The pull request should include the definition of the new domain for the environment in which it will run. Remember to add a meaningful description to the PR, and attach information like RDTasks or screenshots. A sample pull request that modifies the Intune curation file to add a new asset type is located at [http://aka.ms/portalfx/intune-pr](http://aka.ms/portalfx/intune-pr). For more information about sending pull requests, see [top-extensions-publishing.md](top-extensions-publishing.md). 
 
