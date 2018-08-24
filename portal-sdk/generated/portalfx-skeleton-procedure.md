@@ -15,13 +15,13 @@ For the most part, procedures do not include phrases like "as specified in. . ."
 
 This process validates that [state purpose of checklist]. Images of the procedure are optional.  Images  should be included in the document above the procedure that they specify, as in the following diagram.
 
-   ![alt-text](../media/portalfx-partner-request-process/partner-request-flow.png "New Project Dialog")
+   ![alt-text](../media/top-extensions-partner-request/partner-request-flow.png "New Project Dialog")
 
 1. Step 1 of procedure
 
    If possible, make screenshots that include what the screen should look like, or the changes that the developer should make, as in the following image.
     
-    ![alt-text](../media/portalfx-overview/new-project-template.png "Step Validation")
+    ![alt-text](../media//portalfx-extensions-create-first-extension/new-project-template.png "Step Validation")
 
 1. Step 2 of procedure
 

@@ -200,7 +200,7 @@ SOLUTION:
 
 ERROR: The Portal displays a 520 error, as in the following image.
 
-![alt-text](../media/portalfx-debugging/failure.png "Portal Error Message")
+![alt-text](../media/top-legacy-parts/failure.png "Portal Error Message")
 
 The Web server is returning an unknown error. 
 

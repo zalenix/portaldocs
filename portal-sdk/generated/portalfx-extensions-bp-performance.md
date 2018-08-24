@@ -203,7 +203,7 @@ In the preceding example, the `map` function uses a data model that contains onl
 
 The following image uses the selectableGrid `map` function to display only the data that is associated the properties that are required by the grid row.
 
-![alt-text](../media/portalfx-performance/mapping.png "Using knockout projections to map an array")
+![alt-text](../media/top-extensions-performance/mapping.png "Using knockout projections to map an array")
 
 * The data contains 300 items, and the time to load is over 1.5s. 
 * The optimization of mapping to just the two columns in the selectable grid reduces the message size by 2/3. 

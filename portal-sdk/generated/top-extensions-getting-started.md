@@ -34,7 +34,7 @@ One of the great things about the Azure portal is the ability for multiple servi
 
 - The [Azure Websites](https://azure.microsoft.com/en-us/services/websites/) browse blade includes a part from [Visual Studio Team Services](https://www.visualstudio.com/team-services), as specified in [top-extensions-sharing-blades-and-parts.md](top-extensions-sharing-blades-and-parts.md), which sets up continuous deployment between a source code repository and a web site.
 
-![alt-text](../media/portalfx-parts/part-sharing.png "Setting up continuous deployment with part sharing")
+![alt-text](../media/top-extensions-getting-started/part-sharing.png "Setting up continuous deployment with part sharing")
 
 - After configuring continuous deployment, the Visual Studio Online extension informs the Azure Websites extension it is complete with an RPC callback.
 
