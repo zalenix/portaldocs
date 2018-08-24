@@ -990,7 +990,7 @@ public onInputsSet(inputs: MyPartInputs): Promise {
 
 Occasionally while loading parts, an extension may encounter an unrecoverable error. In that case, the part may be placed into a failure state, as in the following image.
 
-![alt-text](../media/portalfx-debugging/failure.png "Failed part")
+![alt-text](../media/top-legacy-parts/failure.png "Failed part")
 
 Parts should only be placed into a failed state if there was a system fault and no action can be taken by the user to correct the error. If the user can correct the error, then the extension should display guidance about the error, as in the  example located at `<dir>\Client\V1\Parts\Lifecycle\ViewModels\PartLifecycleViewModels.ts`, and in the following code.
 <!--TODO:  Determine whether the samples should match exactly. -->

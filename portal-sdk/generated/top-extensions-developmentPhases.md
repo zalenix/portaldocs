@@ -45,7 +45,7 @@ In the public preview state, the extension undergoes more development and review
 
 The icon to the right of the extension indicates whether the extension is in the private preview state or the public preview state, as in the following image.
 
- ![alt-text](../media/portalfx-extensions-onboarding/previewMode.png "Private Preview State")
+ ![alt-text](../media/top-extensions-developmentPhases/previewMode.png "Private Preview State")
 
 **NOTE**: Any user that receives this URL will be able to see the new extension. Any users who receives a deep link to blades within the extension will be able to see the new experience.
 
@@ -60,4 +60,4 @@ When an extension passes all production-ready metrics for the public preview sta
 
  Enabling the extension for public preview will make the extension visible to all the customers in Azure Portal. Remove the preview tag in the `extension.pdl` configuration file to make the extension visible, as in the following example.
  
-![alt-text](../media/portalfx-extensions-onboarding/GAMode.png "General Availability")
+![alt-text](../media/top-extensions-developmentPhases/GAMode.png "General Availability")
