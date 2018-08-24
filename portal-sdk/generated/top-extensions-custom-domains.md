@@ -89,8 +89,6 @@ The `MsPortalFx.Settings.getSharedSettings()` API returns an object whose root i
 | privacyAndTerms       | Link to the privacyAndTerms UI                 | 
 | resourceGroupOverview | Link to resource groups overview               | 
 
-<!-- TODO: Determine whether the following description of the root of this object is still current. -->
-
 Links are automatically expanded according to the user's domain, tenant, and language preferences. Links can be any of the following.
 
 *  Full URLs, like external links
@@ -478,6 +476,21 @@ The following feature flags impact dashboard settings that are not immediately d
 | hubsextension_skipeventpoll | Disables `what’s new` and subscription-level notifications        | Not set           | 
 | Description                 | SEO text that is included in the page source that is not visible to the end-user | Microsoft Azure Management Portal | 
 
+* Tile Gallery
+
+<!-- TODO: Determine what the tile gallery has to do with custom domains and/ or the questionnaire template -->
+
+The tile gallery is displayed when the user clicks on `Edit dashboard`. It contains a collection of tiles that can be dragged and dropped on the dashboard. Available tiles can be searched by Category, by Type, by resource group, by tag, or by using the Search string.
+
+* The `hidePartsGalleryPivot` flag disables all the search types except the Category search. The Category selector will be displayed only if any tile has a category assigned to it.
+
+* The `hiddenGalleryParts` list allows this extension to hide specific parts that are made available by other extensions. For example, by default, the Service Health part is always displayed, but it can be hidden by adding it to this list.
+
+| Setting or feature flag | Description  | Default Value |
+| ----------------------- | ------------ | ------------- |
+| hidePartsGalleryPivots  | Hides parts types picker from parts gallery. Does not disable the category picker  | false |
+| hiddenGalleryParts      | Hides listed parts from the parts gallery, like `All Resources`, `Service Health`, and others  | empty |
+
 <a name="domain-based-configuration-curation"></a>
 ## Curation
 
@@ -511,7 +524,7 @@ Use `Curation by AssetType` to list only items from the extension, and perhaps s
 <a name="domain-based-configuration-curation-default-favorites"></a>
 ### Default Favorites
 
-When a new user visits your Community Cloud for the first time, the system places several asset types in the far left navigation bar. The extension can also control which items are placed there, in addtion to the order in which they are displayed. The only restriction is that these items must also exist in the Category Curation.
+When a new user visits your Community Cloud for the first time, the system places several asset types in the far left navigation bar. The extension can also control which items are placed there, in addition to the order in which they are displayed. The only restriction is that these items must also exist in the Category Curation.
 
 A list of items is as follows.
  
@@ -523,22 +536,6 @@ A list of items is as follows.
 | MICROSOFT_AAD_IAM | UserManagement                 |                      
 | MICROSOFT_AAD_IAM | Application                    |                      
 | MICROSOFT_AAD_IAM | Licenses                       | 
-
-<a name="domain-based-configuration-curation-tile-gallery"></a>
-### Tile Gallery
-
-<!-- TODO: Determine what the tile gallery has to do with custom domains and/ or the questionnaire template -->
-
-The tile gallery is visible when the user clicks on `Edit dashboard`. It displays a collection of tiles that can be dragged and dropped on the dashboard. Available tiles can be searched by Category, by Type, by resource group, by tag, or by using the Search string.
-
-* The `hidePartsGalleryPivot` flag disables all the search types except the Category search. The Category selector will be displayed only if any tile has a category assigned to it.
-
-* The `hiddenGalleryParts` list allows this extension to hide specific parts that are made available by other extensions. For example, by default, the Service Health part is always displayed, but it can be hidden by adding it to this list.
-
-| Setting or feature flag | Description  | Default Value |
-| ----------------------- | ------------ | ------------- |
-| hidePartsGalleryPivots  | Hides parts types picker from parts gallery. Does not disable the category picker  | false |
-| hiddenGalleryParts      | Hides listed parts from the parts gallery, like `All Resources`, `Service Health`, and others  | empty |
 
 <a name="domain-based-configuration-default-dashboard"></a>
 ## Default Dashboard
@@ -726,10 +723,6 @@ The following steps generate the JSON for the dashboard.
     }
     ```
 
-    <!--TODO:  Locate a copy that can be linked to from here, instead of the following OneNote link.
-    [https://microsoft.sharepoint.com/teams/azureteams/aapt/azureux/portalfx/_layouts/OneNote.aspx?id=%2Fteams%2Fazureteams%2Faapt%2Fazureux%2Fportalfx%2FSiteAssets%2FPortalFx%20Notebook&wd=target%28Execution%2FFundamentals%2FDeployments.one%7C9B8BE2F4-DDEF-4504-982B-560AF50A892C%2FCustom%20Domain%20-%20Questionnaire%20Template%7C90BDECEB-D69D-4BA0-B60A-8A9EBB877CC4%2F%29](https://microsoft.sharepoint.com/teams/azureteams/aapt/azureux/portalfx/_layouts/OneNote.aspx?id=%2Fteams%2Fazureteams%2Faapt%2Fazureux%2Fportalfx%2FSiteAssets%2FPortalFx%20Notebook&wd=target%28Execution%2FFundamentals%2FDeployments.one%7C9B8BE2F4-DDEF-4504-982B-560AF50A892C%2FCustom%20Domain%20-%20Questionnaire%20Template%7C90BDECEB-D69D-4BA0-B60A-8A9EBB877CC4%2F%29)
-    -->
-
 <a name="domain-based-configuration-update-community-clouds"></a>
 ## Update Community Clouds
 
@@ -899,9 +892,6 @@ The main questions to answer, other than the settings and values as described in
 1. Branding and Chrome Values
 
     The unique values for settings and feature flags for your extension should be included in the  list specified in [#branding-and-chrome](#branding-and-chrome) and [#tile-gallery](#tile-gallery).  You can make a copy of the tables, or you can reach out to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Custom Domains">Leon Welicki and Adam Abdelhamed</a>.
-
-    <!-- TODO: Re-work this because we cannot recommend values for their extensions.  -->
-    Recommended extension values are located in [portalfx-extensions-bp-custom-domains.md# branding-and-chrome-values](portalfx-extensions-bp-custom-domains.md#branding-and-chrome-values). 
 
 <a name="domain-based-configuration-pull-request"></a>
 ## Pull Request
