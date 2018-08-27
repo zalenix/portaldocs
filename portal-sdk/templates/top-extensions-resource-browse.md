@@ -15,10 +15,29 @@ Some examples are as follows.
 
 * All Virtual Machines for the RC portal are located at  [http://aka.ms/portalfx/allRCVirtualMachines](http://aka.ms/portalfx/allRCVirtualMachines)
 
+Resource facets can be collapsed, as in the following example, to allow more space for columns in the resource grid.
+
+![alt-text](../media/top-extensions-resources/noFacets.png "Resource screen with facet pane collapsed")
+
+ Resources can also be filtered, so that only the ones most relevant to the current task are displayed. In the following image, resources are filtered by resource type and by location.
+ 
+![alt-text](../media/top-extensions-resources/filtered.png "Filtered Resources")
 
 ## Browse pattern behaviors
 
-The Resource Browse pattern is a fullscreen experience.
+The Resource Browse pattern is a fullscreen experience, as in the following image.
+
+Some key items that are displayed are as follows.
+•	Title
+•	Toolbar for actions
+•	Filter panel
+•	Search
+•	Sort
+•	Pagination
+•	# of records
+•	Grid
+•	Drill in links
+•	Per-row actions with “…”
 
 ### Title
 
@@ -31,7 +50,7 @@ Remember to include the display name, including singular and plural forms, in ad
 The toolbar contains actions that operate against the grid, add and delete resources as well as resource-specific actions for a limited set of resource types. An example toolbar is in the following image.
 
   
-![alt-text](../media/top-extensions-resources/resources-toolbar.png "Toolbar")
+![alt-text](../media/top-extensions-resources/toolbar.png "Toolbar")
   
 The recommended actions for the toolbar are as follows.
 
@@ -39,12 +58,17 @@ The recommended actions for the toolbar are as follows.
     Invokes the Resource Create experience for the resource types displayed in the "new" resource blade.  Uses the `Add command` SDK as specified in [top-extensions-browse.md#the-add-command](top-extensions-browse.md#the-add-command).
 
 * Edit columns
-        Change the columns in the grid 
 
+        Change the columns in the grid. An example is in the following image.
+  
+        ![alt-text](../media/top-extensions-resources/edit.png "Toolbar")
+  
 * Refresh
+
     Repopulate the grid with fresh data
 
 * Assign tags
+
     Assign tags to the selected grid items.  The option is disabled until grid items are selected.
 
 * Delete
