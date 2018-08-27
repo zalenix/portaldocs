@@ -49,9 +49,9 @@ For more information about using assets in the Browse features, see  [portalfx-a
 
 For more information about testing the browse feature in an extension, see [msportalfx-test-scenarios-browse.md](msportalfx-test-scenarios-browse.md). 
 
-#### Create 
+### The Add command
 
-To allow developers to create new resources from Browse, the asset type can be associated  with a Marketplace item or category, as in the following example.
+To allow developers to create new resources from Browse, the asset type can be associated with a Marketplace item or category, as in the following example.
 
 ```xml
 <AssetType
@@ -66,7 +66,7 @@ To allow developers to create new resources from Browse, the asset type can be a
 
 The Browse blade launches the Marketplace item, if specified; otherwise, it launches the Marketplace category blade for the specific menu item id. For example, `gallery/virtualMachines/recommended` is the id for the menu item that can be reached by `Virtual machines > Recommended`. To determine the right Marketplace category, reach out to the <a href="mailto:1store?subject=Marketplace menu item id">Marketplace team</a>. If neither the Marketplace item nor the Marketplace category blade is specified, the Add command will not be available.
 
-#### Customizing columns
+### Customize columns
 
 By default, no-code Browse only shows the resource name, group, location, and subscription. 
 
@@ -149,7 +149,7 @@ By default, no-code Browse only shows the resource name, group, location, and su
 
 1. Compile and run the extension. The columns should be displayed in the Browse blade. 
 
-#### Providing supplemental data
+### Provide supplemental data
 
 Occasionally, extensions need to display data that is in addition to the standard resource columns. 
 Streaming the data significantly improves performance.  The extension should opt in to streaming and supplemental data by specifying it in the PDL file, as in the following example.
@@ -244,7 +244,7 @@ If some of the supplemental properties are not being saved to the grid, double-c
 
 The Browse feature displays a loading indicator,  based on whether or not it has received data.  Pre-initializing data will inform the grid that loading has completed. Instead, the extension should leave cells empty when they are initially  displayed.
 
-#### Adding context menu commands
+### Add context menu commands
 
 Context menu commands in the Browse feature take a single `id` input parameter that is the resource id of the specified command or command group. To specify commands, add the name of the command group that was defined in the PDL file to the Browse configuration, as in the following example.
 
@@ -274,7 +274,7 @@ class BookViewModel implements ExtensionDefinition.ViewModels.ResourceTypes.Book
 
 If different commands should be exposed based on other metadata, the command group can be specified in `SupplementalData.contextMenu` in the same way.
 
-#### Adding an informational message link
+### Adding an informational message link
 
 If the extension should display an informational message or link above the list of resources, add an `infoBox` to the Browse configuration, as in the following example.
 
@@ -306,7 +306,7 @@ class BookViewModel implements ExtensionDefinition.ViewModels.ResourceTypes.Book
 }
 ```
 
-#### Defining an Asset Type permalink-asset-type-non-arm
+### Defining an Asset Type permalink-asset-type-non-arm
 
 Asset types provide a way for the Shell to understand high level objects in the extension. They are the Portal's way of understanding the capabilities of a given object.  Currently, it defines services for Browse, Create, and Notfications.
 
@@ -341,7 +341,7 @@ The elements in the xml are as follows.
 
 An example of each of these classes is located at `<dir>\Client\V1\Hubs\Browse\`. 
 
-#### Implementing a Grid Column provider
+### Implementing a Grid Column provider
 
 Working with the grid in the API is the same as defining any other grid schema. To allow the Shell to render the UI for the assets, it needs to be aware of the objects that will be returned. Specifically, the Shell requires a list of columns, and the properties on the asset objects that map to those columns.
 
