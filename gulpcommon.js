@@ -261,6 +261,7 @@ var self = module.exports = {
                 "github.com/Azure/msportalfx-test", // Github returns a 404 if you aren't authorized instead of a 403/401
                 "localhost",  // fake url/
                 "mailto:", // email link
+                "myaccess", //cert 
                 "management.azure.com/api/invoke",  // returns a bad request since 
                 "msdn.microsoft.com/en-us/library/system.reflection.assemblyversionattribute(v=vs.110", // Bug in url extractor where its not capturing the entire url
                 "msdn.microsoft.com/en-us/library/system.reflection.assemblyinformationalversionattribute(v=vs.110", // Bug in url extractor where its not capturing the entire url

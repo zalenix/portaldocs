@@ -41,6 +41,7 @@ To define your asset type, simply add the following snippet to PDL:
     LowerSingularDisplayName="{Resource MyAsset.lowerSingular, Module=ClientResources}"
     LowerPluralDisplayName="{Resource MyAsset.lowerPlural, Module=ClientResources}"
     Keywords="{Resource MyAsset.keywords, Module=ClientResources}"
+    Description="{Resource MyAsset.description, Module=ClientResources}"
     Icon="{Resource Content.MyExtension.Images.myAsset, Module=./../_generated/Svg}"
     BladeName="MyAssetBlade"
     PartName="MyAssetPart"
@@ -128,6 +129,28 @@ If you’re using the hosting service, you can do this by updating your domainna
     }
 
 
+#### Handling empty browse
+
+The framework offers the ability to display a description and links in the case that the users filters return no results.
+    
+>NOTE: This will also display if the user visits the browse experience and they have not yet created the given resource.
+
+
+![Empty browse](../media/portalfx-assets/empty-browse.png)
+
+To opt in to this experience you need to provide a `description` and a `link`, these are properties that you provide on your Asset.
+
+```xml
+<AssetType  
+    Name="MyAsset"
+    ...
+    Description="{Resource MyAsset.description, Module=ClientResources}">
+    ...
+    <Link Title="{Resource MyAsset..linkTitle1, Module=ClientResources}" Uri="http://www.bing.com"/>
+    <Link Title="{Resource MyAsset.linkTitle2, Module=ClientResources}" Uri="http://www.bing.com"/>
+    ...
+  </AssetType>
+```
 
 <a name="blades-parts-commands"></a>
 ### Blades, parts, and commands

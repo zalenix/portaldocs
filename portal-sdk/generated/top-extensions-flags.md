@@ -20,7 +20,7 @@ The following table specifies the types of query string flags that are used with
 | Flag               | Purpose | Document | 
 | ------------------ | ------- | -------- |
 | Trace mode         | Temporarily set server characteristics, toggle a behavior, or enable event logging. For the most part, trace mode does   not require changes to extension code. The exception is certain types of logging, as specified in [portalfx-logging-from-typescript-and-dotnet.md](portalfx-logging-from-typescript-and-dotnet.md). <br> Invoked with  `https://portal.azure.com/?trace=<settingName>`.   | [#trace-mode-flags](#trace-mode-flags) |
-| Extension Flags | Allow developers to specify features that they maintain. <br>Invoked with `https://portal.azure.com/?<extensionName>_<extensionFlag>=<value>`.   |  [#extension-flags](#extension-Flags)  |
+| Extension Flags | Allow developers to specify features that they maintain. <br>Invoked with `https://portal.azure.com/?<extensionName>_<extensionFlag>=<value>`.   |  [#extension-flags](#extension-flags)  |
 | Shell flags        | Connect the developer's extension to features that are maintained by the Azure Portal team. Shell features do not require changes to the code in the developer's extension.<br> Invoked with  `https://portal.azure.com/?feature.<featureName>=<value>`.   |  [p#shell-feature-flags](#shell-feature-flags) |
   
 <!-- The following sentence is from portalfx-domain-based-configuration-pattern.md. -->
@@ -240,7 +240,7 @@ The Ibiza Fx team supports the following Shell feature flags. These flags are on
 
 Shell feature flags are invoked with the syntax: `https://portal.azure.com/?feature.<featureName>=true`.
 
-The keyboard shortcut CTRL+ALT+D toggles the visibility of the debug tool, as specified in [top-extensions-debugging-overview.md](top-extensions-debugging-overview.md). The yellow sticky that is located at the bottom on the right side of the window can be used to toggle trace mode flags and shell feature flags.
+The keyboard shortcut CTRL+ALT+D toggles the visibility of the debug tool, as specified in [top-extensions-debugging.md#overview](top-extensions-debugging.md#overview). The yellow sticky that is located at the bottom on the right side of the window can be used to toggle trace mode flags and shell feature flags.
 
 <a name="feature-flags-shell-feature-flags-the-extensionname-flag"></a>
 ### The extensionName flag
@@ -250,7 +250,7 @@ The name of the extension can be used as a feature flag. The extension name can 
  This flag is used to enable or disable an extension, use a different configuration file for an extension, and provide other run-time functionality.  A value of `true` will temporarily enable a disabled extension, and allows the use of other flags. A value of `false` will temporarily disable the extension and leave it in hidden mode. The syntax for the extensionName flag is `https://portal.azure.com?Microsoft_Azure_DevTestLab=true`. It requires the `canmodifystamps` flag to contain a value of `true` in order to be in effect.  For more information, see [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md).
 
 The name of the extension can be used in the query string to access various Shell flags. These are flags that are independent of the **canmodifystamps** flag.
-`   &<extensionName>=true,[<otherShellFlags>]`.  How to use the flags that are within the extension is specified in [portalfx-extensions-feature-flags-developer.md](portalfx-extensions-feature-flags-developer.md);  The Shell flags that require `&<extensionName>=true` are in the following table.
+`   &<extensionName>=true,[<otherShellFlags>]`.  How to use the flags that are within the extension is specified in [#extension-flags](#extension-flags));  The Shell flags that require `&<extensionName>=true` are in the following table.
     
   <!--TODO:  Validate that the parameters are used correctly.  -->
 
@@ -275,7 +275,7 @@ The **canmodifystamps** flag is used in conjunction with the **extensionName** p
  ```
   * **extensionName**: The name of the extension.
 
-    * **stageName**:  The stage that represents a datacenter, as specified in [portalfx-extensions-hosting-service-scenarios.md#sideloading](portalfx-extensions-hosting-service-scenarios.md#sideloading). Use the name that is deployed to a specific stage, for example, stage1.
+    * **stageName**:  The stage that represents a datacenter, as specified in [top-extensions-hosting-service-scenarios.md#sideloading](top-extensions-hosting-service-scenarios.md#sideloading). Use the name that is deployed to a specific stage, for example, stage1.
     * **buildNumber**:  The build number as specified in [portalfx-extensions-hosting-service-scenarios.md#sideloading](portalfx-extensions-hosting-service-scenarios.md#sideloading). Replace the dots in the build number with the letter 'd', so that build number 1.0.8.31 is represented by 1d0d8d31.
     * **uriFormatPrefix**: The value to use when building the **uriFormat** string. For example, when **uriFormat** is `//{0}.devtest.ext.azure.com`, the query string `https://portal.azure.com?feature.canmodifystamps=true&Microsoft_Azure_DevTestLab=perf` would cause  the `{0}` in the **uriFormat** string to be replaced with `perf` and attempt to load the extension from `https://perf.devtest.ext.azure.com`.
     
@@ -404,7 +404,7 @@ The following are the feature flags that are invoked with the syntax: `feature.<
 
 **feature.waitforpendingchanges**: Reserved for future use.
 
-**feature.webworker**: Loads the extension in a separate webworker thread, which makes the extension more performant.  The flag is useful for testing extensions previous to enabling them in production. In a webworker thread, objects such as [DOM](portalfx-extensions-flags-glossary.md), cookies, and other items are not available. The query string parameter works in conjunction with the **supportsWebWorkers** parameter in the `extensions.json` file. The  `extensions.json` file must contain the value  `supportsWebWorkers: "true"`, in order for the feature flag to invoke behavior.  When the `supportsWebWorkers` parameter is absent or set to false, the feature flag cannot invoke any behavior. The query string is as follows: `https://portal.azure.com?extName=<webWorkerId>,<extensionName1>=true,<extensionName2>=true, <extensionName3>=true,feature.webworker=<value>`, where
+**feature.webworker**: Loads the extension in a separate webworker thread, which makes the extension more performant.  The flag is useful for testing extensions previous to enabling them in production. In a webworker thread, objects such as [DOM](portalfx-extensions-glossary-flags.md), cookies, and other items are not available. The query string parameter works in conjunction with the **supportsWebWorkers** parameter in the `extensions.json` file. The  `extensions.json` file must contain the value  `supportsWebWorkers: "true"`, in order for the feature flag to invoke behavior.  When the `supportsWebWorkers` parameter is absent or set to false, the feature flag cannot invoke any behavior. The query string is as follows: `https://portal.azure.com?extName=<webWorkerId>,<extensionName1>=true,<extensionName2>=true, <extensionName3>=true,feature.webworker=<value>`, where
 
   * **webWorkerId**: Identifies the webworker thread.
 

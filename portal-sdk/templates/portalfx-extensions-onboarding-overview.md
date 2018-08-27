@@ -14,7 +14,7 @@ Onboarding a service, or developing a Portal extension, has three phases: onboar
  
 There are lots of docs here. We recommend you send mail to <a href="mailto:ibiza-onboarding-kick@microsoft.com?subject=Kickoff Meeting Request&body=My team would like to meet with you to learn about the Azure onboarding process.">ibiza-onboarding-kick@microsoft.com</a> and request a kickoff meeting. Someone from our team will spend 30 minutes walking through the process at a high level. We can point you in the right direction regarding the latest patterns and practices. We can also answer any questions you have. Finally, we can talk about how the relationship between our teams is managed.
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-onboarding-with-related-teams.md"}
+{"gitdown": "include-file", "file": "../templates/top-extensions-onboarding-with-related-teams.md"}
 
 ## Join DLs and request permissions
 
@@ -26,7 +26,7 @@ Request the following permissions to stay current on product roadmaps, get news 
 
 * Developers should join the appropriate group listed on [http://aka.ms/standardaccess](http://aka.ms/standardaccess) to get access to portal telemetry. All groups on this page receive access. 
 
-* Developers should join the  `Azure Portal Core Team - 15003(15003)` group by using this link: [http://ramweb](http://ramweb).
+* Developers should join the  `Azure Portal Partner Contributors - 19668(19668)` group by using this link: [https://myaccess/identityiq/accessRequest/accessRequest.jsf#/accessRequestSelf/add?quickLink=MS%20RequestAnyAccess](https://myaccess/identityiq/accessRequest/accessRequest.jsf#/accessRequestSelf/add?quickLink=MS%20RequestAnyAccess).
 
 * PMs, Developers, and Developer Leads should subscribe to the partner request process by joining the ```Uservoice ``` group at this link:  [https://aka.ms/portalfx/uservoice](https://aka.ms/portalfx/uservoice). For more information about the partner request process, see [portalfx-extension-partner-request-process.md](portalfx-extension-partner-request-process.md).
 
@@ -40,13 +40,13 @@ Ask an onboarding question on [Stackoverflow](https://stackoverflow.microsoft.co
 
 ## Get the SDK, docs, and samples to your developers
 
- The [development guide](top-extensions-getting-started.md) located in the main documentation index has all the right pointers.
+ The [development guide](portalfx-extensions-getting-started.md) located in the main documentation index has all the right pointers.
 
 # Phase 2 - Development
 
 ## Develop your extension
 
- The [development guide](top-extensions-getting-started.md) located in the main documentation index has all the right pointers.
+ The [development guide](portalfx-extensions-getting-started.md) located in the main documentation index has all the right pointers.
 
 ## Learn about the hosting service / plan your deployment strategy
 
@@ -57,11 +57,11 @@ For less common scenarios, you might need to do a custom deployment.
 For example, if you need to talk to backend services using certificate-based authentication then you'll need controller code on the server. This is not supported with our hosting service. You should be very sure you require a custom hosting solution before going down this path. 
 
 **NOTE**: The deployment can be configured in such a way that the client portion of the extension uses the hosting service while the custom controller code can be deployed separately.
-For more information, see [portalfx-extensions-custom-deployment.md](portalfx-extensions-custom-deployment.md).
+For more information, see [top-extensions-custom-deployment.md](top-extensions-custom-deployment.md).
 
 ## Register the extension with the portal product configuration
 
-Once the name of the extension is finalized, it is time to register the extension in all environments. This requires a portal deployment and can take time. Our Service Level Agreements are located at [portalfx-extensions-svc-lvl-agreements.md](portalfx-extensions-svc-lvl-agreements.md).  Please plan accordingly.
+Once the name of the extension is finalized, it is time to register the extension in all environments. This requires a portal deployment and can take time. Our Service Level Agreements are located at [top-extensions-svc-lvl-agreements.md](top-extensions-svc-lvl-agreements.md).  Please plan accordingly.
 
 * For internal partners, the request to register an extension is a pull request, as specified in [top-extensions-publishing.md](top-extensions-publishing.md).
  

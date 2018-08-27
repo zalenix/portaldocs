@@ -9,7 +9,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 
 ### 1.1 Installation
 
-* [Option 1 - MSI Installer](downloads.md)
+* [Option 1 - MSI Installer](/portal-sdk/generated/downloads.md)
 * [Option 2 - Nuget packages](portalfx-nuget-overview.md)
 
 ### 1.2 Getting Set up in an IDE - *Typescript version / Compile on save*
@@ -82,7 +82,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 * [No-PDL Blades](portalfx-no-pdl-programming.md#defining-blades-and-parts-using-typescript-decorators-aka-no-pdl) - *Reduces the number of files and concepts to build UI*
 * [Forms without edit scope](portalfx-editscopeless-forms.md) - *More intuitive APIs for building forms*
 * Editable Grid V2 - *Improved APIs designed to work with new forms*
-* [Extension Avialability Alerts](portalfx-telemetry-alerting.md#alerting) - *Get notified if your extension goes down*
+* [Extension Avialability Alerts] (portalfx-telemetry-alerting.md#alerting) - *Get notified if your extension goes down*
 * Actionable Notifications - *Point users to well known next steps*
 * [EV2 support for the Extension Hosting Service](portalfx-extension-hosting-service-advanced.md#advanced-section) - *Nuff said*
 * [Multi-Column for Essentials Controls](portalfx-controls-essentials.md) - *Better use of screen real estate*
@@ -186,7 +186,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
     * [Work with other teams to have other extensions call 'container.openBlade(...)' to open my Blade](portalfx-blades-opening.md#importing-the-pde-file)
     * Associate my Blade with an <AssetType> so it is opened from Browse
     * [Add my Blade as an entry in a Resource Blade or a Menu Blade]
-        * [No-PDL](portalfx-no-pdl.md#building-a-menu-blade-using-decorators)
+        * [No-PDL](portalfx-no-pdl-programming.md#building-a-menu-blade-using-decorators)
         * [PDL](portalfx-blades-menublade.md)
 * [Parts]
     * Make my Blades pinnable using @Blade.Pinnable.Decorator/onPin

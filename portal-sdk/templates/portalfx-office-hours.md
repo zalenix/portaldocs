@@ -24,7 +24,7 @@ We encourage all of our partners that wish to attend to schedule a meeting with 
 
 ### User experience consistency
 
-- *When?*  Thursdays from 8:00 to 12:30
+- *When?*  Thursdays from 9:00 to 13:00
 - *Where?* B42 (Conf Room 42/45) + Skype (if requested)
 - *Contacts:* Eric Winner (ewinner), Leon Welicki (lwelicki)
 - *Goals*

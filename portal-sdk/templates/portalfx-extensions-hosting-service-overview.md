@@ -68,7 +68,7 @@ Extensions that have server-side code or controllers can use hosting services.  
     The extension versions that are available in the Hosting Service are located at the following URLs.
 
     * Dogfood: [https://hosting.onecloud.azure-test.net/api/diagnostics](https://hosting.onecloud.azure-test.net/api/diagnostics)
-    * MPAC: [https://hosting-ms.portal.azure.net/api/diagnostics](https://hosting-ms.portal.azure.net/api/diagnostics)
+    * MPAC: [https://ms.hosting.portal.azure.net/api/diagnostics](https://ms.hosting.portal.azure.net/api/diagnostics)
     * PROD: [https://hosting.portal.azure.net/api/diagnostics](https://hosting.portal.azure.net/api/diagnostics)
 
  ## Prerequisites for onboarding hosting service

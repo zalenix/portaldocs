@@ -64,23 +64,26 @@
 
 <a name="telemetry-performance"></a>
 ## Performance
-* [Overview](portalfx-performance.md#overview)
+* [Performance Overview](portalfx-performance.md#performance-overview)
     * [Extension performance](portalfx-performance.md#extension-performance)
     * [Blade performance](portalfx-performance.md#blade-performance)
     * [Part performance](portalfx-performance.md#part-performance)
     * [WxP score](portalfx-performance.md#wxp-score)
     * [How to assess your performance](portalfx-performance.md#how-to-assess-your-performance)
 * [Performance Frequently Asked Questions (FAQ)](portalfx-performance.md#performance-frequently-asked-questions-faq)
-    * [My Blade 'Revealed' is above the bar, what should I do](portalfx-performance.md#my-blade-revealed-is-above-the-bar-what-should-i-do)
-    * [My Part 'Revealed' is above the bar, what should I do](portalfx-performance.md#my-part-revealed-is-above-the-bar-what-should-i-do)
+    * [My Extension 'load' is above the bar, what should I do](portalfx-performance.md#my-extension-load-is-above-the-bar-what-should-i-do)
+    * [My Blade 'FullReady' is above the bar, what should I do](portalfx-performance.md#my-blade-fullready-is-above-the-bar-what-should-i-do)
+    * [My Part 'Ready' is above the bar, what should I do](portalfx-performance.md#my-part-ready-is-above-the-bar-what-should-i-do)
     * [My WxP score is below the bar, what should I do](portalfx-performance.md#my-wxp-score-is-below-the-bar-what-should-i-do)
+    * [Is there any way I can get further help](portalfx-performance.md#is-there-any-way-i-can-get-further-help)
 * [Performance best practices](portalfx-performance.md#performance-best-practices)
-    * [Configuring CDN](portalfx-performance.md#configuring-cdn)
-    * [Extension HomePage Caching](portalfx-performance.md#extension-homepage-caching)
-    * [Persistent Caching of scripts across extension updates](portalfx-performance.md#persistent-caching-of-scripts-across-extension-updates)
-    * [Run portalcop to identify and resolve common performance issues](portalfx-performance.md#run-portalcop-to-identify-and-resolve-common-performance-issues)
-    * [Optimize number CORS preflight requests to ARM using invokeApi](portalfx-performance.md#optimize-number-cors-preflight-requests-to-arm-using-invokeapi)
-    * [Improve part responsiveness with revealContent](portalfx-performance.md#improve-part-responsiveness-with-revealcontent)
+    * [Operational best practices](portalfx-performance.md#operational-best-practices)
+    * [Coding best practices](portalfx-performance.md#coding-best-practices)
+    * [General best practices](portalfx-performance.md#general-best-practices)
+* [Performance profiling](portalfx-performance.md#performance-profiling)
+    * [How to profile your scenario](portalfx-performance.md#how-to-profile-your-scenario)
+    * [Idenitifying common slowdowns](portalfx-performance.md#idenitifying-common-slowdowns)
+    * [Verifying a change](portalfx-performance.md#verifying-a-change)
 
 
 <a name="telemetry-reliability"></a>

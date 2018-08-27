@@ -5,7 +5,7 @@
 
 Exposing new functionality to a limited set of users can be useful. It tests the stability of the feature, and helps identify the most effective of several implementations for usability and performance. 
 
-The Ibiza team uses the MPAC environment that is located at [ms.portal.azure.com](ms.portal.azure.com) to flight pre-production versions of an extension previous to deploying  the bits to production. Typically, the MPAC environment points to the production version of various extensions.  It is connected to the production version of ARM and the Azure servers.
+The Ibiza team uses the MPAC environment that is located at [https://ms.portal.azure.com](https://ms.portal.azure.com) to flight pre-production versions of an extension previous to deploying  the bits to production. Typically, the MPAC environment points to the production version of various extensions.  It is connected to the production version of ARM and the Azure servers.
 
 If you are trying to experiment with a particular feature in production then you might want to read [top-extensions-flags.md](top-extensions-flags.md) instead of this document. This document is more about verifying the stability of your extension before exposing it to all users. There may be cases where the framework makes something difficult to flight because extensions do not have programmatic access to turn things on and off dynamically. In this case it might be ok to fall back to the MPAC flighting method to run your experiment.
 

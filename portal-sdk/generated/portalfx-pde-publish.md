@@ -1,13 +1,4 @@
 
-<tags
-    ms.service="portalfx"
-    ms.workload="portalfx"
-    ms.tgt_pltfrm="portalfx"
-    ms.devlang="portalfx"
-    ms.topic="distribute-pde"
-    ms.date="04/18/2016"
-    ms.author="nickha"/>    
-
 <a name="sharing-your-pde-with-other-teams"></a>
 ## Sharing your PDE with other teams
 
@@ -17,10 +8,10 @@ To share your PDE with other teams please follow these guidelines:
 
 - Create a NuGet
     
-    - use the consistent naming convention Microsoft.Portal.Extensions.&lt;Name&gt;
-    - the *.pde file is to be delivered under /Client/_extensions/&lt;Name&gt; 
+    - use the consistent naming convention `Microsoft.Portal.Extensions.<Name>`
+    - the *.pde file is to be delivered under `/Client/_extensions/<Name>` 
   
-    The following nuproj snippet can be used to customimze for your extensions NuGet creation. Most teams name it Microsoft.Portal.Extensions.&lt;Name&gt; to be consistent with the produced package name
+    The following nuproj snippet can be used to customimze for your extensions NuGet creation. Most teams name it `Microsoft.Portal.Extensions.<Name>` to be consistent with the produced package name
     
     ```xml
 
@@ -82,4 +73,4 @@ To share your PDE with other teams please follow these guidelines:
         - if you don’t have access follow the instructions [here](http://aka.ms/azuregithub) to enable 2FA on your github account and link your microsoft account
 		- Then through [here](http://aka.ms/azuregithub) request access to portalfxdocs
 
-- The resulting NuGet is to be published from your official builds to [http://wanuget/Official/](http://wanuget/Official/). See OneBranch guidance to [publish your package](https://microsoft.sharepoint.com/teams/WAG/EngSys/Implement/OneBranch/Publish%20your%20package.aspx)
+- The resulting NuGet is to be published from your official builds to [https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=Official&_a=feed](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=Official&_a=feed). See OneBranch guidance to [publish your package](https://microsoft.sharepoint.com/teams/WAG/EngSys/Implement/OneBranch/Publish%20your%20package.aspx)
