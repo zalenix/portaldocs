@@ -30,7 +30,7 @@ External partners can download and install the NuGet packages when they install 
 ### Update your NuGet Packages
 
 * In Visual Studio
-1. Install the latest version of the Portal SDK MSI, as specified in [downloads.md](downloads.md).
+1. Install the latest version of the Portal SDK MSI, as specified in [downloads.md](/portal-sdk/generated/downloads.md).
 1. In Visual Studio open your Solution and select `Tools > NuGet Package Manager > Manage NuGet packages for Solution…`.
 1. Select all `Microsoft.Portal.*` NuGet packages.
 1. Click `Update`.

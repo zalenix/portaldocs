@@ -439,11 +439,18 @@ If you are using safe deployment then it is likely that you want to rollout a ne
 1. If the version to be published is in the storage account 
     * Update specific stage in config.json to this verion
 
+<a name="30-sec-overview-deploying-a-new-version-of-extension-hosting-service-diagnostics"></a>
+#### Hosting Service diagnostics
 The versions available in the Hosting Service can be seen by going to the following URL:
-
-Dogfood: https://hosting.onecloud.azure-test.net/api/diagnostics
-MPAC: https://hosting-ms.portal.azure.net/api/diagnostics
-PROD: https://hosting.portal.azure.net/api/diagnostics
+ 
+| Environment   | Hosting service                                               | 
+|---------------|---------------------------------------------------------------| 
+| Dogfood       | https://hosting.onecloud.azure-test.net/api/diagnostics       | 
+| MPAC          | https://ms.hosting.portal.azure.net/api/diagnostics          | 
+| PROD          | https://hosting.portal.azure.net/api/diagnostics              | 
+| Mooncake      | https://hosting.azureportal.chinacloudapi.cn/api/diagnostics  | 
+| Blackforest   | https://hosting.azure-api.de/api/diagnostics                  | 
+| Fairfax       | https://hosting.azureportal.usgovcloudapi.net/api/diagnostics | 
 
 
 <a name="30-sec-overview-monitoring-and-logging"></a>

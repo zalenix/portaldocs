@@ -62,7 +62,7 @@ for static resources (images, scripts, etc.). This shifts the location of the mo
 
 The portal is deployed continuously. On any given day, multiple bug fixes, new features, and API changes may be deployed
 to production. When a new version of the portal is deployed to production, the corresponding version of the SDK is
-automatically released to the [download center](downloads.md). The download center contains the change log for the given
+automatically released to the [download center](/portal-sdk/generated/downloads.md). The download center contains the change log for the given
 release, including bug fixes, new features, and a log of breaking changes.
 
 <a name="deploy-before-deploying-your-extension"></a>
@@ -657,11 +657,18 @@ If you are using safe deployment then it is likely that you want to rollout a ne
 1. If the version to be published is in the storage account 
     * Update specific stage in config.json to this verion
 
+<a name="deploy-30-sec-overview-deploying-a-new-version-of-extension-hosting-service-diagnostics"></a>
+#### Hosting Service diagnostics
 The versions available in the Hosting Service can be seen by going to the following URL:
-
-Dogfood: https://hosting.onecloud.azure-test.net/api/diagnostics
-MPAC: https://hosting-ms.portal.azure.net/api/diagnostics
-PROD: https://hosting.portal.azure.net/api/diagnostics
+ 
+| Environment   | Hosting service                                               | 
+|---------------|---------------------------------------------------------------| 
+| Dogfood       | https://hosting.onecloud.azure-test.net/api/diagnostics       | 
+| MPAC          | https://ms.hosting.portal.azure.net/api/diagnostics          | 
+| PROD          | https://hosting.portal.azure.net/api/diagnostics              | 
+| Mooncake      | https://hosting.azureportal.chinacloudapi.cn/api/diagnostics  | 
+| Blackforest   | https://hosting.azure-api.de/api/diagnostics                  | 
+| Fairfax       | https://hosting.azureportal.usgovcloudapi.net/api/diagnostics | 
 
 
 <a name="deploy-30-sec-overview-monitoring-and-logging"></a>
