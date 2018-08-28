@@ -14,6 +14,8 @@ Couldn't find what you needed? [Ask about the docs on StackOverflow](https://sta
 
 * [Production-ready metrics](/portal-sdk/generated/top-extensions-production-ready-metrics.md)
 
+* [Partner request process](top-extensions-partner-request.md)
+
 Kickoff the onboarding experience by sending mail to <a href="mailto:ibiza-onboarding-kick@microsoft.com?subject=Kickoff Meeting Request&body=My team would like to meet with you to learn about the Azure onboarding process.">Azure Onboarding Team</a>.
 
 ## Azure portal architecture
@@ -22,9 +24,7 @@ Learn how the framework is structured and how it is designed to run in multiple 
 
 * [Architecture overview](/portal-sdk/generated/top-extensions-architecture.md)
 
-* [Authentication architecture](/portal-sdk/generated/top-extensions-authentication-flow.md)
-
-* [Authentication](/portal-sdk/generated/top-extensions-procedure.md)
+* [Authentication architecture](/portal-sdk/generated/top-extensions-authentication.md)
 
 ## What's new
 
@@ -60,7 +60,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 
 * [How to update portal Nuget packages](/portal-sdk/generated/top-extensions-nuget.md)
 
-* [Develop extensions](/portal-sdk/generated/top-extensions-getting-started.md)
+* [Getting started](/portal-sdk/generated/top-extensions-getting-started.md)
 
 * [SDK Update policy and alerts](/portal-sdk/generated/top-extensions-getting-started.md#maintain-development-environment)
 
@@ -90,7 +90,7 @@ The primary UI building block is a called a blade. A blade is like a page. It ge
 
 * [Open and close blades programmatically](/portal-sdk/generated/top-blades-opening-and-closing.md)
 
-* [Advanced blade topics](/portal-sdk/generated/top-blades-advanced.md)
+* [Advanced TemplateBlade topics](/portal-sdk/generated/top-blades-advanced.md)
 
 * [Blade settings](/portal-sdk/generated/top-blades-settings.md)
 
@@ -203,6 +203,8 @@ Because your extension is Web code, you can make **AJAX** calls to various servi
 ## Testing
 
 The Ibiza team provides limited testing support. Due to resource constraints the C# and Node.js frameworks are open source, so that partners can unblock themselves if the Ibiza team cannot make requested improvements as quickly as you might expect.
+
+* [How to choose between test frameworks](top-extensions-testing.md)
 
 * [Unit testing support](/portal-sdk/generated/top-extensions-unit-test.md)
 
