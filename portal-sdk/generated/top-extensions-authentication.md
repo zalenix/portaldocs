@@ -1,5 +1,73 @@
 
-<a name="overview"></a>
+ 
+<a name="portal-authentication-architecture"></a>
+# Portal Authentication Architecture
+
+The Azure Portal calls a number of other extensions so that a user can sign-in and authenticate to use Portal services.
+
+The following image explains the internal workings of how the Portal, its extensions and the API's that back those extensions integrate with Azure AD for authentication.
+
+![alt-text](../media/top-extensions-authentication/authentication.png "Authentication")
+
+The following is the signin process that is performed by the Portal.
+
+1. User browses to the Portal.
+
+1. The Portal redirects to AAD to sign in. 
+
+1. AAD redirects to the `portal.azure.com/signin` with an id_token. The audience of the id_token is the Azure Portal app.
+
+1. The Portal server exchanges this code for an access token. This refresh token is returned to the browser, as part of the Portal Shell UI and is stored in memory.
+
+1. When the user triggers the loading of the extension, the extension home page is downloaded from the location in the extension configuration, as specified in [portalfx-extensions-configuration-overview.md](portalfx-extensions-configuration-overview.md). This provides information required by the Shell to bootstrap the extension UI.
+
+1. When an extension asks for a token, it makes a request to the Portal `DelegationToken` controller endpoint. This endpoint requires the refresh token that was just acquired, in addition to the extension name and the resource name that the extension requested. This endpoint returns access tokens to the browser. 
+
+    * Sample request:
+        ```
+        "extensionName":"Microsoft_AAD_IAM",
+        "resourceName":"self",
+        "tenant":"9e4917cd-bd32-4371-b1c8-82b5d610f2e2",
+        "portalAuthorization":"MIIF…."
+        ```
+
+    * Sample response:
+        ```
+        "value":{
+        "authHeader":"Bearer eyJ0...",
+        "authorizationHeader":"Bearer ...",
+        "expiresInMs":3299000,
+        "refreshToken":"MIIF...",
+        "error":null,
+        "errorMessage":null
+        },
+        "portalAuthorization":"MIIF..."
+        ```
+
+    **NOTE**: Tokens are cached in memory on the server. In this example, the `resourceName:self` indicates that this extension only calls itself from the client.
+
+1. Now the extension's client side can call server side API's, or call external services directly. 
+
+    * Server side API 
+
+        The extension's server-side code can exchange its current access token for another access token that allows it to use resources, as described in [http://aka.ms/portalfx/onbehalfof](http://aka.ms/portalfx/onbehalfof). The developer manages the permissions and dependencies for the extension by registering the application and coordinating with AAD Onboarding, as specified in [portalfx-extensions-onboarding-aad.md](portalfx-extensions-onboarding-aad.md). The registered  extension's server side code exchanges its access token for an access token for AAD Graph. 
+
+    *  Direct external services call
+
+        The PortalFx's client side `ajax` wrapper makes the `DelegationToken` call to get a token for the specified resource. In this case, the PortalFx team creates the app registration for the extension and manages permissions for the API's as specified in [top-extensions-configuration.md](top-extensions-configuration.md).
+
+        The framework keeps track of token expiration. When the user interacts with the site in a way that results in an API call, and the token is about to expire, the framework makes the call to `DelegationToken` again to get new access tokens. The extension uses the PortalFx's client side `ajax` wrapper.
+
+The Portal signs the user into the last-used directory, the home directory for AAD accounts, or the first directory it gets from ARM for MSA accounts. It also loads the Startboard and all extensions.
+
+Navigating to a new extension repeats this process, beginning at triggering the loading of the extension. If the user revisits an extension, a client side in-memory token cache is used instead of  making another request to the Portal `DelegationToken` controller endpoint. This cache is lost on page refresh.
+
+**NOTE**: Cookies are not used for authentication.
+
+For more information about OIDC flow, see [https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-openid-connect-code](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-openid-connect-code).
+
+ 
+<a name="portal-authentication-architecture-overview"></a>
 ## Overview
 
 The Portal uses an internal provider for authentication and authorization. The built-in cloud authentication provider uses Azure Active Directory (AAD), which also supports Microsoft Account users. If your extension needs to differentiate between AAD and MSA users, see [Access claims from the extension server](#access-claims-from-the-extension-server). If you are working on first-party extensions, but you are not sure that your extension scenarios comply with Azure terms and conditions, you may want to reach out to <a href="mailto:ibiza-lca@microsoft.com?subject=Compliance with Azure Terms and Conditions">ibiza-lca@microsoft.com</a>.
@@ -26,7 +94,7 @@ Calling external services involves AAD Onboarding.  The onboarding process can t
 
 * * *
 
-<a name="call-arm-from-the-client"></a>
+<a name="portal-authentication-architecture-call-arm-from-the-client"></a>
 ## Call ARM from the client
 
 Your extension should use cross-origin resource sharing (CORS) for all non-aggregated, non-orchestrated calls. If you need to call multiple sources for a single piece of UI, you should use a server API to orchestrate and aggregate those calls.
@@ -35,7 +103,7 @@ Use the built-in `ajax()` function to communicate from the extension client to c
 
 **NOTE**: Do not use `jQuery.ajax()` because it will not properly authorize your requests. If you have a scenario that is not supported by `ajax()`, you can use the `getAuthorizationToken()` function to obtain a token and manually attach it to your request.
 
-<a name="call-arm-from-the-server"></a>
+<a name="portal-authentication-architecture-call-arm-from-the-server"></a>
 ## Call ARM from the server
 
 Use the `WebApiClient` class to call ARM from your extension server. This class attaches a token to the request on your behalf, in a manner similar to the client `ajax()` function.  The following code attaches a token that is targeted at ARM.
@@ -49,7 +117,7 @@ Use the `WebApiClient` class to call ARM from your extension server. This class 
     }
 ```
 
-<a name="call-external-resources"></a>
+<a name="portal-authentication-architecture-call-external-resources"></a>
 ## Call external resources
 
 Only Ibiza has the authority to mint tokens. To call external resources, extension developers need to request the creation of the AAD and register the extension resources with Ibiza for the appropriate environment, as specified in [top-onboarding.md#register-the-extension-with-the-portal-product-configuration](top-onboarding.md#register-the-extension-with-the-portal-product-configuration). 
@@ -181,7 +249,7 @@ The following example enables `Contoso_Extension`, a sample extension that queri
     });
     ```
 
-<a name="access-claims"></a>
+<a name="portal-authentication-architecture-access-claims"></a>
 ## Access claims
 
 Tokens received from AAD contain a set of claims that are formatted as key-value pairs.  They contain information about the user, and they are only available to extensions that comply with the Azure privacy policy that is located at [https://www.microsoft.com/en-us/TrustCenter/Privacy/default.aspx](https://www.microsoft.com/en-us/TrustCenter/Privacy/default.aspx). 
@@ -192,7 +260,7 @@ They may include items like a list of directories that the user can  access from
 
 Extensions that are not covered by this policy, like the ones that share PII with third-parties, do not have access to the token or its claims, because Microsoft can be sued for abuse or misuse of PII as specified in the  privacy policy. These exceptions need to be approved by reaching out to <a href="mailto:ibiza-lca@microsoft.com?subject=Personally-identifiable Information Policy">ibiza-lca@microsoft.com</a>.
 
-<a name="access-claims-access-claims-from-the-client"></a>
+<a name="portal-authentication-architecture-access-claims-access-claims-from-the-client"></a>
 ### Access claims from the client
 
 Extensions that have access to claims can use the `getUserInfo()` API to retrieve common claims from the client.
@@ -214,7 +282,7 @@ interface UserInfo {
 }
 ```
 
-<a name="access-claims-access-claims-from-the-extension-server"></a>
+<a name="portal-authentication-architecture-access-claims-access-claims-from-the-extension-server"></a>
 ### Access claims from the extension server
 
 <!-- TODO:  This aka.ms link was previously (http://msdn.microsoft.com/library/system.web.httpcontext.user.aspx). The aka.ms link is to a new version of the same content.  Determine whether this was the intent. -->
@@ -314,7 +382,7 @@ The following code sample retrieves common claims.
 
 For more information about default claims that are provided by AAD, see the "Azure AD token reference" article located at [http://aka.ms/portalfx/tokensandclaims](http://aka.ms/portalfx/tokensandclaims).
 
-<a name="access-claims-enable-local-portal-authentication"></a>
+<a name="portal-authentication-architecture-access-claims-enable-local-portal-authentication"></a>
 ### Enable local portal authentication
 
 Authentication is not configured in the local Portal by default, which simplifies extension development. Use the following steps to enable authentication.
@@ -335,7 +403,7 @@ Authentication is not configured in the local Portal by default, which simplifie
 
    <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
 
-<a name="access-claims-get-subscription-list"></a>
+<a name="portal-authentication-architecture-access-claims-get-subscription-list"></a>
 ### Get subscription list
 
 ***How do I get the list of subscriptions? Or just those selected by a user?***
@@ -344,7 +412,7 @@ SOLUTION: Call the `MsPortalFx.Azure.getAllSubscriptions()` or `MsPortalFx.Azure
 
 * * *
 
-<a name="access-claims-session-expiration"></a>
+<a name="portal-authentication-architecture-access-claims-session-expiration"></a>
 ### Session expiration
 
 ***When do authenticated sessions expire?***
@@ -360,3 +428,4 @@ This typically happens after a few hours of usage, maybe eight to 24 hours based
 <!--
  gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-authentication.md"}
  -->
+
