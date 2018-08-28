@@ -39,36 +39,8 @@ The key items that are displayed are as follows.
 
 * Toolbar
 
-    The toolbar contains actions that operate against the grid, add and delete resources as well as resource-specific actions for a limited set of resource types. An example toolbar is in the following image.
+    The toolbar contains actions that operate against the grid. For more information, see [#toolbar](#toolbar).
     
-    ![alt-text](../media/top-extensions-resources/toolbar.png "Toolbar")
-    
-    The recommended actions for the toolbar are as follows.
-
-    * Add
-
-        Invokes the Resource Create experience for the resource types displayed in the "new" resource blade. Uses the `Add command` SDK as specified in [top-extensions-browse.md#the-add-command](top-extensions-browse.md#the-add-command).
-
-    * Edit columns
-
-        Change the columns in the grid. An example is in the following image.
-
-        ![alt-text](../media/top-extensions-resources/edit.png "Changing grid columns")
-
-        **NOTE**: Remember to include key columns for specified resource types. Do not offer a Resource Browse experience that does not contain any resource-specific properties.
-  
-    * Refresh
-
-        Repopulate the grid with fresh data
-        
-    * Assign tags
-
-        Assign tags to the selected grid items.  The option is disabled until grid items are selected.
-
-    * Delete
-
-        Delete the selected grid items.  The option is disabled until grid items are selected.
-
 * Filter panel
 
     The filter panel contains a list of properties that are common across all the resource types displayed in the grid. 
@@ -107,3 +79,39 @@ The key items that are displayed are as follows.
     * Per-row actions
 
         Actions can be added on a per-row basis using context menu commands as specified in [top-extensions-browse.md#add-context-menu-commands](top-extensions-browse.md#add-context-menu-commands).
+
+### Toolbar
+
+The toolbar allows the user to add and delete resources from the grid, in addition to performing resource-specific actions for a limited set of resource types. An example toolbar is in the following image.
+    
+    ![alt-text](../media/top-extensions-resources/toolbar.png "Toolbar")
+    
+    The recommended actions for the toolbar are as follows.
+
+    * Add
+
+        Invokes the Resource Create experience for the resource types displayed in the "new" resource blade. Uses the `Add command` SDK as specified in [top-extensions-browse.md#the-add-command](top-extensions-browse.md#the-add-command).
+
+    * Edit columns
+
+        Change the columns in the grid. An example is in the following image.
+
+        ![alt-text](../media/top-extensions-resources/edit.png "Changing grid columns")
+
+        **NOTE**: Remember to include key columns for specified resource types. Do not offer a Resource Browse experience that does not contain any resource-specific properties.
+  
+    * Refresh
+
+        Repopulate the grid with fresh data
+        
+    * Assign tags
+
+        Assign tags to the selected grid items.  The option is disabled until grid items are selected.
+
+    * Delete
+
+        Delete the selected grid items.  The option is disabled until grid items are selected.
+
+    * Feedback
+        
+        Allows users to give feedback about the Azure Portal Resource Browse experience.
