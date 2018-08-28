@@ -181,7 +181,7 @@ The Ibiza team provides limited testing support. Due to resource constraints the
 | C# test framework (Open source) | [/portal-sdk/generated/ top-extensions-csharp-test-framework.md](/portal-sdk/generated/top-extensions-csharp-test-framework.md) | A framework for UI-based Selenium Webdriver tests |
 | Node.js test framework (Open source) | [/portal-sdk/generated/ top-extensions-msportalfx-test.md](/portal-sdk/generated/top-extensions-msportalfx-test.md) | An end-to-end test framework that tests extension interactions with user behavior |
 
-### Telemetry and alerting
+## Telemetry and alerting
 
 The Ibiza team collects standard telemetry for generic actions like blade opening and commmand execution. It also collects performance, reliability, and user feedback information that facilitate the operation of your extension. You can also write your own events via the telemetry system. Ibiza supports alerting for common operations scenarios.
 
@@ -194,7 +194,7 @@ The Ibiza team collects standard telemetry for generic actions like blade openin
 | Collecting feedback from your users | /portal-sdk/generated/ | |
 | Set up and verify telemetry logging from your extension | /portal-sdk/generated/ | |
 
-### Experimentation and flighting
+## Experimentation and flighting
 
 It is common for teams to want to experiment with new capabilities. We offer two framework features that make this possible.
 
@@ -203,7 +203,7 @@ It is common for teams to want to experiment with new capabilities. We offer two
 | Flighting a new version of your extension in MPAC | [/portal-sdk/generated/ top-extensions-flighting.md](/portal-sdk/generated/top-extensions-flighting.md) | Testing control group/experiment group versions of an extension previous to production deployment |
 | Feature flags to enable or disable individual features within an environment | [/portal-sdk/generated/ top-extensions-flags.md](/portal-sdk/generated/top-extensions-flags.md) | Query string flags that modify the run-time behavior of extensions for interacting with the Portal, or controlling and diagnosing extension behavior |
 
-### Localization and globalization
+## Localization and globalization
 
 The Azure portal supports multiple languages and locales. You will need to localize your content.
 
@@ -215,7 +215,7 @@ The Azure portal supports multiple languages and locales. You will need to local
 | Testing localization with side-loading           | [/portal-sdk/generated/ top-extensions-sideloading.md](/portal-sdk/generated/top-extensions-sideloading.md) | |
 | Formatting numbers, currencies and dates         | [/portal-sdk/generated/ top-extensions-localization-globalization.md #globalization-api](/portal-sdk/generated/top-extensions-localization-globalization.md#globalization-api) | |
 
-### Accessibility
+## Accessibility
 
 The Azure Portal strives to meet high accessibility standards to ensure the product is accessible to users of all levels of ability. There is regular testing and a process with SLAs for getting issues addressed quickly.
 
@@ -224,7 +224,7 @@ The Azure Portal strives to meet high accessibility standards to ensure the prod
 | Accessibility guidelines | [/portal-sdk/generated/ top-extensions-accessibility.md](/portal-sdk/generated/top-extensions-accessibility.md) | |
 | Accessibility testing and SLAs | [/portal-sdk/generated/ top-extensions-accessibility.md #accessibility-planning](/portal-sdk/generated/top-extensions-accessibility.md#accessibility-planning) | How to report bugs to the Accessibility Team |
 
-### Deploying your extension
+## Deploying your extension
 
 Learn how to deploy your extension to the various clouds and environments.
 
@@ -234,7 +234,7 @@ Learn how to deploy your extension to the various clouds and environments.
 | Moving from private preview to public preview to GA | [/portal-sdk/generated/ top-extensions-developmentPhases.md](/portal-sdk/generated/top-extensions-developmentPhases.md) | Development phases of an extension  |
 | Deploying your extension | [/portal-sdk/generated/ top-extensions-deployment.md](/portal-sdk/generated/portal-sdk/generated/top-extensions-deployment.md) | Developer checklist for extension deployment and tuning  |
 
-#### Deployment using the Extension Hosting Service
+### Deployment using the Extension Hosting Service
 
 The Ibiza team provides and operates a common Extension Hosting Service that makes it easy to get your bits into a globally distributed system without having to manage your own infrastructure.
 
@@ -247,7 +247,7 @@ The Ibiza team provides and operates a common Extension Hosting Service that mak
 | Deploying your extension using Express V2 and the Extension Hosting Service | [/portal-sdk/generated/ top-extensions-hosting-service-advanced.md](/portal-sdk/generated/top-extensions-hosting-service-advanced.md)| |
 | SLA for registering an extension with the Extension Hosting Service | [/portal-sdk/generated/ top-extensions-svc-lvl-agreements.md](/portal-sdk/generated/top-extensions-svc-lvl-agreements.md) | |
 
-#### Custom extension deployment infrastructure
+### Custom extension deployment infrastructure
 
 You should strive to use the Extension Hosting Service.
 
@@ -255,7 +255,7 @@ You should strive to use the Extension Hosting Service.
 | ----------------------------- | -------- | ------- |
 | Legacy Do-It-Yourself Hosting | [/portal-sdk/generated/ top-extensions-custom-deployment.md](/portal-sdk/generated/top-extensions-custom-deployment.md) | How to build a custom extension deployment infrastructure |
 
-### Legacy features
+## Legacy features
 
 These features are supported, but have had no recent investment. No additional investment is planned. There are modern capabilities that should be used instead if you are developing new features.
 
@@ -267,7 +267,7 @@ These features are supported, but have had no recent investment. No additional i
 | Controls in the MsPortalFx namespace | [/portal-sdk/generated/ top-extensions-samples-controls-deprecated.md](/portal-sdk/generated/top-extensions-samples-controls-deprecated.md) | A list of deprecated controls and the replacements to use when migrating to more performant extensions. |
 | EditScope | [/portal-sdk/generated/ top-legacy-editscopes.md](/portal-sdk/generated/top-legacy-editscopes.md) | |
 
-### Additional resources
+## Additional resources
 
 The documents are combinations from all the previous topics. Consequently, there may be some repetition.
 
