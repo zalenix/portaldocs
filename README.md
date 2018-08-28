@@ -146,7 +146,7 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 
 * [Blades that create or provision resources and services](/portal-sdk/generated/top-extensions-create.md)
 
-* [Add your resource or service into the Browse menu](/portal-sdk/generated/top-extensions-browse.md)
+* [Add your resource or service into the Browse menu](/portal-sdk/generated/top-extensions-resource-browse.md)
 
 * [Common UX for Azure Resource Manager (ARM) based services](/portal-sdk/generated/top-extensions-resource-manager.md)
 
