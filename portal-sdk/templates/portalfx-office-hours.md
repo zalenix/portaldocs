@@ -9,8 +9,8 @@ We encourage all of our partners that wish to attend to schedule a meeting with 
 
 ### Performance
 
-- *When?*  Wednesdays from 1:00 to 3:30
-- *Where?* B42 (Conf Room 42/46)
+- *When?*  Wednesdays from 13:00 to 16:00
+- *Where?* B41 (Conf Room 41/24)
 - *Contacts:* Sean Watson (sewatson)
 - *Goals*
     - Help extensions to meet the performance bar
@@ -19,7 +19,7 @@ We encourage all of our partners that wish to attend to schedule a meeting with 
 - *How to book time*: Send a meeting request with the following
     - TO: sewatson;
     - Subject: YOUR_EXTENSION_NAME: Azure performance office hours
-    - Location: Conf Room 42/46 (It is already reserved)
+    - Location: Conf Room 41/24 (It is already reserved)
 
 
 ### User experience consistency
