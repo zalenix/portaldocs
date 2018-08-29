@@ -4,6 +4,33 @@ This is the home page for all documentation related to onboarding, developing, o
 
 * Quick Reference
 
+    * [What’s new](#what's-new)
+
+    * [Azure Portal Architecture](#azure-portal-architecture)
+    
+    * [SDK API Reference](https://docs.microsoft.com/en-us/dotnet/api/overview/azure/?view=azure-dotnet)
+    
+    * [Marketplace](#marketplace/gallery-developer-resources)
+
+* Azure Core Documentation 
+
+    * [Design extensions](#design-patterns-for-common-scenarios) 
+
+    * [Onboarding](#onboard-a-new-extension) 
+
+    * [Build extensions](#build-extensions)
+
+    * [Test](#test-extensions)
+
+    * [Fundamentals](#fundamentals)
+
+    * [Deploy](#deployment)
+
+    * [Operate and Support](#operations)
+
+Couldn't find what you needed? [Ask about the docs on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-missing-docs). A list of all Ibiza StackOverflow topics is located at [portalfx-stackoverflow.md](portalfx-stackoverflow.md).
+
+
 ## What's new
 
 | Name | Location | Purpose |
@@ -25,18 +52,6 @@ Learn how the framework is structured and how it is designed to run in multiple 
 | ---- | -------- | ------- |
 | Architecture overview | [/portal-sdk/generated/ top-extensions-architecture.md](/portal-sdk/generated/top-extensions-architecture.md) | Describes the components of the Azure Portal  and their interrelationships |
 | Authentication | [/portal-sdk/generated/ top-extensions-authentication.md](/portal-sdk/generated/top-extensions-authentication.md) |  |
-
-* Azure Core Documentation 
-
-    * [Design extensions](#design-patterns-for-common-scenarios) 
-    * [Onboarding](#onboard-a-new-extension) 
-    * [Build extensions](#build-extensions)
-    * [Test](#test-extensions)
-    * [Fundamentals]()
-    * [Deploy]()
-    * [Operate/Support]()
-
-Couldn't find what you needed? [Ask about the docs on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-missing-docs). A list of all Ibiza StackOverflow topics is located at [portalfx-stackoverflow.md](portalfx-stackoverflow.md).
 
 ## Design patterns for common scenarios
 
