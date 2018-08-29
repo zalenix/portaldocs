@@ -2,28 +2,7 @@
 
 This is the home page for all documentation related to onboarding, developing, operating, and anything else to do with owning an Azure portal extension.   
 
-Couldn't find what you needed? [Ask about the docs on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-missing-docs). A list of all Ibiza StackOverflow topics is located at [portalfx-stackoverflow.md](portalfx-stackoverflow.md).
-
-## Onboarding a new extension
-
-| Name | Location | Purpose |
-| ---- | -------- | ------- |
-| Overview | [/portal-sdk/generated/ top-onboarding.md](/portal-sdk/generated/top-onboarding.md) | Getting your team ready to develop extensions | 
-| Steps that do not involve the Ibiza team | [/portal-sdk/generated/ top-extensions-onboarding-with-related-teams.md](/portal-sdk/generated/top-extensions-onboarding-with-related-teams.md) | Coordinating with other teams to deploy an extension  |
-| Manage cloud/environment specific configuration | [/portal-sdk/generated/ top-extensions-configuration.md](/portal-sdk/generated/top-extensions-configuration.md) | Configuring an extension to run in  various environments  |
-| Production-ready metrics | [/portal-sdk/generated/ top-extensions-production-ready-metrics.md](/portal-sdk/generated/top-extensions-production-ready-metrics.md) | Criteria for  moving an extension from one preview to another |
-| Partner request process | [/portal-sdk/generated/ top-extensions-partner-request.md](/portal-sdk/generated/top-extensions-partner-request.md) | How to request new features from the Ibiza team |
-
-Kickoff the onboarding experience by sending mail to <a href="mailto:ibiza-onboarding-kick@microsoft.com?subject=Kickoff Meeting Request&body=My team would like to meet with you to learn about the Azure onboarding process.">Azure Onboarding Team</a>.
-
-## Azure portal architecture
-
-Learn how the framework is structured and how it is designed to run in multiple clouds / environments.
-
-| Name | Location | Purpose |
-| ---- | -------- | ------- |
-| Architecture overview | [/portal-sdk/generated/ top-extensions-architecture.md](/portal-sdk/generated/top-extensions-architecture.md) | Describes the components of the Azure Portal  and their interrelationships |
-| Authentication | [/portal-sdk/generated/ top-extensions-authentication.md](/portal-sdk/generated/top-extensions-authentication.md) |  |
+* Quick Reference
 
 ## What's new
 
@@ -38,9 +17,50 @@ Learn how the framework is structured and how it is designed to run in multiple 
 | Multi-Column for the Essentials control | /portal-sdk/generated/ | Better use of screen real estate |
 | TreeView improvements | /portal-sdk/generated/ | Checkboxes, commands, and Load More / Virtualization |
 
-## Development guide
+## Azure portal architecture
 
-### Getting started
+Learn how the framework is structured and how it is designed to run in multiple clouds / environments.
+
+| Name | Location | Purpose |
+| ---- | -------- | ------- |
+| Architecture overview | [/portal-sdk/generated/ top-extensions-architecture.md](/portal-sdk/generated/top-extensions-architecture.md) | Describes the components of the Azure Portal  and their interrelationships |
+| Authentication | [/portal-sdk/generated/ top-extensions-authentication.md](/portal-sdk/generated/top-extensions-authentication.md) |  |
+
+* Azure Core Documentation 
+
+    * [Design extensions](#design-patterns-for-common-scenarios) 
+    * [Onboarding](#onboard-a-new-extension) 
+    * [Build extensions](#build-extensions)
+    * [Test](#test-extensions)
+    * [Fundamentals]()
+    * [Deploy]()
+    * [Operate/Support]()
+
+Couldn't find what you needed? [Ask about the docs on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-missing-docs). A list of all Ibiza StackOverflow topics is located at [portalfx-stackoverflow.md](portalfx-stackoverflow.md).
+
+## Design patterns for common scenarios
+
+| Name                            | Location | Purpose |
+| ------------------------------- | -------- | ------- |
+| Creating Blades  | [/portal-sdk/generated/ top-extensions-create.md](/portal-sdk/generated/top-extensions-create.md) | Blades that create or provision resources and services |
+| Browsing Resources | [/portal-sdk/generated/ top-extensions-browse.md](/portal-sdk/generated/top-extensions-browse.md) | Adding your resource or service into the Browse menu |
+| Azure Resource Manager (ARM) | [/portal-sdk/generated/ top-extensions-resource-manager.md](/portal-sdk/generated/top-extensions-resource-manager.md) | Extension resource management for  reuse of resources and consistency in design|
+
+## Onboard a new extension
+
+| Name | Location | Purpose |
+| ---- | -------- | ------- |
+| Overview | [/portal-sdk/generated/ top-onboarding.md](/portal-sdk/generated/top-onboarding.md) | Getting your team ready to develop extensions | 
+| Steps that do not involve the Ibiza team | [/portal-sdk/generated/ top-extensions-onboarding-with-related-teams.md](/portal-sdk/generated/top-extensions-onboarding-with-related-teams.md) | Coordinating with other teams to deploy an extension  |
+| Manage cloud/environment specific configuration | [/portal-sdk/generated/ top-extensions-configuration.md](/portal-sdk/generated/top-extensions-configuration.md) | Configuring an extension to run in  various environments  |
+| Production-ready metrics | [/portal-sdk/generated/ top-extensions-production-ready-metrics.md](/portal-sdk/generated/top-extensions-production-ready-metrics.md) | Criteria for  moving an extension from one preview to another |
+| Partner request process | [/portal-sdk/generated/ top-extensions-partner-request.md](/portal-sdk/generated/top-extensions-partner-request.md) | How to request new features from the Ibiza team |
+
+Kickoff the onboarding experience by sending mail to <a href="mailto:ibiza-onboarding-kick@microsoft.com?subject=Kickoff Meeting Request&body=My team would like to meet with you to learn about the Azure onboarding process.">Azure Onboarding Team</a>.
+
+## Build extensions
+
+### Get started
 
 Azure portal extension development is supported on the Microsoft Windows 8, Windows Server 2012 R2, and Windows 10.
 
@@ -87,7 +107,7 @@ If you want your experience to have a presence on Azure dashboards then you will
 | ------------- | -------- | ------- |
 | Develop parts | [/portal-sdk/generated/ top-extensions-parts.md](/portal-sdk/generated/top-extensions-parts.md)  | A framework feature that integrates the UI of an extension on dashboards |
 
-### Building UI with HTML templates and Fx controls
+### HTML templates and Fx controls
 
 Any template based UI in the portal (e.g. template blades or template parts can make use of a rich controls library maintained by the Ibiza team.
 
@@ -96,7 +116,7 @@ Any template based UI in the portal (e.g. template blades or template parts can 
 | Controls overview   | [/portal-sdk/generated/ top-extensions-controls.md](/portal-sdk/generated/top-extensions-controls.md)  | The building blocks that allow users to view, edit, and analyze data |
 | Controls playground | [/portal-sdk/generated/ top-extensions-controls-playground.md](/portal-sdk/generated/top-extensions-controls-playground.md) | Provides a space where developers can experiment with controls |
 
-### Styling and theming
+### Styles and themes
 
 When using HTML and framework controls you have some control over styling. These documents walk through the relevant topics.
 
@@ -110,31 +130,18 @@ When using HTML and framework controls you have some control over styling. These
 | Typography | [/portal-sdk/generated/ top-extensions-style-guide.md#typography](/portal-sdk/generated/top-extensions-style-guide.md#typography) | Formation of letters and words in fonts that are consistent across extensions and display content effectively  |
 | Iconography | [/portal-sdk/generated/ top-extensions-style-guide.md#iconography](/portal-sdk/generated/top-extensions-style-guide.md#iconography) |  Custom SVG files,  Color Palettes, and the icon library in the Azure SDK |
 
-### Forms
+### Forms and other UI objects
 
 Many experiences require the user to enter data into a form. The Ibiza controls library provides support for forms. It also provides a TypeScript based section model that lets you build your form in code without expressing all the fields in an html template.
 
 | Name             | Location | Purpose |
 | ---------------- | -------- | ------- |
 | Developing forms | [/portal-sdk/generated/ top-extensions-forms.md](/portal-sdk/generated/top-extensions-forms.md) | Form controls are a subset of controls that allow users to input information. |
-
-### Design patterns for common scenarios
-
-| Name                            | Location | Purpose |
-| ------------------------------- | -------- | ------- |
-| Creating Blades  | [/portal-sdk/generated/ top-extensions-create.md](/portal-sdk/generated/top-extensions-create.md) | Blades that create or provision resources and services |
-| Browsing Resources | [/portal-sdk/generated/ top-extensions-browse.md](/portal-sdk/generated/top-extensions-browse.md) | Adding your resource or service into the Browse menu |
-| Azure Resource Manager (ARM) | [/portal-sdk/generated/ top-extensions-resource-manager.md](/portal-sdk/generated/top-extensions-resource-manager.md) | Extension resource management for  reuse of resources and consistency in design|
-
-### Other UI concepts
-
-| Name                            | Location | Purpose |
-| ------------------------------- | -------- | ------- |
 | Context panes | [/portal-sdk/generated/ top-extensions-context-panes.md](/portal-sdk/generated/top-extensions-context-panes.md)  | Panes that overlay the current content instead of scrolling the screen horizontally. |
 | Dialogs | [/portal-sdk/generated/ top-extensions-dialogs.md](/portal-sdk/generated/top-extensions-dialogs.md)  | Lightweight alternative to context blades |
 | Notifications | [/portal-sdk/generated/ top-extensions-notifications.md](/portal-sdk/generated/top-extensions-notifications.md) | Context-sensitive warnings, errors, and other information |
 
-### Loading and managing data
+### Load and manage data
 
 Since your extension is just web code, you can make **AJAX** calls to various services to load data into your UI. The framework provides a data library you can use to manage this data.
 
@@ -144,15 +151,7 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 | More Ajax  | /portal-sdk/generated/ | Ajax all up, ajax calls with batch flags set  |
 | Legacy data management features | [/portal-sdk/generated/ top-legacy-data.md](/portal-sdk/generated/top-legacy-data.md) | QueryCache and the master view, in association with EntityCache and the detail view |
 
-### Advanced development topics
-
-| Name                                | Location | Purpose |
-| ----------------------------------- | -------- | ------- |
-| Memory management (LifetimeManager) | [/portal-sdk/generated/ top-extensions-data-lifetime.md](/portal-sdk/generated/top-extensions-data-lifetime.md) | Disposing of child resources previous to the closing of the parent blade |
-| Sharing blades and parts across extensions | [/portal-sdk/generated/ top-extensions-sharing-blades-and-parts.md](/portal-sdk/generated/top-extensions-sharing-blades-and-parts.md) | Making your extension available to other teams |
-| Custom domains (e.g. aad.portal.azure.com) | [/portal-sdk/generated/ top-extensions-custom-domains.md](/portal-sdk/generated/top-extensions-custom-domains.md) | Domain-based configuration for third-party and other extensions  |
-
-## Debugging
+### Debugging
 
 | Name                            | Location | Purpose |
 | ------------------------------- | -------- | ------- |
@@ -164,13 +163,15 @@ Since your extension is just web code, you can make **AJAX** calls to various se
 | Debugging knockout | [/portal-sdk/generated/ top-extensions-debugging.md #debug-knockout](/portal-sdk/generated/top-extensions-debugging.md#debug-knockout)  | The ViewModel and Knockout code |
 | Debugging the data stack | [/portal-sdk/generated/ top-extensions-debugging.md #debug-the-data-stack](/portal-sdk/generated/top-extensions-debugging.md#debug-the-data-stack) | Browser data for the current testing session |
 
-## Performance
+### Advanced development topics
 
-| Name                            | Location | Purpose |
-| ------------------------------- | -------- | ------- |
-| Performance profiling | [/portal-sdk/generated/ top-extensions-performance-profiling.md](/portal-sdk/generated/top-extensions-performance-profiling.md) | How to make your extension more performant |
+| Name                                | Location | Purpose |
+| ----------------------------------- | -------- | ------- |
+| Memory management (LifetimeManager) | [/portal-sdk/generated/ top-extensions-data-lifetime.md](/portal-sdk/generated/top-extensions-data-lifetime.md) | Disposing of child resources previous to the closing of the parent blade |
+| Sharing blades and parts across extensions | [/portal-sdk/generated/ top-extensions-sharing-blades-and-parts.md](/portal-sdk/generated/top-extensions-sharing-blades-and-parts.md) | Making your extension available to other teams |
+| Custom domains (e.g. aad.portal.azure.com) | [/portal-sdk/generated/ top-extensions-custom-domains.md](/portal-sdk/generated/top-extensions-custom-domains.md) | Domain-based configuration for third-party and other extensions  |
 
-## Testing
+## Test extensions
 
 The Ibiza team provides limited testing support. Due to resource constraints the C# and Node.js framework is open source. This is so that partners can unblock themselves in case the Ibiza team cannot make requested improvements as quickly as you might expect.
 
@@ -181,29 +182,15 @@ The Ibiza team provides limited testing support. Due to resource constraints the
 | C# test framework (Open source) | [/portal-sdk/generated/ top-extensions-csharp-test-framework.md](/portal-sdk/generated/top-extensions-csharp-test-framework.md) | A framework for UI-based Selenium Webdriver tests |
 | Node.js test framework (Open source) | [/portal-sdk/generated/ top-extensions-msportalfx-test.md](/portal-sdk/generated/top-extensions-msportalfx-test.md) | An end-to-end test framework that tests extension interactions with user behavior |
 
-## Telemetry and alerting
+## Fundamentals
 
-The Ibiza team collects standard telemetry for generic actions like blade opening and commmand execution. It also collects performance, reliability, and user feedback information that facilitate the operation of your extension. You can also write your own events via the telemetry system. Ibiza supports alerting for common operations scenarios.
-
-| Name                            | Location | Purpose |
-| ------------------------------- | -------- | ------- |
-| Portal telemetry overview | /portal-sdk/generated/ | |
-| Getting access to raw portal telemetry data | /portal-sdk/generated/ | |
-| Consuming telemetry via pre-built Power BI dashboards | /portal-sdk/generated/ | |
-| Performance and reliability monitoring / alerting | /portal-sdk/generated/ | |
-| Collecting feedback from your users | /portal-sdk/generated/ | |
-| Set up and verify telemetry logging from your extension | /portal-sdk/generated/ | |
-
-## Experimentation and flighting
-
-It is common for teams to want to experiment with new capabilities. We offer two framework features that make this possible.
+### Performance
 
 | Name                            | Location | Purpose |
 | ------------------------------- | -------- | ------- |
-| Flighting a new version of your extension in MPAC | [/portal-sdk/generated/ top-extensions-flighting.md](/portal-sdk/generated/top-extensions-flighting.md) | Testing control group/experiment group versions of an extension previous to production deployment |
-| Feature flags to enable or disable individual features within an environment | [/portal-sdk/generated/ top-extensions-flags.md](/portal-sdk/generated/top-extensions-flags.md) | Query string flags that modify the run-time behavior of extensions for interacting with the Portal, or controlling and diagnosing extension behavior |
+| Performance profiling | [/portal-sdk/generated/ top-extensions-performance-profiling.md](/portal-sdk/generated/top-extensions-performance-profiling.md) | How to make your extension more performant |
 
-## Localization and globalization
+### Localization and globalization
 
 The Azure portal supports multiple languages and locales. You will need to localize your content.
 
@@ -215,7 +202,7 @@ The Azure portal supports multiple languages and locales. You will need to local
 | Testing localization with side-loading           | [/portal-sdk/generated/ top-extensions-sideloading.md](/portal-sdk/generated/top-extensions-sideloading.md) | |
 | Formatting numbers, currencies and dates         | [/portal-sdk/generated/ top-extensions-localization-globalization.md #globalization-api](/portal-sdk/generated/top-extensions-localization-globalization.md#globalization-api) | |
 
-## Accessibility
+### Accessibility
 
 The Azure Portal strives to meet high accessibility standards to ensure the product is accessible to users of all levels of ability. There is regular testing and a process with SLAs for getting issues addressed quickly.
 
@@ -224,7 +211,9 @@ The Azure Portal strives to meet high accessibility standards to ensure the prod
 | Accessibility guidelines | [/portal-sdk/generated/ top-extensions-accessibility.md](/portal-sdk/generated/top-extensions-accessibility.md) | |
 | Accessibility testing and SLAs | [/portal-sdk/generated/ top-extensions-accessibility.md #accessibility-planning](/portal-sdk/generated/top-extensions-accessibility.md#accessibility-planning) | How to report bugs to the Accessibility Team |
 
-## Deploying your extension
+## Deployment
+
+### Deploy your extension
 
 Learn how to deploy your extension to the various clouds and environments.
 
@@ -234,7 +223,7 @@ Learn how to deploy your extension to the various clouds and environments.
 | Moving from private preview to public preview to GA | [/portal-sdk/generated/ top-extensions-developmentPhases.md](/portal-sdk/generated/top-extensions-developmentPhases.md) | Development phases of an extension  |
 | Deploying your extension | [/portal-sdk/generated/ top-extensions-deployment.md](/portal-sdk/generated/portal-sdk/generated/top-extensions-deployment.md) | Developer checklist for extension deployment and tuning  |
 
-### Deployment using the Extension Hosting Service
+### The Extension Hosting Service
 
 The Ibiza team provides and operates a common Extension Hosting Service that makes it easy to get your bits into a globally distributed system without having to manage your own infrastructure.
 
@@ -247,13 +236,37 @@ The Ibiza team provides and operates a common Extension Hosting Service that mak
 | Deploying your extension using Express V2 and the Extension Hosting Service | [/portal-sdk/generated/ top-extensions-hosting-service-advanced.md](/portal-sdk/generated/top-extensions-hosting-service-advanced.md)| |
 | SLA for registering an extension with the Extension Hosting Service | [/portal-sdk/generated/ top-extensions-svc-lvl-agreements.md](/portal-sdk/generated/top-extensions-svc-lvl-agreements.md) | |
 
-### Custom extension deployment infrastructure
+### Custom extension deployment
 
 You should strive to use the Extension Hosting Service.
 
 | Name                          | Location | Purpose |
 | ----------------------------- | -------- | ------- |
 | Legacy Do-It-Yourself Hosting | [/portal-sdk/generated/ top-extensions-custom-deployment.md](/portal-sdk/generated/top-extensions-custom-deployment.md) | How to build a custom extension deployment infrastructure |
+
+### Experimentation and flighting
+
+It is common for teams to want to experiment with new capabilities. We offer two framework features that make this possible.
+
+| Name                            | Location | Purpose |
+| ------------------------------- | -------- | ------- |
+| Flighting a new version of your extension in MPAC | [/portal-sdk/generated/ top-extensions-flighting.md](/portal-sdk/generated/top-extensions-flighting.md) | Testing control group/experiment group versions of an extension previous to production deployment |
+| Feature flags to enable or disable individual features within an environment | [/portal-sdk/generated/ top-extensions-flags.md](/portal-sdk/generated/top-extensions-flags.md) | Query string flags that modify the run-time behavior of extensions for interacting with the Portal, or controlling and diagnosing extension behavior |
+
+## Operations
+
+### Telemetry and alerts
+
+The Ibiza team collects standard telemetry for generic actions like blade opening and commmand execution. It also collects performance, reliability, and user feedback information that facilitate the operation of your extension. You can also write your own events via the telemetry system. Ibiza supports alerting for common operations scenarios.
+
+| Name                            | Location | Purpose |
+| ------------------------------- | -------- | ------- |
+| Portal telemetry overview | /portal-sdk/generated/ | |
+| Getting access to raw portal telemetry data | /portal-sdk/generated/ | |
+| Consuming telemetry via pre-built Power BI dashboards | /portal-sdk/generated/ | |
+| Performance and reliability monitoring / alerting | /portal-sdk/generated/ | |
+| Collecting feedback from your users | /portal-sdk/generated/ | |
+| Set up and verify telemetry logging from your extension | /portal-sdk/generated/ | |
 
 ## Legacy features
 
