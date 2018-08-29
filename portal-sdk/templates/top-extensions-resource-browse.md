@@ -130,7 +130,24 @@ The following image is of an empty resource type that was selected from the Reso
 
 ![alt-text](../media/top-extensions-resources/empty.png "Empty resource type")
 
-You can customize the content and links when the resource or resource type is empty. When the Resource Browse experience contains no items,  it  displays a customized message that explains the value and usage of the resource types, in addition to help links that will provide more information.  The icon, message and link are located in the definition of the asset, as specified in [portalfx-extensions-assets.md](portalfx-extensions-assets.md). Some sample definitions are as follows.
+You can customize the content and links when the resource or resource type is empty. When the Resource Browse experience contains no items,  it  displays a customized message that explains the value and usage of the resource types, in addition to help links that will provide more information.  
+
+When you define an asset for your resource, it will be included in `All resources`, `Recent resources`, and other pages, as specified in [portalfx-extensions-assets.md](portalfx-extensions-assets.md).  The following example specifies an emtpy asset that sets the description and link.
+
+```ts
+<AssetType  
+    Name="MyAsset"
+    ...
+    Description="{Resource MyAsset.description, Module=ClientResources}">
+    ...
+    <Link Title="{Resource MyAsset..linkTitle1, Module=ClientResources}" Uri="http://www.bing.com"/>
+    <Link Title="{Resource MyAsset.linkTitle2, Module=ClientResources}" Uri="http://www.bing.com"/>
+    ...
+  </AssetType>
+
+```
+
+You can set the Icon, Description and Links properties of the asset to get a properly configured empty browse, as in the sample located at [http://aka.ms/portalfx/resourcebrowsesample](http://aka.ms/portalfx/resourcebrowsesample). The icon, message and link are located in the definition of the asset, as specified in [portalfx-extensions-assets.md](portalfx-extensions-assets.md), and in the following code.
 
 * AssetType icon 
 
@@ -147,6 +164,13 @@ You can customize the content and links when the resource or resource type is em
 **NOTE**: Remember to include an empty message and a link with which to explain the value of the new resource.
 
 ## Designing for resource browse
+
+You can use no-code browse for ARM resources. No-code browse requires that the Asset id is the resource id, and that the asset blade must accept a single Id input property, as specified in [top-extensions-browse.md#building-browse-experiences](top-extensions-browse.md#building-browse-experiences).
+
+The Portal team maintains a playground environment where you can see all the available controls and configure them  to capture a design or generate code as you implement your extension.  The controls playground is located at [http://aka.ms/portalfx/playground](http://aka.ms/portalfx/playground).
+
+
+
 
 ### Design tools and toolkits
 
