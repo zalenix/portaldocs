@@ -177,7 +177,8 @@ The Portal team maintains a playground environment where you can see all the ava
 The Azure Portal team has published design toolkits so that it is easy for you to wireframe your solution to look like the Azure portal. There are also other tools available for rapid prototyping of user interfaces.
 
 <!-- TODO: Determine whether we can include links to competitor websites, like Adobe and Figma. -->
-The following toolkits are available
+The following toolkits are available.
+
 | Toolkit | Location |
 | ------- | -------- |
 | Adobe Illustrator | |
