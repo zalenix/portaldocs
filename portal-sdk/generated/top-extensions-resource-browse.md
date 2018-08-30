@@ -8,6 +8,9 @@ The `All resources` service, as in the following example, is one of the most use
   
 ![alt-text](../media/top-extensions-resources/allResources.png "All resources – unfiltered")
   
+<a name="resource-browse-blade"></a>
+## Resource browse blade
+
 Resource browse provides easy filtering, searching, sorting and grouping within the list.  The user can perform bulk actions to take action on selected resources directly from the list.  Selecting a resource from the browse experience will invoke the Resource Manage experience.
 
 Some examples are as follows.
@@ -66,9 +69,9 @@ The key items that are displayed are as follows.
     
     * Search
 
-    The following image displays a search of grid items in a filtered list. The search is for string  "HR".
+        The following image displays a search of grid items in a filtered list. The search is for string  "HR".
 
-    ![alt-text](../media/top-extensions-resources/search.png "Search in a filtered grid")
+        ![alt-text](../media/top-extensions-resources/search.png "Search in a filtered grid")
 
     * Sort
     
@@ -77,18 +80,6 @@ The key items that are displayed are as follows.
     * Pagination
     
         Displays the selected page and handles previous and next page navigation in the grid, based on the number of rows in the filter and the number of rows in the display. 
-
-    * Number of records
-
-        Displays the record set being displayed and the total number of resources.
-
-    * Drill-in links
-
-        Deep-link to the resource type for the specified resource.
-
-    * Per-row actions
-
-        Actions can be added on a per-row basis using context menu commands as specified in [top-extensions-browse.md#add-context-menu-commands](top-extensions-browse.md#add-context-menu-commands).
 
 <a name="browse-behaviors-the-toolbar"></a>
 ### The toolbar
@@ -126,6 +117,25 @@ The recommended actions for the toolbar are as follows.
 * Feedback
     
     Allows users to give feedback about the Azure Portal Resource Browse experience.
+
+<a name="browse-behaviors-the-grid"></a>
+### The grid
+
+The grid contains rows of information about resources. It can be searched, sorted, filtered, and otherwise rearranged to align with  user needs.  The grid computes the necessary pagination based on the size of the page and the amount of data to display.
+
+Resource Browse controls for the grid include the following.
+
+* Number of records
+
+    Displays the record set being displayed and the total number of resources.
+
+* Drill-in links
+
+    Deep-link to the resource type for the specified resource.
+
+* Per-row actions
+
+    Actions can be added on a per-row basis using context menu commands as specified in [top-extensions-browse.md#add-context-menu-commands](top-extensions-browse.md#add-context-menu-commands).
 
 <a name="creating-a-resource-or-resource-type"></a>
 ## Creating a resource or resource type
@@ -173,8 +183,6 @@ You can set the Icon, Description and Links properties of the asset to get a pro
 You can use no-code browse for ARM resources. No-code browse requires that the Asset id is the resource id, and that the asset blade must accept a single Id input property, as specified in [top-extensions-browse.md#building-browse-experiences](top-extensions-browse.md#building-browse-experiences).
 
 The Portal team maintains a playground environment where you can see all the available controls and configure them  to capture a design or generate code as you implement your extension.  The controls playground is located at [http://aka.ms/portalfx/playground](http://aka.ms/portalfx/playground).
-
-
 
 
 <a name="designing-for-resource-browse-design-tools-and-toolkits"></a>
