@@ -3,13 +3,13 @@
 
 The Resource Browse pattern provides resource discovery and management across resource groups. It allows users to view lists of resources of a single resource type, or multiple resource types, across regions, locations, and subscriptions.  The resource browse page, or the Browse blade, is typically the entry point into an Azure service.
 
-The `All resources` service, as in the following example, is one of the most used services because it enables you to browse across all Azure resource types in a single list.  
+The `All resources` service, as in the following example, is one of the most visited services in the Azure Portal,  because it enables you to browse across all Azure resource types in a single list. Many customers navigate to a specific Azure service or a resource directly from the resource browse page.   
   
 ![alt-text](../media/top-extensions-resources/allResources.png "All resources – unfiltered")
   
 ## Resource browse blade
 
-Resource browse provides easy filtering, searching, sorting and grouping within the list.  The user can perform bulk actions to take action on selected resources directly from the list.  Selecting a resource from the browse experience will invoke the Resource Manage experience.
+Resource browse surfaces a user’s resources by highlighting top-level pieces of resource data in a grid view. Resource browse provides easy filtering, searching, sorting and grouping within the list.  The user can perform bulk actions to take action on selected resources directly from the list.  Selecting a resource from the browse experience will invoke the Resource Manage experience.
 
 Some examples are as follows.
 
@@ -19,18 +19,19 @@ Some examples are as follows.
 
 Resource facets can be collapsed, as in the following example, to allow more space for columns in the resource grid.
 
-![alt-text](../media/top-extensions-resources/noFacets.png "Resource screen with facet pane collapsed")
+![alt-text](../media/top-extensions-resources/noFacets.png "Resource blade with facet pane collapsed")
 
  Resources can also be filtered, so that only the ones most relevant to the current task are displayed. In the following image, resources are filtered by resource type and by location.
  
 ![alt-text](../media/top-extensions-resources/filtered.png "Filtered Resources")
 
-
 The Azure Fundamentals report located at []() will report on . for your resources. This includes .
+
+For more information on upgrading to the most recent browse experience, see [portalfx-browse-migration.md](portalfx-browse-migration.md).
 
 ## Browse behaviors
 
-The Resource Browse is a fullscreen experience, as in the following image.
+The Resource Browse is a fullscreen experience,  as in the following image.
  
 ![alt-text](../media/top-extensions-resources/browse.png "Fullscreen resource browse")
 
@@ -44,9 +45,11 @@ The key items that are displayed are as follows.
     
     For more information about display names for resources, see [portalfx-browse-migration.md#migration-process](portalfx-browse-migration.md#migration-process).
 
+    **NOTE**:  Do not use words like "profiles" to describe a resource.  For more information about reserved words, see [Read in the SDK](Read in the SDK).
+
 * Toolbar
 
-    The toolbar contains actions that operate against the grid. For more information, see [#the-toolbar](#the-toolbar).
+    The toolbar is a dedicated location for commands that is  located at the top of the Resource Browse page. It ccontains actions that operate against the grid. The pattern has been heavily tested, and consistency between extensions contributes to a reduced learning curve for customers that use more than one extension.  For more information, see [#the-toolbar](#the-toolbar).
     
 * Filter panel
 
@@ -58,7 +61,7 @@ The key items that are displayed are as follows.
 
 * Grid
 
-    By default, no-code Browse displays the resource name, resource group, location and subscription.  However, you can choose other key resource properties to display as columns, so that your customer can differentiate the resources in the grid.  Default columns and available columns can be added to a `ViewModel` programmatically, as specified in [top-extensions-browse.md#customize-columns](top-extensions-browse.md#customize-columns).
+    By default, no-code Browse displays the resource name, resource group, location and subscription.  However, you can choose other key resource properties by using the Edit command.  They will display as columns, so that your customer can differentiate the resources in the grid.  Default columns and available columns can be added to a `ViewModel` programmatically, as specified in [top-extensions-browse.md#customize-columns](top-extensions-browse.md#customize-columns).
     
     For more information about the grid, see [#the-grid](#the-grid). For more information about no-code browse, see [top-extensions-browse.md#building-browse-experiences](top-extensions-browse.md#building-browse-experiences). 
 
@@ -76,11 +79,11 @@ The key items that are displayed are as follows.
 
     * Pagination
     
-        Displays the selected page and handles previous and next page navigation in the grid, based on the number of rows in the filter and the number of rows in the display. 
+        Displays the selected page and handles previous and next page navigation in the grid, based on the number of rows in the filter and the number of rows in the display.
 
 ### The toolbar
 
-The toolbar allows the user to add and delete resources from the grid, in addition to performing resource-specific actions for a limited set of resource types. An annotated toolbar is in the following image.
+The toolbar allows the user to add and delete resources from the grid, in addition to performing resource-specific actions for a limited set of resource types. The toolbar contains two sets of actions. The first set consists of global commands that apply to all items on the page, as well as generic page level actions like ‘Add’ or Refresh’. The second set, separated by a pipe, is enabled only when one or more list items are selected on a grid.  An annotated toolbar is in the following image.
     
 ![alt-text](../media/top-extensions-resources/toolbar.png "Toolbar")
 
@@ -88,7 +91,7 @@ The recommended actions for the toolbar are as follows.
 
 * Add
 
-    Invokes the Resource Create experience for the resource types displayed in the "new" resource blade. Uses the `Add command` SDK as specified in [top-extensions-browse.md#the-add-command](top-extensions-browse.md#the-add-command).
+    Invoke the Resource Create experience for the resource types displayed in the "new" resource blade. Uses the `Add command` SDK as specified in [top-extensions-browse.md#the-add-command](top-extensions-browse.md#the-add-command).
 
 * Edit columns
 
@@ -104,11 +107,11 @@ The recommended actions for the toolbar are as follows.
     
 * Assign tags
 
-    Assign tags to the selected grid items.  The option is disabled until grid items are selected.
+    Enable tagging for the selected grid items.  The option is disabled until grid items are selected.
 
 * Delete
 
-    Delete the selected grid items.  The option is disabled until grid items are selected.
+    Permanently remove the selected grid items.  The option is disabled until grid items are selected.
 
 * Feedback
     
@@ -132,15 +135,18 @@ Resource Browse controls for the grid include the following.
 
     Actions can be added on a per-row basis using context menu commands as specified in [top-extensions-browse.md#add-context-menu-commands](top-extensions-browse.md#add-context-menu-commands).
 
+**NOTE**: Remember to include common columns in your grid for consistency, specifically, Name, location, and subscription. 
+Also remember to include columns that are relevant to your specific resource type.
+
 ## Creating a resource or resource type
 
-The following image is of an empty resource type that was selected from the Resource Menu, or the left navigation bar. 
+When the resource list has no items to display, the Resource Browse screen provides the user with information on how to get started, for example, help links. The following image is of an empty resource type that was selected from the Resource Menu, or the left navigation bar.
 
 ![alt-text](../media/top-extensions-resources/empty.png "Empty resource type")
 
-You can customize the content and links when the resource or resource type is empty. When the Resource Browse experience contains no items,  it  displays a customized message that explains the value and usage of the resource types, in addition to help links that will provide more information.  
+You can customize the content and links when the resource or resource type is empty. When the Resource Browse experience contains no items, it displays a customized message that explains the value and usage of the resource types, in addition to help links that will provide more information.  
 
-When you define an asset for your resource, it will be included in `All resources`, `Recent resources`, and other pages, as specified in [portalfx-extensions-assets.md](portalfx-extensions-assets.md).  The following example specifies an emtpy asset that sets the description and link.
+When you define an asset for your resource, it will be included in `All resources`, `Recent resources`, and other pages, as specified in [portalfx-extensions-assets.md](portalfx-extensions-assets.md).  The following example specifies an empty asset that sets the description and link.
 
 ```ts
 <AssetType  
