@@ -27,11 +27,11 @@ The following reports contain information that will help you tune the performanc
 
 There are several reports for the Create Flow.
 
-* The Create Flow Funnel report  that is specified in [#create-flow-funnel-reports](#create-flow-funnel-reports) allows you to view live create flow telemetry, which is an overview of the blade's usage and deployment success numbers.
+* The Create Flow Funnel reports that are specified in [#create-flow-funnel-reports](#create-flow-funnel-reports) allows you to view live create flow telemetry, which is an overview of the blade's usage and deployment success numbers.
 
-The Create Flow Origin report  that is specified in [#create-flow-origin-report](#create-flow-origin-report) provides an overview of link and launch data for the blade. It indicates which extensions are linking to the blade and which ones are launching the blade.
+* The Create Flow Origin report that is specified in [#create-flow-origin-report](#create-flow-origin-report) provides an overview of link and launch data for the blade. 
 
-The Create Flow Errors Report  that is specified in [#create-flow-errors-report](#create-flow-errors-report)  contains information about create errors, billing issues, and cancellations for the blade.
+* The Create Flow Errors Report that is specified in [#create-flow-errors-report](#create-flow-errors-report) contains information about create errors, billing issues, and cancellations for the blade.
 
 <a name="create-flow-reports-create-flow-funnel-reports"></a>
 ### Create flow funnel reports
@@ -102,6 +102,8 @@ The following four Kusto queries are used to retrieve create flow data to genera
 <a name="create-flow-reports-create-flow-origin-report"></a>
 ### Create flow origin report
 
+The Create flow origin report indicates which extensions are linking to the blade and which ones are launching the blade.
+
 The data fields in the Create Flow Origin report are as follows.
 
 * **Create Flow Launched**:  The number of times the blade was opened by users.
@@ -156,7 +158,7 @@ The following code can be used to generate these numbers.
 <a name="create-flow-reports-create-flow-errors-report"></a>
 ### Create Flow Errors report
 
-The Create Flow Errors report gives you an overview of create blades create errors, billing issues, and cancellations. The data fields in the report are as follows.
+The Create Flow Errors report gives you an overview of create blade create errors, billing issues, and cancellations. The data fields in the report are as follows.
 
 * **Deployment Cancelled Count**: The number of cancalled deployments.
 
@@ -278,10 +280,10 @@ The following code can be used to generate these numbers.
         ["Custom Deployment"] = CustomDeployment
     ```
 
-<a name="error-distribution-report"></a>
-## Error Distribution Report
+<a name="error-distribution-reports"></a>
+## Error Distribution Reports
 
-The  Error Distribution report gives an overview of the errors that have occurred over the last week, including the progress from the previous week's errors. This is also known as Week or Week (WoW).
+The  Error Distribution reports give an overview of the errors that have occurred over the last week, including the progress from the previous week's errors. This is also known as Week or Week (WoW).
 
 * Error Distribution
 
@@ -295,7 +297,7 @@ The  Error Distribution report gives an overview of the errors that have occurre
 
     The number of create deployment errors that occurred  over the last week for  each extension.
 
-* Inner Error Distribution
+* Innermost Error Distribution
 
     Reviews  the 'innermost error' in error messages  for create deployment failures. Error messages are often nested as they they reach different points of provisioning and have different stages record the failure reason. Consequently, the 'innermost error' should be the original reason why a create deployment failed.
 
