@@ -7,7 +7,7 @@ The Resource Create pattern enables a quick and straightforward way to create Az
 
 Some examples are as follows.
 
-* The  Free account virtual machine for the RC portal is located at   [http://aka.ms/portalfx/portalfx/freeaccountvm](http://aka.ms/portalfx/freeaccountvm)
+* The Free account virtual machine for the RC portal is located at   [http://aka.ms/portalfx/portalfx/freeaccountvm](http://aka.ms/portalfx/freeaccountvm)
 
 * The IoT hub for the RC portal is located at [http://aka.ms/portalfx/iothubs](http://aka.ms/portalfx/iothub)
 
@@ -23,7 +23,7 @@ The key items that are initially  displayed are the tabs.  Information on the ta
 
     This is the first tab, and it contains all required fields. A first tab  that contains all required fields allows the user to quickly create your resource. The  following image that describes the Basic Create experience.
 
-![alt-text](../media/top-extensions-resources/basicCreate.png "Resource basic tab")
+    ![alt-text](../media/top-extensions-resources/basicCreate.png "Resource basic tab")
 
     The following is an image of creating an IoT hub resource.
 
