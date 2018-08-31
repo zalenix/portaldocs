@@ -20,6 +20,8 @@ An Azure Resource Manager Template, as specified in [http://aka.ms/portalfx/quic
 * [Move resources](#move-resources)
 * [Deployment and polling samples](#deployment-and-polling-samples)
 
+For more information about the Portal's transitions to full screen format and increased use of resources, see [http://aka.ms/portalfx/fullscreen](http://aka.ms/portalfx/fullscreen).
+
 <a name="deploy-arm-templates"></a>
 ## Deploy ARM templates
 
