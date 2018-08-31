@@ -53,6 +53,8 @@ The key items that are initially  displayed are the tabs.  Information on the ta
 <a name="resource-create-blade-post-create-blade"></a>
 ### Post create blade
 
-    When the options on the resource you intend to create have been entered on all the screens and context panes, the "Create" button on the third tab is used to generate the resource.  The following image depicts the deployment of the new resource on the Post-create blade.
-        
-    ![alt-text](../media/top-extensions-resources/reviewDeploy.png "New resource deployment")
+When the options on the resource you intend to create have been entered on all the screens and context panes, the "Create" button on the third tab is used to generate the resource.  The following image depicts the deployment of the new resource on the Post-create blade.
+    
+![alt-text](../media/top-extensions-resources/reviewDeploy.png "New resource deployment")
+
+The Post Create blade displays realtime deployment status and improves troubleshooting by using an improved error display.  You can also include information about additional resources to help the user learn more about the resource being created, or related Azure resources.
