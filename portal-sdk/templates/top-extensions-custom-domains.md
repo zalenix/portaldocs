@@ -836,11 +836,11 @@ The following three examples demonstrate how to use the settings that are associ
 
 ## Questionnaire template
 
-The following template contains questions that your team answers previous to the granting of the custom domain. You should determine the settings and values for your extension previous to filling out the questionnaire, by reviewing the values in the tables located in the [Override links](#override-links),  [Branding and chrome](#branding-and-chrome), and [Tile Gallery](#tile-gallery) sections. You may also want to use settings that were specified in [Default Dashboard](#default-dashboard), if you decide to create one.
+The following template contains questions that your team answers previous to the granting of the custom domain. You should determine the settings and values for your extension previous to filling out the questionnaire, by reviewing the values in the tables located in the [Override links](#override-links), and  [Branding and chrome](#branding-and-chrome) sections. You may also want to use settings that were specified in [Default Dashboard](#default-dashboard), if you decide to create one.
 
 You and your team should reach out to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Custom Domains">Leon Welicki and Adam Abdelhamed</a> in the process of answering the questionnaire.
 
-The main questions to answer, other than the settings and values as described in the [Override links](#override-links), [Branding and chrome](#branding-and-chrome), and [Tile Gallery](#tile-gallery) sections, are the following.
+The main questions to answer, other than the settings and values as described in the [Override links](#override-links) and [Branding and chrome](#branding-and-chrome) sections, are the following.
 
 1. Why do you need a Custom Domain?
 
@@ -868,7 +868,7 @@ The main questions to answer, other than the settings and values as described in
 
 1. Branding and Chrome Values
 
-    The unique values for settings and feature flags for your extension should be included in the  list specified in [#branding-and-chrome](#branding-and-chrome) and [#tile-gallery](#tile-gallery).  You can make a copy of the tables, or you can reach out to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Custom Domains">Leon Welicki and Adam Abdelhamed</a>.
+    The unique values for settings and feature flags for your extension should be included in the  list specified in the [#branding-and-chrome](#branding-and-chrome) section.  You can make a copy of the tables, or you can reach out to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Custom Domains">Leon Welicki and Adam Abdelhamed</a>.
 
 ## Pull Request
 
