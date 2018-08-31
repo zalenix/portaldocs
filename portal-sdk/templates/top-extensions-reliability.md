@@ -19,7 +19,7 @@ Parts are used throughout the Portal, from a blade and dashboard perspective. Pa
 
 There are two methods to assess the reliability of an extension, blade or part.
 
-Performance metrics are located on the PowerBi dashboard, and indicate how well  an extension, blade, or part is performing. These metrics are described in [Performance metrics](#performance-metrics).
+Performance metrics are located on the PowerBi dashboard, and indicate how well  an extension, blade, or part is performing. These metrics are described in [#performance-metrics](#performance-metrics).
 
 The other method is to examine and correct error conditions that are reported on the dashboard, as specified in [#extension-errors-powerbi-dashboard](#extension-errors-powerbi-dashboard). The error states for extensions, blades, and parts are described in [portalfx-extensions-status-codes.md](portalfx-extensions-status-codes.md).
 
@@ -29,7 +29,7 @@ In addition to optimizing code, the Ibiza team recommends using the following gu
 
 * Improve extension caching
 
-    Extension caching guidelines are located at [Extension HomePage Caching](portalfx-performance-caching-homepage.md) and [Persistent Caching of scripts across extension updates](portalfx-performance-caching-scripts.md).
+    Extension caching guidelines are located at [portalfx-performance-caching-homepage.md](portalfx-performance-caching-homepage.md) and [portalfx-performance-caching-scripts.md](portalfx-performance-caching-scripts.md).
 
 * Improve extension geo-distribution
 
