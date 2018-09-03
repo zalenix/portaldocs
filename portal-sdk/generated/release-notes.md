@@ -1,4 +1,4 @@
-# Release Notes since 5/2/2018
+# Release Notes since 5/3/2018
 
 ## 5.0.302.1701
 0 Breaking Changes, 1 Features added and 4 Bugs Fixed
@@ -307,19 +307,3 @@
 ## 5.0.302.1109
 0 Breaking Changes, 3 Features added and 2 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2431104'>2431104</a></td><td>Bug Fix</td><td>Add "Azure" to contactability string for //build</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2421428'>2421428</a></td><td>Bug Fix</td><td>Tooltips not working on MonitorChartV2 legends</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2377512'>2377512</a></td><td>Feature</td><td>Register ApplianceUX and ApplianceDefinitionUX extension in Fairfax  disabled state</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2365479'>2365479</a></td><td>Feature</td><td>[DSR] Mandatory PCF SDK Update to version 1.1.18102.5</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2303750'>2303750</a></td><td>Feature</td><td>[DSR] Update PCF SDK to version 1.1</td></tr></table>
-
-## 5.0.302.1108
-0 Breaking Changes, 0 Features added and 2 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2422169'>2422169</a></td><td>Bug Fix</td><td>Fix QUnit tests for #2418356 Search bug - Change link opens settings pane instead of directory pane</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2418356'>2418356</a></td><td>Bug Fix</td><td>[Directory pane] Search bug - Change link opens settings pane instead of directory pane</td></tr></table>
-
-## 5.0.302.1107
-0 Breaking Changes, 0 Features added and 3 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2418456'>2418456</a></td><td>Bug Fix</td><td>[Browse] Launch NoPDL creates</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2418356'>2418356</a></td><td>Bug Fix</td><td>[Directory pane] Search bug - Change link opens settings pane instead of directory pane</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2288207'>2288207</a></td><td>Bug Fix</td><td>Add OMS capabilities to commands in Browse.</td></tr></table>
-
-## 5.0.302.1105
-0 Breaking Changes, 0 Features added and 1 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2397320'>2397320</a></td><td>Bug Fix</td><td>[PenTest] XSS in Tags</td></tr></table>
-
-## 5.0.302.1104
-0 Breaking Changes, 4 Features added and 5 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2408657'>2408657</a></td><td>Feature</td><td>Guided Tour Option for Directory Pane</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2401946'>2401946</a></td><td>Bug Fix</td><td>Fix d.ts public api test</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2401767'>2401767</a></td><td>Bug Fix</td><td>Harden TypeScript combined d.ts generation</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2392377'>2392377</a></td><td>Bug Fix</td><td>Clean TypeScript output when incremental compilation fails</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2388789'>2388789</a></td><td>Feature</td><td>Enable DirectoryPane in Prod</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2380977'>2380977</a></td><td>Feature</td><td>Onboard portal dSMS in NC</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2375180'>2375180</a></td><td>Feature</td><td>Link to Directory pane from Settings Pane</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2369567'>2369567</a></td><td>Bug Fix</td><td>[ErrorTracker] Unable to get property 'replace' of undefined or null reference</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2345662'>2345662</a></td><td>Bug Fix</td><td>[AJAX] Fix devmodeonly flags</td></tr></table>
