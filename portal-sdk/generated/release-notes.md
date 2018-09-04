@@ -1,4 +1,4 @@
-# Release Notes since 5/3/2018
+# Release Notes since 5/4/2018
 
 ## 5.0.302.1701
 0 Breaking Changes, 1 Features added and 4 Bugs Fixed
@@ -299,11 +299,3 @@
 ## 5.0.302.1111
 0 Breaking Changes, 1 Features added and 0 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2434242'>2434242</a></td><td>Feature</td><td>Enable Azure SignalR service</td></tr></table>
-
-## 5.0.302.1110
-0 Breaking Changes, 1 Features added and 0 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2429377'>2429377</a></td><td>Feature</td><td>[GDPR][DsrHandler] Add national cloud support and enable it for BlackForest</td></tr></table>
-
-## 5.0.302.1109
-0 Breaking Changes, 3 Features added and 2 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2431104'>2431104</a></td><td>Bug Fix</td><td>Add "Azure" to contactability string for //build</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2421428'>2421428</a></td><td>Bug Fix</td><td>Tooltips not working on MonitorChartV2 legends</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2377512'>2377512</a></td><td>Feature</td><td>Register ApplianceUX and ApplianceDefinitionUX extension in Fairfax  disabled state</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2365479'>2365479</a></td><td>Feature</td><td>[DSR] Mandatory PCF SDK Update to version 1.1.18102.5</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2303750'>2303750</a></td><td>Feature</td><td>[DSR] Update PCF SDK to version 1.1</td></tr></table>
