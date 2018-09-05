@@ -19,6 +19,10 @@ The following reports contain information that will help you tune the performanc
 
 * [Error Distribution Reports](#error-distribution-reports)
 
+For more information about telemetry, see [portalfx-telemetry.md](portalfx-telemetry.md).
+
+For more information about **Kusto**, see [https://aka.ms/kusto](https://aka.ms/kusto).
+
 ## Create flow reports
 
 There are several reports for the Create Flow.
@@ -552,7 +556,7 @@ Understanding the **data** field is crucial to debugging regression issues. The
 
 The **data** field from the query contains all of the logged data from each create event.  Each event is represented by the following three fields.
 
-* **action**: The action logged `ProvisioningStarted`, `CreateDeploymentStart`, `CreateDeploymentEnd`, `ProvisioningEnded`.
+* **action**: The action logged. Values are  `ProvisioningStarted`, `CreateDeploymentStart`, `CreateDeploymentEnd`, `ProvisioningEnded`.
 
 * **actionModifier**: The context in which the action was logged. The following are the combinations of **action** and **actionModifier**.
 
@@ -621,70 +625,68 @@ To run the query locally in **Kusto.Explorer**, use [http://aka.ms/portalfx/aler
 
  To run the query in **Kusto.WebExplorer**, use [http://aka.ms/portalfx/alertregressionsummary-ext](http://aka.ms/portalfx/alertregressionsummary-ext). 
 
-### All Creates
+### All creates
 
-When looking for patterns it is sometimes better to start with the overall picture.  The following query returns a single row for each create.
+When looking for patterns it is sometimes better to start with a larger picture.  The following query returns a single row for each create.
 
 `GetCreatesByDateRange(ago(1d),now())`
 
- [[Run in Kusto.Explorer]](
-
- ) [[Run in Kusto.WebExplorer]](https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/azportal/databases/AzurePortal?q=H4sIAAAAAAAEAHNPLXEuSk0sSS12qnQBUkGJeempGonp%2bRqGKZo6efnlGpqavFwAGPlBOSYAAAA%3d)
-  
 **NOTE**: This query is the same as the `GetCreateRegressionDetails` query, except it is by date range instead of by extension and blade.
 
-To run the query locally in **Kusto.Explorer**, use ](  https://azportal.kusto.windows.net:443/AzurePortal?query=H4sIAAAAAAAEAHNPLXEuSk0sSS12qnQBUkGJeempGonp%2bRqGKZo6efnlGpqavFwAGPlBOSYAAAA%3d)
+To run the query locally in **Kusto.Explorer**, use [http://aka.ms/portalfx/allcreates-local](http://aka.ms/portalfx/allcreates-local). 
 
- To run the query in **Kusto.WebExplorer**, use [http://aka.ms/portalfx/alertregressioncount](http://aka.ms/portalfx/alertregressioncount). 
+ To run the query in **Kusto.WebExplorer**, use [http://aka.ms/portalfx/allcreates](http://aka.ms/portalfx/allcreates). 
 
+The results of the query are as follows.
 
-The results include:
+* **Extension**: The name of the extension. 
 
-* Extension
-* Name - name of the asset type
-* CreateBladeName
-* Status - has one of the following values
-    * Succeeded
-    * Failed
-    * Unknown
-    * Canceled - (billing errors are included here)
-* telemetryId - unique ID for the deployment
-* CustomDeployment - if not an ARM deployment this is true
+* **Name**: Name of the asset type.
+
+* **CreateBladeName**: The name of the create blade from which the create flow originated. 
+
+* **Status**: Contains one of the following values: "Succeeded", "Failed", "Unknown", or "Canceled".  Billing errors included in the "Canceled" category.
+
+* **telemetryId**: Unique ID for the deployment.
+
+* **CustomDeployment**: Contains the value `true` if this is not an ARM deployment.
         
-### All Creates With Additional Details
+### All creates with additional details
 
-To query with more details the following query:
+ More information about each create may help identify the main error that is causing the increase in regression numbers. This is in addition to the results of the queries specified in [#all-creates](#all-creates).  The following query returns multiple rows per `telemetryId`, where each `telemetryId` is a single create. 
 
-`GetCreateDetailsByDateRange(ago(1d),now())` [[Run in Kusto.Explorer]](https://azportal.kusto.windows.net/AzurePortal?query=H4sIAAAAAAAEAHNPLXEuSk0sSQ1KTS9KLS7OzM9zSS1JzMwp1sjLL9fQ1FEqT00qzixJLU6tKEnNA8krgcUy8otLMvPSC3IS85LBBiTlJKakKmnycgEAg5C8UlMAAAA%3d) [[Run in Kusto.WebExplorer]](https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/azportal/databases/AzurePortal?q=H4sIAAAAAAAEAB3MQQqAMAwF0bt01YK3KOLeG7T6qYGSSBKpxxe7HR6zwbOiOHY0hRkJr6qiWR72yDJiWsJANXIYXgf%2fJMx2iTlxu3vhYz5qLydC%2bgAfaEluVAAAAA%3d%3d)
+`GetCreateDetailsByDateRange(ago(1d),now())` 
  
- 
-`GetCreateRegressionErrorCount(now(),"websitesextension","webhostingplancreateblade")` 
+To run the query locally in **Kusto.Explorer**, use  [http://aka.ms/portalfx/allcreatesdetail-local](http://aka.ms/portalfx/allcreatesdetail-local). 
 
-To run the query locally in **Kusto.Explorer**, use ](https://azportal.kusto.windows.net:443/AzurePortal?query=H4sIAAAAAAAEAHNPLXEuSk0sSQ1KTS9KLS7OzM9zrSgJLs3NTSyq1MjLL9fQ1FEqT00qzixJLU6tKEnNAylR0lTg5QIAqPv6pjsAAAA%3d)
+<!--TODO:  Determine whether the following query is incorrect, because it points to GetCreateRegressionErrorCount(now(),"websitesextension","webhostingplancreateblade")
+ -->
+ To run the query in **Kusto.WebExplorer**, use [http://aka.ms/portalfx/allcreatesdetail](http://aka.ms/portalfx/allcreatesdetail). 
 
- To run the query in **Kusto.WebExplorer**, use [http://aka.ms/portalfx/alertregressioncount](http://aka.ms/portalfx/alertregressioncount). 
+Input parameters for the query are as follows.
 
- Adds the following properties with multiple rows per telemetryId (each telemetryId == 1 create):
+* **Endtime**: The end time of the time span to scan for errors. Time range: [end time – 24 hours, end time]. 
 
-* userId
-* sessionId
-* action
-* actionModifier
-* Data - this has a JSON string that contains most of the information needed for debugging
+* **Extension**: The extension name.
 
-This function is best used when trying to identify the main error that is causing your regression numbers to increase.
+The results of the query are as follows.
+ 
+* **Extension**: The name of the extension.
 
-Input Parameters:
+* **CreateBladeName**: The create blade name specified
 
-* **End time** – 24 hours ending at this end time will be the time span which is scanned for errors. Time range: [end time – 24 hours, end time]
-* **Extension** – the extension you are l
+* **ErrorCode**: The overall error code that specifies the type of error that occurred
 
-Output Result Columns:
+* **Hits**: The number of times this error occurred.
 
-* **Extension** – the extension specified
-* **CreateBladeName** – the create blade name specified
-* **ErrorCode** – the overall error code that specifies the type of error that occurred
-* **Hits** – the number of times this error
+The results of the query also include the following five properties.
+     
+* **userId**: Represents the user that initiated the create. 
 
-- [For General Telemetry](portalfx-telemetry.md)
-- [For Kusto Documentation](https://aka.ms/kusto)
+* **sessionId**: Represents the sessions in which the create was initiated. 
+
+* **action**: See [#the-data-field](#the-data-field).
+
+* **actionModifier**: See [#the-data-field](#the-data-field).
+
+* **data**: See [#the-data-field](#the-data-field).
