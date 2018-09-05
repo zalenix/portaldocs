@@ -206,7 +206,7 @@ The results of the function are as follows.
 
 * **Started**: The number of creates that were started. This is calculated by taking the count of the number of Create Flows for each blade from the [GetCreateFlows](#getcreateflows) function which had     `PortalCreateStarted == true`  or `ArmDeploymentStarted == true`. 
 
-  * **NOTE**: Both values are checked for redundancy. As long as at least one of these properties is  true,  then a create was started.
+  * **NOTE**: Both values are checked for redundancy. As long as at least one of these properties is  `true`,  then a create was started.
 
 * **Excluded**: The number of creates fromthe [GetCreateFlows](#getcreateflows) function that were marked as `Excluded`.
 
@@ -228,21 +228,154 @@ The results of the function are as follows.
 
 * **Unknown**: The number of creates which do not have a known result.
 
-* **OldCreateApi**: Specifies whether the create blade deployments were initiated using a deprecated version of the ARM provisioning API that was provided by the Portal SDK.
+* **OldCreateApi**: Specifies whether the create blade deployments were initiated using a deprecated version of the ARM provisioning API that was provided by the Portal SDK. If this field contains the value `true`, the blade is using the deprecated version. 
 
 * **CustomDeployment**: Specifies whether the create blade deployments were initiated without using the official ARM provisioning API provided by the portal SDK.
-
 
 <a name="create-flows-getcreatefunnelbyday"></a>
 ### GetCreateFunnelByDay
 
+The `GetCreateFunnelByDay` function calculates the create funnel KPI's for each extension's create blade for each day over a specific time range. The syntax is as follows.
 
+`GetCreateFunnelByDay(startDate: datetime, endDate: datetime)`
+
+Input parameters for the function are as follows.
+
+* **startDate**: The date to mark the inclusive start of the time range.
+
+* **endDate**: The date to mark the exclusive end of the time range.
+
+The results of the function are as follows.
+
+* **Date**: The date at midnight of the day which the create flow was started.
+
+* **Extension**:  The extension which initiated the creates.
+
+* **Blade**:   The create blade which inititated the creates.
+
+* **GalleryPackageId**: The gallery package id that was created.
+
+* **CreateBladeOpened**:  The number of times the create blade was opened. This is calculated by taking the count of the number of Create Flows for each blade from the [GetCreateFlows](#getcreateflows) function which had `CreateBladeOpened == true`.
+
+* **Started**: The number of creates that were started.  This is calculated by taking the count of the number of Create Flows  for each blade from the [GetCreateFlows](#getcreateflows) function which had `PortalCreateStarted == true` or `ArmDeploymentStarted == true`.
+
+    * **NOTE**: Both values are checked for redundancy. As long as at least one of these properties is  `true`,  then a create was started.
+
+* **Excluded**: The number of creates from  the [GetCreateFlows](#getcreateflows) function  that were marked as `Excluded`.
+
+* **Completed**: The number of creates that were completed. This is calculated as `Completed = Started - Excluded`.
+
+* **StartRate**: The rate of create blades that are opened that lead to a create being started. This is calculated as `StartRate = Started / CreateBladeOpened`.
+
+* **Succeeded**:  The number of creates that succeeded.
+
+* **SuccessRate**: The rate of completed creates which succeeded. This is calculated as `SuccessRate = Succeeded / Completed`.
+
+* **Failed**: The number of creates that failed.
+
+* **FailureRate**:   The rate of completed creates which failed. This is calculated as `FailureRate = Failed / Completed`.
+
+* **Canceled**:  The number of creates which were canceled.
+
+* **CommerceError**: The number of creates which were canceled  due to a commerce error.
+
+* **Unknown**: The number of creates which do not have a known result.
+
+* **OldCreateApi**: A Boolean that specifies whether the deployment was initiated using the latest supported Provisioning API. If this field contains the value `true`, the blade is using the deprecated version. 
+
+* **CustomDeployment**: A Boolean that specifies whether the deployment was initiated using the Portal ARM Provisioning Manager. 
 
 <a name="create-flows-getcreatefunnelbygallerypackageid"></a>
 ### GetCreateFunnelByGalleryPackageId
 
+The `GetCreateFunnelByGalleryPackageId` function calculates the create funnel KPI's by gallery package id, extension, and create blade over a given time range. The syntax is as follows.
+
+`GetCreateFunnelByGalleryPackageId(startDate: datetime, endDate: datetime)`
+
+Input parameters for the function are as follows.
+
+* **startDate**: The date to mark the inclusive start of the time range.
+
+* **endDate**: The date to mark the exclusive end of the time range.
+
+The results of the function are as follows.
+
+* **Extension**:  The extension which initiated the creates.
+
+* **Blade**:   The create blade which inititated the creates.
+
+* **GalleryPackageId**: The gallery package id that was created.
+
+* **CreateBladeOpened**:  The number of times the create blade was opened. This is calculated by taking the count of the number of Create Flows for each blade from the [GetCreateFlows](#getcreateflows) function which had `CreateBladeOpened == true`.
+
+* **Started**: The number of creates that were started.  This is calculated by taking the count of the number of Create Flows  for each blade from the [GetCreateFlows](#getcreateflows) function which had `PortalCreateStarted == true` or `ArmDeploymentStarted == true`.
+
+    * **NOTE**: Both values are checked for redundancy. As long as at least one of these properties is  `true`,  then a create was started.
+
+* **Excluded**: The number of creates from  the [GetCreateFlows](#getcreateflows) function  that were marked as `Excluded`.
+
+* **Completed**: The number of creates that were completed. This is calculated as `Completed = Started - Excluded`.
+
+* **StartRate**: The rate of create blades that are opened that lead to a create being started. This is calculated as `StartRate = Started / CreateBladeOpened`.
+
+* **Succeeded**:  The number of creates that succeeded.
+
+* **SuccessRate**: The rate of completed creates which succeeded. This is calculated as `SuccessRate = Succeeded / Completed`.
+
+* **Failed**: The number of creates that failed.
+
+* **FailureRate**:   The rate of completed creates which failed. This is calculated as `FailureRate = Failed / Completed`.
+
+* **Canceled**:  The number of creates which were canceled.
+
+* **CommerceError**: The number of creates which were canceled  due to a commerce error.
+ 
+* **Unknown**:   * The number of creates which do not have a known result.
+
+* **OldCreateApi**: A Boolean that specifies whether the deployment was initiated using the latest supported Provisioning API. If this field contains the value `true`, the blade is using the deprecated version. 
+
+* **CustomDeployment**: A Boolean that specifies whether the deployment was initiated using the Portal ARM Provisioning Manager. 
+
 <a name="create-flows-getcombinedcreatefunnel"></a>
 ### GetCombinedCreateFunnel
+
+The `GetCombinedCreateFunnel` function calculates the overall create funnel KPIs for the Portal. The syntax is as follows.
+
+`GetCombinedCreateFunnel(startDate: datetime, endDate: datetime)`
+
+Input parameters for the function are as follows.
+
+* **startDate**: The date to mark the inclusive start of the time range.
+
+* **endDate**: The date to mark the exclusive end of the time range.
+
+The results of the function are as follows.
+
+* **CreateBladeOpened**:  The number of times the create blade was opened. This is calculated by taking the count of the number of Create Flows for each blade from the [GetCreateFlows](#getcreateflows) function which had `CreateBladeOpened == true`.
+
+* **Started**: The number of creates that were started.  This is calculated by taking the count of the number of Create Flows  for each blade from the [GetCreateFlows](#getcreateflows) function which had `PortalCreateStarted == true` or `ArmDeploymentStarted == true`.
+
+    * **NOTE**: Both values are checked for redundancy. As long as at least one of these properties is  `true`,  then a create was started.
+
+* **Excluded**: The number of creates from  the [GetCreateFlows](#getcreateflows) function  that were marked as `Excluded`.
+
+* **Completed**: The number of creates that were completed. This is calculated as `Completed = Started - Excluded`.
+
+* **StartRate**: The rate of create blades that are opened that lead to a create being started. This is calculated as `StartRate = Started / CreateBladeOpened`.
+
+* **Succeeded**:  The number of creates that succeeded.
+
+* **SuccessRate**: The rate of completed creates which succeeded. This is calculated as `SuccessRate = Succeeded / Completed`.
+
+* **Failed**: The number of creates that failed.
+
+* **FailureRate**:   The rate of completed creates which failed. This is calculated as `FailureRate = Failed / Completed`.
+
+* **Canceled**:  The number of creates which were canceled.
+
+* **CommerceError**: The number of creates which were canceled  due to a commerce error.
+ 
+* **Unknown**:   * The number of creates which do not have a known result.
 
 <a name="client-telemetry"></a>
 ## Client telemetry
