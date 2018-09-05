@@ -92,7 +92,7 @@ The model counts the views that do not meet the bar and gives them a negative sc
 
 There are two methods that are used to assess the performance of an extension. The PowerBi dashboard that is located at [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf) measures blade, part, and extension performance, or you may run local Kusto queries to determine the numbers that are associated with extension performance.
 
-For more information about telemetry, see [portalfx-telemetry-getting-started.md](portalfx-telemetry-getting-started.md).
+For more information about telemetry, see [top-extensions-telemetry.md](top-extensions-telemetry.md).
 
 **NOTE**: It is good practice to run queries locally by using the Azure-provided Kusto functions to calculate your assessment.
 
