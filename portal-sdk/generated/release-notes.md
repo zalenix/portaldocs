@@ -1,4 +1,4 @@
-# Release Notes since 5/4/2018
+# Release Notes since 5/5/2018
 
 ## 5.0.302.1701
 0 Breaking Changes, 1 Features added and 4 Bugs Fixed
@@ -295,7 +295,3 @@
 ## 5.0.302.1112
 0 Breaking Changes, 1 Features added and 1 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2444284'>2444284</a></td><td>Bug Fix</td><td>Remove read-only from files copied during build</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2442256'>2442256</a></td><td>Feature</td><td>[Microsoft_Azure_PowerBIDedicated] Add configuration for Mooncake </td></tr></table>
-
-## 5.0.302.1111
-0 Breaking Changes, 1 Features added and 0 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2434242'>2434242</a></td><td>Feature</td><td>Enable Azure SignalR service</td></tr></table>
