@@ -3,15 +3,186 @@
 
 ## Overview
 
-The Create Flow PowerBi dashboard that is located at [needs link](needs link) gives you live access to your extension's create flow telemetry.
+The PowerBi dashboard that is located at [needs link](needs link) provides  live access to your extension's create flow  and create telemetry.
 
 <!-- TODO: Validate that this security group is still needed to access the create flow dashboard. -->
 
-To access to the Create Flow Dashbaord, you will need to join the Security Group 'Azure Portal Data' (auxdatapartners) by using the site located at [http://idwebelements/GroupManagement.aspx?Group=auxdatapartners&Operation=join](http://idwebelements/GroupManagement.aspx?Group=auxdatapartners&Operation=join).
+To access to the  Dashboard, you will need to join the Security Group 'Azure Portal Data' (auxdatapartners) by using the site located at [http://idwebelements/GroupManagement.aspx?Group=auxdatapartners&Operation=join](http://idwebelements/GroupManagement.aspx?Group=auxdatapartners&Operation=join).
 
-All report-generating queries are performed against the **AzurePortal.AzPtlCosmos** database **ClientTelemetry** table. To become familiar with the table, you may want to review the PortalFx Telemetry - Kusto Databases  the document located at [portalfx-telemetry-getting-started.md](portalfx-telemetry-getting-started.md).
+All report-generating queries are performed against the **AzurePortal.AzPtlCosmos** database.
+Create flow information is located in the **AzurePortal.AzPtlCosmos** database **CreateFlows** table, 
+and client telemetry is located in the **ClientTelemetry** table.   To become familiar with the tables, you may want to review the document located at [portalfx-telemetry-getting-started.md](portalfx-telemetry-getting-started.md).
 
 To run or create modified versions of the Kusto queries, you will need access to the  **Kusto** data tables. How to get setup using Kusto and getting access is explained in the document located at [portalfx-telemetry-getting-started.md](portalfx-telemetry-getting-started.md).
+
+* [Create Flows](#create-flows)
+
+* [Client Telemetry](#client-telemetry)
+
+* [Troubleshooting create regressions and ICM alerts](#troubleshooting-create-regressions-and-ICM-alerts)
+
+## Create flows
+
+Each create flow represents the lifecycle of a create, with the beginning marked by the moment the create blade is opened, and ending the moment that the create has been concluded and logged by the Portal. Data for each create is curated, and joined between Portal data logs and available ARM deployment data logs.
+
+Information about create flows is typically used in the following scenarios.
+
+* Identifying the number of creates completed for a specific extension, or for a specific Azure marketplace gallery package.
+
+* Calculating the percentage of successful creates initiated by an Extension's create blade.
+
+* Debugging failed deployments by retrieving error message information logged for failed creates.
+
+* Calculating the number of creates that were abandoned by the user before being initiated and completed.
+
+* Identifying creates initiated by a specific user id.
+
+* Calculating the average create duration by data center.
+
+The **CreateFlows** table can be accessed by using the function: **GetCreateFlows(startDate: datetime, endDate: datetime)**. This function returns the list of Portal Azure service deployment lifecycles, also known as 'create flows', for a specific time range.
+
+The function uses the following resources.
+
+* `cluster("Azportal").database("AzPtlCosmos").CreateFlows`
+
+  The source of the Azure create lifecycle deployment information.
+
+* `cluster("Armprod").database("ARMProd").Deployments`
+
+  The source of the ARM deployment information
+
+* `cluster("Armprod").database("ARMProd").HttpIncomingRequests`
+
+  Used to identify which of the ARM deployments are requests made from the Portal.
+
+* `cluster("Armprod").database("ARMProd").EventServiceEntries`
+
+  The source of the ARM deployment failed logs error information.
+
+Input parameters are as follows.
+
+* **startDate**: The date to mark the inclusive start of the time range.
+
+* **endDate**: The date to mark the exclusive end of the time range.
+
+The results of the function are as follows.
+
+* **PreciseTimeStamp**: The time at which the create blade was opened, or when the **CreateFlowLaunched** event is logged by the server.
+
+* **TelemetryId**:  The unique identifier of this Azure Portal create flow.
+
+* **Extension**:  The extension which initiated the deployment.
+
+* **Blade**:   * The name of the blade which was used to initiate the deployment.
+
+* **GalleryPackageId**: The Azure service Marketplace gallery package that was created.
+
+* **ExecutionStatus**: The final result of the create execution. Values  and the states they specify are as follows.
+
+    * **Succeeded**: The create was successfully completed.
+      * If ARMExecutionStatus is "Succeeded" or if ARMExecutionStatus is blank and PortalExecutionStatus is "Succeeded"
+
+    * **Canceled**: The create was canceled before completion.
+      * If ARMExecutionStatus is "Canceled" or if ARMExecutionStatus is blank and PortalExecutionStatus is "Canceled"
+
+    * **Failed**: The create failed to complete.
+      * If ARMExecutionStatus is "Failed" or if ARMExecutionStatus is blank and PortalExecutionStatus is "Failed"
+
+    * **BillingError**: The create failed to completed because of the error, "We could not find a credit card on file for your azure subscription. Please make sure your azure subscription has a credit card."
+    
+    * **CommerceError**: 
+
+    * **Unknown**:  The status of the create cannot be determined.
+      * If ARMExecutionStatus is blank and PortalExecutionStatus is blank
+
+    * **Abandoned**: The create blade was closed before a create was initialized.
+
+* **Excluded**: A Boolean that specifies whether this Create Flow is to be excluded from create funnel KPI calculations. A Create Flow is marked `Excluded = true` if `ExecutionStatus` is "Canceled", "CommerceError", or "Unknown".
+
+* **CorrelationId**:  The unique ARM identifier of this deployment.
+
+* **ArmDeploymentName**:  The name of the resource group deployment from ARM.
+
+* **ArmExecutionStatus**: The result of the deployment from ARM.
+
+* **PortalExecutionStatus**:  The result of the deployment execution logged by the Portal.
+
+* **ArmStatusCode**:  The ARM status code of the deployment.
+
+* **ArmErrorCode**: The error code of a failed deployment logged by ARM.
+
+* **ArmErrorMessage**:  The error message of a failed deployment logged by ARM.
+
+* **PortalErrorCode**: The error code of a failed deployment logged by the Portal.
+
+* **PortalErrorMessage**: The error message of a failed deployment logged by the Portal.
+
+* **CreateBladeOpened**: A  Boolean that specifies whether the create blade was opened. It is logged as a `CreateFlowLaunched` event at the time that the create blade is opened and logged by the Portal.
+
+* **CreateBladeOpened_ActionModifier**:  Context for `CreateBladeOpened`.
+
+* **CreateBladeOpened_TimeStamp**: The time when the create blade was opened.
+
+* **PortalCreateStarted**: A Boolean that specifies whether a Portal create was started for this create flow. It is logged by the a `ProvisioningStarted` event when the create is initiated.
+
+* **PortalCreateStarted_ActionModifier**:  Context for `PortalCreateStarted`.
+
+* **PortalCreateStarted_TimeStamp**: The time when the Portal create was started and logged by the Portal.
+
+* **ArmDeploymentStarted**: A Boolean that specifies whether   a deployment request was accepted by ARM. It is logged when the deployment request is acknowledged by ARM and a `CreateDeploymentStart` event was logged by the Portal.
+
+* **ArmDeploymentStarted_ActionModifier**:  Context for the `ArmDeploymentStarted`.
+
+* **ArmDeploymentStarted_TimeStamp**: The time when the ARM deployment request response was logged by the Portal.
+
+* **ArmDeploymentEnded**: A Boolean that specifies whether  a deployment was completed by ARM. It is logged when ARM has completed status for the deployment and a `CreateDeploymentEnd` event was logged by the Portal.
+
+* **ArmDeploymentEnded_ActionModifier**:  Context for `ArmDeploymentEnded`.
+
+* **ArmDeploymentEnded_TimeStamp**: The time when the `CreateDeploymentEnd` event was logged.
+
+* **PortalCreateEnded**: A Boolean that specifies whether a Portal create was completed for this create flow. It is logged when all operations relating to the create have completed and a `ProvisioningEnded` event was logged by the Portal.
+
+* **PortalCreateEnded_ActionModifier**:  Context for `PortalCreateEnded`.
+
+* **ProvisioningEnded_TimeStamp**: The Time when the Portal create was completed and logged by the Portal.
+
+* **ArmPreciseStartTime**: Start time of the deployment through ARM.
+
+* **ArmPreciseEndTime**: End time of the deployment through ARM.
+
+* **ArmPreciseDuration**:  Duration of the deployment through ARM.
+
+* **PortalCreateStartTime**:  Start time of the Portal create.
+
+* **PortalCreateEndTime**:  End time of the Portal create.
+
+* **PortalCreateDuration**:  Duration of the Portal create. Its value is `PortalCreateEndTime - PortalCreateStartTime`.
+
+* **Data**:  The entire collection of logged create events' telemetry data in JSON format.
+
+* **BuildNumber**:  The Portal SDK and environment in which the deployment was initiated.
+
+* **DataCenterId**:  The data center in which the deployment telemetry originated.
+
+* **SessionId**:  The session in which the deployment was initiated.
+
+* **UserId**:  The user identification which initiated the deployment.
+
+* **SubscriptionId**:  The subscription Id.
+
+* **TenantId**: The tenant Id.
+
+* **Template**:  The type of the create template used.
+
+* **OldCreateApi**: A Boolean that specifies whether the deployment was initiated using the latest supported Provisioning API.
+
+* **CustomDeployment**: A Boolean that specifies whether the deployment was initiated using the Portal ARM Provisioning Manager.
+
+
+
+
+## Client telemetry
 
 The following reports contain information that will help you tune the performance of your extension.
 
@@ -385,7 +556,7 @@ The following code can be used to generate these numbers.
     | order by ErrorCount desc
     ```
 
-## Troubleshooting Create Regressions and ICM alerts
+## Troubleshooting create regressions and ICM alerts
 
 Creates occur when a user tries to provision a resource using the Portal. The Create Flow Regressions alert is a bar that  is set on a blade-by-blade basis and can be adjusted as needed.  The goal of the alert is to generate awareness when the reliability of the Create experience  decreases.
 
