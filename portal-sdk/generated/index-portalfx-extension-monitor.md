@@ -2,7 +2,7 @@
 <a name="telemetry"></a>
 # Telemetry
 
-  * [Getting Started](portalfx-telemetry-getting-started.md#getting-started)
+  * [Overview](top-extensions-telemetry.md#overview)
 
   * [Kusto Telemetry](portalfx-telemetry-kusto-databases.md#kusto-telemetry)
 
@@ -21,11 +21,26 @@
     * [What is configurable?](portalfx-telemetry-alerting-overview.md#what-is-configurable)
 
   * [Availability](portalfx-telemetry-alerting-availability.md#availability)
-* [How do I know my extension's current configuration?](portalfx-telemetry-alerting-availability.md#how-do-i-know-my-extension-s-current-configuration)
+    * [Configuration](portalfx-telemetry-alerting-availability.md#configuration)
+    * [How often do they run?](portalfx-telemetry-alerting-availability.md#how-often-do-they-run)
+    * [How do I onboard?](portalfx-telemetry-alerting-availability.md#how-do-i-onboard)
+    * [What happens if I need to update them?](portalfx-telemetry-alerting-availability.md#what-happens-if-i-need-to-update-them)
+    * [How do I know my extension's current configuration?](portalfx-telemetry-alerting-availability.md#how-do-i-know-my-extension-s-current-configuration)
 
   * [Performance](portalfx-telemetry-alerting-performance.md#performance)
+    * [Configuration](portalfx-telemetry-alerting-performance.md#configuration)
+    * [How often do they run?](portalfx-telemetry-alerting-performance.md#how-often-do-they-run)
+    * [How do I onboard?](portalfx-telemetry-alerting-performance.md#how-do-i-onboard)
+    * [What should I set the thresholds at?](portalfx-telemetry-alerting-performance.md#what-should-i-set-the-thresholds-at)
+    * [What happens if I need to update them?](portalfx-telemetry-alerting-performance.md#what-happens-if-i-need-to-update-them)
+    * [How do I know my extension's current configuration?](portalfx-telemetry-alerting-performance.md#how-do-i-know-my-extension-s-current-configuration)
 
   * [Client Error](portalfx-telemetry-alerting-error-messages.md#client-error)
+    * [Configuration](portalfx-telemetry-alerting-error-messages.md#configuration)
+    * [How often do they run?](portalfx-telemetry-alerting-error-messages.md#how-often-do-they-run)
+    * [How do I onboard?](portalfx-telemetry-alerting-error-messages.md#how-do-i-onboard)
+    * [What happens if I need to update alert configuration?](portalfx-telemetry-alerting-error-messages.md#what-happens-if-i-need-to-update-alert-configuration)
+    * [How do I know my extension's current configuration?](portalfx-telemetry-alerting-error-messages.md#how-do-i-know-my-extension-s-current-configuration)
 
   * [Fequently asked questions](portalfx-telemetry-alerting-faq.md#fequently-asked-questions)
     * [How do I onboard?](portalfx-telemetry-alerting-faq.md#how-do-i-onboard)
@@ -52,20 +67,19 @@
 <a name="telemetry-reliability"></a>
 ## Reliability
 
-  * [Overview](portalfx-reliability.md#overview)
-* [Reliability Frequently Asked Questions (FAQ)](portalfx-reliability.md#reliability-frequently-asked-questions-faq)
-
-  * [How to analyze client errors](portalfx-telemetry-extension-errors.md#how-to-analyze-client-errors)
+  * [Overview](top-extensions-reliability.md#overview)
+* [Assessing extension reliability](top-extensions-reliability.md#assessing-extension-reliability)
+* [How to run dashboard queries](top-extensions-reliability.md#how-to-run-dashboard-queries)
+* [Optimizing code to improve extension reliability](top-extensions-reliability.md#optimizing-code-to-improve-extension-reliability)
 
 
 <a name="telemetry-create"></a>
 ## Create
 
-  * [Create Telemetry](portalfx-telemetry-create.md#create-telemetry)
-    * [Create Flow Telemetry Dashboards](portalfx-telemetry-create.md#create-flow-telemetry-dashboards)
-    * [Create Flow table](portalfx-telemetry-create.md#create-flow-table)
-    * [Create Flow Functions](portalfx-telemetry-create.md#create-flow-functions)
-
-  * [Overview](portalfx-create-troubleshooting.md#overview)
-* [Types of Create Failures](portalfx-create-troubleshooting.md#types-of-create-failures)
-* [Debugging Alerts](portalfx-create-troubleshooting.md#debugging-alerts)
+  * [PowerBi dashboards](top-extensions-telemetry-create.md#powerbi-dashboards)
+* [Overview](top-extensions-telemetry-create.md#overview)
+* [Create flows](top-extensions-telemetry-create.md#create-flows)
+* [Client telemetry](top-extensions-telemetry-create.md#client-telemetry)
+* [Create flow reports](top-extensions-telemetry-create.md#create-flow-reports)
+* [Error Distribution Reports](top-extensions-telemetry-create.md#error-distribution-reports)
+* [Troubleshooting create regressions and ICM alerts](top-extensions-telemetry-create.md#troubleshooting-create-regressions-and-icm-alerts)

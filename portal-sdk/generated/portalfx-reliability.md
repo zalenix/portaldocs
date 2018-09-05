@@ -4,47 +4,49 @@
     * [Part reliability](#overview-part-reliability)
     * [Assessing extension reliability](#overview-assessing-extension-reliability)
     * [Checklist](#overview-checklist)
+        * [Code optimisations to improve extension reliability](#overview-checklist-code-optimisations-to-improve-extension-reliability)
 * [Reliability Frequently Asked Questions (FAQ)](#reliability-frequently-asked-questions-faq)
     * [My Extension is below the reliability bar, what should I do](#reliability-frequently-asked-questions-faq-my-extension-is-below-the-reliability-bar-what-should-i-do)
+        * [Error States](#reliability-frequently-asked-questions-faq-my-extension-is-below-the-reliability-bar-what-should-i-do-error-states)
     * [My Blade is below the reliability bar, what should I do](#reliability-frequently-asked-questions-faq-my-blade-is-below-the-reliability-bar-what-should-i-do)
     * [My Part is below the reliability bar, what should I do](#reliability-frequently-asked-questions-faq-my-part-is-below-the-reliability-bar-what-should-i-do)
 
 
 <a name="overview"></a>
-## Overview
+# Overview
 
 Reliability of the Portal is one of the top pain points from a customers perspective.
 As an extension author you have a duty to uphold your experience to the reliability bar at a minimum.
 
 | Area          | Reliability Bar     | Telemetry Action/s                  | How is it measured? |
 | ---------     | ------------------- | ------------------------            | ------------------- |
-| Extension     | See Power BI        | InitializeExtensions/LoadExtensions | (( # of LoadExtensions starts - # of InitializeExtensions or LoadExtensions failures ) /  # of load extension starts ) * 100 |
+| Extension     | See Power BI        | ExtensionLoad | (# of ExtensionLoad completes / (# of ExtensionLoad completes + cancels)) * 100 |
 | Blade         | See Power BI        | BladeLoaded vs BladeLoadErrored     | (( # of BladeLoaded started - # of BladeLoadErrored's) / # of BladeLoaded started) * 100 |
 | Part          | See Power BI        | PartLoaded                          | (( # of PartLoaded started - # of PartLoaded canceled) / # of PartLoaded started) * 100 |
 
 <a name="overview-extension-reliability"></a>
-### Extension reliability
+## Extension reliability
 
 This is core to your customers experience, if the FX is unable to load your extension it will be unable to surface any of your experience.
 Consequently your customers will be unable to manage/monitor their resources through the Portal.
 
 <a name="overview-blade-reliability"></a>
-### Blade reliability
+## Blade reliability
 
 Second to Extension reliability, Blade reliability is next level of critical reliability.
 Your Blade reliability can be equated to a page loading in a website, it failing to load is a critical issue.
 
 <a name="overview-part-reliability"></a>
-### Part reliability
+## Part reliability
 
-Parts are used throughout the Portal, from a blade and dashboard perspective, if a part fails to load this results in the user potentially:
+Parts are used throughout the portal, from a blade and dashboard perspective, if a part fails to load this results in the user potentially:
 
 1. not being able to navigate to the a blade or the next blade
 1. not seeing the critical data they expected on the dashboard
 1. etc...
 
 <a name="overview-assessing-extension-reliability"></a>
-### Assessing extension reliability
+## Assessing extension reliability
 
 There is two methods to assess your reliability:
 
@@ -57,24 +59,23 @@ The first method is definitely the easiest way to determine your current assessm
 You can, if preferred, run queries locally but ensure you are using the Fx provided Kusto functions to calculate your assessment.
 
 <a name="overview-checklist"></a>
-### Checklist
+## Checklist
 
 There are a few items that the FX team advises all extensions to follow.
 
 - [Configure CDN](portalfx-cdn.md)
 - [Extension HomePage Caching](portalfx-extension-homepage-caching.md)
-- [Persistent Caching of scripts across extension updates](portalfx-performance-caching-scripts.md)
+- [Persistent Caching of scripts across extension updates](portalfx-extension-persistent-caching-of-scripts.md)
 - Geo-distribution, ensure you are serving your extension as close as possible to users.
 The FX provides an [Extension Hosting Service](portalfx-extension-hosting-service.md) which handles Geo-distribution.
 To assess your extensions performance by data center see the [Extension performance/reliability report][Ext-Perf/Rel-Report]
 - Turning on [IIS compression](https://technet.microsoft.com/en-us/library/cc730629(v=ws.10).aspx)
-- [Run portalcop to identify and resolve common performance issues](portalfx-performance-portalcop.md)
 
 <a name="overview-checklist-code-optimisations-to-improve-extension-reliability"></a>
-#### Code optimisations to improve extension reliability
+### Code optimisations to improve extension reliability
 
 <a name="overview-checklist-code-optimisations-to-improve-extension-reliability-lazy-initialization-of-data-contexts-and-view-model-factories"></a>
-##### Lazy initialization of data contexts and view model factories
+#### Lazy initialization of data contexts and view model factories
 
 The setDataContext API on view model factories was designed pre-AMD support in TypeScript and slows down extension load by increasing the amount of code downloaded on extension initialization. This also increases the risk of extension load failures due to increase in network activity. By switching to the setDataContextFactory method, we reduce the amount of code downloaded to the bare minimum. And the individual data contexts are loaded if and when required (e.g. if a blade that's opened requires it).
 
@@ -94,10 +95,10 @@ this.viewModelFactories.Blades().setDataContextFactory<typeof Blades>(
 ```
 
 <a name="reliability-frequently-asked-questions-faq"></a>
-## Reliability Frequently Asked Questions (FAQ)
+# Reliability Frequently Asked Questions (FAQ)
 
 <a name="reliability-frequently-asked-questions-faq-my-extension-is-below-the-reliability-bar-what-should-i-do"></a>
-### My Extension is below the reliability bar, what should I do
+## My Extension is below the reliability bar, what should I do
 
 Run the following [query][kusto-extension-reliability-summary]
 
@@ -126,7 +127,7 @@ Once you have ran the query you will be shown a list of errorStates and errors, 
 to investigate further.
 
 <a name="reliability-frequently-asked-questions-faq-my-extension-is-below-the-reliability-bar-what-should-i-do-error-states"></a>
-#### Error States
+### Error States
 
 <table>
     <tr>
@@ -296,7 +297,7 @@ to investigate further.
 </table>
 
 <a name="reliability-frequently-asked-questions-faq-my-blade-is-below-the-reliability-bar-what-should-i-do"></a>
-### My Blade is below the reliability bar, what should I do
+## My Blade is below the reliability bar, what should I do
 
 Firstly, run the following [query][kusto-blade-reliabiltiy-summary], ensure you update the extension/time range.
 
@@ -392,7 +393,7 @@ Once you have that, correlate the error reasons with the below list to see the g
 </table>
 
 <a name="reliability-frequently-asked-questions-faq-my-part-is-below-the-reliability-bar-what-should-i-do"></a>
-### My Part is below the reliability bar, what should I do
+## My Part is below the reliability bar, what should I do
 
 Firstly, run the following [query][kusto-part-reliabiltiy-summary], ensure you update the extension/time range.
 
@@ -506,7 +507,7 @@ Once you have that, correlate the error reasons with the below list to see the g
     </tr>
 </table>
 
-[TelemetryOnboarding]: <portalfx-telemetry-getting-started.md>
+[TelemetryOnboarding]: <top-extensions-telemetry.md>
 [Ext-Perf/Rel-Report]: <http://aka.ms/portalfx/dashboard/extensionperf>
 [portalfx-cdn]: <portalfx-cdn>
 [kusto-extension-reliability-summary]: <https://azportal.kusto.windows.net:443/AzurePortal?query=H4sIAAAAAAAEAHNPLXGtKEnNK87Mz3NLzMwpLUotDi7NzU0sqtRITM%2fXMEzR1FHIyy%2fX0NTk5apRKM9ILUpVSIXpUEjOzytJzMwrVlDyzUwuyi%2fOTyuJd6wCGhLvnJ9bUFqSqsTLxcsFALeT50BlAAAA>

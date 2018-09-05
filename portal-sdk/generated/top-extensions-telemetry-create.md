@@ -13,9 +13,9 @@ To access to the  Dashboard, you will need to join the Security Group 'Azure Por
 
 All report-generating queries are performed against the **AzurePortal.AzPtlCosmos** database.
 Create flow information is located in the **AzurePortal.AzPtlCosmos** database **CreateFlows** table, 
-and client telemetry is located in the **ClientTelemetry** table.   To become familiar with the tables, you may want to review the document located at [portalfx-telemetry-getting-started.md](portalfx-telemetry-getting-started.md).
+and client telemetry is located in the **ClientTelemetry** table.   
 
-To run or create modified versions of the Kusto queries, you will need access to the  **Kusto** data tables. How to get setup using Kusto and getting access is explained in the document located at [portalfx-telemetry-getting-started.md](portalfx-telemetry-getting-started.md).
+To run or create modified versions of the Kusto queries, you will need access to the  **Kusto** data tables. How to get setup using Kusto and getting access is explained in the document located at [top-extensions-telemetry.md](top-extensions-telemetry.md).
 
 * [Create Flows](#create-flows)
 
