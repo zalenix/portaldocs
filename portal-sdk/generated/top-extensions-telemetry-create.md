@@ -28,23 +28,17 @@ To run or create modified versions of the Kusto queries, you will need access to
 
 Each create flow represents the lifecycle of a create, with the beginning marked by the moment the create blade is opened, and ending the moment that the create has been concluded and logged by the Portal. Data for each create is curated, and joined between Portal data logs and available ARM deployment data logs.
 
-Information about create flows is typically used in the following scenarios.
+The **CreateFlows** table can be accessed by using several functions that help analyze information about create flows. They are listed in the following table, along with some common use cases for each one.
 
-* Identifying the number of creates completed for a specific extension, or for a specific Azure marketplace gallery package.
+| Function                          | Common Use Cases | 
+| --------------------------------- | ---------------- | 
+| [GetCreateFlows](#getcreateflows) | * Identifying the number of creates completed for a specific extension, or for a specific Azure marketplace gallery package.<br>* Calculating the percentage of successful creates initiated by an Extension's create blade.<br>* Debugging failed deployments by retrieving error message information logged for failed creates.<br>* Calculating the number of creates that were abandoned by the user before being initiated and completed.<br>* Identifying creates initiated by a specific user id.<br>* Calculating the average create duration by data center. |
+| [GetCreateFunnel](#getcreatefunnel)                  | * Retrieving the percentage of successful create initated by an Extension's create blade for a week.<br> * Retrieving the number of the failed creates.<br>* Retrieving the drop off rate of customers attempting a create (how often creates are abandoned). |
+| [GetCreateFunnelByDay](#getcreatefunnelbyday)             | * Identifying the change in the number of successful create initiated by an Extension's create blade over the course of multiple weeks.<br>* Identifying which days have higher number of failed deployments. |
+| [GetCreateFunnelByGalleryPackageId](#getcreatefunnelbygallerypackageid) | * Identifying the number of successfully creates for a resource.<br>* Identifying which resources have higher number of failed deployments. |
+| [GetCombinedCreateFunnel](#getcombinedcreatefunnel)           | * Identifying the overall success rates of creates in the Portal.<br>* Identifying the total number of failed creates in the Portal.<br>* Identifying the total number of create aborted due to commerce errors in the Portal.<br>* Identifying the overall rate of create flows that lead to a create being started. |
 
-* Calculating the percentage of successful creates initiated by an Extension's create blade.
-
-* Debugging failed deployments by retrieving error message information logged for failed creates.
-
-* Calculating the number of creates that were abandoned by the user before being initiated and completed.
-
-* Identifying creates initiated by a specific user id.
-
-* Calculating the average create duration by data center.
-
-The **CreateFlows** table can be accessed by using the function: **GetCreateFlows(startDate: datetime, endDate: datetime)**. This function returns the list of Portal Azure service deployment lifecycles, also known as 'create flows', for a specific time range.
-
-The function uses the following resources.
+The functions use the following resources.
 
 * `cluster("Azportal").database("AzPtlCosmos").CreateFlows`
 
@@ -62,7 +56,14 @@ The function uses the following resources.
 
   The source of the ARM deployment failed logs error information.
 
-Input parameters are as follows.
+<a name="create-flows-getcreateflows"></a>
+### GetCreateFlows
+
+The `GetCreateFlows` function returns the list of Portal Azure service deployment lifecycles, also known as 'create flows', for a specific time range. The syntax is as follows.
+
+`GetCreateFlows(startDate: datetime, endDate: datetime)`
+
+Input parameters for the function are as follows.
 
 * **startDate**: The date to mark the inclusive start of the time range.
 
@@ -182,8 +183,66 @@ The results of the function are as follows.
 
 * **CustomDeployment**: A Boolean that specifies whether the deployment was initiated using the Portal ARM Provisioning Manager.
 
+<a name="create-flows-getcreatefunnel"></a>
+### GetCreateFunnel
+
+The `GetCreateFunnel` function calculates the create funnel KPI's for each extension's create blade for the specified time range. The syntax is as follows.
+
+`GetCreateFunnel(startDate: datetime, endDate: datetime)`
+
+Input parameters for the function are as follows.
+
+* **startDate**: The date to mark the inclusive start of the time range.
+
+* **endDate**: The date to mark the exclusive end of the time range.
+
+The results of the function are as follows.
+  
+* **Extension**:  The extension which initiated the deployment.
+
+* **Blade**:   The create blade which inititated the creates.
+
+* **CreateBladeOpened**:  The number of times the create blade was opened. This is calculated by taking the count of the number of Create Flows for each blade from the [GetCreateFlows](#getcreateflows) function which had `CreateBladeOpened == true`.
+
+* **Started**: The number of creates that were started. This is calculated by taking the count of the number of Create Flows for each blade from the [GetCreateFlows](#getcreateflows) function which had     `PortalCreateStarted == true`  or `ArmDeploymentStarted == true`. 
+
+  * **NOTE**: Both values are checked for redundancy. As long as at least one of these properties is  true,  then a create was started.
+
+* **Excluded**: The number of creates fromthe [GetCreateFlows](#getcreateflows) function that were marked as `Excluded`.
+
+* **Completed**: The number of creates that were completed. This is calculated as `Completed = Started - Excluded`.
+
+* **StartRate**: The rate of create blades that are opened that lead to a create being started. This is calculated as `StartRate = Started / CreateBladeOpened`.
+
+* **Succeeded**:  The number of creates that succeeded.
+
+* **SuccessRate**: The rate of completed creates which succeeded. This is calculated as `SuccessRate = Succeeded / Completed`.
+
+* **Failed**: The number of creates that failed.
+
+* **FailureRate**:   The rate of completed creates which failed. This is calculated as ` FailureRate = Failed / Completed`.
+
+* **Canceled**:  The number of creates which were canceled.
+
+* **CommerceError**: The number of creates which were canceled  due to a commerce error.
+
+* **Unknown**: The number of creates which do not have a known result.
+
+* **OldCreateApi**: Specifies whether the create blade deployments were initiated using a deprecated version of the ARM provisioning API that was provided by the Portal SDK.
+
+* **CustomDeployment**: Specifies whether the create blade deployments were initiated without using the official ARM provisioning API provided by the portal SDK.
 
 
+<a name="create-flows-getcreatefunnelbyday"></a>
+### GetCreateFunnelByDay
+
+
+
+<a name="create-flows-getcreatefunnelbygallerypackageid"></a>
+### GetCreateFunnelByGalleryPackageId
+
+<a name="create-flows-getcombinedcreatefunnel"></a>
+### GetCombinedCreateFunnel
 
 <a name="client-telemetry"></a>
 ## Client telemetry
