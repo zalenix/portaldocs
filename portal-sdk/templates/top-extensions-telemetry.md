@@ -66,8 +66,6 @@ The following table specifies the Kusto databases that contain Azure Portal tele
 
 	This database contains  the raw, unprocessed data that comes from MDS directly to Kusto. There are many scenarios where you may want to debug extension issues, for example, performance or creates. This is the right table to use to review diagnostic events. Data here is persisted for 45 days. To filter out test traffic when performing queries on this database, use `userTypeHint == ""`.       |
 
-For more information about Kusto and the data provided in the Portal Kusto cluster, see [portalfx-telemetry-kusto-databases.md](portalfx-telemetry-kusto-databases.md).
-
 ### Kusto tables
 
 | Database          | Table Name        | Details             |
@@ -88,6 +86,8 @@ You can right-click on  a function and then select "Make a command script" to vi
 ## Logging
 
 There are two options for collecting telemetry and error and warning logs. You can configure and use the Portal Framework's built-in telemetry services or you can build an entirely custom telemetry system. It is strongly recommended that your extension should use the Portalfx Framework telemetry controller, because the system which is in place is likely to be more performant than custom solutions.  However, if you choose to build your own telemetry system, you need to have practices in place that enforce  the guidelines that are associated with the collection of personally identifiable information (PII).  It is very important for security and compliance reasons that PII data is not sent to telemetry services.
+
+For more information about logging, see [portalfx-telemetry-logging.md](portalfx-telemetry-logging.md).
 
 ### Onboarding to tables
 
@@ -177,7 +177,7 @@ When the Portal starts, press F12 to view the "Console" Tab. You can view most o
 
   ![alt-text](..//media/top-extensions-telemetry/consoleLogs.png "Fiddler")
 
-## Fiddler
+### Fiddler
 
 Extension telemetry can also be viewed by using the **Fiddler** tool.  It is located at [http://www.telerik.com/fiddler](http://www.telerik.com/fiddler). 
 
@@ -187,19 +187,119 @@ After the tool is installed, open **Fiddler** and configure the filters as in th
 
  ![alt-text](..//media/top-extensions-telemetry/fiddler.png "Fiddler filters")
 
-When you open the Portal, all relevant telemetry logs should now be displayed here.
+When you open the Portal, all relevant telemetry logs should now be displayed in teh **Fiddler** interface.
 
+### Other debugging tools 
 
-
-### Viewing Blade Names
-
-Pressing CTRL-ALT-D in the Ibiza portal displays  component loading times and other information, as specified in [top-extensions-debugging.md#debug-mode](top-extensions-debugging.md#debug-mode).
-
-
+When you press CTRL-ALT-D in the Azure Portal, it displays  component loading times and other information, as specified in [top-extensions-debugging.md#debug-mode](top-extensions-debugging.md#debug-mode).
 
 ## ClientTelemetry
 
+There is a correspondence between the events and actions that are logged, and the fields in which the data is stored. However, that correspondence might be specific to the event.  For example, a duration can be used by one event to store the amount of time that was used to accomplish a specific task, whereas a different event might use timestamps to accomplish the same effect.
+
+* [ClientTelemety actions and events](#clientTelemety-actions-and-events)
+
+* [ClientTelemety table columns](#clientTelemety-table-columns)
+
+### ClientTelemety actions and events
+
+The following actions and events are logged to **ClientTelemetry** table.
+
+**NOTE**: These are the names of the actions, which is different from the names of the table columns.
+
+* Blade events
+
+    The `name` column provides the name of the blade. This name is provided in "Extension/extension_name/Blade/blade_name" format.
+
+    * **BladeLoaded**: Tracks the time it takes to open the blade and start seeing the part frames show up. BladeLoaded also includes loading and opening the action bar.
+
+    * **BladeLoadErrored**:  Triggered when loading a blade failed. This event is used to track blade errors in Portal Reliability metrics.
+
+    * **BladeOpened**:  Tracks the time it takes for BladeLoaded + all the parts to start loading.  More specifically, it is when the blade’s Above The Fold lenses, parts and widgets have been created. It includes setting up the input bindings. The inputs themselves aren’t necessarily available yet (onInputsSet is not necessarily called yet). It also includes loading the collapsed state of the essentials part (if there is one).
+
+    * **BladeRevealed**:  All parts above the fold have called reveal content or resolved onInputsSet(). This action is triggered when a Blade is revealed but the parts within the blade may still be loading. This event is used in Portal blade performance metrics.
+
+    * **BladeReady**: All parts above the fold have resolved onInputsSet(). This action is triggered when a Blade Load is complete and it's ready for consumption by the user.
+
+    * **BladeFullOpened**:  Is the same as BladeOpened except it is for all the parts, not just the parts above the fold.
+
+    * **BladeFullRevealed**:  Is the same as BladeRevealed except it is for the all parts, not just the parts above the fold.
+
+    * **BladeFullReady**:  Is the same as BladeReady except it is for all the parts, not just the parts above the fold.
+
+    * **BladeButtonClicked**:  When the pin, unpin, maximize, minimize or close button on a blade is clicked.
+
+    * **CommandExecuted** :  When any of the Commands on a blade is clicked - like start or  stop.
+
+* Part events
+
+    The `name` column provides the name of the part. This name is provided in "Extension/extension_name/Blade/blade_name/Part/part_name" format.
+
+    * **PartClick**: Triggered when a part is clicked.
+
+    * **PartLoaded**: Tracks the time it takes for a part to start getting filled with a UI, like a  spinner.
+
+    * **PartErrored**: Triggered when loading a part failed. This event is used to track part errors in Portal Reliability metrics.
+
+    * **PartReady**: Triggered when the part has resolved the `onInputsSet()` method.
+
+* Portal Ready events
+
+    * **TotalTimeToPortalReady**: Tracks the time it takes to load the portal  splash screen and display the startboard, or start rendering the the deep linked blade. 
+
+    * **TotalTimeToStartBoardReady**: Tracks the time to load the portal and show the startboard.
+
+    * **TotalTimeToDeepLinkReady**:  Tracks the time it takes to load the portal and start rendering the deep linked blade. This event is triggered only if a user is using a deep link to call the Portal. 
+    
+    * **Duration**:  Tracks the time it takes to load the Portal.
+     
+* Extension events
+
+    The `name` column provides the name of the extension which is being loaded or initialized.
+
+    * **LoadExtensions**: The time between the time it takes the Shell to create the extension's IFrame and the time the Shell receives the extension's manifest. The value of the `actionModifier` field specifies the action that was triggered in the extension loading flow. The values of the `actionModifier` field are as follows.
+
+        * `actionModifier` = start: Triggered when an extension starts loading.
+
+        * `actionModifier` = cancel: Triggered when an extension fails loading.
+
+        * `actionModifier` = complete: Triggered when an extension finishes loading.
+
+    * **InitializeExtensions**: The time between the time the Shell receives the extension manifest and the time the Shell receives an RPC response stating that the extension's state is initialized. The value of the `actionModifier` field specifies the action that was triggered in the extension initialization flow. The values of the `actionModifier` field are as follows.
+
+        * `actionModifier` = start: Triggered when an extension starts being initialized.
+
+        * `actionModifier` = cancel: Triggered when an extension initialization fails.
+
+        * `actionModifier` = complete: Triggered when an extension finishes initialization.
+    
+* Create events
+
+    The `name` column provides the name of the package getting deployed, while the `data` column provides more information about the deployment.
+
+    * **CreateFlowLaunched**: Triggered when a user expresses the intent to create a resource in the Portal by launching its create blade. This event is typically  logged from the Marketplace extension. Most of the event flow is logged to the **ExtTelemetry** table, with other Marketplace extension logs; some of the event flow is logged to the **ClientTelemetry** table.
+
+    * **ProvisioningStarted**:  Triggered when a new deployment starts. This event is logged for both custom and ARM deployments.
+
+    * **ProvisioningEnded**:  Triggered when a new deployment ends. This event is logged for both custom and ARM deployments.
+
+    * **CreateDeploymentStart**: Contains the correlationId that can be used to search for the deployment's status in ARM.  This event is logged only if the deployment is accepted by ARM is done using the ARM Provisioner provided by Framework. 
+
+    * **CreateDeploymentEnd**: Contains the correlationId that can be used to search for the deployment's status in ARM.  This event is logged only if the deployment is accepted by ARM and is done using the ARM Provisioner provided by Framework. 
+
+* Side Bar events
+
+    * **SideBarItemClicked**: When one of the items on the Side Bar except `+` or `Browse All` is clicked.
+
+    * **SideBarFavorite**:  When a resource type is marked as a favorite.
+
+    * **SideBarUnFavorite**: When a resource type is removed as a favorite.
+
+### ClientTelemety table columns
+
 The following columns are in the **clientTelemetry** table.
+
+**NOTE**: These are the table column names, which is different from the names of the actions or events that are associated with the data.
 
 <!-- TODO:  Determine what happened to the values that are not in bold. -->
 
