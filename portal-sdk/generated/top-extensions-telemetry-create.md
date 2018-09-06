@@ -21,7 +21,7 @@ To run or create modified versions of the Kusto queries, you will need access to
 
 * [Client Telemetry](#client-telemetry)
 
-* [Troubleshooting create regressions and ICM alerts](#troubleshooting-create-regressions-and-ICM-alerts)
+* [Troubleshooting create regressions and ICM alerts](#troubleshooting-create-regressions-and-icm-alerts)
 
 <a name="create-flows"></a>
 ## Create flows

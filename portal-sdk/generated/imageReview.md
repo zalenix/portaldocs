@@ -6,10 +6,10 @@ The updates are for images that are actually in use; if an image is found to be 
 <a name="all-images-in-the-media-library-media"></a>
 ## Media
 
-![alt-text](../media/portalfx-partner-request-process/access-denied-pr.png "media/access-denied-pr.png")
+![alt-text](../media/top-extensions-partner-request/access-denied-pr.png "media/access-denied-pr.png")
 
 
-![alt-text](../media/portalfx-partner-request-process/partner-request-flow.png "media/partner-request-flow.png")
+![alt-text](../media/top-extensions-partner-request/partner-request-flow.png "media/partner-request-flow.png")
 
 
 ![alt-text](../media/placeholder-image.png "media/placeholder-image.png")
@@ -705,9 +705,6 @@ Update the following image to a more current blade and associated website.
 ## portalfx-telemetry
 
 ![alt-text](../media/portalfx-telemetry/appInsightsConfig.png "portalfx-telemetry/appInsightsConfig.png")
-
-
-![alt-text](../media/portalfx-telemetry/bladeNames.png "portalfx-telemetry/bladeNames.png")
 
 
 ![alt-text](../media/portalfx-telemetry/connectionScope.png "portalfx-telemetry/connectionScope.png ")

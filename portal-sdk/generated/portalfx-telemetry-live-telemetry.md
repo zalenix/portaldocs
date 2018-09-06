@@ -24,6 +24,5 @@
 <a name="how-to-verify-live-telemetry-using-fiddler-viewing-blade-names"></a>
 ### Viewing Blade Names
 
-Pressing Ctrl-Alt-D in the Ibiza portal shows some component loading times
+Pressing CTRL-ALT-D in the Ibiza portal displays  component loading times and other information, as specified in [top-extensions-debugging.md#debug-mode](top-extensions-debugging.md#debug-mode).
 
-![Fiddler](../media/portalfx-telemetry/bladeNames.png)
