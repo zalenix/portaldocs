@@ -28,13 +28,12 @@ This document contains information about building custom create forms, including
 | Type                          | Document           | Description |
 | ----------------------------- | ---- | ---- |
 | Deploy to Azure                 | [portalfx-create-deploytoazure.md](portalfx-create-deploytoazure.md) | This is the quickest way to build a `Create` form. |
-| Testing Guidance     | [portalfx-test.md](portalfx-test.md) |  Information on building form tests. |
+| Testing Guidance     | [top-extensions-csharp-test-framework.md](top-extensions-csharp-test-framework.md) |  Information on building form tests. |
 | Feedback |  [portalfx-telemetry.md](portalfx-telemetry.md) | Create form abandonment and other topics. |
 | Building forms | [top-extensions-forms.md](top-extensions-forms.md) | Customize the form. |
 | Form controls | [top-extensions-controls.md](top-extensions-controls.md) | Built-in form fields, like TextField and DropDown. |
 | Parameter collection  | [portalfx-parameter-collection-overview.md](portalfx-parameter-collection-overview.md) | Collectors and providers that enable an extension's UX to collect data from the user | 
-| Telemetry | [portalfx-telemetry-create.md](portalfx-telemetry-create.md) | Additional information on usage dashboards and queries. |
-| Troubleshooting Guide | [portalfx-create-troubleshooting.md](portalfx-create-troubleshooting.md) | Additional debugging information. |
+| Telemetry  Troubleshooting Guide | [top-extensions-telemetry-create.md](top-extensions-telemetry-create.md) | Additional information on usage dashboards, queries, and  debugging information. |
 
 ### Building custom create forms
 
