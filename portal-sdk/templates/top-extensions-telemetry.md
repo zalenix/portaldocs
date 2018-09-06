@@ -1,11 +1,25 @@
 
 ## Overview
 
-The Azure Portal tracks several pieces of information as users navigate through the Portal. Extensions do not need to consume any APIs to collect this information. Instead, telemetry is made available to partners through Kusto.
+Developers can also examine telemetry while debugging an extension. The Azure Portal tracks several pieces of information as users navigate through the Portal.
 
-Portal Telemetry is a Kusto-based solution.  The Kusto database is loaded with data that streams from Cosmos, data that is logged from your extension, and data from the Portal that is associated with your extension. The AzPortal data source is located at [https://AzPortal.kusto.windows.net](https://AzPortal.kusto.windows.net). To run or create modified versions of **Kusto** queries, you will need access to the  **Kusto** data tables. All Azure employees should have access. If you cannot access **Kusto**, verify whether  you have joined your team's standard access group as specified in  [http://aka.ms/standardaccess](http://aka.ms/standardaccess). If the access group is not listed,  please reach out to   <a href="mailto:ibiza-telemetry@microsoft.com?subject=Standard Permission Access for Kusto Databases">Ibiza Telemetry</a>.
+Extensions do not need to consume any APIs to collect this information. Instead, debugging telemetry is made available as specified in [#live-telemetry](#live-telemetry), and production telemetry is made available to partners through **Kusto**.
+
+Portal Telemetry is a Kusto-based solution.  The Kusto database contains data that streams from Cosmos, data that is logged from your extension, survey data, and data from the Portal that is associated with your extension. The AzPortal data source is located at [https://AzPortal.kusto.windows.net](https://AzPortal.kusto.windows.net). There is also a standardized pane that is used to collect user feedback that is not real-time. Extensions can display this pane by using the  one method located at [needslink](needslink).
+
+The telemetry data can be viewed a number of ways. Developers can review telemetry data by using existing dashboards, or they can run queries on the **Kusto** databases.
+
+To run or create modified versions of **Kusto** queries, you will need access to the  **Kusto** data tables. All Azure employees should have access. If you cannot access **Kusto**, verify whether  you have joined your team's standard access group as specified in  [http://aka.ms/standardaccess](http://aka.ms/standardaccess). If the access group is not listed,  please reach out to   <a href="mailto:ibiza-telemetry@microsoft.com?subject=Standard Permission Access for Kusto Databases">Ibiza Telemetry</a>.
 
 The **Kusto** Explorer application that can be saved to your local computer is located at [http://kusto-us/ke/Kusto.Explorer.application](http://kusto-us/ke/Kusto.Explorer.application).  Queries can also be run against the Kusto database by using the **Kusto.WebExplorer** that is located at [https://ailoganalyticsportal-privatecluster.cloudapp.net](https://ailoganalyticsportal-privatecluster.cloudapp.net)
+
+The following table contains dashboards that are used to review telemetry data.  If you do not have access to the ones you need, please contact <a href="mailto:ibiza-telemetry@microsoft.com?subject=Do not have dashboard access">Ibiza Telemetry</a>.
+
+| Name        | Dashboard Link       | Documentation                           |
+| ----------- | -------------------- | --------------------------------------- |
+| Portal Performance and Reliability | [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf)                               | [Perf Docs](portalfx-performance-overview.md) and Reliability Docs that are located at [top-extensions-reliability.md](top-extensions-reliability.md)           |
+| Portal Create                      | [http://aka.ms/portalfx/dashboard/PortalCreate](http://aka.ms/portalfx/dashboard/PortalCreate)                                | Create Docs that are located at [top-extensions-telemetry-create.md](top-extensions-telemetry-create.md)                      |
+| Extension Errors                   | [http://aka.ms/portalfx/dashboard/ExtensionErrors](http://aka.ms/portalfx/dashboard/ExtensionErrors)                             | Extension Errors Docs that are located at [top-extensions-telemetry-create.md](top-extensions-telemetry-create.md)   |
 
 The following table contains Ibiza PM contacts for various Portal Telemetry questions.
 
@@ -16,7 +30,9 @@ The following table contains Ibiza PM contacts for various Portal Telemetry ques
 | General telemetry questions |  <a href="mailto:ibiza-telemetry@microsoft.com?subject=Portal Telemetry">Ibiza Telemetry</a>  | 
 | Azure Fx Gauge Team  | <a href="mailto:azurefxg@microsoft.com?subject=Portal Gauge Telemetry">Ibiza Telemetry</a>  |
 
-## Weekly status queries 
+Ask Stackoverflow questions on: [https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza-telemetry](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza-telemetry)
+
+## Weekly status queries
 
  On a weekly basis, the Ibiza team sends out an Ibiza Status mail that reviews the KPI numbers for all extensions. If you are not receiving these emails, please join one of the groups in the following image.
 
@@ -24,7 +40,7 @@ The following table contains Ibiza PM contacts for various Portal Telemetry ques
 
 The line items in these emails contain links that help you locate the **Kusto** query that generated the associated numbers. 
 
-![alt-text](../media/portalfx-telemetry/connectionScope.png "Connection Scope")
+![alt-text](..//media/top-extensions-telemetry/connectionScope.png "Connection Scope")
 
 ## Cosmos streams
 
@@ -65,7 +81,7 @@ For more information about Kusto and the data provided in the Portal Kusto clust
 
 Queries against these tables can be exceedingly complex. The database also contains functions that simplify the complexity of retrieving information in the appropriate format. The following image displays a list of some functions that are located in the  **Functions\Public** directory and that are run against the Kusto databases to perform queries. 
 
-![alt-text](../media/portalfx-telemetry/supportedfunctions.png "Supported Functions")
+![alt-text](..//media/top-extensions-telemetry/supportedfunctions.png "Supported Functions")
 
 You can right-click on  a function and then select "Make a command script" to view  the details of that function. This can be performed recursively for any function.  There are other functions in the databases, but they are mainly intended for internal use and are subject to change at any time.
 
@@ -134,9 +150,54 @@ In the dashboard charts, error messages are aggregated by omitting the text whic
 
 This is the main table that is used for most scenarios. It includes telemetry events like  `BladeLoaded` or  `PartLoaded`,  and that  are logged by default for any extension which is registered in the Portal.
 
-For more information about actions that are logged to the ClientTelemetry table, see [portalfx-telemetry-actions.md](portalfx-telemetry-actions.md).
+For more information about actions that are logged to the **ClientTelemetry** table, see [portalfx-telemetry-actions.md](portalfx-telemetry-actions.md).
 
-## The clientTelemetry table
+## Surveys
+
+### Resource deleted survey
+
+To ask a user why they deleted a resource, use the `openResourceDeletedFeedbackPane` method, as in the following code.
+
+```
+  import * as FxFeedback from "Fx/Feedback";
+  FxFeedback.openResourceDeletedFeedbackPane("displayNameOfTheDeletedResource", optionalObjectWithAnyAdditionalDataYouWantToLog);
+```
+
+This method is called after a user starts the deletion process. The Shell displays the feedback pane that contains a standardized survey. The name of the resource is sent to the method and displayed in the survey. Responses to this survey are logged to the telemetry tables. If the feedback pane is already open, calls to this method do not perform any operations.
+
+## Live telemetry
+
+### Console Logs
+	
+Enable Console Telemetry by using the `consoletelemetry` flag in the address bar, as in the following example.
+  
+  [https://portal.azure.com/?feature.consoletelemetry=true](https://portal.azure.com/?feature.consoletelemetry=true) 
+
+When the Portal starts, press F12 to view the "Console" Tab. You can view most of the telemetry logs within this window. The only known **Action** that is not displayed in this window is the  **CreateFlowLaunched** event. The following image displays the console logs for an extension.
+
+  ![alt-text](..//media/top-extensions-telemetry/consoleLogs.png "Fiddler")
+
+## Fiddler
+
+Extension telemetry can also be viewed by using the **Fiddler** tool.  It is located at [http://www.telerik.com/fiddler](http://www.telerik.com/fiddler). 
+
+**NOTE**: If you are not already signed in, and the sign-in flow would normally require two-factor authentication (2FA), **Fiddler** will break the sign in flow. Also, **Fiddler** can capture passwords.  Password storage is highly discouraged.
+
+After the tool is installed, open **Fiddler** and configure the filters as in the following image.
+
+ ![alt-text](..//media/top-extensions-telemetry/fiddler.png "Fiddler filters")
+
+When you open the Portal, all relevant telemetry logs should now be displayed here.
+
+
+
+### Viewing Blade Names
+
+Pressing CTRL-ALT-D in the Ibiza portal displays  component loading times and other information, as specified in [top-extensions-debugging.md#debug-mode](top-extensions-debugging.md#debug-mode).
+
+
+
+## ClientTelemetry
 
 The following columns are in the **clientTelemetry** table.
 
