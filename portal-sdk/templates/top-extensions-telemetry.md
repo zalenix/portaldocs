@@ -5,11 +5,11 @@ Developers can also examine telemetry while debugging an extension. The Azure Po
 
 Extensions do not need to consume any APIs to collect this information. Instead, debugging telemetry is made available as specified in [#live-telemetry](#live-telemetry), and production telemetry is made available to partners through **Kusto**.
 
-Portal Telemetry is a Kusto-based solution.  The Kusto database contains data that streams from Cosmos, data that is logged from your extension, survey data, and data from the Portal that is associated with your extension. The AzPortal data source is located at [https://AzPortal.kusto.windows.net](https://AzPortal.kusto.windows.net). There is also a standardized pane that is used to collect user feedback that is not real-time. Extensions can display this pane by using the  one method located at [needslink](needslink).
+Portal Telemetry is a Kusto-based solution.  The Kusto database contains data that streams from Cosmos, data that is logged from your extension, survey data that is collected from your users, and data from the Portal that is associated with your extension. The AzPortal data source is located at [https://AzPortal.kusto.windows.net](https://AzPortal.kusto.windows.net). There is also a standardized pane that is used to collect user feedback that is not real-time. Extensions can display this pane by using the  one method located at [needslink](needslink).
 
 The telemetry data can be viewed a number of ways. Developers can review telemetry data by using existing dashboards, or they can run queries on the **Kusto** databases.
 
-To run or create modified versions of **Kusto** queries, you will need access to the  **Kusto** data tables. All Azure employees should have access. If you cannot access **Kusto**, verify whether  you have joined your team's standard access group as specified in  [http://aka.ms/standardaccess](http://aka.ms/standardaccess). If the access group is not listed,  please reach out to   <a href="mailto:ibiza-telemetry@microsoft.com?subject=Standard Permission Access for Kusto Databases">Ibiza Telemetry</a>.
+To run or create modified versions of **Kusto** queries, you will need access to the  **Kusto** data tables. All Azure employees should have access. If you cannot access **Kusto**, verify whether  you have joined your team's standard access group as specified in  [http://aka.ms/standardaccess](http://aka.ms/standardaccess). Some group names are non-intuitive, so if you are unable to locate the correct group within the table, you may need to create a new group. To do that please follow the instructions in the section named '​Finding and joining an RBAC project'.  Ensure your request has been approved. If you have been denied for any reason, or if the access group is not listed,  please reach out to   <a href="mailto:ibiza-telemetry@microsoft.com?subject=Standard Permission Access for Kusto Databases">Ibiza Telemetry</a>.
 
 The **Kusto** Explorer application that can be saved to your local computer is located at [http://kusto-us/ke/Kusto.Explorer.application](http://kusto-us/ke/Kusto.Explorer.application).  Queries can also be run against the Kusto database by using the **Kusto.WebExplorer** that is located at [https://ailoganalyticsportal-privatecluster.cloudapp.net](https://ailoganalyticsportal-privatecluster.cloudapp.net)
 
@@ -86,6 +86,8 @@ You can right-click on  a function and then select "Make a command script" to vi
 ## Logging
 
 There are two options for collecting telemetry and error and warning logs. You can configure and use the Portal Framework's built-in telemetry services or you can build an entirely custom telemetry system. It is strongly recommended that your extension should use the Portalfx Framework telemetry controller, because the system which is in place is likely to be more performant than custom solutions.  However, if you choose to build your own telemetry system, you need to have practices in place that enforce  the guidelines that are associated with the collection of personally identifiable information (PII).  It is very important for security and compliance reasons that PII data is not sent to telemetry services.
+
+**NOTE**: We are currently not onboarding new  users on to programmatic access.
 
 For more information about logging, see [portalfx-telemetry-logging.md](portalfx-telemetry-logging.md).
 
