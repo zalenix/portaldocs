@@ -2,7 +2,9 @@
 <a name="overview"></a>
 ## Overview
 
-Many alerts for extension behavior are provided by the Portal Framework. Alerts run at a specified time to assess the previous hour of data. If a threshold for an alert is met, an ICM alert that contains the details of the alert is opened and sent to  the  team that owns the extension. Azure Portal partner team IcM information is collected during the onboarding process, and is located at [https://aka.ms/portalfx/partners](https://aka.ms/portalfx/partners). This maps extension names to IcM team names and service names. An IcM routing rule is added under "Azure Portal (Ibiza) service" in IcM to route incidents to corresponding partners.   The routing rule is in the format `AIMS://AZUREPORTAL\Portal\{ExtensionName}`.
+Many alerts for extension behavior are provided by the Portal Framework. Alerts run at a specified time to assess the previous hour of data. If a threshold for an alert is met, an ICM alert that contains the details of the alert is opened and sent to  the  team that owns the extension. Azure Portal partner team IcM information is collected during the onboarding process, and is located at [https://aka.ms/portalfx/partners](https://aka.ms/portalfx/partners). This maps extension names to IcM team names and service names. An IcM routing rule is added under "Azure Portal (Ibiza) service" in IcM to route incidents to corresponding partners.   The routing rule is in the following format.
+
+ `AIMS://AZUREPORTAL\Portal\{ExtensionName}`
 
 The Portal Framework provides the following alerts.
 
@@ -16,7 +18,7 @@ The Portal Framework provides the following alerts.
 1. Performance
 1. [Client error](#client-error)
 
-The Framework also provides an infrastructure that each extension can configure to send alerts. Each area of the infrastructure is separate, so that the Framework can allow various levels of custom configuration. Specified sets of conditions are met previous to meeting or exceeding the  alert threshold.  The alert areas are as follows.
+The Framework also provides an infrastructure so that teams can configure alerts to send for each extension. Each area of the infrastructure is separate, so that the Framework can allow various levels of custom configuration. Specified sets of conditions are met previous to meeting or exceeding the  alert threshold.  The alert areas are as follows.
 
 1. Create
 
@@ -129,7 +131,9 @@ The parameters are as follows.
 
 * **severity**:  The priority of the alert. An alert that is prioritized as severity 1 receives immediate attention due to factors like portal outage.  Lower severity alerts are priorized appropriately. 
 
-* **exclusion**:  This only applies to blades or parts. Specifies what blades or parts can send this alert. Developers  can either use an inclusion model and specify the names to include,  or use an exclusion model and specify the names to exclude.
+* **exclusion**:  This only applies to blades or parts. Specifies what blades or parts cannot send this alert. Developers  can either use an inclusion model and specify the names to include,  or use an exclusion model and specify the names to exclude.
+
+* **inclusion**:  This only applies to blades or parts. Specifies what blades or parts can send this alert. Developers  can either use an inclusion model and specify the names to include,  or use an exclusion model and specify the names to exclude.
 
 Availability alerts will trigger when **minFailureUserCount**, **minFailureCount**, and **minAvailability** are met or exceeded.  In the previous example, the alert assesses the data that was accumulated during last hour for the extension, blade or part. Based on that data, the critical configuration will only fire when five or more unique users encounter five or more failure occurrences and the total availability decreasses to 80%.  If all of these conditions are met, then a severity 3 alert will be opened and sent to the team that owns the blade or part.
 
@@ -208,24 +212,24 @@ The parameters are as follows.
         * **criteria**: The criteria for the client error alert. Any number of criteria can be specified. As many as three  messages can be specified in one criterion. The following example contains the criteria for a **message** error alert.
             
             ```json
-                "criteria":[
-                    {
-                        "severity": 4,
-                        "enabled": true,
-                        "checkAllNullRefs": true, // Optional.
-                        "message1": "Cannot read property", // Optional.
-                        "message2": "of null", // Optional.
-                        "minAffectedUserCount": 1,
-                        "exclusion": {
-                            "type": "or", // Only support value "and", "or".
-                            "message1":"eastus2stage",
-                            "message2":"eastus2(stage)"
-                        },
-                        "safeDeploymentStage": ["3"], // Optional. It does not support asterisk("*") sign.
-                        "datacenterCode": ["AM"] // Optional.
+            "criteria":[
+                {
+                    "severity": 4,
+                    "enabled": true,
+                    "checkAllNullRefs": true, // Optional.
+                    "message1": "Cannot read property", // Optional.
+                    "message2": "of null", // Optional.
+                    "minAffectedUserCount": 1,
+                    "exclusion": {
+                        "type": "or", // Only support value "and", "or".
+                        "message1":"eastus2stage",
+                        "message2":"eastus2(stage)"
                     },
-                    ...
-                ]
+                    "safeDeploymentStage": ["3"], // Optional. It does not support asterisk("*") sign.
+                    "datacenterCode": ["AM"] // Optional.
+                },
+                ...
+            ]
            ```
             
             * **severity**:  The priority of the alert. An alert that is prioritized as severity 1 receives immediate attention due to factors like portal outage.  Lower severity alerts are priorized appropriately.
@@ -251,8 +255,7 @@ The parameters are as follows.
             * **safeDeploymentStage**: Optional. Specifies the stage of deployment in which the error occurred.  The field does not support the asterisk("*") sign.  Values are zero ("0") through "4", inclusive.  If this field is not specified, the alert will fire on all safe deployment stages. 
 
             * **datacenterCode**: Optional. Specifies the data center that is impacted by the alert.  Values are "AM", .
-            
-
+       
         The following example contains the criteria for a **percentage** error alert.
 
             ```json

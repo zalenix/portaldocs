@@ -3,30 +3,20 @@
 # Telemetry
 
   * [Overview](top-extensions-telemetry.md#overview)
+* [Weekly status queries](top-extensions-telemetry.md#weekly-status-queries)
+* [Cosmos streams](top-extensions-telemetry.md#cosmos-streams)
+* [Kusto portal databases](top-extensions-telemetry.md#kusto-portal-databases)
+* [Logging](top-extensions-telemetry.md#logging)
+* [Surveys](top-extensions-telemetry.md#surveys)
+* [Live telemetry](top-extensions-telemetry.md#live-telemetry)
+* [ClientTelemetry](top-extensions-telemetry.md#clienttelemetry)
 
-  * [Kusto Telemetry](portalfx-telemetry-kusto-databases.md#kusto-telemetry)
-
-  * [Portal Telemetry Overview](portalfx-telemetry.md#portal-telemetry-overview)
-
-  * [How to verify live Telemetry](portalfx-telemetry-live-telemetry.md#how-to-verify-live-telemetry)
-    * [Using Console Logs](portalfx-telemetry-live-telemetry.md#using-console-logs)
-    * [Using Fiddler](portalfx-telemetry-live-telemetry.md#using-fiddler)
-
-
+ 
 <a name="telemetry-alerting"></a>
 ## Alerting
 
-  * [Overview](portalfx-telemetry-alerting-overview.md#overview)
-    * [What are the alerts?](portalfx-telemetry-alerting-overview.md#what-are-the-alerts)
-    * [What is configurable?](portalfx-telemetry-alerting-overview.md#what-is-configurable)
-
-  * [Availability](portalfx-telemetry-alerting-availability.md#availability)
-    * [Configuration](portalfx-telemetry-alerting-availability.md#configuration)
-    * [How often do they run?](portalfx-telemetry-alerting-availability.md#how-often-do-they-run)
-    * [How do I onboard?](portalfx-telemetry-alerting-availability.md#how-do-i-onboard)
-    * [What happens if I need to update them?](portalfx-telemetry-alerting-availability.md#what-happens-if-i-need-to-update-them)
-    * [How do I know my extension's current configuration?](portalfx-telemetry-alerting-availability.md#how-do-i-know-my-extension-s-current-configuration)
-
+  
+  
   * [Performance](portalfx-telemetry-alerting-performance.md#performance)
     * [Configuration](portalfx-telemetry-alerting-performance.md#configuration)
     * [How often do they run?](portalfx-telemetry-alerting-performance.md#how-often-do-they-run)
@@ -42,12 +32,7 @@
     * [What happens if I need to update alert configuration?](portalfx-telemetry-alerting-error-messages.md#what-happens-if-i-need-to-update-alert-configuration)
     * [How do I know my extension's current configuration?](portalfx-telemetry-alerting-error-messages.md#how-do-i-know-my-extension-s-current-configuration)
 
-  * [Fequently asked questions](portalfx-telemetry-alerting-faq.md#fequently-asked-questions)
-    * [How do I onboard?](portalfx-telemetry-alerting-faq.md#how-do-i-onboard)
-    * [How do I generated the required configuration?](portalfx-telemetry-alerting-faq.md#how-do-i-generated-the-required-configuration)
-    * [How do I know my extension's current configuration?](portalfx-telemetry-alerting-faq.md#how-do-i-know-my-extension-s-current-configuration)
-    * [What happens if I need to update my configuration?](portalfx-telemetry-alerting-faq.md#what-happens-if-i-need-to-update-my-configuration)
-
+  
 
 <a name="telemetry-performance"></a>
 ## Performance

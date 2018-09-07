@@ -1,10 +1,2 @@
 
-<a name="reliability-checklist"></a>
-# Reliability Checklist
-
-Use the following checklist to ensure you have 
-
-- CDN’ing
-- Geodistribution
-- Turning on compression
-- ...
+The page you requested has moved to [top-extensions-reliability.md#assessing-extension-reliability](top-extensions-reliability.md#assessing-extension-reliability).
