@@ -22,6 +22,8 @@
 <a name="development-common-scenarios"></a>
 ## Common scenarios
 * [Building browse experiences](portalfx-browse.md#building-browse-experiences)
+    * [No-code Browse](portalfx-browse.md#no-code-browse)
+    * [Custom blade](portalfx-browse.md#custom-blade)
 
 * [Building create experiences](portalfx-create.md#building-create-experiences)
 * [Building custom create forms](portalfx-create.md#building-custom-create-forms)
@@ -34,7 +36,6 @@
 * [Defining Blades and Parts using TypeScript decorators (a.k.a. 'no-PDL')](portalfx-no-pdl-programming.md#defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl)
 
 
-* [Blades](portalfx-blades.md#blades)
 
 * [Developing Forms](portalfx-forms.md#developing-forms)
     * [FAQ](portalfx-forms.md#faq)

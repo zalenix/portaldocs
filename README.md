@@ -1,5 +1,5 @@
 * [Home](#home)
-    * [[Onboard Ibiza](/portal-sdk/generated/top-onboarding.md)](/portal-sdk/generated/top-onboarding.md)
+* [[Onboard Ibiza](/portal-sdk/generated/index-portalfx-extension-onboarding.md)](#home-onboard-ibiza-portal-sdk-generated-index-portalfx-extension-onboarding-md)
 * [Extension Developer Resources](#extension-developer-resources)
 * [Marketplace/Gallery Developer Resources](#marketplace-gallery-developer-resources)
 * [Code of Conduct](#code-of-conduct)
@@ -13,10 +13,7 @@
 Ibiza, as Azure's portal, is the framework and design language (UI) that unifies and provides access to all Microsoft cloud offerings. 
 The portal is a web application that provides a single webpage. In the portal, parts of the page are loaded by referencing service extensions that are dynamically accessed based on a customer’s action on the portal.
 The portal is basically a web application that hosts the shell.  The service extensions are built by partners such as Virtual Machine, SQL and DocumentDB using Ibiza SDK which provides the content needed by the portal dynamically. 
-Sounds interesting. Want to become a partner?  
-
-<a name="home-onboard-ibiza-portal-sdk-generated-index-portalfx-extension-onboarding-md"></a>
-## <a href="/portal-sdk/generated/top-onboarding.md">Onboard Ibiza</a>
+Sounds interesting. Want to become a partner?   [Onboard Ibiza](/portal-sdk/generated/top-onboarding.md)
 
 <a name="extension-developer-resources"></a>
 # Extension Developer Resources
@@ -25,13 +22,13 @@ Sounds interesting. Want to become a partner?
 1. [Development](/portal-sdk/generated/index-portalfx-extension-development.md)
 1. [Style Guide](/portal-sdk/generated/index-portalfx-extension-style-guide.md)
 1. [Test](/portal-sdk/generated/index-portalfx-extension-test.md)
-1. [Telemetry / Performance / Reliability](/portal-sdk/generated/index-portalfx-extension-monitor.md) 
+1. [Monitor](/portal-sdk/generated/index-portalfx-extension-monitor.md) 
 1. [Deploy](/portal-sdk/generated/index-portalfx-extension-deployment.md)
 1. [Localization / Globalization](/portal-sdk/generated/index-portalfx-extension-localization-globalization.md)
 1. [Accessibility](/portal-sdk/generated/index-portalfx-extension-accessibility.md)
 1. [Sharing PDE](/portal-sdk/generated/index-portalfx-extension-sharing-pde.md)
 
-Feeling Lost? Reach out to Community: [Stackoverflow](/portal-sdk/generated/index-portalfx-extension-QnA.md)
+Feeling Lost? Reach out to Community: [Stackoverflow](/portal-sdk/generated/portalfx-stackoverflow.md)
 
 <a name="marketplace-gallery-developer-resources"></a>
 # Marketplace/Gallery Developer Resources

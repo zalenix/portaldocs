@@ -6,8 +6,8 @@
 
 The SDK has several framework features that make it easier to implement UX that is consistent across all resource types.  Most of these features are free once you've implemented the [Asset Model](portalfx-assets.md).
 
-- [Browse](portalfx-browse.md) - Integrates your resource type into the portal's main menu that categorizes and lists resources.
-- [Resource Menu](portalfx-resourcemenu.md) - Provides a base implementation of a menu blade, with standard resource features (e.g. RBAC, Locks, Audit Logs) automatically injected into the menu. 
+- [Browse](top-extensions-browse.md) - Integrates your resource type into the portal's main menu that categorizes and lists resources.
+- [Resource Menu](top-blades-resourcemenublade.md) - Provides a base implementation of a menu blade, with standard resource features (e.g. RBAC, Locks, Audit Logs) automatically injected into the menu. 
 - Search - Azure resources are automatically integrated into the potal's global search
 - [Tile Gallery Integration](portalfx-ux-tile-gallery.md) - Exposes tiles for your resource in the portal's tile gallery
 
@@ -18,7 +18,7 @@ The majority of the docs apply to these types of extensions.  The next few secti
 
 If you are developing an extension that is not acting as a front end for a standard Azure Resource Provider then this section describes a general strategy for designing such an extension. It also calls out which capabilities are not available to these types of extensions.
 
-__Time Saving Note__ - If you are developing this type of extension then your life will be better if all blades in your extension are built using [template blades](portalfx-blades-templateBlade.md).  If you are using `<Blade>` then you should ask youself why. That is a legacy part of the SDK.
+__Time Saving Note__ - If you are developing this type of extension then your life will be better if all blades in your extension are built using [template blades](top-extensions-browse.md#building-browse-experiences).  If you are using `<Blade>` then you should ask youself why. That is a legacy part of the SDK.
 
 <a name="developing-extensions-for-azure-resources-vs-non-azure-resources-non-azure-resources-marketplace-integration"></a>
 ### Marketplace integration
@@ -31,12 +31,12 @@ You do not need to have an Azure resource provider to [integrate with the market
 The [Browse](portalfx-browse.md) experience can serve as a user's main entry point to your non-resource extension. You have two options:
 
 1. Use the [asset model](portalfx-browse.md#building-browse-experiences-no-code-browse-defining-an-asset-type-permalink-asset-type-non-arm), which lets you define your browsable asset even though it is not an Azure resource. This option is good if __your service conceptually exposes a single, top level, list of entities (e.g. Accounts, Workspaces, etc.)__.
-2. Use the [custom browse](portalfx-browse.md#blade) option in browse.  __This option is useful if your service has many top level capabilities__. If you choose this option then it's highly recommended that you use a [menu blade](portalfx-blades-menublade.md) to expose your service's capabilities. The [Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade) experience shows this pattern in production.
+2. Use the [custom browse](portalfx-browse.md#blade) option in browse.  __This option is useful if your service has many top level capabilities__. If you choose this option then it's highly recommended that you use a [menu blade](top-blades-menublade.md) to expose your service's capabilities. The [Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade) experience shows this pattern in production.
 
 <a name="developing-extensions-for-azure-resources-vs-non-azure-resources-non-azure-resources-menu-blades"></a>
 ### Menu blades
 
-[Menu blades](portalfx-blades-menublade.md) are a framework component that can be used to build blades that have a menu on the left and content on the right.  The look and feel of these blades is exactly like the resource menu blades that Azure resources have, except that the menu blade will not have items injected automatically. Usability and customer feedback has shown that this way of exposing features is more effective than previous patterns.
+[Menu blades](top-blades-menublade.md) are a framework component that can be used to build blades that have a menu on the left and content on the right.  The look and feel of these blades is exactly like the resource menu blades that Azure resources have, except that the menu blade will not have items injected automatically. Usability and customer feedback has shown that this way of exposing features is more effective than previous patterns.
 
 <a name="developing-extensions-for-azure-resources-vs-non-azure-resources-non-azure-resources-dashboard-integration"></a>
 ### Dashboard integration

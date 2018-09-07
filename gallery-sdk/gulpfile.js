@@ -7,13 +7,11 @@ var fs = require('fs');
 var Q = require('q');
 var gulp = require('gulp');
 var path = require('path');
-var ncp = require('ncp');
 
 //directories have to work within both AzureUx-PortalFx and portalfx-docs-pr repos.
 const sdkDir = __dirname;
 const generatedDir = path.resolve(sdkDir, 'generated');
 const templatesDir = path.resolve(sdkDir, 'templates');
-const mediaSourceDir = path.resolve(sdkDir, 'media');
 
 /**  
  * generates docs for gallery team

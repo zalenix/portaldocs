@@ -27,34 +27,29 @@ import * as ClientResources from "ClientResources";
 import * as TemplatePart from "Fx/Composition/TemplatePart";
 import { SvgType } from "Fx/Images";
 
-export = Main;
-
-module Main {
-    "use strict";
-
-    @TemplatePart.Decorator({
-        htmlTemplate: "" +
-            "<div class='msportalfx-padding'>" +
-            "  <div>This is a Template Part.</div>" +
-            "</div>",
-        galleryMetadata: {
-            title: ClientResources.simpleTemplatePart,
-            category: ClientResources.partGalleryCategorySample,
-            thumbnail: {
-                image: SvgType.ArrowDown,
-            },
+@TemplatePart.Decorator({
+    htmlTemplate: "" +
+    "<div class='msportalfx-padding'>" +
+    "  <div>This is a Template Part.</div>" +
+    "</div>",
+    galleryMetadata: {
+        title: ClientResources.simpleTemplatePart,
+        category: ClientResources.partGalleryCategorySample,
+        thumbnail: {
+            image: SvgType.ArrowDown,
         },
-    })
-    export class SimpleTemplatePart {
-        public title = ClientResources.simpleTemplatePart;
-        public subtitle: string;
-        public onClick: () => void = null;  // This Part isn't clickable.
+    },
+})
+@TemplatePart.InjectableModel.Decorator(PartsArea.DataContext)
+export class SimpleTemplatePart {
+    public title = ClientResources.simpleTemplatePart;
+    public subtitle: string;
+    public onClick: () => void = null;  // This Part isn't clickable.
 
-        public context: TemplatePart.Context<void, PartsArea.DataContext>;
+    public context: TemplatePart.Context<void, PartsArea.DataContext>;
 
-        public onInitialize() {
-            return Q();  // This sample loads no data.
-        }
+    public onInitialize() {
+        return Q();  // This sample loads no data.
     }
 }
 
@@ -70,66 +65,63 @@ import * as FramePart from "Fx/Composition/FramePart";
 import { SvgType } from "Fx/Images";
 import * as ClientResources from "ClientResources";
 
-export = Main;
+const global = window;
 
-module Main {
-    const global = window;
+"use strict";
 
-    "use strict";
-
-    function mockAsyncOperationToGetDataToSendToFrame() {
-        return Q.delay(2000).then(() => {
-            return {
-                title: ClientResources.noPdlSampleFramePartTitle,
-            };
-        });
-    }
-
-    @FramePart.Decorator({
-        galleryMetadata: {
+function mockAsyncOperationToGetDataToSendToFrame() {
+    return Q.delay(2000).then(() => {
+        return {
             title: ClientResources.noPdlSampleFramePartTitle,
-            category: ClientResources.partGalleryCategorySample,
-            thumbnail: {
-                image: SvgType.ArrowUp,
-            },
+        };
+    });
+}
+
+@FramePart.Decorator({
+    galleryMetadata: {
+        title: ClientResources.noPdlSampleFramePartTitle,
+        category: ClientResources.partGalleryCategorySample,
+        thumbnail: {
+            image: SvgType.ArrowUp,
         },
-    })
-    export class SampleFramePart {
-        public title: string;  // This sample doesn't make use of a title.
-        public subtitle: string;  // This sample doesn't make use of a subtitle.
-        public onClick: () => void;  // This FramePart doesn't have click behavior.
+    },
+})
+@FramePart.InjectableModel.Decorator(DataContext)
+export class SampleFramePart {
+    public title: string;  // This sample doesn't make use of a title.
+    public subtitle: string;  // This sample doesn't make use of a subtitle.
+    public onClick: () => void;  // This FramePart doesn't have click behavior.
 
-        public viewModel: FramePart.ViewModel;
+    public viewModel: FramePart.ViewModel;
 
-        public context: FramePart.Context<void, DataContext>;
+    public context: FramePart.Context<void, DataContext>;
 
-        public onInitialize() {
-            const { container } = this.context;
-            const viewModel = this.viewModel = new FramePart.ViewModel(container, {
-                src: MsPortalFx.Base.Resources.getContentUri("/Content/SamplesExtension/framepartpage.html"),
+    public onInitialize() {
+        const { container } = this.context;
+        const viewModel = this.viewModel = new FramePart.ViewModel(container, {
+            src: MsPortalFx.Base.Resources.getContentUri("/Content/SamplesExtension/framepartpage.html"),
+        });
+
+        // This is an example of how to listen for messages from your iframe.
+        viewModel.on("getAuthToken", () => {
+            // This is an example of how to post a message back to your iframe.
+            MsPortalFx.Base.Security.getAuthorizationToken().then((token) => {
+                const header = token.header;
+                viewModel.postMessage("getAuthTokenResponse", header);
             });
+        });
 
-            // This is an example of how to listen for messages from your iframe.
-            viewModel.on("getAuthToken", () => {
-                // This is an example of how to post a message back to your iframe.
-                MsPortalFx.Base.Security.getAuthorizationToken().then((token) => {
-                    const header = token.header;
-                    viewModel.postMessage("getAuthTokenResponse", header);
-                });
-            });
+        let counter = 0;
+        const timeoutHandle = global.setInterval(() => {
+            viewModel.postMessage("framecontent", "" + (++counter));
+        }, 1000);
+        container.registerForDispose({
+            dispose: () => { global.clearInterval(timeoutHandle); },
+        });
 
-            let counter = 0;
-            const timeoutHandle = global.setInterval(() => {
-                viewModel.postMessage("framecontent", "" + (++counter));
-            }, 1000);
-            container.registerForDispose({
-                dispose: () => { global.clearInterval(timeoutHandle); },
-            });
-
-            return mockAsyncOperationToGetDataToSendToFrame().then(info => {
-                viewModel.postMessage("frametitle", info.title);
-            });
-        }
+        return mockAsyncOperationToGetDataToSendToFrame().then(info => {
+            viewModel.postMessage("frametitle", info.title);
+        });
     }
 }
 
@@ -214,31 +206,31 @@ The following example includes the `galleryMetadata` property that lets the deve
 ```typescript
 
 @TemplatePart.Decorator({
-    htmlTemplate: "" +
-        "<div class='ext-gallery-part' data-bind='css: css'>" +
-        "    <div>Color: <span data-bind='text: colorName'></span></div>" +
-        "    <div>Time range: <span class='ext-gallery-part-time-range' data-bind='text: timeRange'></span></div>" +
-        "    <div>Other parameter: <span data-bind='text: otherParameter'></span></div>" +
-        "</div>" +
-        "<p/>" +
-        "<div>Part location: <span class='ext-gallery-part-location' data-bind='text: location'></span></div>" +
-        "<p/>" +
-        "<a class='ext-general-gallery-part-configure' data-bind='fxclick: onConfigureClick'>Configure</a>",
-    galleryMetadata: {
-        title: ClientResources.noPdlGeneralGalleryPartTitle,
-        category: ClientResources.partGalleryCategorySample,
-        thumbnail: {
-            path: "../../../Svg/sample.svg",
-            isLogo: true,
-            stretch: TemplatePart.PartGalleryThumbnailStretch.Fill,
-        },
+htmlTemplate: "" +
+"<div class='ext-gallery-part' data-bind='css: css'>" +
+"    <div>Color: <span data-bind='text: colorName'></span></div>" +
+"    <div>Time range: <span class='ext-gallery-part-time-range' data-bind='text: timeRange'></span></div>" +
+"    <div>Other parameter: <span data-bind='text: otherParameter'></span></div>" +
+"</div>" +
+"<p/>" +
+"<div>Part location: <span class='ext-gallery-part-location' data-bind='text: location'></span></div>" +
+"<p/>" +
+"<a class='ext-general-gallery-part-configure' data-bind='fxclick: onConfigureClick'>Configure</a>",
+galleryMetadata: {
+    title: ClientResources.noPdlGeneralGalleryPartTitle,
+    category: ClientResources.partGalleryCategorySample,
+    thumbnail: {
+        path: "../../../Svg/sample.svg",
+        isLogo: true,
+        stretch: TemplatePart.PartGalleryThumbnailStretch.Fill,
     },
-    parameterMetadata: {
-        timeRange: {
-            // TODO: Use FX constant.
-            valueType: "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange",
-        },
+},
+parameterMetadata: {
+    timeRange: {
+        // TODO: Use FX constant.
+        valueType: "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange",
     },
+},
 })
 
 ```

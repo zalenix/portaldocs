@@ -3,7 +3,6 @@
     * [Supported Kusto Tables](#kusto-telemetry-supported-kusto-tables)
     * [Supported Functions](#kusto-telemetry-supported-functions)
     * [Query for Reported Numbers](#kusto-telemetry-query-for-reported-numbers)
-    * [Supported Cosmos streams](#kusto-telemetry-supported-cosmos-streams)
     * [ClientTelemetry (AzPtlCosmos)](#kusto-telemetry-clienttelemetry-azptlcosmos)
 
 
@@ -52,18 +51,6 @@ On a weekly basis, we send out a Weekly Ibiza Status mail where we cover the KPI
 These emails have clickable Kusto links within the reported numbers. Clicking on these will take you to the Kusto query behind getting these numbers. We use functions to hide the complexity behind the queries that we use. To view the details about the queries, look under **Functions\Public**. Once you find the right function, if you right-click and do “Make a command script”, you will be able to see the details of that function. You can do this recursively for any functions underneath. 
 
 ![Connection Scope](../media/portalfx-telemetry/connectionScope.png)
-
-<a name="kusto-telemetry-supported-cosmos-streams"></a>
-### Supported Cosmos streams
-
-While we have moved to Kusto, we still have streams that continue to exist. This could be required if you want to enable some E2E automation, write super-complex queries that Kusto is unable to handle or need data older than 120 days. 
-
-|Name              | Schema                                                                                                           | Cosmos Link                                                                                                                                                                                                           |
-|------------------|------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|Client Telemetry  | [DataSet=53004](https://aka.ms/datastudio/#/entity/53004/schema)             | [Daily ClientTelemetry](https://cosmos11.osdinfra.net/cosmos/AzureAnalytics.Partner.AAPT/shares/AzureAnalytics.Dev/AzureAnalytics.Dev.PublishedData/AAPT.Gauge.Ibiza.Daily/ClientTelemetry/)                          |
-|ClientTelemetryForKustoExport | [DataSet=93405](https://aka.ms/datastudio/#/entity/93405/schema) | [Hourly ClientTelemetry](https://cosmos11.osdinfra.net/cosmos/azureanalytics.partner.azureportal/shares/AzureAnalytics.Dev/AzureAnalytics.Dev.PublishedData/AAPT.Gauge.Ibiza.Hourly/ClientTelemetryForKustoExport/)   |
-
-We plan to merge ClientTelemetryForKustoExport into ClientTelemetry stream very shortly. ClientTelemetryForKustoExport is the stream that currently feeds the Kusto database - AzPtlCosmos
 
 <a name="kusto-telemetry-clienttelemetry-azptlcosmos"></a>
 ### ClientTelemetry (AzPtlCosmos)

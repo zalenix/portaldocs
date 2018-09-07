@@ -98,7 +98,7 @@ Here's what our blade view model constructor looks like:
 this._view = dataContext.personData.peopleEntities.createView(container);
 
 this.nameTextBox = new TextBox.ViewModel(container, {
-    readonly: true,
+    readOnly: true,
     label: ko.observable("Name"),
 });
 
@@ -184,7 +184,7 @@ return this._view.fetch(inputs.id).then(() => {
     const smartPhone = person.smartPhone();
     if (smartPhone) {
         const textBox = new TextBox.ViewModel(this._container, {
-            readonly: true,
+            readOnly: true,
             label: ko.observable("Smart phone"),
             defaultValue: ko.observable(smartPhone),
         });

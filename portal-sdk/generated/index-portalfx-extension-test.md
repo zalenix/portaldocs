@@ -5,7 +5,6 @@
 # Portal Test Frameworks
 * [Choosing the right test Framework](portalfx-choosing-test-framework.md#choosing-the-right-test-framework)
 
-* [C# Portal Test Framework](portalfx-test.md#c-portal-test-framework)
 
 * [msportalfx-test](msportalfx-test.md#msportalfx-test)
     * [Overview](msportalfx-test.md#overview)

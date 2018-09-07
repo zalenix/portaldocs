@@ -73,6 +73,7 @@ htmlTemplate: "" +
     "  <div>This is a Template Blade.</div>" +
     "</div>",
 })
+@TemplateBlade.InjectableModel.Decorator(BladesArea.DataContext)
 //docs#DecoratorReference
 export class SimpleTemplateBlade {
 public title = ClientResources.simpleTemplateBlade;
@@ -99,6 +100,7 @@ htmlTemplate: "" +
     "  <div>This is a Template Blade.</div>" +
     "</div>",
 })
+@TemplateBlade.InjectableModel.Decorator(BladesArea.DataContext)
 
 ```
 

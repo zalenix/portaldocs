@@ -14,7 +14,6 @@ Kusto.Explorer: [Application](http://kusto-us/ke/Kusto.Explorer.application)
 Name: AzPortal
 Data Source: [https://AzPortal.kusto.windows.net](https://AzPortal.kusto.windows.net)
 
-
 <a name="getting-started-permissions"></a>
 ### Permissions
 
@@ -33,12 +32,11 @@ If you don't have access, please follow the below steps:
 
 If you are unable to find a group to join within the table, you may need to create a new group. First confirm that with your colleagues, there may be a group that is named non-intuitively.
 
-If there is still no group, you can join you will need to create a new group. To do that please follow documentation on [http://aka.ms/standardaccess](http://aka.ms/standardaccess).
-Look for the link named 'Azure RBAC Getting Started Guide'.
-
+If there is still no group you can join, you will need to create a new group. To do that please follow documentation on [http://aka.ms/standardaccess](http://aka.ms/standardaccess).
+Look for the link named ['Azure RBAC Getting Started Guide'](http://aka.ms/portalfx/telemetryaccess/newgroup).
+There are various steps to follow, unfortunately the Ibiza team do not own this process. The standard access team have step by step videos you can use to follow along. If you need further assistance with creating a new group please contact the 'MyAccess' support team.
 
 For all other questions please reach out to [Ibiza Telemetry](mailto:ibiza-telemetry@microsoft.com).
-
 
 <a name="getting-started-permissions-programmatic-access"></a>
 #### Programmatic access

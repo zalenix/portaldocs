@@ -140,9 +140,7 @@ For more information about handling credentials, see [#managing-authentication-c
 
 ### Sideloading An Extension
 
-The Portal provides options for side loading your extension for testing. To side load your extension you need to set the appropriate query strings and execute the `registerTestExtension` function. An example of side loading a deployed extension can be seen below. For more information, see [portalfx-extensions-production-testing-overview.md](portalfx-extensions-production-testing-overview.md).
-<!-- TODO: locate the title that should have been the link. -->
-<!-- like maybe portalfx-extensions-production-testing.md-->
+The Portal provides options for side loading your extension for testing. To side load your extension you need to set the appropriate query strings and execute the `registerTestExtension` function. An example of side loading a deployed extension can be seen below. For more information, see [Sideloading an Extension](top-extensions-sideloading.md).
 
 ```csharp
 
@@ -300,7 +298,7 @@ var errorPart = webDriver.WaitUntil(() => blade.FindElements<Part>()
 									"Could not find a part with a Send Error text.");
 ```
 
-**NOTE**: The **WebDriver.WaitUntil** method is a general and recommended mechanism to ask the **WebDriver** to retry an operation until a condition succeeds. In this instance, the test case waits  by polling continually until it finds a part in the blade that contains text that includes the 'Send Error' string. When the part is found, it is returned to the `errorPart` variable; otherwise, if it is not found before the default timeout of 10 seconds, the  method throws an exception that uses the text specified in the last parameter. For more information, see [portalfx-extensions-bp-csharp-test.md#testing -best-practices](portalfx-extensions-bp-csharp-test.md#testing -best-practices). 
+**NOTE**: The **WebDriver.WaitUntil** method is a general and recommended mechanism to ask the **WebDriver** to retry an operation until a condition succeeds. In this instance, the test case waits by polling continually until it finds a part in the blade that contains text that includes the 'Send Error' string. When the part is found, it is returned to the `errorPart` variable; otherwise, if it is not found before the default timeout of 10 seconds, the  method throws an exception that uses the text specified in the last parameter. For more information, see [portalfx-extensions-bp-csharp-test.md#testing-best-practices](portalfx-extensions-bp-csharp-test.md#testing-best-practices). 
 
 Classic Selenium **WebDriver** syntax can also be used to find any element based on a **By** selector. For example, the following code finds a single button element within the found part.
 
@@ -1115,17 +1113,6 @@ As you write UI based test cases using the Portal Test Framework it is recommend
 
 
 
-<a name="c-portal-test-framework-glossary"></a>
-## Glossary
-   
-This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
- 
-| Term                         | Meaning |
-| ---                          | --- |
-| idempotent         |  An operation whose result does not change after the initial application. For example, if the client needs to retry a request due to intermittent network issues, the same value will be sent to the server.  This allows the server to ignore the retry if it has already been processed. Even if the request is ignored, the same response will be returned if the client needs the values in the response. |
-| query string |  `uri` used for accessing the Azure Portal |
-| sideloading  | Loading an extension for a specific user session from any source other than the URI that is registered in the Portal.  The process of transferring data between two local devices, or between the development platform and the local host. Also side load, side-load. |   
-| untrusted extension | An extension that is not accompanied by an SSL certificate. |
-
-
-
+<!--
+gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-testing.md"}
+-->

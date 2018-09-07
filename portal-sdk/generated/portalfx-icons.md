@@ -154,8 +154,8 @@ In the following example, the Delete icon remains **black** in all portal themes
 ```typescript
 
 /**
-  * The flat icon with logo flag.
-  */
+ * The flat icon with logo flag.
+ */
 public flatIconLogo: MsPortalFx.Base.Image = MsPortalFx.Base.Images.Delete({ isLogo: true });
 
 ```
@@ -166,8 +166,8 @@ In the following example, the Delete icon keeps **blue** in all portal themes.
 ```typescript
 
 /**
-  * The flat icon with palette and logo flag.
-  */
+ * The flat icon with palette and logo flag.
+ */
 public flatIconLogoBlue: MsPortalFx.Base.Image = MsPortalFx.Base.Images.Delete({
     palette: MsPortalFx.Base.ImagePalette.Blue,
     isLogo: true,

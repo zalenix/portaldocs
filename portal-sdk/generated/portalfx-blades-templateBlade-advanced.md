@@ -21,6 +21,7 @@ The code snippet below shows an extreme example where a filter is applied on a t
 
 ```typescript
 
+@Di.Class("viewModel")
 export class TemplateBladeWithShieldViewModel
 extends Blade
 implements Def.TemplateBladeWithShieldViewModel.Contract
@@ -37,7 +38,7 @@ public myTextBox: TextBox.ViewModel;
 
 private _timerHandle: number;
 
-constructor(container: FxCompositionBlade.Container, initialState: any, dataContext: BladesArea.DataContext) {
+constructor(container: FxCompositionBlade.Container) {
     super();
 
     this.title(ClientResources.templateBladeWithShield);
@@ -196,9 +197,7 @@ The code below does this statically, but it can also be done dynamically (e.g. b
 
 ```typescript
 
-constructor(container: MsPortalFx.ViewModels.ContainerContract,
-            initialState: any,
-            dataContext: BladesArea.DataContext) {
+constructor(container: MsPortalFx.ViewModels.ContainerContract) {
     super();
     this.title(ClientResources.bladeUnauthorized);
     this.subtitle(ClientResources.bladesLensTitle);

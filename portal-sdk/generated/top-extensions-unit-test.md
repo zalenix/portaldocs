@@ -176,7 +176,7 @@ Add a test to ./test/ResourceOverviewBlade.test.ts.  You can modify this example
     
 import { assert } from "chai"; // type issues with node d.ts and require js d.ts so using chai
 import { DataContext } from "Resource/ResourceArea";
-import { Parameters, ResourceOverviewBlade } from "Resource/ResourceOverviewBlade";
+import { Parameters, ResourceOverviewBlade } from "Resource/Blades/Overview/ResourceOverviewBlade";
 import ClientResources = require("ClientResources");
 import * as sinon from "sinon";
 import { TemplateBladeHarness } from "msportalfx-ut/Harness";
@@ -765,7 +765,7 @@ add
 
 Try the following:
 1. If you receive auth errors against the internal NPM feed see the "Connect to feed" instructions [here](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=AzurePortalNpmRegistry&_a=feed)
-1. If your not a member of any of the Groups on https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=AzurePortalNpmRegistry&_a=settings&view=permissions reach out to nickha.
+1. If your not a member of any of the Groups on https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=AzurePortalNpmRegistry&_a=settings&view=permissions please join `Azure Portal Partner Contributors – 19668` in https://myaccess .
 
 <a name="i-can-t-use-the-internal-npm-registry-https-msazure-pkgs-visualstudio-com-_packaging-azureportalnpmregistry-npm-registry-because-my-build-nodes-are-completely-disconnected-from-the-internet"></a>
 ## My build nodes are completely disconnected from the internet

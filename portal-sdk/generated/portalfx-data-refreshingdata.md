@@ -190,7 +190,7 @@ return Q.all(promises);
 
 ```typescript
 
-public updateSparkPlug(sparkPlug: DataModels.SparkPlug): FxBase.Promise {
+public updateSparkPlug(sparkPlug: SparkPlugModel): FxBase.Promise {
     let promise: FxBase.Promise;
     const uri = appendSessionId(SparkPlugData._apiRoot);
     if (useFrameworkPortal) {
