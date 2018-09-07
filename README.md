@@ -25,7 +25,7 @@ Sounds interesting. Want to become a partner?   [Onboard Ibiza](/portal-sdk/gene
 1. [Deploy](/portal-sdk/generated/index-portalfx-extension-deployment.md)
 1. [Localization / Globalization](/portal-sdk/generated/index-portalfx-extension-localization-globalization.md)
 1. [Accessibility](/portal-sdk/generated/index-portalfx-extension-accessibility.md)
-1. [Sharing PDE](/portal-sdk/generated/index-portalfx-extension-deployment.md)
+1. [Sharing PDE](/portal-sdk/generated/index-portalfx-extension-sharing-pde.md)
 
 Feeling Lost? Reach out to Community: [Stackoverflow](/portal-sdk/generated/portalfx-stackoverflow.md)
 
@@ -48,4 +48,3 @@ Feeling Lost? Reach out to Community: [Stackoverflow](/portal-sdk/generated/port
 # Code of Conduct
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
-
