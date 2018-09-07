@@ -224,7 +224,7 @@ The Ibiza team collects standard telemetry for generic actions like blade openin
 
 * [Consuming telemetry via pre-built Power BI dashboards](/portal-sdk/generated/)
 
-* [Performance and reliability monitoring / alerting](/portal-sdk/generated/)
+* [Performance and reliability monitoring / alerting](/portal-sdk/generated/top-extensions-reliability.md)
 
 * [Collecting feedback from your users](/portal-sdk/generated/)
 

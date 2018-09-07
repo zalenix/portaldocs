@@ -14,11 +14,11 @@ This is the home page for all documentation related to onboarding, developing, o
 
 * Azure Core Documentation 
 
-    * [Design extensions](#design-patterns-for-common-scenarios) 
+    * [Design](#design-patterns-for-common-scenarios) 
 
     * [Onboarding](#onboard-a-new-extension) 
 
-    * [Build extensions](#build-extensions)
+    * [Build](#build-extensions)
 
     * [Test](#test-extensions)
 
@@ -64,6 +64,8 @@ Learn how the framework is structured and how it is designed to run in multiple 
 
 ## Onboard a new extension
 
+Kickoff the onboarding experience by sending mail to <a href="mailto:ibiza-onboarding-kick@microsoft.com?subject=Kickoff Meeting Request&body=My team would like to meet with you to learn about the Azure onboarding process.">Azure Onboarding Team</a>.
+
 | Name | Location | Purpose |
 | ---- | -------- | ------- |
 | Overview | [top-onboarding.md](/portal-sdk/generated/top-onboarding.md) | Getting your team ready to develop extensions | 
@@ -71,8 +73,6 @@ Learn how the framework is structured and how it is designed to run in multiple 
 | Manage cloud/environment specific configuration | [top-extensions-configuration.md](/portal-sdk/generated/top-extensions-configuration.md) | Configuring an extension to run in  various environments  |
 | Production-ready metrics | [top-extensions-production-ready-metrics.md](/portal-sdk/generated/top-extensions-production-ready-metrics.md) | Criteria for  moving an extension from one preview to another |
 | Partner request process | [top-extensions-partner-request.md](/portal-sdk/generated/top-extensions-partner-request.md) | How to request new features from the Ibiza team |
-
-Kickoff the onboarding experience by sending mail to <a href="mailto:ibiza-onboarding-kick@microsoft.com?subject=Kickoff Meeting Request&body=My team would like to meet with you to learn about the Azure onboarding process.">Azure Onboarding Team</a>.
 
 ## Build extensions
 
@@ -277,11 +277,11 @@ The Ibiza team collects standard telemetry for generic actions like blade openin
 
 | Name                            | Location | Purpose |
 | ------------------------------- | -------- | ------- |
-| Portal telemetry overview | /portal-sdk/generated/ | |
-| Getting access to raw portal telemetry data | /portal-sdk/generated/ | |
-| Consuming telemetry via pre-built Power BI dashboards | /portal-sdk/generated/ | |
-| Performance and reliability monitoring / alerting | /portal-sdk/generated/ | |
-| Collecting feedback from your users | /portal-sdk/generated/ | |
+| Portal telemetry overview | [top-extensions-telemetry.md](/portal-sdk/generated/top-extensions-telemetry.md) | |
+| Getting access to raw portal telemetry data | [top-extensions-telemetry.md](/portal-sdk/generated/top-extensions-telemetry.md) | |
+| Consuming telemetry via pre-built Power BI dashboards | [top-extensions-telemetry-create.md](/portal-sdk/generated/top-extensions-telemetry-create.md) | |
+| Performance and reliability monitoring / alerting | [top-extensions-reliability.md](/portal-sdk/generated/top-extensions-reliability.md) | |
+| Collecting feedback from your users | [top-extensions-telemetry.md](/portal-sdk/generated/top-extensions-telemetry.md) | |
 | Set up and verify telemetry logging from your extension | /portal-sdk/generated/ | |
 
 ## Legacy features
