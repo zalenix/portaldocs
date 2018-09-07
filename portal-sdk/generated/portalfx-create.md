@@ -207,14 +207,15 @@ import * as SubscriptionDropDown from "Fx/Controls/SubscriptionDropDown";
 ```typescript
 
 // The subscriptions drop down.
-this.subscriptionsDropDown = SubscriptionDropDown.create(container, {
+this._subscriptionsDropDown = SubscriptionDropDown.create(container, {
     initialSubscriptionId: ko.observableArray<string>(),
     validations: ko.observableArray([
-        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectSubscription)
-    ])
+        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectSubscription),
+    ]),
+    suppressDirtyBehavior: true,
 });
 const subId = ko.pureComputed(() => {
-    const sub = this.subscriptionsDropDown.value();
+    const sub = this._subscriptionsDropDown.value();
     return sub && sub.subscriptionId;
 });
 
@@ -228,15 +229,15 @@ import * as ResourceGroupDropDown from "Fx/Controls/ResourceGroupDropDown";
 ```typescript
 
 // The resource group drop down with creator inputs
-this.resourceGroupDropDown = ResourceGroupDropDown.create(container, {
+this._resourceGroupDropDown = ResourceGroupDropDown.create(container, {
     subscriptionId: subId,
     validations: ko.observableArray([
-        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectResourceGroup)
-    ])
+        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectResourceGroup),
+    ]),
+    suppressDirtyBehavior: true,
 });
 
 ```
-
 <a name="building-custom-create-forms-edit-scopeless-based-accessible-dropdowns-locations-dropdown"></a>
 #### Locations dropdown
 ```ts
@@ -245,14 +246,15 @@ import * as LocationDropDown from "Fx/Controls/LocationDropDown";
 ```typescript
 
 // The locations drop down.
-this.locationsDropDown = LocationDropDown.create(container, {
+this._locationsDropDown = LocationDropDown.create(container, {
     initialLocationName: ko.observableArray<string>(),
     subscriptionId: subId,
     validations: ko.observableArray([
-        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectLocation)
-    ])
+        new MsPortalFx.ViewModels.RequiredValidation(ClientResources.selectLocation),
+    ]),
     // Optional -> Disable locations by returning a reason for why a location is disabled
     // disable: (location) => ~["centralus", "eastus"].indexOf(location.name) && clientStrings.disabledLegalityIssues
+    suppressDirtyBehavior: true,
 });
 // If setting the dropdown value programmatically, make sure to set it to an existing item in the dropdown
 // e.g. this.locationsDropDown.value(this.locationsDropDown.fetchedValues()[0])
@@ -568,7 +570,7 @@ this.specDropDown = new SpecsDropDown(container, {
     // This extender should be the same extender view model used for the spec picker blade.
     // You may need to extend your data context or share your data context between your
     // create area and you spec picker area to use the extender with the current datacontext.
-    specPickerExtender: new BillingSpecPickerV3Extender(container, initialDataObservable(), dataContext),
+    specPickerExtender: new BillingSpecPickerV3Extender(container),
     pricingBlade: {
         detailBlade: "BillingSpecPickerV3",
         detailBladeInputs: {},

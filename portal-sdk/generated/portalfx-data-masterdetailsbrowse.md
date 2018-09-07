@@ -30,6 +30,7 @@ The DataContext for the MasterDetail Area contains the following:
 /**
 * Context for data samples.
 */
+@Di.Class()
 export class DataContext {
    /**
     * This QueryCache will hold all the website data we get from the website controller.
@@ -54,13 +55,7 @@ contains an EditScopeCache which is used in the master detail edit scenario.
 If you're creating a new Area one more step that needs to be done is to edit your `Program.ts` file to create the DataContext when your 
 extension is loaded. Find the `initializeDataContexts` method and then use the `setDataContextFactory` method to set the DataContext like so:
 
-```typescript
-
-this.viewModelFactories.V1$MasterDetail().setDataContextFactory<typeof MasterDetailV1>(
-    "./V1/MasterDetail/MasterDetailArea",
-    (contextModule) => new contextModule.DataContext());
-
-```
+code sample coming soon to SamplesExtension in D:\ws\Ship-Sync-AuxDocs-Github\doc\portal-sdk\Samples\SamplesExtension\Extension\Client\Program.ts
 
 <a name="master-details-browse-scenario-the-websites-querycache-and-entitycache"></a>
 ### The websites QueryCache and EntityCache
@@ -244,8 +239,8 @@ Then in the `onInputsSet` we call `fetch` passing the ID of the website we want 
 ```typescript
 
 /**
-* Invoked when the blade's inputs change.
-*/
+ * Invoked when the blade's inputs change.
+ */
 public onInputsSet(inputs: Def.BrowseDetailViewModel.InputsContract): MsPortalFx.Base.Promise {
     return this._websiteEntityView.fetch(inputs.currentItemId);
 }

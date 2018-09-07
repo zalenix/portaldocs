@@ -77,6 +77,7 @@ The DataContext for the MasterDetail Area contains the following:
 /**
 * Context for data samples.
 */
+@Di.Class()
 export class DataContext {
    /**
     * This QueryCache will hold all the website data we get from the website controller.
@@ -101,13 +102,7 @@ contains an EditScopeCache which is used in the master detail edit scenario.
 If you're creating a new Area one more step that needs to be done is to edit your `Program.ts` file to create the DataContext when your 
 extension is loaded. Find the `initializeDataContexts` method and then use the `setDataContextFactory` method to set the DataContext like so:
 
-```typescript
-
-this.viewModelFactories.V1$MasterDetail().setDataContextFactory<typeof MasterDetailV1>(
-    "./V1/MasterDetail/MasterDetailArea",
-    (contextModule) => new contextModule.DataContext());
-
-```
+code sample coming soon to SamplesExtension in D:\ws\Ship-Sync-AuxDocs-Github\doc\portal-sdk\Samples\SamplesExtension\Extension\Client\Program.ts
 
 <a name="working-with-data-master-details-browse-scenario-the-websites-querycache-and-entitycache"></a>
 ### The websites QueryCache and EntityCache
@@ -291,8 +286,8 @@ Then in the `onInputsSet` we call `fetch` passing the ID of the website we want 
 ```typescript
 
 /**
-* Invoked when the blade's inputs change.
-*/
+ * Invoked when the blade's inputs change.
+ */
 public onInputsSet(inputs: Def.BrowseDetailViewModel.InputsContract): MsPortalFx.Base.Promise {
     return this._websiteEntityView.fetch(inputs.currentItemId);
 }
@@ -340,7 +335,7 @@ When a Blade or Part view model is instantiated, its constructor is supplied wit
 
 ```typescript
 
-constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: MasterDetailArea.DataContext) {
+constructor(container: MsPortalFx.ViewModels.ContainerContract, dataContext: MasterDetailArea.DataContext) {
     super();
 
     this.title(ClientResources.masterDetailEditMasterBladeTitle);
@@ -378,13 +373,7 @@ From a code organization standpoint, you can think of an Area as little more tha
 
 Typically, the DataContext associated with a particular Area is instantiated from the '`initialize()`' method of '`\Client\Program.ts`', the entry point of your extension:
 
-```typescript
-
-this.viewModelFactories.V1$MasterDetail().setDataContextFactory<typeof MasterDetailV1>(
-    "./V1/MasterDetail/MasterDetailArea",
-    (contextModule) => new contextModule.DataContext());
-
-```
+code sample coming soon to SamplesExtension in D:\ws\Ship-Sync-AuxDocs-Github\doc\portal-sdk\Samples\SamplesExtension\Extension\Client\Program.ts
 
 There is a single DataContext class per Area. That class is - by convention - to be named '`[AreaName]Area.ts`'. For example, the 'MasterDetail' area of the samples has a '`MasterDetailArea.ts`' file created at the following location:
 
@@ -395,6 +384,7 @@ There is a single DataContext class per Area. That class is - by convention - to
 /**
 * Context for data samples.
 */
+@Di.Class()
 export class DataContext {
    /**
     * This QueryCache will hold all the website data we get from the website controller.
@@ -1350,7 +1340,7 @@ return Q.all(promises);
 
 ```typescript
 
-public updateSparkPlug(sparkPlug: DataModels.SparkPlug): FxBase.Promise {
+public updateSparkPlug(sparkPlug: SparkPlugModel): FxBase.Promise {
     let promise: FxBase.Promise;
     const uri = appendSessionId(SparkPlugData._apiRoot);
     if (useFrameworkPortal) {

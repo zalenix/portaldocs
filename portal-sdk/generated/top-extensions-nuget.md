@@ -14,6 +14,8 @@ In order to download the NuGet packages as part of an extension, developers can 
 
 Portal SDK NuGet packages are published to the Microsoft internal NuGet feed located at [https://aka.ms/portalfx/nugetfeed](https://aka.ms/portalfx/nugetfeed).  Depending on your internal build system, the configuration of how to consume this feed will vary.  For the latest guidance on consuming the feed within your build system, consult your build system's documentation. For those using 1ES systems, see the NuGet in 1ES guide located at [https://www.1eswiki.com/wiki/NuGet_in_1ES](https://www.1eswiki.com/wiki/NuGet_in_1ES).
 
+You can also [browse the feed in VSTS](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=Official%40Local&_a=feed).
+
 <a name="nuget-packages-configure-nuget-package-sources-for-development-getting-the-nuget-packages-externally"></a>
 ### Getting the NuGet packages externally
 

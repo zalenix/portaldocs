@@ -1,10 +1,10 @@
 
-<a name="menublade"></a>
-## MenuBlade
+<a name="menu-blade"></a>
+## Menu Blade
 
 Menu blades are rendered as a menu on the left side of the screen. The Shell combines this blade with the blade that is immediately to its right. Each item that is referenced from the left menu is rendered using the same header as the menu blade, resulting in the two blades being displayed as one blade.  This is similar to the way that the resource menu blade operates.  A user can click on the double left arrow to collapse the menu pane, as in the following image.
  
-![alt-text](../media/top-blades-menublade/menuBlade.png "Menu Blade")
+![alt-text](../media/portalfx-blades/menuBlade.png "Menu Blade")
 
 The process is as follows.
 
@@ -77,7 +77,7 @@ There are a few things to notice in the preceding code.
 You can view a working copy of the MenuBlade in the Dogfood environment sample located at 
 [https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SampleMenuBlade](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/SampleMenuBlade).
 
-<a name="menublade-optional-functionality"></a>
+<a name="menu-blade-optional-functionality"></a>
 ### Optional functionality
 
 * Dynamically changing the default selected item
@@ -98,7 +98,7 @@ You can view a working copy of the MenuBlade in the Dogfood environment sample l
 
 Menu blades also allow the user to collapse the menu pane.  This is not available programmatically to control by developers, as in the preceding image.
 
-<a name="menublade-navigation-within-a-menu-blade"></a>
+<a name="menu-blade-navigation-within-a-menu-blade"></a>
 ### Navigation within a menu blade
 
 As a developer, you have various options on how to open blades when the user interacts with your experience.

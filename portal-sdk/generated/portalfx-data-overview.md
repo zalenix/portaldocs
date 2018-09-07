@@ -25,7 +25,7 @@ When a Blade or Part view model is instantiated, its constructor is supplied wit
 
 ```typescript
 
-constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: MasterDetailArea.DataContext) {
+constructor(container: MsPortalFx.ViewModels.ContainerContract, dataContext: MasterDetailArea.DataContext) {
     super();
 
     this.title(ClientResources.masterDetailEditMasterBladeTitle);
@@ -63,13 +63,7 @@ From a code organization standpoint, you can think of an Area as little more tha
 
 Typically, the DataContext associated with a particular Area is instantiated from the '`initialize()`' method of '`\Client\Program.ts`', the entry point of your extension:
 
-```typescript
-
-this.viewModelFactories.V1$MasterDetail().setDataContextFactory<typeof MasterDetailV1>(
-    "./V1/MasterDetail/MasterDetailArea",
-    (contextModule) => new contextModule.DataContext());
-
-```
+code sample coming soon to SamplesExtension in D:\ws\Ship-Sync-AuxDocs-Github\doc\portal-sdk\Samples\SamplesExtension\Extension\Client\Program.ts
 
 There is a single DataContext class per Area. That class is - by convention - to be named '`[AreaName]Area.ts`'. For example, the 'MasterDetail' area of the samples has a '`MasterDetailArea.ts`' file created at the following location:
 
@@ -80,6 +74,7 @@ There is a single DataContext class per Area. That class is - by convention - to
 /**
 * Context for data samples.
 */
+@Di.Class()
 export class DataContext {
    /**
     * This QueryCache will hold all the website data we get from the website controller.

@@ -66,7 +66,7 @@ The code snippet below shows a simple constructor for a TemplateBlade:
 
 ```typescript
 
-constructor(container: FxViewModels.ContainerContract, initialState: any, dataContext: BladesArea.DataContext) {
+constructor() {
     super();
     this.title(ClientResources.templateBladesBladeTitle);
     this.subtitle(ClientResources.samples);
@@ -144,6 +144,7 @@ The code below demonstrates a basic initialization example for a toolbar (adding
 
 ```typescript
 
+@Di.Class("viewModel")
 export class TemplateBladeWithCommandBarViewModel
 extends Blade
 implements Def.TemplateBladeWithCommandBarViewModel.Contract
@@ -158,7 +159,7 @@ public messages = ko.observableArray<string>();
  */
 public commandBar: Toolbars.Toolbar;
 
-constructor(container: FxCompositionBlade.Container, initialState: any, dataContext: BladesArea.DataContext) {
+constructor(container: FxCompositionBlade.Container) {
     super();
 
     this.title(ClientResources.templateBladeWithCommandBar);
