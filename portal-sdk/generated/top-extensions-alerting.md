@@ -256,7 +256,7 @@ The parameters are as follows.
 
             * **datacenterCode**: Optional. Specifies the data center that is impacted by the alert.  Values are "AM", .
        
-        The following example contains the criteria for a **percentage** error alert.
+            The following example contains the criteria for a **percentage** error alert.
 
             ```json
              "criteria":[
