@@ -14,19 +14,10 @@ The Portal Framework provides the following alerts.
 1. Extension alive
 1. Create regression
 1. [Availability](#availability)
-1. Performance
+1. [Performance](#performance)
 1. [Client error](#client-error)
 
-The Framework also provides an infrastructure so that teams can configure alerts to send for each extension. Each area of the infrastructure is separate, so that the Framework can allow various levels of custom configuration. Specified sets of conditions are met previous to meeting or exceeding the  alert threshold.  The alert areas are as follows.
-
-1. Create
-
-1. [Availability](#availability)
-
-1. Performance
-
-1. [Client error](#client-error)
-
+The Framework also provides an infrastructure so that teams can configure alerts to send for each extension. Each area of the infrastructure is separate, so that the Framework can allow various levels of custom configuration. Specified sets of conditions are met previous to meeting or exceeding the alert threshold. 
 
 <!-- TODO: Determine whether this sentence is still accurate.
 
@@ -34,8 +25,6 @@ The Framework also provides an infrastructure so that teams can configure alerts
  -->
 
 The Portal has a daily extension customization Json backup from **Azure SQL** to **Kusto**.  You can view your extension alert customization Json in **Kusto** by using the site located at [https://ailoganalyticsportal-privatecluster.cloudapp.net/#/discover/query/results](https://ailoganalyticsportal-privatecluster.cloudapp.net/#/discover/query/results) and replacing `DefaultCriteria` with `Alert_YOUR_EXTENSION_NAME`. That function will not exist until you onboard the extension to the alerting infrastructure, as specified in [#onboarding-to-the-alert-infrastructure](#onboarding-to-the-alert-infrastructure). You can also view  a read-only version of the configuration by using  the alerting tool that is located at [https://aka.ms/portalfx/alerting-onboarding](https://aka.ms/portalfx/alerting-onboarding). 
-
-
 
 ## Onboarding to the alert infrastructure
 
@@ -63,27 +52,74 @@ The Portal has a daily extension customization Json backup from **Azure SQL** to
  
 IF the correlation rules need to be updated for your extension, reach out to 
 <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration&body=My team would like to update the correlation rules for our extension.  The configuration to update is <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafx hot@microsoft.com and azurefxg@microsoft.com</a>  and attach the updated configuration. We will inform you when the updates are applied. 
- 
+
+## Alert configuration file
+
+A sample alert is in the following code.
+
+```json
+{
+    "extensionName": "Your_Extension_Name",
+    "enabled": true,
+    "environments": [
+        {
+            "environment": ["portal.azure.com", "portal.azure.cn"], // National clouds are supported.
+            "availability": [...], // Optional. Add it when you want to enable availability alerts.
+            "clientError": [...], // Optional. Add it when you want to enable client error alerts.
+            "create": [...], // Optional. Add it when you want to enable create alerts.
+            "performance": [...] // Optional. Add it when you want to enable performance alerts.
+        }
+    ]
+}
+
+```
+
+The parameters are as follows.
+
+* **extensionName**: The name of the extension.
+
+* **enabled**: Specifies whether to use the alert.  A value of `true` enables the alert.
+
+* **environments**:  The array whose elements represent a set of environments that will send alerts.
+
+At least one of the following four sections must be included to provide the details of the alert. The alert areas are as follows.
+
+* [Availability](#availability)
+
+* [Client error](#client-error)
+
+* Create
+
+* Performance
+
 ## Availability 
 
 Alerts can be configured for extension availability, blade availability and part availability. They run every five minutes to assess the previous hour of data.  A sample availabilty alert is in the following code.
 
 ```json
-{
-    ...
-    "availability": {
-        "extension": {
-            ...
-        },
-        "blade": {
-            ...
-        },
-        "part": { 
-            ...
-        }
-    }
-    ...
-}
+    "extensionName": "Your_Extension_Name",
+    "enabled": true, // Enable or disable alerts for Your_Extension_Name.
+    "environments": [
+        {
+            "environment": ["portal.azure.com", "portal.azure.cn"], // National clouds are supported.
+            "availability": [
+                {
+                    "type": "extension", // Support value, "extension", "blade" or "part".
+                    "enabled": true, // Enable or disable extension type alerts for Your_Extension_Name.
+                    "criteria": [
+                       ...
+                    ]
+                },
+                {
+                    "type": "blade",
+                    "enabled": true,
+                    "criteria": [
+                       ...
+                    ]
+                }
+                ...
+            ],
+
 ```
 
 Within the previous sections, two different sets of custom criteria can be defined. Only blades or parts can be configured as an inclusion or exclusion model, as in the following code.
@@ -134,6 +170,8 @@ The parameters are as follows.
 
 Availability alerts will trigger when **minFailureUserCount**, **minFailureCount**, and **minAvailability** are met or exceeded.  In the previous example, the alert assesses the data that was accumulated during last hour for the extension, blade or part. Based on that data, the critical configuration will only fire when five or more unique users encounter five or more failure occurrences and the total availability decreasses to 80%.  If all of these conditions are met, then a severity 3 alert will be opened and sent to the team that owns the blade or part.
 
+## Performance
+
 ## Client error
 
 The two types of client error alerts are error percentage alerts and error message alerts. Error percentage alerts fire when the percentage of users experiencing an error is above the specified threshold. Error message alerts report from different environments including national clouds, and they fire for error messages that are categorized by **messageLogicalAnd** and **messageLogicalOr**. 
@@ -141,7 +179,6 @@ The two types of client error alerts are error percentage alerts and error messa
 Error percentage alerts run every 15 minutes, and error message alerts run every five minutes.  They assess the previous 60 minutes of telemetry data that is stored in the **Kusto** database.
 
 Configuring client alerts requires a set of environments in which the alerts can be triggered, and an error configuration for the alert.  Alerts are supported in national clouds by specifying national cloud portal domain names in the `environment` property in the alert customization Json. A sample client error alert is in the following alert customization JSON code.
-
 
 ```json
 {
@@ -189,11 +226,6 @@ Configuring client alerts requires a set of environments in which the alerts can
 
 The parameters are as follows.
 
-* **extensionName**: The name of the extension.
-
-* **enabled**: Specifies whether to use the alert.  A value of `true` enables the alert.
-
-* **environments**:  The array whose elements represent a set of environments.
 
     * **environment**:  The array whose elements represent the names of the environments for the alert. Multiple values can be set for this property. The values can be the MPAC and PROD environments, in addition to portal domain names like  "canary.portal.azure.com" or "portal.azure.cn". An asterisk ("&ast;") represents all Azure Portal Production environments, like *.portal.azure.com. Alerts are supported in national clouds by specifying national cloud portal domain names.
 
@@ -238,7 +270,7 @@ The parameters are as follows.
 
             * **message2**: Optional. Additional error message to include in this alert. 
 
-            * **minAffectedUserCount**:  The minimum number of unique users that encountered a failure previous to meeting or exceeding the error threshold.
+            * **minAffectedUserCount**:  The minimum number of unique users that encountered any client error previous to meeting or exceeding the error threshold.
 
             * **exclusion**:  Specifies the name of the messages that cannot send this alert. As many as three messages can be specified. 
                 
@@ -277,9 +309,9 @@ The parameters are as follows.
 
             * **enabled**: Specifies whether to use the error alert criteria.  A value of `true` enables the alert criteria, and a value of `false` disables the alert criteria.
 
-            * **minAffectedUserCount**:  The minimum number of unique users that encountered a failure previous to meeting or exceeding the error threshold.
+            * **minAffectedUserCount**:  The minimum number of unique users that encountered any client error previous to meeting or exceeding the error threshold.
             
-            * **minAffectedUserPercentage**:  The minimum percentage of unique users that encountered a failure previous to meeting or exceeding the error threshold.
+            * **minAffectedUserPercentage**:  The minimum percentage of unique users that encountered any client error previous to meeting or exceeding the error threshold.
             
             * **exclusion**:  Specifies the name of the messages that cannot send this alert. As many as three messages can be specified. 
                 
@@ -300,22 +332,9 @@ The parameters are as follows.
  
 ### What is error configuration?
 
-Error configuration is an array of criteria to run against that environment and safe deployment stage. See definition [below](#client-error-configuration-what-is-safe-deployment-stage).
-
-### What is safe deployment stage?
+Error configuration is an array of criteria to run against that environment and safe deployment stage.
 
 
-
-
-
-
-### What is minAffectedUserPercentage?
-
-This is the minimum number of percentage of users affected by any client error.
-
-### What is minAffectedUserCount?
-
-This is the minimum number of users affected by any client error.
 
 ## How often do they run?
 

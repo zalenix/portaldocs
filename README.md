@@ -218,15 +218,17 @@ The Ibiza team provides limited testing support. Due to resource constraints the
 
 The Ibiza team collects standard telemetry for generic actions like blade opening and command execution. We also collect performance, reliability, and user feedback information that facilitates the operation of your extension. You can also write your own events by using the telemetry system. Ibiza supports alerting for common operations scenarios.
 
-* [Portal telemetry overview](/portal-sdk/generated/)
+* [Portal telemetry overview](/portal-sdk/generated/top-extensions-telemetry.md)
 
-* [Getting access to raw portal telemetry data](/portal-sdk/generated/)
+* [Getting access to raw portal telemetry data](/portal-sdk/generated/top-extensions-telemetry.md)
 
-* [Consuming telemetry via pre-built Power BI dashboards](/portal-sdk/generated/)
+* [Consuming telemetry via pre-built Power BI dashboards](/portal-sdk/generated/top-extensions-telemetry-create.md)
 
-* [Performance and reliability monitoring / alerting](/portal-sdk/generated/top-extensions-reliability.md)
+* [Performance and reliability monitoring](/portal-sdk/generated/top-extensions-reliability.md)
 
-* [Collecting feedback from your users](/portal-sdk/generated/)
+* [Alert monitoring](/portal-sdk/generated/top-extensions-alerting.md)
+
+* [Collecting feedback from your users](/portal-sdk/generated/top-extensions-telemetry.md)
 
 * [Set up and verify telemetry logging from your extension](/portal-sdk/generated/)
 
