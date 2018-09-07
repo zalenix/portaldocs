@@ -1,9 +1,9 @@
 
-## Menu Blade
+## MenuBlade
 
 Menu blades are rendered as a menu on the left side of the screen. The Shell combines this blade with the blade that is immediately to its right. Each item that is referenced from the left menu is rendered using the same header as the menu blade, resulting in the two blades being displayed as one blade.  This is similar to the way that the resource menu blade operates.  A user can click on the double left arrow to collapse the menu pane, as in the following image.
  
-![alt-text](../media/portalfx-blades/menuBlade.png "Menu Blade")
+![alt-text](../media/top-blades-menublade/menuBlade.png "Menu Blade")
 
 The process is as follows.
 
@@ -17,7 +17,7 @@ Menu blades are defined in a **TypeScript** file as shown in the following code.
 
 The following code demonstrates how to define a menu blade `ViewModel` to open two different items.
 
- {"gitdown": "include", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/MenuBlade/SampleMenuBlade.ts" }
+ {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/MenuBlade/SampleMenuBlade.ts", "section": "menuBlade#Decorator"}
  
 There are a few things to notice in the preceding code.
 
