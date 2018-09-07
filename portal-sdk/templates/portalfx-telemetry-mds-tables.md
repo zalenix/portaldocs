@@ -11,7 +11,7 @@
 # MDS Tables
 
 ## Access
-
+The Monitoring Web Server Home Page is located at 
 [https://production.diagnostics.monitoring.core.windows.net/](https://production.diagnostics.monitoring.core.windows.net/)
 
 ## Overview

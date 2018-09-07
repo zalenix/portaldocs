@@ -664,19 +664,19 @@ Update the following image to a more current blade and associated website.
 
 ## portalfx-telemetry
 
-![alt-text](../media/portalfx-telemetry/appInsightsConfig.png "portalfx-telemetry/appInsightsConfig.png")
+![alt-text](..//media/top-extensions-telemetry/appInsightsConfig.png "portalfx-telemetry/appInsightsConfig.png")
 
 
-![alt-text](../media/portalfx-telemetry/connectionScope.png "portalfx-telemetry/connectionScope.png ")
+![alt-text](..//media/top-extensions-telemetry/connectionScope.png "portalfx-telemetry/connectionScope.png ")
 
 
-![alt-text](../media/portalfx-telemetry/consoleLogs.png "portalfx-telemetry/consoleLogs.png")
+![alt-text](..//media/top-extensions-telemetry/consoleLogs.png "portalfx-telemetry/consoleLogs.png")
 
 
-![alt-text](../media/portalfx-telemetry/fiddler.png "portalfx-telemetry/fiddler.png")
+![alt-text](..//media/top-extensions-telemetry/fiddler.png "portalfx-telemetry/fiddler.png")
 
 
-![alt-text](../media/portalfx-telemetry/supportedfunctions.png "portalfx-telemetry/supportedfunctions.png")
+![alt-text](..//media/top-extensions-telemetry/supportedfunctions.png "portalfx-telemetry/supportedfunctions.png")
 
 ## portalfx-extensions-testing-in-production
 
