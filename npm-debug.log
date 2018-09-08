@@ -1,0 +1,46 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'run',
+1 verbose cli   'dynamicdocs' ]
+2 info using npm@3.3.12
+3 info using node@v5.1.0
+4 verbose run-script [ 'predynamicdocs', 'dynamicdocs', 'postdynamicdocs' ]
+5 info lifecycle docs@1.0.0~predynamicdocs: docs@1.0.0
+6 silly lifecycle docs@1.0.0~predynamicdocs: no script for predynamicdocs, continuing
+7 info lifecycle docs@1.0.0~dynamicdocs: docs@1.0.0
+8 verbose lifecycle docs@1.0.0~dynamicdocs: unsafe-perm in lifecycle true
+9 verbose lifecycle docs@1.0.0~dynamicdocs: PATH: C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;D:\ws\Ship-Deploy-DynamicPortalDocs\doc\node_modules\.bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Git\cmd;C:\Users\ibizaatm\AppData\Roaming\npm;C:\Program Files (x86)\Git\bin;
+10 verbose lifecycle docs@1.0.0~dynamicdocs: CWD: D:\ws\Ship-Deploy-DynamicPortalDocs\doc
+11 silly lifecycle docs@1.0.0~dynamicdocs: Args: [ '/d /s /c', 'gulp dynamicdocs' ]
+12 silly lifecycle docs@1.0.0~dynamicdocs: Returned: code: 1  signal: null
+13 info lifecycle docs@1.0.0~dynamicdocs: Failed to exec dynamicdocs script
+14 verbose stack Error: docs@1.0.0 dynamicdocs: `gulp dynamicdocs`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\lifecycle.js:232:16)
+14 verbose stack     at emitTwo (events.js:87:13)
+14 verbose stack     at EventEmitter.emit (events.js:172:7)
+14 verbose stack     at ChildProcess.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\spawn.js:24:14)
+14 verbose stack     at emitTwo (events.js:87:13)
+14 verbose stack     at ChildProcess.emit (events.js:172:7)
+14 verbose stack     at maybeClose (internal/child_process.js:818:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+15 verbose pkgid docs@1.0.0
+16 verbose cwd D:\ws\Ship-Deploy-DynamicPortalDocs\doc
+17 error Windows_NT 6.3.9600
+18 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run" "dynamicdocs"
+19 error node v5.1.0
+20 error npm  v3.3.12
+21 error code ELIFECYCLE
+22 error docs@1.0.0 dynamicdocs: `gulp dynamicdocs`
+22 error Exit status 1
+23 error Failed at the docs@1.0.0 dynamicdocs script 'gulp dynamicdocs'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the docs package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     gulp dynamicdocs
+23 error You can get their info via:
+23 error     npm owner ls docs
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]
