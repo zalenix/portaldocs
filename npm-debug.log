@@ -10,7 +10,7 @@
 6 silly lifecycle docs@1.0.0~predynamicdocs: no script for predynamicdocs, continuing
 7 info lifecycle docs@1.0.0~dynamicdocs: docs@1.0.0
 8 verbose lifecycle docs@1.0.0~dynamicdocs: unsafe-perm in lifecycle true
-9 verbose lifecycle docs@1.0.0~dynamicdocs: PATH: C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;D:\ws\Ship-Deploy-DynamicPortalDocs\doc\node_modules\.bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Git\cmd;C:\Users\ibizaatm\AppData\Roaming\npm;C:\Program Files (x86)\Git\bin;
+9 verbose lifecycle docs@1.0.0~dynamicdocs: PATH: C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;D:\ws\Ship-Deploy-DynamicPortalDocs\doc\node_modules\.bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Git\cmd
 10 verbose lifecycle docs@1.0.0~dynamicdocs: CWD: D:\ws\Ship-Deploy-DynamicPortalDocs\doc
 11 silly lifecycle docs@1.0.0~dynamicdocs: Args: [ '/d /s /c', 'gulp dynamicdocs' ]
 12 silly lifecycle docs@1.0.0~dynamicdocs: Returned: code: 1  signal: null
