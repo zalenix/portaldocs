@@ -144,6 +144,17 @@ Sections, tabs and custom html can all be found in the playground located at [ht
 
 Typography is associated with the formation of letters and words, and their impact on usability. The right  typography makes  extensions convey the  feeling  of accuracy, crispness, and polish.  Typography that is not as effective may be distracting and and commands more  attention than the content on which it was used.
 
+To use a specific font-family, use one of the following CSS classes:
+
+* Msportalfx-font-regular to get SegoeUI
+
+* Msportalfx-font-bold to get SegoeUI-Bold
+
+* Msportalfx-font-semibold to get SegoeUI-Semibold
+
+* Msportalfx-font-light to get SegoeUI-Light
+
+
 Azure extensions have considered the factors of font selection and placement, in addition to other linotype techniques, to provide typography that can be used consistently across extensions to display content in a way that the content is more important than the designs that display it.
 The typography guidelines are located at [http://uni/DesignDepot.FrontEnd/#/ProductNav/49046/0/qv?t=Azure%20Portal%7CFramework%7CStyles](http://uni/DesignDepot.FrontEnd/#/ProductNav/49046/0/qv?t=Azure%20Portal%7CFramework%7CStyles).
 
