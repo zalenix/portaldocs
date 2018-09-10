@@ -1,7 +1,7 @@
 
 ## Legacy EditScopes
 
-**NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions be developed without edit scopes, as specified in  [top-editscopeless-forms.md](top-editscopeless-forms.md). For more information about forms without editScopes, see [portalfx-controls-dropdown.md#migration-to-the-new-dropdown](portalfx-controls-dropdown.md#migration-to-the-new-dropdown).
+**NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions be developed without edit scopes, as specified in  [top-extensions-controls.md](top-extensions-controls.md). For more information about forms without editScopes, see [portalfx-controls-dropdown.md#migration-to-the-new-dropdown](portalfx-controls-dropdown.md#migration-to-the-new-dropdown).
 
 Edit scopes provide a standard way of managing edits over a collection of input fields, blades, and extensions. They provide many common functions that would otherwise be difficult to orchestrate, like the following:
 
@@ -247,47 +247,13 @@ An example of loading an edit scope is in the following code. The sample is also
 
  {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailEdit/ViewModels/DetailViewModels.ts", "section": "top-legacy-editscopes#neweditscopeview"}
 
-* * *
-
-compare the above  to
-
-
-```ts
-// create a new editScopeView
-constructor(container: MsPortalFx.ViewModels.PartContainerContract,
-            initialState: any,
-            dataContext: DataContext) {
-    super();
-    ...
-    this._editScopeView = dataContext.masterDetailEditSample.editScopeCache.createView(container);
-    // Initialize editScope of the base class.
-    this.editScope = this._editScopeView.editScope;
-    ...
-}
-```
-
  In the following example, the `editScopeView` is refreshed with new data from the data context.
 
  {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailEdit/ViewModels/DetailViewModels.ts", "section": "top-legacy-editscopes#newdata"}
  
-* * *
-
- compare to
-
-
-```ts
-// update the editScopeView with a new id
-public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
-    // Acquires edit scope seeded with an item with id currentItemId.
-    return this._editScopeView.fetchForExistingData(inputs.editScopeId, inputs.currentItemId);
-}
-```
-
- {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/MasterDetail/MasterDetailEdit/ViewModels/DetailViewModels.ts", "section": "top-legacy-editscopes#newdata"}
-
 ### Loading the EditScope
 
-The code that loads the `EditScope` is largely related to data loading, so the data context is the preferred location for the code. 
+The code that loads the `EditScope` is largely related to data loading, so the data context is the preferred location for the code.
 
 Form fields require a binding to one or more observables. Consequently, they have two constructor overloads. Extension developers can configure this binding by supplying a path from the root of the `EditScope/Form` model down to the observable to which the form field should bind. They can do this by selecting one of the two form field constructor variations.
 

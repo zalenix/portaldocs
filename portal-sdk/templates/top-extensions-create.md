@@ -151,7 +151,7 @@ If the extension combines the `sort` option with the `disable` or `group` functi
 
 ### EditScope-accessible dropdowns
 
-**NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions be developed without edit scopes, as specified in [top-editscopeless-forms.md](top-editscopeless-forms.md).
+**NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions be developed without edit scopes, as specified in [top-extensions-controls.md](top-extensions-controls.md).
 
 For more information about forms without editScopes, see   [portalfx-controls-dropdown.md#migration-to-the-new-dropdown](portalfx-controls-dropdown.md#migration-to-the-new-dropdown).
 

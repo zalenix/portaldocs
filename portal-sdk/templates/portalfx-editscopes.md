@@ -5,4 +5,4 @@ The page you requested has moved to [top-legacy-editscopes.md](top-legacy-editsc
 
 # EditScopeless  Forms
 
-The page you requested has moved to [top-editscopeless-forms.md](top-editscopeless-forms.md).
+The page you requested has moved to [top-extensions-controls.md](top-extensions-controls.md).
