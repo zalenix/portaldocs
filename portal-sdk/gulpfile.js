@@ -285,7 +285,7 @@ function writeDocsToFile(aggregate, outputDir, prodSdkVersionTags) {
         perCloudDownloadLinks += util.format("<br/> Download <a href=\"%s\">%s</a> : %s", aggregate[version].downloadUrl, version, prodSdkVersionTags[version].join(","));
     });
 
-    downloadsDoc.write(util.format("# Download Portal SDK <br/> %s <br/> <table><tr><th>Download</th><th>Detail</th><th>Breaking Changes</th></tr>", perCloudDownloadLinks || downloadLinks));
+    downloadsDoc.write(util.format("# Download Portal SDK \n %s \n <table><tr><th>Download</th><th>Detail</th><th>Breaking Changes</th></tr>", perCloudDownloadLinks || downloadLinks));
 
     sortedVersions.forEach(function (version) {
         var result = aggregate[version];
