@@ -296,7 +296,7 @@ The following code is dependent on the use of the `EditScope` observable or the 
 
    <summary>MultiSelectDropDown was not bound to an EditScope observable</summary>
 
-   If the `MultiSelectDropDown` in the extension does not use an `EditScope`, it can be converted to an AMD DropDown using the new form field APIs that do not use EditScopes, as specified in [top-editscopeless-forms.md](top-editscopeless-forms.md).
+   If the `MultiSelectDropDown` in the extension does not use an `EditScope`, it can be converted to an AMD DropDown using the new form field APIs that do not use EditScopes, as specified in [top-extensions-controls.md](top-extensions-controls.md).
 
    One scenario for the MultiSelectDropDown->DropDown that is becoming obsolete resembles the following code.
    
