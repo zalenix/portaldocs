@@ -1,1 +1,2 @@
-The Ibiza Team is  in the process of updating our documentation.  This page will be updated soon.
+
+The page you requested has moved to [top-extensions-controls.md](top-extensions-controls.md).
