@@ -240,7 +240,7 @@ Rather than initializing the EditScope by programmatically modifying/updating Ed
 
 ***Q: I need to integrate my Form with an EditScope. Where do I get the EditScope?*** 
 
-**NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions and forms be developed without edit scopes, as specified in [top-editscopeless-forms.md](top-editscopeless-forms.md).
+**NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions and forms be developed without edit scopes, as specified in [top-extensions-controls.md](top-extensions-controls.md).
 
 SOLUTION: Integrate forms with `EditScopes` varies according to the UX design. Developers can choose between using a `ParameterProvider` component or `EditScopeCache` component as follows:
 
