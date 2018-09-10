@@ -1,6 +1,8 @@
 
 ##  Choosing the right test Framework
 
+Developers can create tests to run against an extension, to verify that the code is executed and behaves as expected. This is in addition to testing previous to publishing an extension to the production environment, including regression tests and usability tests. For more information, see [top-extensions-sideloading.md](top-extensions-sideloading.md). 
+
 Azure provides three different end-to-end test frameworks from which partners can select to develop their own tests. The C# test framework and the Node.js test framework are open source, which enables partners to leverage APIs that are contributed by other partners. A strong open source community that is built around these test frameworks will help improve the development experience for the test frameworks.
 
 <!-- TODO:  Determine which frameworks get the most use, and then re-order this list accordingly. -->
@@ -8,7 +10,6 @@ Azure provides three different end-to-end test frameworks from which partners ca
 1. Node.js Test Framework
 
     The Node.js test framework is an end-to-end test framework that runs tests against the Portal. It tests extension interactions with user behavior, moreso than extension interactions with the Portal. It is downloaded separately from the SDK to allow developers to develop tests in the same language as the extension.  For more information, see [top-extensions-node-js-test-framework.md](top-extensions-node-js-test-framework.md).
-
 
 1. Typescript Test Framework 
 
