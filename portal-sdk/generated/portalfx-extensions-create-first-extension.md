@@ -10,7 +10,7 @@ Blades are components that are developed as part of the extension, and can be re
 
 This process validates that your development environment is set up correctly to develop extensions and blades, by creating an empty extension.  It also validates that the local extension can be loaded in the Azure Portal. The empty extension that is created by this process can be modified later for actual development. For more information about developing and testing extensions, see [top-extensions-debugging.md](top-extensions-debugging.md).
 
-1. Launch **Visual Studio 2015** and navigate to `File -> New -> Project`. In the new project dialog, select `Installed -> Visual C# -> Azure Portal`. Select the `Azure Portal Extension` project type, and give it a unique name.  The name of the project typically matches the solution name. The location can be the same as any other **Visual Studio** project directory.  Then, click the checkbox next to ```Create directory for solution```.  Then, click the ```OK``` button, as described in the following image.
+1. Launch **Visual Studio 2015** and navigate to `File -> New -> Project`. In the new project dialog, select `Installed -> Visual C# -> Azure Portal`. Select the `Azure Portal Extension` project type, and give it a unique name.  The name of the project typically matches the solution name and the extension name. The location can be the same as any other **Visual Studio** project directory.  Then, click the checkbox next to ```Create directory for solution```.  Then, click the ```OK``` button, as described in the following image.
 
     ![alt-text](../media/portalfx-extensions-create-first-extension/new-project-template.png "New Project Dialog")
 
@@ -54,6 +54,8 @@ This process validates that your development environment is set up correctly to 
 Now that you have developed a blank extension, you can use it to develop a "Hello World" blade. You and your team will decide on the types of blades that can be grouped together into an area.  Because these blades will probably share data, the area is also known as a `DataContext` that is meaningfully named. 
 
 In the following "Hello World" example, the data context for blades is named `Greetings`, and the blade that is being developed is named `Aloha`. Remember to remove the angle brackets when substituting the name of the `DataContext` group for the parameter name `<AreaName>`.
+
+**NOTE**: In this example, the name of the solution and the extension is "HelloWorld".
 
 1. Add a folder for the group of blades within the `Client` folder of the project. It should be named the same as the area.
 
@@ -148,7 +150,8 @@ In the following "Hello World" example, the data context for blades is named `Gr
     ```json
     https://portal.azure.com/?feature.customportal=false&feature.canmodifyextensions=true#blade/HelloWorld/Aloha?testExtensions={"HelloWorld":"https://localhost:44300/"}
     ```
-
+    **NOTE**: While the extension is being developed, it is a test extension and therefore requires the use of the **testExtensions** parameter that includes the name of the extension and address of the localhost.
+    
     When the site is properly accessed, the blade from this example should resemble the following image.
 
     ![alt-text](../media/portalfx-extensions-create-first-extension/helloWorldExtensionAlohaBlade.png "New Extension and blade")
