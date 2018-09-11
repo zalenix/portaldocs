@@ -1,7 +1,7 @@
 
 ## Overview
 
-Many alerts for extension behavior are provided by the Portal Framework. Alerts run at a specified time to assess the previous hour of data. If a threshold for an alert is met, an ICM alert that contains the details of the alert is opened and sent to  the  team that owns the extension. Azure Portal partner team IcM information is collected during the onboarding process, and is located at [https://aka.ms/portalfx/partners](https://aka.ms/portalfx/partners). This maps extension names to IcM team names and service names. An IcM routing rule is added under "Azure Portal (Ibiza) service" in IcM to route incidents to corresponding partners.   The routing rule is in the following format.
+Many alerts for extension behavior are provided by the Portal Framework. Alerts run at a specified time to assess the data that was collected in a previous time period. If a threshold for an alert is met, an ICM alert that contains the details of the alert is opened and sent to  the  team that owns the extension. Azure Portal partner team IcM information is collected during the onboarding process, and is located at [https://aka.ms/portalfx/partners](https://aka.ms/portalfx/partners). This maps extension names to IcM team names and service names. An IcM routing rule is added under "Azure Portal (Ibiza) service" in IcM to route incidents to corresponding partners.   The routing rule is in the following format.
 
  `AIMS://AZUREPORTAL\Portal\{ExtensionName}`
 
@@ -22,38 +22,46 @@ The Framework also provides an infrastructure so that teams can configure alerts
 <!-- TODO: Determine whether this sentence is still accurate.
 
  Today it only applies to availability, performance and client error, we are working on expanding it into the other areas.
- -->
+ -->    
 
-The Portal has a daily extension customization Json backup from **Azure SQL** to **Kusto**.  You can view your extension alert customization Json in **Kusto** by using the site located at [https://ailoganalyticsportal-privatecluster.cloudapp.net/#/discover/query/results](https://ailoganalyticsportal-privatecluster.cloudapp.net/#/discover/query/results) and replacing `DefaultCriteria` with `Alert_YOUR_EXTENSION_NAME`. That function will not exist until you onboard the extension to the alerting infrastructure, as specified in [#onboarding-to-the-alert-infrastructure](#onboarding-to-the-alert-infrastructure). You can also view  a read-only version of the configuration by using  the alerting tool that is located at [https://aka.ms/portalfx/alerting-onboarding](https://aka.ms/portalfx/alerting-onboarding). 
+The Portal backs up  JSON extension customizations  from **Azure SQL** to **Kusto** daily at 5:00 pm PST.  You can view your extension alert customization Json in **Kusto** by using the site located at [https://aka.ms/portalfx/alerting-kusto-partner](https://aka.ms/portalfx/alerting-kusto-partner) and replacing `DefaultCriteria` with `Alert_YOUR_EXTENSION_NAME`. Another function is  the Kusto function named `GetExtensionCustomizationJson("YOUR_EXTENSION_NAME")`. The function for your extension will not exist until you onboard the extension to the alerting infrastructure, as specified in [#onboarding-to-the-alert-infrastructure](#onboarding-to-the-alert-infrastructure). You can also view  a read-only version of the configuration after onboarding by using  the alerting tool that is located at [https://aka.ms/portalfx/alerting-onboarding](https://aka.ms/portalfx/alerting-onboarding). 
 
 ## Onboarding to the alert infrastructure
 
-1. Generate the desired per extension configuration by manually editing the JSON file, or by using the alerting tool that is located at [https://aka.ms/portalfx/alerting-onboarding](https://aka.ms/portalfx/alerting-onboarding).
+1. Generate the desired extension alert configuration by manually editing the JSON file, or by using the alerting tool that is located at [https://aka.ms/portalfx/alerting-onboarding](https://aka.ms/portalfx/alerting-onboarding).
     
 1. Fill out the work item that is located at  [https://aka.ms/portalfx/alerting-onboarding](https://aka.ms/portalfx/alerting-onboarding).
 
 1. Set up the following correlation rules in ICM.
 
-    * **Routing ID**: For create regression 'AIMS://AZUREPORTAL\Portal' <br/> For all others 'AIMS://AZUREPORTAL\Portal\\{ExtensionName}' |
+    * **Routing ID**: For create regressions the id is `AIMS://AZUREPORTAL\Portal`. For all others, the id is `AIMS://AZUREPORTAL\Portal\\{ExtensionName}`.
  
-    * **Correlation ID**:  Specific to alert.  Use the following values. 
+    * **Correlation ID**:  Alert-specific.  Use the following values.
 
-        * Availability - Extension: **ExtensionLoadAvailability**
+        * Extension availability alerts: **ExtensionLoadAvailability**
 
-        * Availability - Blade: **BladeLoadAvailability**
+        * Blade availability alerts: **BladeLoadAvailability**
 
-        * Availability - Part: **PartLoadAvailability**
+        * Part availability alerts: **PartLoadAvailability**
 
-    * **Mode**: Hit count (recommended). Other modes are .
+    * **Mode**: Hit count is the recommended mode. Other modes are .
+
+    * **Match DC/Region**: Checked.
 
     * **Match Slice**: Checked.
 
     * **Match Severity**: Checked.
  
-IF the correlation rules need to be updated for your extension, reach out to 
+    * **Match Role**: Checked.
+
+    * **Match Instance/Cluster**: Checked.
+
+If the correlation rules need to be updated for your extension, reach out to 
 <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration&body=My team would like to update the correlation rules for our extension.  The configuration to update is <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafx hot@microsoft.com and azurefxg@microsoft.com</a>  and attach the updated configuration. We will inform you when the updates are applied. 
 
-## Alert configuration file
+## Alert configuration
+
+At a high level, an alert configuration specifies the number of environments that will use the alert.  Then, the environments are grouped into sets that use the same alert, or defined individually, using the **environment** parameter. Within that environment, the  availability configuration for the alerts within that environment is specified.
 
 A sample alert is in the following code.
 
@@ -63,10 +71,14 @@ A sample alert is in the following code.
     "enabled": true,
     "environments": [
         {
-            "environment": ["portal.azure.com", "portal.azure.cn"], // National clouds are supported.
+            "environment": ["ms.portal.azure.com"], 
             "availability": [...], // Optional. Add it when you want to enable availability alerts.
             "clientError": [...], // Optional. Add it when you want to enable client error alerts.
             "create": [...], // Optional. Add it when you want to enable create alerts.
+            "performance": [...] // Optional. Add it when you want to enable performance alerts.
+        },
+        {
+            "environment": ["portal.azure.com", "portal.azure.cn"], // National clouds are supported.
             "performance": [...] // Optional. Add it when you want to enable performance alerts.
         }
     ]
@@ -78,9 +90,33 @@ The parameters are as follows.
 
 * **extensionName**: The name of the extension.
 
-* **enabled**: Specifies whether to use the alert.  A value of `true` enables the alert.
+* **enabled**: Specifies whether to use the alert.  A value of `true` enables the alert, and a value of `false` disables the alert.
 
-* **environments**:  The array whose elements represent a set of environments that will send alerts.
+* **environments**:  The array whose elements represent a set of alerting criteria for an environment.
+
+* **environment**:  The array whose elements represent the names of the environments for the alert. Multiple values can be set for this property. The values can be the MPAC and PROD environments, in addition to portal domain names like  "canary.portal.azure.com" or "portal.azure.cn". An asterisk ("&ast;") represents all Azure Portal Production environments, like *.portal.azure.com. Alerts are supported in national clouds by specifying national cloud portal domain names. The  national cloud domain names are "portal.azure.cn", "portal.azure.us", and "portal.microsoftazure.de". You can use any valid national cloud domain name, for example, "aad.portal.azure.cn", as in the following example.
+
+    ```json
+        {
+        ...
+        "environments": [
+            {
+                "environment": ["portal.azure.com", "ms.portal.azure.com", "portal.azure.cn"],
+                ...
+            },
+            {
+                "environment": ["portal.azure.cn","portal.azure.us", "portal.microsoftazure.de"],
+                ...
+            },
+            {
+                "environment": ["portal.azure.us", "portal.microsoftazure.de"],
+                ...
+            }
+            ...
+        ]
+        ...
+    }
+    ```
 
 At least one of the following four sections must be included to provide the details of the alert. The alert areas are as follows.
 
@@ -94,81 +130,79 @@ At least one of the following four sections must be included to provide the deta
 
 ## Availability 
 
-Alerts can be configured for extension availability, blade availability and part availability. They run every five minutes to assess the previous hour of data.  A sample availabilty alert is in the following code.
+Alerts can be configured for extension availability, blade availability and part availability on different environments including national clouds. Availability alerts run every five minutes to assess the previous hour of data.  A sample availability alert is in the following code.
 
 ```json
-    "extensionName": "Your_Extension_Name",
-    "enabled": true, // Enable or disable alerts for Your_Extension_Name.
-    "environments": [
+     "availability": [
         {
-            "environment": ["portal.azure.com", "portal.azure.cn"], // National clouds are supported.
-            "availability": [
-                {
-                    "type": "extension", // Support value, "extension", "blade" or "part".
-                    "enabled": true, // Enable or disable extension type alerts for Your_Extension_Name.
-                    "criteria": [
-                       ...
-                    ]
-                },
-                {
-                    "type": "blade",
-                    "enabled": true,
-                    "criteria": [
-                       ...
-                    ]
-                }
-                ...
-            ],
+            "type": "extension", // Support value, "extension", "blade" or "part".
+            "enabled": true,  // Enable or disable this criteria.
+            "criteria": [
+            ...
+            ]
+        },
+        {
+            "type": "blade",
+            "enabled": true,
+            "criteria": [
+            ...
+            ]
+        }
+        ...
+        {
+            "type": "part",
+            "enabled": true,
+            "criteria": [
+            ...
+            ]
+        }
+        ...      
+    ],
 
 ```
 
-Within the previous sections, two different sets of custom criteria can be defined. Only blades or parts can be configured as an inclusion or exclusion model, as in the following code.
 
+Within the availability criteria, two different sets of custom criteria can be specified. Blades and parts are required to have a **namePath** property. Only blades or parts can be configured as an inclusion or exclusion model, as in the following code.
 
 ```json
-{
-    "customCriteria": { 
-        "critical": { 
-            "minFailureUserCount": 5, 
-            "minFailureCount": 5, 
-            "minAvailability": 80, 
-            "enabled": true, 
-            "severity": 3 
-        }, 
-        "nonCritical": { 
-            "minFailureUserCount": 1, 
-            "minFailureCount": 1, 
-            "minAvailability": 99.9, 
-            "enabled": true, 
-            "severity": 4 
-        } 
-    }, 
-    "exclusion": ["AllWebTests","test"],
-    // "inclusion": ["OnlyRealParts"]
-}
+    {
+        "severity": 3, // Support value 0, 1, 2, 3 or 4.
+        "enabled": true, // Enable or disable this alert criteria.
+        "minAvailability": 80.0,
+        "minFailureCount": 5,
+        "minFailureUserCount": 10,
+        "namePath": ["*"], // Only support for blade or part type.
+        "exclusion": [
+            "Extension/Your_Extension_Name/Blade/BladeNameA",
+            "Extension/Your_Extension_Name/Blade/BladeNameB"], // Only support for blade or part type.
+        "safeDeploymentStage": ["3"], // Optional. It does not support asterisk("*") sign.
+        "datacenterCode": ["AM"] // Optional.
+    }
+
 ```
 
 The parameters are as follows.
 
-* **critical**: Maps to the severity of the alert to trigger in ICM. This parameter is not mutually exclusive with **nonCritical**, which allows the developer to opt into two different levels of alerting with different configurations.
+* **severity**:  The priority of the alert. An ICM alert that is fired as severity 1 receives immediate attention due to factors like portal outage.  Lower severity alerts are prioritized appropriately. 
 
-* **nonCritical**: Maps to the severity of  the alert to trigger in ICM. This parameter is not mutually exclusive with **nonCritical**, which allows the developer to opt into two different levels of alerting with different configurations.
+
+* **enabled**: A Boolean that specifies whether to use the alert criteria.
+
+* **minAvailability**: The minimum availability, expressed as a percentage. For example, an extension fails to load 20 out of 100 times has a minimum availability rating of 80%, or 80% available.
 
 * **minFailureUserCount**: The minimum number of unique users that encountered a failure previous to meeting or exceeding the error threshold.
 
 * **minFailureCount**: The minimum number of failures that have occurred. In the previous  example,  the configuration requires 5 or more failures for a critical failure.
 
-* **minAvailability**: The minimum availability, expressed as a percentage. For example, an extension fails to load 10 out of 100 times has a minimum availability rating of 90%.
+* **namePath**: This only applies to blades or parts. Specifies  what blades or parts can send the alert. This parameter can specify a list of full blade or part names to alert on, or it can contain an asterisk("*")   to include all the blades or parts within the  extension. The **minAvailability**, **minFailureCount** and **minFailureUserCount** are applied to every individual blades or part that is included in this parameter.
 
-* **enabled**: A Boolean that specifies whether to use the alert.
+* **exclusion**:  This only applies to blades or parts. Specifies what blades or parts cannot send this alert.
 
-* **severity**:  The priority of the alert. An alert that is prioritized as severity 1 receives immediate attention due to factors like portal outage.  Lower severity alerts are priorized appropriately. 
+* **safeDeploymentStage**:  Optional. Safe deployment stages are represented by the values are "0", "1", "2", and "3". Each stage deploys to a batch of regions, as specified in [https://aka.ms/portalfx/alerting/safe-deployment-stage](https://aka.ms/portalfx/alerting/safe-deployment-stage).  If this parameter is omitted, alerting does not take stages into consideration when calculating availability, failureCount and failureUserCount, and therefore those statistics are accumulated  over all regions instead of by safe deployment stage.
 
-* **exclusion**:  This only applies to blades or parts. Specifies what blades or parts cannot send this alert. Developers  can either use an inclusion model and specify the names to include,  or use an exclusion model and specify the names to exclude.
+* **datacenterCode**: Optional. Datacenters are represented by the codes  "AM", "BY", and others, as specified in [https://aka.ms/portalfx/alerting/datacenter-code-name](https://aka.ms/portalfx/alerting/datacenter-code-name). An asterisk ("*") represents all Azure Portal Production regions.  If this parameter is omitted, alerting does not take datacenter into consideration when calculating availability, failureCount and failureUserCount, and therefore those statistics are accumulated over all datacenters. 
 
-* **inclusion**:  This only applies to blades or parts. Specifies what blades or parts can send this alert. Developers  can either use an inclusion model and specify the names to include,  or use an exclusion model and specify the names to exclude.
-
-Availability alerts will trigger when **minFailureUserCount**, **minFailureCount**, and **minAvailability** are met or exceeded.  In the previous example, the alert assesses the data that was accumulated during last hour for the extension, blade or part. Based on that data, the critical configuration will only fire when five or more unique users encounter five or more failure occurrences and the total availability decreasses to 80%.  If all of these conditions are met, then a severity 3 alert will be opened and sent to the team that owns the blade or part.
+Availability alerts will trigger when **minFailureUserCount**, **minFailureCount**, and **minAvailability** are met or exceeded.  In this example, which is safe deployment stage 3 and datacenter "AM", for all blades in extension "Your_Extension_Name" except for blades "BladeNameA" and "BladeNameB", the alert assesses the data that was accumulated during last hour. Based on that data, the alert will only fire when 10 or more unique users encounter 5 or more failure occurrences and the total availability decreasses to 80%.  If all three of these conditions are met, then a severity 3 alert will be opened and sent to the team that owns the blade or part.
 
 ## Performance
 
@@ -342,11 +376,9 @@ Currently error alerts run every 30 minutes assessing the previous 90 minute of 
 
 ## How do I onboard?
 
-1.	Generate the desired per extension configuration
 
-    - This can be done by manually editing the error JSON file.
 
-1.	Fill out the following work item [https://aka.ms/portalfx/alerting-onboarding][alerting-onboarding]
+
 1.	Set up correlation rules in ICM
 
 
