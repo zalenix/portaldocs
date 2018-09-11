@@ -14,7 +14,7 @@ Couldn't find what you needed? [Ask about the docs on StackOverflow](https://sta
 
 * [Production-ready metrics](/portal-sdk/generated/top-extensions-production-ready-metrics.md)
 
-* [Partner request process](top-extensions-partner-request.md)
+* [Partner request process](/portal-sdk/generated/top-extensions-partner-request.md)
 
 Kickoff the onboarding experience by sending mail to <a href="mailto:ibiza-onboarding-kick@microsoft.com?subject=Kickoff Meeting Request&body=My team would like to meet with you to learn about the Azure onboarding process.">Azure Onboarding Team</a>.
 
