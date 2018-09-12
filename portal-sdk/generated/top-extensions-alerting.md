@@ -56,6 +56,8 @@ For client error messages,  replace `ErrorAlert_Ibiza_Framework` with `ErrorAler
 
         * Client Error message alerts:  **ErrorMessage**
 
+        * Create regression alerts:  **CreateBladeSuccessRate**
+
     * **Mode**: Hit count is the recommended mode. Other modes are .
 
     * **Match DC/Region**: Checked.
@@ -334,9 +336,86 @@ The parameters are as follows.
 
 * **datacenterCode**: Optional. Datacenters are represented by the codes  "AM", "BY", and others, as specified in [https://aka.ms/portalfx/alerting/datacenter-code-name](https://aka.ms/portalfx/alerting/datacenter-code-name). An asterisk ("*") represents all Azure Portal Production regions.  If this parameter is omitted, alerting does not take datacenter into consideration when calculating availability, failureCount and failureUserCount, and therefore those statistics are accumulated over all datacenters. 
 
-<a name="create-regression-create-regression"></a>
-## Create regression](#create-regression)
+<a name="create-regression"></a>
+## Create regression
 
+Alerts can be configured for create regressions on different environments including national clouds. Create regression  alerts run every sixty minutes to assess the previous hour of data and the previous 24 hours of data. Alerts will only trigger for a blade when the following criteria are met.
+
+* The hourly create success rate is below **minSuccessRateOverPastHour**  and hourly create totalcount is above {minTotalCountOverPastHour}
+
+* The 24-hour create success rate is below **minSuccessRateOverPast24Hours** and 24-hour create totalcount is above {minTotalCountOverPast24Hours}
+
+A sample create regression alert is in the following code.
+
+```json
+{
+     "environments": [
+        {
+            "environment": ["portal.azure.com", "portal.azure.cn"],
+            "availability": [...], // Optional
+            "clientError": [...], // Optional.
+            "create": [
+                 {
+                    "type": "regression",
+                    "enabled": true,
+                    "criteria": [
+                       ...
+                    ]
+                }
+            ],
+            "performance": [...], // Optional.
+        },
+        {
+            "environment": ["ms.portal.azure.com"],
+            "create": [
+                {
+                    ...
+                }
+                ...
+             ]
+            ...
+        }
+        ...
+    ]
+    ...
+}
+```
+
+The parameters are as follows.
+
+ * **type**: Contains the value  "regression".
+
+* **enabled**: Specifies whether to use the create regression criteria.  A value of `true` enables the alert criteria, and a value of `false` disables the alert criteria.
+
+The following example contains the criteria for a create regression error alert.
+
+```json
+    "criteria":[
+        {
+            "severity": 3,
+            "enabled": true,
+            "bladeName": ["CreateBlade"],
+            "minSuccessRateOverPast24Hours":94.0,
+            "minSuccessRateOverPastHour":94.0,
+            "minTotalCountOverPast24Hours":50,
+            "minTotalCountOverPastHour":3
+        }
+    ]
+```
+
+* **severity**:  The priority of the alert. An alert that is prioritized as severity 1 receives immediate attention due to factors like portal outage.  Lower severity alerts are priorized appropriately.
+
+* **enabled**: Specifies whether to use the create regression criteria.  A value of `true` enables the alert criteria, and a value of `false` disables the alert criteria.
+
+* **bladeName**: The list of  create blade names.
+
+* **minSuccessRateOverPast24Hours**: This is the minimum create blade success rate over the past 24 hours.
+
+* **minSuccessRateOverPastHour**: This is the minimum create blade success rate over the past hour.
+
+* **minTotalCountOverPast24Hours**: This is the minimum number of create that gets kicked off over the past 24 hours.
+
+* **minTotalCountOverPastHour**: This is the minimum number of create that gets kicked off over the past hour.
 
 <a name="performance"></a>
 ## Performance
