@@ -1,7 +1,7 @@
 
 ## Legacy EditScopes
 
-**NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions be developed without edit scopes, as specified in  [top-extensions-controls.md](top-extensions-controls.md). For more information about forms without editScopes, see [portalfx-controls-dropdown.md#migration-to-the-new-dropdown](portalfx-controls-dropdown.md#migration-to-the-new-dropdown).
+**NOTE**:  EditScopes are becoming obsolete and should not be used. It is recommended that extensions be developed without edit scopes, as specified in [top-extensions-controls.md](top-extensions-controls.md). For more information about forms without editScopes, see [top-editscopeless-forms.md](top-editscopeless-forms.md) and [portalfx-controls-dropdown.md#migration-to-the-new-dropdown](portalfx-controls-dropdown.md#migration-to-the-new-dropdown).
 
 Edit scopes provide a standard way of managing edits over a collection of input fields, blades, and extensions. They provide many common functions that would otherwise be difficult to orchestrate, like the following:
 
@@ -52,9 +52,7 @@ EditScope 'entity' arrays were designed to meet the following requirements.
 
 Consequently, EditScope 'entity' arrays behave differently than JavaScript arrays. The most important factors are that 'Creates' are kept out-of-band and that 'Deletes' are non-destructive.
 
-<!-- TODO: Determine whether 'hierarchy' means tree, like a b-tree, or 'hierarchy' is a series of objects in memory. -->
-
-In an `EditScope` entity array, created/updated/deleted items are tracked individually by `EditScope`. Any edits that were made by the user and collected in an `EditScope` are saved in the storage for the browser session, which is managed by the shell. These managed changes allow the extension to warn customers that they might lose data if they navigate away from the form without saving their changes. 
+In an `EditScope` entity array, created/updated/deleted items are tracked individually by `EditScope`. Any edits that were made by the user and collected in an `EditScope` are saved in the storage for the browser session, which is managed by the Shell. These managed changes allow the extension to warn customers that they might lose data if they navigate away from the form without saving their changes. 
 
 Also, rows can be added or removed from an editable grid, but the corresponding adds/removes may not be immediately viewable from the `EditScope` array. 
 
@@ -416,5 +414,3 @@ The following sample PDL file demonstrates requesting an `editScope`.  The sampl
     </Lens>
 </Blade>
 ```
-
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-editscope.md"}
