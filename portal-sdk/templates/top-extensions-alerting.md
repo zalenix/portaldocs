@@ -12,10 +12,14 @@ The Portal Framework provides the following alerts.
     A Sev3 IcM incident for an extension when its SDK is older than 60 days, and a Sev2 IcM incident for an extension when its SDK is older than 90 days
 
 1. Extension alive
-1. Create regression
+
 1. [Availability](#availability)
-1. [Performance](#performance)
+
 1. [Client error](#client-error)
+
+1. [Create regression](#create-regression)
+
+1. [Performance](#performance)
 
 The Framework also provides an infrastructure so that teams can configure alerts to send for each extension. Each area of the infrastructure is separate, so that the Framework can allow various levels of custom configuration. Specified sets of conditions are met previous to meeting or exceeding the alert threshold. 
 
@@ -25,6 +29,8 @@ The Framework also provides an infrastructure so that teams can configure alerts
  -->    
 
 The Portal backs up  JSON extension customizations  from **Azure SQL** to **Kusto** daily at 5:00 pm PST.  You can view your extension alert customization Json in **Kusto** by using the site located at [https://aka.ms/portalfx/alerting-kusto-partner](https://aka.ms/portalfx/alerting-kusto-partner) and replacing `DefaultCriteria` with `Alert_YOUR_EXTENSION_NAME`. Another function is  the Kusto function named `GetExtensionCustomizationJson("YOUR_EXTENSION_NAME")`. The function for your extension will not exist until you onboard the extension to the alerting infrastructure, as specified in [#onboarding-to-the-alert-infrastructure](#onboarding-to-the-alert-infrastructure). You can also view  a read-only version of the configuration after onboarding by using  the alerting tool that is located at [https://aka.ms/portalfx/alerting-onboarding](https://aka.ms/portalfx/alerting-onboarding). 
+
+For client error messages,  replace `ErrorAlert_Ibiza_Framework` with `ErrorAlert_YOUR_EXTENSION_NAME`.
 
 ## Onboarding to the alert infrastructure
 
@@ -43,6 +49,10 @@ The Portal backs up  JSON extension customizations  from **Azure SQL** to **Kust
         * Blade availability alerts: **BladeLoadAvailability**
 
         * Part availability alerts: **PartLoadAvailability**
+
+        * Client Error percentage alerts: **ErrorAffectedUserPercentage**
+
+        * Client Error message alerts:  **ErrorMessage**
 
     * **Mode**: Hit count is the recommended mode. Other modes are .
 
@@ -124,9 +134,10 @@ At least one of the following four sections must be included to provide the deta
 
 * [Client error](#client-error)
 
-* Create
+* [Create regression](#create-regression)
 
 * Performance
+
 
 ## Availability 
 
@@ -204,209 +215,121 @@ The parameters are as follows.
 
 Availability alerts will trigger when **minFailureUserCount**, **minFailureCount**, and **minAvailability** are met or exceeded.  In this example, which is safe deployment stage 3 and datacenter "AM", for all blades in extension "Your_Extension_Name" except for blades "BladeNameA" and "BladeNameB", the alert assesses the data that was accumulated during last hour. Based on that data, the alert will only fire when 10 or more unique users encounter 5 or more failure occurrences and the total availability decreasses to 80%.  If all three of these conditions are met, then a severity 3 alert will be opened and sent to the team that owns the blade or part.
 
-## Performance
-
 ## Client error
 
-The two types of client error alerts are error percentage alerts and error message alerts. Error percentage alerts fire when the percentage of users experiencing an error is above the specified threshold. Error message alerts report from different environments including national clouds, and they fire for error messages that are categorized by **messageLogicalAnd** and **messageLogicalOr**. 
+The two types of client error alerts are error percentage alerts and error message alerts. Error percentage alerts fire when the percentage of users experiencing an error is above the specified threshold. Error message alerts fire on specified error messages. 
 
 Error percentage alerts run every 15 minutes, and error message alerts run every five minutes.  They assess the previous 60 minutes of telemetry data that is stored in the **Kusto** database.
 
-Configuring client alerts requires a set of environments in which the alerts can be triggered, and an error configuration for the alert.  Alerts are supported in national clouds by specifying national cloud portal domain names in the `environment` property in the alert customization Json. A sample client error alert is in the following alert customization JSON code.
+ A sample client error alert is in the following code.
 
 ```json
 {
-    "extensionName": "Your_Extension_Name",
-    "enabled": true,
-    "environments": [
+    "clientError": [
         {
-            "environment": ["portal.azure.com", "portal.azure.cn"], // National clouds are supported.
-            "availability": [...], // Optional. Add it when you want to enable availability alerts.
-            "clientError": [
-                {
-                    "type": "message",
-                    "enabled": true,
-                    "criteria": [
-                       ...
-                    ]
-                },
-                {
-                    "type": "percentage",
-                    "enabled": true,
-                    "criteria": [
-                       ...
-                    ]
-                }
-            ],
-            "create": [...], // Optional. Add it when you want to enable create alerts.
-            "performance": [...], // Optional. Add it when you want to enable performance alerts.
+            "type": "message",
+            "enabled": true,
+            "criteria": [
+                ...
+            ]
         },
         {
-            "environment": ["ms.portal.azure.com"],
-            ...
-            "clientError": [
-                {
-                    ...
-                }
+            "type": "percentage",
+            "enabled": true,
+            "criteria": [
                 ...
-             ],
-            ...
+            ]
         }
-        ...
-    ]
-    ...
-}
+    ],
+ }
 ```
 
 The parameters are as follows.
 
+* **type**: The type of client error message that triggers an alert. The values are **message** and **percentage**. A message  can have one type or both types. For **message** errors, you can specify up to 3 messages in one criteria.  
 
-    * **environment**:  The array whose elements represent the names of the environments for the alert. Multiple values can be set for this property. The values can be the MPAC and PROD environments, in addition to portal domain names like  "canary.portal.azure.com" or "portal.azure.cn". An asterisk ("&ast;") represents all Azure Portal Production environments, like *.portal.azure.com. Alerts are supported in national clouds by specifying national cloud portal domain names.
+* **enabled**: Specifies whether to use the alert type.  A value of `true` enables the alert type, and a value of `false` disables the alert type. 
 
-    * **availability**:  Optional. Availability alert criteria, as specified in [#availability](#availability).
+* **criteria**: The criteria for the client error alert. Any number of criteria can be specified within each type. 
+As many as three  messages can be specified in one criterion. 
 
-    * **clientError**:  The alerting criteria for the specified environment. It contains the following values.
-
-        * **type**: The type of client error message that triggers an alert. The values are **message** and **percentage**. A message  can have one type or both types. 
-        
-        * **enabled**: Specifies whether to use the alert type.  A value of `true` enables the alert type, and a value of `false` disables the alert type.
-
-        * **criteria**: The criteria for the client error alert. Any number of criteria can be specified. As many as three  messages can be specified in one criterion. The following example contains the criteria for a **message** error alert.
+The following example contains the criteria for a **message** error alert.
             
-            ```json
-            "criteria":[
-                {
-                    "severity": 4,
-                    "enabled": true,
-                    "checkAllNullRefs": true, // Optional.
-                    "message1": "Cannot read property", // Optional.
-                    "message2": "of null", // Optional.
-                    "minAffectedUserCount": 1,
-                    "exclusion": {
-                        "type": "or", // Only support value "and", "or".
-                        "message1":"eastus2stage",
-                        "message2":"eastus2(stage)"
-                    },
-                    "safeDeploymentStage": ["3"], // Optional. It does not support asterisk("*") sign.
-                    "datacenterCode": ["AM"] // Optional.
-                },
-                ...
-            ]
-           ```
-            
-            * **severity**:  The priority of the alert. An alert that is prioritized as severity 1 receives immediate attention due to factors like portal outage.  Lower severity alerts are priorized appropriately.
-
-            * **enabled**: Specifies whether to use the error alert criteria.  A value of `true` enables the alert criteria, and a value of `false` disables the alert criteria.
-
-            * **checkAllNullRefs**: Optional.  A value of `true` , and a value of `false`.
-
-            * **message1**: Optional. First error message that is included in this alert. 
-
-            * **message2**: Optional. Additional error message to include in this alert. 
-
-            * **minAffectedUserCount**:  The minimum number of unique users that encountered any client error previous to meeting or exceeding the error threshold.
-
-            * **exclusion**:  Specifies the name of the messages that cannot send this alert. As many as three messages can be specified. 
-                
-                * **type**: Valid values are "and" and "or". 
-
-                * **message1**: The name of the entity that cannot send this alert. 
-
-                * **message2**: The name of the entity that cannot send this alert. 
-            
-            * **safeDeploymentStage**: Optional. Specifies the stage of deployment in which the error occurred.  The field does not support the asterisk("*") sign.  Values are zero ("0") through "4", inclusive.  If this field is not specified, the alert will fire on all safe deployment stages. 
-
-            * **datacenterCode**: Optional. Specifies the data center that is impacted by the alert.  Values are "AM", .
-       
-            The following example contains the criteria for a **percentage** error alert.
-
-            ```json
-             "criteria":[
-            {
-                "severity": 3,
-                "enabled": true,
-                "minAffectedUserCount": 2,
-                "minAffectedUserPercentage": 10.0,
-                "exclusion": {
-                    "type": "or", // Only support value "and", "or".
-                    "message1":"eastus2stage",
-                    "message2":"eastus2(stage)"
-                },
-                "safeDeploymentStage": ["3"], // Optional. It does not support asterisk("*") sign.
-                "datacenterCode": ["AM"] // Optional.
+```json
+    "criteria":[
+        {
+            "severity": 4,
+            "enabled": true,
+            "checkAllNullRefs": true, // Optional.
+            "message1": "Cannot read property", // Optional.
+            "message2": "of null", // Optional.
+            "minAffectedUserCount": 1,
+            "exclusion": {
+                "type": "or", // Only support value "and", "or".
+                "message1":"eastus2stage",
+                "message2":"eastus2(stage)"
             },
-            ...
-            ]
-            ```
-           
-            * **severity**:  The priority of the alert. An alert that is prioritized as severity 1 receives immediate attention due to factors like portal outage.  Lower severity alerts are priorized appropriately.
+            "safeDeploymentStage": ["3"], // Optional. It does not support asterisk("*") sign.
+            "datacenterCode": ["AM"] // Optional.
+        },
+        ...
+    ]
+```
 
-            * **enabled**: Specifies whether to use the error alert criteria.  A value of `true` enables the alert criteria, and a value of `false` disables the alert criteria.
+The following example contains the criteria for a **percentage** error alert.
 
-            * **minAffectedUserCount**:  The minimum number of unique users that encountered any client error previous to meeting or exceeding the error threshold.
+```json
+    "criteria":[
+    {
+        "severity": 3,
+        "enabled": true,
+        "minAffectedUserCount": 2,
+        "minAffectedUserPercentage": 10.0,
+        "exclusion": {
+            "type": "or", // Only support value "and", "or".
+            "message1":"eastus2stage",
+            "message2":"eastus2(stage)"
+        },
+        "safeDeploymentStage": ["3"], // Optional. It does not support asterisk("*") sign.
+        "datacenterCode": ["AM"] // Optional.
+    },
+    ...
+    ]
+```
+
+The parameters are as follows.
+
+* **severity**:  The priority of the alert. An alert that is prioritized as severity 1 receives immediate attention due to factors like portal outage.  Lower severity alerts are priorized appropriately.
+
+* **enabled**: Specifies whether to use the error alert criteria.  A value of `true` enables the alert criteria, and a value of `false` disables the alert criteria.
+
+* The following parameters are for message alerts only.
+
+    * **checkAllNullRefs**: Optional.  A value of `true` makes the alert check all the null refs client errors.  and a value of `false` means the alert does not check those errors.  The value of this field does not affect whether the additional conditions of **message1** and **message2** can be specified. 
+
+    * **message1**: Optional. The error string that alerts look for in client error logs, specifically in [message] column at (Client|Ext)Events log table.  You can specify up to 3 messages in one criteria. The search uses a  logical AND relation to locate the messages in the table.  All the messages that were specified in this criteria element must be present in a client error message([message] column at (Client|Ext)Events log table) to count as an error.
+
+    * **message2**: Optional. Additional error message to include in this alert. See **message1**.
+
+* **minAffectedUserCount**:  The minimum number of unique users that were affected by any client error.
+
+* The following parameter is for percentage alerts only.
+              
+    * **minAffectedUserPercentage**:  The minimum percentage of unique users that were affected by any client error.
+
+* **exclusion**:  Specifies the condition(s) that do not count as a client error, and therefore do not send this alert. As many as three messages can be specified. 
+    
+    * **type**: The logical operator for messages in the **exclusion** property. Valid values are "and" and "or".  "and" means when all the messages specified in "exclusion" property are present in a client error message, error alerts would not count it as a client error. "or" means when any of the messages specified in "exclusion" property is present in a client error message, error alerts would not count it as a client error. 
+
+    * **message1**: The error string(s) that alerts do  not count as a client error when they are present in a client error message([message] column at (Client|Ext)Events log table).
+
+    * **message2**: See **message1**. 
             
-            * **minAffectedUserPercentage**:  The minimum percentage of unique users that encountered any client error previous to meeting or exceeding the error threshold.
-            
-            * **exclusion**:  Specifies the name of the messages that cannot send this alert. As many as three messages can be specified. 
-                
-                * **type**: Valid values are "and" and "or". 
+* **safeDeploymentStage**:  Optional. Safe deployment stages are represented by the values are "0", "1", "2", and "3". Each stage deploys to a batch of regions, as specified in [https://aka.ms/portalfx/alerting/safe-deployment-stage](https://aka.ms/portalfx/alerting/safe-deployment-stage).  If this parameter is omitted, alerting does not take stages into consideration when calculating availability, failureCount and failureUserCount, and therefore those statistics are accumulated  over all regions instead of by safe deployment stage.
 
-                * **message1**: The name of the entity that cannot send this alert. 
+* **datacenterCode**: Optional. Datacenters are represented by the codes  "AM", "BY", and others, as specified in [https://aka.ms/portalfx/alerting/datacenter-code-name](https://aka.ms/portalfx/alerting/datacenter-code-name). An asterisk ("*") represents all Azure Portal Production regions.  If this parameter is omitted, alerting does not take datacenter into consideration when calculating availability, failureCount and failureUserCount, and therefore those statistics are accumulated over all datacenters. 
 
-                * **message2**: The name of the entity that cannot send this alert. 
-            
-            * **safeDeploymentStage**: Optional. Specifies the stage of deployment in which the error occurred.  The field does not support the asterisk("*") sign.  Values are zero ("0") through "4", inclusive.  If this field is not specified, the alert will fire on all safe deployment stages. 
-            
-            * **datacenterCode**: Optional. Specifies the data center that is impacted by the alert.  Values are "AM", .
-      
-    * **create**:  Optional. Create  alert criteria, as specified in [#create](#create).
-
-    * **performance**:  Optional. Performance alert criteria, as specified in [#performance](#performance).
-
- 
-### What is error configuration?
-
-Error configuration is an array of criteria to run against that environment and safe deployment stage.
+##Create regression](#create-regression)
 
 
-
-## How often do they run?
-
-Currently error alerts run every 30 minutes assessing the previous 90 minute of data.
-
-## How do I onboard?
-
-
-
-
-1.	Set up correlation rules in ICM
-
-
-| Field | Value |
-| -----  | ----- |
-| Routing ID | For all others 'AIMS://AZUREPORTAL\Portal\\{ExtensionName}' |
-| Correlation ID | Specific to alert, use table below to map |
-| Mode | Hit count (recommended) |
-| Match Slice | Checked |
-| Match Severity | Checked |
-| Match Role | Checked |
-| Match Instance/Cluster | Checked |
-
-
-| Alert | Correlation ID |
-| ----- | -------------- |
-| Error - AffectedUserPercentage | ErrorAffectedUserPercentage |
-| Error - Message | ErrorMessage |
-
-## What happens if I need to update alert configuration?
-
-1.	Contact [ibizafxhot](mailto:ibizafxhot@microsoft.com) and attached the updated configuration
-1.	We will respond as soon as possible and apply the updates
-
-## How do I know my extension's current configuration?
-
-Within Kusto your configuration will be defined under a function. To find the function use the this [link][alerting-kusto-partner] and replace `ErrorAlert_Ibiza_Framework` with `ErrorAlert_YOUR_EXTENSION_NAME`. The function will only exist once you have onboarded to the alerting infrastructure.
-
-
-[alerting-onboarding]: https://aka.ms/portalfx/alerting-onboarding
-[alerting-kusto-partner]: https://Azportal.kusto.windows.net/Partner?query=ErrorAlert_Ibiza_Framework()&web=1
+## Performance
