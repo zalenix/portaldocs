@@ -13,13 +13,13 @@ The Portal Framework provides the following alerts.
 
 1. Extension alive
 
-1. [Availability](#availability)
-
-1. [Client error](#client-error)
-
 1. [Create regression](#create-regression)
 
+1. [Availability](#availability)
+
 1. [Performance](#performance)
+
+1. [Client error](#client-error)
 
 The Framework also provides an infrastructure so that teams can configure alerts to send for each extension. Each area of the infrastructure is separate, so that the Framework can allow various levels of custom configuration. Specified sets of conditions are met previous to meeting or exceeding the alert threshold. 
 
@@ -55,6 +55,12 @@ For client error messages,  replace `ErrorAlert_Ibiza_Framework` with `ErrorAler
         * Client Error message alerts:  **ErrorMessage**
 
         * Create regression alerts:  **CreateBladeSuccessRate**
+        
+        * Extension performance alerts: **ExtensionLoadPerformance**
+
+        * Blade performance alerts: **BladeLoadPerformance**
+
+        * Part performance alerts: **PartLoadPerformance**
 
     * **Mode**: Hit count is the recommended mode. Other modes are .
 
@@ -132,14 +138,93 @@ The parameters are as follows.
 
 At least one of the following four sections must be included to provide the details of the alert. The alert areas are as follows.
 
+* [Create regression](#create-regression)
+
 * [Availability](#availability)
+
+* [Performance](#performance)
 
 * [Client error](#client-error)
 
-* [Create regression](#create-regression)
+## Create regression
 
-* Performance
+Alerts can be configured for create regressions on different environments including national clouds. Create regression  alerts run every sixty minutes to assess the previous hour of data and the previous 24 hours of data. Alerts will only trigger for a blade when the following criteria are met.
 
+* The hourly create success rate is below **minSuccessRateOverPastHour**  and hourly create totalcount is above {minTotalCountOverPastHour}
+
+* The 24-hour create success rate is below **minSuccessRateOverPast24Hours** and 24-hour create totalcount is above {minTotalCountOverPast24Hours}
+
+A sample create regression alert is in the following code.
+
+```json
+{
+     "environments": [
+        {
+            "environment": ["portal.azure.com", "portal.azure.cn"],
+            "availability": [...], // Optional
+            "clientError": [...], // Optional.
+            "create": [
+                 {
+                    "type": "regression",
+                    "enabled": true,
+                    "criteria": [
+                       ...
+                    ]
+                }
+            ],
+            "performance": [...], // Optional.
+        },
+        {
+            "environment": ["ms.portal.azure.com"],
+            "create": [
+                {
+                    ...
+                }
+                ...
+             ]
+            ...
+        }
+        ...
+    ]
+    ...
+}
+```
+
+The parameters are as follows.
+
+ * **type**: Contains the value "regression".
+
+* **enabled**: Specifies whether to use the create regression criteria.  A value of `true` enables the alert criteria, and a value of `false` disables the alert criteria.
+
+The following example contains the criteria for a create regression error alert.
+
+```json
+    "criteria":[
+        {
+            "severity": 3,
+            "enabled": true,
+            "bladeName": ["CreateBlade"],
+            "minSuccessRateOverPast24Hours":94.0,
+            "minSuccessRateOverPastHour":94.0,
+            "minTotalCountOverPast24Hours":50,
+            "minTotalCountOverPastHour":3
+        }
+    ]
+```
+
+* **severity**:  The priority of the alert. An alert that is prioritized as severity 1 receives immediate attention due to factors like portal outage.  Lower severity alerts are priorized appropriately.
+
+* **enabled**: Specifies whether to use the create regression criteria.  A value of `true` enables the alert criteria, and a value of `false` disables the alert criteria.
+
+* **bladeName**: The list of  create blade names.
+
+* **minSuccessRateOverPast24Hours**: This is the minimum create blade success rate over the past 24 hours.
+
+* **minSuccessRateOverPastHour**: This is the minimum create blade success rate over the past hour.
+
+* **minTotalCountOverPast24Hours**: This is the minimum number of create that gets kicked off over the past 24 hours.
+
+* **minTotalCountOverPastHour**: This is the minimum number of create that gets kicked off over the past hour.
 
 ## Availability 
 
@@ -174,11 +259,16 @@ Alerts can be configured for extension availability, blade availability and part
 
 ```
 
+The parameters are as follows.
 
-Within the availability criteria, two different sets of custom criteria can be specified. Blades and parts are required to have a **namePath** property. Only blades or parts can be configured as an inclusion or exclusion model, as in the following code.
+* **type**: Specifies whether the alert is for extensions, blades, or parts. Values are "extension", "blade", and "part".
+
+* **enabled**: Specifies whether to use the availability criteria.  A value of `true` enables the alert criteria, and a value of `false` disables the alert criteria.
+
+Within the availability criteria, two different sets of custom criteria can be specified. Blades and parts are required to have a **namePath** property. Only blades or parts can be configured as an inclusion or exclusion model, as in the following  example that contains the criteria for an availability  alert.
 
 ```json
-    {
+    "criteria": [
         "severity": 3, // Support value 0, 1, 2, 3 or 4.
         "enabled": true, // Enable or disable this alert criteria.
         "minAvailability": 80.0,
@@ -190,22 +280,19 @@ Within the availability criteria, two different sets of custom criteria can be s
             "Extension/Your_Extension_Name/Blade/BladeNameB"], // Only support for blade or part type.
         "safeDeploymentStage": ["3"], // Optional. It does not support asterisk("*") sign.
         "datacenterCode": ["AM"] // Optional.
-    }
+    ]
 
 ```
 
-The parameters are as follows.
-
 * **severity**:  The priority of the alert. An ICM alert that is fired as severity 1 receives immediate attention due to factors like portal outage.  Lower severity alerts are prioritized appropriately. 
-
 
 * **enabled**: A Boolean that specifies whether to use the alert criteria.
 
 * **minAvailability**: The minimum availability, expressed as a percentage. For example, an extension fails to load 20 out of 100 times has a minimum availability rating of 80%, or 80% available.
 
-* **minFailureUserCount**: The minimum number of unique users that encountered a failure previous to meeting or exceeding the error threshold.
-
 * **minFailureCount**: The minimum number of failures that have occurred. In the previous  example,  the configuration requires 5 or more failures for a critical failure.
+
+* **minFailureUserCount**: The minimum number of unique users that encountered a failure previous to meeting or exceeding the error threshold.
 
 * **namePath**: This only applies to blades or parts. Specifies  what blades or parts can send the alert. This parameter can specify a list of full blade or part names to alert on, or it can contain an asterisk("*")   to include all the blades or parts within the  extension. The **minAvailability**, **minFailureCount** and **minFailureUserCount** are applied to every individual blades or part that is included in this parameter.
 
@@ -216,6 +303,90 @@ The parameters are as follows.
 * **datacenterCode**: Optional. Datacenters are represented by the codes  "AM", "BY", and others, as specified in [https://aka.ms/portalfx/alerting/datacenter-code-name](https://aka.ms/portalfx/alerting/datacenter-code-name). An asterisk ("*") represents all Azure Portal Production regions.  If this parameter is omitted, alerting does not take datacenter into consideration when calculating availability, failureCount and failureUserCount, and therefore those statistics are accumulated over all datacenters. 
 
 Availability alerts will trigger when **minFailureUserCount**, **minFailureCount**, and **minAvailability** are met or exceeded.  In this example, which is safe deployment stage 3 and datacenter "AM", for all blades in extension "Your_Extension_Name" except for blades "BladeNameA" and "BladeNameB", the alert assesses the data that was accumulated during last hour. Based on that data, the alert will only fire when 10 or more unique users encounter 5 or more failure occurrences and the total availability decreasses to 80%.  If all three of these conditions are met, then a severity 3 alert will be opened and sent to the team that owns the blade or part.
+
+## Performance
+
+The alerts can be configured for extension performance, blade performance and part performance on different environments including national clouds.
+
+Performance alerts run every 10 minutes to assess the previous 90 minutes of data. The Portal gets the most recent 6 sample points and calculates a weighted percentile load duration based on the following formula.
+
+```
+Weighted duration = 8/24 * {most recent percentile load duration} + 6/24 * {2nd most recent percentile load duration} + 4/24 * {3rd…} + 3/24 * {4th …} + 2/24 * {5th …} + 1/24 * {6th …}
+```
+
+Alerts will only trigger when one of the following criteria is met.
+
+* Weighted duration is above {percentileDurationThresholdInMilliseconds} and affected user count is above {minAffectedUserCount}
+
+* Weighted duration is above 2 * {percentileDurationThresholdInMilliseconds} and affected user count is above {bottomMinAffectedUserCount}
+
+A sample performance  alert is in the following code.
+
+ ```json
+    "performance": [
+            {
+            "type": "extension", // Support value, "extension", "blade" or "part".
+            "enabled": true, // Enable or disable extension type alerts for Your_Extension_Name.
+            "criteria": [
+                ...
+            ]
+        },
+        {
+            "type": "blade",
+            "enabled": true,
+            "criteria": [
+                ...
+            ]
+        }
+        ...
+    ]
+...
+```
+
+The parameters are as follows.
+
+ * **type**: Contains the value  "regression".
+
+* **enabled**: Specifies whether to use the create regression criteria.  A value of `true` enables the alert criteria, and a value of `false` disables the alert criteria.
+
+The following example contains the criteria for a performance  alert.
+
+```json
+{
+     "severity": 3, // Support value 0, 1, 2, 3 or 4.
+    "enabled": true, // Enable or disable this criteria.
+    "percentile": 95, // Support value 80 or 95.
+    "percentileDurationThresholdInMilliseconds": 4000,
+    "minAffectedUserCount": 10,
+    "bottomMinAffectedUserCount": 2,
+    "namePath": ["*"], // Only support for blade or part type.
+    "exclusion": [
+        "Extension/Your_Extension_Name/Blade/BladeNameA",
+        "Extension/Your_Extension_Name/Blade/BladeNameB"], // Only support for blade or part type.
+    "safeDeploymentStage": ["3"], // Optional. It does not support asterisk("*") sign.
+    "datacenterCode": ["AM"] // Optional.
+}
+```
+
+* **severity**:  The priority of the alert. An ICM alert that is fired as severity 1 receives immediate attention due to factors like portal outage.  Lower severity alerts are prioritized appropriately. 
+
+* **enabled**: A Boolean that specifies whether to use the alert criteria.
+
+* **percentile**: This is the percentile at which  to measure the performance. Valid values are 80 or 95.
+
+* **percentileDurationThresholdInMilliseconds**: This is the minimum duration, expressed in milliseconds, when the percentile of users is above the threshold.  
+
+* **minAffectedUserCount**: This is the minimum number of users whose load duration is above **percentileDurationThresholdInMilliseconds**.
+
+* **bottomMinAffectedUserCount**: This is used as a threshold to trigger an alert if the **percentile** defined is greater than or equal to twice  the defined percentileThreshold. The default is 20% of **minAffectedUserCount**. This is used to catch any unusual spikes on the weekends or in low traffic periods.
+
+* **namePath**: This only applies to blades or parts. Specifies  what blades or parts can send the alert. This parameter can specify a list of full blade or part names to alert on, or it can contain an asterisk("*")   to include all the blades or parts within the  extension. The **minAvailability**, **minFailureCount** and **minFailureUserCount** are applied to every individual blades or part that is included in this parameter.
+
+* **exclusion**:  This only applies to blades or parts. Specifies what blades or parts cannot send this alert.
+
+* **safeDeploymentStage**:  Optional. Safe deployment stages are represented by the values are "0", "1", "2", and "3". Each stage deploys to a batch of regions, as specified in [https://aka.ms/portalfx/alerting/safe-deployment-stage](https://aka.ms/portalfx/alerting/safe-deployment-stage).  If this parameter is omitted, alerting does not take stages into consideration when calculating availability, failureCount and failureUserCount, and therefore those statistics are accumulated  over all regions instead of by safe deployment stage.
+
+* **datacenterCode**: Optional. Datacenters are represented by the codes  "AM", "BY", and others, as specified in [https://aka.ms/portalfx/alerting/datacenter-code-name](https://aka.ms/portalfx/alerting/datacenter-code-name). An asterisk ("*") represents all Azure Portal Production regions.  If this parameter is omitted, alerting does not take datacenter into consideration when calculating availability, failureCount and failureUserCount, and therefore those statistics are accumulated over all datacenters. 
 
 ## Client error
 
@@ -299,7 +470,7 @@ The following example contains the criteria for a **percentage** error alert.
     ]
 ```
 
-The parameters are as follows.
+The parameters for the criteria are as follows.
 
 * **severity**:  The priority of the alert. An alert that is prioritized as severity 1 receives immediate attention due to factors like portal outage.  Lower severity alerts are priorized appropriately.
 
@@ -330,85 +501,3 @@ The parameters are as follows.
 * **safeDeploymentStage**:  Optional. Safe deployment stages are represented by the values are "0", "1", "2", and "3". Each stage deploys to a batch of regions, as specified in [https://aka.ms/portalfx/alerting/safe-deployment-stage](https://aka.ms/portalfx/alerting/safe-deployment-stage).  If this parameter is omitted, alerting does not take stages into consideration when calculating availability, failureCount and failureUserCount, and therefore those statistics are accumulated  over all regions instead of by safe deployment stage.
 
 * **datacenterCode**: Optional. Datacenters are represented by the codes  "AM", "BY", and others, as specified in [https://aka.ms/portalfx/alerting/datacenter-code-name](https://aka.ms/portalfx/alerting/datacenter-code-name). An asterisk ("*") represents all Azure Portal Production regions.  If this parameter is omitted, alerting does not take datacenter into consideration when calculating availability, failureCount and failureUserCount, and therefore those statistics are accumulated over all datacenters. 
-
-## Create regression
-
-Alerts can be configured for create regressions on different environments including national clouds. Create regression  alerts run every sixty minutes to assess the previous hour of data and the previous 24 hours of data. Alerts will only trigger for a blade when the following criteria are met.
-
-* The hourly create success rate is below **minSuccessRateOverPastHour**  and hourly create totalcount is above {minTotalCountOverPastHour}
-
-* The 24-hour create success rate is below **minSuccessRateOverPast24Hours** and 24-hour create totalcount is above {minTotalCountOverPast24Hours}
-
-A sample create regression alert is in the following code.
-
-```json
-{
-     "environments": [
-        {
-            "environment": ["portal.azure.com", "portal.azure.cn"],
-            "availability": [...], // Optional
-            "clientError": [...], // Optional.
-            "create": [
-                 {
-                    "type": "regression",
-                    "enabled": true,
-                    "criteria": [
-                       ...
-                    ]
-                }
-            ],
-            "performance": [...], // Optional.
-        },
-        {
-            "environment": ["ms.portal.azure.com"],
-            "create": [
-                {
-                    ...
-                }
-                ...
-             ]
-            ...
-        }
-        ...
-    ]
-    ...
-}
-```
-
-The parameters are as follows.
-
- * **type**: Contains the value  "regression".
-
-* **enabled**: Specifies whether to use the create regression criteria.  A value of `true` enables the alert criteria, and a value of `false` disables the alert criteria.
-
-The following example contains the criteria for a create regression error alert.
-
-```json
-    "criteria":[
-        {
-            "severity": 3,
-            "enabled": true,
-            "bladeName": ["CreateBlade"],
-            "minSuccessRateOverPast24Hours":94.0,
-            "minSuccessRateOverPastHour":94.0,
-            "minTotalCountOverPast24Hours":50,
-            "minTotalCountOverPastHour":3
-        }
-    ]
-```
-
-* **severity**:  The priority of the alert. An alert that is prioritized as severity 1 receives immediate attention due to factors like portal outage.  Lower severity alerts are priorized appropriately.
-
-* **enabled**: Specifies whether to use the create regression criteria.  A value of `true` enables the alert criteria, and a value of `false` disables the alert criteria.
-
-* **bladeName**: The list of  create blade names.
-
-* **minSuccessRateOverPast24Hours**: This is the minimum create blade success rate over the past 24 hours.
-
-* **minSuccessRateOverPastHour**: This is the minimum create blade success rate over the past hour.
-
-* **minTotalCountOverPast24Hours**: This is the minimum number of create that gets kicked off over the past 24 hours.
-
-* **minTotalCountOverPastHour**: This is the minimum number of create that gets kicked off over the past hour.
-
-## Performance
