@@ -5,8 +5,6 @@
 Status codes or error messages that are encountered while developing or supporting an extension may be dependent on the type of extension that is being created, or the development phase in which the message is encountered.  Terms that are encountered in the error messages may be defined in the [Glossary](portalfx-extensions-glossary-status-codes.md).
 
 <!-- TODO:  Find at least one status code for each of these conditions. -->
- 
-* * *
 
 The following errors may be encountered during different phases of extension development and maintenance.  Error states that are specific to performance are located at [#error-states](#error-states). 
 
@@ -50,7 +48,7 @@ SOLUTION: Install and trust the certificate.
 
 ERROR: The extension failed to initialize. One or more calls to methods on the extension's entry point class failing.
 
-SOLUTION: Scan all the relevant error messages during the timeframe of the failure. These errors should have information about what exactly failed while trying to initialize the extension, e.g. the initialize endpoint, the getDefinition endpoint, etc.
+SOLUTION: Look for the error code and if it is present, view the call stack in the  message to get more details. Scan all the relevant error messages in the events table during the timeframe of the failure. These errors should have information about what exactly failed while trying to initialize the extension, for example, the initialize endpoint or the getDefinition endpoint.
 
 * * * 
 
@@ -65,12 +63,20 @@ SOLUTION:
 
 1. The extension should have code injected in the  `layout.cshtml` which includes a postMessage call. Verify that this code gets executed.
 
+Otherwise, use the following steps.
+
+1. Scan the events table to see if there are any other relevant error messages during the time frame of the alert. 
+
+1. Open the extension URL directly in the browser - it should show the default page for the extension. 
+
+1. Open the dev tools network tab in your browser and try opening the extension URL by appending the following query string parameter `sessionId=testSessionId`. This should open a blank page and all requests in the network tab should be 200 or 300 level responses with no failures. If there is a server error in the extension, it will be displayed with a call stack if it is available. In case the failures are from a CDN domain, check if the same URL is accessible from the extension domain. If so, the CDN might be corrupt/out of sync. In this case, flushing the CDN would mitigate the issue. |
+
 * * * 
 
 <a name="status-codes-and-error-messages-form-improperly-allows-edits"></a>
 ### Form improperly allows edits
 
-*** Error: Form should not allow edits until an EditScope is loaded***
+***Form should not allow edits until an EditScope is loaded.***
 
 ERROR:
 
@@ -98,7 +104,7 @@ ERROR: The name of the extension as specified in the `extensions.json` configura
 
 SOLUTION: Verify what the correct name of the extension should be, and if the name in config is incorrect, update it.
 
-If the name in the manifest is still incorrect, contact the relevant extension team to update the  `<Extension>` tag in the PDL file with the right extension name and recompile.
+If the name in the manifest is still incorrect, contact the relevant extension team to update the  `<Extension>` tag in their PDL file with the right extension name and recompile.
 
 * * * 
 
@@ -114,7 +120,7 @@ SOLUTION: Report this issue to the framework team for investigation.
 <a name="status-codes-and-error-messages-invalid-manifest"></a>
 ### Invalid Manifest
 
-ERROR: The manifest that was received from an extension had validation errors.
+ERROR: The manifest that was received from an extension had validation errors. 
 
 SOLUTION: Scan the error logs for all the validation errors in the extension manifest and fix them.
 
@@ -140,12 +146,19 @@ SOLUTION:
 <a name="status-codes-and-error-messages-manifest-not-received"></a>
 ### Manifest Not Received
 
-ERROR: The bootstrap logic was completed, however the extension did not return a manifest to the shell. The shell waits for a period of time (currently 40 seconds as of 2014/10/06) and then times out.
+ERROR: The bootstrap logic was completed, however the extension did not return a manifest to the shell. The shell waits for a period of time, approximately 40 seconds, and then times out.
 
 SOLUTION:
+
 1. Verify that the extension is correctly hosted and accessible from the browser.
 
 1. If the extension is using AMD modules, verify that the `manifest.js` file is accessible from the browser. Under default settings it should be present at `/Content/Scripts/_generated/manifest.js`.
+
+1. Open the dev tools network tab in your browser and try opening the extension URL, appending the following query string parameter `sessionId=testSessionId`. This should open a blank page and all requests in the network tab should be 200 or 300 level responses, with no failures. If there is a server error in the extension, the browser  will display  the error and a call stack if available. 
+
+1. If the failures are from a CDN domain, determine whether the same URL is accessible from the extension domain.  If so, the CDN might be corrupt or out of sync. In this case, flushing the CDN would mitigate the issue. 
+
+1. Scan the events table to see if there are any other relevant error messages during the time frame of the alert.
 
 * * * 
 
@@ -189,6 +202,8 @@ this._dataView = dataContext.createView(container, { interceptNotFound: false })
 
 **NOTE**: Instances of 'Not Found' do not count against a part's reliability KPI.
 
+* * * 
+
 <a name="status-codes-and-error-messages-sandboxed-iframe-security"></a>
 ### Sandboxed iframe security
 
@@ -203,14 +218,14 @@ The Azure Portal should frame the extension URL, as specified in [top-extensions
 
 ERROR: The extension failed to load after the predefined timeout, which is currently 40 seconds.
 
-SOLUTION: Scan the errors to see if there are any other relevant error messages during the time frame of the failure.
+SOLUTION: Scan the events table or the errors to see if there are any other relevant error messages during the time frame of the failure.  Also, analyze the error messages to try to deduce whether the problem is on the extension side or the shell. If the issue is with the extension, look at CPU utilization of the cloud service instances. High CPU utilization might explain why clients are timing out when requesting resources from the server. |
 
 * * * 
 
 <a name="status-codes-and-error-messages-too-many-bootgets"></a>
 ### Too Many BootGets
 
-ERROR: The extension tried to send the bootGet message to request for Fx scripts multiple times. The error should specify the number of times it refreshed before the extension was disabled.
+ERROR: The extension tried to send the bootGet message to request for Portal scripts multiple times. The error should specify the number of times it refreshed before the extension was disabled.
 
 SOLUTION:  Scan the errors to see if there are any other relevant error messages during the time frame of the failure.
 
@@ -230,7 +245,7 @@ SOLUTION: Scan the errors to see if there are any other relevant error messages 
 
 ***Error: "Entity-typed object/array is not known to this edit scope..."***
 
-DESCRIPTION: After an `EditScope` is initialized and loaded, entities can be introduced and removed from the `EditScope` only by using `EditScope` APIs. Unfortunately, extensions cannot make an observable change to add or remove 'entity' objects from the `EditScope`. If an extension tries to make an observable change that introduces an 'entity' object into the EditScope, they will encounter this error. For any object residing in the `EditScope`, merely adding and removing keys cannot be detected by `EditScope` or by the FX at large and, consequently, edits cannot be tracked. When an extension attempts to add or remove keys from an `EditScope` object, this puts the `EditScope` edit-tracking in an inconsistent state.
+DESCRIPTION: After an `EditScope` is initialized and loaded, entities can be introduced and removed from the `EditScope` only by using `EditScope` APIs. Unfortunately, extensions cannot make an observable change to add or remove 'entity' objects from the `EditScope`. If an extension tries to make an observable change that introduces an 'entity' object into the EditScope, they will encounter this error. For any object residing in the `EditScope`, merely adding and removing keys cannot be detected by `EditScope` or by the Portal at large and, consequently, edits cannot be tracked. When an extension attempts to add or remove keys from an `EditScope` object, this puts the `EditScope` edit-tracking in an inconsistent state.
 
 SOLUTION: To correctly add or remove 'entity' objects, use the API's that are specified in 
 [top-legacy-editscopes.md#editScope-entity-arrays](top-legacy-editscopes.md#editScope-entity-arrays).
@@ -277,52 +292,43 @@ SOLUTION:  Here are two schemes that can be used to avoid this error.
 <a name="reliability-error-states"></a>
 ## Reliability error states
 
-Reliability error states are separated by extension, by blade, or by part. Errors that may be encountered in locations other than the Extension performance/reliability report that is located at [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf) are  listed alphabetically within this document, located at [portalfx-extensions-status-codes.md](portalfx-extensions-status-codes.md).
+Reliability error states are categorized  by extension, by blade, and by part. Errors that may be encountered in locations other than the Extension performance/reliability report that is located at [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf) are  listed alphabetically within this document, located at [portalfx-extensions-status-codes.md](portalfx-extensions-status-codes.md).
 
 <a name="reliability-error-states-extension-error-states"></a>
 ### Extension Error States
 
 Correlate the error state with the action items to see the guided next steps.
 
-| Error state  | Definition | Action items |
+| Error state  | Meaning | Action items |
 | ------------ | ---------- | ------------ |
-|  FirstResponseNotReceived |  The shell loaded the extension URL obtained from the config into an IFrame, however there wasn't any response from the extension |  1. Scan the events table to see if there are any other relevant error messages during the time frame of the alert. <br> 2. Next, try opening the extension URL directly in the browser - it should show the default page for the extension. <br>3. Open the dev tools network tab in your browser and try opening the extension URL appending the following query string parameter sessionId=testSessionId - this should open a blank page and all requests in the network tab should be 200 or 300 level responses (no failures). If there is a server error in the extension - it will print out the error and a call stack if available. In case the failures are from a CDN domain, check if the same URL is accessible from the extension domain - if so, the CDN might be corrupt/out of sync. In this case, flushing the CDN would mitigate the issue. |
 |  HomePageTimedOut |  The index page failed to load within the max time period  |  // Need steps to action on |
-| ManifestNotReceived |  This error state means that the bootstrap logic was completed, however the extension did not return a manifest to the shell. The shell waits for a period of time and then timed out. |   1. Open the dev tools network tab in your browser and try opening the extension URL appending the following query string parameter sessionId=testSessionId - this should open a blank page and all requests in the network tab should be 200 or 300 level responses (no failures). If there is a server error in the extension - it will print out the error and a call stack if available. In case the failures are from a CDN domain, check if the same URL is accessible from the extension domain - if so, the CDN might be corrupt/out of sync. In this case, flushing the CDN would mitigate the issue. <br> 2. Scan the events table to see if there are any other relevant error messages during the time frame of the alert |
-| InvalidExtensionName | 	This error state means that the name of the extension specified in the extensions JSON in config doesn't match the name of the extension in the extension manifest. | 1. Verify what the correct name of the extension should be, and if the name in config is incorrect, update it.<br>2. If the name in the manifest is incorrect, contact the relevant extension team to update tag in their PDL with the right extension name and recompile. |
-|  InvalidManifest |             This error state means that the manifest that was received from an extension was invalid, i.e. it had validation errors | Scan the error logs for all the validation errors in the extension manifest. |
-| InvalidDefinition |           This error state means that the definition that was received from an extension was invalid, i.e. it had validation errors |             Scan the error logs for all the validation errors in the extension definition. |
-| FailedToInitialize |             This error state means that the extension failed to initialize one or more calls to methods on the extension's entry point class failing |  *              Look for the error code and if it is present the call stack in the  message to get more details. <br>* Then, scan the events table to get all the relevant error messages during the time frame of the alert.  <br> *        These errors should have information about what exactly failed while trying to initialize the extension e.g. the initialize endpoint, the getDefinition endpoint, etc. |
-|  TooManyRefreshes |  This error state means that the extension try to reload itself within the IFrame multiple times. The error should specify the number of times it refreshed before the extension was disabled |              Scan the events table to see if there are any other relevant error messages during the time frame of the alert |
-|  TooManyBootGets |             This error state means that the extension try to send the bootGet message to request for Fx scripts multiple times. The error should specify the number of times it refreshed before the extension was disabled  |             Scan the events table to see if there are any other relevant error messages during the time frame of the alert |
-|             TimedOut  | This error signifies that the extension failed to load after the predefined timeout. |          *           Scan the events table to see if there are any other relevant error messages during the time frame of the alert. <br>*                   Analyze the error messages to try to deduce whether the problem is on the extension side or the shell.        <br>*          If the issue is with the extension, look at CPU utilization of the cloud service instances. If the CPU utilization is high, it might explain why clients are timing out when requesting resources from the server. |
 |   MaxRetryAttemptsExceeded | This a collation of the above events |   Inspect the sample message and follow appropriate step above |
 
 <a name="reliability-error-states-blade-error-states"></a>
-### Blade  Error States
+### Blade Error States
 
 Correlate the error state with the action items to see the guided next steps.
 
-| Error reason | Definition | Action items |
+| Error reason | Meaning | Action items |
 | ------------ | ---------- | ------------ |
-| ErrorInitializing | The Portal failed to initialize the blade due to an invalid definition. | Verify the PDL definition of the given blade. Verify the source opening the blade is passing the correct parameters. Reference a sample session in the ClientEvents kusto table there should be correlating events before the blade failure. |
+| ErrorInitializing | The Portal failed to initialize the blade due to an invalid definition. | Verify the PDL definition of the given blade. Verify the source opening the blade is sending the correct parameters. Review the **Kusto** ClientEvents table for   correlating events before the blade failure. |
 |  ErrorLoadingExtension | The extension failed to load and therefore the blade was unable to load.   | Refer to the guidance provided for extension reliability  |
-|  ErrorLoadingDefinition |     The FX was unable to retrieve the blade defintion from the Extension.   |       Reference a sample session in the ClientEvents kusto table there should be correlating events before the blade failure  |
-| ErrorLoadingExtensionAndDefinition |            The FX was unable to retrieve the blade defintion from the Extension. |             Reference a sample session in the ClientEvents kusto table there should be correlating events before the blade failure |
-|      ErrorUnrecoverable |              The FX failed to restore the blade during journey restoration because of an unexpected error. |         This should not occur but if it does file a [shell bug](http://aka.ms/portalfx/shellbug). |
+|  ErrorLoadingDefinition |     The Portal  was unable to retrieve the blade defintion from the Extension.   |       Review the **Kusto** ClientEvents table for   correlating events before the blade failure  |
+| ErrorLoadingExtensionAndDefinition |            The Portal was unable to retrieve the blade definition from the Extension. |             Review the **Kusto** ClientEvents table for   correlating events before the blade failure |
+| ErrorUnrecoverable |              The Portal failed to restore the blade during journey restoration because of an unexpected error. |         This should not occur, but if it does, file a shell bug using the site located at [http://aka.ms/portalfx/shellbug](http://aka.ms/portalfx/shellbug). |
 
 <a name="reliability-error-states-part-error-states"></a>
 ### Part Error States
 
 Correlate the error state with the action items to see the guided next steps.
 
-| Error reason | Definition | Action items |
+| Error reason | Meaning | Action items |
 | ------------ | ---------- | ------------ |
 | TransitionedToErrorState  |         The part was unable to load and failed through its initialization or OnInputsSet  |          Consult the any_details column, there should be sample message explaining explicitly what the issue was. Commonly this is a nullRef. |
 |      ErrorLocatingPartDefinition |    The Portal  was unable to determine the part definition. |   The likely cause of this is the extension has removed the part entirely from the PDL, this is not the guided pattern.             See deprecating parts for the explicit guidance. __NEED LINK__ |
-|  ErrorAcquiringViewModel |  The FX was unable to retrieve the part view model from the Extension. |        You can correlate the start of thesample message with one of the below for common explanations. <br> *        ETIMEOUT - This may be caused by a flooding of the RPC layer. <br> *                      Script error - Dependent on the exact message, this may be due to timeouts/latency issues/connection problems. <br> *   Load timeout for modules - This may be caused by a slow or loss of connection. <br> *    description: - This is generic bucket, here the message will define the issue further. For example if there were null references<br>              For all the above if enough information was not provided via the message explore the raw events function or reference a sample session in            the ClientEvents kusto table as there should be correlating events before the failure.             |
-|        ErrorLoadingControl |  The FX was unable to retrieve the control module. |  Reach out to the FX team if you see a large amount of these issues. |
-|  ErrorCreatingWidget |   The FX failed to create the widget. |   Check the sample message this is indicate the explicit reason why it failed, this was probably a ScriptError or failure to load the module. |
+|  ErrorAcquiringViewModel |  The Portal was unable to retrieve the part `ViewModel` from the Extension. |        You can correlate the start of thesample message with one of the below for common explanations. <br> *        ETIMEOUT - This may be caused by a flooding of the RPC layer. <br> *                      Script error - Dependent on the exact message, this may be due to timeouts/latency issues/connection problems. <br> *   Load timeout for modules - This may be caused by a slow or loss of connection. <br> *    description: - This is generic bucket, here the message will define the issue further. For example if there were null references<br>              For all the above if enough information was not provided via the message explore the raw events function or reference a sample session in            the ClientEvents kusto table as there should be correlating events before the failure.             |
+|        ErrorLoadingControl |  The Portal  was unable to retrieve the control module. |  Reach out to the Ibiza team as specified in [portalfx-stackoverflow.md](portalfx-stackoverflow.md) if you see a large amount of these issues. |
+|  ErrorCreatingWidget |   The Portal failed to create the widget. |   Check the sample message this is indicate the explicit reason why it failed, this was probably a ScriptError or failure to load the module. |
 |  OldInputsNotHandled |        In this case a user has a pinned representation of a old version of the tile. The extension author has changed the inputs in a breaking fashion. | If this happens you need follow the guided pattern. __NEED LINK__ |
 
 <a name="telemetry-error-states"></a>
