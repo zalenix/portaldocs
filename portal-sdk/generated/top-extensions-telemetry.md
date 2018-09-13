@@ -91,9 +91,9 @@ You can right-click on  a function and then select "Make a command script" to vi
 <a name="logging"></a>
 ## Logging
 
-There are two options for collecting telemetry and error and warning logs. You can configure and use the Portal Framework's built-in telemetry services or you can build an entirely custom telemetry system. It is strongly recommended that your extension should use the Portalfx Framework telemetry controller, because the system which is in place is likely to be more performant than custom solutions.  However, if you choose to build your own telemetry system, you need to have practices in place that enforce  the guidelines that are associated with the collection of personally identifiable information (PII).  It is very important for security and compliance reasons that PII data is not sent to telemetry services.
+There are two options for collecting telemetry and error and warning logs. You can configure and use the Portal Framework's built-in telemetry services or you can build an entirely custom telemetry system, as specified in [top-extensions-telemetry-logging.md](top-extensions-telemetry-logging.md). It is strongly recommended that your extension should use the Portalfx Framework telemetry controller, because it is likely to be more performant than custom solutions.  However, if you choose to build your own telemetry system, you need to have practices in place that enforce  the guidelines that are associated with the collection of personally identifiable information (PII).  It is very important for security and compliance reasons that PII data is not sent to telemetry services.
 
-**NOTE**: We are currently not onboarding new  users on to programmatic access.
+**NOTE**: We are currently not onboarding new users to programmatic access.
 
 For more information about logging, see [portalfx-telemetry-logging.md](portalfx-telemetry-logging.md).
 
