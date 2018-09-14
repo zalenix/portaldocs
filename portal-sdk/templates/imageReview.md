@@ -374,59 +374,6 @@ Update the following image to remove damage.
 
 ![alt-text](../media/portalfx-data-context/dataContext.png "portalfx-data-context/dataContext.png ")
 
-## portalfx-debugging
-
-Determine whether 'justbe' in the following image should be replaced with a fictitious name.
-
-![alt-text](../media/portalfx-debugging/browserConsole.png "portalfx-debugging/browserConsole.png ")
-
-
-![alt-text](../media/portalfx-debugging/consoleError.png "portalfx-debugging/consoleError.png ")
-
-
-![alt-text](../media/portalfx-debugging/consoleExtensionLoaded.png "portalfx-debugging/consoleExtensionLoaded.png ")
-
-
-Update the following image for fictitious names. 
-
-![alt-text](../media/portalfx-debugging/debugMode.png "portalfx-debugging/debugMode.png")
-
-
-![alt-text](../media/portalfx-debugging/debugScript.png "portalfx-debugging/debugScript.png ")
-
-
-![alt-text](../media/portalfx-debugging/extensionPageError.png "portalfx-debugging/extensionPageError.png")
-
-
-![alt-text](../media/portalfx-debugging/failure.png "portalfx-debugging/failure.png")
-
-
-
-Update the following image for fictitious names. 
-
-![alt-text](../media/portalfx-debugging/loadedExtensions.png "portalfx-debugging/loadedExtensions.png")
-
-
-Update the following image for fictitious names. 
-
-![alt-text](../media/portalfx-debugging/resetDesktop.png "portalfx-debugging/resetDesktop.png ")
-
-
-![alt-text](../media/portalfx-debugging/response-headers-show-version.png "portalfx-debugging/response-headers-show-version.png ")
-
-
-Update the following image for fictitious names. 
-
-![alt-text](../media/portalfx-debugging/restoreDefaultSettings.png "portalfx-debugging/restoreDefaultSettings.png ")
-
-
-![alt-text](../media/portalfx-debugging/select-extension-iframe.png "portalfx-debugging/select-extension-iframe.png")
-
-
-
-Update the following image for fictitious names. 
-
-![alt-text](../media/portalfx-debugging/settings.png "portalfx-deployment/settings.png")
 
 ## portalfx-deployment
 
@@ -584,13 +531,6 @@ Update the following image to a more current blade and associated website.
 
 ![alt-text](../media/portalfx-overview/create-blade-screenshot.png "portalfx-overview/create-blade-screenshot.png ")
 
-
-![alt-text](../media/portalfx-overview/enablehttps.png "portalfx-overview/enablehttps.png ")
-
-
-![alt-text](../media/portalfx-overview/first-run-debugging-dialog.png "first-run-debugging-dialog.png")
-
-
 ![alt-text](../media/portalfx-overview/gallery-item-details.png "portalfx-overview/gallery-item-details.png")
 
 
@@ -606,9 +546,6 @@ Update the following image to a more current blade and associated website.
 ![alt-text](../media/portalfx-overview/marketplace-local-development.png "portalfx-overview/marketplace-local-development.png")
 
 
-![alt-text](../media/portalfx-overview/new-project-template.png "portalfx-overview/new-project-template.png")
-
-
 ![alt-text](../media/portalfx-overview/project-properties.png "portalfx-overview/project-properties.png")
 
 
@@ -619,9 +556,6 @@ Update the following image to a more current blade and associated website.
 
 
 ![alt-text](../media/portalfx-overview/ui-definition-create-blade.png "portalfx-overview/ui-definition-create-blade.png ")
-
-
-![alt-text](../media/portalfx-overview/untrusted-extensions.png "portalfx-parameter-collection-overview/untrusted-extensions.png ")
 
 ## portalfx-parameter-collection-overview
 
@@ -634,10 +568,6 @@ Update the following image to a more current blade and associated website.
 
 
 ![alt-text](../media/portalfx-pde-aadrbac/SMBimg.PNG "portalfx-pde-aadrbac/SMBimg.PNG")
-
-## portalfx-performance
-
-![alt-text](../media/portalfx-performance/mapping.png "portalfx-performance/mapping.png")
 
 ## portalfx-style-guide
 
@@ -996,23 +926,6 @@ Update the following image to a more current blade and associated website.
 	
 
 ![alt-text](../media/portalfx-ux-using-pricing-tier/pt_settings_picker.png "portalfx-ux-using-pricing-tier/pt_settings_picker.png")
-
-## top-extensions-getting-started
-
-	
-![alt-text](../media/top-extensions-getting-started/nugetPackageManagerConsole.png	"top-extensions-getting-started/nugetPackageManagerConsole.png")
-	
-	
-![alt-text](../media/top-extensions-getting-started/nugetPackageManagerRestore.png	"top-extensions-getting-started/nugetPackageManagerRestore.png")
-	
-	
-![alt-text](../media/top-extensions-getting-started/nuGetPackagesMissing.png "top-extensions-getting-started/nuGetPackagesMissing.png")
- 
- 
-![alt-text](../media/top-extensions-getting-started/packages.png "top-extensions-getting-started/packages.png")
- 
- 
-![alt-text](../media/top-extensions-getting-started/previewMode.png "top-extensions-getting-started/previewMode.png")
 
 ## videos
 	
