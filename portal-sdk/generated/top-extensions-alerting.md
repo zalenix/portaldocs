@@ -2,9 +2,7 @@
 <a name="overview"></a>
 ## Overview
 
-Many alerts for extension behavior are provided by the Portal Framework. Alerts run at a specified time to assess the data that was collected in a previous time period. If a threshold for an alert is met, an ICM alert that contains the details of the alert is opened and sent to  the  team that owns the extension. Azure Portal partner team IcM information is collected during the onboarding process, and is located at [https://aka.ms/portalfx/partners](https://aka.ms/portalfx/partners). This maps extension names to IcM team names and service names. An IcM routing rule is added under "Azure Portal (Ibiza) service" in IcM to route incidents to corresponding partners.   The routing rule is in the following format.
-
- `AIMS://AZUREPORTAL\Portal\{ExtensionName}`
+Many alerts for extension behavior are provided by the Portal Framework. Alerts run at a specified time to assess the data that was collected in a previous time period. If a threshold for an alert is met, an ICM alert that contains the details of the alert is opened and sent to  the  team that owns the extension. 
 
 The Portal Framework provides the following alerts.
 
@@ -14,6 +12,8 @@ The Portal Framework provides the following alerts.
 
 1. Extension alive
 
+The Framework also provides an infrastructure so that teams can configure alerts to send for each extension. Each area of the infrastructure is separate, so that the Framework can allow various levels of custom configuration. Specified sets of conditions are met previous to meeting or exceeding the alert threshold. The Portal Framework and extensions can send the following alerts.
+
 1. [Create regression](#create-regression)
 
 1. [Availability](#availability)
@@ -22,16 +22,31 @@ The Portal Framework provides the following alerts.
 
 1. [Client error](#client-error)
 
-The Framework also provides an infrastructure so that teams can configure alerts to send for each extension. Each area of the infrastructure is separate, so that the Framework can allow various levels of custom configuration. Specified sets of conditions are met previous to meeting or exceeding the alert threshold. 
-
 <!-- TODO: Determine whether this sentence is still accurate.
 
  Today it only applies to availability, performance and client error, we are working on expanding it into the other areas.
  -->    
 
+Azure Portal partner team IcM information is collected during the onboarding process, and is located at [https://aka.ms/portalfx/partners](https://aka.ms/portalfx/partners). This maps extension names to IcM team names and service names. An IcM routing rule is added under "Azure Portal (Ibiza) service" in IcM to route incidents to corresponding partners.   The routing rule is in the following format.
+
+ `AIMS://AZUREPORTAL\Portal\{ExtensionName}`
+
 The Portal backs up  JSON extension customizations  from **Azure SQL** to **Kusto** daily at 5:00 pm PST.  You can view your extension alert customization Json in **Kusto** by using the site located at [https://aka.ms/portalfx/alerting-kusto-partner](https://aka.ms/portalfx/alerting-kusto-partner) and replacing `DefaultCriteria` with `Alert_YOUR_EXTENSION_NAME`. Another function is  the Kusto function named `GetExtensionCustomizationJson("YOUR_EXTENSION_NAME")`. The function for your extension will not exist until you onboard the extension to the alerting infrastructure, as specified in [#onboarding-to-the-alert-infrastructure](#onboarding-to-the-alert-infrastructure). You can also view  a read-only version of the configuration after onboarding by using  the alerting tool that is located at [https://aka.ms/portalfx/alerting-onboarding](https://aka.ms/portalfx/alerting-onboarding). 
 
 For client error messages,  replace `ErrorAlert_Ibiza_Framework` with `ErrorAlert_YOUR_EXTENSION_NAME`.
+
+* National Clouds
+
+    The first level of infrastructure allows programmatic access to the National Clouds for core alerting only. AAD Service Principals are only available to  local vendors in National Clouds, instead of  Microsoft employees. To connect with a National Cloud, you will use a dSTS Service Identity. These are supported in all clouds, including the public cloud, so you can prepare  your code for  National Cloud compatibility by using these identities now. The Kusto documentation for this is located at [http://aka.ms/portalfx/kusto-dsts](http://aka.ms/portalfx/kusto-dsts).
+    
+The following sections specify how to onboard your team to the Framework alert infrastructure, and how to configure alerts for your extension.
+
+* [Onboarding to the alert infrastructure](#onboarding-to-the-alert-infrastructure)
+
+* [Alert configuration](#alert-configuration)
+
+* * *
+
 
 <a name="onboarding-to-the-alert-infrastructure"></a>
 ## Onboarding to the alert infrastructure
@@ -77,7 +92,95 @@ For client error messages,  replace `ErrorAlert_Ibiza_Framework` with `ErrorAler
     * **Match Instance/Cluster**: Checked.
 
 If the correlation rules need to be updated for your extension, reach out to 
-<a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration&body=My team would like to update the correlation rules for our extension.  The configuration to update is <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafx hot@microsoft.com and azurefxg@microsoft.com</a>  and attach the updated configuration. We will inform you when the updates are applied. 
+<a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration&body=My team would like to update the correlation rules for our extension.  The configuration to update is <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafx hot@microsoft.com and azurefxg@microsoft.com</a>  and attach the updated configuration. The email to azurefxg@microsoft.com should contain the information specified in [#programmatic-onboarding](#programmatic-onboarding). We will inform you when the updates are applied. 
+
+<a name="programmatic-onboarding"></a>
+## Programmatic onboarding
+
+The email to azurefxg@microsoft.com should confirm the following items.
+
+1. A brief reason why you need access.
+
+1. Which databases (AzurePortal, AzPtlCosmos, hostingservice) you require access to.
+
+    **NOTE**: Ibiza only provides Viewer (read) access to the log databases.
+
+1. You understand that programmatic access to these databases potentially allows 'anonymous' access to the uncensored production logs.
+
+1. You are following Microsoft procedures for key storage.
+    Typically, this means storing the certificate in KeyVault and rotating the key at the appropriate frequency, as specified in [top-extensions-hosting-service-advanced.md#keyvault](top-extensions-hosting-service-advanced.md#keyvault).
+
+1. Your handling of any data you access this way complies with Microsoft PII & GDPR policies. This means, but is no way limited to:
+
+    1. Not copying or downloading non-anonymized logs, even to secure systems, unless you have registered those systems with GDPR for deletion and export. 
+
+   1. Not making available anonymous access by proxy. For example, a web site or other access mechanism that allows the caller, whether or not they are authenticated, to make non-delegated requests as the service principal. One  example of such is  a log search tool that connects directly as the Service Principal or dSTS Service Identity rather than using delegated authentication.
+
+1. Your application must not put excessive load on the cluster, especially over peak times like 5 - 7pm PST, or midnight - 1am UTC. 
+
+    * Please supply examples of the queries you will be executing, as well as the schedule or frequency.
+    
+    * The AAD App ID of your Service Principal or the certificate thumbprint of your dSTS Service Identity. If using an AAD Service Principal, your application uses cert based auth for its Service Principal. For more information, see [#creating-a-certificate-backed-partner-service-principal](#creating-a-certificate-backed-partner-service-principal).
+
+1. A contact e-mail for this application that we can reach out to in cases of outage, capacity planning, and similar support features. This is a team alias instead of an individual email.
+
+1. If you are using the **Kusto** Client SDK to connect, that  `ClientRequestProperties.Application` is set to an appropriate value. If you are using another access method that supports a similar feature, ensure that the extension connects with it.
+
+1. Whether you need to create your own functions and tables, including write access in **Kusto**. This means  creating a dedicated database for your team with a suitable name that you supply, for which you will then be responsible for maintaining, including registering with the GDPR scanner, or other similar entities.  If you are not sure  whether you need your own functions or tables, answer this as "No" and file a new request with <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration Changes&body=My team would like to update the correlation rules for our extension.  The configuration to update is <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafx hot@microsoft.com and azurefxg@microsoft.com</a>  if the answer changes.
+
+Once azurefxg@microsoft.com receives and approves the onboarding request, they will reach out to you.  When your identities are validated, they will enable your app ID with Viewer access for the requested databases. There is no propagation delay associated with  enabling programmatic access.
+
+**NOTE**: **Kusto** is a shared capacity system. As such, we reserve the right to shut down applications that put excessive load on the system. 
+
+<a name="programmatic-onboarding-creating-a-certificate-backed-partner-service-principal"></a>
+### Creating a certificate backed partner service principal
+
+**NOTE**:  If you have custom or  multiple tenants, make sure you  have switched back to the default Microsoft tenant first.
+
+The following steps create the application and a default service principal. Make a note of the Application ID GUID. If you already have an application, you can skip forward to the PowerShell part.
+
+1. Go to [https://aka.ms/portalfx/newapp](https://aka.ms/portalfx/newapp).
+
+1. Click 'New application registration', as in the following image.
+
+    ![alt-text](../media/top-extensions-alerting/registration.png "New app registration")
+
+    
+1. Fill out the application registration. The values are as follows.
+
+    1. **Name**: Your application's friendly name
+
+    1. **Application Type**: Choice only matters if you have users signing into your app. Pick the type most appropriate to your extension.
+
+    1. **Sign-on URL**: Choice only matters if you have users signing into your app. 
+
+1. Click 'Create'.
+
+The following Powershell steps add the  certificate credential to a service principal.
+
+1. Install the Azure Active Directory (MSOnline) CommandLets that are located at [http://aka.ms/portalfx/aad-commandlets](http://aka.ms/portalfx/aad-commandlets) if you haven’t already, and open an elevated PowerShell prompt.
+
+1. Execute the following code to get the public key from a cert file. You may also get the public key in another way, such as by thumbprint.
+
+    ```ps
+    $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate 
+    $cer.Import("C:\temp\ServicePrincipalCertPublicKey.cer")
+    $binCert = $cer.GetRawCertData()
+    $credValue = [System.Convert]::ToBase64String($binCert);
+    ```
+
+1. Connect to AAD, and get a reference to your application's service principal (SP), and add the certificate. If it does not work, repeat these steps by using an elevated **PowerShell** shell.
+
+    ```ps
+    import-module MSOnline
+    Connect-MsolService
+    $sp = Get-AzureRmADServicePrincipal -ServicePrincipalName yourApplicationId
+    New-MsolServicePrincipalCredential -ObjectId $sp.Id -Type asymmetric -Value $credValue -StartDate 
+    $cer.GetEffectiveDateString() -EndDate 
+    $cer.GetExpirationDateString()
+    ```
+
+You can rotate  a certificate  by running the `New-MsolServicePrincipalCredential` for the new certificate, then removing (when ready to do so) the old certificate through `Remove-MsolServicePrincipalCredential`.
 
 <a name="alert-configuration"></a>
 ## Alert configuration

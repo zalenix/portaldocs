@@ -2,7 +2,7 @@
 <a name="overview"></a>
 ## Overview
 
-Developers can also examine telemetry while debugging an extension. The Azure Portal tracks several pieces of information as users navigate through the Portal.
+Developers can examine telemetry while debugging an extension. The Azure Portal tracks several pieces of information as users navigate through the Portal. 
 
 Extensions do not need to consume any APIs to collect this information. Instead, debugging telemetry is made available as specified in [#live-telemetry](#live-telemetry), and production telemetry is made available to partners through **Kusto**.
 
@@ -10,7 +10,12 @@ Portal Telemetry is a Kusto-based solution.  The Kusto database contains data th
 
 The telemetry data can be viewed a number of ways. Developers can review telemetry data by using existing dashboards, or they can run queries on the **Kusto** databases.
 
-To run or create modified versions of **Kusto** queries, you will need access to the  **Kusto** data tables. All Azure employees should have access. If you cannot access **Kusto**, verify whether  you have joined your team's standard access group as specified in  [http://aka.ms/standardaccess](http://aka.ms/standardaccess). Some group names are non-intuitive, so if you are unable to locate the correct group within the table, you may need to create a new group. To do that please follow the instructions in the section named '​Finding and joining an RBAC project'.  Ensure your request has been approved. If you have been denied for any reason, or if the access group is not listed,  please reach out to   <a href="mailto:ibiza-telemetry@microsoft.com?subject=Standard Permission Access for Kusto Databases">Ibiza Telemetry</a>.
+<a name="permissions"></a>
+## Permissions
+
+To run or create modified versions of **Kusto** queries, you will need access to the  **Kusto** data tables. All Azure employees should have access to the Kusto clusters. The way permissions are granted is through inheritance of the overall AAD group, which is `REDMOND\AZURE-ALL-PSV` for teams in C+E, and `REDMOND\AZURE-ALL-FPS` for teams outside. We do not grant individual access.   
+
+ If you cannot access **Kusto**, verify whether  you have joined your team's standard access group as specified in  [http://aka.ms/standardaccess](http://aka.ms/standardaccess).   Some group names in the table of team projects  named 'Active ​Azure Team Projects' are non-intuitive, so if you are unable to locate the correct group within the table, you may need to create a new group. To do that please follow the instructions in the section named '​Finding and joining an RBAC project', or look for the link named '[Azure RBAC Getting Started Guide](http://aka.ms/portalfx/telemetryaccess/newgroup)'.  Ensure your request has been approved. If you have been denied for any reason, or if the access group is not listed,  please reach out to   <a href="mailto:ibiza-telemetry@microsoft.com?subject=Standard Permission Access for Kusto Databases">Ibiza Telemetry</a>.
 
 The **Kusto** Explorer application that can be saved to your local computer is located at [http://kusto-us/ke/Kusto.Explorer.application](http://kusto-us/ke/Kusto.Explorer.application).  Queries can also be run against the Kusto database by using the **Kusto.WebExplorer** that is located at [https://ailoganalyticsportal-privatecluster.cloudapp.net](https://ailoganalyticsportal-privatecluster.cloudapp.net)
 
@@ -60,7 +65,13 @@ Although Portal reporting is primarily supported by **Kusto**, some Portal data 
 <a name="kusto-portal-databases"></a>
 ## Kusto portal databases
 
-The following table specifies the Kusto databases that contain Azure Portal telemetry data.
+**Kusto** is a fantastic product, but it has some serious limitations when it comes to parallel access. For example, Kusto is somewhat single user, in that a specific  particular block of data is only ever on one machine. This means  it's very easy to write a query that will take the cluster down for all other processes, including the ingestion of new data and the execution of core alerting queries.
+
+To resolve this, we have deployed a Follower Cluster. A follower cluster is a read-only view of the data with its own set of machines to handle querying. Empirical testing shows the data is typically available in well under a minute. 
+
+Going forward, we are only offering Partners access to the follower cluster. The database names (AzurePortal, AzPtlCosmos, hostingservice) remain the same; on the cluster name has changed from AzPortal to AzPortalPartner. Unless your queries contain the `cluster("AzPortal")` references, they should run unchanged on the new cluster. Otherwise change 'cluster("AzPortal")' to 'cluster("AzPortalPartner")'.
+
+The following table specifies the Kusto databases that contain Azure Portal telemetry data. Please run through your query from whatever database makes the most sense to you.
 
 * **AzPtlCosmos**
 
@@ -68,7 +79,12 @@ The following table specifies the Kusto databases that contain Azure Portal tele
                                                                                                   |
 * **AzurePortal**
 
-	This database contains  the raw, unprocessed data that comes from MDS directly to Kusto. There are many scenarios where you may want to debug extension issues, for example, performance or creates. This is the right table to use to review diagnostic events. Data here is persisted for 45 days. To filter out test traffic when performing queries on this database, use `userTypeHint == ""`.       |
+	This database contains  the raw, unprocessed data that comes from MDS directly to Kusto. There are many scenarios where you may want to debug extension issues, for example, performance or creates. This is the right table to use to review diagnostic events. Data here is persisted for 45 days. To filter out test traffic when performing queries on this database, use `userTypeHint == ""`.
+
+* **AzPortalPartner**
+
+    The shared database named **Partner** is being made obsolete. Partners who need to create their own alerting and telemetry functions and tables can request a database of their own. The statistics and load history for the **AzPortalPartner** cluster are located at [https://aka.ms/GaugePartnerCluster](https://aka.ms/GaugePartnerCluster). 
+
 
 <a name="kusto-portal-databases-kusto-tables"></a>
 ### Kusto tables
@@ -88,19 +104,21 @@ Queries against these tables can be exceedingly complex. The database also conta
 
 You can right-click on  a function and then select "Make a command script" to view  the details of that function. This can be performed recursively for any function.  There are other functions in the databases, but they are mainly intended for internal use and are subject to change at any time.
 
+When testing queries, the performance cost of the current query is displayed in the Query Summary tab of the results window. Thirty  days of query history can be displayed by using the `.show queries` command. You can apply `where` and other clauses to the output of this command.
+
 <a name="logging"></a>
 ## Logging
 
 There are two options for collecting telemetry and error and warning logs. You can configure and use the Portal Framework's built-in telemetry services or you can build an entirely custom telemetry system, as specified in [top-extensions-telemetry-logging.md](top-extensions-telemetry-logging.md). It is strongly recommended that your extension should use the Portalfx Framework telemetry controller, because it is likely to be more performant than custom solutions.  However, if you choose to build your own telemetry system, you need to have practices in place that enforce  the guidelines that are associated with the collection of personally identifiable information (PII).  It is very important for security and compliance reasons that PII data is not sent to telemetry services.
-
-**NOTE**: We are currently not onboarding new users to programmatic access.
 
 For more information about logging, see [portalfx-telemetry-logging.md](portalfx-telemetry-logging.md).
 
 <a name="logging-onboarding-to-tables"></a>
 ### Onboarding to tables
 
-To use the built-in controller provided by Framework for collecting telemetry and error/warning logs,  add `this.EnablePortalLogging = true;` in the constructor of the extension definition class, as in the following code.
+Your team should onboard as specified in [top-extensions-alerting.md#onboarding-to-the-alert-infrastructure](top-extensions-alerting.md#onboarding-to-the-alert-infrastructure) to use the Framework alert infrastructure and the Kusto tables.
+
+After all permissions have been granted, your extension can  use the built-in controller  by  adding `this.EnablePortalLogging = true;` in the constructor of the extension definition class, as in the following code.
 
 ```cs
   public Definition(ApplicationConfiguration applicationConfiguration)
