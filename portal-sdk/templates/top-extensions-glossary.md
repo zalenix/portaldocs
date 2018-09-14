@@ -107,6 +107,7 @@ The terms are in alphabetical order.
 | Deep linking |  Updates the portal URL when a blade is opened, which gives the user a URL that directly navigates to the new blade. |
 | Definition file | A file that provides type information for JavaScript code that is inherently not statically typed. Definition files are a fundamental part of using existing JavaScript libraries in TypeScript, and the file suffix is always  *.d.ts. |
 | Dependency injection technique | A technique whereby one object supplies the dependencies of another object. | 
+| desktop state             | A snapshot. |
 | DEV                       | Development | 
 | Developer Tools Console      | | 
 | DF                       | Dogfood |
@@ -324,6 +325,7 @@ The terms are in alphabetical order.
 | ---- | --- |
 | SAN                          | Storage Area Network  | 
 | sandboxed iframe             | Enables an extra set of restrictions for the content in the iframe.  It can treat the content as being from a unique origin, block form submission or script execution, prevent links from targeting other browsing context, and other items that restrict the behavior of the iframe during testing. | 
+| sanitize             | Given a list of acceptable elements, attributes, and CSS properties, **Sanitize** removeS all unacceptable HTML and CSS from a string.  |
 | SAS | Shared Access Signature |
 | SAW                  | Secure Admin Workstation | 
 | same-origin policy | A security policy that allows scripts that are contained in one web page can access data in another web page, but only if both pages share the same URI scheme, host name, and port number.  |
@@ -354,7 +356,7 @@ The terms are in alphabetical order.
 | style    | A technical term for the effect a  writer or developer can create through attitude, language, and the mechanics of writing.        |
 | subscription | | 
 | subtopic | An area that is closely related to the main topic, but due to size or granularity, may be in its own file.  There are typically links to subtopics from the topic document, or from other topics in the Azure library.  |
-| SVG | Scalable Vector Graphics |
+| Scalable Vector Graphics (SVG) |  An XML-based vector image format for two-dimensional Web graphics. |
 | synthetic traffic            | Traffic that has been created with a traffic generator and that behaves like real traffic. It can be used to capture the behavior of the network or device under investigation. |
 
 ## T
@@ -404,6 +406,8 @@ The terms are in alphabetical order.
 | web worker | A way to for extensions to run scripts in background threads. |
 | Weighted Experience Score (WxP) | The percentage of blade usage that meets the performance bar. |
 | WHCM                  | Windows High Contrast Mode     |
+| whitelist | The practice of specifying an index of approved software elements  that are permitted to be present and active on a Web page. The goal of whitelisting is to protect computers and networks from potentially harmful applications.  |
+
 
 
 

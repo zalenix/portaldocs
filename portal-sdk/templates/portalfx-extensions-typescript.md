@@ -9,6 +9,3 @@
 -->
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-typescript.md"}
-<!--
-gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-typescript.md"}
--->

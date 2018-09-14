@@ -239,6 +239,3 @@ The data stack contains all the information that the browser associates with the
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-debugging.md"}
 
-<!--
-gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-debugging.md"}
--->

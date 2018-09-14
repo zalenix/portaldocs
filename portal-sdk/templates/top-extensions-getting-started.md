@@ -50,7 +50,3 @@ Your development environment should remain current while you are implementing ex
     -->
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-getting-started.md"}
-
-<!--
-gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-getting-started.md"}
--->

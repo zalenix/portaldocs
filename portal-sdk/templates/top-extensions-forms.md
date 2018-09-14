@@ -72,6 +72,3 @@ For more information about forms with editScopes, see [top-legacy-editscopes.md]
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-forms.md"}
 
-<!--
-gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-forms.md"}
--->

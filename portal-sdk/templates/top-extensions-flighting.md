@@ -33,7 +33,7 @@ Flighting different versions of an extension allows developers to study the use 
 
 1. Hide, show, or swap controls in the content area of a blade 
 
-    **NOTE**: It is highly recommended that developers implement the majority of blades in an extension by using  the `TemplateBlade` pattern, as specified in [top-extensions-blades.md](top-extensions-blades.md).  The  `TemplateBlade`  pattern is not restricted from programmatically adding or removing content.  Resource overview blades are an exception to this pattern, as specified in [top-blades-resourcemenu.md](top-blades-resourcemenu.md). 
+    **NOTE**: It is highly recommended that developers implement the majority of blades in an extension by using  the `TemplateBlade` pattern, as specified in [top-extensions-blades.md](top-extensions-blades.md).  The  `TemplateBlade`  pattern is not restricted from programmatically adding or removing content.  Resource overview blades are an exception to this pattern, as specified in [top-blades-resourcemenublade.md](top-blades-resourcemenublade.md). 
 
 1. Switch the code to behave differently based on the experiment that was assigned to the user. This is based on the strategies that are specified in [#framework-support](#framework-support).
  
@@ -107,6 +107,3 @@ The strategy for the designing, running, and analyzing the test flight is as fol
 
    The Kusto queries can be configured to run on a schedule, and can be fed to **PowerBI** reports and dashboards for scenarios that require visibility by various levels of leadership.
  
- <!--
-gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-flighting.md"}
--->

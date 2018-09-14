@@ -24,7 +24,7 @@ The interface for the shaped data to display in the grid is located at `<dir>\Cl
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/MapAndMapIntoViewModels.ts", "section": "data#robotDetailsModel"}
 
-The initial implementation of [data projection](portalfx-extensions-glossary-data.md) would resemble the following code.
+The initial implementation of [data projection](top-extensions-glossary.md) would resemble the following code.
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Data/Projection/ViewModels/MapAndMapIntoViewModels.ts", "section": "data#buggyMapProjection"}
 

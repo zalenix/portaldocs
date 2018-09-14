@@ -9,6 +9,3 @@
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-key-components-resourceMenu.md"}
 
-<!--
-gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-key-components.md"}
--->

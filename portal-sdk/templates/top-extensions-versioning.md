@@ -79,8 +79,3 @@ Each `web.config` that is associated with an extension includes an `AllowedParen
 <add key="Microsoft.Portal.Framework.FrameworkConfiguration.AllowedParentFrame" value="['*']" />
 ```
 
-   
-<!-- required Glossary document. -->
-<!--
-{"gitdown": "include-file", "file": "portalfx-extensions-glossary-versioning.md"}
--->

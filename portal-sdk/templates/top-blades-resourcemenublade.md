@@ -329,6 +329,3 @@ Because the resource menu acts as a container for the blades opened by the menu 
 For an example of responsive resources, see the `<dir>Client\V1\ResourceTypes\Desktop\` folder, specifically the `...AssetViewModels\DesktopViewModel.ts` file.
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-resourcemenu.md"}
-<!--
-gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-resourcemenu.md"}
--->

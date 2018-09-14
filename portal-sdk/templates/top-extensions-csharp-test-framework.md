@@ -797,5 +797,4 @@ For example, if you want to turn off an old extension and turn on a new one, you
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-csharp-test.md"}
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-testing.md"}
 

@@ -7,7 +7,3 @@
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-configuration-procedure.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-configuration.md"}
-
-<!--
-gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-configuration.md"}
--->

@@ -1,7 +1,7 @@
 
 # NuGet Packages
 
-The Azure Portal SDK ships framework assemblies, tools, test framework and extension [PDE](portalfx-extensions-glossary-onboarding.md) files as NuGet packages. It also provides the capability to ship extensions as NuGet packages. This allows extensions to invoke blades and parts from other extensions at runtime. For more information about sharing  extensions as NuGet packages, see [portalfx-pde-publish.md](portalfx-pde-publish.md).
+The Azure Portal SDK ships framework assemblies, tools, test framework and extension [PDE](top-extensions-glossary.md) files as NuGet packages. It also provides the capability to ship extensions as NuGet packages. This allows extensions to invoke blades and parts from other extensions at runtime. For more information about sharing  extensions as NuGet packages, see [portalfx-pde-publish.md](portalfx-pde-publish.md).
 
 ## Configure NuGet package sources for development
 
@@ -13,7 +13,7 @@ Portal SDK NuGet packages are published to the Microsoft internal NuGet feed loc
 
 ### Getting the NuGet packages externally
 
-PortalSDK NuGet packages are only published to Microsoft internal NuGet feeds.  If you do not have access to those feeds such as the one mentioned above you will need use those NuGet packages that are included in the Azure Portal SDK.  This is the recommended path for  [third party extension developers](portalfx-extensions-glossary-onboarding.md).
+PortalSDK NuGet packages are only published to Microsoft internal NuGet feeds.  If you do not have access to those feeds such as the one mentioned above you will need use those NuGet packages that are included in the Azure Portal SDK.  This is the recommended path for  [third party extension developers](top-extensions-glossary.md).
 
 Installing the Portal SDK MSI will unpack the NuGet packages to a default location of `C:\Program Files (x86)\Microsoft SDKs\PortalSDK\packages` and will setup a NuGet package source named PortalSDK that points to that location.  Any subsequent actions performed in **Visual Studio** or the **NuGet** command line will also search the new local PortalSDK feed in program files for Portal-related NuGet packages.
 

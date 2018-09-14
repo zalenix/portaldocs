@@ -78,7 +78,7 @@ For more information about building single page applications, and how to develop
 
 ### The context property
 
-The context property contains APIs that can be called to interact with the shell. It will be populated by the framework before the `onInitialize()` function is called.  It is not populated in a constructor.  In fact, it is recommended not to use a constructor and instead doing all initialization work in the onInitialize function. This is a fairly common [dependency injection technique](portalfx-extensions-glossary-typescript.md).
+The context property contains APIs that can be called to interact with the shell. It will be populated by the framework before the `onInitialize()` function is called.  It is not populated in a constructor.  In fact, it is recommended not to use a constructor and instead doing all initialization work in the onInitialize function. This is a fairly common [dependency injection technique](top-extensions-glossary.md).
 
 Declaring the type of this property can be a little tricky, and the declaration can change if more typeScript decorators are added to the  file.  This is because certain APIs on the context object get enhanced when new decorators are used.  Let's start with a basic example and build from there.
 
@@ -109,7 +109,7 @@ To fix the error, add `& TemplateBlade.ReturnsData.Context<{ value: string }>` t
   public context: TemplateBlade.Context<void, BladesArea.DataContext> & TemplateBlade.ReturnsData.Context<{ value: string }>;
 ```
 
-This uses **TypeScript** [intersection types](portalfx-extensions-glossary-typescript.md) to overload the `closeCurrentBlade` function to look like `closeCurrentBlade(data: { value: string })` so that when it is used, the compiler will enforce that data is provided to it in the following format. 
+This uses **TypeScript** [intersection types](top-extensions-glossary.md) to overload the `closeCurrentBlade` function to look like `closeCurrentBlade(data: { value: string })` so that when it is used, the compiler will enforce that data is provided to it in the following format. 
 
 ```
   context.container.closeCurrentBlade({
@@ -296,3 +296,48 @@ Extensions can supply type metadata to configure their EditScope as follows:
 
 To either of these, extensions pass the type name used when registering the type metadata via '`MsPortalFx.Data.Metadata.setTypeMetadata`'.  
   
+
+  
+#### Loading indicators
+
+Loading indicators should be consistently applied across all blades and parts of the extension. For no-PDL, this is demonstrated in the sample located at  [https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).  The steps for TypeScript and PDL are as follows.
+
+* Call `container.revealContent()` to limit the time when the part displays  **blocking loading** indicators. For more information, see [portalfx-parts-revealContent.md](portalfx-parts-revealContent.md).
+
+* Return a `Promise` from the `onInitialize` method that reflects all data-loading for the part. Return the `Promise` from the blade if it is locked or is of type  `<TemplateBlade>`.
+
+* The extension can return a data-loading Promise directly from `onInitialize`, but it will receive compile errors when it attempts to return the result of a call to `queryView.fetch(...)`, `entityView.fetch(...)`, `Base.Net.ajax2(...)`, as in the following code.
+
+    ```
+    public onInitialize() {
+        public { container, model, parameters } = this.context;
+        public view = model.websites.createView(container);
+
+        // Returns MsPortalFx.Base.PromiseV and not the required Q.Promise<any>.
+        return view.fetch(parameters.websiteId).then(...);
+    }
+    ```
+
+    The FX data-loading APIs return a `MsPortalFx.Base.PromiseV` type that is not compatible with the `Q.Promise` type expected for `onInitialize`.  To workaround this shortcoming of the FX data-loading APIs, use the following code until these APIs are revised. 
+    ```
+        ...
+        return Q(view.fetch(...)).then(...);
+        ...
+    ```
+
+    This application of `Q(...)`  coerces the data-loading Promise into the return type expected for `onInitialize`.  
+
+* For PDL, do not return a `Promise` from the `onInputSet` method previous to the loading of all part data if it removes loading indicators.   The part will seem to be broken or unresponsive if no **loading** indicator is displayed while the data is loading, as in the following code.
+
+```ts
+public onInputsSet(inputs: MyPartInputs): Promise {
+    this._view.fetch(inputs.resourceId);
+    
+    // DO NOT DO THIS!  Removes all loading indicators.
+    // Your Part will look broken while the `fetch` above completes.
+    return Q();
+}
+```
+
+**NOTE**: In this discussion, `onInputsSet` is the PDL equivalent of `onInitialize`.
+

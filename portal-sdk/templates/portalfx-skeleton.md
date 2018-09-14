@@ -36,7 +36,7 @@ This is the only document within the topic that contains an H1-level header.
 
 Subtopics that are specific to a topic are self-naming, in one or two words. The last node of the file is the name of the subtopic, and is used to sort subtopics within the topic. Some filenames are `portalfx-telemetry-alerting-overview.md`, `portalfx-telemetry-alerting-performance.md` or `portalfx-style-guide-utility-classes.md`. 
 
-1. Best Practices, FAQ's, and glossaries use a slightly different naming convention, in that they are named `portalfx-extensions-bp-<major-area>`,  `portalfx-extensions-faq-<major-area>`, `portalfx-extensions-glossary-<major-area>`, respectively.
+1. Best Practices, FAQ's, and glossaries use a slightly different naming convention, in that they are named `portalfx-extensions-bp-<major-area>`,  `portalfx-extensions-faq-<major-area>`,  respectively.
 
 1. Subtopic files are contained within the topic document in the following order.
 
@@ -48,7 +48,6 @@ Subtopics that are specific to a topic are self-naming, in one or two words. The
     | `portalfx-<major-area>-<topic>-procedure.md`   | Optional.  Checklist document. Used when there are specific steps to follow, or when there are specific tasks whose completion must be verified. May be included in the topic document instead of remaining a separate file. |
     | `portalfx-extensions-bp-<topic>.md`            | Optional. Best Practices for the topic. |
     | `portalfx-extensions-faq-<topic>.md`           | Optional. Frequently Asked Questions for the topic. |
-    | `portalfx-extensions-glossary-<topic>.md`      | Required. Glossary for the topic. |
 
 1. Sections that have been written for other documents can be linked to within the subtopics using normal gitHub linking procedures. This is best practice, and is preferred over copying and modifying paragraphs from file to file. If the section is a separate file, the link would resemble the following: `[portalfx-<major-area>-<topic>-<subtopic1>.md](portalfx-<major-area>-<topic>-<subtopic1>.md)`. Otherwise, if the section is a paragraph within a separate topic, the link would resemble the following `[portalfx-<major-area>-<topic>.md#<subtopic1>](portalfx-<major-area>-<topic>.md#<subtopic1>)`.
 
@@ -79,7 +78,3 @@ Subtopics that are specific to a topic are self-naming, in one or two words. The
 <!-- optional FAQ document -->
 <!-- gitdown": "include-file", "file": "../templates/portalfx-<major-area>-faq-<topic>.md"  -->
    {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-skeleton.md"}
-   
-<!-- required Glossary document. -->
-<!-- gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-<major-area>.md"  -->
-   {"gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-skeleton.md"}

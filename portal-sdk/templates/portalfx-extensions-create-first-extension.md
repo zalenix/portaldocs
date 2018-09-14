@@ -142,7 +142,7 @@ In the following "Hello World" example, the data context for blades is named `Gr
     https://portal.azure.com/?feature.customportal=false&feature.canmodifyextensions=true#blade/HelloWorld/Aloha
     ```
 
-    Also, test extensions may be added to the URI after the name of the blade that was just added, as in the following example.
+    Also, test extensions may be added to the URI after the name of the blade that was just added.  They should display automatically, but they may not if the popup blocker of the browser prevents it, in which case the extension may not run. The following example allows the extension to run in the production environment as a test extension.
 
     ```json
     https://portal.azure.com/?feature.customportal=false&feature.canmodifyextensions=true#blade/HelloWorld/Aloha?testExtensions={"HelloWorld":"https://localhost:44300/"}
@@ -154,7 +154,4 @@ In the following "Hello World" example, the data context for blades is named `Gr
     ![alt-text](../media/portalfx-extensions-create-first-extension/helloWorldExtensionAlohaBlade.png "New Extension and blade")
 
 
-<!--
-gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-create-first-extension.md"}
--->
 
