@@ -1,7 +1,10 @@
-# Breaking Changes since 5/11/2018 
+# Breaking Changes since 5/13/2018 
 * Additional Q&A about breaking changes can be found [here](./breaking-changes.md) 
 * To ask a question about breaking changes [use this](https://aka.ms/ask/ibiza-breaking-change)  
 
+
+## 5.0.302.3101
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2990819'>2990819</a></td><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2990819'>close context pane if any, whenever opening a new blade</a><p>No description available for this breaking change.</p></td></tr></table>
 
 ## 5.0.302.2801
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2996660'>2996660</a></td><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2996660'>[Performance] Prevent extension authors from using <TypeScriptRemoveComments>true</TypeScriptRemoveComments> in their .csproj files (as it removes bundler hints)</a><p><div><p class=MsoNormal><font face="Segoe UI, sans-serif"><span style="font-size:10.5pt;">We've recently
