@@ -285,7 +285,7 @@ function writeDocsToFile(aggregate, outputDir, prodSdkVersionTags) {
     sortedProdSdkVersionTag.forEach(function (version) {
         var cloudDownloadVersionLinks = aggregate[version].downloadUrl 
             ? util.format("<a href=\"%s\">%s</a> : %s", aggregate[version].downloadUrl, version, prodSdkVersionTags[version].join(","))
-            : util.format("%s : %s");
+            : util.format("%s : %s", version, prodSdkVersionTags[version].join(","));
         perCloudDownloadLinks += util.format("<br/> Download %s", cloudDownloadVersionLinks);
     });
 
