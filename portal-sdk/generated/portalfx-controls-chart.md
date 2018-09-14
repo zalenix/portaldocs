@@ -77,7 +77,7 @@ For an example that demonstrates how series views are created explicitly by the 
 <a name="charts-metrics"></a>
 ### Metrics
 
-Metrics are the [big data](portalfx-extensions-glossary-controls.md) call-outs that are associated with chart controls to provide interactive insights into data patterns and trends, as in the following image.
+Metrics are the [big data](top-extensions-glossary.md) call-outs that are associated with chart controls to provide interactive insights into data patterns and trends, as in the following image.
 
 ![alt-text](../media/portalfx-ui-concepts/chartMetrics.png "Chart metrics")
 

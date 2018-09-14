@@ -154,7 +154,7 @@ n.publish();
 
 * Do not use notifications too often.
 
-* Be as specific as possible, and follow the [voice and tone](portalfx-extensions-glossary-notifications.md) guidelines when defining notifications. Notifications might be referenced out of context, for example, within the Hub instead of in the asset blade. Consequently, generic messages may not make sense or may not provide enough information.
+* Be as specific as possible, and follow the [voice and tone](top-extensions-glossary.md) guidelines when defining notifications. Notifications might be referenced out of context, for example, within the Hub instead of in the asset blade. Consequently, generic messages may not make sense or may not provide enough information.
 
 * Associate notifications with assets, and ensure there is a clear next-action. When a notification is clicked, the related asset is opened. If a notification does not have an asset, it is essentially a useless dead-end. 
 
@@ -174,6 +174,5 @@ If you need to open a different blade for a specific message, the extension shou
 * Always use server events for non-read operations, and for any events that originate on a server or end system.
 
 * Server events are used to track asset history. Even if a change is considered to be unimportant, the extension should raise a low-priority Info event to track it appropriately.
-<!--
-gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-notifications.md"}
--->
+
+

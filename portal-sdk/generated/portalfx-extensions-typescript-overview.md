@@ -1,7 +1,5 @@
-<a name="typescript-decorators"></a>
-## TypeScript decorators
-
- ## Overview
+<a name="overview"></a>
+## Overview
 
 **TypeScript** is the recommended alternative to PDL.
 
@@ -17,7 +15,7 @@ PDL is still supported for backward compatibility, but **TypeScript** decorators
 
 The next few sections provide an overview on what decorators are and how to use them.
 
-<a name="typescript-decorators-current-typescript-decorator-support"></a>
+<a name="overview-current-typescript-decorator-support"></a>
 ### Current <strong>TypeScript</strong> decorator support
 
 All developers who install the Portal Framework SDK that is located at [http://aka.ms/portalfx/download](http://aka.ms/portalfx/download) also install SDK samples on their computers during the installation process. The source for the samples is located in the `Documents\PortalSDK\FrameworkPortal\Extensions\SamplesExtension\Extension\` folder.  
@@ -60,7 +58,7 @@ These SDK features cannot yet be built with decorators:
 * The asset model:  Defines the asset types (usually ARM resources) in the extension
 * Extension definition: A very small amount of PDL that provides general metadata about the extension
 
-<a name="typescript-decorators-building-a-hello-world-template-blade-using-decorators"></a>
+<a name="overview-building-a-hello-world-template-blade-using-decorators"></a>
 ### Building a hello world template blade using decorators
 
 In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to Dogfood copies of samples are included as appropriate. 
@@ -185,7 +183,7 @@ When the project is built, the compiler will also produce an auto generated blad
 Each time an additional decorator is added, it should be incorporated into the context declaration as done here. 
 
 
-<a name="typescript-decorators-building-a-menu-blade-using-decorators"></a>
+<a name="overview-building-a-menu-blade-using-decorators"></a>
 ### Building a menu blade using decorators
 
 The following is an example of a menu blade built using decorators.  It uses the `@MenuBlade` decorator.  This decorator puts two constraints on the type.
@@ -285,7 +283,7 @@ module Main {
 ```
 
 
-<a name="typescript-decorators-type-metadata"></a>
+<a name="overview-type-metadata"></a>
 ### Type metadata
 <!-- TODO:  Move this back to the TypeScript  document -->
 ***Q: When do I need to worry about type metadata for my EditScope?***
@@ -295,9 +293,9 @@ SOLUTION: For many of the most common, simple Form scenarios, there is no need t
 For more information about type metadata, see [portalfx-data-typemetadata.md](portalfx-data-typemetadata.md).
 
  For EditScope and Forms, extensions supply [type metadata] for the following scenarios: 
-<a name="typescript-decorators-type-metadata-editable-grid"></a>
+<a name="overview-type-metadata-editable-grid"></a>
 #### Editable grid
-<a name="typescript-decorators-type-metadata-entity-type"></a>
+<a name="overview-type-metadata-entity-type"></a>
 #### Entity-type
 
 * **Editable grid** - Today's editable grid was developed to work exclusively with EditScope 'entity' arrays. An EditScope 'entity' array is one where created/updated/deleted array items are tracked individually by EditScope. To grant this special treatment to an array in the EditScope/Form model, supply type metadata for the type of the array items (for the `T` in `KnockoutObservableArray<T>`). The type is marked as an "entity type" and, the property/properties that constitute the entity's 'id' are specified in the following examples. 
@@ -344,7 +342,7 @@ public class Person
     
 ```
   
-<a name="typescript-decorators-type-metadata-track-edits"></a>
+<a name="overview-type-metadata-track-edits"></a>
 #### Track edits
 
 * **Opting out of edit tracking** - There are Form scenarios where some properties on the EditScope/Form model are not meant for editing but are - possibly - for presentation only. In this situation, the extension can instruct EditScope to *not track* user edits for such EditScope/Form model properties, like so:
@@ -379,7 +377,7 @@ To either of these, extensions pass the type name used when registering the type
   
 
   
-<a name="typescript-decorators-type-metadata-loading-indicators"></a>
+<a name="overview-type-metadata-loading-indicators"></a>
 #### Loading indicators
 
 Loading indicators should be consistently applied across all blades and parts of the extension. For no-PDL, this is demonstrated in the sample located at  [https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).  The steps for TypeScript and PDL are as follows.
@@ -423,168 +421,3 @@ public onInputsSet(inputs: MyPartInputs): Promise {
 
 **NOTE**: In this discussion, `onInputsSet` is the PDL equivalent of `onInitialize`.
 
-
-
-
-
-
-<!--gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-typescript.md"}
--->
-
-
-<a name="frequently-asked-questions"></a>
-## Frequently asked questions
-
-<!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
-
-<a name="frequently-asked-questions-how-do-i-know-what-properties-methods-to-add-to-my-blade-or-part-class"></a>
-### How do I know what properties/methods to add to my Blade or Part class?
-
-***How do I know what properties/methods to add to my Blade or Part class?***
-
-I'm used to my **TypeScript** class inheriting an interface.
-
-SOLUTION: The short answer here is that:
-- Yes, interface types exist for every **TypeScript** decorator. For every decorator (@TemplateBlade.Decorator, for instance), there is a corresponding interface type that applies to the Blade/Part class (for instance, TemplateBlade.Contract).  
-
-- No, it is **not necessary** to follow this extra step of having your Blade/Part class inherit an interface.  
-
-***To the larger question now, if it's unnecessary to inherit the 'Contract' interface in my Blade/Part class, how is this workable in practice?  How do I know what properties to add to my class and what their typing should be?***
-
-SOLUTION: Here, the 'Contract' interface is applied *implicitly* as part of the implementation of the Blade/Part **TypeScript** decorator.  
-
-So, once you've applied a **TypeScript** decorator to your Blade/Part class, **TypeScript** **Intellisense** and compiler errors should inform you what is missing from your Blade/Part class.  By hovering the mouse over **Intellisense** errors in your IDE, you can act on each of the **TypeScript** errors to:
-- add a missing property  
-- determine the property's type or the return type of your added method.
-
-If you iteratively refine your class based on **Intellisense** errors, once these are gone, you should be able to compile and run your new Blade / Part.  This technique is demonstrated in the intro located at [https://aka.ms/portalfx/typescriptdecorators](https://aka.ms/portalfx/typescriptdecorators).
-
-* * * 
-
-<a name="frequently-asked-questions-how-do-i-know-what-types-to-return-from-the-oninitialize-method"></a>
-### How do I know what types to return from the <code>onInitialize</code> method?
-
-SOLUTION: If a 'return' statement is not used in the  `onInitialize` method, or any other method required by the  choice of **TypeScript** decorator, **Intellisense** errors will reflect the expected return type for the method:
-
-```
-public onInitialize() {
-    // No return statement
-}
-...
-```
-
-<a name="frequently-asked-questions-why-can-t-i-return-my-data-loading-promise-directly-from-oninitialize"></a>
-### Why can&#39;t I return my data-loading Promise directly from &#39;onInitialize&#39;?
-
-SOLUTION: Extensions will see compile errors when then attempt to return from `onInitialize` the result of a call to `queryView.fetch(...)`, `entityView.fetch(...)`, `Base.Net.ajax2(...)`, as in the following code.
-
-```
-public onInitialize() {
-    public { container, model, parameters } = this.context;
-    public view = model.websites.createView(container);
-
-    // Returns MsPortalFx.Base.PromiseV and not the required Q.Promise<any>.
-    return view.fetch(parameters.websiteId).then(...);
-}
-```
-
-Here, our FX data-loading APIs return an old `MsPortalFx.Base.PromiseV` type that is not compatible with the `Q.Promise` type expected for `onInitialize`.  To workaround this shortcoming of the FX data-loading APIs, until these APIs are revised you'll do:  
-```
-    ...
-    return Q(view.fetch(...)).then(...);
-    ...
-```
-This application of `Q(...)` simply coerces your data-loading Promise into the return type expected for `onInitialize`.  
-
-* * * 
-
-<a name="frequently-asked-questions-why-can-t-i-return-my-data-loading-promise-directly-from-oninitialize-i-don-t-understand-the-typescript-compilation-errors-that-is-occuring-around-my-typescript-blade-part-and-there-are-lots-of-them-what-should-i-do"></a>
-#### I don&#39;t understand the <strong>TypeScript</strong> compilation errors that is occuring around my TypeScript Blade/Part.  And there are lots of them.  What should I do?
-
-SOLUTION: Typically, around  **TypeScript** Blades and Parts (and even PDL-defined Blades/Parts), only the first 1-5 compilation errors are easily understandable and actionable.  
-
-Here, the best practice is to:  
-- **Focus on** errors in your Blade/Part **TypeScript** (and in PDL for old Blades/Parts)
-- **Ignore** errors in **TypeScript** files in your extension's '_generated' directory
-- Until compile errors in your Blade/Part named 'Foo' are fixed, **ignore** errors around uses of the corresponding, code-generated FooBladeReference/FooPartReference in `openBlade(...)` and `PartPinner.pin(...)`.
-    - This is because errors in the 'Foo' Blade/Part will cause *no code* to be generated for 'Foo'.  
-
-Some snags to be aware of:
-
-* Read all lines of multi-line **TypeScript** errors.
-
-    **TypeScript** errors are frequently multi-line.  If you compile from your IDE, often only the first line of each error is shown and the first line is often not useful, as in the following example.
-
-  ```
-  Argument of type 'typeof TestTemplateBlade' is not assignable to parameter of type 'TemplateBladeClass'.
-  Type 'TestTemplateBlade' is not assignable to type 'Contract<any, any>'.
-    Types of property `onInitialize` are incompatible.
-      Type '() => void' is not assignable to type '() => Promise<any>'.
-        Type 'void' is not assignable to type 'Promise<any>'.
-  ```
-
-  Be sure to look at the entire error, focusing on the last lines of the multi-line message.
-
-* Don't suppress compiler warnings.
-
-    Azure compilation of **TypeScript** decorators often generates build *warnings* that are specific and more actionable than **TypeScript** errors.  To easily understand warnings/errors and turn these into code fixes, be sure to read *all compiler warnings*, which some IDEs / command-line builds are configured to suppress.
-
-* * * 
-
-<a name="frequently-asked-questions-how-do-i-add-an-icon-to-my-blade"></a>
-### How do I add an icon to my Blade?
-
-Developers coming from PDL will be used to customizing their Blade's icon like the following example.
-```
-this.icon(MsPortalFx.Base.Images.Logos.MicrosoftSquares());  
-```
-With TypeScript decorators, developers are confused as to why this methodology cannot be used.  The answer is that only Blades associated with a resource/asset can show a Blade icon, by Ibiza UX design.  To make this more obvious at the API level, the only place to associate an icon for a Blade is on `<AssetType>`.
-
-The new methodology to add an icon to a TypeScript Blade is as follows.
-1. Associate the icon with your `<AssetType>`
-```
-<AssetType
-    Name='Carrots'
-    Icon='MsPortalFx.Base.Images.Logos.MicrosoftSquares()'
-    ...
-```
-1. Associate your no-PDL Blade with your AssetType
-```
-import { AssetTypes, AssetTypeNames } from "../_generated/ExtensionDefinition";
-
-@TemplateBlade.Decorator({
-    forAsset: {
-        assetType: AssetTypeNames.customer,
-        assetIdParameter: "carrotId"
-    }
-})
-export class Carrot {
-    ...
-}
-```
-Now, why is this so?  It seems easier to do this in a single-step at the Blade-level. 
-
-* * * 
-
-<a name="frequently-asked-questions-how-do-i-control-the-loading-indicators-for-my-blade-how-is-it-different-from-pdl-blades"></a>
-### How do I control the loading indicators for my Blade?  How is it different from PDL Blades?
-
-Controlling the loading indicator in Blades/Parts, as specified in [portalfx-parts-revealContent.md](portalfx-parts-revealContent.md), is the almost exactly the same for PDL and no-PDL Blades/Parts. .
-
-<a name="frequently-asked-questions-how-do-i-control-the-loading-indicators-for-my-blade-how-is-it-different-from-pdl-blades-when-should-i-use-the-operations-api-to-control-the-blade-part-s-loading-indicator"></a>
-#### When should I use the &#39;operations&#39; API to control the Blade/Part&#39;s loading indicator?
-
-SOLUTION: 
-There are scenarios like 'User clicks "Save" or "Refresh" on my Blade/Part' where the extension wants to show loading indicators at the Blade/Part level.  What's distinct about this scenario is that the Blade/Part has already completed its initialization and, now, the user is interacting with the Blade/Part UI.  This is precisely the kind of scenario for the 'operations' API.  
-For no-PDL Blades/Parts, the 'operations' API is `this.context.container.operations`, and the API's use is described in [portalfx-parts-revealContent.md#displaying-a-loading-indicator-ux](portalfx-parts-revealContent.md#displaying-a-loading-indicator-ux).  There is a sample to consult [here](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).
-
-* * * 
-
-<a name="frequently-asked-questions-how-can-i-save-some-state-for-my-no-pdl-blade"></a>
-### How can I save some state for my no-PDL Blade?
-
-There is a decorator - @TemplateBlade.Configurable.Decorator for example, available on all Blade variations - that adds a `this.context.configuration` API that can be used to load/save Blade "settings".  See a sample [here](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).
-
-**WARNING** - We've recently identified this API as a source of Portal perf problems.  In the near future, the Ibiza team will break this API and replace it with an API that is functionally equivalent (and better performing). 
-
-* * *

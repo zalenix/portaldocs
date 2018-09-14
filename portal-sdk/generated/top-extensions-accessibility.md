@@ -272,6 +272,3 @@ Web semantics
 ### 
 
 * * * 
-
-<!--
-gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-accessibility.md"}

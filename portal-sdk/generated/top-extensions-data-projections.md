@@ -36,7 +36,7 @@ export interface RobotDetails {
 
 ```
 
-The initial implementation of [data projection](portalfx-extensions-glossary-data.md) would resemble the following code.
+The initial implementation of [data projection](top-extensions-glossary.md) would resemble the following code.
 
 ```typescript
 

@@ -172,6 +172,3 @@ TODO - Add an example after the feature is ready (ETA is March or April )
 
 You can ask developer community questions on Stackoverflow with the tag [ibiza-onboarding](https://stackoverflow.microsoft.com/questions/tagged/ibiza-onboarding).
 
-<!--
-gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-onboarding.md"}
--->

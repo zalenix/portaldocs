@@ -2,7 +2,7 @@
 <a name="status-codes-and-error-messages"></a>
 ## Status Codes and Error Messages
 
-Status codes or error messages that are encountered while developing or supporting an extension may be dependent on the type of extension that is being created, or the development phase in which the message is encountered.  Terms that are encountered in the error messages may be defined in the [Glossary](portalfx-extensions-glossary-status-codes.md).
+Status codes or error messages that are encountered while developing or supporting an extension may be dependent on the type of extension that is being created, or the development phase in which the message is encountered.  Terms that are encountered in the error messages may be defined in the [Glossary](top-extensions-glossary.md).
 
 <!-- TODO:  Find at least one status code for each of these conditions. -->
 

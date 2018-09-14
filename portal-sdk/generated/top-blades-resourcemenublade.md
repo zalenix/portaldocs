@@ -375,6 +375,3 @@ SOLUTION:  You can add items by using a `MenuGroupExtension`. `MenuGroupExtensio
 Horizontal scrolling and UI movement was a prime source of negative user feedback. One way of addressing this issue is to refactor the extension so that there are fewer blades on the user's journey. The average journey depth is three or four blades and the average flow is Browse, Resource blade, Settings and then some blade from Settings or Resource menu. In many cases, the fourth blade is displayed off screen and then scrolled into view.  Using a Resource blade reduces the dependency on the settings blade. In some instances, an extension no longer uses a Settings blade, thereby reducing the number of blades on the journey.
 
 * * *
-<!--
-gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-resourcemenu.md"}
--->

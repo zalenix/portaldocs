@@ -61,7 +61,7 @@ public websitesQuery = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModel
 <a name="loading-data-the-invokeapi-method"></a>
 ### The invokeAPI method
 
-The `invokeAPI` method optimizes CORS preflight requests. When [CORS](portalfx-extensions-glossary-data.md) is used to call ARM directly from the extension, the browser actually makes two network calls for every one **AJAX** call in the client code.
+The `invokeAPI` method optimizes CORS preflight requests. When [CORS](top-extensions-glossary.md) is used to call ARM directly from the extension, the browser actually makes two network calls for every one **AJAX** call in the client code.
 
 The `invokeApi` method uses a fixed endpoint and a different type of caching to reduce the number of calls to the server.  Consequently, the extension performance is optimized by using a single URI.
 

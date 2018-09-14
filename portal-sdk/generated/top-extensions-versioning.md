@@ -85,18 +85,3 @@ Each `web.config` that is associated with an extension includes an `AllowedParen
 <add key="Microsoft.Portal.Framework.FrameworkConfiguration.AllowedParentFrame" value="['*']" />
 ```
 
-   
-<!-- required Glossary document. -->
-<!--
-<a name="versioning-for-extensions-glossary"></a>
-## Glossary
-
- This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
-
-| Term            | Meaning |
-| ---             | --- |
-| CDN             | Content Delivery Network   |
-| MEF-export      | |
-| trusted host    | |
-
--->

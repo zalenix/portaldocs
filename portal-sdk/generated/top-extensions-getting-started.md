@@ -107,7 +107,3 @@ This is not possible with PDL-based Commands, but is possible with TypeScript-ba
 The **Toolbar** APIs allow an extension to call `commandBar.setItems([...])` to supply the list of commands at run-time. For more information, see `<dir>\Client\V1\Blades\Toolbar\Toolbar.pdl`, where  `<dir>` is the `SamplesExtension\Extension\` directory, based on where the samples were installed when the developer set up the SDK.
 
 
-
-<!--
-gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-getting-started.md"}
--->

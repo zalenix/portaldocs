@@ -26,7 +26,7 @@ With this system, a team develops a UI extension to plug into and extend the UI 
 <a name="azure-portal-a-composed-web-application-the-portal-shell"></a>
 ### The Portal Shell
 
-The Azure Portal web application is designed to the [single-page application pattern](portalfx-extensions-glossary-architecture.md), where UI is generated via client-side-evaluated JavaScript and dynamic HTML.  The Azure Portal "Shell" is the client-side JavaScript that controls the overall rendering of UI in the browser.  The Shell is responsible for rendering the [chrome](portalfx-extensions-glossary-architecture.md) of the Azure Portal (the navigation menu on the left and bar at the top).  Any team- or service-specific UI is developed in UI extensions as Blades (pages or windows) and Parts (tiles).  Based on user interaction with the Azure Portal UI, the Shell determines which Blades/Parts are to be displayed and it delegates the rendering of these Blades/Parts to the appropriate extension(s).
+The Azure Portal web application is designed to the [single-page application pattern](top-extensions-glossary.md), where UI is generated via client-side-evaluated JavaScript and dynamic HTML.  The Azure Portal "Shell" is the client-side JavaScript that controls the overall rendering of UI in the browser.  The Shell is responsible for rendering the [chrome](top-extensions-glossary.md) of the Azure Portal (the navigation menu on the left and bar at the top).  Any team- or service-specific UI is developed in UI extensions as Blades (pages or windows) and Parts (tiles).  Based on user interaction with the Azure Portal UI, the Shell determines which Blades/Parts are to be displayed and it delegates the rendering of these Blades/Parts to the appropriate extension(s).
 
 ![alt-text](../media/top-extensions-architecture/arch-review.png "Azure Portal Shell")
 
@@ -50,10 +50,10 @@ In 2013, when the Azure Portal was designed, the only browser facility suitable 
 <a name="azure-portal-a-composed-web-application-projecting-blade-and-part-ui"></a>
 ### Projecting Blade and Part UI
 
-UI extensions develop their Blades and Parts following the [MVVM](portalfx-extensions-glossary-architecture.md) pattern.  
+UI extensions develop their Blades and Parts following the [MVVM](top-extensions-glossary.md) pattern.  
 * The "view" is defined as a Blade/Part-specific HTML template.  The HTML template typically arranges uses of FX controls in the Blade/Part content area.
-*  The HTML template and FX controls are bound to a UI-extension-developed [ViewModel](portalfx-extensions-glossary-architecture.md) TypeScript class, which is where the UI extension business logic is isolated from the JavaScript of the larger Portal application and from other UI extensions.
-* The `ViewModel` frequently includes "model" data loaded via AJAX from the cloud, though most often it is loaded from the Azure Resource Manager or from the team's/service's [Resource Provider](portalfx-extensions-glossary-architecture.md).
+*  The HTML template and FX controls are bound to a UI-extension-developed [ViewModel](top-extensions-glossary.md) TypeScript class, which is where the UI extension business logic is isolated from the JavaScript of the larger Portal application and from other UI extensions.
+* The `ViewModel` frequently includes "model" data loaded via AJAX from the cloud, though most often it is loaded from the Azure Resource Manager or from the team's/service's [Resource Provider](top-extensions-glossary.md).
 
 UI extensions develop a Blade or Part to this pattern by developing a TypeScript class adorned with a TypeScript decorator, as in the following code.
 
@@ -84,7 +84,7 @@ Because most UI is dynamic, like Forms that the user updates or like Grids/Lists
 <a name="azure-portal-a-composed-web-application-secure-ui-per-service"></a>
 ### Secure UI per service
 
-The security model for UI extensions builds upon the standard [same-origin policy](portalfx-extensions-glossary-architecture.md) that supported by all browsers and is the basis for today's web applications.  A UI extension's homepage URL is typically located on an origin specific to that UI extension and its resource provider.  This HTML page can only issue HTTPS calls to its origin domain and any origins that allow [COR](portalfx-extensions-glossary-architecture.md) calls from the UI extension's origin.
+The security model for UI extensions builds upon the standard [same-origin policy](top-extensions-glossary.md) that supported by all browsers and is the basis for today's web applications.  A UI extension's homepage URL is typically located on an origin specific to that UI extension and its resource provider.  This HTML page can only issue HTTPS calls to its origin domain and any origins that allow [COR](top-extensions-glossary.md) calls from the UI extension's origin.
 
 In practice, HTTPS calls from UI extensions are made from the client to load "model" data, and the HTTPS calls are typically directed to the following locations.
 
@@ -92,7 +92,7 @@ In practice, HTTPS calls from UI extensions are made from the client to load "mo
 
 * Less common, not recommended -- Using same-origin, to HTTP endpoints that are  extension controllers that are  dedicated to the operation of the UI extension.
 
-In any of these cases, the HTTPS call includes an [AAD](portalfx-extensions-glossary-architecture.md) token that authorizes the UI extension to act on behalf of the user against those Azure resource types that the UI extension supports.  The AAD token is obtained during AAD single-sign-on authentication that precedes the loading of the Portal Shell.  When a UI extension is loaded into its client-side IFrame and asked to render a Blade or a Part, the UI extension typically calls an FX API with which it can acquire an AAD token that is scoped to that UI extension.  To load "model" data, the UI extension then issues HTTP calls carrying this token to ARM, to its RP or to its extension controller.
+In any of these cases, the HTTPS call includes an [AAD](top-extensions-glossary.md) token that authorizes the UI extension to act on behalf of the user against those Azure resource types that the UI extension supports.  The AAD token is obtained during AAD single-sign-on authentication that precedes the loading of the Portal Shell.  When a UI extension is loaded into its client-side IFrame and asked to render a Blade or a Part, the UI extension typically calls an FX API with which it can acquire an AAD token that is scoped to that UI extension.  To load "model" data, the UI extension then issues HTTP calls carrying this token to ARM, to its RP or to its extension controller.
 
 <a name="azure-portal-a-composed-web-application-linking-and-navigating-within-the-portal"></a>
 ### Linking and navigating within the Portal
@@ -133,7 +133,7 @@ public onPinButtonClick() {
 
 These APIs and associated code-generation are critical to integrating UI and UX across Azure services.  The same `BladeReference` and `PartReference` classes useful to extension "A" for navigating among its Blades/Parts can be employed by extension "B" to link to Blades from "A".  All that is necessary is for extension "A" to redistribute a code package containing the following.
 
-* A [PDE](portalfx-extensions-glossary-architecture.md) file emitted as part of extension "A"'s build
+* A [PDE](top-extensions-glossary.md) file emitted as part of extension "A"'s build
 
 * A TypeScript definition file for those API types used in the construction of extension "A"'s exported Blades and Parts
 
@@ -192,5 +192,5 @@ Second, for a given UI extension / ARM resource type to be represented in the st
 
 
 <!--
-gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-architecture.md"}
+gitdown": "include-file", "file": "../templates/top-extensions-glossary.md"}
 -->

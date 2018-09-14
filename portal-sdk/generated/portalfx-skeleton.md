@@ -37,7 +37,7 @@ This is the only document within the topic that contains an H1-level header.
 
 Subtopics that are specific to a topic are self-naming, in one or two words. The last node of the file is the name of the subtopic, and is used to sort subtopics within the topic. Some filenames are `portalfx-telemetry-alerting-overview.md`, `portalfx-telemetry-alerting-performance.md` or `portalfx-style-guide-utility-classes.md`. 
 
-1. Best Practices, FAQ's, and glossaries use a slightly different naming convention, in that they are named `portalfx-extensions-bp-<major-area>`,  `portalfx-extensions-faq-<major-area>`, `portalfx-extensions-glossary-<major-area>`, respectively.
+1. Best Practices, FAQ's, and glossaries use a slightly different naming convention, in that they are named `portalfx-extensions-bp-<major-area>`,  `portalfx-extensions-faq-<major-area>`,  respectively.
 
 1. Subtopic files are contained within the topic document in the following order.
 
@@ -49,7 +49,6 @@ Subtopics that are specific to a topic are self-naming, in one or two words. The
     | `portalfx-<major-area>-<topic>-procedure.md`   | Optional.  Checklist document. Used when there are specific steps to follow, or when there are specific tasks whose completion must be verified. May be included in the topic document instead of remaining a separate file. |
     | `portalfx-extensions-bp-<topic>.md`            | Optional. Best Practices for the topic. |
     | `portalfx-extensions-faq-<topic>.md`           | Optional. Frequently Asked Questions for the topic. |
-    | `portalfx-extensions-glossary-<topic>.md`      | Required. Glossary for the topic. |
 
 1. Sections that have been written for other documents can be linked to within the subtopics using normal gitHub linking procedures. This is best practice, and is preferred over copying and modifying paragraphs from file to file. If the section is a separate file, the link would resemble the following: `[portalfx-<major-area>-<topic>-<subtopic1>.md](portalfx-<major-area>-<topic>-<subtopic1>.md)`. Otherwise, if the section is a paragraph within a separate topic, the link would resemble the following `[portalfx-<major-area>-<topic>.md#<subtopic1>](portalfx-<major-area>-<topic>.md#<subtopic1>)`.
 
@@ -92,13 +91,13 @@ For the most part, procedures do not include phrases like "as specified in. . ."
 
 This process validates that [state purpose of checklist]. Images of the procedure are optional.  Images  should be included in the document above the procedure that they specify, as in the following diagram.
 
-   ![alt-text](../media/portalfx-partner-request-process/partner-request-flow.png "New Project Dialog")
+   ![alt-text](../media/top-extensions-partner-request/partner-request-flow.png "New Project Dialog")
 
 1. Step 1 of procedure
 
    If possible, make screenshots that include what the screen should look like, or the changes that the developer should make, as in the following image.
     
-    ![alt-text](../media/portalfx-overview/new-project-template.png "Step Validation")
+    ![alt-text](../media//portalfx-extensions-create-first-extension/new-project-template.png "Step Validation")
 
 1. Step 2 of procedure
 
@@ -143,7 +142,7 @@ The following is a sample procedure. It specifies how to author a document in th
 
 This document contains best practices that are associated with the topic whose name is a node in the filename. Best practices are procedures other than the typical guidance for the topic or subtopic, and therefore were not mentioned in the overall discussion of the topic or subtopic. They also were not included in a procedure or checklist document for the topic. If there are no best practices for a topic, this optional document can be added when appropriate.
 
-Best practices often result in improved performance, smaller software footprint, increased reusability and maintainability, or similar factors. Some practices are documented in industry practice, like the ***Testing Computer Software*** textbook that is located at [https://www.researchgate.net/publication/220689439_Testing_computer_software_2_ed](https://www.researchgate.net/publication/220689439_Testing_computer_software_2_ed). Although [Stackoverflow](https://stackoverflow.microsoft.com) contains good ideas, it is a forum centered more around answering questions than providing best practices.
+Best practices often result in improved performance, smaller software footprint, increased reusability and maintainability, or similar factors. Practices that are documented in industry practice are probably not included here. Although [Stackoverflow](https://stackoverflow.microsoft.com) contains good ideas, it is a forum centered more around answering questions than providing best practices.
 
 In the discussion, mention why these practices are considered best practices, or are good practice for the industry or within software development.  If some of these practices are results of usability studies, a sentence like the following is appropriate.
 
@@ -244,44 +243,3 @@ You can ask questions on Stackoverflow with the tag [ibiza](https://stackoverflo
 The Stackoverflow FAQ item should be included in every topic that contains an FAQ subtopic. For a list of Stackoverflow tags, see [portalfx-stackoverflow.md](portalfx-stackoverflow.md).
 
 * * *
-   
-<!-- required Glossary document. -->
-<!-- gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-<major-area>.md"  -->
-   ## Skeleton Glossary 
-
-<!-- ## <major-area> <topic> 
-
-<!-- topic name is a level 2 at the beginning of the doc.  Including the major area in the name is optional, as in the preceding level 2 header. -->
-
-<!--  The Glossary is a required document.  -->
-
-This document contains all terms that are in the topic, with the following exceptions.
-* Standard English Language
-* Standard Computing terms, like the ones found in  [https://techterms.com/](https://techterms.com/). 
-* Common acronyms, like the ones found in [https://www.acronymfinder.com](https://www.acronymfinder.com).
-
-The document may or may not contain definitions for terms that are located in the following Microsoft glossaries.
-| Title  | Location |
-| ------ | -------- |
-| Microsoft Office Server Master Glossary | [http://download.microsoft.com/download/1/A/9/1A96F918-793B-4A55-8B36-84113F275ADD/[MS-OFSGLOS].pdf](http://download.microsoft.com/download/1/A/9/1A96F918-793B-4A55-8B36-84113F275ADD/[MS-OFSGLOS].pdf) |
-| Microsoft Terminology Collection | [https://www.microsoft.com/en-us/language/Terminology](https://www.microsoft.com/en-us/language/Terminology) |
-| Windows Desktop Glossary | [https://msdn.microsoft.com/en-us/library/windows/desktop/dn688965.aspx](https://msdn.microsoft.com/en-us/library/windows/desktop/dn688965.aspx) | 
-| Windows Protocols Master Glossary | [https://msdn.microsoft.com/en-us/library/cc232129.aspx](https://msdn.microsoft.com/en-us/library/cc232129.aspx) |
-
-| Term           | Meaning |
-| -------------- | -------- |
-| above the fold | Initially displayed on the Web page without scrolling. |
-| best practice  | A technique or methodology that, through experience and research, has proven to reliably lead to a desired result. |
-| checklist      | A step-by-step set of instructions on how to accomplish a task. |
-| FAQ            | Frequently Asked Questions |
-| FYI            | For Your Information 
-| gitHub         | A Web-based hosting service for version control or content management. |
-| major area     | 
-| overarching    | comprehensive; all-embracing. For example, the overarching skeleton document contains everything that has to do with Azure skeleton topics. Its name is used in skeleton subtopic files.  |
-| procedure      | See checklist. |
-| process validation | A procedure that ensures that the process has completed successfully, within expected levels of granularity. |
-| SAS | Shared Access Signature |
-| separator  |
-| topic |
-| subtopic |
-| 

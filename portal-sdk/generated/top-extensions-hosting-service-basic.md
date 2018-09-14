@@ -18,7 +18,7 @@ More than 50% of the extensions have been migrated from legacy DIY deployment to
     
     * Use safe deployment practices
 
-    * [Geodistributes](portalfx-extensions-glossary-hosting-service.md) the extension to all data centers
+    * [Geodistributes](top-extensions-glossary.md) the extension to all data centers
 
     * CDN configured
 
@@ -34,7 +34,7 @@ More than 50% of the extensions have been migrated from legacy DIY deployment to
 
 1. Reduced COGS
 
-    *  No hosting [COGS](portalfx-extensions-glossary-hosting-service.md)
+    *  No hosting [COGS](top-extensions-glossary.md)
 
     *  Reduced development costs allow teams to focus on building the domain specific portions of the extension, instead of allocating resources to configuring deployment
 
@@ -43,7 +43,7 @@ More than 50% of the extensions have been migrated from legacy DIY deployment to
 ## Hosting services and server-side code
 
 Extensions that have server-side code or controllers can use hosting services.  In fact, you can supplement a legacy DIY deployment infrastructure to use a hosting service, and deploy extensions in a way that complies with safe-deployment practices. 
-1.	In most cases, UI controllers or [MVC](portalfx-extensions-glossary-hosting-service.md) controllers are legacy, and it is easy to obsolete these controllers. One advantage of replacing obsolete UI controllers is that all client applications, such as **Ibiza** and **PowerShell**, will have a consistent experience. You can replace UI controllers under the following conditions.
+1.	In most cases, UI controllers or [MVC](top-extensions-glossary.md) controllers are legacy, and it is easy to obsolete these controllers. One advantage of replacing obsolete UI controllers is that all client applications, such as **Ibiza** and **PowerShell**, will have a consistent experience. You can replace UI controllers under the following conditions.
     *	If the functionality is already available from another service
     *	By hosting server-side code within an existing RP
 1.	If replacing UI controllers is not a short-term task, the extension can be deployed through a hosting service by modifying the relative controller URLs.  They are located in  client code, and can be changed to specify absolute URLS. 

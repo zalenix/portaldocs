@@ -27,7 +27,7 @@ The **Knockout** binding for all controls is the `pcControl` binding, as in the 
 <div data-bind='pcControl: myControl'></div>
 ```
 
-Taken together, creating a blade as specified in [top-blades-template.md](top-blades-template.md) that contains only a textbox would look something like the following.
+Taken together, creating a blade as specified in [top-blades-templateblade.md](top-blades-templateblade.md) that contains only a textbox would look something like the following.
 <!-- TODO: Find a sample for this -->
 ```cs
 import * as TemplateBlade from "Fx/Composition/TemplateBlade";
@@ -183,7 +183,3 @@ SOLUTION: Localization is done at build times, so none of the string inputs are 
 
 * * *
 
-
-<--   
-gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-controls.md"}
--->

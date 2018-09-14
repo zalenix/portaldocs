@@ -20,6 +20,3 @@ We also recommend that extensions deploy broadly across all regions in an active
 
 For more information about using Azure CDN with extensions, see [portalfx-cdn.md#configuring-your-extension](portalfx-cdn.md#configuring-your-extension).
 
-<!--
-gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-custom-deployment.md"}
--->

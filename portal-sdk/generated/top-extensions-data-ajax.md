@@ -8,7 +8,7 @@ For most services, developers will make Ajax calls from the client to the server
 
 <!-- TODO:  Determine whether LoaderSampleData.ts is still used or has been replaced.  It is no longer in <SDK>\\Extensions\SamplesExtension\Extension.  The closest match is  Client\V1\Data\SupplyData\Templates\SupplyDataInstructions.html -->
 
-When bootstrapping extensions, the portal will send a [JWT token](portalfx-extensions-glossary-data.md) to the extension. That same token can be included in the HTTP headers of a request to ARM, to provide end-to-end authentication. To make those authenticated calls, the Portal includes an API which performs Ajax requests, similar to the jQuery `$.ajax()` library named `MsPortalFx.Base.Net.ajax()`. If the extension uses a `DataCache` object, this class is used by default. However, it can also be used independently, as in the example located at `<dir>\Client\Data\Loader\LoaderSampleData.ts`.
+When bootstrapping extensions, the portal will send a [JWT token](top-extensions-glossary.md) to the extension. That same token can be included in the HTTP headers of a request to ARM, to provide end-to-end authentication. To make those authenticated calls, the Portal includes an API which performs Ajax requests, similar to the jQuery `$.ajax()` library named `MsPortalFx.Base.Net.ajax()`. If the extension uses a `DataCache` object, this class is used by default. However, it can also be used independently, as in the example located at `<dir>\Client\Data\Loader\LoaderSampleData.ts`.
 
  This code is also included in the following example.
 

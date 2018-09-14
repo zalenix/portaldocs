@@ -97,6 +97,3 @@ It depends on the scenario that drives the UX. If the form will capture some dat
   
 * * * 
 
-<!--
-gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-forms.md"}
--->

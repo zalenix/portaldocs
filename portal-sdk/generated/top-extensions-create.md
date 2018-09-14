@@ -709,7 +709,3 @@ Both of these will load your template automatically and open the list of paramet
 * Add `label` metadata to customize the display text for each field
 * Add `description` metadata to provide additional information about what the parameter is for, but only if it adds contextual values
 
-
-<!--
-gitdown": "include-file", "file": "../templates/portalfx-extensions-glossary-create.md"}
--->

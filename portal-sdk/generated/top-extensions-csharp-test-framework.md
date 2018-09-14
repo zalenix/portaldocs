@@ -1050,7 +1050,7 @@ As you write UI based test cases using the Portal Test Framework it is recommend
 
 * Use the WaitUntil method 
 
-    The `WaitUntil` method should be used when retrying actions or waiting for conditions. It can also be used to retry an action, because it takes a lambda function which could be an action, followed by a verification step.  The `WaitUntil` method will return when a "truthy" value is returned, i.e., the value is neither false nor null.  This is useful if the specific action does not behave consistently.  Remember to use only actions that are [idempotent](portalfx-extensions-glossary-testing.md) when using the  `WaitUntil` method in this pattern.
+    The `WaitUntil` method should be used when retrying actions or waiting for conditions. It can also be used to retry an action, because it takes a lambda function which could be an action, followed by a verification step.  The `WaitUntil` method will return when a "truthy" value is returned, i.e., the value is neither false nor null.  This is useful if the specific action does not behave consistently.  Remember to use only actions that are [idempotent](top-extensions-glossary.md) when using the  `WaitUntil` method in this pattern.
 
 * Use WaitUntil instead of Assert
 
@@ -1111,20 +1111,6 @@ As you write UI based test cases using the Portal Test Framework it is recommend
     grid.FindElements(By.CssSelector("[aria-selected=true]"))
     ```
 
-
-
-<a name="c-portal-test-framework-glossary"></a>
-## Glossary
-   
-This section contains a glossary of terms and acronyms that are used in this document. For common computing terms, see [https://techterms.com/](https://techterms.com/). For common acronyms, see [https://www.acronymfinder.com](https://www.acronymfinder.com).
- 
-| Term                         | Meaning |
-| ---                          | --- |
-| blob                         | Binary large object. |
-| idempotent         |  An operation whose result does not change after the initial application. For example, if the client needs to retry a request due to intermittent network issues, the same value will be sent to the server.  This allows the server to ignore the retry if it has already been processed. Even if the request is ignored, the same response will be returned if the client needs the values in the response. |
-| query string |  `uri` used for accessing the Azure Portal |
-| sideloading  | Loading an extension for a specific user session from any source other than the URI that is registered in the Portal.  The process of transferring data between two local devices, or between the development platform and the local host. Also side load, side-load. |   
-| untrusted extension | An extension that is not accompanied by an SSL certificate. |
 
 
 
