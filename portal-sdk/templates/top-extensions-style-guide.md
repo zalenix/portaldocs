@@ -429,7 +429,7 @@ The Portal comes with a set of SVG icons that are available for use with blades,
 
 #### Icon library
 
-All icons shipped natively with the Portal are available in the SDK, and they are located at [icon](http://localhost:55555/Portal#blade/SamplesExtension/SDKMenuBlade/iconsTheming).
+All icons shipped natively with the Portal are available in the SDK, and they are located at [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/icons](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/icons).
 
 ## Theming 
 
