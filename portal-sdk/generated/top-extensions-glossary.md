@@ -11,6 +11,7 @@
 * Common acronyms, like the ones found in [https://www.acronymfinder.com](https://www.acronymfinder.com).
 
 The Azure glossary  may or may not contain definitions for terms that are located in the following Microsoft glossaries.
+
 | Title  | Location |
 | ------ | -------- |
 | Microsoft Office Server Master Glossary | [http://download.microsoft.com/download/1/A/9/1A96F918-793B-4A55-8B36-84113F275ADD/[MS-OFSGLOS].pdf](http://download.microsoft.com/download/1/A/9/1A96F918-793B-4A55-8B36-84113F275ADD/[MS-OFSGLOS].pdf) |
@@ -21,13 +22,12 @@ The Azure glossary  may or may not contain definitions for terms that are locate
 
 The terms are in alphabetical order.
 
-| Letter      | Letter  | Letter  | Letter        | Letter      | Letter      | Letter          | Letter  |
-| ----------- | ------- | ------- | ------------- | ----------- | ----------- | --------------- | ------- |
-| [Dot](#dot) | [A](#a) | [B](#b) | [C](#c)       | [D](#d)     | [E](#e)     | [F](#f)         | [G](#g) |
-| [H](#h)     | [I](#i) | [J](#j) | [K](#k)       | [L](#l)     | [M](#m)     | [N](#n)         | [O](#o) |
-| [P](#p)     | [Q](#q) | [R](#r) | [S](#s)       | [T](#t)     | [U](#u)     | [V](#v)         | [W](#w) |
-| [X](#x)     | [Y](#y) | [Z](#z) | [Zero](#zero) | [One](#1) | [Two](#2) | [Three](#3) | [Four](#4) | 
-| [Five](#5) | [Six](#6) | [Seven](#7) | [Eight](#8) | [Nine](#9) | | | | 
+| Letter      | Letter  | Letter  | Letter        | Letter    | Letter    | Letter      | Letter     | Letter     | Letter    | Letter      | Letter      |
+| ----------- | ------- | ------- | ------------- | --------- | --------- | ----------- | ---------- | ---------- | --------- | ----------- | ----------- |
+| [Dot](#dot) | [A](#a) | [B](#b) | [C](#c)       | [D](#d)   | [E](#e)   | [F](#f)     | [G](#g)    | [H](#h)    | [I](#i)   | [J](#j)     | [K](#k)     |
+| [L](#l)     | [M](#m) | [N](#n) | [O](#o)       | [P](#p)   | [Q](#q)   | [R](#r)     | [S](#s)    | [T](#t)    | [U](#u)   | [V](#v)     | [W](#w)     |
+| [X](#x)     | [Y](#y) | [Z](#z) | [Zero](#zero) | [One](#1) | [Two](#2) | [Three](#3) | [Four](#4) | [Five](#5) | [Six](#6) | [Seven](#7) | [Eight](#8) | 
+| [Nine](#9)  |         |         |               |           |           |             |            |            |           |             |             | 
 
 <a name="azure-portal-glossary-dot"></a>
 ## Dot
