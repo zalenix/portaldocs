@@ -252,7 +252,7 @@ If you are a first-party developer, you may have a requirement to write logs to 
 
 1. Make sure that the logs appear in ETW, as specified in [#logging-to-etw](#logging-to-etw).
 
-1. Onboard to MDS by following the instructions in the  Wiki located at [http://aka.ms/portalfx/jarvis](http:/aka.ms/portalfx/jarvis).
+1. Onboard to MDS by following the instructions in the  Wiki located at [https://jarvis-west.dc.ad.msft.net/?page=documents&section=1363da01-b6ed-43d4-970e-f89b011d591f&id=f1128883-10e4-472e-a59c-6be8f77f832c#/](https://jarvis-west.dc.ad.msft.net/?page=documents&section=1363da01-b6ed-43d4-970e-f89b011d591f&id=f1128883-10e4-472e-a59c-6be8f77f832c#/).
 
 1. Once you have onboarded to MDS, follow their steps to configure and deploy the Monitoring Agent, as specified in [https://jarvis-west.dc.ad.msft.net/?page=documents&section=9c95f4eb-8689-4c9f-81bf-82d688e860fd&id=8555740f-8605-4e35-8344-b35098e71f01#/](https://jarvis-west.dc.ad.msft.net/?page=documents&section=9c95f4eb-8689-4c9f-81bf-82d688e860fd&id=8555740f-8605-4e35-8344-b35098e71f01#/).
 
