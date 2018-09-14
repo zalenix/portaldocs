@@ -519,26 +519,26 @@ SOLUTION: Localization is done at build times, so none of the string inputs are 
 <a name="frequently-asked-questions-styling-and-theming-icon-incorrectly-displayed"></a>
 ### Icon incorrectly displayed
 
-***My icon is black!?!***
+***The extension icon is displayed as a dark square. What happened?***
 
 DESCRIPTION:
 
-The extension  probably circumvents the  icon pre-processing which happens at build time. This pre-processing  prepares the icon to pass the  html sanitizer, which may be why it appears to be black.  The pre-procesor also minifies it, and prepares the icon to react to different themes. 
+The extension probably circumvents the build-time icon pre-processing that  prepares the icon to pass the  html sanitizer. This may cause it to display incorrectly. The pre-processor also minifies the icon, and it to display properly using different theme colors.
 
-**NOTE**: The icon may display incorrectly if it is served by using **json**.
+**NOTE**: The icon may still display incorrectly if it is served by using **json**.
 
 SOLUTION: 
 
 Include the icon in your project normally. Build and  look at the generated file.  Find and copy the  fresh sanitized svg markup, and replace it.
+
+For more information, see [top-extensions-style-guide.md#preserve-icon-colors-over-theme-changes](top-extensions-style-guide.md#preserve-icon-colors-over-theme-changes).
 
 * * *
  
 <a name="frequently-asked-questions-styling-and-theming-"></a>
 ### 
 
-SOLUTION:
 
-* * *
 
 <a name="frequently-asked-questions-forms"></a>
 ## Forms
@@ -593,26 +593,6 @@ This typically happens after a few hours of usage, maybe eight to 24 hours based
 
 * * *
 
-<a name="frequently-asked-questions-faqs-for-authentication-enable-local-portal-authentication"></a>
-### Enable local portal authentication
-
-***How is local portal authentication enabled?***
-
-Authentication is not configured in the local Portal by default, which simplifies extension development. Use the following steps to enable authentication.
-
-1. Install Internet Information Services (IIS) by following the instructions located at [http://msdn.microsoft.com/en-us/library/ms181052%28v=vs.80%29.aspx] (http://msdn.microsoft.com/en-us/library/ms181052%28v=vs.80%29.aspx) Do not use **IIS Express**.
-
-1. Install the URL Rewrite module for IIS that is located at [http://www.iis.net/downloads/microsoft/url-rewrite](http://www.iis.net/downloads/microsoft/url-rewrite), which  enables Web administrators to create rules for implementing memorable URLs.
-
-1. Install the the most current version of the Azure SDK that is available from [/portal-sdk/generated/downloads.md](/portal-sdk/generated/downloads.md). Other relevant downloads are available at [http://www.windowsazure.com/en-us/downloads](http://www.windowsazure.com/en-us/downloads).
-
-1. Create a new IIS site that can be accessed at [http://onestb.cloudapp.net/](http://onestb.cloudapp.net/). This site is located in the following folder: `%programfiles(x86)%\Microsoft SDKs\PortalSDK\StbPortal` and is configured to use the CURRENT test environment, which includes AAD-PPE and MSA-PROD.  This site is created by executing the `%programfiles(x86)%\Microsoft SDKs\PortalSDK\Tools\Setup-OneCloud.cmd` script. To change environments to either NEXT or DOGFOOD, update the `web.config`` files for the Portal, Hubs extension, and the Billing extension. Each extension has environment configuration at the top to simplify switching environments.
-
-**NOTE:** The `http://onestb.cloudapp.net/` URL is configured within AAD and cannot be changed. A new hosts file entry was added to support loopback.
-<!-- TODO:  Determine whether this still works, because onestb has been deprecated. If it still works, what site does it create?  -->
-
-* * *
-
 <!--
 <a name="frequently-asked-questions-other-ui-concepts"></a>
 ## Other UI concepts
@@ -662,11 +642,11 @@ Understanding which extension configuration to modify is located at [portalfx-ex
 1. Set the current frame dropdown to that of your extension.  If it's not obvious, for example, if the extension is running in a web worker, select one of the values in the dropdown and run MsPortalFx.getEnvironmentValue("`<extensionName>`") to determine the context.
 1. In the console type `fx.environment.version` and click enter to see the version of the extension on the client, as in the following image.
 
-    ![alt-text](../media/portalfx-debugging/select-extension-iframe.png "Select extension iframe")
+    ![alt-text](../media/top-extensions-debugging/select-extension-iframe.png "Select extension iframe")
 
 1. In addition, any requests that are made to the extension, including **Ajax** calls, should also return the version on the server in the response, as in the following image.
 
-    ![alt-text](../media/portalfx-debugging/response-headers-show-version.png "Response Headers from extension show version")
+    ![alt-text](../media/top-extensions-debugging/response-headers-show-version.png "Response Headers from extension show version")
 
   **NOTE**: There  can be a difference in the `fx.environment.version` on the client and the version in the `x-ms-version` returned from the server.  This can occur when the user starts a session and the extension is updated/deployed while the session is still active.
 
@@ -711,7 +691,28 @@ You can ask questions on Stackoverflow with the tag [ibiza](https://stackoverflo
 <a name="frequently-asked-questions-frequently-asked-questions"></a>
 ## Frequently asked questions
 
-<a name="frequently-asked-questions-frequently-asked-questions-extension-scores-are-above-the-bar"></a>
+* [Telemetry](#telemetry)
+
+* [Alerting](#alerting)
+
+* [Performance](#performance)
+
+* [Reliability](#reliability)
+
+* [Create](#create)
+
+* * *
+
+<a name="frequently-asked-questions-telemetry"></a>
+## Telemetry
+
+<a name="frequently-asked-questions-alerting"></a>
+## Alerting
+
+<a name="frequently-asked-questions-performance"></a>
+## Performance
+
+<a name="frequently-asked-questions-performance-extension-scores-are-above-the-bar"></a>
 ### Extension scores are above the bar
 
 ***How can I refactor my code to improve performance?***
@@ -735,7 +736,7 @@ SOLUTION:
 1. Decrease Blade 'Revealed' scores.
 
     * Optimize the quantity and quality of parts on the blade.
-        * If there is only one part, or if the part is not a `<TemplateBlade>`, then migrate the part to use the  no-pdl template as specified in  [top-blades-template.md](top-blades-template.md).
+        * If there is only one part, or if the part is not a `<TemplateBlade>`, then migrate the part to use the  no-pdl template as specified in  [top-blades-templateblade.md](top-blades-templateblade.md).
         * If there are more than three parts, consider refactoring or removing some of them so that fewer parts need to be displayed.
     * Optimize the Blades's `constructor` and `OnInputsSet` methods.
     * Remove obsolete bundles, as specified in  [https://aka.ms/portalfx/obsoletebundles](https://aka.ms/portalfx/obsoletebundles).
@@ -747,7 +748,7 @@ SOLUTION:
 
 * * *
 
-<a name="frequently-asked-questions-frequently-asked-questions-my-wxp-score-is-below-the-bar"></a>
+<a name="frequently-asked-questions-performance-my-wxp-score-is-below-the-bar"></a>
 ### My WxP score is below the bar
 
 ***How do I identify which pieces of the extension are not performant?***
@@ -762,7 +763,7 @@ If the extension is drastically under the bar, it is  likely that a high-usage b
 
 * * * 
 
-<a name="frequently-asked-questions-frequently-asked-questions-azure-performance-office-hours"></a>
+<a name="frequently-asked-questions-performance-azure-performance-office-hours"></a>
 ### Azure performance office hours
 
 ***Is there any way I can get further help?***
@@ -800,6 +801,34 @@ You can also reach out to <a href="mailto:sewatson@microsoft.com?subject=<extens
  'InitializeExtensions' is above the bar, what should I do
  -->
 
+<a name="frequently-asked-questions-reliability"></a>
+## Reliability
+
+<a name="frequently-asked-questions-reliability-extension-scores-are-below-the-reliability-bar"></a>
+### Extension scores are below the reliability bar
+
+***What do I do to improve the reliability scores for my extension?***
+
+
+DESCRIPTION:
+
+ When I visited the Extension performance/reliability report that is located at [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf), the scores for my extension were below acceptable levels.
+
+SOLUTION: 
+
+Run the following query.
+
+
+The query will return a summary of all the events which your extension failed to load. Then, address the highest impacting issues, per occurence or number of affected users.
+
+
+
+The query returns a list of errorStates and errors.  For greater details you can use the `any_sessionId` to investigate further.
+
+The errorStates and errors are described in [portalfx-extensions-status-codes.md](portalfx-extensions-status-codes.md).
+
+<a name="frequently-asked-questions-create"></a>
+## Create
 
 
 <a name="frequently-asked-questions-testing"></a>
@@ -1305,7 +1334,7 @@ Rather than initializing the EditScope by programmatically modifying/updating Ed
 
 ***Q: I need to integrate my Form with an EditScope. Where do I get the EditScope?*** 
 
-**NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions and forms be developed without edit scopes, as specified in [top-editscopeless-forms.md](top-editscopeless-forms.md).
+**NOTE**:  EditScopes are becoming obsolete.  It is recommended that extensions and forms be developed without edit scopes, as specified in [top-extensions-controls.md](top-extensions-controls.md).
 
 SOLUTION: Integrate forms with `EditScopes` varies according to the UX design. Developers can choose between using a `ParameterProvider` component or `EditScopeCache` component as follows:
 

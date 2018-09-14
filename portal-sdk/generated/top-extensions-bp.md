@@ -227,8 +227,6 @@ There are a few patterns that assist in improving browser and Portal performance
 
     * Do not aggressively update UI-bound observables. Instead, accumulate the changes and then update the observable. Also, manually throttle or use `.extend({ rateLimit: 250 });` when initializing the observable.
 
-1. Run portalcop to identify and resolve common performance issues, as specified in [portalfx-performance-portalcop.md](portalfx-performance-portalcop.md).
-
 <a name="azure-portal-best-practices-best-practices-coding-best-practices"></a>
 ### Coding best practices
 
@@ -407,7 +405,7 @@ In the preceding example, the `map` function uses a data model that contains onl
 
 The following image uses the selectableGrid `map` function to display only the data that is associated the properties that are required by the grid row.
 
-![alt-text](../media/portalfx-performance/mapping.png "Using knockout projections to map an array")
+![alt-text](../media/top-extensions-performance/mapping.png "Using knockout projections to map an array")
 
 * The data contains 300 items, and the time to load is over 1.5s. 
 * The optimization of mapping to just the two columns in the selectable grid reduces the message size by 2/3. 
@@ -492,7 +490,7 @@ As you write UI based test cases using the Portal Test Framework it is recommend
 
 * Use the WaitUntil method 
 
-    The `WaitUntil` method should be used when retrying actions or waiting for conditions. It can also be used to retry an action, because it takes a lambda function which could be an action, followed by a verification step.  The `WaitUntil` method will return when a "truthy" value is returned, i.e., the value is neither false nor null.  This is useful if the specific action does not behave consistently.  Remember to use only actions that are [idempotent](portalfx-extensions-glossary-testing.md) when using the  `WaitUntil` method in this pattern.
+    The `WaitUntil` method should be used when retrying actions or waiting for conditions. It can also be used to retry an action, because it takes a lambda function which could be an action, followed by a verification step.  The `WaitUntil` method will return when a "truthy" value is returned, i.e., the value is neither false nor null.  This is useful if the specific action does not behave consistently.  Remember to use only actions that are [idempotent](top-extensions-glossary.md) when using the  `WaitUntil` method in this pattern.
 
 * Use WaitUntil instead of Assert
 
