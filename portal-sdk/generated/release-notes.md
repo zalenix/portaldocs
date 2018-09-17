@@ -1,4 +1,4 @@
-# Release Notes since 5/16/2018
+# Release Notes since 5/17/2018
 
 ## 5.0.302.3901
 0 Breaking Changes, 1 Features added and 11 Bugs Fixed
