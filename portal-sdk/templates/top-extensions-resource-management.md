@@ -28,19 +28,17 @@ The resource detail pattern is a full screen experience composed of a r
 
 The following steps describe how to create a resource in Azure.
 
-1. Build an Overview page, which serves as the home page for the resource, as in the following image.
-      
-    ![alt-text](../media/top-extensions-resources/overviewPage.png "Resource detail full screen experience")
+1. Build an Overview page, which serves as the home page for the resource.
 
-1. Enable the right flags to show common items  
+1. Enable the right flags to show common items.
 
-1. Add resource-specific pages in common groups as necessary  
+1. Add resource-specific pages in common groups as necessary.
 
-1. SEO your menu to help the user find items using search 
+1. SEO your menu to help the user find items using search, as specified in .
 
 ## Resource Behavior 
 
-* Overview page 
+* Overview page
  
     The overview page is the landing page for a resource. It provides customers with key information about the feature, thus saving them clicks and time by not always having them drill deeper. 
 
@@ -48,9 +46,13 @@ The following steps describe how to create a resource in Azure.
 	
 	The resource menu surfaces all pages related to that resource. 
 	 
-	The navigation includes pages that are common to all resources throughout the portal. Your resource will get those "for free," but some will require onboarding by the resource provider. [Learn more](top-blades-resourcemenublade.md) 
+	The navigation bar includes pages that are common to all resources throughout the portal. Your resource will get those as a part of your subscription,  but some will require onboarding by the resource provider. [Learn more](top-blades-resourcemenublade.md) 
 	 
-	You can add as many pages to your resource as you like. Refer to the image on the left to make sure each new page is grouped properly. [Learn more](top-blades-resourcemenublade.md#add-menu-items-to-the-menu)
+	You can add as many pages to your resource as you like. Make sure each new page is grouped properly, as in the following image.
+	      
+    ![alt-text](../media/top-extensions-resources/overviewPage.png "Resource detail full screen experience")
+	
+	 [Learn more](top-blades-resourcemenublade.md#add-menu-items-to-the-menu)
 	 
 * Resource pages  
 
@@ -68,7 +70,7 @@ Toolbar commands should open context panes instead of narrow blades to avoid hor
 
 The essentials panel surfaces properties that are common throughout all Azure resources as well as important resource specific properties. User feedback has shown us that our customers rely heavily on the essentials panel for looking up information. Learn more [portalfx-essentials.md](portalfx-essentials.md) and [portalfx-controls-essentials.md](portalfx-controls-essentials.md).
 
-“Content” 
+## Page Content
 
 * *Must* meet the performance bar – the overview page is the most viewed blade for your resource  
 
@@ -103,13 +105,10 @@ The essentials panel surfaces properties that are common throughout all Azure re
 * To display tags in the Essentials Panel, add this line to the options object passed to the essentials control:  includeTags:true 
 
  
-Related Ibiza SDK Documentation 
-This is a list of all related Azure Portal Ibiza SDK documentation referenced in this pattern 
- 
-Name 	SDK link 
- 
- 
- 
+## Related Ibiza SDK Documentation 
+
+This is a list of related Azure Portal Ibiza SDK documentation that is not referenced in this pattern. 
+
 Properties blade 	https://github.com/Azure/portaldocs/blob/f3a637fd8f117901d120f8d96c51892f8954a8bf/portal-sdk/generated/portalfx-blades.md#introduction-to-blade-kinds-properties-blade  
 
  
