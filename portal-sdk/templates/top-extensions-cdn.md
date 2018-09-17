@@ -153,7 +153,7 @@ This is the prefix for the CDN service. The production service should be configu
 
 Neither `http` nor `https` are included in the url, so that the page can request content based on the current protocol. Sometimes, like for a cloud service, this setting is blank in `web.config`, and configured instead in a `cscfg`.
 
-Configuring versioning of your Extension is specified in [top-extensions-versioning.md](top-extensions-versioning.md). 
+You can configure  versioning of  your extension by ensuring that  `IsDevelopmentMode` in the `*.config` file  is set to `false`.
 
 ### Reading the prefix from configuration
 

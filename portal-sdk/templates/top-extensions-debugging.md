@@ -77,7 +77,7 @@ where
 
 **value**:  One of the previously-specified four modes, without the angle brackets.
 
-The `IsDevelopmentMode` setting can be used on the server to alter the default optimization settings for the extension. for more information about the  `IsDevelopmentMode` setting and its alternatives, see [top-extensions-hosting-service-procedures.md#update-isdevelopmentmode-flag](top-extensions-hosting-service-procedures.md#update-isdevelopmentmode-flag).
+The `IsDevelopmentMode` setting can be used on the server to alter the default optimization settings for the extension. for more information about the  `IsDevelopmentMode` setting and its alternatives, see [top-extensions-hosting-service.md#step-by-step-onboarding](top-extensions-hosting-service.md#step-by-step-onboarding).
 
 **NOTE**:  This flag applies to both the Portal and extensions source. If you are testing extensions that are already deployed to production, use the **clientOptimizations** flag instead of the **IsDevelopmentMode** appSetting. If you are working in a development environment instead, use the **IsDevelopmentMode** appSetting instead of the **clientOptimizations** flag to turn off bundling and minification for this extension only. This will speed up Portal load during development and testing.  To change the **IsDevelopmentMode** appSetting, locate the appropriate `web.config` file and change the value of the **IsDevelopmentMode** appSetting to `true`.
 

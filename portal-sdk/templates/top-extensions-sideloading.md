@@ -15,7 +15,7 @@ Sideloading is performed on the local host by using [query strings](#query-strin
 
 For more information about extension and Portal architecture, see [top-extensions-architecture.md](top-extensions-architecture.md).
 
-For more information about testing extensions in the hosting service, see  [top-extensions-hosting-service-scenarios.md#sideloading](top-extensions-hosting-service-scenarios.md#sideloading). 
+For more information about testing extensions in the hosting service, see  [top-extensions-hosting-service.md#friendly-names-and-sideloading](top-extensions-hosting-service.md#friendly-names-and-sideloading). 
 
 * * *
 

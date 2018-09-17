@@ -105,7 +105,7 @@ The email to azurefxg@microsoft.com should confirm the following items.
 1. You understand that programmatic access to these databases potentially allows 'anonymous' access to the uncensored production logs.
 
 1. You are following Microsoft procedures for key storage.
-    Typically, this means storing the certificate in KeyVault and rotating the key at the appropriate frequency, as specified in [top-extensions-hosting-service-advanced.md#keyvault](top-extensions-hosting-service-advanced.md#keyvault).
+    Typically, this means storing the certificate in KeyVault and rotating the key at the appropriate frequency, as specified in [top-extensions-hosting-service.md#configuring-contentunbundler-for-ev2-based-deployments](top-extensions-hosting-service.md#configuring-contentunbundler-for-ev2-based-deployments).
 
 1. Your handling of any data you access this way complies with Microsoft PII & GDPR policies. This means, but is no way limited to:
 
