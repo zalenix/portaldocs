@@ -1,7 +1,7 @@
 <a name="overview"></a>
 ## Overview
 
-**NOTE**: This section of the document assumes that the reader has reviewed the hosting service document located at [top-extensions-hosting-service-procedures.md](top-extensions-hosting-service-procedures.md). 
+**NOTE**: This section of the document assumes that the reader has reviewed the hosting service document located at [top-extensions-hosting-service.md](top-extensions-hosting-service.md). 
 
 **NOTE**: This section is only relevant to extension developers who are using [WARM](top-extensions-glossary.md) and [EV2](top-extensions-glossary.md) for deployment, or who plan to migrate to WARM and EV2 for deployment.
 

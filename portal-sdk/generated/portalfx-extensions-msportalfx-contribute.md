@@ -73,7 +73,7 @@ The following steps are used to test an extension to validate that it is compati
 
     1. Run `setup.cmd` in the portal repo, or run `powershell.exe -ExecutionPolicy Unrestricted -file "%~dp0\Setup-OneCloud.ps1" -DeveloperType Shell %*`. You will use the details of the created service principal in the next steps.  
 
-       **NOTE**: Store the password for the following procedures in **KeyVault**,  the secret store, or some other safe location, as specified in [top-extensions-hosting-service-advanced.md#keyvault](top-extensions-hosting-service-advanced.md#keyvault). It is not retrievable by using the commandlets. 
+       **NOTE**: Store the password for the following procedures in **KeyVault**,  the secret store, or some other safe location, as specified in [top-extensions-hosting-service.md#configuring-contentunbundler-for-ev2-based-deployments](top-extensions-hosting-service.md#configuring-contentunbundler-for-ev2-based-deployments). It is not retrievable by using the commandlets. 
 
     1. Open **test\config.json** and enter appropriate values for the following parameters.
 

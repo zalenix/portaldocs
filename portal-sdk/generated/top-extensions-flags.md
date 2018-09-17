@@ -271,8 +271,8 @@ The **canmodifystamps** flag is used in conjunction with the **extensionName** p
  ```
   * **extensionName**: The name of the extension.
 
-    * **stageName**:  The stage that represents a datacenter, as specified in [top-extensions-hosting-service-scenarios.md#sideloading](top-extensions-hosting-service-scenarios.md#sideloading). Use the name that is deployed to a specific stage, for example, stage1.
-    * **buildNumber**:  The build number as specified in [top-extensions-hosting-service-scenarios.md#sideloading](top-extensions-hosting-service-scenarios.md#sideloading). Replace the dots in the build number with the letter 'd', so that build number 1.0.8.31 is represented by 1d0d8d31.
+    * **stageName**:  The stage that represents a datacenter, as specified in [top-extensions-hosting-service.md#step-6:-upload-safe-deployment-config](top-extensions-hosting-service.md#step-6:-upload-safe-deployment-config). Use the name that is deployed to a specific stage, for example, stage1.
+    * **buildNumber**:  The build number as specified in [top-extensions-hosting-service.md#step-3:-verify-if-your-build-has-a-version-number-set](top-extensions-hosting-service.md#step-3:-verify-if-your-build-has-a-version-number-set). Replace the dots in the build number with the letter 'd', so that build number 1.0.8.31 is represented by 1d0d8d31.
     * **uriFormatPrefix**: The value to use when building the **uriFormat** string. For example, when **uriFormat** is `//{0}.devtest.ext.azure.com`, the query string `https://portal.azure.com?feature.canmodifystamps=true&Microsoft_Azure_DevTestLab=perf` would cause  the `{0}` in the **uriFormat** string to be replaced with `perf` and attempt to load the extension from `https://perf.devtest.ext.azure.com`.
     
 <a name="feature-flags-shell-feature-flags-shell-flags"></a>
