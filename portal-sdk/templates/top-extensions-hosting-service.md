@@ -150,39 +150,43 @@ In order to load your extension in a specific environments you will need to prov
 For now, just add this empty file as embedded resource:
 1. Dogfood: 
         Configuration file name should be df.onecloud.azure-test.net.json. 
-```xml
-<EmbeddedResource Include="Content\Config\df.onecloud.azure-test.net.json" />
-```
+    ```xml
+    <EmbeddedResource Include="Content\Config\df.onecloud.azure-test.net.json" />
+    ```
 
 1. Production: 
         Configuration file name should be portal.azure.com.json. 
-```xml
-<EmbeddedResource Include="Content\Config\portal.azure.com.json" />
-```
+    ```xml
+    <EmbeddedResource Include="Content\Config\portal.azure.com.json" />
+    ```
 	Production environment has 3 stamps
-        1. RC   **rc.portal.azure.com**
-        1. MPAC **ms.portal.azure.com**
-        1. PROD **portal.azure.com**
+
+    1. RC   **rc.portal.azure.com**
+    1. MPAC **ms.portal.azure.com**
+    1. PROD **portal.azure.com**
 
     One single configuration file is enough for all three stamps.
 
 1. Mooncake (portal.azure.cn): 
      Configuration file name should be portal.azure.cn.json
-```xml
-<EmbeddedResource Include="Content\Config\portal.azure.cn.json" />
-```     
+
+    ```xml
+    <EmbeddedResource Include="Content\Config\portal.azure.cn.json" />
+    ```     
 
 1. Blackforest (portal.microsoftazure.de)
      Configration file name should be portal.microsoftazure.de.json
-```xml
-<EmbeddedResource Include="Content\Config\portal.microsoftazure.de.json" />
-```          
+
+    ```xml
+    <EmbeddedResource Include="Content\Config\portal.microsoftazure.de.json" />
+    ```          
 
 1. Fairfax (portal.azure.us)
     Configuration file name should be portal.azure.us.json
-```xml
-<EmbeddedResource Include="Content\Config\portal.azure.us.json" />
-```          
+    
+    ```xml
+    <EmbeddedResource Include="Content\Config\portal.azure.us.json" />
+    ```          
 
 Environment configuration files server 2 purposes:
 
@@ -278,11 +282,14 @@ The file should be called config.json and should have the below structure:
 
 Safe deployment requires extensions should be rolled out to all data centers in a staged manner. Out of the box hosting service provides extension the capability to rollout extension in 5 stages.
 From extension developer's point of view the stages correspond to Datacenters:
+
+```json
     "stage1": "centraluseuap"
     "stage2": "westcentralus"
     "stage3": "southcentralus"
     "stage4": "westus"
     "stage5": "*"
+```
 
 This essentially means that if a user request the extension to be loaded in portal. Then based on the nearest data center portal will decide which version of extension to load.
 For example, based on the above mentioned config.json if a user from Central US region requests to load Microsoft_Azue_MyExtension then hosting service will load the stage 1 version i.e. 1.0.0.5 to the user.
@@ -326,15 +333,173 @@ For example, [https://mybizaextensionprod.blob.core.windows.net/extension](https
 
 Please submit your onboarding request [here](https://aka.ms/extension-hosting-service/onboarding)
 
-Here is the SLA for onboarding
+Here is the SLA for onboarding [top-extensions-svc-lvl-agreements.md](top-extensions-svc-lvl-agreements.md).
 
-| Environment     | SLA     |
-|-----------------|---------|
-| **DOGFOOD**     | 5 days  |
-| **MPAC**        | 7 days  |
-| **PROD**        | 12 days |
-| **BLACKFOREST** | 15 days |
-| **FAIRFAX**     | 15 days |
-| **MOONCAKE**    | 15 days |
+### Registering the extension in Azure Portal
 
-**NOTE:** SLA is in Business days
+To load your extension in Portal it must be registered in portal config. More details on updating the portal config are located at [http://aka.ms/portalfx/config](http://aka.ms/portalfx/config).  If the extension does not exist yet, register it in the Portal as disabled.
+
+```json
+{
+    "name": "Microsoft_Azure_MyExtension",
+    "uri": "//hosting.onecloud.azure-test.net/myextension",
+    "uriFormat": "//hosting.onecloud.azure-test.net/myextension/{0}",
+    "disabled": true,
+    ...
+},
+```
+
+Sample extension registeration for Extensions.prod.json i.e. RC, MPAC and Prod environment
+
+```json
+{
+    "name": "Microsoft_Azure_MyExtension",
+    "uri": "//myextension.hosting.portal.azure.net/myextension",
+    "uriFormat": "//myextension.hosting.portal.azure.net/myextension/{0}",
+    "disabled": true,
+    ...
+},
+```
+
+### Converting from custom deployment to a hosting service
+
+To minimize the probability of regression, use the following procedure to migrate an extension from custom deployment to a hosting service. For more information about custom deployment, see [top-extensions-custom-deployment.md](top-extensions-custom-deployment.md).
+
+1. Change the uri format to use a hosting service in the PROD environment
+
+    An example of a pull request for modifying the uriFormat parameter is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/c22b81463cab1d0c6b2c1abc803bc25fb2836aad?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/c22b81463cab1d0c6b2c1abc803bc25fb2836aad?refName=refs%2Fheads%2Fdev).
+
+1. Flight changes in MPAC
+
+    An example of a pull request for a flighting extension in MPAC is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev).
+
+1. Enable 100% traffic in MPAC and PROD
+
+    An example of a pull request that enables 100% traffic without flighting for MicrosoftAzureClassicStorageExtension, and 100% traffic with flighting for Microsoft_Azure_Storage is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/b81b415411f54ad83f93d43d37bcad097949a4e3?refName=refs%2Fheads%2Fdev&discussionId=-1&_a=summary&fullScreen=false](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/b81b415411f54ad83f93d43d37bcad097949a4e3?refName=refs%2Fheads%2Fdev&discussionId=-1&_a=summary&fullScreen=false). 
+
+1. Enable flighting in MPAC
+
+    The Azure Portal provides the ability to flight the MPAC customers to multiple editions of an extension. Traffic will be equally distributed between all registered configurations, or stamps. An example of a pull request is located at [https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx/commit/be95cabcf7098c45927e3bb7aff9b5e0f65de341?refName=refs%2Fheads%2Fdev).
+
+	*  Hosting service extension.pdl file
+    
+    To flight traffic to multiple stamps, register other stamps in flightUri. For example, the friendly name MPACFlightis used to flight traffic to another edition of an extension, as in the following example.
+
+    ```json
+    { 
+        name: "Microsoft_Azure_MyExtension", 
+        uri: "//myextension.hosting.portal.azure.net/myextension", 
+        uriFormat: "//myextension.hosting.portal.azure.net/myextension/{0}", 
+        feedbackEmail: "azureux-myextension@microsoft.com", 
+        flightUris: [
+            "//myextension.hosting.portal.azure.net/myextension/MPACFlight",
+        ],
+    }
+    ```
+
+### Deploying a new version of extension
+
+If you are using safe deployment then it is likely that you want to rollout a new version to a specific stage.
+
+**NOTE**: Publishing a version to specific stage in safe deployment does not require a new build 
+
+1. If the version to be published is not in the storage account 
+
+    * Push the .zip file to storage account registered with hosting service
+
+    * Update specific stage in config.json to this verion
+
+1. If the version to be published is in the storage account 
+
+    * Update specific stage in config.json to this verion
+
+
+### Hosting Service diagnostics
+
+The versions available in the Hosting Service can be seen by going to the following URL:
+
+| Environment | Hosting service |
+| ----------- | --------------- |
+|  Dogfood | [https://hosting.onecloud.azure-test.net/api/diagnostics](https://hosting.onecloud.azure-test.net/api/diagnostics) |
+|  MPAC |  [https://ms.hosting.portal.azure.net/api/diagnostics](https://ms.hosting.portal.azure.net/api/diagnostics) |
+|  PROD |  [https://hosting.portal.azure.net/api/diagnostics](https://hosting.portal.azure.net/api/diagnostics) |
+| Mooncake | 
+[https://hosting.azureportal.chinacloudapi.cn/api/diagnostics](https://hosting.azureportal.chinacloudapi.cn/api/diagnostics) |
+| Blackforest | [https://hosting.azure-api.de/api/diagnostics](https://hosting.azure-api.de/api/diagnostics)
+| Fairfax |  [https://hosting.azureportal.usgovcloudapi.net/api/diagnostics](https://hosting.azureportal.usgovcloudapi.net/api/diagnostics) |
+
+Each extension gets its own diagnostics endpoint, by adding the extension name to the path before `/api`. For example, [https://hosting.portal.azure.net/myextension/api/diagnostics](https://hosting.portal.azure.net/myextension/api/diagnostics).
+
+### Friendly names and sideloading
+
+Friendly name allows you to test new versions of your extension before rolling them out to customers.
+
+You can side load the version associated with the friendly name in the portal by specifying a couple of feature flags. For example, in the config above, if to load version 2.0.0.0 in the portal, you could using the below url
+
+`https://portal.azure.com?feature.canmodifystamps&Microsoft_Azure_MyExtension=friendlyname`
+
+1. `feature.canmodifystamps=true` is required for side-loading.
+
+1. Replace `Microsoft_Azure_MyExtension` with unique name of extension defined in `extension.pdl`.
+
+When those feature flags are passed to the portal, the portal will use the friendly name that is specified in the query string in combination with the value of the uriFormat property for that extension to generate a url that is unique for that friendly name. For example, based on the portal url above and the uriFormat defined, the portal will use the below url to load the extension.
+
+`https://myextension.hosting.portal.azure.net/myextension/friendlyname?l=en&trustedAuthority=portal.azure.com&...`.
+
+
+### Monitoring and Logging
+
+#### Logging 
+
+The portal provides a way for extensions to log to MDS using a feature that can be enabled in the extension.
+More information about the portal logging feature can be found here [https://auxdocs.azurewebsites.net/en-us/documentation/articles/portalfx-telemetry-logging](https://auxdocs.azurewebsites.net/en-us/documentation/articles/portalfx-telemetry-logging).
+
+The logs generated by the extension when this feature is enabled can be found in a couple of tables in the portal's MDS account.
+
+#### Trace Events
+
+`https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/Azportal/databases/AzurePortal?query=ExtEvents%7Cwhere+PreciseTimeStamp%3Eago(10m)`
+
+ExtEvents | where PreciseTimeStamp >ago(10m)
+
+#### Telemetry Events
+
+`https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/Azportal/databases/AzurePortal?query=ExtTelemetry%7Cwhere+PreciseTimeStamp%3Eago(10m)`
+
+ExtTelemetry | where PreciseTimeStamp >ago(10m)
+
+#### Monitoring
+
+There are two categories of issues that need to be monitored for each extension and that partners can act on.
+
+* Portal loading and running the extension
+
+    The portal already has alerts setup to notify extensions of when it fails to load the extension for any reason. 
+
+*  Hosting Service downloading and service the extension
+
+    The hosting service will ping the endpoint where it expects to find the extension bits every minute. It will then download any new configurations and versions it finds. If it fails to download or process the downloaded files it logs these as errors in its own MDS tables. We get notified if any errors or warnings are generated by the hosting service. You can access the logs of the hosting service using the below link [https://jarvis-west.dc.ad.msft.net/53731DA4](https://jarvis-west.dc.ad.msft.net/53731DA4).
+
+### Alerting
+
+If the hosting service fails to sync an extension, an IcM incident will be created against the owning team.
+
+The hosting service could fail to sync an extension for multiple reasons.
+
+* Storage account is unavailable
+
+* Config.json contains an invalid JSON object
+
+* Some versions that are referenced in Config.json do not exist in the storage account
+
+* Validation for one or more versions failed during sync
+
+When you receive an incident, take a look at the error messages that appear in the log. 
+
+If the error is caused by a change that you made, please fix the issue and wait for 15 minutes to give the hosting service time to pick up the new changes.
+
+If you think the error is related to the hosting service, route the incident back to our team.
+
+If the error is caused by an outage (for example storage outage or datacenter outage), wait until the root cause incident is resolved and then resolve the incident that was created against your team.
+
+{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-hosting-service.md"}
