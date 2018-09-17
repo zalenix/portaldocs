@@ -331,15 +331,15 @@ To onboard the extenion, please provide following information in RDTask:
 
 1. Extension Name: 
 
-For example, Microsoft_Azure_Test
+    For example, Microsoft_Azure_Test
 
 1. Public read-only endpoint for Dogfood: 
 
-For example, [https://mybizaextensiondf.blob.core.windows.net/extension](https://mybizaextensiondf.blob.core.windows.net/extension)
+    For example, [https://mybizaextensiondf.blob.core.windows.net/extension](https://mybizaextensiondf.blob.core.windows.net/extension)
 
 1. Public read-only endpoint for PROD:
 
-For example, [https://mybizaextensionprod.blob.core.windows.net/extension](https://mybizaextensionprod.blob.core.windows.net/extension)
+    For example, [https://mybizaextensionprod.blob.core.windows.net/extension](https://mybizaextensionprod.blob.core.windows.net/extension)
 
 Please submit your onboarding request [here](https://aka.ms/extension-hosting-service/onboarding)
 
@@ -393,19 +393,19 @@ To minimize the probability of regression, use the following procedure to migrat
 
 	*  Hosting service extension.pdl file
     
-    To flight traffic to multiple stamps, register other stamps in flightUri. For example, the friendly name MPACFlightis used to flight traffic to another edition of an extension, as in the following example.
+        To flight traffic to multiple stamps, register other stamps in flightUri. For example, the friendly name MPACFlightis used to flight traffic to another edition of an extension, as in the following example.
 
-    ```json
-    { 
-        name: "Microsoft_Azure_MyExtension", 
-        uri: "//myextension.hosting.portal.azure.net/myextension", 
-        uriFormat: "//myextension.hosting.portal.azure.net/myextension/{0}", 
-        feedbackEmail: "azureux-myextension@microsoft.com", 
-        flightUris: [
-            "//myextension.hosting.portal.azure.net/myextension/MPACFlight",
-        ],
-    }
-    ```
+        ```json
+        { 
+            name: "Microsoft_Azure_MyExtension", 
+            uri: "//myextension.hosting.portal.azure.net/myextension", 
+            uriFormat: "//myextension.hosting.portal.azure.net/myextension/{0}", 
+            feedbackEmail: "azureux-myextension@microsoft.com", 
+            flightUris: [
+                "//myextension.hosting.portal.azure.net/myextension/MPACFlight",
+            ],
+        }
+        ```
 
 ### Deploying a new version of extension
 
@@ -422,7 +422,6 @@ If you are using safe deployment then it is likely that you want to rollout a ne
 1. If the version to be published is in the storage account 
 
     * Update specific stage in config.json to this verion
-
 
 ### Hosting Service diagnostics
 
