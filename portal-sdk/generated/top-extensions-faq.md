@@ -4,6 +4,8 @@
 
 <!-- FAQ documents are included in this document in the same order as the topic documents are included in the README.md. -->
 
+<!-- Content in an FAQ  document, for whatever reason, was not included in the narrative for the main document.  It is possible that the FAQ  content can be eventually promoted or deleted. -->
+
 This section contains all Azure Portal FAQ's.
 
 <a name="frequently-asked-questions-onboarding-a-new-extension"></a>
@@ -252,13 +254,38 @@ The **Toolbar** APIs allow an extension to call `commandBar.setItems([...])` to 
 <a name="frequently-asked-questions-frequently-asked-questions"></a>
 ## Frequently asked questions
 
-***Where are the FAQ's for normal debugging?***
 
-The FAQs for debugging extensions is located at [portalfx-extensions-faq-debugging.md](portalfx-extensions-faq-debugging.md).
+<!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
+
+<a name="frequently-asked-questions-when-sideloading-via-the-query-string-or-fragment-or-via-f5-the-tab-with-the-portal-never-shows-up"></a>
+## When sideloading via the query string or fragment or via F5 the tab with the portal never shows up.
+
+SOLUTION: 
+
+Check that your browser's popup blocker is not blocking the second tab from being loaded.
 
 * * *
 
-<a name="frequently-asked-questions-frequently-asked-questions-sandboxed-iframe-security"></a>
+<a name="frequently-asked-questions-when-sideloading-via-the-query-string-or-fragment-or-via-f5-the-tab-with-the-portal-never-shows-up-extension-will-not-sideload"></a>
+### Extension will not sideload
+
+*** My Extension fails to side load and I get an ERR_INSECURE_RESPONSE in the browser console ***
+
+![ERR_INSECURE_RESPONSE](../media/portalfx-productiontest/errinsecureresponse.png)
+
+In this case the browser is trying to load the extension but the SSL certificate from localhost is not trusted.
+
+SOLUTION:
+
+Install/trust the certificate.
+
+Please checkout the stackoverflow post: [https://stackoverflow.microsoft.com/questions/15194/ibiza-extension-unable-to-load-insecure](https://stackoverflow.microsoft.com/questions/15194/ibiza-extension-unable-to-load-insecure)
+
+Items that are specifically status codes or error messages can be located in [portalfx-extensions-status-codes.md](portalfx-extensions-status-codes.md).
+
+* * *
+
+<a name="frequently-asked-questions-when-sideloading-via-the-query-string-or-fragment-or-via-f5-the-tab-with-the-portal-never-shows-up-sandboxed-iframe-security"></a>
 ### Sandboxed iframe security
 
 *** I get an error 'Security of a sandboxed iframe is potentially compromised by allowing script and same origin access'. How do I fix this? ***
@@ -267,22 +294,8 @@ You need to allow the Azure Portal to frame your extension URL. For more informa
 
 * * *
 
-<a name="frequently-asked-questions-frequently-asked-questions-extension-will-not-sideload"></a>
-### Extension will not sideload
 
-*** My Extension fails to side load and I get an ERR_INSECURE_RESPONSE in the browser console ***
-
-![ERR_INSECURE_RESPONSE](../media/portalfx-productiontest/errinsecureresponse.png)
-
-In this case the browser is trying to load the extension but the SSL certificate from localhost is not trusted the solution is to install/trust the certificate.
-
-Please checkout the stackoverflow post: [https://stackoverflow.microsoft.com/questions/15194/ibiza-extension-unable-to-load-insecure](https://stackoverflow.microsoft.com/questions/15194/ibiza-extension-unable-to-load-insecure)
-
-Items that are specifically status codes or error messages can be located in [portalfx-extensions-status-codes.md](portalfx-extensions-status-codes.md).
-
-* * *
-
-<a name="frequently-asked-questions-frequently-asked-questions-sideloading-in-chrome"></a>
+<a name="frequently-asked-questions-when-sideloading-via-the-query-string-or-fragment-or-via-f5-the-tab-with-the-portal-never-shows-up-sideloading-in-chrome"></a>
 ### Sideloading in Chrome
 
 ***Ibiza sideloading in Chrome fails to load parts***
@@ -291,35 +304,44 @@ Enable the `allow-insecure-localhost` flag, as described in [https://stackoverfl
 
 * * *
 
-<a name="frequently-asked-questions-frequently-asked-questions-sideloading-in-chrome-sideloading-gallery-packages"></a>
-#### Sideloading gallery packages
+<a name="frequently-asked-questions-where-are-the-faq-s-for-general-extension-debugging"></a>
+## Where are the FAQ&#39;s for general extension debugging?
 
-***Trouble sideloading gallery packages***
-
-SOLUTION:  Some troubleshooting steps are located at [https://stackoverflow.microsoft.com/questions/12136/trouble-side-loading-gallery-packages](https://stackoverflow.microsoft.com/questions/12136/trouble-side-loading-gallery-packages)
+The FAQs for debugging extensions is located at portalfx-extensions-faq-debugging.md.
 
 * * *
 
-<a name="frequently-asked-questions-frequently-asked-questions-sideloading-in-chrome-sideloading-friendly-names"></a>
-#### Sideloading friendly names
+<a name="frequently-asked-questions-are-gallery-packages-sideloaded"></a>
+## Are gallery packages sideloaded?
 
-***Sideloading friendly names is not working in the Dogfood environment***
-
-In order for Portal to load a test version of an extension, i.e., load without using the PROD configuration, developers can append the feature flag `feature.canmodifystamps`. The following example uses the sideload url to load the "test" version of extension.
-
-`https://portal.azure.com?feature.canmodifystamps=true&<extensionName>=test`
-
-The parameter `feature.canmodifystamps=true` is required for side-loading, and 
- **extensionName**, without the angle brackets, is replaced with the unique name of extension as defined in the `extension.pdl` file. For more information, see [https://stackoverflow.microsoft.com/questions/64951/extension-hosting-service-side-loading-friendlynames-not-working-in-dogfood](https://stackoverflow.microsoft.com/questions/64951/extension-hosting-service-side-loading-friendlynames-not-working-in-dogfood).
+When configured correctly gallery packages from the extension running on localhost are sideloaded and made available in the portal at  `+ Create a resource >  see all > Local Development`  if your gallery packages are not showing up there see [https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-package-development-and-debugging](https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-package-development-and-debugging).
 
 * * *
 
-<a name="frequently-asked-questions-frequently-asked-questions-other-testing-questions"></a>
-### Other testing questions
+<a name="frequently-asked-questions-how-do-i-mark-automated-tests-as-test-synthetic-traffic-so-that-it-does-not-show-up-in-reporting"></a>
+## How do I mark automated tests as test/synthetic traffic so that it does not show up in reporting
 
-***How can I ask questions about testing ?***
+Automated tests that run against a production environment should be marked as test/synthetic traffic. Use one of the following options to accomplish this.
 
-You can ask questions on Stackoverflow with the tag [ibiza-test](https://stackoverflow.microsoft.com/questions/tagged/ibiza-test).
+1. Add the TestTraffic phrase to the userAgentString field. Replace TeamName and Component in the following example with the appropriate values, without the angle brackets.
+TestTraffic-<TeamName>-<Component>
+
+1. Set the query string parameter to feature.UserType=test. This setting excludes test traffic from our reports.
+
+* * *
+
+ ## Can I sideload into onestb?
+
+Onebox-stb has been deprecated. Please do not use it. Instead sideload directly into df, mpac or production.
+
+* * *
+
+<a name="frequently-asked-questions-how-can-i-side-load-my-extension-with-obsolete-bundles"></a>
+## How can I side load my extension with obsolete bundles?
+
+See [https://aka.ms/portalfx/obsoletebundles](https://aka.ms/portalfx/obsoletebundles).
+
+* * *
 
 <a name="frequently-asked-questions-samples"></a>
 ## Samples
@@ -1104,20 +1126,8 @@ This error indicates that the dev environment cannot find the expanded NuGet pac
 ## Experimentation and flighting
 <a name="frequently-asked-questions-localization-globalization"></a>
 ## Localization / Globalization
--->
-
 <a name="frequently-asked-questions-accessibility"></a>
 ## Accessibility
-
-<a name="frequently-asked-questions-frequently-asked-questions"></a>
-## Frequently asked questions
-
-<a name="frequently-asked-questions-frequently-asked-questions-"></a>
-### 
-
-* * * 
-
-<!--
 <a name="frequently-asked-questions-deploying-your-extension"></a>
 ## Deploying your extension
 -->
@@ -1131,53 +1141,6 @@ This error indicates that the dev environment cannot find the expanded NuGet pac
 ## Frequently asked questions
 
 <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
-
-
-<a name="frequently-asked-questions-frequently-asked-questions-content-unbundler-throws-aggregate-exception"></a>
-### Content Unbundler throws aggregate exception
-
-***Content Unbundler throws an Aggregate Exception during build.***
-
-This usually happens when the build output generated by content unbundler is different from expected format.  The solution is as follows.
-
-1. Verify build output directory is called **bin**
-1. Verify you can point IIS to **bin** directory and load extension
-
-For more information, see [top-extensions-hosting-service-basic.md#prerequisites-for-onboarding-hosting-service](top-extensions-hosting-service-basic.md#prerequisites-for-onboarding-hosting-service).
-
-* * *
-
-<a name="frequently-asked-questions-frequently-asked-questions-finding-old-ux-after-deployment"></a>
-### Finding old UX After Deployment
-
-***Some customers of my extension are finding the old UX even after deploying the latest package. Is there a bug in hosting service ?***
-
-No this is not a bug. All clients will not get the new version as soon as it gets deployed. The new version is only served when the customer refreshes the Portal. We have seen customers that keep the Portal open for long periods of time. In such scenarios, when customer loads the extension they are going to get the old version that has been cached.
-We have seen scenarios where customers did not refresh the Portal for 2 weeks. 
-
-* * * 
-
-<a name="frequently-asked-questions-frequently-asked-questions-friendly-name-support"></a>
-### Friendly name support
-
-***When will support for friendly names become available ?***
-
-Azure support for friendly names became available in SDK release 5.0.302.834.
-
-* * *
-
-<a name="frequently-asked-questions-frequently-asked-questions-how-extensions-are-served"></a>
-### How extensions are served
-
-***How does hosting service serve my extension?***
-
-The runtime component of the hosting service is hosted inside an Azure Cloud Service. When an extension onboards, a publicly accessible endpoint is provided by the extension developer which will contain the contents that the hosting service should serve. For the hosting service to pick them up, it will look for a file called `config.json` that has a specific schema described below. 
-
-The hosting service will download the config file, and look into it to figure out which zip files it needs to download. There can be multiple versions of the extension referenced in the `config.json` file. The hosting service will download them and unpack them on the local disk. After it has successfully downloaded and expanded all versions of the extension referenced in `config.json`, it will write `config.json` to disk.
-
-For performance reasons, once a version is downloaded, it will not be downloaded again. 
-
-* * * 
 
 <a name="frequently-asked-questions-frequently-asked-questions-output-zip-file-incorrectly-named"></a>
 ### Output zip file incorrectly named
@@ -1202,6 +1165,19 @@ The primary cause of this issue is that your `web.config` appSetting for **IsDev
 
 * * * 
 
+<a name="frequently-asked-questions-frequently-asked-questions-how-extensions-are-served"></a>
+### How extensions are served
+
+***How does hosting service serve my extension?***
+
+The runtime component of the hosting service is hosted inside an Azure Cloud Service. When an extension onboards, a publicly accessible endpoint is provided by the extension developer which will contain the contents that the hosting service should serve. For the hosting service to pick them up, it will look for a file called `config.json` that has a specific schema described below. 
+
+The hosting service will download the config file, and look into it to figure out which zip files it needs to download. There can be multiple versions of the extension referenced in the `config.json` file. The hosting service will download them and unpack them on the local disk. After it has successfully downloaded and expanded all versions of the extension referenced in `config.json`, it will write `config.json` to disk.
+
+For performance reasons, once a version is downloaded, it will not be downloaded again. 
+
+* * * 
+
 <a name="frequently-asked-questions-frequently-asked-questions-rollout-time-for-stages"></a>
 ### Rollout time for stages
 
@@ -1211,15 +1187,15 @@ The hosting service takes about 5 minutes to publish the latest version to all d
 
 * * *
 
+<a name="frequently-asked-questions-frequently-asked-questions-finding-old-ux-after-deployment"></a>
+### Finding old UX After Deployment
 
-<a name="frequently-asked-questions-frequently-asked-questions-sas-tokens"></a>
-### SAS Tokens
+***Some customers of my extension are finding the old UX even after deploying the latest package. Is there a bug in hosting service ?***
 
-***Can I provide a SAS token instead of keyvault for EV2 to access the storage account ?***
+No this is not a bug. All clients will not get the new version as soon as it gets deployed. The new version is only served when the customer refreshes the Portal. We have seen customers that keep the Portal open for long periods of time. In such scenarios, when customer loads the extension they are going to get the old version that has been cached.
+We have seen scenarios where customers did not refresh the Portal for 2 weeks. 
 
-The current rolloutspec generated by **ContentUnbundler** only provides support for using keyvault. If you would like to use SAS tokens, please submit a request on [UserVoice](https://aka.ms/portalfx/uservoice)
-
-* * *
+* * * 
 
 <a name="frequently-asked-questions-frequently-asked-questions-speed-up-test-cycles"></a>
 ### Speed up test cycles
@@ -1238,14 +1214,20 @@ The default F5 experience for extension development remains unchanged however wi
 
 * * * 
 
-<a name="frequently-asked-questions-frequently-asked-questions-storage-account-registration"></a>
-### Storage account registration
+<a name="frequently-asked-questions-frequently-asked-questions-content-unbundler-throws-aggregate-exception"></a>
+### Content Unbundler throws aggregate exception
 
-***Do I need to register a new storage account everytime I need to upload zip file ?***
+***Content Unbundler throws an Aggregate Exception during build.***
 
-No. Registering a storage account with the hosting service is one-time process, as specified in . This allows the hosting service to find the latest version of your extension.
+This usually happens when the build output generated by content unbundler is different from expected format.  The solution is as follows.
 
-* * * 
+1. Verify build output directory is called **bin**
+1. Verify you can point IIS to **bin** directory and load extension
+
+For more information, see [top-extensions-hosting-service.md#prerequisites-for-onboarding-hosting-service-for-all-extensions](top-extensions-hosting-service.md#prerequisites-for-onboarding-hosting-service-for-all-extensions).
+
+* * *
+
 
 <a name="frequently-asked-questions-frequently-asked-questions-zip-file-replaced-in-storage-account"></a>
 ### Zip file replaced in storage account
@@ -1267,9 +1249,20 @@ Sample config.json for version 2.0.0.0
         "stage5": "2.0.0.0",
     }
 ```
+
 **NOTE**: This samples depicts that all stages are serving version 2.0.0.0.
 
 * * * 
+
+<a name="frequently-asked-questions-frequently-asked-questions-storage-account-registration"></a>
+### Storage account registration
+
+***Do I need to register a new storage account everytime I need to upload zip file ?***
+
+No. Registering a storage account with the hosting service is one-time process, as specified in . This allows the hosting service to find the latest version of your extension.
+
+* * * 
+
 
 <a name="frequently-asked-questions-frequently-asked-questions-other-hosting-service-questions"></a>
 ### Other hosting service questions
@@ -1279,21 +1272,6 @@ Sample config.json for version 2.0.0.0
 You can ask questions on Stackoverflow with the tag [ibiza-deployment](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment).
 
 * * * 
-
-<a name="frequently-asked-questions-frequently-asked-questions-cdn-paths-and-versioning"></a>
-### CDN Paths and Versioning
-
-***Cannot find paths with versioning***
-
-DESCRIPTION:  
-
-I am not seeing paths with versioning during debug.
-
-SOLUTION:
-
-Ensure `IsDevelopmentMode` in the `*.config` file  is set to `false`.
-
-* * *
 
 <!--
 <a name="frequently-asked-questions-custom-extension-deployment-infrastructure"></a>
