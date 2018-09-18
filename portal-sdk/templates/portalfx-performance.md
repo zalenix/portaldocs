@@ -290,6 +290,74 @@ Sure! Book in some time in the Azure performance office hours.
         - Accumulate the changes and then update the observable
         - Manually throttle or use `.extend({ rateLimit: 250 });` when initializing the observable
 
+
+# Extension load shim dependencies (removing shims)
+
+Extension load shim dependencies are dependencies that are hardcoded into your require config to be downloaded and executed before any other script can be executed.
+Because of the way shims work in requireJS, no assumption can be made about their usage and you end up blocking download and execution of any dependent script until 
+shims are all fully downloaded and executed. For most extensions today, at best (latest SDK), what this translates to is a shim bundle being downloaded concurrently
+ with your extension's entrypoint bundle, meaning a blocking download of OSS libraries that delays any work to initialize your extension.
+
+## How to fix shim usage
+
+To fix this, you have a few options:
+
+1. Reevaluate the need for that library
+    - We've seen giant OSS libraries being pulled for very little functionality that the Portal actually provided or that could have been extracted/reimplemented with way less code downloaded, so confirming you really need said library is the first thing you should look into.
+1. Convert the library to an AMD module
+    - By converting the library to an AMD module and adding an amd-dependency tag to files that really need it, you enable the Portal's bundler to bundle said library with its owners (saving a network round-trip) and you move it out of the extension init path.
+
+### Converting your shim to an AMD module
+
+Converting your OSS library to an AMD module is very straightforward in most cases.
+What you want to do is wrap all of the library’s code with a define statement like this:
+
+```typescript
+    define([], function() {
+        /** OSS code here **/
+    });
+```
+
+Taking an actual file as an example, here's the diff for the hammer.js OSS library:
+
+```
+    --------------------------------------------------------------------------
+    4    4       * Copyright (c) 2014 Jorik Tangelder <j.tangelder@gmail.com>;
+    5    5       * Licensed under the MIT license */
+
+         7     + define([], function () {
+    7    8       (function (window, undefined) {
+    8    9           'use strict';
+
+    10   11          /**
+    --------------------------------------------------------------------------
+    2156 2157        window.Hammer = Hammer;
+
+    2158 2159    })(window);
+    2159 2160  + });
+    --------------------------------------------------------------------------
+```
+
+The next step is to add an amd-dependency tag to all the files that use the aforementioned OSS library so that the TypeScript to JavaScript transpilation generates an explicit dependency for it.
+
+Simply insert:
+
+```typescript
+/// <amd-dependency path="dependencyPath" />
+```
+
+At the top of your file, where dependencyPath is the path to your AMD OSS library. For hammer.js:
+
+```typescript
+/// <amd-dependency path="hammer" />
+```
+
+Finally, since the bundler will now automatically pick up the library’s file and bundle it properly, you can remove the shim code from your C#; you can find said code by looking for derived classes of ContentBundleDefinition.
+
+This should cover the vast majority of shim-to-AMD conversion cases.
+For more information, please create a stack overflow question (https://aka.ms/portalfx/ask) and reach out to ibizaperfv@microsoft.com.
+
+
 # Performance profiling 
 
 ## How to profile your scenario
