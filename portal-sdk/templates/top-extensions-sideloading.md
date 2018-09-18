@@ -166,3 +166,6 @@ Example
  
 `MsPortalImpl.Extension.unregisterTestExtension ("Microsoft_Azure_Demo");`
  
+
+ {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-sideloading.md"}
+
