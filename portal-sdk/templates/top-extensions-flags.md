@@ -290,9 +290,7 @@ The following are the feature flags that are invoked with the syntax: `feature.<
 | storage     | Add all storage services to the **Storage** category  
 | vm          | Rename **Compute** to **VMs**, and rename **Web + Mobile** to **App Services** |
 
-**feature.canmodifyextensions**:  Required to support loading untrusted extensions for security purposes. For more information, see [top-extensions-sideloading.md#loading-customized-extensions](top-extensions-sideloading.md#loading-customized-extensions).
-
-<!--TODO: Determine whether the following flag is associated with msportalfx-test.md#msportalfx-test-running-ci-->
+**feature.canmodifyextensions**:  Required to support loading untrusted extensions for security purposes. For more information, see [top-extensions-sideloading.md#step1:](top-extensions-sideloading.md#step1:).
 
 **feature.ci**:  Sets up  the Portal up to work better with tests by disabling NPS popups and other items.
 

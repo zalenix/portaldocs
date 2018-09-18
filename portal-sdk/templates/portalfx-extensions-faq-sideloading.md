@@ -1,8 +1,31 @@
 ## Frequently asked questions
 
-***Where are the FAQ's for normal debugging?***
 
-The FAQs for debugging extensions is located at [portalfx-extensions-faq-debugging.md](portalfx-extensions-faq-debugging.md).
+<!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
+
+## When sideloading via the query string or fragment or via F5 the tab with the portal never shows up.
+
+SOLUTION: 
+
+Check that your browser's popup blocker is not blocking the second tab from being loaded.
+
+* * *
+
+### Extension will not sideload
+
+*** My Extension fails to side load and I get an ERR_INSECURE_RESPONSE in the browser console ***
+
+![ERR_INSECURE_RESPONSE](../media/portalfx-productiontest/errinsecureresponse.png)
+
+In this case the browser is trying to load the extension but the SSL certificate from localhost is not trusted.
+
+SOLUTION:
+
+Install/trust the certificate.
+
+Please checkout the stackoverflow post: [https://stackoverflow.microsoft.com/questions/15194/ibiza-extension-unable-to-load-insecure](https://stackoverflow.microsoft.com/questions/15194/ibiza-extension-unable-to-load-insecure)
+
+Items that are specifically status codes or error messages can be located in [portalfx-extensions-status-codes.md](portalfx-extensions-status-codes.md).
 
 * * *
 
@@ -14,19 +37,6 @@ You need to allow the Azure Portal to frame your extension URL. For more informa
 
 * * *
 
-### Extension will not sideload
-
-*** My Extension fails to side load and I get an ERR_INSECURE_RESPONSE in the browser console ***
-
-![ERR_INSECURE_RESPONSE](../media/portalfx-productiontest/errinsecureresponse.png)
-
-In this case the browser is trying to load the extension but the SSL certificate from localhost is not trusted the solution is to install/trust the certificate.
-
-Please checkout the stackoverflow post: [https://stackoverflow.microsoft.com/questions/15194/ibiza-extension-unable-to-load-insecure](https://stackoverflow.microsoft.com/questions/15194/ibiza-extension-unable-to-load-insecure)
-
-Items that are specifically status codes or error messages can be located in [portalfx-extensions-status-codes.md](portalfx-extensions-status-codes.md).
-
-* * *
 
 ### Sideloading in Chrome
 
@@ -36,29 +46,37 @@ Enable the `allow-insecure-localhost` flag, as described in [https://stackoverfl
 
 * * *
 
-#### Sideloading gallery packages
+## Where are the FAQ's for general extension debugging?
 
-***Trouble sideloading gallery packages***
-
-SOLUTION:  Some troubleshooting steps are located at [https://stackoverflow.microsoft.com/questions/12136/trouble-side-loading-gallery-packages](https://stackoverflow.microsoft.com/questions/12136/trouble-side-loading-gallery-packages)
+The FAQs for debugging extensions is located at portalfx-extensions-faq-debugging.md.
 
 * * *
 
-#### Sideloading friendly names
+##  Are gallery packages sideloaded?
 
-***Sideloading friendly names is not working in the Dogfood environment***
-
-In order for Portal to load a test version of an extension, i.e., load without using the PROD configuration, developers can append the feature flag `feature.canmodifystamps`. The following example uses the sideload url to load the "test" version of extension.
-
-`https://portal.azure.com?feature.canmodifystamps=true&<extensionName>=test`
-
-The parameter `feature.canmodifystamps=true` is required for side-loading, and 
- **extensionName**, without the angle brackets, is replaced with the unique name of extension as defined in the `extension.pdl` file. For more information, see [https://stackoverflow.microsoft.com/questions/64951/extension-hosting-service-side-loading-friendlynames-not-working-in-dogfood](https://stackoverflow.microsoft.com/questions/64951/extension-hosting-service-side-loading-friendlynames-not-working-in-dogfood).
+When configured correctly gallery packages from the extension running on localhost are sideloaded and made available in the portal at  `+ Create a resource >  see all > Local Development`  if your gallery packages are not showing up there see [https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-package-development-and-debugging](https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-package-development-and-debugging).
 
 * * *
 
-### Other testing questions
+## How do I mark automated tests as test/synthetic traffic so that it does not show up in reporting
 
-***How can I ask questions about testing ?***
+Automated tests that run against a production environment should be marked as test/synthetic traffic. Use one of the following options to accomplish this.
 
-You can ask questions on Stackoverflow with the tag [ibiza-test](https://stackoverflow.microsoft.com/questions/tagged/ibiza-test).
+1. Add the TestTraffic phrase to the userAgentString field. Replace TeamName and Component in the following example with the appropriate values, without the angle brackets.
+TestTraffic-<TeamName>-<Component>
+
+1. Set the query string parameter to feature.UserType=test. This setting excludes test traffic from our reports.
+
+* * *
+
+ ## Can I sideload into onestb?
+
+Onebox-stb has been deprecated. Please do not use it. Instead sideload directly into df, mpac or production.
+
+* * *
+
+## How can I side load my extension with obsolete bundles?
+
+See [https://aka.ms/portalfx/obsoletebundles](https://aka.ms/portalfx/obsoletebundles).
+
+* * *

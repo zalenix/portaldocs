@@ -168,6 +168,8 @@ The portal has some special requirements on the types of icons that can be used 
 
 The SDK framework includes a large library of icons that can be used off the shelf, but developers can also provide their own icons.
 
+**NOTE**: Do not use JavaScript reserved words, as specified in [https://docs.microsoft.com/en-us/scripting/javascript/reference/javascript-reserved-words](https://docs.microsoft.com/en-us/scripting/javascript/reference/javascript-reserved-words), as names for the icons in your extension.
+
 ### Setting up the project
 
 Perform the following steps to set up the project to use Custom SVG files.
@@ -670,7 +672,7 @@ Tint 3
 
 ### Color SVG
 
-Certain types of custom SVG content should adhere to the color palette. This is mostly for custom controls that use color to differentiate data, like charts. Iconography does not have this requirement, and instead you should refer to the [Icons](portalfx-icons.md) documentation to color those.
+Certain types of custom SVG content should adhere to the color palette. This is mostly for custom controls that use color to differentiate data, like charts. Iconography does not have this requirement.
 
 To use the palette within SVG content, use the same class names as the one for [data differentiation](#differentiate-data). The classes affect both the "`stroke`" and "`fill`" properties. The CSS rules assume the target element is within an "`g`" element contained in an "`svg`" element. The following sample shows proper usage:
 
@@ -1094,12 +1096,5 @@ To use the palette within SVG content, use the same class names as the one for [
   }
 </style>
 ```
-
-
-<!--
- gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-style-guide.md"}
--->
-
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-icons.md"}
 
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-icons.md"}

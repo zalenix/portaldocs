@@ -2,15 +2,17 @@
 
 <!-- Best Practices documents are included in this document in the same order as the topic documents are included in the README.md. -->
 
+<!-- Content in a Best Practices document, for whatever reason, was not included in the narrative for the main document.  It is possible that the Best Practices content can be eventually promoted or deleted. -->
+
 This document contains all Best Practices that have been included in the Azure Portal topics in [https://github.com/Azure/portaldocs](https://github.com/Azure/portaldocs). Practices that have been documented in textbooks and similar publications are outside of the scope of this document.
 <!--
 ## Onboarding a new extension
 ## What's new
--->
-
 ## Getting started
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-sideloading.md"}
+-->
+
+
 
 ## Blades and parts
 
@@ -21,10 +23,6 @@ This document contains all Best Practices that have been included in the Azure P
 <!--
 ## Building UI with HTML templates and Fx controls
 -->
-
-## Styling and theming
-
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-icons.md"}
 
 <!--
 ## Forms
