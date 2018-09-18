@@ -23,7 +23,6 @@ The following table contains links to more information about each topic as appro
 | Performance Query |     [https://aka.ms/portalfx/perfsignoff](https://aka.ms/portalfx/perfsignoff) |
 | Performance Checklist | [portalfx-performance-overview.md](portalfx-performance-overview.md) |
 | Telemetry Access  | [top-extensions-telemetry.md](top-extensions-telemetry.md) |
-| Portal COP (Telemetry) |     [portalfx-performance-portalcop.md](portalfx-performance-portalcop.md) |
 | Best practices |     [portalfx-extensions-bp-performance.md](portalfx-extensions-bp-performance.md) |
 | Stackoverflow  |    [portalfx-stackoverflow.md](portalfx-stackoverflow.md) |
 
@@ -92,7 +91,7 @@ The accessibility bar is similar to the usability bar, and every service must me
     
 **NOTE**: Accessibility, like security review, is a blocking requirement.
 
-For more information about accessibility, see [portalfx-accessibility.md](portalfx-accessibility.md).
+For more information about accessibility, see [top-extensions-accessibility.md](top-extensions-accessibility.md).
     
 <a name="production-ready-metrics-and-quality-metrics-localization"></a>
 ### Localization

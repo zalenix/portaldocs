@@ -15,7 +15,7 @@ When using AppBlade, developers are responsible for the following.
 
 * Accessibility
 
-    Making the blade accessible, as specified in [portalfx-accessibility.md](portalfx-accessibility.md)
+    Making the blade accessible, as specified in [top-extensions-accessibility.md](top-extensions-accessibility.md)
 
 * Theming
 

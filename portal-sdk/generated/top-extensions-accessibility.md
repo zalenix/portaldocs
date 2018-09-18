@@ -63,7 +63,7 @@ There are items for accessbility whose absence may result in bugs for the Framew
 
 1. Review all controls and ensure that labels are being used. If labels are omitted, then use aria labels in the `ViewModel`.
 
-**NOTE**: The aria-label is one tool used by assistive technologies like screen readers. However, it is not natively supported on browsers and has no effect on them. It will not be of use to the population that is served by WCAG, except screen reader users. 
+    **NOTE**: The aria-label is one tool used by assistive technologies like screen readers. However, it is not natively supported on browsers and has no effect on them. It will not be of use to the population that is served by WCAG, except screen reader users. 
 
 1. Verify keyboard accessibility of your blade content and forms. Navigate to your content in the Portal and ensure focus is captured to your content in the expected way. Autofocus on open provided by the framework. 
 
