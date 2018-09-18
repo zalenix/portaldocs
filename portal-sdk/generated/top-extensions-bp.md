@@ -3,33 +3,20 @@
 
 <!-- Best Practices documents are included in this document in the same order as the topic documents are included in the README.md. -->
 
+<!-- Content in a Best Practices document, for whatever reason, was not included in the narrative for the main document.  It is possible that the Best Practices content can be eventually promoted or deleted. -->
+
 This document contains all Best Practices that have been included in the Azure Portal topics in [https://github.com/Azure/portaldocs](https://github.com/Azure/portaldocs). Practices that have been documented in textbooks and similar publications are outside of the scope of this document.
 <!--
 <a name="azure-portal-best-practices-onboarding-a-new-extension"></a>
 ## Onboarding a new extension
 <a name="azure-portal-best-practices-what-s-new"></a>
 ## What&#39;s new
--->
-
 <a name="azure-portal-best-practices-getting-started"></a>
 ## Getting started
 
+-->
 
-<a name="azure-portal-best-practices-best-practices"></a>
-## Best Practices
-   
-***What is the best environment for sideloading during initial testing?***
 
- The FAQs for debugging extensions is located at [portalfx-extensions-faq-hosting-service.md](portalfx-extensions-faq-hosting-service.md).
-
-* * *
-
-<a name="azure-portal-best-practices-best-practices-onebox-stb-is-not-available"></a>
-### Onebox-stb is not available
-
-Onebox-stb has been deprecated. Please do not use it. Instead, migrate extensions to sideloading. For help on migration, send an email to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Help on Migration">ibiza-onboarding@microsoft.com</a>.
-
-* * * 
 
 <a name="azure-portal-best-practices-blades-and-parts"></a>
 ## Blades and parts
@@ -133,19 +120,6 @@ For example, if the error is caused because the user credentials are not known t
 <a name="azure-portal-best-practices-building-ui-with-html-templates-and-fx-controls"></a>
 ## Building UI with HTML templates and Fx controls
 -->
-
-<a name="azure-portal-best-practices-styling-and-theming"></a>
-## Styling and theming
-
-
-<a name="azure-portal-best-practices-best-practices"></a>
-## Best Practices
-
-<a name="azure-portal-best-practices-best-practices-general-best-practices"></a>
-### General Best Practices
-
-Do not use JavaScript reserved words, as specified in [https://docs.microsoft.com/en-us/scripting/javascript/reference/javascript-reserved-words](https://docs.microsoft.com/en-us/scripting/javascript/reference/javascript-reserved-words), as names for the icons in your extension.
-
 
 <!--
 <a name="azure-portal-best-practices-forms"></a>

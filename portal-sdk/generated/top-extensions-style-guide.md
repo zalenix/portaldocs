@@ -181,6 +181,8 @@ The portal has some special requirements on the types of icons that can be used 
 
 The SDK framework includes a large library of icons that can be used off the shelf, but developers can also provide their own icons.
 
+**NOTE**: Do not use JavaScript reserved words, as specified in [https://docs.microsoft.com/en-us/scripting/javascript/reference/javascript-reserved-words](https://docs.microsoft.com/en-us/scripting/javascript/reference/javascript-reserved-words), as names for the icons in your extension.
+
 <a name="styling-an-extension-iconography-setting-up-the-project"></a>
 ### Setting up the project
 
@@ -721,7 +723,7 @@ Tint 3
 <a name="styling-an-extension-color-palette-color-svg"></a>
 ### Color SVG
 
-Certain types of custom SVG content should adhere to the color palette. This is mostly for custom controls that use color to differentiate data, like charts. Iconography does not have this requirement, and instead you should refer to the [Icons](portalfx-icons.md) documentation to color those.
+Certain types of custom SVG content should adhere to the color palette. This is mostly for custom controls that use color to differentiate data, like charts. Iconography does not have this requirement.
 
 To use the palette within SVG content, use the same class names as the one for [data differentiation](#differentiate-data). The classes affect both the "`stroke`" and "`fill`" properties. The CSS rules assume the target element is within an "`g`" element contained in an "`svg`" element. The following sample shows proper usage:
 
@@ -1147,22 +1149,7 @@ To use the palette within SVG content, use the same class names as the one for [
 ```
 
 
-<!--
- gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-style-guide.md"}
--->
-
-
-<a name="styling-an-extension-best-practices"></a>
-## Best Practices
-
-<a name="styling-an-extension-best-practices-general-best-practices"></a>
-### General Best Practices
-
-Do not use JavaScript reserved words, as specified in [https://docs.microsoft.com/en-us/scripting/javascript/reference/javascript-reserved-words](https://docs.microsoft.com/en-us/scripting/javascript/reference/javascript-reserved-words), as names for the icons in your extension.
-
-
-
-<a name="styling-an-extension-best-practices-icon-incorrectly-displayed"></a>
+<a name="styling-an-extension-color-palette-icon-incorrectly-displayed"></a>
 ### Icon incorrectly displayed
 
 ***The extension icon is displayed as a dark square. What happened?***
@@ -1181,7 +1168,7 @@ For more information, see [top-extensions-style-guide.md#preserve-icon-colors-ov
 
 * * *
  
-<a name="styling-an-extension-best-practices-"></a>
+<a name="styling-an-extension-color-palette-"></a>
 ### 
 
 
