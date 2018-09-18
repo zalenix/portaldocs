@@ -29,7 +29,7 @@ During standard customer use of the Portal, extensions are loaded from a fixed s
 
 ## Sideloading step by step
 
-### Step 1: 
+### Step 1 
 
 Register the extension for side loading using one of the following three methods.
 
@@ -37,7 +37,7 @@ Register the extension for side loading using one of the following three methods
 
 	The query string and fragment can only be used if the extension is on the localhost and is served over SSL.  
 
-	Skip to [Step 2](#step-2:-accept-the-allow-dialog) if the Azure Portal Extension project template for Visual Studio was used to scaffold the initial extension. The scaffolded extension will automatically compose a side loading query string and fragment when running the web project.  
+	Skip to [Step 2](#step-2-accept-the-allow-dialog) if the Azure Portal Extension project template for Visual Studio was used to scaffold the initial extension. The scaffolded extension will automatically compose a side loading query string and fragment when running the web project.  
 
 	To manually compose your query string and fragment continue as follows.
 
@@ -139,23 +139,23 @@ Register the extension for side loading using one of the following three methods
 
 	1. Reload the portal by navigating to https://portal.azure.com?feature.canmodifyextensions=true&clientOptimizations=false. 
     
-### Step 2: Accept the allow dialog 
+### Step 2 Accept the allow dialog 
 
 Click on the button, as in the following image.
 
 ![alt-text](../media/top-extensions-sideloading/allowDialog.png "Untrusted extension")
 	
-### Step 3: Verify that the extension side loaded 
+### Step 3 Verify that the extension side loaded 
 
 Press   `ctl+alt+d` and click "Open Debug Hub".
 
-### Step 4:  Test and debug your extension
+### Step 4 Test and debug your extension
 
 For general information about debugging and testing, see [top-extensions-debugging.md](top-extensions-debugging.md).
 
 For information about debugging switches or feature flags, see [top-extensions-flags.md](top-extensions-flags.md).
 
-### Step 5:  Restore default configuration
+### Step 5 Restore default configuration
 
 If you used the `registerTestExtension` method, restore the original extension configuration for your user by clicking the "Restore default configuration", as in the following image.
 	
