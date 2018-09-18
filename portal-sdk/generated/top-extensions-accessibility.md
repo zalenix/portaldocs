@@ -43,10 +43,9 @@ Accessibility is about making the Portal usable by people who have limitations t
 <a name="accessibility-accessibility-checklist"></a>
 ## Accessibility Checklist
 
-<!--TODO: Determine what all of the accessiblity rules are, and associate them to the tagging rules for bugs -->
 There are items for accessbility whose absence may result in bugs for the Framework team.  In an effort to reduce the number of bugs, some guidelines are listed below.
 
-1. Extensions should update to SDK version 788 or more recent.
+1. Extensions should update to SDK version 1240 or more recent.
  
 1. Extension should update to use supported controls.  A sample of controls is located at [https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/controls](https://df.onecloud.azure-test.net/#blade/SamplesExtension/SDKMenuBlade/controls). 
 
@@ -75,11 +74,9 @@ There are items for accessbility whose absence may result in bugs for the Framew
 <a name="accessibility-testing-for-accessibility"></a>
 ## Testing for accessibility
 
-When testing the extensions, a report that is created after testing is made available to the developer of the extension.
+When testing extensions, a report is created and made available to the extension team.
 
-<!--TODO: Determine what "justifications" means.  Why the pattern is applicable to this specific extension? -->
-
-* Ibiza provides a list of common pattern that are not issues, with justifications
+* Ibiza provides a list of common patterns that are not issues, with justifications/explanations 
 
 * Ibiza provides a list of external product bugs that are not issues to fix with justifications and bug links
 
@@ -93,9 +90,7 @@ Windows High Contrast Mode (WHCM) has native support for **Internet Explorer** a
 <a name="accessibility-testing-for-accessibility-screen-reader"></a>
 ### Screen reader
 
-Either a combination of **NVDA**/**Firefox** or **Narrator**/**Edge** should satisfy screen reader requirements.
-
-**NOTE**: At this time, Chrome seems to ignore some aria properties and the native widgets are not all properly accessible.
+Compliance with **Narrator**/**Edge** are screen reader requirements.
 
 <a name="accessibility-testing-for-accessibility-accessibility-test-engines"></a>
 ### Accessibility test engines
@@ -138,7 +133,7 @@ Ibiza has streamlined the process of handling accessibility issues. When we reso
 <a name="accessibility-accessibility-planning-bug-tagging"></a>
 ### Bug Tagging
 
-About 95% of issues can be separated into eight categories. All bugs that you feel are framework issues are assigned to Paymon Parsadmehr. If you feel that a bug falls into more than one category, please add all corresponding tags to the bug. If the bug does not fit any category, reach out to <a href="mailto:ibiza-accessibility@microsoft.com?subject=Accessibility">Paymon Parsadmehr</a> to assess the issue. 
+About 95% of issues can be separated into eight categories. All bugs that you feel are framework issues need to be assigned to Paymon Parsadmehr. If you feel that a bug falls into more than one category, please add all corresponding tags to the bug. If the bug does not fit any category, reach out to <a href="mailto:ibiza-accessibility@microsoft.com?subject=Accessibility">Paymon Parsadmehr</a> to assess the issue. 
 
 The following is a description of the eight tags and their categories.  There are also  examples of each bug class to help you determine what tags to use if you still need to file a bug.
 
@@ -263,12 +258,3 @@ Web semantics
 1. Scrub your content for consistent terminology and iconography before releasing it to the public
 
 1. Always use multiple sensory cues to convey information. Never use the position, orientation, size, shape, or color  of a UI element alone to communicate important information to the user.
-
-
-<a name="accessibility-frequently-asked-questions"></a>
-## Frequently asked questions
-
-<a name="accessibility-frequently-asked-questions-"></a>
-### 
-
-* * * 
