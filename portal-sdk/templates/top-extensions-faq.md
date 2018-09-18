@@ -3,6 +3,8 @@
 
 <!-- FAQ documents are included in this document in the same order as the topic documents are included in the README.md. -->
 
+<!-- Content in an FAQ  document, for whatever reason, was not included in the narrative for the main document.  It is possible that the FAQ  content can be eventually promoted or deleted. -->
+
 This section contains all Azure Portal FAQ's.
 
 ## Onboarding a new extension
@@ -67,13 +69,7 @@ This section contains all Azure Portal FAQ's.
 ## Telemetry and alerting
 ## Experimentation and flighting
 ## Localization / Globalization
--->
-
 ## Accessibility
-
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-accessibility.md"}
-
-<!--
 ## Deploying your extension
 -->
 
