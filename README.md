@@ -38,7 +38,7 @@ Learn how the framework is structured and how it is designed to run in multiple 
 
 * [Actionable notifications](http://top-level/availibility-alerts.md) - *Point users to well known next steps*
 
-* [EV2 support for the Extension Hosting Service](http://top-level/hosting-service#ev2.md) - *Nuff said*
+* [EV2 support for the Extension Hosting Service](/portal-sdk/generated/top-extensions-hosting-service-ev2.md) - *Nuff said*
 
 * [Multi-Column for the Essentials control](/portal-sdk/generated/) - *Better use of screen real estate*
 
@@ -62,7 +62,7 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 
 * [Getting started](/portal-sdk/generated/top-extensions-getting-started.md)
 
-* [SDK Update policy and alerts](/portal-sdk/generated/top-extensions-getting-started.md#maintain-development-environment)
+* [Update the SDK](/portal-sdk/generated/top-extensions-nuget.md#updating-your-extension-to-a-newer-version-of-the-sdk)
 
 * [Run the extension locally (a.k.a. sideloading)](/portal-sdk/generated/top-extensions-sideloading.md)
 
@@ -226,11 +226,9 @@ The Ibiza team collects standard telemetry for generic actions like blade openin
 
 * [Performance and reliability monitoring](/portal-sdk/generated/top-extensions-reliability.md)
 
-* [Alert monitoring](/portal-sdk/generated/top-extensions-alerting.md)
+* [Collecting feedback from your users(Alert monitoring)](/portal-sdk/generated/top-extensions-alerting.md)
 
-* [Collecting feedback from your users](/portal-sdk/generated/top-extensions-telemetry.md)
-
-* [Set up and verify telemetry logging from your extension](/portal-sdk/generated/)
+* [Set up and verify telemetry logging from your extension](/portal-sdk/generated/top-extensions-telemetry-logging.md)
 
 [Ask about telemetry on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-telemetry)
 
@@ -254,7 +252,7 @@ The Azure portal supports multiple languages and locales. You will need to local
 
 * [Setting up localization for your gallery package](/portal-sdk/generated/top-extensions-localization-globalization.md#marketplace)
 
-* [Testing localization with side-loading](/portal-sdk/generated/top-extensions-sideloading.md)
+* [Testing localization with side-loading](/portal-sdk/generated/top-extensions-localization-globalization.md#testing-localization)
 
 * [Formatting numbers, currencies and dates](/portal-sdk/generated/top-extensions-localization-globalization.md#globalization-api)
 
@@ -289,13 +287,13 @@ The Ibiza team provides and operates a common Extension Hosting Service that mak
 
 * [Extension Hosting Service overview](/portal-sdk/generated/top-extensions-hosting-service.md)
 
-* [Onboarding your extension to the Extension Hosting Service](/portal-sdk/generated/top-extensions-hosting-service-procedures.md)
+* [Onboarding your extension to the Extension Hosting Service](/portal-sdk/generated/top-extensions-hosting-service.md#step-by-step-onboarding)
 
 * [Validating extension registration with the Extension Hosting Service](/portal-sdk/generated/)
 
 * [Versioning your extension](/portal-sdk/generated/top-extensions-versioning.md)
 
-* [Deploying your extension using Express V2 and the Extension Hosting Service](/portal-sdk/generated/top-extensions-hosting-service-advanced.md)
+* [Deploying your extension using Express V2 and the Extension Hosting Service](/portal-sdk/generated/top-extensions-hosting-service-ev2.md)
 
 * [SLA for registering an extension with the Extension Hosting Service](/portal-sdk/generated/top-extensions-svc-lvl-agreements.md)
 
