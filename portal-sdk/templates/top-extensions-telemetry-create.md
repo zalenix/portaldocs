@@ -769,7 +769,7 @@ The following table specifies queries that can be run to investigate errors and 
 | Regression Details       | `GetCreateRegressionDetails(now(),"<extensionName>","<bladeName>")`    | [Alert regression details](#alert-regression-details) |
 | Regression Summaries     | `_CreateFlowRegressionsBase(now(),24h,50)`                             | [Alert regression summaries](#alert-regression-summaries) |
 | All Creates              | `GetCreatesByDateRange(ago(1d),now())`                                 | [All creates](#all-creates) |
-| All Creates with Details | `GetCreateDetailsByDateRange(ago(1d),now())`                           | [All create details](#all-creates-details) |
+| All Creates with additional details  | `GetCreateDetailsByDateRange(ago(1d),now())`                           | [All creates with additional details](#all-creates-with-additional-details)               |
 
 ### Alert query 
 

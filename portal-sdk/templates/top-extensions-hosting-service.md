@@ -436,7 +436,7 @@ The versions available in the Hosting Service can be seen by going to the follow
 | Blackforest | [https://hosting.azure-api.de/api/diagnostics](https://hosting.azure-api.de/api/diagnostics)
 | Fairfax |  [https://hosting.azureportal.usgovcloudapi.net/api/diagnostics](https://hosting.azureportal.usgovcloudapi.net/api/diagnostics) |
 
-Each extension gets its own diagnostics endpoint, by adding the extension name to the path before `/api`. For example, [https://hosting.portal.azure.net/myextension/api/diagnostics](https://hosting.portal.azure.net/myextension/api/diagnostics).
+Each extension gets its own diagnostics endpoint, by adding the extension name to the path before `/api`. For example, `https://hosting.portal.azure.net/myextension/api/diagnostics`.
 
 ### Friendly names and sideloading
 
