@@ -39,9 +39,9 @@ Couldn't find what you needed? [Ask about the docs on StackOverflow](https://sta
 | No-PDL blades and parts | http://top-whats-new #no-pdl.md | Reduces the number of files and concepts to build UI |
 | Forms without edit scope | [top-editscopeless-forms.md](/portal-sdk/generated/top-editscopeless-forms.md) | More intuitive APIs for building forms |
 | EditableGrid V2 | /portal-sdk/generated | Improved APIs designed to work with new forms |
-| Extension availability alerts |  /portal-sdk/generated  | Get notified if your extension goes down |
-| Actionable notifications |availibility-alerts.md | Point users to well known next steps |
-| EV2 support for the Extension Hosting Service | [top-extensions-hosting-service-advanced.md](/portal-sdk/generated/top-extensions-hosting-service-advanced.md) | Nuff said |
+| Extension availability alerts |  [top-extensions-alerting.md](/portal-sdk/generated/top-extensions-alerting.md)  | Get notified if your extension goes down |
+| Actionable notifications | [top-extensions-notifications.md](/portal-sdk/generated/top-extensions-notifications.md) | Point users to well known next steps |
+| EV2 support for the Extension Hosting Service | [top-extensions-hosting-service-ev2.md](/portal-sdk/generated/top-extensions-hosting-service-ev2.md) | Nuff said |
 | Multi-Column for the Essentials control | /portal-sdk/generated/ | Better use of screen real estate |
 | TreeView improvements | /portal-sdk/generated/ | Checkboxes, commands, and Load More / Virtualization |
 
@@ -58,9 +58,12 @@ Learn how the framework is structured and how it is designed to run in multiple 
 
 | Name                            | Location | Purpose |
 | ------------------------------- | -------- | ------- |
+| Resource Management  | [top-extensions-resource-management.md](/portal-sdk/generated/top-extensions-resource-management.md) | Consistent designs for blades that create or provision resources and services |
+| Designing for Resource Create | [top-extensions-resource-create.md](/portal-sdk/generated/top-extensions-resource-create.md) | Create Azure resources |
 | Creating Blades  | [top-extensions-create.md](/portal-sdk/generated/top-extensions-create.md) | Blades that create or provision resources and services |
+| Designing for Resource Browse | [top-extensions-resource-browse.md](/portal-sdk/generated/top-extensions-resource-browse.md) | Designing browsable resources  |
 | Browsing Resources | [top-extensions-browse.md](/portal-sdk/generated/top-extensions-browse.md) | Adding your resource or service into the Browse menu |
-| Azure Resource Manager (ARM) | [top-extensions-resource-manager.md](/portal-sdk/generated/top-extensions-resource-manager.md) | Extension resource management for  reuse of resources and consistency in design|
+| Azure Resource Manager (ARM) | [top-extensions-resource-manager.md](/portal-sdk/generated/top-extensions-resource-manager.md) | Extension resource management for  reuse of resources and consistency in design |
 
 ## Onboard a new extension
 
@@ -86,9 +89,9 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 | Release notes | [release-notes.md](/portal-sdk/generated/release-notes.md) | Summary of recent changes to the Azure SDK |
 | Breaking changes | [breaking-changes.md](/portal-sdk/generated/breaking-changes.md) | SDK editions that are associated with bugs, workarounds or fixes |
 | Install the SDK | [top-extensions-install-software.md](/portal-sdk/generated/top-extensions-install-software.md) | Initializing the computer for Azure extension development |
-| How to update portal Nuget packages |  [top-extensions-nuget.md](/portal-sdk/generated/top-extensions-nuget.md) | A list of Nuget packages and how to install them  |
-| Getting started |  [top-extensions-getting-started.md](/portal-sdk/generated/top-extensions-getting-started.md) | From empty form factor to a functional extension |
-| SDK Update policy and alerts |  [top-extensions-getting-started.md #maintain-development-environment](/portal-sdk/generated/top-extensions-getting-started.md#maintain-development-environment) | Keeping your computer current for extension development |
+| Update portal Nuget packages |  [top-extensions-nuget.md](/portal-sdk/generated/top-extensions-nuget.md) | A list of Nuget packages and how to install them  |
+| Get started |  [top-extensions-getting-started.md](/portal-sdk/generated/top-extensions-getting-started.md) | From empty form factor to a functional extension |
+| Update the SDK |  [top-extensions-nuget.md#updating-your-extension-to-a-newer-version-of-the-sdk](/portal-sdk/generated/top-extensions-nuget.md#updating-your-extension-to-a-newer-version-of-the-sdk) | Keeping your computer current for extension development |
 | Sideloading  | [top-extensions-sideloading.md](/portal-sdk/generated/top-extensions-sideloading.md)  | Running the extension locally | 
 
 ### Samples
@@ -196,7 +199,7 @@ The Ibiza team provides limited testing support. Due to resource constraints the
 | How to choose between test frameworks | [top-extensions-testing.md](/portal-sdk/generated/top-extensions-testing.md) |  How to select the test framework that is the best fit for your extension |
 | Unit testing support | [top-extensions-unit-test.md](/portal-sdk/generated/top-extensions-unit-test.md) | Creating a unit test for your extension |
 | C# test framework (Open source) | [top-extensions-csharp-test-framework.md](/portal-sdk/generated/top-extensions-csharp-test-framework.md) | A framework for UI-based Selenium Webdriver tests |
-| Node.js test framework (Open source) | [top-extensions-msportalfx-test.md](/portal-sdk/generated/top-extensions-msportalfx-test.md) | An end-to-end test framework that tests extension interactions with user behavior |
+| Node.js test framework (Open source) | [top-extensions-node-js-test-framework.md](/portal-sdk/generated/top-extensions-node-js-test-framework.md) | An end-to-end test framework that tests extension interactions with user behavior |
 
 ## Azure Fundamentals
 
@@ -246,10 +249,10 @@ The Ibiza team provides and operates a common Extension Hosting Service that mak
 | Name                     | Location | Purpose |
 | ------------------------ | -------- | ------- |
 | Hosting Service overview | [top-extensions-hosting-service.md](/portal-sdk/generated/top-extensions-hosting-service.md) | |
-| Onboarding your extension to the Extension Hosting Service | [top-extensions-hosting-service-procedures.md](/portal-sdk/generated/top-extensions-hosting-service-procedures.md) | |
-| Validating extension registration with the Extension Hosting Service | [top-extensions-hosting-service-procedures.md #register-the-extension](/portal-sdk/generated/top-extensions-hosting-service-procedures.md#register-the-extension) | |
+| Onboarding your extension to the Extension Hosting Service | [top-extensions-hosting-service.md#step-by-step-onboarding](/portal-sdk/generated/top-extensions-hosting-service.md#step-by-step-onboarding) | |
+| Validating extension registration with the Extension Hosting Service | [top-extensions-hosting-service.md#step-7-registering-your-extension-with-hosting-service](/portal-sdk/generated/top-extensions-hosting-service.md#register-the-extension) | |
 | Versioning your extension | [top-extensions-versioning.md](/portal-sdk/generated/top-extensions-versioning.md) | |
-| Deploying your extension using Express V2 and the Extension Hosting Service | [top-extensions-hosting-service-advanced.md](/portal-sdk/generated/top-extensions-hosting-service-advanced.md)| |
+| Deploying your extension using Express V2 and the Extension Hosting Service | [top-extensions-hosting-service-ev2.md](/portal-sdk/generated/top-extensions-hosting-service-advanced.md)| |
 | SLA for registering an extension with the Extension Hosting Service | [top-extensions-svc-lvl-agreements.md](/portal-sdk/generated/top-extensions-svc-lvl-agreements.md) | |
 
 ### Custom extension deployment
@@ -281,8 +284,8 @@ The Ibiza team collects standard telemetry for generic actions like blade openin
 | Getting access to raw portal telemetry data | [top-extensions-telemetry.md](/portal-sdk/generated/top-extensions-telemetry.md) | |
 | Consuming telemetry via pre-built Power BI dashboards | [top-extensions-telemetry-create.md](/portal-sdk/generated/top-extensions-telemetry-create.md) | |
 | Performance and reliability monitoring / alerting | [top-extensions-reliability.md](/portal-sdk/generated/top-extensions-reliability.md) | |
-| Collecting feedback from your users | [top-extensions-telemetry.md](/portal-sdk/generated/top-extensions-telemetry.md) | |
-| Set up and verify telemetry logging from your extension | /portal-sdk/generated/ | |
+| Collecting feedback from your users | [top-extensions-alerting.md](/portal-sdk/generated/top-extensions-alerting.md) | |
+| Building an entirely custom logging system |  [top-extensions-telemetry-logging.md](/portal-sdk/generated/top-extensions-telemetry-logging.md) | Set up and verify telemetry logging from your extension |
 
 ## Legacy features
 

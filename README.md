@@ -34,9 +34,9 @@ Learn how the framework is structured and how it is designed to run in multiple 
 
 * [EditableGrid V2](http://top-level/editable-grid.md) - *Improved APIs designed to work with new forms*
 
-* [Extension availability alerts](http://top-level/availibility-alerts.md) - *Get notified if your extension goes down*
+* [Extension availability alerts](/portal-sdk/generated/top-extensions-alerting.md) - *Get notified if your extension goes down*
 
-* [Actionable notifications](http://top-level/availibility-alerts.md) - *Point users to well known next steps*
+* [Actionable notifications](/portal-sdk/generated/top-extensions-notifications.md) - *Point users to well known next steps*
 
 * [EV2 support for the Extension Hosting Service](/portal-sdk/generated/top-extensions-hosting-service-ev2.md) - *Nuff said*
 
@@ -58,9 +58,9 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 
 * [Install the SDK](/portal-sdk/generated/top-extensions-install-software.md)
 
-* [How to update portal Nuget packages](/portal-sdk/generated/top-extensions-nuget.md)
+* [Update portal Nuget packages](/portal-sdk/generated/top-extensions-nuget.md)
 
-* [Getting started](/portal-sdk/generated/top-extensions-getting-started.md)
+* [Get started](/portal-sdk/generated/top-extensions-getting-started.md)
 
 * [Update the SDK](/portal-sdk/generated/top-extensions-nuget.md#updating-your-extension-to-a-newer-version-of-the-sdk)
 
@@ -289,7 +289,7 @@ The Ibiza team provides and operates a common Extension Hosting Service that mak
 
 * [Onboarding your extension to the Extension Hosting Service](/portal-sdk/generated/top-extensions-hosting-service.md#step-by-step-onboarding)
 
-* [Validating extension registration with the Extension Hosting Service](/portal-sdk/generated/)
+* [Validating extension registration with the Extension Hosting Service](/portal-sdk/generated/portal-sdk/generated/top-extensions-hosting-service.md#register-the-extension))
 
 * [Versioning your extension](/portal-sdk/generated/top-extensions-versioning.md)
 
