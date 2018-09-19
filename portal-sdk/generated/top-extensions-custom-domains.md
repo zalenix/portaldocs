@@ -32,7 +32,7 @@ Some partner needs are met at the deployment level. For example, national clouds
 
 In other instances, a single deployment of an extension supports multiple domains.  For example, community clouds, like Fujitsu A5, use domain-based configuration.  In these instances, functionality is selected based on the Trusted Authority for the calling extension, as specified in [#the-trustedAuthorityHost-function](#the-trustedauthorityhost-function). Although domain-based configuration is not required to support national clouds, there is great overlap between settings for community clouds. It is easier to store settings such as links in domain-based configuration, which allows the Portal to include support for expanding redirected links, or include support for friendly name services such as **FwLink** and **aka.ms**.
 
-During development, the first-party or third-party developer identifies the extension functionality that is dependent on the domain in which the extension will run. Once the partner and developer have identified the configurations that provide this functionality for the extension, the developer creates a supporting `DictionaryConfiguration` class as specified in [Configure the dictionary](#configure-the-dictionary). The dictionary key is the host name the Shell was loaded under, which is available at run time by using the `PortalContext` and `TrustedAuthorityHost` functions.
+During development, the first-party or third-party developer identifies the extension functionality that is dependent on the domain in which the extension will run. Once the partner and developer have identified the configurations that provide this functionality for the extension, the developer creates a supporting `DictionaryConfiguration` class as specified in [#configure-the-dictionary](#configure-the-dictionary). The dictionary key is the host name the Shell was loaded under, which is available at run time by using the `PortalContext` and `TrustedAuthorityHost` functions.
 
 It is recommended, but not required, that domain-based configuration class names have the characters `DomainBasedConfiguration` appended to them. Some examples are `ErrorApplicationDomainBasedConfiguration`, `HubsDomainBasedConfiguration`, and `WebsiteDomainBasedConfiguration`. 
 
@@ -99,8 +99,7 @@ Links are automatically expanded according to the user's domain, tenant, and lan
 
     In this instance, the feature is not supported for that user / tenant / environment combination.
 
-The extension should support all three formats if they take a dependency.
-<!-- TODO: Determine who takes which dependency. -->
+The extension should support all three formats if they are intended to be used in custom portal.
 
 <a name="domain-based-configuration-configuration-apis-the-getsharedsettings-function-the-link-attribute"></a>
 #### The link attribute
@@ -169,7 +168,7 @@ Links are separated into the following three sections.
 <a name="domain-based-configuration-configuration-apis-the-getsharedsettings-function-shell-links"></a>
 #### Shell Links
 
-<!-- TODO:  Determine whether the "Extension value" column was intended to be a recommended value.-->
+The values listed in the "Extension value" column are recommended values, although they can be customized for your extension. 
 
 | Setting name / notes | Default Value | Extension Value |
 | -------------------- | ------------ | ---------- |
@@ -179,11 +178,11 @@ Links are separated into the following three sections.
 | createSupportRequest | #create/Microsoft.Support | same |
 | giveFeedback | [https://go.microsoft.com/fwLink/?LinkID=522329](https://go.microsoft.com/fwLink/?LinkID=522329) | [https://go.microsoft.com/fwlink/?linkid=838978](https://go.microsoft.com/fwlink/?linkid=838978) | 
 | helpAndSupport | 	#blade/Microsoft_Azure_Support/HelpAndSupportBlade | same | 
-| learnRelatedResources	| [https://go.microsoft.com/fwLink/?LinkID=618605](https://go.microsoft.com/fwLink/?LinkID=618605) | same  | 
-| learnSharedDashboard | [https://go.microsoft.com/fwLink/?LinkID=746967](https://go.microsoft.com/fwLink/?LinkID=746967) | same  | 
+| learnRelatedResources	| [https://docs.microsoft.com/en-us/azure/azure-portal/azure-portal-dashboards](https://docs.microsoft.com/en-us/azure/azure-portal/azure-portal-dashboards) | same  | 
+| learnSharedDashboard | [https://docs.microsoft.com/en-us/azure/azure-portal/azure-portal-dashboard-share-access](https://docs.microsoft.com/en-us/azure/azure-portal/azure-portal-dashboard-share-access) | same  | 
 | manageSupportRequests | #blade/HubsExtension/BrowseServiceBlade/        assetTypeId/Microsoft_Azure_Support_SupportRequest | same |
 | privacyAndTerms | [https://go.microsoft.com/fwLink/?LinkID=522330](https://go.microsoft.com/fwLink/?LinkID=522330)	 | same | 
-| resourceGroupOverview	| [https://go.microsoft.com/fwLink/?LinkID=394393](https://go.microsoft.com/fwLink/?LinkID=394393) | same  | 
+| resourceGroupOverview	| [https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-portal](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-portal) | same  | 
 | survey	| [https://go.microsoft.com/fwLink/?LinkID=733278](https://go.microsoft.com/fwLink/?LinkID=733278)  | 	??? Gauge team to follow up on this | 
 | joinResearchPanel | [https://www.surveymonkey.com/](https://www.surveymonkey.com/) | same |
 | learnAzureCli<sup>2</sup> | 	[https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-azure-resource-manager/](https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-azure-resource-manager/)	 | same |
@@ -205,7 +204,6 @@ Links are separated into the following three sections.
 | resourceGroupSample	| [https://go.microsoft.com/fwLink/?LinkID=394397](https://go.microsoft.com/fwLink/?LinkID=394397)	 | same |
 | resourceGroupTemplate	| [https://go.microsoft.com/fwLink/?LinkID=394395](https://go.microsoft.com/fwLink/?LinkID=394395)	 | same |
 | subCerts	| [https://go.microsoft.com/fwLink/?LinkID=734721](https://go.microsoft.com/fwLink/?LinkID=734721)	 | same |
-| tourHelp	| [https://go.microsoft.com/fwLink/?LinkID=626007](https://go.microsoft.com/fwLink/?LinkID=626007)	 | same |
 | templateDeployment	| [https://go.microsoft.com/fwLink/?LinkID=733371](https://go.microsoft.com/fwLink/?LinkID=733371)	 | same |
 | tagsHelp<sup>2</sup> | [https://go.microsoft.com/fwLink/?LinkID=822935](https://go.microsoft.com/fwLink/?LinkID=822935)  | same |
 | pricingHelp<sup>2</sup> | [https://go.microsoft.com/fwLink/?LinkID=829091](https://go.microsoft.com/fwLink/?LinkID=829091)  | same |
@@ -242,7 +240,7 @@ In many cases, the domain-based configuration is needed in client-side **TypeScr
 
 <!-- TODO:  Correct the code typos in the following sentence by locating the code. -->
 
-1. In `ExtensionExtensionDefinition.cs`, add the configuration class to the `ImportContructor`.
+1. In `ExtensionExtensionDefinition.cs`, add the configuration class to the `ImportConstructor`.
 
 1. Override `IReadOnlyDictionary&lt;string, object&gt; GetExtensionConfiguration(PortalRequestContext context)`  to extend the environment object that is returned to the client, as in the following code.
 
@@ -726,10 +724,7 @@ The following steps generate the JSON for the dashboard.
 <a name="domain-based-configuration-update-community-clouds"></a>
 ## Update Community Clouds
 
-To add your custom domain to a community cloud, reach out to <a href="mailto:ibizafxpm@microsoft.com?subject=Add Custom Domain to a Community Cloud&body=Hello, we would like to add our new custom domain to a community cloud.">the reviewers</a> and we will set up meetings with you and your team to ensure that the custom domain is added to the appropriate environments.
-<!-- TODO: Locate the distribution list for the reviewers
-Dave Brankin; Benoit Martin; Santhosh Somayajula; David Anson
- -->
+To add your custom domain to a community cloud, reach out to <a href="mailto:santhosh.somayajulu@microsoft.com?subject=Add Custom Domain to a Community Cloud&body=Hello, we would like to add our new custom domain to a community cloud.">Santhosh Somayajula</a> and we will set up meetings with you and your team to ensure that the custom domain is added to the appropriate environments.
 
 Community clouds are primarily in the Dogfood environment, the PROD environment, or some combination thereof.  Within those environments, there are two extensions currently that serve community clouds or custom domains.  The following table describes the extension, the environment, and the area.  All of the associated json files unless otherwise noted are located at [http://aka.ms/portalfx/domainbasedconfiguration](http://aka.ms/portalfx/domainbasedconfiguration).
 
@@ -859,11 +854,11 @@ The following three examples demonstrate how to use the settings that are associ
 <a name="domain-based-configuration-questionnaire-template"></a>
 ## Questionnaire template
 
-The following template contains questions that your team answers previous to the granting of the custom domain. You should determine the settings and values for your extension previous to filling out the questionnaire, by reviewing the values in the tables located in the [Override links](#override-links),  [Branding and chrome](#branding-and-chrome), and [Tile Gallery](#tile-gallery) sections. You may also want to use settings that were specified in [Default Dashboard](#default-dashboard), if you decide to create one.
+The following template contains questions that your team answers previous to the granting of the custom domain. You should determine the settings and values for your extension previous to filling out the questionnaire, by reviewing the values in the tables located in the [Override links](#override-links), and  [Branding and chrome](#branding-and-chrome) sections. You may also want to use settings that were specified in [Default Dashboard](#default-dashboard), if you decide to create one.
 
 You and your team should reach out to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Custom Domains">Leon Welicki and Adam Abdelhamed</a> in the process of answering the questionnaire.
 
-The main questions to answer, other than the settings and values as described in the [Override links](#override-links), [Branding and chrome](#branding-and-chrome), and [Tile Gallery](#tile-gallery) sections, are the following.
+The main questions to answer, other than the settings and values as described in the [Override links](#override-links) and [Branding and chrome](#branding-and-chrome) sections, are the following.
 
 1. Why do you need a Custom Domain?
 
@@ -891,7 +886,7 @@ The main questions to answer, other than the settings and values as described in
 
 1. Branding and Chrome Values
 
-    The unique values for settings and feature flags for your extension should be included in the  list specified in [#branding-and-chrome](#branding-and-chrome) and [#tile-gallery](#tile-gallery).  You can make a copy of the tables, or you can reach out to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Custom Domains">Leon Welicki and Adam Abdelhamed</a>.
+    The unique values for settings and feature flags for your extension should be included in the  list specified in the [#branding-and-chrome](#branding-and-chrome) section.  You can make a copy of the tables, or you can reach out to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Custom Domains">Leon Welicki and Adam Abdelhamed</a>.
 
 <a name="domain-based-configuration-pull-request"></a>
 ## Pull Request
