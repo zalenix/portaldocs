@@ -52,9 +52,9 @@ The test framework searches for a `config.json` file in the current working dire
 
 1. First install the typings Typescript Definition Manager globally:
 
-```
-        npm install typings -g
-```
+    ```
+    npm install typings -g
+    ```
 
 1. Next copy the provided **typings.json** and **package.json** files from the **node_modules/msportalfx-test/typescript** folder (there are other files there as well but you can ignore those) to your test root directory and use typings to install the provided definitions.
 
