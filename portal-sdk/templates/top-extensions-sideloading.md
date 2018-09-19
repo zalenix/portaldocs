@@ -79,7 +79,7 @@ Register the extension for side loading using one of the following three methods
 
 	For more information about testing extensions in the hosting service, see [top-extensions-hosting-service.md#friendly-names-and-sideloading](top-extensions-hosting-service.md#friendly-names-and-sideloading).
 
-* If the extension is not running on localhost or is mapped by using a hosts file to a named domain, use the `registerTestExtension` API.
+* If the extension is not running on localhost or is mapped by using a `hosts` file to a named domain, use the `registerTestExtension` API. The `hosts` file is located at `c:\windows\system32\drivers\etc\hosts`.
 
 	While sideloading using a query string and fragment is only supported for extensions running on `localhost`, registering an extension with the `registerTestExtension` API can be used for both `localhost` and other domains.
 
