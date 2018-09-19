@@ -68,26 +68,28 @@ The following steps describe how to create a resource in Azure.
 	 
 	Resource health requires additional onboarding to the resource provider (RP), as specified in [top-extensions-onboarding-with-related-teams.md#onboard-with-related-teams](top-extensions-onboarding-with-related-teams.md#onboard-with-related-teams). 
   
-<a name="resource-management-resource-behavior-toolbar"></a>
-### Toolbar
+The following image describes a typical resource.
 
-Toolbar commands should open context panes instead of narrow blades to avoid horizontal scrolling. Learn more [portalfx-controls-toolbar.md](portalfx-controls-toolbar.md) and [top-extensions-context-panes.md](top-extensions-context-panes.md).
+![alt-text](../media/top-extensions-resources/resourceManagement.png "Sample resource experience")
+
+* Toolbar 
+
+	Toolbar commands open context panes instead of narrow blades to avoid horizontal scrolling, as specified in [portalfx-controls-toolbar.md](portalfx-controls-toolbar.md) and [top-extensions-context-panes.md](top-extensions-context-panes.md).
  
-<a name="resource-management-resource-behavior-essentials-panel"></a>
-### Essentials panel
+* Essentials panel 
 
-The essentials panel surfaces properties that are common throughout all Azure resources as well as important resource specific properties. User feedback has shown us that our customers rely heavily on the essentials panel for looking up information. Learn more [portalfx-essentials.md](portalfx-essentials.md) and [portalfx-controls-essentials.md](portalfx-controls-essentials.md).
+	The essentials panel surfaces properties that are common throughout all Azure resources as well as important resource specific properties. User feedback has shown us that our customers rely heavily on the essentials panel for looking up information. For more information, see  [portalfx-essentials.md](portalfx-essentials.md) and [portalfx-controls-essentials.md](portalfx-controls-essentials.md).
 
-<a name="resource-management-page-content"></a>
-## Page Content
+* Content area
 
-* *Must* meet the performance bar – the overview page is the most viewed blade for your resource  
+* Meets the performance bar – the overview page is the most viewed blade for your resource  
 
 * Content to guide the user to get the most from the resource 
 
 * Resource properties to indicate important resource configuration
  
 * Resource performance metric graphs to indicate whether resource is functioning properly 
+
  
 | Do | Don't |
 | -- | ----- |
@@ -120,32 +122,10 @@ The essentials panel surfaces properties that are common throughout all Azure re
 
 This is a list of related Azure Portal Ibiza SDK documentation that is not referenced in this pattern. 
 
-Properties blade 	https://github.com/Azure/portaldocs/blob/f3a637fd8f117901d120f8d96c51892f8954a8bf/portal-sdk/generated/portalfx-blades.md#introduction-to-blade-kinds-properties-blade  
+Properties blade 
 
- 
-Related patterns 
-Resource Management 
-Resource Browse 
-Fullscreen 
-Forms 
- 
-Next steps 
-	1. Pin to dashboard from Resource Overview – what happens via framework and what is resource responsibility 
-(from Kristian Nese)   
-		I notice that there’s seems to be quite random in terms of which resources we actually can pin to a dashboard – vs resources that doesn’t show anything at all. 
-				Eventually, this all boils down to an inconsistent and bad customer experience, as there’s a lot of randomness (apparently) in terms of what can be placed on an Azure dashboard.  
-				To that end; I was wondering how we best can raise and track this moving forward? Since this applies to all of our Azure services and likely most of our resource types, would this fit into Azure fundamentals? 
-		 
-		Example here is ASC, that shows up like this: 
-		
-		 
-		 
-		In comparison to something that work as expected, the Azure metrics preview shows its logo: 
-		
-		 
-		 
-		Last but not least, some pinned resources are simply not working. I can click on them as much as I want – but nothing happens. 
-		Example here is VSTS Account: 
-		
-		 
+[portalfx-blades-properties.md](portalfx-blades-properties.md)
 
+Pin to Dashboard
+
+[portalfx-blades-pinning.md](portalfx-blades-pinning.md)
