@@ -2,7 +2,7 @@
 <a name="overview"></a>
 ## Overview
    
-During standard customer use of the Portal, extensions are loaded from a fixed set of URLs that are specified within the Portal's environment configuration file. For extension developers, sideloading allows a developer to load an extension that’s running at another location against any Portal environment on a per-user basis. This is the standard method of validating changes during the inner development test loop during extension development.
+During standard customer use of the Portal, extensions are loaded from a fixed set of URLs that are specified within the Portal's environment configuration file. For extension developers, sideloading allows a developer to load an extension that’s running at another location against any Portal environment on a per-user basis. This is the standard method of validating changes during extension development.
 
 <a name="quick-reference-by-example"></a>
 ## Quick Reference by Example
