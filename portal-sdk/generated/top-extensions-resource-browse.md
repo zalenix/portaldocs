@@ -48,7 +48,7 @@ The key items that are displayed are as follows.
     
     For more information about display names for resources, see [portalfx-browse-migration.md#migration-process](portalfx-browse-migration.md#migration-process).
 
-    **NOTE**:  Do not use words like "profiles" to describe a resource.  For more information about reserved words, see [Read in the SDK](Read in the SDK).
+    **NOTE**:  Do not use words like "profiles" to describe a resource.  For more information about reserved words, see [https://docs.microsoft.com/en-us/dotnet/api/overview/azure/?view=azure-dotnet](https://docs.microsoft.com/en-us/dotnet/api/overview/azure/?view=azure-dotnet).
 
 * Toolbar
 
