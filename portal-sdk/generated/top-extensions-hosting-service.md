@@ -74,7 +74,7 @@ Since this process is typically same across all extension you can leverage the p
 ### Step-by-Step Onboarding
 
 <a name="30-sec-overview-step-by-step-onboarding-step-1-update-isdevelopmentmode-to-false"></a>
-#### Step 1: Update IsDevelopmentMode to false
+#### Step 1 Update IsDevelopmentMode to false
 
 Content unbundler requires  development mode be set to false to assign correct build version to the zip file.
 
@@ -93,7 +93,7 @@ Here is an example of monitoring extension
 If you wish to achieve this only on release builds a [web.Release.config transform](http://go.microsoft.com/fwlink/?LinkId=125889) can be used.
 
 <a name="30-sec-overview-step-by-step-onboarding-step-2-install-microsoft-portal-tools-contentunbundler-and-import-targets"></a>
-#### Step 2: Install Microsoft.Portal.Tools.ContentUnbundler and import targets
+#### Step 2 Install Microsoft.Portal.Tools.ContentUnbundler and import targets
 
 Microsoft.Portal.Tools.ContentUnbundler provides content unbundler tool that can be run against the extension assemblies to extract static content and bundles. 
 
@@ -106,7 +106,7 @@ b. If you are using CoreXT global packages.config you will have to add the targe
 ```
 
 <a name="30-sec-overview-step-by-step-onboarding-step-3-verify-if-your-build-has-a-version-number-set"></a>
-#### Step 3: Verify if your build has a version number set
+#### Step 3 Verify if your build has a version number set
 
 The zip file generated during the build should be named as BUILD_VERSION.zip, where BUILD_VERSION is the current version number of your build.
 
@@ -155,7 +155,7 @@ using Microsoft.Portal.Framework;
 ```
 
 <a name="30-sec-overview-step-by-step-onboarding-step-4-environment-specific-configuration-files"></a>
-#### Step 4:  <strong>Environment specific configuration files</strong>
+#### Step 4  <strong>Environment specific configuration files</strong>
 
 In order to load your extension in a specific environments you will need to provide environment specific configuraiton file as an embedded resource in Content\Config\* directory. Here are example for each environment: 
 
@@ -245,7 +245,7 @@ Once you do that, you can provide a value to that property for each cloud by add
 ```
 
 <a name="30-sec-overview-step-by-step-onboarding-step-5-execute-content-unbundler-as-part-of-build-to-generate-zip-file"></a>
-#### Step 5: Execute content unbundler as part of build to generate zip file
+#### Step 5 Execute content unbundler as part of build to generate zip file
 
 The tool will generate a folder and a zip file with a name same as the extension version. The folder will contain all content required to serve the extension.
 
@@ -283,7 +283,7 @@ Outside of CoreXT, the default settings in the targets file should work for most
 ```
 
 <a name="30-sec-overview-step-by-step-onboarding-step-6-upload-safe-deployment-config"></a>
-#### Step 6: Upload safe deployment config
+#### Step 6 Upload safe deployment config
 
 You will need to author this file. 
 
@@ -334,7 +334,7 @@ To load version 2.0.0.0 the url would be
 [https://myextension.hosting.portal.azure.net/myextension/friendlyname?l=en&trustedAuthority=portal.azure.com](https://myextension.hosting.portal.azure.net/myextension/friendlyname?l=en&trustedAuthority=portal.azure.com)
 
 <a name="30-sec-overview-step-by-step-onboarding-step-7-registering-your-extension-with-hosting-service"></a>
-#### Step 7: Registering your extension with hosting service
+#### Step 7 Registering your extension with hosting service
 
 Extensions that intend to use extension hosting service should publish the extracted deployment artifacts (zip file) that are generated during the build along with config.json to a public endpoint. 
 Make sure that all the zip files and config.json are at the same level.
