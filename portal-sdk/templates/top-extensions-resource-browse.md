@@ -25,7 +25,7 @@ Resource facets can be collapsed, as in the following example, to allow more spa
  
 ![alt-text](../media/top-extensions-resources/filtered.png "Filtered Resources")
 
-The Azure Fundamentals report located at []() will report on . for your resources. This includes .
+The Azure Fundamentals report located at [needslink](needslink) will report on . for your resources. This includes .
 
 For more information on upgrading to the most recent browse experience, see [portalfx-browse-migration.md](portalfx-browse-migration.md).
 
