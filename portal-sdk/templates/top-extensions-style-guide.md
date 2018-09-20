@@ -84,9 +84,17 @@ In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  
 
  Add a new CSS file to your extension to specify custom styles, as in the sample located at `<dir>\Client\V1\Parts\Custom\Styles\ExampleStyles.css`. This code is also included in the following example.
 
-{"gitdown":"include-file","file":"../Samples/SamplesExtension/Extension/Client/V1/Parts/Custom/Styles/ExampleStyles.css"} 
+```
+  {"gitdown":"include-file","file":"../Samples/SamplesExtension/Extension/Client/V1/Parts/Custom/Styles/ExampleStyles.css"} 
+```
 
 CSS files can then be referenced from any PDL file inside  the `Definition` element, as in the  sample located at `<dir>\Client\V1\Parts\Custom\CustomParts.pdl`. This code is also included in the following example.
+
+```
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Parts/Custom/CustomParts.pdl", "section": "Parts#CustomPartsPDLDoc"}
+```
+
+second copy
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -103,15 +111,6 @@ CSS files can then be referenced from any PDL file inside  the `Definition` elem
 The styles that are included in the CSS file can now be used inside HTML templates, as in the sample located at `<dir>\Client\V1\Parts\Custom\Templates\ExampleCustomPart.html` and in the following code.
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Parts/Custom/Templates/ExampleCustomPart.html", "section": "style-guide#allowclicks"}
-
-repeated in the following code.
-
-```html
-<div class="ext-too-many-clicks-box" data-bind="visible: !allowMoreClicks()">
-    That's too many clicks!
-    <button data-bind="click: resetClickCount">Reset</button>
-</div>
-```
 
 ## Layout classes
 
@@ -214,8 +213,7 @@ After the basics of the extension icons are working, developers may want to use 
 
 #### Color Palettes
 
-Most of the icons that the Framework provides are located in the root namespace.  An extension can change the color of all of the icons in the root namespace by using the 
-`MsPortalFx.Base.Images.Add()` method, but not by using the `MsPortalFx.Base.Images.Polychromatic.PowerUp()` method.
+Most of the icons that the Framework provides are located in the root namespace.  An extension can change the color of all of the icons in the root namespace by using the `MsPortalFx.Base.Images.Add()` method, but not by using the `MsPortalFx.Base.Images.Polychromatic.PowerUp()` method.
 
 To change the color, add the code `{palette: MsPortalFx.Base.ImagePalette.*}`  inside the function, as in the following code.
 
@@ -311,16 +309,16 @@ An extension can also use custom SVG's in the command bar, as in the following p
 
 1.  Assign their build action to 'Svg', as in the following AMD example.
 
-```ts
-import CustomSvgImages = require("./SvgDefinitions.js");
-export class DeleteCommandViewModel implements MsPortalFx.ViewModels.CommandContract {
-    public icon = ko.observable<MsPortalFx.Base.Image>();
+  ```ts
+  import CustomSvgImages = require("./SvgDefinitions.js");
+  export class DeleteCommandViewModel implements MsPortalFx.ViewModels.CommandContract {
+      public icon = ko.observable<MsPortalFx.Base.Image>();
 
-    constructor(dataContext: WebsitesDataContext) {
-        this.icon(CustomSvgImages.Content.MsPortalFx.Images.commandbar_Trash);
-    }
-}
-```
+      constructor(dataContext: WebsitesDataContext) {
+          this.icon(CustomSvgImages.Content.MsPortalFx.Images.commandbar_Trash);
+      }
+  }
+  ```
 
 ### Creating icons
 
@@ -330,30 +328,18 @@ The rules to use when creating SVG icons are as follows.
 
 1. Use the colors that are in the following approved list.
 
-  `#ffffff`
-  `#e5e5e5`
-  `#a0a1a2`
-  `#7a7a7a`
-  `#3e3e3e` - Updates in dark theme.
-  `#1e1e1e`
-  `#0f0f0f` - Updates in dark theme.
-  `#ba141a`
-  `#dd5900`
-  `#ff8c00`
-  `#fcd116`
-  `#fee087`
-  `#b8d432`
-  `#7fba00`
-  `#59b4d9`
-  `#3999c6`
-  `#804998`
-  `#ec008c`
-  `#0072c6`
-  `#68217a`
-  `#00188f`
-  `#e81123`
-
-  The names of the colors, if web-safe, are specified in [https://www.w3schools.com/colors/colors_names.asp](https://www.w3schools.com/colors/colors_names.asp).  For example,  `#ffffff` is white.
+  | Hexadecimal value | Comments              | Hexadecimal value     | Comments | Hexadecimal value | Comments |
+  | ----------------- | --------------------- | --------------------- | -------- | ----------------- | -------- |
+  | `#ffffff`, white  |                       | `#ba141a`             |          | `#59b4d9`         |          |
+  | `#e5e5e5`, gray90 |                       | `#dd5900`             |          | `#3999c6`         |          |
+  | `#a0a1a2`         |                       | `#ff8c00`, DarkOrange |          | `#804998`         |          |         
+  | `#7a7a7a`, gray48 |                       | `#fcd116`             |          | `#ec008c`         |          |
+  | `#3e3e3e`         | Updates in dark theme | `#fee087`             |          | `#0072c6`         |          |
+  | `#1e1e1e`         |                       | `#b8d432`             |          | `#68217a`         |          |
+  | `#0f0f0f`, gray6  | Updates in dark theme | `#7fba00`             |          | `#00188f`         |          | 
+  | `#e81123`         |                       |                       |          |                   |          | 
+  
+  The names of the colors, if any, are specified in [https://www.w3schools.com/colors/colors_names.asp](https://www.w3schools.com/colors/colors_names.asp) and [https://www.w3schools.com/colors/colors_x11.asp](https://www.w3schools.com/colors/colors_x11.asp).  
 
 ### SVG tags 
 
@@ -435,6 +421,7 @@ All icons shipped natively with the Portal are available in the SDK, and they ar
 Base colors within the Portal have been outfitted to change based on user-chosen themes. Because the actual hexadecimal values of these colors are determined by the theme definitions, acceptable levels of contrast between elements are maintained by the Framework. The following classes have been made available to extension developers, so that their extensions can react to theme changes and maintain readability.
 
 ### Text color classes
+
 ```css
 // Suited for main text, will render with the highest contrast
 msportalfx-text-default
@@ -493,7 +480,6 @@ The following utility classes standardize basic or initial page formatting.
 
 ## Color palette
 
-<!-- TODO:  Add a style sheet to this document so that the Framework class behaviors are displayed. -->
 The Portal offers a built-in set of classes that are based on a core color palette. These classes ensure a consistent experience for all users. This is especially important when the color conveys meaning, or differentiates data. The purposes are discussed in the following list.
 
 1. [Convey status](#convey-status)

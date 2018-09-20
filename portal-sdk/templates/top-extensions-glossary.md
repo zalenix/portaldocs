@@ -76,12 +76,13 @@ The terms are in alphabetical order.
 | C+E                       | Cloud + Enterprise | 
 | cache entries | | 
 | caching              | Hosting service extensions use persistent caching, index page caching, and manifest caching, among others. |
+| CD | Continuous Delivery  |
 | CEC                       | Common Engineering Criteria  | 
 | CEGRM                     | CSS Release management team | 
 | checklist      | A step-by-step set of instructions that specify  how to accomplish a task. |
 | cherry-pick              | Apply the changes introduced by an existing GitHub commit. |
 | chrome | The graphic control elements of a browser interface. These include elements like scrollbars, toolbar buttons,  the browser window frame, and other browser helper objects. | 
-| CI infrastructure   | | 
+| CI  | Continuous Integration | 
 | CLI                               | Command Line Interface |
 | CNAME            | Canonical Name record. A type of resource record in the Domain Name System (DNS) that specifies that a domain name is an alias for another domain (the 'canonical' domain). |
 | COGS |   Cost of Goods Sold |
