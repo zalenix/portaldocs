@@ -88,7 +88,7 @@ The following sections specify how to onboard your team to the Framework alert i
 
     * **Match Instance/Cluster**: Checked.
 
-If the correlation rules need to be updated for your extension, reach out to <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration Changes&body=My team would like to update the correlation rules for our extension.  The configuration to update is <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafx hot@microsoft.com and azurefxg@microsoft.com</a>  
+If the correlation rules need to be updated for your extension, reach out to <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration Changes&body=My team would like to update the correlation rules for our extension.  The configuration to update is <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafxhot@microsoft.com;  azurefxg@microsoft.com</a>  
  and attach the updated configuration. The email to azurefxg@microsoft.com should contain the information specified in [top-extensions-telemetry.md#programmatic-onboarding](top-extensions-telemetry.md#programmatic-onboarding). We will inform you when the updates are applied.
 
 ### Creating a certificate backed partner service principal
