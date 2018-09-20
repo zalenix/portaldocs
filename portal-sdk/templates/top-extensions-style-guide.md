@@ -90,23 +90,9 @@ In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  
 
 CSS files can then be referenced from any PDL file inside  the `Definition` element, as in the  sample located at `<dir>\Client\V1\Parts\Custom\CustomParts.pdl`. This code is also included in the following example.
 
-```
+
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V1/Parts/Custom/CustomParts.pdl", "section": "Parts#CustomPartsPDLDoc"}
-```
 
-second copy
-
-```xml
-<?xml version="1.0" encoding="utf-8" ?>
-<Definition xmlns="http://schemas.microsoft.com/aux/2013/pdl" Area="Parts">
-  <!--
-    The following sample demonstrates the use of custom parts. Custom parts
-    supply HTML templates and can be styled with custom style sheets.
-  -->
-  <StyleSheet Source="{Css Source='Styles\\ExampleStyles.css'}" />
-  ...
-</Definition>
-```
 
 The styles that are included in the CSS file can now be used inside HTML templates, as in the sample located at `<dir>\Client\V1\Parts\Custom\Templates\ExampleCustomPart.html` and in the following code.
 
@@ -309,16 +295,16 @@ An extension can also use custom SVG's in the command bar, as in the following p
 
 1.  Assign their build action to 'Svg', as in the following AMD example.
 
-  ```ts
-  import CustomSvgImages = require("./SvgDefinitions.js");
-  export class DeleteCommandViewModel implements MsPortalFx.ViewModels.CommandContract {
-      public icon = ko.observable<MsPortalFx.Base.Image>();
+    ```ts
+    import CustomSvgImages = require("./SvgDefinitions.js");
+    export class DeleteCommandViewModel implements MsPortalFx.ViewModels.CommandContract {
+        public icon = ko.observable<MsPortalFx.Base.Image>();
 
-      constructor(dataContext: WebsitesDataContext) {
-          this.icon(CustomSvgImages.Content.MsPortalFx.Images.commandbar_Trash);
-      }
-  }
-  ```
+        constructor(dataContext: WebsitesDataContext) {
+            this.icon(CustomSvgImages.Content.MsPortalFx.Images.commandbar_Trash);
+        }
+    }
+    ```
 
 ### Creating icons
 
@@ -504,6 +490,8 @@ The classes can be combined to update multiple aspects simultaneously.
 
 In the following example, each class prefix is applied to a box.  The "info" box on the left presents data, and the "dirty" box on the right indicates that the data has been updated.
 
+```css
+<div>
 <div id="statuspalette">
 <div class="statuscontainer">
 Info
@@ -543,11 +531,14 @@ Error
   <div class="msportalfx-fill-error">msportalfx-fill-error <svg><rect height="10" width="10"/></svg></div>
 </div>
 </div>
+</div>
+```
 
 ### Differentiate data
 
 Differentiating data with color is a common representation technique, for example, when drawing lines in a chart, or coloring pie chart sections. The following sets of classes are provided to specify background colors for elements. They also define a contrasted color for the text. They do not change appearance between themes.
 
+```cs
 <div id="bgcolorpalette">
 <div class="bgcolorcontainer">
 Base set
@@ -652,12 +643,13 @@ Tint 3
   <div class="msportalfx-bgcolor-k0t2">msportalfx-bgcolor-k0t2</div>
 </div>
 </div>
+```
 
 ### Color SVG
 
 Certain types of custom SVG content should adhere to the color palette. This is mostly for custom controls that use color to differentiate data, like charts. Iconography does not have this requirement.
 
-To use the palette within SVG content, use the same class names as the one for [data differentiation](#differentiate-data). The classes affect both the "`stroke`" and "`fill`" properties. The CSS rules assume the target element is within an "`g`" element contained in an "`svg`" element. The following sample shows proper usage:
+To use the palette within SVG content, use the same class names as the one for [data differentiation](#differentiate-data). The classes affect both the "`stroke`" and "`fill`" properties. The CSS rules assume the target element is within an "`g`" element contained in an "`svg`" element. The following sample shows proper usage.
 
 ```html
     <svg>
