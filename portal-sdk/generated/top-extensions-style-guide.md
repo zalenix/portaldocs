@@ -93,14 +93,15 @@ In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  
 
  Add a new CSS file to your extension to specify custom styles, as in the sample located at `<dir>\Client\V1\Parts\Custom\Styles\ExampleStyles.css`. This code is also included in the following example.
 
-```css
+﻿/* Custom CSS rules are applied to all custom parts in your extension. */
+
 .ext-too-many-clicks-box {
     color: red;
     border: 2px dotted red;
     padding: 8px;
     text-align: center;
 }
-```
+ 
 
 CSS files can then be referenced from any PDL file inside  the `Definition` element, as in the  sample located at `<dir>\Client\V1\Parts\Custom\CustomParts.pdl`. This code is also included in the following example.
 
@@ -116,7 +117,18 @@ CSS files can then be referenced from any PDL file inside  the `Definition` elem
 </Definition>
 ```
 
-The styles that are included in the CSS file can now be used inside HTML templates, as in the  sample located at `<dir>\Client\V1\Parts\Custom\Templates\ExampleCustomPart.html`.
+The styles that are included in the CSS file can now be used inside HTML templates, as in the sample located at `<dir>\Client\V1\Parts\Custom\Templates\ExampleCustomPart.html` and in the following code.
+
+```xml
+
+<div class="ext-too-many-clicks-box" data-bind="visible: !allowMoreClicks()">
+That's too many clicks!
+<button data-bind="click: resetClickCount">Reset</button>
+</div>
+
+```
+
+repeated in the following code.
 
 ```html
 <div class="ext-too-many-clicks-box" data-bind="visible: !allowMoreClicks()">
