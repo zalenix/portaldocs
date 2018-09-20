@@ -20,6 +20,8 @@ Install the following software. Your team should be aware of the most current do
 1. Node.js LTS 8.11.1 or later. It is located at 
 [https://nodejs.org/dist/v8.11.1/node-v8.11.1-x64.msi](https://nodejs.org/dist/v8.11.1/node-v8.11.1-x64.msi).
 
+1. Install Visual Studio
+
    If using Visual Studio 2017:
 
       1. Visual Studio 2017 Professional or Enterpise that is located at [https://visualstudio.microsoft.com/downloads/](https://visualstudio.microsoft.com/downloads/).  
