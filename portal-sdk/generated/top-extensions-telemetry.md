@@ -2,11 +2,11 @@
 <a name="overview"></a>
 ## Overview
 
-Developers can examine telemetry while debugging an extension. The Azure Portal tracks several pieces of information as users navigate through the Portal. 
+Developers can examine telemetry while debugging an extension. The Azure Portal tracks several pieces of information as users navigate through the Portal.
 
 Extensions do not need to consume any APIs to collect this information. Instead, debugging telemetry is made available as specified in [#live-telemetry](#live-telemetry), and production telemetry is made available to partners through **Kusto**.
 
-Portal Telemetry is a Kusto-based solution.  The Kusto database contains data that streams from Cosmos, data that is logged from your extension, survey data that is collected from your users, and data from the Portal that is associated with your extension. The AzPortal data source is located at [https://AzPortal.kusto.windows.net](https://AzPortal.kusto.windows.net). There is also a standardized pane that is used to collect user feedback that is not real-time. Extensions can display this pane by using the  one method located at [needslink](needslink).
+Portal Telemetry is a Kusto-based solution.  The Kusto database contains data that streams from Cosmos, data that is logged from your extension, survey data that is collected from your users, and data from the Portal that is associated with your extension. The AzPortal data source is located at [https://AzPortal.kusto.windows.net](https://AzPortal.kusto.windows.net). There is also a standardized pane that is used to collect user feedback that is not real-time. Extensions can display this pane by using the one method located at [needslink](needslink).
 
 The telemetry data can be viewed a number of ways. Developers can review telemetry data by using existing dashboards, or they can run queries on the **Kusto** databases.
 
@@ -15,17 +15,17 @@ The telemetry data can be viewed a number of ways. Developers can review telemet
 
 To run or create modified versions of **Kusto** queries, you will need access to the  **Kusto** data tables. All Azure employees should have access to the Kusto clusters. The way permissions are granted is through inheritance of the overall AAD group, which is `REDMOND\AZURE-ALL-PSV` for teams in C+E, and `REDMOND\AZURE-ALL-FPS` for teams outside. We do not grant individual access.   
 
- If you cannot access **Kusto**, verify whether  you have joined your team's standard access group as specified in  [http://aka.ms/standardaccess](http://aka.ms/standardaccess).   Some group names in the table of team projects  named 'Active ​Azure Team Projects' are non-intuitive, so if you are unable to locate the correct group within the table, you may need to create a new group. To do that please follow the instructions in the section named '​Finding and joining an RBAC project', or look for the link named '[Azure RBAC Getting Started Guide](http://aka.ms/portalfx/telemetryaccess/newgroup)'.  Ensure your request has been approved. If you have been denied for any reason, or if the access group is not listed,  please reach out to   <a href="mailto:ibiza-telemetry@microsoft.com?subject=Standard Permission Access for Kusto Databases">Ibiza Telemetry</a>.
+ If you cannot access **Kusto**, verify whether  you have joined your team's standard access group as specified in  [http://aka.ms/standardaccess](http://aka.ms/standardaccess).   Some group names in the table of team projects  named 'Active ​Azure Team Projects' are non-intuitive, so if you are unable to locate the correct group within the table, you may need to create a new group. To do that please follow the instructions in the section named '[Azure RBAC Getting Started Guide](http://aka.ms/portalfx/telemetryaccess/newgroup)'.  Ensure your request has been approved. If you have been denied for any reason, or if the access group is not listed,  please reach out to   <a href="mailto:ibiza-telemetry@microsoft.com?subject=Standard Permission Access for Kusto Databases">Ibiza Telemetry</a>.
 
-The **Kusto** Explorer application that can be saved to your local computer is located at [http://kusto-us/ke/Kusto.Explorer.application](http://kusto-us/ke/Kusto.Explorer.application).  Queries can also be run against the Kusto database by using the **Kusto.WebExplorer** that is located at [https://ailoganalyticsportal-privatecluster.cloudapp.net](https://ailoganalyticsportal-privatecluster.cloudapp.net)
+The **Kusto** Explorer application that can be saved to your local computer is located at [http://kusto-us/ke/Kusto.Explorer.application](http://kusto-us/ke/Kusto.Explorer.application).  Queries can also be run against the Kusto database by using the **Kusto.WebExplorer** that is located at [https://ailoganalyticsportal-privatecluster.cloudapp.net](https://ailoganalyticsportal-privatecluster.cloudapp.net).
 
 The following table contains dashboards that are used to review telemetry data.  If you do not have access to the ones you need, please contact <a href="mailto:ibiza-telemetry@microsoft.com?subject=Do not have dashboard access">Ibiza Telemetry</a>.
 
 | Name        | Dashboard Link       | Documentation                           |
 | ----------- | -------------------- | --------------------------------------- |
 | Portal Performance and Reliability | [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf)                               | [Perf Docs](portalfx-performance-overview.md) and Reliability Docs that are located at [top-extensions-reliability.md](top-extensions-reliability.md)           |
-| Portal Create                      | [http://aka.ms/portalfx/dashboard/PortalCreate](http://aka.ms/portalfx/dashboard/PortalCreate)                                | Create Docs that are located at [top-extensions-telemetry-create.md](top-extensions-telemetry-create.md)                      |
-| Extension Errors                   | [http://aka.ms/portalfx/dashboard/ExtensionErrors](http://aka.ms/portalfx/dashboard/ExtensionErrors)                             | Extension Errors Docs that are located at [top-extensions-telemetry-create.md](top-extensions-telemetry-create.md)   |
+| Portal Create                      | [http://aka.ms/portalfx/dashboard/create](http://aka.ms/portalfx/dashboard/create)                                | Create Docs that are located at [top-extensions-telemetry-create.md#create-flows](top-extensions-telemetry-create.md#create-flows)                      |
+| Extension Errors                   | [http://aka.ms/portalfx/dashboard/ExtensionErrors](http://aka.ms/portalfx/dashboard/ExtensionErrors)                             | Extension Errors Docs that are located at [top-extensions-telemetry-create.md#error-distribution-reports](top-extensions-telemetry-create.md#error-distribution-reports)   |
 
 The following table contains Ibiza PM contacts for various Portal Telemetry questions.
 
@@ -35,6 +35,7 @@ The following table contains Ibiza PM contacts for various Portal Telemetry ques
 | Create Telemetry | <a href="mailto:ibiza-create@microsoft.com?subject=Extension Create Telemetry">Ibiza Create Telemetry</a> |
 | General telemetry questions |  <a href="mailto:ibiza-telemetry@microsoft.com?subject=Portal Telemetry">Ibiza Telemetry</a>  | 
 | Azure Fx Gauge Team  | <a href="mailto:azurefxg@microsoft.com?subject=Portal Gauge Telemetry">Ibiza Telemetry</a>  |
+| Updating alerts | <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration&body=My team would like to update the correlation rules for our extension.  The configuration to update is for alert <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafx hot@microsoft.com and azurefxg@microsoft.com</a> | 
 
 Ask Stackoverflow questions on: [https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza-telemetry](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza-telemetry)
 
@@ -49,6 +50,44 @@ The line items in these emails contain links that help you locate the **Kusto** 
 
 ![alt-text](..//media/top-extensions-telemetry/connectionScope.png "Connection Scope")
 
+<a name="programmatic-onboarding"></a>
+## Programmatic onboarding
+
+The email to `azurefxg@microsoft.com` to update extension alerts should confirm the following items.
+
+1. A brief reason why you need access.
+
+1. Which databases (AzurePortal, AzPtlCosmos, hostingservice) you require access to.
+
+    **NOTE**: Ibiza only provides Viewer (read) access to the log databases.
+
+1. You understand that programmatic access to these databases potentially allows 'anonymous' access to the uncensored production logs.
+
+1. You are following Microsoft procedures for key storage.
+    Typically, this means storing the certificate in KeyVault and rotating the key at the appropriate frequency, as specified in [top-extensions-hosting-service.md#configuring-contentunbundler-for-ev2-based-deployments](top-extensions-hosting-service.md#configuring-contentunbundler-for-ev2-based-deployments).
+
+1. Your handling of any data you access this way complies with Microsoft PII & GDPR policies. This means, but is no way limited to:
+
+    1. Not copying or downloading non-anonymized logs, even to secure systems, unless you have registered those systems with GDPR for deletion and export. 
+
+   1. Not making available anonymous access by proxy. For example, a web site or other access mechanism that allows the caller, whether or not they are authenticated, to make non-delegated requests as the service principal. One  example of such is  a log search tool that connects directly as the Service Principal or dSTS Service Identity rather than using delegated authentication.
+
+1. Your application must not put excessive load on the cluster, especially over peak times like 5 - 7pm PST, or midnight - 1am UTC. 
+
+    * Please supply examples of the queries you will be executing, as well as the schedule or frequency.
+    
+    * The AAD App ID of your Service Principal or the certificate thumbprint of your dSTS Service Identity. If using an AAD Service Principal, your application uses cert based auth for its Service Principal. For more information, see [#creating-a-certificate-backed-partner-service-principal](#creating-a-certificate-backed-partner-service-principal).
+
+1. A contact e-mail for this application that we can reach out to in cases of outage, capacity planning, and similar support features. This is a team alias instead of an individual email.
+
+1. If you are using the **Kusto** Client SDK to connect, that  `ClientRequestProperties.Application` is set to an appropriate value. If you are using another access method that supports a similar feature, ensure that the extension connects with it.
+
+1. Whether you need to create your own functions and tables, including write access in **Kusto**. This means  creating a dedicated database for your team with a suitable name that you supply, for which you will then be responsible for maintaining, including registering with the GDPR scanner, or other similar entities.  If you are not sure  whether you need your own functions or tables, answer this as "No" and file a new request with <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration Changes&body=My team would like to update the correlation rules for our extension.  The configuration to update is <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafx hot@microsoft.com and azurefxg@microsoft.com</a>  if the answer changes.  The email to azurefxg@microsoft.com should contain the information specified in [top-extensions-telemetry.md#programmatic-onboarding](top-extensions-telemetry.md#programmatic-onboarding).
+
+Once azurefxg@microsoft.com receives and approves the onboarding request, they will reach out to you.  When your identities are validated, they will enable your app ID with Viewer access for the requested databases. There is no propagation delay associated with enabling programmatic access.
+
+**NOTE**: **Kusto** is a shared capacity system. As such, we reserve the right to shut down applications that put excessive load on the system. 
+
 <a name="cosmos-streams"></a>
 ## Cosmos streams
 
@@ -59,8 +98,8 @@ Although Portal reporting is primarily supported by **Kusto**, some Portal data 
 
 | Purpose                 | Dashboard Name                | Schema                                                           | Cosmos Link |
 | ----------------------- | ----------------------------- | ---------------------------------------------------------------- | ----------- |
-| Daily Client Telemetry  | ClientTelemetry               | [DataSet=53004](https://aka.ms/datastudio/#/entity/53004/schema) | [https://cosmos11.osdinfra.net/cosmos/AzureAnalytics.Partner.AAPT/shares/AzureAnalytics.Dev/AzureAnalytics.Dev.PublishedData/AAPT.Gauge.Ibiza.Daily/ClientTelemetry/](https://cosmos11.osdinfra.net/cosmos/AzureAnalytics.Partner.AAPT/shares/AzureAnalytics.Dev/AzureAnalytics.Dev.PublishedData/AAPT.Gauge.Ibiza.Daily/ClientTelemetry/)                          |
-| Hourly Client Telemetry | ClientTelemetryForKustoExport | [DataSet=93405](https://aka.ms/datastudio/#/entity/93405/schema) | [https://cosmos11.osdinfra.net/cosmos/azureanalytics.partner.azureportal/shares/AzureAnalytics.Dev/AzureAnalytics.Dev.PublishedData/AAPT.Gauge.Ibiza.Hourly/ClientTelemetryForKustoExport/](https://cosmos11.osdinfra.net/cosmos/azureanalytics.partner.azureportal/shares/AzureAnalytics.Dev/AzureAnalytics.Dev.PublishedData/AAPT.Gauge.Ibiza.Hourly/ClientTelemetryForKustoExport/)   |
+| Daily Client Telemetry  | ClientTelemetry, DataSet=53004 | [https://datastudio.msftcloudes.com/#/entity/53004/schema](https://aka.ms/datastudio/#/entity/53004/schema) | [https://cosmos11.osdinfra.net/cosmos/AzureAnalytics.Partner.AAPT/shares/AzureAnalytics.Dev/AzureAnalytics.Dev.PublishedData/AAPT.Gauge.Ibiza.Daily/ClientTelemetry/](https://cosmos11.osdinfra.net/cosmos/AzureAnalytics.Partner.AAPT/shares/AzureAnalytics.Dev/AzureAnalytics.Dev.PublishedData/AAPT.Gauge.Ibiza.Daily/ClientTelemetry/)                          |
+| Hourly Client Telemetry | ClientTelemetryForKustoExport, DataSet=93405 | [https://aka.ms/datastudio/#/entity/93405/schema](https://aka.ms/datastudio/#/entity/93405/schema) | [https://cosmos11.osdinfra.net/cosmos/azureanalytics.partner.azureportal/shares/AzureAnalytics.Dev/AzureAnalytics.Dev.PublishedData/AAPT.Gauge.Ibiza.Hourly/ClientTelemetryForKustoExport/](https://cosmos11.osdinfra.net/cosmos/azureanalytics.partner.azureportal/shares/AzureAnalytics.Dev/AzureAnalytics.Dev.PublishedData/AAPT.Gauge.Ibiza.Hourly/ClientTelemetryForKustoExport/)   |
 
 <a name="kusto-portal-databases"></a>
 ## Kusto portal databases
@@ -76,7 +115,7 @@ The following table specifies the Kusto databases that contain Azure Portal tele
 * **AzPtlCosmos**
 
   This is the main Azure Portal telemetry database. Data here is deduped, geo-coded, expanded and filtered. All the official dashboards and reports are based on this table. It is highly encouraged to use  this database for your needs. Data here is persisted for 120 days and excludes test traffic.
-                                                                                                  |
+                                                  
 * **AzurePortal**
 
 	This database contains  the raw, unprocessed data that comes from MDS directly to Kusto. There are many scenarios where you may want to debug extension issues, for example, performance or creates. This is the right table to use to review diagnostic events. Data here is persisted for 45 days. To filter out test traffic when performing queries on this database, use `userTypeHint == ""`.
@@ -85,20 +124,19 @@ The following table specifies the Kusto databases that contain Azure Portal tele
 
     The shared database named **Partner** is being made obsolete. Partners who need to create their own alerting and telemetry functions and tables can request a database of their own. The statistics and load history for the **AzPortalPartner** cluster are located at [https://aka.ms/GaugePartnerCluster](https://aka.ms/GaugePartnerCluster). 
 
-
 <a name="kusto-portal-databases-kusto-tables"></a>
 ### Kusto tables
 
 | Database          | Table Name        | Details             |
 | ----------------- | ----------------- | ------------------- |
-| AzPtlCosmos       | [ClientTelemetry](#clienttelemetry)   | Contains all the Client Telemetry data that is collected from the Portal.     |
+| AzPtlCosmos       | ClientTelemetry | Contains all the Client Telemetry data that is collected from the Portal, as specified in [#clientTelemetry](#clientTelemetry).     |
 | AzPtlCosmos       | ExtTelemetry      | Contains client events data for extensions that use the Extension Telemetry feature. Developers may log additional telemetry to this table.  Your extension will log to this table only if you have previously onboarded to the **ExtTelemetry** and **ExtEvents** tables, as specified in [#onboarding-to-tables](#onboarding-to-tables).   |
 | AzurePortal       | ClientEvents      | Contains errors and warnings thrown from Framework and Hubs IFrame.                                        |
 | AzurePortal       | ExtEvents         | Contains errors and warnings thrown from an extension's IFrame. Your extension will log to this table only if you have previously onboarded to the **ExtTelemetry** and **ExtEvents** tables,  as specified in [#onboarding-to-tables](#onboarding-to-tables).  |
 
 **NOTE**: Data in both **ClientTelemetry** and **ExtTelemetry** tables only includes rows where the action is present in their respective allow lists. If you need to query for actions that are not present in these tables, Kusto supports cross-databases queries that allow you to query the **ClientTelemetry** or **ExtTelemetry** tables directly from the AzurePortal database. For more information, see [https://kusto.azurewebsites.net/docs/queryLanguage/query_language_syntax.html?q=cross](https://kusto.azurewebsites.net/docs/queryLanguage/query_language_syntax.html?q=cross).
 
-Queries against these tables can be exceedingly complex. The database also contains functions that simplify the complexity of retrieving information in the appropriate format. The following image displays a list of some functions that are located in the  **Functions\Public** directory and that are run against the Kusto databases to perform queries. 
+Queries against these tables can be exceedingly complex. The database also contains functions that simplify the complexity of retrieving information in the appropriate format. The following image displays a list of some functions that are located in the  **Functions\Public** directory and that are run against the **Kusto** databases to perform queries. 
 
 ![alt-text](..//media/top-extensions-telemetry/supportedfunctions.png "Supported Functions")
 
@@ -109,9 +147,9 @@ When testing queries, the performance cost of the current query is displayed in 
 <a name="logging"></a>
 ## Logging
 
-There are two options for collecting telemetry and error and warning logs. You can configure and use the Portal Framework's built-in telemetry services or you can build an entirely custom telemetry system, as specified in [top-extensions-telemetry-logging.md](top-extensions-telemetry-logging.md). It is strongly recommended that your extension should use the Portalfx Framework telemetry controller, because it is likely to be more performant than custom solutions.  However, if you choose to build your own telemetry system, you need to have practices in place that enforce  the guidelines that are associated with the collection of personally identifiable information (PII).  It is very important for security and compliance reasons that PII data is not sent to telemetry services.
+There are two options for collecting telemetry and error and warning logs. You can configure and use the Portal Framework's built-in telemetry services or you can build an entirely custom telemetry system. It is strongly recommended that your extension should use the Portalfx Framework telemetry controller, because it is likely to be more performant than custom solutions.  However, if you choose to build your own telemetry system, you need to have practices in place that enforce  the guidelines that are associated with the collection of personally identifiable information (PII).  It is very important for security and compliance reasons that PII data is not sent to telemetry services.
 
-For more information about logging, see [portalfx-telemetry-logging.md](portalfx-telemetry-logging.md).
+For more information about logging, see [top-extensions-telemetry-logging.md](top-extensions-telemetry-logging.md).
 
 <a name="logging-onboarding-to-tables"></a>
 ### Onboarding to tables
@@ -127,7 +165,7 @@ After all permissions have been granted, your extension can  use the built-in co
   }
 ```
 
-For more information about using the Portal telemetry controller, see [portalfx-telemetry-logging.md](portalfx-telemetry-logging.md).
+For more information about using the Portal telemetry controller, see [top-extensions-telemetry-logging.md](top-extensions-telemetry-logging.md).
 
 <a name="logging-logging-to-the-exttelemetry-table"></a>
 ### Logging to the ExtTelemetry table
@@ -138,6 +176,7 @@ Telemetry logs are stored in the **ExtTelemetry** table. Your extension should i
   // Initialize the telemetry functionality and make it available for use.
   MsPortalFx.Base.Diagnostics.Telemetry.initialize("extensionName", false /* traceBrowserInformation */ );
 ```
+
 To log telemetry, you can call the `trace` method as in the following code.
 
 ```ts
@@ -154,8 +193,7 @@ The recommended format for `the name` column is `'Extension/<extensionName>/Blad
 
 Do not stringify `data` and `context` columns when sending them through, because these columns usually contain JSON values. Instead, you should send their values as objects, to avoid double-encoding strings. 
 
-Browser information is collected globally, therefore the extension is not required to trace browser information.  However, 
-the extension can set `traceBrowserInformation` to `true` to store browser information in your own telemetry.
+Browser information is collected globally, therefore the extension is not required to trace browser information.  However, the extension can set `traceBrowserInformation` to `true` to store browser information in your own telemetry.
 
 <a name="logging-logging-to-the-extevents-table"></a>
 ### Logging to the ExtEvents table
@@ -172,8 +210,7 @@ Additional information can be logged with the message by sending it in the `args
 
 **NOTE:** Verbose logging is disabled in the MPAC and PROD environments to prevent overly aggressive logging. We recommend that verbose logging be used only for debugging.
 
-The Extension Errors Dashboard that is described in the document located at [top-extensions-telemetry-create.md](top-extensions-telemetry-create.md) will help you analyze the errors and warnings thrown by your extension. 
-In the dashboard charts, error messages are aggregated by omitting the text which is within double quotes (") or single quotes ('), which are the dynamic part of messages. This includes information  like id's or  timestamps. For example, the  message '[Could not find part "PartName1"]' will be treated as '[Could not find part ""]'. Please use this format for all the logged error messages, if you want them to be aggregated by our queries.
+The Extension Errors Dashboard that is described in the document located at [top-extensions-telemetry-create.md](top-extensions-telemetry-create.md) will help you analyze the errors and warnings thrown by your extension. In the dashboard charts, error messages are aggregated by omitting the text which is within double quotes (") or single quotes ('), which are the dynamic part of messages. This includes information  like id's or  timestamps. For example, the  message '[Could not find part "PartName1"]' will be treated as '[Could not find part ""]'. Please use this format for all the logged error messages, if you want them to be aggregated by our queries.
 
 <a name="logging-logging-to-the-clienttelemetry-table"></a>
 ### Logging to the clientTelemetry table
@@ -222,7 +259,7 @@ After the tool is installed, open **Fiddler** and configure the filters as in th
 
  ![alt-text](..//media/top-extensions-telemetry/fiddler.png "Fiddler filters")
 
-When you open the Portal, all relevant telemetry logs should now be displayed in teh **Fiddler** interface.
+When you open the Portal, all relevant telemetry logs should now be displayed in the **Fiddler** interface.
 
 <a name="live-telemetry-other-debugging-tools"></a>
 ### Other debugging tools
@@ -234,20 +271,22 @@ When you press CTRL-ALT-D in the Azure Portal, it displays  component loading ti
 
 There is a correspondence between the events and actions that are logged, and the fields in which the data is stored. However, that correspondence might be specific to the event.  For example, a duration can be used by one event to store the amount of time that was used to accomplish a specific task, whereas a different event might use timestamps to accomplish the same effect.
 
-* [ClientTelemety actions and events](#clientTelemety-actions-and-events)
+* [ClientTelemetry actions and events](#clientTelemetry-actions-and-events)
 
-* [ClientTelemety table columns](#clientTelemety-table-columns)
+* [ClientTelemetry table columns](#clientTelemety-table-columns)
 
-<a name="clienttelemetry-clienttelemety-actions-and-events"></a>
-### ClientTelemety actions and events
+<a name="clienttelemetry-clienttelemetry-actions-and-events"></a>
+### ClientTelemetry actions and events
 
 The following actions and events are logged to **ClientTelemetry** table.
+
+If the rules that correlate table entries to alerts need to be updated for your extension, reach out to <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration&body=My team would like to update the correlation rules for our extension.  The configuration to update is for alert <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafx hot@microsoft.com and azurefxg@microsoft.com</a>  and attach the updated configuration. The email to azurefxg@microsoft.com should contain the information specified in [#programmatic-onboarding](#programmatic-onboarding). We will inform you when the updates are applied. 
 
 **NOTE**: These are the names of the actions, which is different from the names of the table columns.
 
 * Blade events
 
-    The `name` column provides the name of the blade. This name is provided in "Extension/extension_name/Blade/blade_name" format.
+    The `name` column provides the name of the blade. This name is provided in `Extension/<extension_name>/Blade/<blade_name>` format.
 
     * **BladeLoaded**: Tracks the time it takes to open the blade and start seeing the part frames show up. BladeLoaded also includes loading and opening the action bar.
 
@@ -333,22 +372,20 @@ The following actions and events are logged to **ClientTelemetry** table.
 
     * **SideBarUnFavorite**: When a resource type is removed as a favorite.
 
-<a name="clienttelemetry-clienttelemety-table-columns"></a>
-### ClientTelemety table columns
+<a name="clienttelemetry-clienttelemetry-table-columns"></a>
+### ClientTelemetry table columns
 
 The following columns are in the **clientTelemetry** table.
 
 **NOTE**: These are the table column names, which is different from the names of the actions or events that are associated with the data.
 
-<!-- TODO:  Determine what happened to the values that are not in bold. -->
-
 * **ActionModifier**: Represents a status of a specific action, and is used in tandem with the `action` field. For example, a BladeReady event might use the `ActionModifier` values of start, complete and cancel.
 
-* Area: Contains the extension name associated with the specific Action. This is derived from either then Name field or the Source field depending on the Action
+* **Area**: Contains the extension name associated with the specific Action. This is derived from either then Name field or the Source field depending on the Action
 
-* Blade: Contains the Blade name associated with the specific Action. This is derived from either then Name field or the Source field depending on the Action
+* **Blade**: Contains the Blade name associated with the specific Action. This is derived from either then Name field or the Source field depending on the Action
 
-* BrowserFamily: Contains  the name of the Browser used by the User. This is derived from the UserAgent field
+* **BrowserFamily**: Contains  the name of the Browser used by the User. This is derived from the UserAgent field
 
 * BrowserMajorVersion: Contains  the Major Version of the Browser used by the User. This is derived from the UserAgent field
 
@@ -376,13 +413,13 @@ The following columns are in the **clientTelemetry** table.
 
 * **journeyId**: Contains the journey Id for each action. A journey is basically a tiny sub-session within which a user navigates a flow of blades. This id helps the Portal  identify the actions that the user took within a specific journey, count how many journeys  a user interacted with, and similar computations.
 
-* Lens: Contains the Lens name associated with the specific Action. This is derived from either then Name field or the Source field depending on the Action
+* **Lens**: Contains the Lens name associated with the specific Action. This is derived from either then Name field or the Source field depending on the Action
 
-*  Name: Contains the name of the extension\Blade\Lens\Part associated with a specific Action. Its format may change based on the Action. In most scenarios, it usually has the following format: `Extension/<extensionName>/Blade/<BladeName>/Lens/<LensName>/PartInstance/<PartName>`
+* **Name**: Contains the name of the extension\Blade\Lens\Part associated with a specific Action. Its format may change based on the Action. In most scenarios, it usually has the following format: `Extension/<extensionName>/Blade/<BladeName>/Lens/<LensName>/PartInstance/<PartName>`
 
 * **SessionId**: Represents each session that the user opens. This field  refreshes every ime a user logs in or refreshes. 
 
-* Part: Contains the Part name associated with the specific Action. This is derived from either then Name field or the Source field depending on the Action
+* **Part**: Contains the Part name associated with the specific Action. This is derived from either then Name field or the Source field depending on the Action
 
 * **PreciseTimeStamp**: Contains the time that the event was logged by the server, expressed in UTC.
 
@@ -390,9 +427,9 @@ The following columns are in the **clientTelemetry** table.
 
 * **UserAgent**: The user agent of the user, expressed as a standard UserAgentString. [User Agent](https://en.wikipedia.org/wiki/User_agent)
 
-* UserCity: Contains the name of the city that the User has used the Portal from. We derive this from the Users Client IP.
+* **UserCity**: Contains the name of the city that the User has used the Portal from. We derive this from the Users Client IP.
 
-*  UserCountry: Contains the name of the country that the User has used the Portal from. We derive this from the Users Client IP.
+* **UserCountry**: Contains the name of the country that the User has used the Portal from. We derive this from the Users Client IP.
 
 <a name="clienttelemetry-kusto-documentation"></a>
 ### Kusto documentation
