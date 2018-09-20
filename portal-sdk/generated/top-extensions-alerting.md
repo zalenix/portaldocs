@@ -47,7 +47,6 @@ The following sections specify how to onboard your team to the Framework alert i
 
 * * *
 
-
 <a name="onboarding-to-the-alert-infrastructure"></a>
 ## Onboarding to the alert infrastructure
 
@@ -91,48 +90,10 @@ The following sections specify how to onboard your team to the Framework alert i
 
     * **Match Instance/Cluster**: Checked.
 
-If the correlation rules need to be updated for your extension, reach out to 
-<a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration&body=My team would like to update the correlation rules for our extension.  The configuration to update is <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafx hot@microsoft.com and azurefxg@microsoft.com</a>  and attach the updated configuration. The email to azurefxg@microsoft.com should contain the information specified in [#programmatic-onboarding](#programmatic-onboarding). We will inform you when the updates are applied. 
+If the correlation rules need to be updated for your extension, reach out to <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration Changes&body=My team would like to update the correlation rules for our extension.  The configuration to update is <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafxhot@microsoft.com; azurefxg@microsoft.com</a>  
+ and attach the updated configuration. The email to azurefxg@microsoft.com should contain the information specified in [top-extensions-telemetry.md#programmatic-onboarding](top-extensions-telemetry.md#programmatic-onboarding). We will inform you when the updates are applied.
 
-<a name="programmatic-onboarding"></a>
-## Programmatic onboarding
-
-The email to azurefxg@microsoft.com should confirm the following items.
-
-1. A brief reason why you need access.
-
-1. Which databases (AzurePortal, AzPtlCosmos, hostingservice) you require access to.
-
-    **NOTE**: Ibiza only provides Viewer (read) access to the log databases.
-
-1. You understand that programmatic access to these databases potentially allows 'anonymous' access to the uncensored production logs.
-
-1. You are following Microsoft procedures for key storage.
-    Typically, this means storing the certificate in KeyVault and rotating the key at the appropriate frequency, as specified in [top-extensions-hosting-service.md#configuring-contentunbundler-for-ev2-based-deployments](top-extensions-hosting-service.md#configuring-contentunbundler-for-ev2-based-deployments).
-
-1. Your handling of any data you access this way complies with Microsoft PII & GDPR policies. This means, but is no way limited to:
-
-    1. Not copying or downloading non-anonymized logs, even to secure systems, unless you have registered those systems with GDPR for deletion and export. 
-
-   1. Not making available anonymous access by proxy. For example, a web site or other access mechanism that allows the caller, whether or not they are authenticated, to make non-delegated requests as the service principal. One  example of such is  a log search tool that connects directly as the Service Principal or dSTS Service Identity rather than using delegated authentication.
-
-1. Your application must not put excessive load on the cluster, especially over peak times like 5 - 7pm PST, or midnight - 1am UTC. 
-
-    * Please supply examples of the queries you will be executing, as well as the schedule or frequency.
-    
-    * The AAD App ID of your Service Principal or the certificate thumbprint of your dSTS Service Identity. If using an AAD Service Principal, your application uses cert based auth for its Service Principal. For more information, see [#creating-a-certificate-backed-partner-service-principal](#creating-a-certificate-backed-partner-service-principal).
-
-1. A contact e-mail for this application that we can reach out to in cases of outage, capacity planning, and similar support features. This is a team alias instead of an individual email.
-
-1. If you are using the **Kusto** Client SDK to connect, that  `ClientRequestProperties.Application` is set to an appropriate value. If you are using another access method that supports a similar feature, ensure that the extension connects with it.
-
-1. Whether you need to create your own functions and tables, including write access in **Kusto**. This means  creating a dedicated database for your team with a suitable name that you supply, for which you will then be responsible for maintaining, including registering with the GDPR scanner, or other similar entities.  If you are not sure  whether you need your own functions or tables, answer this as "No" and file a new request with <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration Changes&body=My team would like to update the correlation rules for our extension.  The configuration to update is <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafx hot@microsoft.com and azurefxg@microsoft.com</a>  if the answer changes.
-
-Once azurefxg@microsoft.com receives and approves the onboarding request, they will reach out to you.  When your identities are validated, they will enable your app ID with Viewer access for the requested databases. There is no propagation delay associated with  enabling programmatic access.
-
-**NOTE**: **Kusto** is a shared capacity system. As such, we reserve the right to shut down applications that put excessive load on the system. 
-
-<a name="programmatic-onboarding-creating-a-certificate-backed-partner-service-principal"></a>
+<a name="onboarding-to-the-alert-infrastructure-creating-a-certificate-backed-partner-service-principal"></a>
 ### Creating a certificate backed partner service principal
 
 **NOTE**:  If you have custom or  multiple tenants, make sure you  have switched back to the default Microsoft tenant first.
