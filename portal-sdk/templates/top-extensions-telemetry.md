@@ -33,7 +33,7 @@ The following table contains Ibiza PM contacts for various Portal Telemetry ques
 | Create Telemetry | <a href="mailto:ibiza-create@microsoft.com?subject=Extension Create Telemetry">Ibiza Create Telemetry</a> |
 | General telemetry questions |  <a href="mailto:ibiza-telemetry@microsoft.com?subject=Portal Telemetry">Ibiza Telemetry</a>  | 
 | Azure Fx Gauge Team  | <a href="mailto:azurefxg@microsoft.com?subject=Portal Gauge Telemetry">Ibiza Telemetry</a>  |
-| Updating alerts | <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration&body=My team would like to update the correlation rules for our extension.  The configuration to update is for alert <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafx hot@microsoft.com and azurefxg@microsoft.com</a> | 
+| Updating alerts | <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration&body=My team would like to update the correlation rules for our extension.  The configuration to update is for alert <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafxhot@microsoft.com; azurefxg@microsoft.com</a> | 
 
 Ask Stackoverflow questions on: [https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza-telemetry](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza-telemetry)
 
@@ -68,17 +68,17 @@ The email to `azurefxg@microsoft.com` to update extension alerts should confirm 
 
    1. Not making available anonymous access by proxy. For example, a web site or other access mechanism that allows the caller, whether or not they are authenticated, to make non-delegated requests as the service principal. One  example of such is  a log search tool that connects directly as the Service Principal or dSTS Service Identity rather than using delegated authentication.
 
-1. Your application must not put excessive load on the cluster, especially over peak times like 5 - 7pm PST, or midnight - 1am UTC. 
+1. Your application must not put excessive loads on the cluster, especially over peak times like 5 - 7pm PST, or midnight - 1am UTC. 
 
     * Please supply examples of the queries you will be executing, as well as the schedule or frequency.
     
-    * The AAD App ID of your Service Principal or the certificate thumbprint of your dSTS Service Identity. If using an AAD Service Principal, your application uses cert based auth for its Service Principal. For more information, see [#creating-a-certificate-backed-partner-service-principal](#creating-a-certificate-backed-partner-service-principal).
+    * The AAD App ID of your Service Principal or the certificate thumbprint of your dSTS Service Identity. If using an AAD Service Principal, your application uses cert based auth for its Service Principal. For more information, see [top-extensions-alerting.md#creating-a-certificate-backed-partner-service-principal](top-extensions-alerting.md#creating-a-certificate-backed-partner-service-principal).
 
 1. A contact e-mail for this application that we can reach out to in cases of outage, capacity planning, and similar support features. This is a team alias instead of an individual email.
 
 1. If you are using the **Kusto** Client SDK to connect, that  `ClientRequestProperties.Application` is set to an appropriate value. If you are using another access method that supports a similar feature, ensure that the extension connects with it.
 
-1. Whether you need to create your own functions and tables, including write access in **Kusto**. This means  creating a dedicated database for your team with a suitable name that you supply, for which you will then be responsible for maintaining, including registering with the GDPR scanner, or other similar entities.  If you are not sure  whether you need your own functions or tables, answer this as "No" and file a new request with <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration Changes&body=My team would like to update the correlation rules for our extension.  The configuration to update is <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafx hot@microsoft.com and azurefxg@microsoft.com</a>  if the answer changes.  The email to azurefxg@microsoft.com should contain the information specified in [top-extensions-telemetry.md#programmatic-onboarding](top-extensions-telemetry.md#programmatic-onboarding).
+1. Whether you need to create your own functions and tables, including write access, in **Kusto**. This means  creating a dedicated database for your team with a suitable name that you supply, for which you will then be responsible for maintaining, including registering with the GDPR scanner, or other similar entities.  If you are not sure  whether you need your own functions or tables, answer this as "No" and file a new request with <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration Changes&body=My team would like to update the correlation rules for our extension.  The configuration to update is <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafxhot@microsoft.com; azurefxg@microsoft.com</a>  if the answer changes.  The email to azurefxg@microsoft.com should contain the information specified in [top-extensions-telemetry.md#programmatic-onboarding](top-extensions-telemetry.md#programmatic-onboarding).
 
 Once azurefxg@microsoft.com receives and approves the onboarding request, they will reach out to you.  When your identities are validated, they will enable your app ID with Viewer access for the requested databases. There is no propagation delay associated with enabling programmatic access.
 
@@ -205,7 +205,7 @@ The Extension Errors Dashboard that is described in the document located at [top
 
 This is the main table that is used for most scenarios. It includes telemetry events like  `BladeLoaded` or  `PartLoaded`,  and that  are logged by default for any extension which is registered in the Portal.
 
-For more information about actions that are logged to the **ClientTelemetry** table, see [portalfx-telemetry-actions.md](portalfx-telemetry-actions.md).
+For more information about actions that are logged to the **ClientTelemetry** table, see [#clientTelemetry](#clienttelemetry).
 
 ## Surveys
 
@@ -260,7 +260,7 @@ There is a correspondence between the events and actions that are logged, and th
 
 The following actions and events are logged to **ClientTelemetry** table.
 
-If the rules that correlate table entries to alerts need to be updated for your extension, reach out to <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration&body=My team would like to update the correlation rules for our extension.  The configuration to update is for alert <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafx hot@microsoft.com and azurefxg@microsoft.com</a>  and attach the updated configuration. The email to azurefxg@microsoft.com should contain the information specified in [#programmatic-onboarding](#programmatic-onboarding). We will inform you when the updates are applied. 
+If the rules that correlate table entries to alerts need to be updated for your extension, reach out to <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration&body=My team would like to update the correlation rules for our extension.  The configuration to update is for alert <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafxhot@microsoft.com; azurefxg@microsoft.com</a>  and attach the updated configuration. The email to azurefxg@microsoft.com should contain the information specified in [#programmatic-onboarding](#programmatic-onboarding). We will inform you when the updates are applied. 
 
 **NOTE**: These are the names of the actions, which is different from the names of the table columns.
 
@@ -412,7 +412,7 @@ The following columns are in the **clientTelemetry** table.
 
 ### Kusto documentation
 
-For more information about the Kusto query language, see [https://kusto.azurewebsites.net/docs/queryLanguage/query_language.html](https://kusto.azurewebsites.net/docs/queryLanguage/query_language.html).
+For more information about the Kusto query language, see [https://kusto.azurewebsites.net/docs/query](https://kusto.azurewebsites.net/docs/query).
 
 For videos and other Kusto documentation, see [http://kusto.azurewebsites.net/docs](http://kusto.azurewebsites.net/docs).
 
