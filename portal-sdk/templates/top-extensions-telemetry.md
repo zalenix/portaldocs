@@ -33,7 +33,7 @@ The following table contains Ibiza PM contacts for various Portal Telemetry ques
 | Create Telemetry | <a href="mailto:ibiza-create@microsoft.com?subject=Extension Create Telemetry">Ibiza Create Telemetry</a> |
 | General telemetry questions |  <a href="mailto:ibiza-telemetry@microsoft.com?subject=Portal Telemetry">Ibiza Telemetry</a>  | 
 | Azure Fx Gauge Team  | <a href="mailto:azurefxg@microsoft.com?subject=Portal Gauge Telemetry">Ibiza Telemetry</a>  |
-| Updating alerts | <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration&body=My team would like to update the correlation rules for our extension.  The configuration to update is for alert <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafxhot@microsoft.com; azurefxg@microsoft.com</a> | 
+| Updating alerts | <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration&body=My team would like to update the correlation rules for our extension.  The configuration to update is for alert <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafxhot@microsoft. com and azurefxg@microsoft. com</a> | 
 
 Ask Stackoverflow questions on: [https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza-telemetry](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza-telemetry)
 
@@ -103,7 +103,7 @@ To mitigate this performance issue, we have deployed a `Follower Cluster`. A fol
 
 Consequently, we only offer access to the follower cluster to partners. The database names (AzurePortal, AzPtlCosmos, hostingservice) remain the same; however,  the cluster name has changed from `AzPortal` to `AzPortalPartner`. Your queries will run unchanged on the new cluster unless they  contain references to  `cluster("AzPortal")`. If they contain this reference,  change `'cluster("AzPortal")'` to `'cluster("AzPortalPartner")'`.
 
-The following table specifies the Kusto databases that contain Azure Portal telemetry data. Please run through your query on the database or cluster that makes the most sense to you.
+The following are the Kusto databases that contain Azure Portal telemetry data. Please run your query on the database or cluster that makes the most sense to you.
 
 * **AzPtlCosmos**: The main Azure Portal telemetry database. Data here is deduped, geo-coded, expanded and filtered. All the official dashboards and reports are based on this table. It is highly encouraged to use  this database for your needs. Data here is persisted for 120 days and excludes test traffic.
                                                   
@@ -357,11 +357,11 @@ The following columns are in the **clientTelemetry** table.
 
 * **Blade**: Contains the Blade name associated with the specific Action. This is derived from either then Name field or the Source field depending on the Action
 
-* **BrowserFamily**: Contains  the name of the Browser used by the User. This is derived from the UserAgent field
+* **BrowserFamily**: Contains  the name of the Browser used by the User. This is derived from the **UserAgent** field
 
-* BrowserMajorVersion: Contains  the Major Version of the Browser used by the User. This is derived from the UserAgent field
+* **BrowserMajorVersion**: Contains  the major version of the browser used by the user. This is derived from the **UserAgent** field
 
-*  BrowserMinorVersion: Contains the Minor Version of the Browser used by the User. This is derived from the UserAgent field
+* **BrowserMinorVersion**: Contains the minor version of the browser used by the user. This is derived from the **UserAgent** field
 
 * **ClientTime**: Contains the actual time of the event according to the client's clock, whose accuracy is based on the client settings. This is a good field to reconstruct the precise sequence of events.
 
