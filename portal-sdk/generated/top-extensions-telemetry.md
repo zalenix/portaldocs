@@ -266,7 +266,7 @@ There is a correspondence between the events and actions that are logged, and th
 
 * [ClientTelemetry actions and events](#clientTelemetry-actions-and-events)
 
-* [ClientTelemetry table columns](#clientTelemety-table-columns)
+* [ClientTelemetry table columns](#clientTelemetry-table-columns)
 
 <a name="clienttelemetry-clienttelemetry-actions-and-events"></a>
 ### ClientTelemetry actions and events
