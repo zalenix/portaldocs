@@ -34,7 +34,7 @@ This is the only document within the topic that contains an H1-level header.
 
 1. Subtopics that occur within topics, like overviews or procedures, will always use that word as the last node within the filename.  However, the author has the option of including the overview and the procedure in the topic document instead of using a GitHub include statement. 
 
-Subtopics that are specific to a topic are self-naming, in one or two words. The last node of the file is the name of the subtopic, and is used to sort subtopics within the topic. Some filenames are `portalfx-telemetry-alerting-overview.md`, `portalfx-telemetry-alerting-performance.md` or `portalfx-style-guide-utility-classes.md`. 
+Subtopics that are specific to a topic are self-naming, in one or two words. The last node of the file is the name of the subtopic, and is used to sort subtopics within the topic. Some filenames are `top-extensions-telemetry-alerting.md`, or  `top-extensions-telemetry-reliability.md`. 
 
 1. Best Practices, FAQ's, and glossaries use a slightly different naming convention, in that they are named `portalfx-extensions-bp-<major-area>`,  `portalfx-extensions-faq-<major-area>`,  respectively.
 

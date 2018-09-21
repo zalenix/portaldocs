@@ -5,11 +5,7 @@
  
 ## Alerting
 
-  {"gitdown": "include-headings", "file": "../templates/portalfx-telemetry-alerting-overview.md"}
-  {"gitdown": "include-headings", "file": "../templates/portalfx-telemetry-alerting-availability.md"}
-  {"gitdown": "include-headings", "file": "../templates/portalfx-telemetry-alerting-performance.md"}
-  {"gitdown": "include-headings", "file": "../templates/portalfx-telemetry-alerting-error-messages.md"}
-  {"gitdown": "include-headings", "file": "../templates/portalfx-telemetry-alerting-faq.md"}
+  {"gitdown": "include-headings", "file": "../templates/top-extensions-telemetry-alerting.md"}
 
 ## Performance 
 
@@ -17,7 +13,7 @@
 
 ## Reliability
 
-  {"gitdown": "include-headings", "file": "../templates/top-extensions-reliability.md"}
+  {"gitdown": "include-headings", "file": "../templates/top-extensions-telemetry-reliability.md"}
 
 ## Create 
 
