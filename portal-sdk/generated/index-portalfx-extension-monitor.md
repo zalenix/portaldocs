@@ -3,9 +3,11 @@
 # Telemetry
 
   * [Overview](top-extensions-telemetry.md#overview)
+* [Permissions](top-extensions-telemetry.md#permissions)
 * [Weekly status queries](top-extensions-telemetry.md#weekly-status-queries)
+* [Programmatic onboarding](top-extensions-telemetry.md#programmatic-onboarding)
 * [Cosmos streams](top-extensions-telemetry.md#cosmos-streams)
-* [Kusto portal databases](top-extensions-telemetry.md#kusto-portal-databases)
+* [Kusto Portal databases](top-extensions-telemetry.md#kusto-portal-databases)
 * [Logging](top-extensions-telemetry.md#logging)
 * [Surveys](top-extensions-telemetry.md#surveys)
 * [Live telemetry](top-extensions-telemetry.md#live-telemetry)
@@ -15,24 +17,13 @@
 <a name="telemetry-alerting"></a>
 ## Alerting
 
-  
-  
-  * [Performance](portalfx-telemetry-alerting-performance.md#performance)
-    * [Configuration](portalfx-telemetry-alerting-performance.md#configuration)
-    * [How often do they run?](portalfx-telemetry-alerting-performance.md#how-often-do-they-run)
-    * [How do I onboard?](portalfx-telemetry-alerting-performance.md#how-do-i-onboard)
-    * [What should I set the thresholds at?](portalfx-telemetry-alerting-performance.md#what-should-i-set-the-thresholds-at)
-    * [What happens if I need to update them?](portalfx-telemetry-alerting-performance.md#what-happens-if-i-need-to-update-them)
-    * [How do I know my extension's current configuration?](portalfx-telemetry-alerting-performance.md#how-do-i-know-my-extension-s-current-configuration)
+  * [Overview](top-extensions-telemetry-alerting.md#overview)
+* [Onboarding to the alert infrastructure](top-extensions-telemetry-alerting.md#onboarding-to-the-alert-infrastructure)
+* [Alert configuration](top-extensions-telemetry-alerting.md#alert-configuration)
+* [Create regression](top-extensions-telemetry-alerting.md#create-regression)
+* [Availability](top-extensions-telemetry-alerting.md#availability)
+* [Performance](top-extensions-telemetry-alerting.md#performance)
 
-  * [Client Error](portalfx-telemetry-alerting-error-messages.md#client-error)
-    * [Configuration](portalfx-telemetry-alerting-error-messages.md#configuration)
-    * [How often do they run?](portalfx-telemetry-alerting-error-messages.md#how-often-do-they-run)
-    * [How do I onboard?](portalfx-telemetry-alerting-error-messages.md#how-do-i-onboard)
-    * [What happens if I need to update alert configuration?](portalfx-telemetry-alerting-error-messages.md#what-happens-if-i-need-to-update-alert-configuration)
-    * [How do I know my extension's current configuration?](portalfx-telemetry-alerting-error-messages.md#how-do-i-know-my-extension-s-current-configuration)
-
-  
 
 <a name="telemetry-performance"></a>
 ## Performance
@@ -52,10 +43,10 @@
 <a name="telemetry-reliability"></a>
 ## Reliability
 
-  * [Overview](top-extensions-reliability.md#overview)
-* [Assessing extension reliability](top-extensions-reliability.md#assessing-extension-reliability)
-* [How to run dashboard queries](top-extensions-reliability.md#how-to-run-dashboard-queries)
-* [Optimizing code to improve extension reliability](top-extensions-reliability.md#optimizing-code-to-improve-extension-reliability)
+  * [Overview](top-extensions-telemetry-reliability.md#overview)
+* [Assessing extension reliability](top-extensions-telemetry-reliability.md#assessing-extension-reliability)
+* [How to run dashboard queries](top-extensions-telemetry-reliability.md#how-to-run-dashboard-queries)
+* [Optimizing code to improve extension reliability](top-extensions-telemetry-reliability.md#optimizing-code-to-improve-extension-reliability)
 
 
 <a name="telemetry-create"></a>

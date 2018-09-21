@@ -23,7 +23,7 @@ The following table contains dashboards that are used to review telemetry data. 
 
 | Name        | Dashboard Link       | Documentation                           |
 | ----------- | -------------------- | --------------------------------------- |
-| Portal Performance and Reliability | [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf)                               | [Perf Docs](portalfx-performance-overview.md) and Reliability Docs that are located at [top-extensions-reliability.md](top-extensions-reliability.md)           |
+| Portal Performance and Reliability | [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf)                               | [Perf Docs](portalfx-performance-overview.md) and Reliability Docs that are located at [top-extensions-telemetry-reliability.md](top-extensions-telemetry-reliability.md)           |
 | Portal Create                      | [http://aka.ms/portalfx/dashboard/create](http://aka.ms/portalfx/dashboard/create)                                | Create Docs that are located at [top-extensions-telemetry-create.md#create-flows](top-extensions-telemetry-create.md#create-flows)                      |
 | Extension Errors                   | [http://aka.ms/portalfx/dashboard/ExtensionErrors](http://aka.ms/portalfx/dashboard/ExtensionErrors)                             | Extension Errors Docs that are located at [top-extensions-telemetry-create.md#error-distribution-reports](top-extensions-telemetry-create.md#error-distribution-reports)   |
 
@@ -75,7 +75,7 @@ The email to `azurefxg@microsoft.com` to update extension alerts should confirm 
 
     * Please supply examples of the queries you will be executing, in addition to the schedule or frequency.
     
-    * The AAD App ID of your Service Principal or the certificate thumbprint of your dSTS Service Identity. If using an AAD Service Principal, your application uses certificate-based authentication for its Service Principal, as specified in [top-extensions-alerting.md#creating-a-certificated-partner-service-principal](top-extensions-alerting.md#creating-a-certificated-partner-service-principal).
+    * The AAD App ID of your Service Principal or the certificate thumbprint of your dSTS Service Identity. If using an AAD Service Principal, your application uses certificate-based authentication for its Service Principal, as specified in [top-extensions-telemetry-alerting.md#creating-a-certificated-partner-service-principal](top-extensions-telemetry-alerting.md#creating-a-certificated-partner-service-principal).
 
 1. A contact e-mail for this application that Ibiza can reach out to in cases of outage, capacity planning, and similar support features. This is a team alias instead of an individual email.
 
@@ -147,7 +147,7 @@ For more information about logging, see [top-extensions-telemetry-logging.md](to
 <a name="logging-onboarding-to-tables"></a>
 ### Onboarding to tables
 
-Your team should onboard as specified in [top-extensions-alerting.md#onboarding-to-the-alert-infrastructure](top-extensions-alerting.md#onboarding-to-the-alert-infrastructure) to use the Framework alert infrastructure and the Kusto tables.
+Your team should onboard as specified in [top-extensions-telemetry-alerting.md#onboarding-to-the-alert-infrastructure](top-extensions-telemetry-alerting.md#onboarding-to-the-alert-infrastructure) to use the Framework alert infrastructure and the Kusto tables.
 
 After all permissions have been granted, your extension can  use the built-in controller  by  adding `this.EnablePortalLogging = true;` in the constructor of the extension definition class, as in the following code.
 

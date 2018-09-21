@@ -23,8 +23,6 @@ There are a few patterns that assist in improving browser and Portal performance
 
     * Do not aggressively update UI-bound observables. Instead, accumulate the changes and then update the observable. Also, manually throttle or use `.extend({ rateLimit: 250 });` when initializing the observable.
 
-1. Run portalcop to identify and resolve common performance issues, as specified in [portalfx-performance-portalcop.md](portalfx-performance-portalcop.md).
-
 <a name="best-practices-coding-best-practices"></a>
 ### Coding best practices
 
@@ -98,7 +96,7 @@ There are a few patterns that assist in improving browser and Portal performance
 
 1. Enable performance alerts
 
-    To ensure your experience never regresses unintentionally, you can opt into configurable alerting on your extension, blade and part load times. For more information, see [portalfx-telemetry-alerting-overview.md](portalfx-telemetry-alerting-overview.md).
+    To ensure your experience never regresses unintentionally, you can opt into configurable alerting on your extension, blade and part load times. For more information, see [top-extensions-telemetry-alerting.md](top-extensions-telemetry-alerting.md).
 
 1. Move the extension to the Azure hosting service, as specified in [top-extensions-hosting-service.md](top-extensions-hosting-service.md). If it is not on the hosting service, check the following factors.
 
