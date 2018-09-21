@@ -34,7 +34,7 @@ Learn how the framework is structured and how it is designed to run in multiple 
 
 * [EditableGrid V2](http://top-level/editable-grid.md) - *Improved APIs designed to work with new forms*
 
-* [Extension availability alerts](/portal-sdk/generated/top-extensions-alerting.md) - *Get notified if your extension goes down*
+* [Extension availability alerts](/portal-sdk/generated/top-extensions-telemetry-alerting.md) - *Get notified if your extension goes down*
 
 * [Actionable notifications](/portal-sdk/generated/top-extensions-notifications.md) - *Point users to well known next steps*
 
@@ -224,9 +224,9 @@ The Ibiza team collects standard telemetry for generic actions like blade openin
 
 * [Consuming telemetry via pre-built Power BI dashboards](/portal-sdk/generated/top-extensions-telemetry-create.md)
 
-* [Performance and reliability monitoring](/portal-sdk/generated/top-extensions-reliability.md)
+* [Performance and reliability monitoring](/portal-sdk/generated/top-extensions-telemetry-reliability.md)
 
-* [Collecting feedback from your users(Alert monitoring)](/portal-sdk/generated/top-extensions-alerting.md)
+* [Collecting feedback from your users(Alert monitoring)](/portal-sdk/generated/top-extensions-telemetry-alerting.md)
 
 * [Set up and verify telemetry logging from your extension](/portal-sdk/generated/top-extensions-telemetry-logging.md)
 

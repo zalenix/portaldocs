@@ -39,7 +39,7 @@ Couldn't find what you needed? [Ask about the docs on StackOverflow](https://sta
 | No-PDL blades and parts | http://top-whats-new #no-pdl.md | Reduces the number of files and concepts to build UI |
 | Forms without edit scope | [top-editscopeless-forms.md](/portal-sdk/generated/top-editscopeless-forms.md) | More intuitive APIs for building forms |
 | EditableGrid V2 | /portal-sdk/generated | Improved APIs designed to work with new forms |
-| Extension availability alerts |  [top-extensions-alerting.md](/portal-sdk/generated/top-extensions-alerting.md)  | Get notified if your extension goes down |
+| Extension availability alerts |  [top-extensions-telemetry-alerting.md](/portal-sdk/generated/top-extensions-telemetry-alerting.md)  | Get notified if your extension goes down |
 | Actionable notifications | [top-extensions-notifications.md](/portal-sdk/generated/top-extensions-notifications.md) | Point users to well known next steps |
 | EV2 support for the Extension Hosting Service | [top-extensions-hosting-service-ev2.md](/portal-sdk/generated/top-extensions-hosting-service-ev2.md) | Nuff said |
 | Multi-Column for the Essentials control | /portal-sdk/generated/ | Better use of screen real estate |
@@ -283,8 +283,8 @@ The Ibiza team collects standard telemetry for generic actions like blade openin
 | Portal telemetry overview | [top-extensions-telemetry.md](/portal-sdk/generated/top-extensions-telemetry.md) | |
 | Getting access to raw portal telemetry data | [top-extensions-telemetry.md](/portal-sdk/generated/top-extensions-telemetry.md) | |
 | Consuming telemetry via pre-built Power BI dashboards | [top-extensions-telemetry-create.md](/portal-sdk/generated/top-extensions-telemetry-create.md) | |
-| Performance and reliability monitoring / alerting | [top-extensions-reliability.md](/portal-sdk/generated/top-extensions-reliability.md) | |
-| Collecting feedback from your users | [top-extensions-alerting.md](/portal-sdk/generated/top-extensions-alerting.md) | |
+| Performance and reliability monitoring / alerting | [top-extensions-telemetry-reliability.md](/portal-sdk/generated/top-extensions-telemetry-reliability.md) | |
+| Collecting feedback from your users | [top-extensions-telemetry-alerting.md](/portal-sdk/generated/top-extensions-telemetry-alerting.md) | |
 | Building an entirely custom logging system |  [top-extensions-telemetry-logging.md](/portal-sdk/generated/top-extensions-telemetry-logging.md) | Set up and verify telemetry logging from your extension |
 
 ## Legacy features
