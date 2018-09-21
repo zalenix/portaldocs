@@ -6,7 +6,11 @@ It is important to read this guide carefully, as we rely on you to manage the ex
 
 **NOTE**: All third-party extensions must be approved by <a href="mailto:ibiza-onboarding@microsoft.com?subject=Third Party Applications (External partners)">Leon Welicki and Adam Abdelhamed</a> before any work can commence on the extension. Please schedule time with them to discuss the details about the extension and get an approval. 
 
+When you receive the approval, you can submit a third-party request by sending an email to <a href="mailto:ibizafxpm@microsoft.com?subject=New Third Party Extension Onboarding Request&body=Extension name:">ibizafxpm@microsoft.com</a> instead of using the internal sites that are in this document. The body of the email should contain the following.
+
+<!--
 When you receive the approval, you can submit a third-party request by sending an email to <a href="mailto:ibizafxpm@microsoft.com?subject=New Third Party Extension Onboarding Request&body=Extension name:  &lt;ExtensionName_Extension&gt;  &lt;br&gt; &lt;br&gt;URLs:  (must adhere to pattern) &lt;br&gt; &lt;br&gt;PROD:   &lt;extensionprefix&gt;.hosting.portal.azure.net &lt;br&gt; &lt;br&gt;Contact info:  &lt;email address of a team containing dev and support contacts for incidents related to extension> &lt;br&gt; &lt;br&gt;Business Contacts: &lt;management contacts for escalating issues in case of critical business down situations&gt; &lt;br&gt; &lt;br&gt;Dev leads:  &lt;Contacts of Developer teams who can help upgrade the SDK and deploy changes&gt; &lt;br&gt; &lt;br&gt;PROD on-call email:  &lt;email address of a team containing dev and support contacts for incidents related to extension&gt; &lt;br&gt; &lt;br&gt;">ibizafxpm@microsoft.com</a> instead of using the internal sites that are in this document. The body of the email should contain the following.
+-->
 
 **Extension name**: <ExtensionName_Extension> 
 
