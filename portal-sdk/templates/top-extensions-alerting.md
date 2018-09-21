@@ -88,10 +88,10 @@ The following sections specify how to onboard your team to the Framework alert i
 
     * **Match Instance/Cluster**: Checked.
 
-If the correlation rules need to be updated for your extension, reach out to <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration Changes&body=My team would like to update the correlation rules for our extension.  The configuration to update is <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafxhot@microsoft.com; azurefxg@microsoft.com</a>  
- and attach the updated configuration. The email to azurefxg@microsoft.com should contain the information specified in [top-extensions-telemetry.md#programmatic-onboarding](top-extensions-telemetry.md#programmatic-onboarding). We will inform you when the updates are applied.
+If the correlation rules need to be updated for your extension, reach out to <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration Changes&body=My team would like to update the correlation rules for our extension.  The configuration to update is &lt;Alert_YOUR_EXTENSION_NAME&gt;.  The updated configuration is attached.">ibizafxhot@microsoft.com; azurefxg@microsoft.com</a>  
+ and attach the updated configuration. The email to <a href="mailto:azurefxg@microsoft.com?subject=Extension Alert Configuration Changes&body=My team would like to update the correlation rules for our extension.  The configuration to update is &lt;Alert_YOUR_EXTENSION_NAME&gt;.  The updated configuration is attached.">azurefxg@microsoft.com</a> should contain the information specified in [top-extensions-telemetry.md#programmatic-onboarding](top-extensions-telemetry.md#programmatic-onboarding). We will inform you when the updates are applied.
 
-### Creating a certificate backed partner service principal
+### Creating a certificated partner service principal
 
 **NOTE**:  If you have custom or  multiple tenants, make sure you  have switched back to the default Microsoft tenant first.
 

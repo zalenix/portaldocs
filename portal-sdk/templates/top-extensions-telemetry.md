@@ -5,17 +5,17 @@ Developers can examine telemetry while debugging an extension. The Azure Portal 
 
 Extensions do not need to consume any APIs to collect this information. Instead, debugging telemetry is made available as specified in [#live-telemetry](#live-telemetry), and production telemetry is made available to partners through **Kusto**.
 
-Portal Telemetry is a Kusto-based solution.  The Kusto database contains data that streams from Cosmos, data that is logged from your extension, survey data that is collected from your users, and data from the Portal that is associated with your extension. The AzPortal data source is located at [https://AzPortal.kusto.windows.net](https://AzPortal.kusto.windows.net). There is also a standardized pane that is used to collect user feedback that is not real-time. Extensions can display this pane by using the one method located at [needslink](needslink).
+Portal Telemetry is a Kusto-based solution.  The Kusto database contains data that streams from Cosmos, data that is logged from your extension, survey data that is collected from your users, and data from the Portal that is associated with your extension. The AzPortal data source is located at [https://AzPortal.kusto.windows.net](https://AzPortal.kusto.windows.net). 
 
 The telemetry data can be viewed a number of ways. Developers can review telemetry data by using existing dashboards, or they can run queries on the **Kusto** databases.
 
 ## Permissions
 
-To run or create modified versions of **Kusto** queries, you will need access to the  **Kusto** data tables. All Azure employees should have access to the Kusto clusters. The way permissions are granted is through inheritance of the overall AAD group, which is `REDMOND\AZURE-ALL-PSV` for teams in C+E, and `REDMOND\AZURE-ALL-FPS` for teams outside. We do not grant individual access.   
+To run or create modified versions of **Kusto** queries, you will need access to the  **Kusto** data tables in the appropriate cluster. All Azure employees should have access to the Kusto clusters. Permissions are granted through inheritance of the overall AAD group, which is `REDMOND\AZURE-ALL-PSV` for teams in C+E, and `REDMOND\AZURE-ALL-FPS` for teams outside. We do not grant individual access.
 
- If you cannot access **Kusto**, verify whether  you have joined your team's standard access group as specified in  [http://aka.ms/standardaccess](http://aka.ms/standardaccess).   Some group names in the table of team projects  named 'Active ​Azure Team Projects' are non-intuitive, so if you are unable to locate the correct group within the table, you may need to create a new group. To do that please follow the instructions in the section named '[Azure RBAC Getting Started Guide](http://aka.ms/portalfx/telemetryaccess/newgroup)'.  Ensure your request has been approved. If you have been denied for any reason, or if the access group is not listed,  please reach out to   <a href="mailto:ibiza-telemetry@microsoft.com?subject=Standard Permission Access for Kusto Databases">Ibiza Telemetry</a>.
+If you cannot access **Kusto**, verify whether  you have joined your team's standard access group as specified in  [http://aka.ms/standardaccess](http://aka.ms/standardaccess).   Some group names in the table of team projects  named 'Active ​Azure Team Projects' are non-intuitive, so if you are unable to locate the correct group within the table, you may need to create a new group. To do that please follow the instructions in the section named '[Azure RBAC Getting Started Guide](http://aka.ms/portalfx/telemetryaccess/newgroup)'.  Ensure your request has been approved. If you have been denied for any reason, or if the access group is not listed,  please reach out to   <a href="mailto:ibiza-telemetry@microsoft.com?subject=Standard Permission Access for Kusto Databases">Ibiza Telemetry</a>.
 
-The **Kusto** Explorer application that can be saved to your local computer is located at [http://kusto-us/ke/Kusto.Explorer.application](http://kusto-us/ke/Kusto.Explorer.application).  Queries can also be run against the Kusto database by using the **Kusto.WebExplorer** that is located at [https://ailoganalyticsportal-privatecluster.cloudapp.net](https://ailoganalyticsportal-privatecluster.cloudapp.net).
+The **Kusto** Explorer application that can be saved to your local computer is located at [http://kusto-us/ke/Kusto.Explorer.application](http://kusto-us/ke/Kusto.Explorer.application).  Queries can also be run against **Kusto**  by using the **Kusto.WebExplorer** that is located at [https://ailoganalyticsportal-privatecluster.cloudapp.net](https://ailoganalyticsportal-privatecluster.cloudapp.net).
 
 The following table contains dashboards that are used to review telemetry data.  If you do not have access to the ones you need, please contact <a href="mailto:ibiza-telemetry@microsoft.com?subject=Do not have dashboard access">Ibiza Telemetry</a>.
 
@@ -53,32 +53,31 @@ The email to `azurefxg@microsoft.com` to update extension alerts should confirm 
 
 1. A brief reason why you need access.
 
-1. Which databases (AzurePortal, AzPtlCosmos, hostingservice) you require access to.
+1. Which databases (AzurePortal, AzPtlCosmos, hostingservice) you need to access.
 
     **NOTE**: Ibiza only provides Viewer (read) access to the log databases.
 
-1. You understand that programmatic access to these databases potentially allows 'anonymous' access to the uncensored production logs.
+1. You understand that programmatic access to these databases potentially allows anonymous access to the uncensored production logs.
 
-1. You are following Microsoft procedures for key storage.
-    Typically, this means storing the certificate in KeyVault and rotating the key at the appropriate frequency, as specified in [top-extensions-hosting-service.md#configuring-contentunbundler-for-ev2-based-deployments](top-extensions-hosting-service.md#configuring-contentunbundler-for-ev2-based-deployments).
+1. You are following Microsoft procedures for key storage.  Typically, this means storing the certificate in KeyVault and rotating the key at the appropriate frequency, as specified in [top-extensions-hosting-service.md#configuring-contentunbundler-for-ev2-based-deployments](top-extensions-hosting-service.md#configuring-contentunbundler-for-ev2-based-deployments).
 
-1. Your handling of any data you access this way complies with Microsoft PII & GDPR policies. This means, but is no way limited to:
+1. Your handling of any data you access this way complies with Microsoft PII & [GDPR](https://www.microsoft.com/en-us/trustcenter/Privacy/GDPR) policies. This means, but is no way limited to:
 
-    1. Not copying or downloading non-anonymized logs, even to secure systems, unless you have registered those systems with GDPR for deletion and export. 
+   1. Not copying or downloading non-anonymized logs, even to secure systems, unless you have registered those systems with GDPR for deletion and export. 
 
-   1. Not making available anonymous access by proxy. For example, a web site or other access mechanism that allows the caller, whether or not they are authenticated, to make non-delegated requests as the service principal. One  example of such is  a log search tool that connects directly as the Service Principal or dSTS Service Identity rather than using delegated authentication.
+   1. Not making available anonymous access by proxy. For example, a web site or other access mechanism that allows the caller, whether or not they are authenticated, to make non-delegated requests as the service principal is a proxy access. One  specific example is  a log search tool that connects directly as the Service Principal or dSTS Service Identity, as described in [http://aka.ms/portalfx/kusto-dsts](http://aka.ms/portalfx/kusto-dsts), instead of using delegated authentication.
 
-1. Your application must not put excessive loads on the cluster, especially over peak times like 5 - 7pm PST, or midnight - 1am UTC. 
+1. Your application must not put excessive loads on the cluster that contains its Kusto databases and tables, especially during peak times like 5 - 7pm PST, or midnight - 1am UTC. 
 
-    * Please supply examples of the queries you will be executing, as well as the schedule or frequency.
+    * Please supply examples of the queries you will be executing, in addition to the schedule or frequency.
     
-    * The AAD App ID of your Service Principal or the certificate thumbprint of your dSTS Service Identity. If using an AAD Service Principal, your application uses cert based auth for its Service Principal. For more information, see [top-extensions-alerting.md#creating-a-certificate-backed-partner-service-principal](top-extensions-alerting.md#creating-a-certificate-backed-partner-service-principal).
+    * The AAD App ID of your Service Principal or the certificate thumbprint of your dSTS Service Identity. If using an AAD Service Principal, your application uses certificate-based authentication for its Service Principal, as specified in [top-extensions-alerting.md#creating-a-certificated-partner-service-principal](top-extensions-alerting.md#creating-a-certificated-partner-service-principal).
 
-1. A contact e-mail for this application that we can reach out to in cases of outage, capacity planning, and similar support features. This is a team alias instead of an individual email.
+1. A contact e-mail for this application that Ibiza can reach out to in cases of outage, capacity planning, and similar support features. This is a team alias instead of an individual email.
 
-1. If you are using the **Kusto** Client SDK to connect, that  `ClientRequestProperties.Application` is set to an appropriate value. If you are using another access method that supports a similar feature, ensure that the extension connects with it.
+1. If you are using the **Kusto** Client SDK to connect, that  `ClientRequestProperties.Application` is set to an appropriate value. If you are using another access method that supports a similar feature, ensure that the extension connects to **Kusto**.
 
-1. Whether you need to create your own functions and tables, including write access, in **Kusto**. This means  creating a dedicated database for your team with a suitable name that you supply, for which you will then be responsible for maintaining, including registering with the GDPR scanner, or other similar entities.  If you are not sure  whether you need your own functions or tables, answer this as "No" and file a new request with <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration Changes&body=My team would like to update the correlation rules for our extension.  The configuration to update is <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafxhot@microsoft.com; azurefxg@microsoft.com</a>  if the answer changes.  The email to azurefxg@microsoft.com should contain the information specified in [top-extensions-telemetry.md#programmatic-onboarding](top-extensions-telemetry.md#programmatic-onboarding).
+1. Whether you need to create your own functions and tables, including write access, in **Kusto**. This means creating a dedicated database for your team with a suitable name that you supply, for which you will then be responsible for maintaining, including registering with the GDPR scanner, or other similar entities.  If you are not sure  whether you need your own functions or tables, answer this as "No" and file a new request with <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration Changes&body=My team would like to update the correlation rules for our extension.  The configuration to update is <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafxhot@microsoft.com; azurefxg@microsoft.com</a>  if the answer changes.  The email to azurefxg@microsoft.com should contain the information in this list. 
 
 Once azurefxg@microsoft.com receives and approves the onboarding request, they will reach out to you.  When your identities are validated, they will enable your app ID with Viewer access for the requested databases. There is no propagation delay associated with enabling programmatic access.
 
@@ -96,27 +95,21 @@ Although Portal reporting is primarily supported by **Kusto**, some Portal data 
 | Daily Client Telemetry  | ClientTelemetry, DataSet=53004 | [https://datastudio.msftcloudes.com/#/entity/53004/schema](https://aka.ms/datastudio/#/entity/53004/schema) | [https://cosmos11.osdinfra.net/cosmos/AzureAnalytics.Partner.AAPT/shares/AzureAnalytics.Dev/AzureAnalytics.Dev.PublishedData/AAPT.Gauge.Ibiza.Daily/ClientTelemetry/](https://cosmos11.osdinfra.net/cosmos/AzureAnalytics.Partner.AAPT/shares/AzureAnalytics.Dev/AzureAnalytics.Dev.PublishedData/AAPT.Gauge.Ibiza.Daily/ClientTelemetry/)                          |
 | Hourly Client Telemetry | ClientTelemetryForKustoExport, DataSet=93405 | [https://aka.ms/datastudio/#/entity/93405/schema](https://aka.ms/datastudio/#/entity/93405/schema) | [https://cosmos11.osdinfra.net/cosmos/azureanalytics.partner.azureportal/shares/AzureAnalytics.Dev/AzureAnalytics.Dev.PublishedData/AAPT.Gauge.Ibiza.Hourly/ClientTelemetryForKustoExport/](https://cosmos11.osdinfra.net/cosmos/azureanalytics.partner.azureportal/shares/AzureAnalytics.Dev/AzureAnalytics.Dev.PublishedData/AAPT.Gauge.Ibiza.Hourly/ClientTelemetryForKustoExport/)   |
 
-## Kusto portal databases
+## Kusto Portal databases
 
-**Kusto** is a fantastic product, but it has some serious limitations when it comes to parallel access. For example, Kusto is somewhat single user, in that a specific  particular block of data is only ever on one machine. This means  it's very easy to write a query that will take the cluster down for all other processes, including the ingestion of new data and the execution of core alerting queries.
+**Kusto** is a fantastic product, but it has some limitations when it comes to parallel access. For example, Kusto is somewhat single user, in that a specific block of data is located on one and only one machine. This means it is possible to write queries that reduce cluster performance for all other processes, including the ingestion of new data and the execution of core alerting queries.
 
-To resolve this, we have deployed a Follower Cluster. A follower cluster is a read-only view of the data with its own set of machines to handle querying. Empirical testing shows the data is typically available in well under a minute. 
+To mitigate this performance issue, we have deployed a `Follower Cluster`. A follower cluster is a read-only view of the data with its own set of machines to handle querying. Empirical testing shows the data is typically available in well under a minute. 
 
-Going forward, we are only offering Partners access to the follower cluster. The database names (AzurePortal, AzPtlCosmos, hostingservice) remain the same; on the cluster name has changed from AzPortal to AzPortalPartner. Unless your queries contain the `cluster("AzPortal")` references, they should run unchanged on the new cluster. Otherwise change 'cluster("AzPortal")' to 'cluster("AzPortalPartner")'.
+Consequently, we only offer access to the follower cluster to partners. The database names (AzurePortal, AzPtlCosmos, hostingservice) remain the same; however,  the cluster name has changed from `AzPortal` to `AzPortalPartner`. Your queries will run unchanged on the new cluster unless they  contain references to  `cluster("AzPortal")`. If they contain this reference,  change `'cluster("AzPortal")'` to `'cluster("AzPortalPartner")'`.
 
-The following table specifies the Kusto databases that contain Azure Portal telemetry data. Please run through your query from whatever database makes the most sense to you.
+The following table specifies the Kusto databases that contain Azure Portal telemetry data. Please run through your query on the database or cluster that makes the most sense to you.
 
-* **AzPtlCosmos**
-
-  This is the main Azure Portal telemetry database. Data here is deduped, geo-coded, expanded and filtered. All the official dashboards and reports are based on this table. It is highly encouraged to use  this database for your needs. Data here is persisted for 120 days and excludes test traffic.
+* **AzPtlCosmos**: The main Azure Portal telemetry database. Data here is deduped, geo-coded, expanded and filtered. All the official dashboards and reports are based on this table. It is highly encouraged to use  this database for your needs. Data here is persisted for 120 days and excludes test traffic.
                                                   
-* **AzurePortal**
+* **AzurePortal**: Contains the raw, unprocessed data that comes from MDS directly to **Kusto**. There are many scenarios where you may want to review diagnostic events or debug extension issues, for example, performance or creates. Data here is persisted for 45 days. To filter out test traffic when performing queries, use `userTypeHint == ""`.
 
-	This database contains  the raw, unprocessed data that comes from MDS directly to Kusto. There are many scenarios where you may want to debug extension issues, for example, performance or creates. This is the right table to use to review diagnostic events. Data here is persisted for 45 days. To filter out test traffic when performing queries on this database, use `userTypeHint == ""`.
-
-* **AzPortalPartner**
-
-    The shared database named **Partner** is being made obsolete. Partners who need to create their own alerting and telemetry functions and tables can request a database of their own. The statistics and load history for the **AzPortalPartner** cluster are located at [https://aka.ms/GaugePartnerCluster](https://aka.ms/GaugePartnerCluster). 
+* **AzPortalPartner**:  The replacement for the shared database named **Partner**, which is  obsolete. Partners who need to create their own alerting and telemetry functions and tables can request their own  database. The statistics and load history for the **AzPortalPartner** cluster are located at [https://aka.ms/GaugePartnerCluster](https://aka.ms/GaugePartnerCluster). 
 
 ### Kusto tables
 
@@ -211,14 +204,14 @@ For more information about actions that are logged to the **ClientTelemetry** ta
 
 ### Resource deleted survey
 
-To ask a user why they deleted a resource, use the `openResourceDeletedFeedbackPane` method, as in the following code.
+There is a standardized pane that collects non-real-time user feedback. Extensions can display this pane to ask a user why they deleted a resource, by using the `openResourceDeletedFeedbackPane` method, as in the following code.
 
 ```
   import * as FxFeedback from "Fx/Feedback";
   FxFeedback.openResourceDeletedFeedbackPane("displayNameOfTheDeletedResource", optionalObjectWithAnyAdditionalDataYouWantToLog);
 ```
 
-This method is called after a user starts the deletion process. The Shell displays the feedback pane that contains a standardized survey. The name of the resource is sent to the method and displayed in the survey. Responses to this survey are logged to the telemetry tables. If the feedback pane is already open, calls to this method do not perform any operations.
+This method is called after a user starts the deletion process.  The name of the resource is sent to the method, and the Shell displays it in the feedback pane that contains the survey. Responses to this survey are logged to the telemetry tables. If the feedback pane is already open, calls to this method do not perform any operations.
 
 ## Live telemetry
 
