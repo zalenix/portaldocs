@@ -105,7 +105,7 @@ Consequently, we only offer access to the follower cluster to partners. The data
 
 The following are the Kusto databases that contain Azure Portal telemetry data. Please run your query on the database or cluster that makes the most sense to you.
 
-* **AzPtlCosmos**: The main Azure Portal telemetry database. Data here is deduped, geo-coded, expanded and filtered. All the official dashboards and reports are based on this table. It is highly encouraged to use  this database for your needs. Data here is persisted for 120 days and excludes test traffic.
+* **AzPtlCosmos**: The main Azure Portal telemetry database. Data here is deduped, geo-coded, expanded and filtered. All the official dashboards and reports are based on this table. It is highly encouraged to use  this database for your extensions. Data here is persisted for 120 days and excludes test traffic.
                                                   
 * **AzurePortal**: Contains the raw, unprocessed data that comes from MDS directly to **Kusto**. There are many scenarios where you may want to review diagnostic events or debug extension issues, for example, performance or creates. Data here is persisted for 45 days. To filter out test traffic when performing queries, use `userTypeHint == ""`.
 
