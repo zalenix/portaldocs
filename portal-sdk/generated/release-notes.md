@@ -1,4 +1,4 @@
-# Release Notes since 5/21/2018
+# Release Notes since 5/22/2018
 
 ## 5.0.302.4201
 0 Breaking Changes, 2 Features added and 4 Bugs Fixed
@@ -343,23 +343,3 @@
 ## 5.0.302.1125
 0 Breaking Changes, 4 Features added and 6 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2483863'>2483863</a></td><td>Bug Fix</td><td>[HotFix] Using wrong credentials for portal client app for AppInsightsExtension</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2456776'>2456776</a></td><td>Feature</td><td>[dSMS] Migrate Mooncake to dSMS</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2432933'>2432933</a></td><td>Feature</td><td>[dSMS] Create script to migrate certificates from SecretStore to dSMS</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2432546'>2432546</a></td><td>Bug Fix</td><td>Roll expiring Blackforest certs (part 1 - non-ARM certs)</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2397803'>2397803</a></td><td>Bug Fix</td><td>Update qunitconsole runner version to 10.0.0.184</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2381069'>2381069</a></td><td>Bug Fix</td><td>Fix remote extension target transforms</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2379604'>2379604</a></td><td>Bug Fix</td><td>Issue getting ARM token for AppInsightsExtension </td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2379497'>2379497</a></td><td>Feature</td><td>Add UT to Portal CI</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2354686'>2354686</a></td><td>Bug Fix</td><td>Update to chromedriver 2.37</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2282902'>2282902</a></td><td>Feature</td><td>[EV2] Add support for azure storage account keys</td></tr></table>
-
-## 5.0.302.1122
-0 Breaking Changes, 0 Features added and 1 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2465704'>2465704</a></td><td>Bug Fix</td><td>Fix Persistent Content Cache compatbility issue due to changed hash format</td></tr></table>
-
-## 5.0.302.1121
-0 Breaking Changes, 1 Features added and 1 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2447893'>2447893</a></td><td>Feature</td><td>EPERM: implement xcopy approach to avoid EPERM errors</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2425852'>2425852</a></td><td>Bug Fix</td><td>IntuneEducation show Branding text instead of All Services</td></tr></table>
-
-## 5.0.302.1120
-0 Breaking Changes, 2 Features added and 0 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2405182'>2405182</a></td><td>Feature</td><td>npm ERR! error : EPERM: operation not permitted, rename</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2379455'>2379455</a></td><td>Feature</td><td>Distribute via internal NPM registry and update guidance</td></tr></table>
-
-## 5.0.302.1119
-0 Breaking Changes, 0 Features added and 4 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2444181'>2444181</a></td><td>Bug Fix</td><td>remove references to cloud app discovery</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2425852'>2425852</a></td><td>Bug Fix</td><td>IntuneEducation show Branding text instead of All Services</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2386671'>2386671</a></td><td>Bug Fix</td><td>[Partner Request] - Enable Microsoft_Azure_PIMCommon extension in blackforest and fairfax</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2384715'>2384715</a></td><td>Bug Fix</td><td>MonitorChart: Adding a long title causes pin button to go off the display.</td></tr></table>
-
-## 5.0.302.1118
-0 Breaking Changes, 2 Features added and 0 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2458585'>2458585</a></td><td>Feature</td><td>[DSR] Upgrade to latest SDK for Blackforest 1st party app support</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2245214'>2245214</a></td><td>Feature</td><td>Onboarding storage account / public end-point details for <Microsoft_Azure_BatchAI></td></tr></table>
