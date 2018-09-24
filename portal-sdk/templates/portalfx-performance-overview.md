@@ -156,7 +156,6 @@ The following table contains documents that are related to improving extension p
 | Purpose | Name |  
 | ------- | ---- | 
 | Content Delivery Network | [portalfx-cdn.md](portalfx-cdn.md)  | 
-| Identify and resolve common performance issues | [portalfx-performance-portalcop.md](portalfx-performance-portalcop.md) |
 | Improve part performance | [portalfx-parts-revealContent.md](portalfx-parts-revealContent.md) | Optimize CORS preflight requests | [portalfx-data-loadingdata.md#optimize-cors-preflight-requests](portalfx-data-loadingdata.md#optimize-cors-preflight-requests)  |
 | Performance caching  | [portalfx-performance-caching-homepage.md](portalfx-performance-caching-homepage.md)|
 | Persistent caching of scripts | [portalfx-performance-caching-scripts.md](portalfx-performance-caching-scripts.md)   |
