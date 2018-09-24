@@ -63,6 +63,8 @@ The terms are in alphabetical order.
 | asynchronous module definition    | A JavaScript API that specifies a mechanism that defines code modules and their dependencies in order to load them asynchronously. |
 | avatar menu | |
 | availability |   .  Also see reliability. |
+| Azure Fundamentals | A set of tenets to which each Azure service is expected to adhere. | 
+|  Azure Insights  |  Activity logs and other tools that provide metadata about extension performance and maintenance. | 
 | Azure Portal SDK  | Software Development Kit for developing Azure Portal extensions. |
 | Azure Resource Manager (ARM)    | The public API for Azure that accepts calls from the Portal, Azure SDK, and command line.  | 
 
@@ -94,6 +96,7 @@ The terms are in alphabetical order.
 | C+E                       | Cloud + Enterprise | 
 | cache entries | | 
 | caching              | Hosting service extensions use persistent caching, index page caching, and manifest caching, among others. |
+| camel casing |  |
 | CD | Continuous Delivery  |
 | CDN | Content Delivery Network | 
 | CEC                       | Common Engineering Criteria  | 
@@ -119,6 +122,7 @@ The terms are in alphabetical order.
 | CORS | Cross-origin resource sharing. A mechanism that defines a way in which a browser and server can interact to determine whether or not it is safe to allow the cross-origin requests to be served.  For example, restricted resources, like  fonts,  may be requested from domains outside the domain from other resources are served. It may use additional HTTP headers to allow users to gain permission to access selected resources from a server on a different origin. | 
 | CRUD | Create, Replace, Update, Delete |
 | CSS                       | CSS Release management  | 
+| CTA | Computed Time of Arrival  |
 | curation            | The process of categorizing content around a specific topic or area of interest. Curated items often formed into various types of collections and are displayed together according to theme or purpose. |
 | Custom Deployment | Do-it-Yourself or legacy extension deployment that does not use an Azure Hosting Service. This is not the same as custom configuration of a blade or part. |
 | custom domain | |
@@ -128,6 +132,7 @@ The terms are in alphabetical order.
 
 | Term | Meaning   |
 | ---- | --- |
+| dashboard | |
 | Data atomization | A technique that binds several data views to one data entity, thus presenting a smooth and  consistent experience to the user. Multiple views that represent the same asset are always in sync. |
 | data binding  | The process that establishes a connection between the application UI and the business logic  behind the pane. |
 | data projection | Combining columns of data in a way that is meaningful to the current topic.  For example, the `county` column may be combined with the `state or province` column to provide a meaningful sort by county. |
@@ -147,6 +152,7 @@ The terms are in alphabetical order.
 | DIY                      | Do It Yourself |
 | DNS                       | Domain Name Server or Domain Name System  | 
 | Document Object Model (DOM) | A methodology that treats an  HTML, XHTML, or XML page as a tree structure that contains hierarchical objects. These nodes   represent every item  that is part of the document and can be manipulated programmatically. Visible changes to DOM nodes may be displayed in the browser. |
+|  dSTS  | Datacenter Security Token Service | 
 
 <a name="azure-portal-glossary-e"></a>
 ## E
@@ -158,6 +164,7 @@ The terms are in alphabetical order.
 | endpoint             | A device that is connected to a LAN and accepts or transmits communications across a network. In terms of directories or Web pages, there may be several endpoints that are defined on the same device. |
 | Enhanced monitoring  |  |
 | environment              | A configuration of computers in which extensions can be run. For example, environments are Blackforest, Dogfood, Mooncake, and Production.  | 
+| ETW |  Event Tracing for Windows | 
 | experience            | Azure Portal software application. Also see UX. |
 | experimentation | Releasing two slightly different versions of a new feature to  a subsection  segment of the customer base to determine which  version works better or makes the customer happier. | 
 |  Express Version 2 (EV2) |  Safe, secure and compliant way to roll out services to multiple regions across public and private clouds.  | 
@@ -174,11 +181,12 @@ The terms are in alphabetical order.
 | feasibility review | An analysis of a proposed project to determine  whether the project should go ahead, be redesigned, or abandoned altogether, from the perspectives of technical feasibility and financial feasibility. The review should  uncover the  strengths and weaknesses while they are relatively inexpensive to address. Also known as feasibility study. |
 | feature flag       | A coding technique that allows the enabling or disabling of new code within a solution. It allows the testing and development-level viewing of new features, before they are complete and ready for private preview.  |
 | FF                       | Fairfax |
+| Figma | |
 | first chance exception    | An exception's first pass through the debugger. Exceptions are thrown to the debugger first and then to the actual program.  If the exception is not handled by the program, it gets thrown to the debugger a second time. |
 | first-party extension | Internal/ Microsoft extensions that comply with Azure Privacy terms and conditions.  An Azure Portal extension that is developed by Microsoft | 
 | flighting                | The process of directing Internet traffic to various editions of an extension, as specified by stamps that represent different stages or regions, or by friendly names. |
 | flighting       | Similar to experimentation. The process of selecting users who will receive specific pre-production versions of an extension  by adding them to a flight group. Anyone in a flight group will receive packages that are designated for that particular group. Users  who are not in the flight group  will receive  packages that contain  the non-flighted  version of an extension. Eventually there will be only one version of the new extension, whereupon the customer base is expanded by adding flight groups or by releasing the successfully flighted bits to production.  |
-| follower cluster    | A read-only view of a cluster that contains databases. It has its own set of machines to handle querying against the database tables, which improves the performance of the  cluster that it follows, especially for the ingestion of new data and the execution of core alerting queries.  |
+| follower cluster    | A read-only view of a cluster that contains databases. It may have its own set of machines to handle read-only  queries against the database tables. This improves the performance of the cluster  on which the follower cluster is based, especially for the ingestion of new data and the execution of core queries.  |
 | format culture    | The locale string that is used for formatting. |
 | framework     | A software environment that provides large software platform functionality in the process of building and deploying applications. The larger platform is selectively changed by adding developer code to make software applications. |
 | friendly name | Name for a site or an extension that is easier to remember and use than DSN names or IP addresses. Friendly names point to valid versions of an extension that exist in the storage account.  | 
@@ -195,6 +203,8 @@ The terms are in alphabetical order.
 | gallery package       | Contains all assets for a gallery item: icons, screenshots, descriptions, et al. The gallery package is compiled into a file with the .azpkg extension  for transfer between environments. |
 | GB Certificate            | Six Sigma Green Belt Certification.  | 
 | GB Standard               | GB stands for Guobiao, or “National Standard” in Chinese. The GB standard is the basis for testing products that require certification. |  
+|  GD&F  | |
+| Geneva | |
 | geodistribute        | Distribute the extension to all data centers in various geographical locations. |
 | geodistribution      | The process of deploying software in multiple geographic regions as a single logical database. |
 | geolocation | The identification or estimation of the real-world geographic location of a device, like a mobile phone or Internet-connected computer. |
@@ -218,20 +228,24 @@ The terms are in alphabetical order.
 | Term | Meaning   |
 | ---- | --- |
 | IANA | Internet Assigned Numbers Authority | 
+| IcM  | |
 | idempotent         |  An operation whose result does not change after the initial application. For example, if the client needs to retry a request due to intermittent network issues, the same value will be sent to the server.  This allows the server to ignore the retry if it has already been processed. Even if the request is ignored, the same response will be returned if the client needs the values in the response. |
 | iframe                   | An inline frame, used to embed another document within the current HTML document. |
 | IIS Express       | Internet Information Services. A Web server for hosting anything on the Web. |
 | IRIS              | Intelligent Retinal Imaging Systems, located at [http://www.retinalscreenings.com/](http://www.retinalscreenings.com/). The IRIS platform processes images quickly and accurately so doctors can share data with patients and other clinicians, better prevent diabetic blindness, and help reduce healthcare costs. iRiS Software Systems, located at [https://customers.microsoft.com/en-us/story/irissoftwaresolutions](https://customers.microsoft.com/en-us/story/irissoftwaresolutions). Multi-tenanted, cloud-based Guest Experience Platform that powers more than 3,000 hotels and restaurants worldwide, to deliver an improved end-to-end guest experience. | 
 | imperative call     | imperative programming is a programming paradigm that uses statements that change a program's state, or describing how a program operates. An imperative program consists of commands for the computer to perform, and most computer languages are in the imperative style. |
 | info balloon | |
+| innermost error  | Error messages might be nested as a result of occuring at different levels of processing, and different stages record failure reasons. Consequently, the 'innermost error' should be the original reason why an error occured in the extension. |
 | Internet Information Services (IIS) | |
 | intersection types | Combines multiple types into one. This allows existing types to be added together  to get a single type that contains  all the features. | 
+| IoT  | | 
 
 <a name="azure-portal-glossary-j"></a>
 ## J
 
 | Term | Meaning    |
 | --- |  ---  |
+| Jenkins | |
 | JSON Web Token |  JSON-based token that asserts information between the server and the client.  For example, a JWT could assert that the client user has the claim "logged in as admin".  | 
 | JIT | Just In Time |
 | journey  | A user-defined collection of Azure blades to which the user has navigated in order to accomplish a specific goal or task. A set of experiences, each of which has its own goals, that combine to result in a greater level of competency or knowledge. |
@@ -243,13 +257,16 @@ The terms are in alphabetical order.
 | Term | Meaning   |
 | ---- | --- |
 | KB | Knowledge Base |
+| keyvault | |
 | Knockout  (KO)                   | A standalone JavaScript implementation of the Model-View-ViewModel architecture. | 
+| Kubernetes | |
 
 <a name="azure-portal-glossary-l"></a>
 ## L
 
 | Term | Meaning   |
 | ---- | --- |
+| L&R  | | 
 | lambda expression | An anonymous function that is used to create delegates or expression tree types. |
 | LCID | |
 | lifetime | The amount of time an object exists in memory between instantiation and destruction.  It may be automatically destroyed by when a parent object is deallocated, or its existence may be managed by a lifetime manager object or a child lifetime manager object. |
@@ -268,7 +285,7 @@ The terms are in alphabetical order.
 | major area     |  |
 | manifest caching | | 
 | Marketplace               | See Marketplace Gallery. | 
-| Marketplace Gallery       | Also known as the Gallery or Marketplace Gallery. |
+| Marketplace Gallery       | Also known as the Gallery or Marketplace Gallery.  The blade to which customers will navigate to view or purchase a service or extension.  |
 | Marketplace package | A package that contains references to icons and resources, the UI , and other items necessary to display a resource or extension  in the Azure Portal "Marketplace" UI. | 
 | MC                       | Mooncake |
 | MDS                  |  Multilayer Director Switch | 
@@ -278,6 +295,7 @@ The terms are in alphabetical order.
 | minification                 | The process of removing all unnecessary characters from source code and rewriting it to make it smaller without changing its functionality. Removed characters may be whitespace, newlines, comments, and other non-executable items that increase code readability, while rewritten code can be local variable names, boolean logic, etc. Minification reduces the amount of data that is transferred across the Internet. | 
 | MPAC             | ms.portal.azure.com, the Azure Portal instance for internal Microsoft customers. | 
 | MSA                   | Microsoft Account. formerly Windows Live ID.  |
+| MSI | |
 | Multi-factor authentication (MFA) | |
 | MVC                | Model-View-Controller, a methodology of software organization that separates the view from the data storage model in a way that allows the processor or a controller to multitask or switch between applications or orientations without losing data or damaging the view. |
 | MVVM                 | Model-View-View-Model methodology.  A  method of software organization that separates the view from the data storage model, but depends on intelligence in the view or in the data objects so that there is no controller module that needs to process or transfer information.  The controller's function is handled instead by the device operating system or by the server that is communicating with the application. This methodology allows the application to multitask, call other functions that are located on the device, or switch between orientations without losing data or damaging the view. |
@@ -292,7 +310,9 @@ The terms are in alphabetical order.
 | national cloud   | Network instances of Microsoft enterprise cloud services that are isolated physically and logically. They are confined within the geographic borders of specific countries and operated by local personnel. See sovereign cloud. |
 | no-code browse | A blade that automatically queries ARM for resources of a specific type and displays them in a paged grid. | |
 | notification | A short message that contains useful and relevant information and informs the user about an event that has occurred, or may occur, in the system. This is not the same as an alert. |
+| npm | |
 | NPS                |   Net Promoter Score. The aggregated score of answers to the question ‘How likely are you to recommend this site?’.  Typically served as a popup window. | 
+| NuGet | |
 | NVDA                  | NonVisual Desktop Access                                                                                                          |
 
 <a name="azure-portal-glossary-o"></a>
@@ -324,7 +344,7 @@ The terms are in alphabetical order.
 | PDL                      | Program Design Language |
 | perceived responsiveness | Responsiveness that is immediately apparent to an average user. |
 | Percentile | A figure that reports the relative standing of a particular value within a statistical data set.  It is a ranking in relation to the rest of the data, instead of the mean, standard deviation, or actual data value. For example, a score at the 80th percentile means that 80% of the scores are lower, and  20% of the scores are higher. | 
-| performance bar     |         |
+| performance      |         |
 | Performance telemetry | The recording and transmission of metadata from a remote device to an Information Technologies endpoint for monitoring and analysis. |
 | performant | Characterized by an excellent level of effectiveness, responsiveness, or   success. |
 | phishing                     | | 
@@ -336,6 +356,7 @@ The terms are in alphabetical order.
 | Portal                       | The web application that hosts the Azure shell.  |
 | PPE | |
 | preview                  | The development phase that is used by the developer and a small audience to validate the functionality of an extension. |
+| pricing tier  | |
 | procedure      | See checklist. |
 | process validation | A procedure that ensures that the process has completed successfully, within expected levels of granularity. |
 | PROD             | Production |
@@ -373,6 +394,7 @@ The terms are in alphabetical order.
 | region    | The area in the world that that is served by a specific localization site. |
 | registration  | The process of updating the Portal configuration so that it can  load an extension. | 
 | Relex | |
+| reliability | Every extension meets the reliability Service Level Agreement (SLA) of loading successfully at least 99% of the time. |
 | resource              | |
 | resource features     | |
 | resource provider   | A service that supplies the resources that can be deployed and managed by using Resource Manager. Some common resource providers are `Microsoft.Compute`, which supplies the virtual machine resource, `Microsoft.Storage`, which supplies the storage account resource, and `Microsoft.Web`, which supplies resources related to web apps.  |
@@ -401,6 +423,8 @@ The terms are in alphabetical order.
 | SEO | Search Engine Optimization. |
 | server-side code     | Scripts that are located on a server that produce customized responses for each client request to the website, as opposed to the web server serving static web pages. |
 | Service 360               | An extension of Service Portfolio Management. It enhances a Service Portfolio by providing a single view of business service performance across an organization, for business processes such as Operation, Risk, Investment, and Finance. | 
+| service identity | |
+| service principal | |
 | shaping data | Selecting or combining properties in a `QueryCache` or `EntityCache` to form variables that are a closer match for the intended `ViewModel`.  This differs from filtering in that filtering selects rows in a `QueryCache` instead of columnar values. | 
 | Shell | |
 | SLA                      | Service Level Agreement |
@@ -411,6 +435,7 @@ The terms are in alphabetical order.
 | single-event high loads | Many requests for the same information, based on a brick-and-mortar occasion that may not be an annual event. |
 | single page application           | A web application or web site that interacts with the user by dynamically rewriting the current page  instead of providing entire new pages from a server.  |
 | single-sign-on authentication | |
+| Sketch | located at  | [http://aka.ms/portalfx/sketch](http://aka.ms/portalfx/sketch)  |
 | skip-take | Also known as random access.  Accessing data in an order that is not sequential.  |
 | SLA                       | Service Level Agreement | 
 | smoke test               | see build verification test  |
@@ -434,6 +459,7 @@ The terms are in alphabetical order.
 | ---- | --- |
 | TFS              | Team Foundation Server |
 | third-party extension     | An Azure Portal extension that is developed by partners outside of Microsoft |
+| tile |  distinct sets of information on a small blade. Domain-specific tiles might display  information about a resource, like subnet lists or usage quotas, whereas more generic tiles might display resource health or billing information. The user can move tiles, change their size, or pin frequently-used tiles to a startboard.  Tiles that appeal to a subset of  extension  users  are located in  the tile gallery instead of on the blade. |
 | timezone         | The local time of a region or a country, based on factors like time zone maps and Daylight Savings Time. | 
 | timezone offset  | The difference, in minutes, between UTC time and the current time in the current locale. |
 | toast notification | |
@@ -444,7 +470,7 @@ The terms are in alphabetical order.
 | trusted host    | |
 | type metadata | Data that describes an  object and  its properties.  | 
 | Typescript   | aka no-PDL programming. | 
-
+| typings | |
 
 
 <a name="azure-portal-glossary-u"></a>
@@ -565,3 +591,4 @@ The terms are in alphabetical order.
 
 | Term | Meaning   |
 | ---- | --- |
+| 95th percentile | A score at the 95th percentile means that 95% of the scores are lower, and  5% of the scores are higher. | |
