@@ -8,17 +8,17 @@
 
 Performance statistics for several extensions are displayed on the PowerBi dashboard that is located at [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf). You can select your extension, blade, and part(s) from the filters, as in the following image.
 
-![alt-text](../media/portalfx-performance/extensionPerfQuery.png "PowerBi Query")
+![alt-text](../media/top-extensions-performance/extensionPerfQuery.png "PowerBi Query")
 
 In the following example, the AppInsightsExtension has been selected for further examination. Its blades and parts are described, and its scores are below the list of parts.
 
-![alt-text](../media/portalfx-performance/extensionPerfQuerySelection.png "PowerBi Extension Query")
+![alt-text](../media/top-extensions-performance/extensionPerfQuerySelection.png "PowerBi Extension Query")
 
-Portal performance is the sum of the performance of all the experiences in the product or extension.  Portal performance from a customer's perspective is seen as all experiences throughout the product. For example, the blades and parts associated with the extension in the previous image are displayed in the following image. As a developer, you have a responsibility to  uphold your extension to the 95th percentile performance bar.
+Portal performance is the sum of the performance of all the experiences in the product or extension.  Portal performance from a customer's perspective is seen as all experiences throughout the product. For example, the blades and parts associated with the extension in the previous image are displayed in the following image. As a developer, you have a responsibility to uphold your extension to the 95th percentile performance bar.
 
-![alt-text](../media/portalfx-performance/extensionPerfQueryBladesParts.png "PowerBi Extension Query")
+![alt-text](../media/top-extensions-performance/extensionPerfQueryBladesParts.png "PowerBi Extension Query")
 
-All extensions need to meet the minimum performance required to be  at the 95th percentile, as  in the following table.
+All extensions need to meet the minimum performance required to be at the 95th percentile, as  in the following table.
 
 | Area      |  Telemetry Action         | How is it measured? |
 | --------- | ------------------------- | ------------------- |
@@ -34,39 +34,34 @@ All extensions need to meet the minimum performance required to be  at the 95th 
 <a name="performance-extension-performance"></a>
 ## Extension performance
 
-Extension performance is impacted by both Blade and Part performance, when the extension is loaded, when it is unloaded, and when it is required by another extension.
+Extension performance is impacted by both Blade and Part performance when the extension is loaded, when it is unloaded, and when it is required by another extension.
 
-When a user visits a resource blade for the first time, the Portal  loads the extension and then requests the ViewModel.  This adds to the counts and times for the Blade and Part performance.
+When a user visits a resource blade for the first time, the Portal loads the extension and then requests the ViewModel.  This adds to the counts and times for the Blade and Part performance.
 
 In addition, if the user were to browse away from the UI experience and browse back previous to the unloading of the extension, the load times for the second visit are faster because the UI does not have to re-load the entire extension.
 
 <a name="performance-blade-performance"></a>
 ## Blade performance
 
-Blade performance is measured  around specific areas that are encapsulated under the `BladeFullReady` action. They are as follows.
+Blade performance is measured around specific areas that are encapsulated under the `BladeFullReady` action. They are as follows.
 
 1. The constructor
 1. The call to the `OnInputsSet` method or the `onInitialize` method
 1. Displaying parts within the blade
 
-
 <a name="performance-blade-performance-the-bladeperformanceincludingnetwork-method"></a>
 ### The BladePerformanceIncludingNetwork method
-
-<!-- TODO:  Some, but not all of this, has been changed from 95% to 80%.  -->
 
 The `BladePerformanceIncludingNetwork` function samples 1% of traffic in order to measure the number of network requests that are made throughout a session. Within the function, we correlate the count of any network requests that are made when the user is loading a specific blade. The function does not impact the markers that measure performance; however, a larger number of network requests typically results in slower performance. 
 
 There is a known calculation issue with the current approach because the 95th percentile is reported as the summation of the 95th percentiles for `BladeFullReady` and the `getMenuConfig` call.
 
-The subtle difference with the standard `BladeFullReady` marker is that if the blade is opened within a `ResourceMenu` blade, we include the time it takes to resolve the `getMenuConfig` promise when the `ResourceMenu` blade is loaded to the 95th percentile of the `BladeFullReady` duration. 
-
- In most cases the difference is insignificant because the `getMenuConfig` 95th percentile is less than < 10 milliseconds because it is static.  If your extension is drastically affected by the time it takes to load the `ResourceMenu` blade, its performance can be improved by making the menu statically defined.
+The subtle difference with the standard `BladeFullReady` marker is that if the blade is opened within a `ResourceMenu` blade, we include the time it takes to resolve the `getMenuConfig` promise when the `ResourceMenu` blade is loaded to the 95th percentile of the `BladeFullReady` duration. In most cases the difference is insignificant because the `getMenuConfig` 95th percentile is less than < 10 milliseconds because it is static.  If your extension is drastically affected by the time it takes to load the `ResourceMenu` blade, its performance can be improved by statically defining the menu.
 
 <a name="performance-part-performance"></a>
 ## Part performance
 
-Part performance is measured  around specific areas that are encapsulated under the `PartReady` action. They are as follows.
+Part performance is measured around specific areas that are encapsulated under the `PartReady` action. They are as follows.
 
 1. The constructor
 1. The call to the `onInitialize` method or the  `OnInputsSet` method
@@ -108,7 +103,7 @@ The model counts the views that do not meet the bar and gives them a negative sc
 
 There are two methods that are used to assess the performance of an extension. The PowerBi dashboard that is located at [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf) measures blade, part, and extension performance, or you may run local Kusto queries to determine the numbers that are associated with extension performance.
 
-For more information about telemetry, see [portalfx-telemetry-getting-started.md](portalfx-telemetry-getting-started.md).
+For more information about telemetry, see [top-extensions-telemetry.md](top-extensions-telemetry.md).
 
 **NOTE**: It is good practice to run queries locally by using the Azure-provided Kusto functions to calculate your assessment.
 
@@ -167,7 +162,7 @@ Some of the main factors in extension performance are associated with network pe
 <a name="performance-verifying-a-change"></a>
 ## Verifying a change
 
-To correctly verify a change, you will need to ensure the 'before' and 'after' are instrumented correctly with telemetry. Without telemetry, you cannot truly verify that the change was helpful. What may seem to be huge improvement in performance may transition into a smaller win after the extension moves to production. Occasionally, they actually transision into decreases in performance.  The main goal is to trust the telemetry and instead of profiling, because the telemetry reports on the extension's performance in production.
+To correctly verify that a change is helpful, you will need to ensure the 'before' and 'after' are instrumented correctly by using telemetry. Telemetry reports on the extension's actual performance in production instead of the statistics that are accomplished with profiling. What may seem to be huge improvements in performance may actually be smaller wins after the extension moves to production. The improvements may actually transition into decreases in performance in certain circumstances.  
 
 <a name="performance-topics-that-improve-blade-performance"></a>
 ## Topics that Improve Blade Performance
@@ -177,7 +172,6 @@ The following table contains documents that are related to improving extension p
 | Purpose | Name |  
 | ------- | ---- | 
 | Content Delivery Network | [portalfx-cdn.md](portalfx-cdn.md)  | 
-| Identify and resolve common performance issues | [portalfx-performance-portalcop.md](portalfx-performance-portalcop.md) |
 | Improve part performance | [portalfx-parts-revealContent.md](portalfx-parts-revealContent.md) | Optimize CORS preflight requests | [portalfx-data-loadingdata.md#optimize-cors-preflight-requests](portalfx-data-loadingdata.md#optimize-cors-preflight-requests)  |
 | Performance caching  | [portalfx-performance-caching-homepage.md](portalfx-performance-caching-homepage.md)|
 | Persistent caching of scripts | [portalfx-performance-caching-scripts.md](portalfx-performance-caching-scripts.md)   |
@@ -186,7 +180,28 @@ The following table contains documents that are related to improving extension p
 <a name="performance-frequently-asked-questions"></a>
 ## Frequently asked questions
 
-<a name="performance-frequently-asked-questions-extension-scores-are-above-the-bar"></a>
+* [Telemetry](#telemetry)
+
+* [Alerting](#alerting)
+
+* [Performance](#performance)
+
+* [Reliability](#reliability)
+
+* [Create](#create)
+
+* * *
+
+<a name="performance-telemetry"></a>
+## Telemetry
+
+<a name="performance-alerting"></a>
+## Alerting
+
+<a name="performance-performance"></a>
+## Performance
+
+<a name="performance-performance-extension-scores-are-above-the-bar"></a>
 ### Extension scores are above the bar
 
 ***How can I refactor my code to improve performance?***
@@ -210,7 +225,7 @@ SOLUTION:
 1. Decrease Blade 'Revealed' scores.
 
     * Optimize the quantity and quality of parts on the blade.
-        * If there is only one part, or if the part is not a `<TemplateBlade>`, then migrate the part to use the  no-pdl template as specified in  [top-blades-template.md](top-blades-template.md).
+        * If there is only one part, or if the part is not a `<TemplateBlade>`, then migrate the part to use the  no-pdl template as specified in  [top-blades-templateblade.md](top-blades-templateblade.md).
         * If there are more than three parts, consider refactoring or removing some of them so that fewer parts need to be displayed.
     * Optimize the Blades's `constructor` and `OnInputsSet` methods.
     * Remove obsolete bundles, as specified in  [https://aka.ms/portalfx/obsoletebundles](https://aka.ms/portalfx/obsoletebundles).
@@ -222,7 +237,7 @@ SOLUTION:
 
 * * *
 
-<a name="performance-frequently-asked-questions-my-wxp-score-is-below-the-bar"></a>
+<a name="performance-performance-my-wxp-score-is-below-the-bar"></a>
 ### My WxP score is below the bar
 
 ***How do I identify which pieces of the extension are not performant?***
@@ -237,7 +252,7 @@ If the extension is drastically under the bar, it is  likely that a high-usage b
 
 * * * 
 
-<a name="performance-frequently-asked-questions-azure-performance-office-hours"></a>
+<a name="performance-performance-azure-performance-office-hours"></a>
 ### Azure performance office hours
 
 ***Is there any way I can get further help?***
@@ -275,5 +290,33 @@ You can also reach out to <a href="mailto:sewatson@microsoft.com?subject=<extens
  'InitializeExtensions' is above the bar, what should I do
  -->
 
+<a name="performance-reliability"></a>
+## Reliability
+
+<a name="performance-reliability-extension-scores-are-below-the-reliability-bar"></a>
+### Extension scores are below the reliability bar
+
+***What do I do to improve the reliability scores for my extension?***
+
+
+DESCRIPTION:
+
+ When I visited the Extension performance/reliability report that is located at [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf), the scores for my extension were below acceptable levels.
+
+SOLUTION: 
+
+Run the following query.
+
+
+The query will return a summary of all the events which your extension failed to load. Then, address the highest impacting issues, per occurence or number of affected users.
+
+
+
+The query returns a list of errorStates and errors.  For greater details you can use the `any_sessionId` to investigate further.
+
+The errorStates and errors are described in [portalfx-extensions-status-codes.md](portalfx-extensions-status-codes.md).
+
+<a name="performance-create"></a>
+## Create
 
 
