@@ -155,6 +155,8 @@ Neither `http` nor `https` are included in the url, so that the page can request
 
 You can configure  versioning of  your extension by ensuring that  `IsDevelopmentMode` in the `*.config` file  is set to `false`.
 
+**NOTE**:  If the CDN goes down, the increase in latency by falling back to a different server location may result in a negative impact to your users.  Typically, messages across long distances suffer more from latency than throughput. For example, total network latency is not as noticeable for one long steady stream of data as it is for many small individual requests for status on many storage accounts. This is because the steady stream of data that is a file upload would be more of a "delay expected" moment that is infrequent, whereas the status messages are needed right away and very often. Consequently, for file uploads, the extension would benefit from fewer servers that are strategically placed, but for messages, the extension benefits from working with more servers that are geolocated with your clients.
+
 ### Reading the prefix from configuration
 
 To read any FX configuration, the extension uses a class which inherits from `ApplicationContext`, as in the following example.

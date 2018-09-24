@@ -107,7 +107,7 @@ The terms are in alphabetical order.
 | code package | |
 | COGS |   Cost of Goods Sold |
 | collector   | An endpoint that collects and transforms information from various provisioners previous to sending it to the provider in a provider-consumer relationship. |
-| community cloud | Although domain-based configuration is not required, there is great overlap between settings for community clouds and settings for national clouds. |
+| community cloud | A cloud that runs on the on the same IP address and machines as portal.azure.com, and provides vanity URLs, extension filtering, and rebranding functionality to selected partners. The  servers  make decisions dynamically based on the URL used to access them. Although domain-based configuration is not required, there is great overlap between settings for community clouds and settings for national clouds. |
 | compile-time verified lambda | A lambda expression that is verified at compile time.  |
 | consumer    | An endpoint that requests  data from a provider that typically acts as a server. |
 | Content Delivery Network (CDN) | A distributed network that sends audio, video, images, and other web content to customers.  This includes static images, scripts, and stylesheets. | 
@@ -126,7 +126,7 @@ The terms are in alphabetical order.
 
 | Term | Meaning   |
 | ---- | --- |
-| dashboard | |
+| dashboard | customizable landing page where  users can resize, re-order, pin, or unpin tiles to create a unique start experience. |
 | Data atomization | A technique that binds several data views to one data entity, thus presenting a smooth and  consistent experience to the user. Multiple views that represent the same asset are always in sync. |
 | data binding  | The process that establishes a connection between the application UI and the business logic  behind the pane. |
 | data projection | Combining columns of data in a way that is meaningful to the current topic.  For example, the `county` column may be combined with the `state or province` column to provide a meaningful sort by county. |
@@ -157,6 +157,7 @@ The terms are in alphabetical order.
 | endpoint             | A device that is connected to a LAN and accepts or transmits communications across a network. In terms of directories or Web pages, there may be several endpoints that are defined on the same device. |
 | Enhanced monitoring  |  |
 | environment              | A configuration of computers in which extensions can be run. For example, environments are Blackforest, Dogfood, Mooncake, and Production.  | 
+| Essentials | An  overview that contains the most important properties of a resource, in addition to  links to other locations in the portal. |
 | ETW |  Event Tracing for Windows | 
 | experience            | Azure Portal software application. Also see UX. |
 | experimentation | Releasing two slightly different versions of a new feature to  a subsection  segment of the customer base to determine which  version works better or makes the customer happier. | 
@@ -225,6 +226,7 @@ The terms are in alphabetical order.
 | imperative call     | imperative programming is a programming paradigm that uses statements that change a program's state, or describing how a program operates. An imperative program consists of commands for the computer to perform, and most computer languages are in the imperative style. |
 | info balloon | |
 | innermost error  | Error messages might be nested as a result of occuring at different levels of processing, and different stages record failure reasons. Consequently, the 'innermost error' should be the original reason why an error occured in the extension. |
+| Intellisense | |
 | Internet Information Services (IIS) | |
 | intersection types | Combines multiple types into one. This allows existing types to be added together  to get a single type that contains  all the features. | 
 | IoT  | | 
@@ -254,6 +256,7 @@ The terms are in alphabetical order.
 | ---- | --- |
 | L&R  | | 
 | lambda expression | An anonymous function that is used to create delegates or expression tree types. |
+| LBA | |
 | LCID | |
 | lifetime | The amount of time an object exists in memory between instantiation and destruction.  It may be automatically destroyed by when a parent object is deallocated, or its existence may be managed by a lifetime manager object or a child lifetime manager object. |
 | lifetime manager | Ensures that any resources that are specifically associated with a blade are disposed of when the blade is closed. Each blade has its own lifetime manager. |
@@ -267,17 +270,19 @@ The terms are in alphabetical order.
 
 | Term | Meaning  |
 | ---- | --- |
-| major area     |  |
+| major area     | A subject that centers around a specific facet of Azure development. Some major areas are: blades,  controls,  data, forms, parts,   styling, and telemetry. Within these major areas, documents are organized by topic.|
+| major topic | See topic. |
 | manifest caching | | 
 | Marketplace               | See Marketplace Gallery. | 
 | Marketplace Gallery       | Also known as the Gallery or Marketplace Gallery.  The blade to which customers will navigate to view or purchase a service or extension.  |
-| Marketplace package | A package that contains references to icons and resources, the UI , and other items necessary to display a resource or extension  in the Azure Portal "Marketplace" UI. | 
+| Marketplace package | A package that contains references to icons and resources, the UI , and other metadata necessary to display a resource or extension  in the Azure Portal "Marketplace" UI. | 
 | MC                       | Mooncake |
 | MDS                  |  Multilayer Director Switch | 
 | MEF       | |
 | MEF-export      | |
 | menu blade            | |
 | minification                 | The process of removing all unnecessary characters from source code and rewriting it to make it smaller without changing its functionality. Removed characters may be whitespace, newlines, comments, and other non-executable items that increase code readability, while rewritten code can be local variable names, boolean logic, etc. Minification reduces the amount of data that is transferred across the Internet. | 
+| Mlp | |
 | MPAC             | ms.portal.azure.com, the Azure Portal instance for internal Microsoft customers. | 
 | MSA                   | Microsoft Account. formerly Windows Live ID.  |
 | MSI | |
@@ -317,7 +322,8 @@ The terms are in alphabetical order.
 | ---- | --- |
 | P0 scenarios              | The most important user scenarios for an extension. They typically contain critical or showstoppers, without which the extension does not pass its acceptance criteria. Less important scenarios that are typically used for usability testing are categorized as P1, P2, or P3, although some testing can categorize scenarios as far as P10. |
 | parameter collection framework | A platform that enables the extension to collect data from the user. |
-| ParameterCollector    | A collection of Parameter and Parameter-derived objects that are used by data source controls in advanced data-binding scenarios. |
+| parameter collector |  An object that configures the compiler-generated blade reference to supply provider configuration and initial data so that it can  receive  the results from a parameter provider blade. |
+| parameter provider |  A data structure sent from the provider back to the collector. It typically mirrors the parameter structure that was sent to the child blade that collected the information. |
 | part          | See blade. |
 | PCV1                     | Parameter Collector V1 |
 | PCV2                     | Parameter Collector V2 |
@@ -338,7 +344,7 @@ The terms are in alphabetical order.
 | Portal                       | The web application that hosts the Azure shell.  |
 | PPE | |
 | preview                  | The development phase that is used by the developer and a small audience to validate the functionality of an extension. |
-| pricing tier  | |
+| pricing tier  | A category of Azure pricing. The most common tiers are Basic, Standard, and Premium. Within the tier, customers can select or customize a plan or size. |
 | procedure      | See checklist. |
 | process validation | A procedure that ensures that the process has completed successfully, within expected levels of granularity. |
 | PROD             | Production |
@@ -375,7 +381,8 @@ The terms are in alphabetical order.
 | registration  | The process of updating the Portal configuration so that it can  load an extension. | 
 | Relex | |
 | reliability | Every extension meets the reliability Service Level Agreement (SLA) of loading successfully at least 99% of the time. |
-| resource              | |
+| renminbi (RMB) | the official currency of the People's Republic of China.   |
+| resource              | The primary point of entry when a customer wants  to work on or view computing resources  like Web apps, VMs, SQL Databases, or  storage accounts. Typically displayed on the resource browse blade or  resource blade. |
 | resource features     | |
 | resource provider   | A service that supplies the resources that can be deployed and managed by using Resource Manager. Some common resource providers are `Microsoft.Compute`, which supplies the virtual machine resource, `Microsoft.Storage`, which supplies the storage account resource, and `Microsoft.Web`, which supplies resources related to web apps.  |
 | resourceType          | The fully qualified name for the categories of resources to display in the BrowseResourceListPart. | 
@@ -478,6 +485,7 @@ The terms are in alphabetical order.
 | Term | Meaning   |
 | ---- | --- |
 | WARM                 | Windows Azure Release Management |
+| waterfalling  | The order in which extension assets are loaded and rendered in a  browser.  This includes  CSS, blades, JSON, HTML, images,  and third party content. Waterfall charts are used to pinpoint areas within  the series of actions that occur between a user and a server that can be made asynchronous, simultaneous, or consolidated.   |
 | WCAG                  | Web Content Accessibility Guidelines                             | 
 | web worker | A way to for extensions to run scripts in background threads. |
 | Weighted Experience Score (WxP) | The percentage of blade usage that meets the performance bar. |
