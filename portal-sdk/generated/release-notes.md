@@ -1,4 +1,4 @@
-# Release Notes since 5/23/2018
+# Release Notes since 5/24/2018
 
 ## 5.0.302.4201
 0 Breaking Changes, 2 Features added and 4 Bugs Fixed
@@ -339,7 +339,3 @@
 ## 5.0.302.1126
 0 Breaking Changes, 0 Features added and 2 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2487709'>2487709</a></td><td>Bug Fix</td><td>Improve error reporting in Microsoft.Portal.Build.dll</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2485315'>2485315</a></td><td>Bug Fix</td><td>Add support for satellite resx to V2 targets</td></tr></table>
-
-## 5.0.302.1125
-0 Breaking Changes, 4 Features added and 6 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2483863'>2483863</a></td><td>Bug Fix</td><td>[HotFix] Using wrong credentials for portal client app for AppInsightsExtension</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2456776'>2456776</a></td><td>Feature</td><td>[dSMS] Migrate Mooncake to dSMS</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2432933'>2432933</a></td><td>Feature</td><td>[dSMS] Create script to migrate certificates from SecretStore to dSMS</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2432546'>2432546</a></td><td>Bug Fix</td><td>Roll expiring Blackforest certs (part 1 - non-ARM certs)</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2397803'>2397803</a></td><td>Bug Fix</td><td>Update qunitconsole runner version to 10.0.0.184</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2381069'>2381069</a></td><td>Bug Fix</td><td>Fix remote extension target transforms</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2379604'>2379604</a></td><td>Bug Fix</td><td>Issue getting ARM token for AppInsightsExtension </td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2379497'>2379497</a></td><td>Feature</td><td>Add UT to Portal CI</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2354686'>2354686</a></td><td>Bug Fix</td><td>Update to chromedriver 2.37</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2282902'>2282902</a></td><td>Feature</td><td>[EV2] Add support for azure storage account keys</td></tr></table>
