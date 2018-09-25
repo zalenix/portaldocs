@@ -6,7 +6,7 @@ The following sections discuss advanced topics in template blade development.
 
 * [Deep linking](#deep-linking)
 
-* [Displaying notifications](#displaying-notifications)
+* [Displaying notifications using the status bar](#displaying-notifications-using-the-status-bar) 
 
 * [Pinning the blade](#pinning-the-blade)
 
@@ -23,193 +23,158 @@ The following sections discuss advanced topics in template blade development.
 <a name="advanced-topics-deep-linking"></a>
 ### Deep linking
 
-Deep linking is the feature that displays a URL that directly navigates to the new blade when a parent blade is opened and the Portal URL is updated. By design, only certain blades can be deep linked.
+The portal lets the user link directly to particular blade. As long as your blade does not have the ReturnsData decorator then users can deep link to it. There are a few supported link formats.
 
-Blades that cannot be deep linked are the ones that cannot be opened independent of a parent blade or part, like blades that return values to a calling module. An example of blades that cannot be deep-linked is a Web page in the middle of a website's check-out experience.
+* The #blade format lets you link to arbitrary blades
 
-One of the easiest ways to make a deep-linkable blade is to mark its  TemplateBlade as pinnable. For more information about pinning blades, see [#pinning-the-blade](#pinning-the-blade).
+    Format:
 
-<a name="advanced-topics-displaying-notifications"></a>
-### Displaying notifications
+    ```
+    https://portal.azure.com/{directory}#blade/{extension}/{blade}
+    ```
 
-A status bar can be displayed at the top of a blade that contains both text and coloration that convey informations and status to users. For example, when validation fails in a form, a red bar with a message is displayed at the top of the blade. This area is clickable and can open a new blade or an external URL.
+    Example: 
 
-This capability is exposed by adding the `statusBar` member to the Blade base class. Use `this.statusBar(myStatus)` in the `ViewModel`, as in the code located at `<dir>Client/V1/Blades/ContentState/ViewModels/ContentStateViewModels.ts`.
-It is also included in the following code.
+    [https://portal.azure.com/microsoft.com#blade/HubsExtension/HelpAndSupportBlade](https://portal.azure.com/microsoft.com#blade/HubsExtension/HelpAndSupportBlade)
 
-```typescript
+    Blade parameters are serialized in consecutive name/value pairs. 
 
-if (newContentState !== MsPortalFx.ViewModels.ContentState.None) {
-    statusBar = {
-        text: newDisplayText,
-        state: newContentState,
-        selection: stateDetailsBladeSelection,
-        onActivated: onActivated
+    Format:
+
+    ```
+    https://portal.azure.com/{directory}#blade/{extension}/{blade}/{param1name}/{param1Val}/{param2name}/{param2Val}
+    ```
+
+    Example:
+    [https://portal.azure.com/microsoft.com#blade/HubsExtension/BrowseAllBladeWithType/type/HubsExtension_Tag](https://portal.azure.com/microsoft.com#blade/HubsExtension/BrowseAllBladeWithType/type/HubsExtension_Tag)
+
+
+* The #create format lets you link to marketplace items
+
+    Format:
+
+    ```
+    https://portal.azure.com/{directory}#create/{packageid}
+    ```
+
+    Example:
+
+    [https://portal.azure.com/microsoft.com#create/NewRelic.NewRelicAccount](https://portal.azure.com/microsoft.com#create/NewRelic.NewRelicAccount)
+
+    To link to the Marketplace item details blade for your package, add "/preview" to the end of your Create blade link. 
+
+    Format:
+
+    ```
+    https://portal.azure.com/{directory}#create/{packageid}/preview
+    ```
+
+    Example:
+
+    [https://portal.azure.com/microsoft.com#create/NewRelic.NewRelicAccount/preview](https://portal.azure.com/microsoft.com#create/NewRelic.NewRelicAccount/preview)
+
+* The #resource format lets you link to Azure resources
+
+    To link to resources, all you need is the resource id. Currently, only subscription resources are supported. Tenant resources and nested resources are not supported.
+
+    Format:
+
+    ```
+    https://portal.azure.com/{directory}#resource{resourceid}
+    ```
+
+    Example:
+    [https://portal.azure.com/microsoft.com#resource/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/foo/providers/microsoft.web/sites/bar](https://portal.azure.com/microsoft.com#resource/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/foo/providers/microsoft.web/sites/bar)
+
+* The #asset format lets you link to arbitrary portal assets
+
+    Format:
+
+    ```
+    https://portal.azure.com/{directory}#asset/{extension}/{assettype}/{assetid}
+    ```
+
+    Example:
+    [https://portal.azure.com/microsoft.com#asset/Microsoft_Azure_Billing/BillingSubscriptionBrowseService/00000000-0000-0000-0000-000000000000](com#asset/Microsoft_Azure_Billing/BillingSubscriptionBrowseService/00000000-0000-0000-0000-000000000000)
+
+<a name="advanced-topics-displaying-notifications-using-the-status-bar"></a>
+### Displaying notifications using the status bar
+
+A status bar can be displayed at the top of a blade. The status bar supports text, and icon, and multiple severities (e.g. warning,info,error) and supports navigating to a blade or external site when clicked.
+
+There is a sample for the status bar at [https://df.onecloud.azure-test.net/?feature.samplesextension=true#blade/SamplesExtension/TemplateBladeWithStatusBar](https://df.onecloud.azure-test.net/?feature.samplesextension=true#blade/SamplesExtension/TemplateBladeWithStatusBar). 
+
+If you have the source code to the samples you can find the source code at this path: `Client/V2/Blades/Template/TemplateBladeWithStatusBar.ts`. It is also included in the following code.
+
+import * as ClientResources from "ClientResources";
+import { ClickableLink } from "Fx/Composition";
+import * as TemplateBlade from "Fx/Composition/TemplateBlade";
+import * as BladesArea from "../BladesArea";
+
+@TemplateBlade.Decorator({
+    htmlTemplate: "" +
+        "<div><a data-bind='fxclick: onShowStatusClick'>Click</a> to show/clear status bar.</div>",
+})
+export class TemplateBladeWithStatusBar {
+    public title = ClientResources.templateBladeWithStatusBar;
+    public subtitle: string;
+
+    public context: TemplateBlade.Context<void, BladesArea.DataContext>;
+
+    public onInitialize() {
+        return Q();  // This sample loads no data.
+    }
+
+    public onShowStatusClick() {
+        const { container } = this.context;
+        const currentStatus = container.statusBar();
+        if (currentStatus) {
+            container.statusBar(undefined);
+        } else {
+            container.statusBar({
+                text: ClientResources.templateBladeWithStatusBarMessage,
+                state: TemplateBlade.ContentState.Warning,
+                onClick: new ClickableLink(ko.observable("http://www.bing.com")),
+            });
+        }
     }
 }
 
-this.statusBar(statusBar);
 
-```
-
-<a name="advanced-topics-pinning-the-blade"></a>
-### Pinning the blade
-
-<a name="advanced-topics-pinning-the-blade-pdl-blade"></a>
-#### PDL Blade
-
-Blades can be marked as pinnable to the dashboard by setting `Pinnable="true"` in the TemplateBlade's PDL definition file. Blades are pinned as button parts to the dashboard by default. Any other represention should be specified in the PDL file. 
-
-<a name="advanced-topics-pinning-the-blade-no-pdl-blade"></a>
-#### No-PDL Blade
+<a name="advanced-topics-making-your-blade-pinnable-to-a-dashboard"></a>
+### Making your blade pinnable to a dashboard
 
 No-pdl blades can be made pinnable by making the following changes to your code.
 
-1. Add the `@TemplateBlade.Pinnable.Decorator` decorator to the  Template Blade class
+1. Add the `@TemplateBlade.Pinnable.Decorator` decorator to the  Template Blade class, or `@FrameBlade.Pinnable.Decorator`, `@Blade.Pinnable.Decorator` for these less commonly used Blade variations.
 
 1. Implement an `onPin' method`.
 
-1. Return a `PartReference` instance to a Part you design that accepts the `logo` and `title` as parameters, according to the Part's `TParameters` type.
+1. Return a `PartReference` instance to a Part you design.  The Part should open the Blade when clicked. 
 
 These concepts are illustrated in the sample located at `<dir>/Client/V2/Blades/Pinning/PinnableBlade.ts` and in the working copy located at [https://df.onecloud.azure-test.net/#blade/SamplesExtension/PinnableBlade/personId/111](https://df.onecloud.azure-test.net/#blade/SamplesExtension/PinnableBlade/personId/111).
 
-<a name="advanced-topics-storing-settings"></a>
-### Storing settings
+<a name="advanced-topics-exception-cases-that-affect-the-entire-blade"></a>
+### Exception cases that affect the entire blade
 
-Settings that are associated with a blade can be stored. Those settings need to be declared both in the PDL definition file and in the `ViewMmodel` for the blade.  The code that demonstrates how to store settings is located at  `<dir>Client/V1/Blades/Template/Template.pdl` and  `<dir>Client/V1/Blades/Template/ViewModels/TemplateBladeViewModels.ts`.
+<a name="advanced-topics-exception-cases-that-affect-the-entire-blade-the-user-is-not-authorized-to-view-the-blade"></a>
+#### The user is not authorized to view the blade
 
-The process is as follows.
+You may determine that the current user does not have access to the current blade's content. In this case you can call `container.unauthorized()` and the user will be presented with a message that is consistent across all experiences in the portal.
 
-1 Specify the settings in the PDL file using the `TemplateBlade.Settings` element.
+For optimal performance, we recommend you avoid extra calls to determine access rights. When possible, simply try to make the calls needed to load the page and call the `unauthorized()` function if the call failed with an authorization error.
 
-```xml
+<a name="advanced-topics-exception-cases-that-affect-the-entire-blade-the-service-is-not-configured-properly-for-the-user-to-view-the-blade"></a>
+#### The service is not configured properly for the user to view the blade
 
-<TemplateBlade Name="PdlTemplateBladeWithSettings"
-               ViewModel="{ViewModel Name=TemplateBladeWithSettingsViewModel, Module=./Template/ViewModels/TemplateBladeViewModels}"
-               Template="{Html Source='Templates\\TemplateBladeWithSettings.html'}">
-  <TemplateBlade.Settings>
-    <Setting Property="colorSettingValue" />
-    <Setting Property="fontSettingValue" />
-  </TemplateBlade.Settings>
-</TemplateBlade>
+You may have a scenario where the current user can't use the blade for some unexpected reason (e.g. they are not a part of a private preview or they have not done some prerequisite step). For scenarios like this you can call `container.enableNotice()` to render a generic notice with formatting that will be consistent across all experiences.
 
-```
+<a name="advanced-topics-exception-cases-that-affect-the-entire-blade-the-underlying-resource-for-this-blade-does-not-exist"></a>
+#### The underlying resource for this blade does not exist
 
-2 After the settings are declared, they should also be specified in the ViewModel, as in the following example.
+A user may try to deep link to a blade for a resource that no longer exists. In this case you can call `container.notFound()` and provide a message. A generic not found UI will be presented to the user.
 
-<!-- TODO:  Determine why the samples in this section are malformed from the GitHub perspective.  They do not format as sub-paragraphs for line  items, and they ruin the formatting for later items. -->
+<a name="the-data-required-to-load-the-blade-failed-for-some-unknown-reason-e-g-500-internal-server-error"></a>
+## The data required to load the blade failed for some unknown reason (e.g. 500 internal server error)
 
-```typescript
-
-// These are required by the portal presently.  Re: Part Settings, the Part below works exclusively in terms of
-// 'configuration.updateValues' to update settings values and 'onInputsSet(..., settings)' to receive settings values.
-public colorSettingValue = ko.observable<BackgroundColor>();
-public fontSettingValue = ko.observable<FontStyle>();
-
-```
-
-<!-- TODO:  Determine why the previous sample seems to be malformed from the GitHub perspective.  They do not format as sub-paragraphs for line  items, and they ruin the formatting for later items. -->
-
-3 Retrieve the settings by using the blade container.
-
-```typescript
-
-const configuration = container.activateConfiguration<Settings>();
-this.configureHotSpot = new HotSpotViewModel(container, {
-    supplyBladeReference: () => {
-        const bladeRef = new PdlTemplateBladeWithSettingsConfigurationReference<BladeConfiguration, BladeConfiguration>({
-            // The Configuration values are sent to the Provider Blade to be edited by the user.
-            supplyInitialData: () => {
-                return configuration.getValues();
-            },
-
-            // The edited Configuration values are returned from the Provider Blade and updated in this Part.
-            // Any edits will cause 'onInputsSet' to be called again, since this is the method where the Part receives a new, consistent
-            // set of inputs/settings.
-            receiveResult: (result) => {
-                configuration.updateValues(result);
-            }
-        });
-
-        bladeRef.metadata = {
-            isContextBlade: true
-        };
-
-        return bladeRef;
-    }
-});
-
-```
-
-4 Also send the settings to the `onInputsSet` method.
-
-```typescript
-
-public onInputsSet(inputs: Def.TemplateBladeWithSettingsViewModel.InputsContract, settings: Def.TemplateBladeWithSettingsViewModel.SettingsContract): MsPortalFx.Base.Promise {
-    // Any changes to the  Configuration values (see 'updateValues' above) will cause 'onInputsSet' to be called with the
-    // new inputs/settings values.
-    this._colorSetting(settings && settings.content && settings.content.colorSettingValue || BackgroundColor.Default);
-    this._fontSetting(settings && settings.content && settings.content.fontSettingValue || FontStyle.Default);
-
-    return null;
-}
-
-```
-
-<a name="advanced-topics-displaying-unauthorized-ui"></a>
-### Displaying Unauthorized UI
-
-You can set the blade to Unauthorized UI using the `unauthorized` member of the blade container. The code that describes how to set the blade is located at  `<dir>/Client/V1/Blades/Unauthorized/ViewModels/UnauthorizedBladeViewModel.ts`.
-
-<!-- TODO: Determine why it is a container and not a class. -->
-
-The following code does this statically, but it can also be done dynamically, based  on a condition after data is loaded.
-
-```typescript
-
-constructor(container: MsPortalFx.ViewModels.ContainerContract,
-            initialState: any,
-            dataContext: BladesArea.DataContext) {
-    super();
-    this.title(ClientResources.bladeUnauthorized);
-    this.subtitle(ClientResources.bladesLensTitle);
-
-    //This call marks the Blade as unauthorized, which should display a specialized UI.
-    // container.unauthorized();
-
-    // Or display a specialized UI with a customized message
-    container.unauthorized(ClientResources.bladeUnauthorizedCustomizedMessage);
-}
-
-```
-
-<a name="advanced-topics-dynamically-displaying-notice-ui"></a>
-### Dynamically displaying Notice UI
-
-You can set the blade to the Notice UI using `enableNotice` member of the blade container. The code that describes how to set the blade is located at  `<dir>Client/V1/Blades/DynamicNotice/ViewModels/DynamicNoticeViewModels.ts`.
-
-The blade can be enabled statically with the constructor, or it can be done dynamically. In the following example, the blade is set to the Notice UI if the **id** input parameter contains a specific value.
-
-```typescript
-
-public onInputsSet(inputs: any): MsPortalFx.Base.Promise {
-    this.title(inputs.id);
-
-    if (inputs.id === "42" || inputs.id === "43") {
-        // to simulate the response from service and enable notice accordingly.
-        return Q.delay(1000).then(() => {
-            this._container.enableNotice({
-                noticeTitle: ClientResources.comingSoonTitle,
-                noticeHeader: ClientResources.comingSoon.format(inputs.id),
-                noticeDescription: ClientResources.comingSoonDescription,
-                noticeCallToActionText: ClientResources.comingSoonAction,
-                noticeCallToActionUri: ClientResources.microsoftUri,
-                noticeImageType: MsPortalFx.ViewModels.Controls.Notice.ImageType.ComingSoon
-            });
-        });
-    } else {
-        return null;
-    }
-}
-
-```
+If your blade cannot load because of an unexpected error then you should call the `container.fail()` API. The message you provide here will be logged, but not presented to the user. This is because you should only use this API for unexpected errors. If you are handling an expected error condition then you should either use the `enableNotice()` API or do some custom rendering if the scenario requires it.
