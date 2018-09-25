@@ -83,6 +83,4 @@ This section contains all Azure Portal FAQ's.
 
 ## Legacy features
 
-{"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-parts.md"}
-
 {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-editscope.md"}
