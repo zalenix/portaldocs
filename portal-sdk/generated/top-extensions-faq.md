@@ -307,7 +307,7 @@ Enable the `allow-insecure-localhost` flag, as described in [https://stackoverfl
 <a name="frequently-asked-questions-where-are-the-faq-s-for-general-extension-debugging"></a>
 ## Where are the FAQ&#39;s for general extension debugging?
 
-The FAQs for debugging extensions is located at portalfx-extensions-faq-debugging.md.
+The FAQs for debugging extensions is located at [portalfx-extensions-faq-debugging.md](portalfx-extensions-faq-debugging.md).
 
 * * *
 
@@ -556,9 +556,6 @@ Include the icon in your project normally. Build and  look at the generated file
 For more information, see [top-extensions-style-guide.md#preserve-icon-colors-over-theme-changes](top-extensions-style-guide.md#preserve-icon-colors-over-theme-changes).
 
 * * *
- 
-<a name="frequently-asked-questions-styling-and-theming-"></a>
-### 
 
 
 
@@ -814,7 +811,7 @@ Subject: YOUR_EXTENSION_NAME: Azure performance office hours
 Location: Conf Room 42/46 (It is already reserved)
 ```
 
-You can also reach out to <a href="mailto:sewatson@microsoft.com?subject=<extensionName>: Azure performance office hours&body=Hello, I need some help with my extension.  Can I meet with you in Building 42, Conference Room 42/46 on Wednesday the <date> from 1:00 to 3:30?">Azure Extension Performance Team at sewatson@microsoft.com</a>.
+You can also reach out to <a href="mailto:sewatson@microsoft.com?subject=&lt;extensionName&gt;:%20Azure%20performance%20office%20hours&body=Hello, I need some help with my extension.  Can I meet with you in Building 42, Conference Room 42/46 on Wednesday the <date> from 1:00 to 3:30?">Azure Extension Performance Team at sewatson@microsoft.com</a>.
 
 <!--###  Extension 'InitialExtensionResponse' is above the bar
 
@@ -1057,8 +1054,7 @@ Solution: Try the following:
 
 If you receive auth errors against the internal NPM feed see the "Connect to feed" instructions that are located at [https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=AzurePortalNpmRegistry&_a=feed](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=AzurePortalNpmRegistry&_a=feed). 
 
-If you are not a member of any of the Groups on https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=AzurePortalNpmRegistry&_a=settings&view=permissions reach out to nickha.
-<a href="mailto:nickha@microsoft.com?subject=Azure Portal Permissions&body=Hello, I am not a member of any of the groups that are listed in the AzurePortalNpmRegistry.">nickha@microsoft.com</a>.
+If you are not a member of any of the Groups on https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=AzurePortalNpmRegistry&_a=settings&view=permissions reach out to <a href="mailto:nickha@microsoft.com?subject=Azure Portal Permissions &body=Hello, I am not a member of any of the groups that are listed in the AzurePortalNpmRegistry.">nickha@microsoft.com</a>.
 
 ***
 
@@ -1259,7 +1255,7 @@ Sample config.json for version 2.0.0.0
 
 ***Do I need to register a new storage account everytime I need to upload zip file ?***
 
-No. Registering a storage account with the hosting service is one-time process, as specified in . This allows the hosting service to find the latest version of your extension.
+No. Registering a storage account with the hosting service is one-time process, as specified in [https://azure.microsoft.com/en-us/services/storage/?v=18.24](https://azure.microsoft.com/en-us/services/storage/?v=18.24). This allows the hosting service to find the latest version of your extension.
 
 * * * 
 
@@ -1280,14 +1276,6 @@ You can ask questions on Stackoverflow with the tag [ibiza-deployment](https://s
 
 <a name="frequently-asked-questions-legacy-features"></a>
 ## Legacy features
-
-<a name="frequently-asked-questions-frequently-asked-questions"></a>
-## Frequently asked questions
-
-<a name="frequently-asked-questions-frequently-asked-questions-"></a>
-### 
-
-* * * 
 
 <a name="frequently-asked-questions-frequently-asked-questions"></a>
 ## Frequently asked questions

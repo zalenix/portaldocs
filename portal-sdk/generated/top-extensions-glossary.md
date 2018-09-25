@@ -77,6 +77,7 @@ The terms are in alphabetical order.
 | best practice  | A technique or methodology that, through experience and research, has proven to reliably lead to an expected result. |
 | BF               | Black Forest |
 | blade         | An Azure SDK object, or an object from a framework API, that contains content by using an HTML template.  That template is bound to properties on the TypeScript class of the object.  The main unit of the Azure UX that can be built using the Azure SDK.   The vertical container that acts as the starting point for any journey.  Web pages that can be loaded in the Portal.  Also known as blade or context pane. |
+| blade activation | Causing a blade to open by  selecting data.  The blade may be a context pane, or it may be based on data selected from a grid.  The blade may be elsewhere within the same extension, or it may be from another extension, as specified in the .pdl file for the calling extension.   An extension opens a blade by setting the  `activateOnSelected` selection option to `true`, or by setting specific grid columns to be activatable by setting  `activatable = true`.|
 | BladeFullReady            | The time it takes a blade to fully load. | 
 | blob                         | Binary large object. |
 | big data | Data sets that are very large or very diverse,  including  structured, semi-structured and unstructured datathat may be located in  different sources. The variation in sizes or types of data stores is beyond the ability of traditional databases to capture, manage, and process the data with low-latency.  |
@@ -108,6 +109,7 @@ The terms are in alphabetical order.
 | CI  | Continuous Integration | 
 | claim | An object that may be encapsulated in a token that can be sent from server to server.  This object might contain  signed-in user id, name, email,  or  other similar information for authentication and authorization.  |
 | CLI                               | Command Line Interface |
+| Cloudtest | |
 | CNAME            | Canonical Name record. A type of resource record in the Domain Name System (DNS) that specifies that a domain name is an alias for another domain (the 'canonical' domain). |
 | code package | |
 | COGS |   Cost of Goods Sold |
@@ -177,6 +179,7 @@ The terms are in alphabetical order.
 
 | Term | Meaning   |
 | ---- | --- |
+| fat arrow | Typescript lambda function.  It captures the "this" variable from the surrounding context. | 
 | FAQ            | Frequently Asked Questions |
 | feature flag             | A switch that allows a user to turn on or off specific functionalities of an extension. Flags are  passed from the Portal to extensions and their controllers, and are used as an alternative to maintaining multiple source-code branches in order to hide, enable or disable a feature during run time. Most, but not all, feature flags are made available by using the syntax `feature.<featureName> = true`.   |
 | feasibility review | An analysis of a proposed project to determine  whether the project should go ahead, be redesigned, or abandoned altogether, from the perspectives of technical feasibility and financial feasibility. The review should  uncover the  strengths and weaknesses while they are relatively inexpensive to address. Also known as feasibility study. |
@@ -210,17 +213,19 @@ The terms are in alphabetical order.
 | geodistribution      | The process of deploying software in multiple geographic regions as a single logical database. |
 | geolocation | The identification or estimation of the real-world geographic location of a device, like a mobile phone or Internet-connected computer. |
 | GitHub         | A Web-based hosting service for version control or content management. |
+| General Data Protection Regulation (GDPR) | |
 
 <a name="azure-portal-glossary-h"></a>
 ## H
 
 | Term | Meaning   |
 | ---- | --- |
+| hammerjs | |
 | hard dependency | | 
 | hide key | Associated with testing a package previous to publishing it in the Marketplace. Shows specified Marketplace items that are otherwise hidden, or shows unpublished items in the gallery. | 
 | High Contrast theming | A set of screen or Web colors  that make it easier to see letters than with  a normal color scheme.    | 
-| heterogeneous blade activation | | 
-| homogeneous blade activation | | 
+| heterogeneous blade activation | dynamic | 
+| homogeneous blade activation |  static | 
 | hotfix                       | |
 
 <a name="azure-portal-glossary-i"></a>
@@ -361,6 +366,7 @@ The terms are in alphabetical order.
 | polling | The process that determines which client-side data should be automatically refreshed. The auto-refreshing of client-side data. |
 | Portal                       | The web application that hosts the Azure shell.  |
 | PPE | |
+| preflight  | |
 | preview                  | The development phase that is used by the developer and a small audience to validate the functionality of an extension. |
 | pricing tier  | A category of Azure pricing. The most common tiers are Basic, Standard, and Premium. Within the tier, customers can select or customize a plan or size. |
 | procedure      | See checklist. |
@@ -392,6 +398,7 @@ The terms are in alphabetical order.
 
 | Term | Meaning   |
 | ---- | --- |
+| random access |  Accessing data in an order that is not sequential. Also known as skip-take, because some records are skipped previous to reading the next one. |
 | RBAC | Role based access. Azure resources support simple role-based access through the Azure Active Directory. | 
 | RC               | Release Candidate environment, used to deploy daily builds of the Azure Portal. There is no user traffic in this environment. |
 | RDFE                      | Red Dog Front End | 
@@ -434,6 +441,7 @@ The terms are in alphabetical order.
 | service principal | |
 | shaping data | Selecting or combining properties in a `QueryCache` or `EntityCache` to form variables that are a closer match for the intended `ViewModel`.  This differs from filtering in that filtering selects rows in a `QueryCache` instead of columnar values. | 
 | Shell | |
+| singleton | |
 | SLA                      | Service Level Agreement |
 | Selenium                     | Software-testing framework for web applications that  provides a playback tool for authoring tests.  |
 | separator  | |
@@ -465,6 +473,7 @@ The terms are in alphabetical order.
 | Term | Meaning   |
 | ---- | --- |
 | TFS              | Team Foundation Server |
+| telemetry | |
 | third-party extension     | An Azure Portal extension that is developed by partners outside of Microsoft |
 | tile |  distinct sets of information on a small blade. Domain-specific tiles might display  information about a resource, like subnet lists or usage quotas, whereas more generic tiles might display resource health or billing information. The user can move tiles, change their size, or pin frequently-used tiles to a startboard.  Tiles that appeal to a subset of  extension  users  are located in  the tile gallery instead of on the blade. |
 | timezone         | The local time of a region or a country, based on factors like time zone maps and Daylight Savings Time. | 
@@ -475,6 +484,7 @@ The terms are in alphabetical order.
 | tracked resource | | 
 | trusted authority    | |
 | trusted host    | |
+| two-factor authentication | 
 | type metadata | Data that describes an  object and  its properties.  | 
 | Typescript   | aka no-PDL programming. | 
 | typings | |

@@ -1,7 +1,28 @@
 <a name="frequently-asked-questions"></a>
 ## Frequently asked questions
 
-<a name="frequently-asked-questions-extension-scores-are-above-the-bar"></a>
+* [Telemetry](#telemetry)
+
+* [Alerting](#alerting)
+
+* [Performance](#performance)
+
+* [Reliability](#reliability)
+
+* [Create](#create)
+
+* * *
+
+<a name="telemetry"></a>
+## Telemetry
+
+<a name="alerting"></a>
+## Alerting
+
+<a name="performance"></a>
+## Performance
+
+<a name="performance-extension-scores-are-above-the-bar"></a>
 ### Extension scores are above the bar
 
 ***How can I refactor my code to improve performance?***
@@ -25,7 +46,7 @@ SOLUTION:
 1. Decrease Blade 'Revealed' scores.
 
     * Optimize the quantity and quality of parts on the blade.
-        * If there is only one part, or if the part is not a `<TemplateBlade>`, then migrate the part to use the  no-pdl template as specified in  [top-blades-template.md](top-blades-template.md).
+        * If there is only one part, or if the part is not a `<TemplateBlade>`, then migrate the part to use the  no-pdl template as specified in  [top-blades-templateblade.md](top-blades-templateblade.md).
         * If there are more than three parts, consider refactoring or removing some of them so that fewer parts need to be displayed.
     * Optimize the Blades's `constructor` and `OnInputsSet` methods.
     * Remove obsolete bundles, as specified in  [https://aka.ms/portalfx/obsoletebundles](https://aka.ms/portalfx/obsoletebundles).
@@ -37,7 +58,7 @@ SOLUTION:
 
 * * *
 
-<a name="frequently-asked-questions-my-wxp-score-is-below-the-bar"></a>
+<a name="performance-my-wxp-score-is-below-the-bar"></a>
 ### My WxP score is below the bar
 
 ***How do I identify which pieces of the extension are not performant?***
@@ -52,7 +73,7 @@ If the extension is drastically under the bar, it is  likely that a high-usage b
 
 * * * 
 
-<a name="frequently-asked-questions-azure-performance-office-hours"></a>
+<a name="performance-azure-performance-office-hours"></a>
 ### Azure performance office hours
 
 ***Is there any way I can get further help?***
@@ -81,7 +102,7 @@ Subject: YOUR_EXTENSION_NAME: Azure performance office hours
 Location: Conf Room 42/46 (It is already reserved)
 ```
 
-You can also reach out to <a href="mailto:sewatson@microsoft.com?subject=<extensionName>: Azure performance office hours&body=Hello, I need some help with my extension.  Can I meet with you in Building 42, Conference Room 42/46 on Wednesday the <date> from 1:00 to 3:30?">Azure Extension Performance Team at sewatson@microsoft.com</a>.
+You can also reach out to <a href="mailto:sewatson@microsoft.com?subject=&lt;extensionName&gt;:%20Azure%20performance%20office%20hours&body=Hello, I need some help with my extension.  Can I meet with you in Building 42, Conference Room 42/46 on Wednesday the <date> from 1:00 to 3:30?">Azure Extension Performance Team at sewatson@microsoft.com</a>.
 
 <!--###  Extension 'InitialExtensionResponse' is above the bar
 
@@ -90,3 +111,31 @@ You can also reach out to <a href="mailto:sewatson@microsoft.com?subject=<extens
  'InitializeExtensions' is above the bar, what should I do
  -->
 
+<a name="reliability"></a>
+## Reliability
+
+<a name="reliability-extension-scores-are-below-the-reliability-bar"></a>
+### Extension scores are below the reliability bar
+
+***What do I do to improve the reliability scores for my extension?***
+
+
+DESCRIPTION:
+
+ When I visited the Extension performance/reliability report that is located at [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf), the scores for my extension were below acceptable levels.
+
+SOLUTION: 
+
+Run the following query.
+
+
+The query will return a summary of all the events which your extension failed to load. Then, address the highest impacting issues, per occurence or number of affected users.
+
+
+
+The query returns a list of errorStates and errors.  For greater details you can use the `any_sessionId` to investigate further.
+
+The errorStates and errors are described in [portalfx-extensions-status-codes.md](portalfx-extensions-status-codes.md).
+
+<a name="create"></a>
+## Create

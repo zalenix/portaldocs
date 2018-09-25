@@ -19,7 +19,7 @@ Onboarding a service, or developing a Portal extension, has three phases: onboar
 <a name="phase-1-onboarding-kickoff-meeting"></a>
 ## Kickoff Meeting
  
-There are lots of docs here. We recommend you send mail to <a href="mailto:ibiza-onboarding@microsoft.com?subject=Kickoff Meeting Request&body=My team would like to meet with you to learn about the Azure onboarding process.">ibiza-onboarding@microsoft.com</a> and request a kickoff meeting. Someone from our team will spend 30 minutes walking through the process at a high level. We can point you in the right direction regarding the latest patterns and practices. We can also answer any questions you have. Finally, we can talk about how the relationship between our teams is managed.
+There are lots of docs here. We recommend you send mail to <a href="mailto:ibiza-onboarding@microsoft.com?subject=Kickoff%20Meeting%20Request&body=My%20team%20would%20like%20to%20meet%20with%20you%20to%20learn%20about%20the%20Azure%20onboarding%20process.">ibiza-onboarding@microsoft.com</a> and request a kickoff meeting. Someone from our team will spend 30 minutes walking through the process at a high level. We can point you in the right direction regarding the latest patterns and practices. We can also answer any questions you have. Finally, we can talk about how the relationship between our teams is managed.
 
 <a name="phase-1-onboarding-onboard-with-related-teams"></a>
 ## Onboard with related teams
@@ -33,7 +33,7 @@ Onboarding to Azure all up is a big task that spans many teams. The doc you are 
 
 1. Azure Marketing Team – Hamid Mahmood
 
-   To ensure that the business goals of the new extension or service are aligned with Azure's business strategy, please reach out to the Integrated Marketing Team or the L&R - Operations - GD&F team at <a href="mailto:ibiza-bmr@microsoft.com?subject=Azure Business Model Review">ibiza-bmr@microsoft.com</a>. Brian Hillger’s team and Stacey Ellingson’s team will guide you through the business model review process. The extension or service is not ready to be onboarded to Azure until its business model has received approval from those teams. Do not proceed with the next step until the business model has received approval.
+   To ensure that the business goals of the new extension or service are aligned with Azure's business strategy, please reach out to the Integrated Marketing Team or the L&R - Operations - GD&F team at <a href="mailto:ibiza-bmr@microsoft.com?subject=Azure%20Business%20Model%20Review">ibiza-bmr@microsoft.com</a>. Brian Hillger’s team and Stacey Ellingson’s team will guide you through the business model review process. The extension or service is not ready to be onboarded to Azure until its business model has received approval from those teams. Do not proceed with the next step until the business model has received approval.
 
 1. Support Team  – Michael Fosmire
 
