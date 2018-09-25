@@ -31,9 +31,9 @@ Items that are specifically status codes or error messages can be located in [po
 
 ### Sandboxed iframe security
 
-*** I get an error 'Security of a sandboxed iframe is potentially compromised by allowing script and same origin access'. How do I fix this? ***
+***I get an error 'Security of a sandboxed iframe is potentially compromised by allowing script and same origin access'. How do I fix this?***
 
-You need to allow the Azure Portal to frame your extension URL. For more information, [click here](portalfx-creating-extensions.md).
+You need to allow the Azure Portal to frame your extension URL. For more information, see[portalfx-deployment-sovereign.md#allowedparentframe](portalfx-deployment-sovereign.md#allowedparentframe).
 
 * * *
 
@@ -69,7 +69,71 @@ TestTraffic-<TeamName>-<Component>
 
 * * *
 
- ## Can I sideload into onestb?
+## I need to load my extension from a domain other then localhost
+
+We recommend that you sideload using localhost, as specified in [top-extensions-sideloading.md#step-1](top-extensions-sideloading.md#step-1). But if you do have scenarios where you need to sideload the extension that is  not running on localhost, or is mapped by using a `hosts` file to a named domain, use the `registerTestExtension` API. 
+
+To do so use the following instead of Step 1.
+
+While sideloading using a query string and fragment is only supported for extensions running on `localhost`, registering an extension with the `registerTestExtension` API can be used for both `localhost` and other domains.
+
+To load an extension, extension developers can use the following approach.
+
+1. Sign in to a production account at https://portal.azure.com?feature.canmodifyextensions=true
+
+1. Click F12 to open the Developer Tools in the browser
+
+1. Run one of the following commands in the browser console to register a custom extension.
+
+    ```typescript
+    // use this command if the changes should persist 
+    //  until the user restores default settings or
+    //  executes MsPortalImpl.Extension.unregisterTestExtension("<extensionName>")
+    MsPortalImpl.Extension.registerTestExtension({ 
+    name: "<extensionName>", 
+    uri: "https://<endpoint>:<portNumber>" }
+    );
+    ```
+    Or, 
+        
+    ```typescript
+    // use this command if the extension should be registered 
+    //   only for the current Portal load
+    MsPortalImpl.Extension.registerTestExtension({
+    name: "<extensionName>",
+    uri: "https://<endpoint>:<portNumber>" }, 
+    <temporary>);
+    ```
+    
+    where
+
+    * **extensionName**: Matches the name of the extension, without the angle brackets, as specified in the <Extension> element in the `extension.pdl` file.
+
+    * **portNumber**: Optional. The port number where the extension is hosted on the endpoint that serves the extension, as in the following example: `https://localhost:44300/`.
+        
+    * **temporary**: Optional. Boolean value that registers the extension in the Portal for a specific timeframe. A value of `true` means that the registered extension will persist only for the current session. A value of `false` means that the registered extension is valid across sessions. This state is saved in the browser's local storage. The default value is `false`. 
+
+    Example
+
+    To register an extension named `Microsoft_Azure_Demo` that is running on `https://somemachinename` for sideloading in user settings that  persist for the current user across multiple sessions, use: 
+
+    ``` typescript
+        MsPortalImpl.Extension.registerTestExtension({ name: "Microsoft_Azure_Demo", uri: "https://somemachinename" });
+    ``` 
+    
+    To register an extension running on some other domain, or to register an extension that was mapped by using a hosts file to some domain, use the following code.  Note that supplying `,true` will register the extension only for the current session.
+
+    ```
+        MsPortalImpl.Extension.registerTestExtension({ name:  "<extensionName>", uri: "https://some.hosts.mapped.domain"}, true);
+    ```
+
+1. Reload the portal by navigating to `https://portal.azure.com?feature.canmodifyextensions=true&clientOptimizations=false`. 
+
+**NOTE**: The `hosts` file is located at `c:\windows\system32\drivers\etc\hosts`.
+
+* * * 
+
+## Can I sideload into onestb?
 
 Onebox-stb has been deprecated. Please do not use it. Instead sideload directly into df, mpac or production.
 
