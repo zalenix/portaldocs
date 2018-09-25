@@ -7,13 +7,9 @@ The following sections discuss advanced topics in template blade development.
 
 * [Displaying notifications using the status bar](#displaying-notifications-using-the-status-bar) 
 
-* [Pinning the blade](#pinning-the-blade)
+* [Making your blade pinnable to a dashboard](#making-your-blade-pinnable-to-a-dashboard)
 
-* [Storing settings](#storing-settings)
-
-* [Displaying Unauthorized UI](#displaying-unauthorized-ui)
-
-* [Dynamically displaying Notice UI](#dynamically-displaying-notice-ui)
+* [Exception cases that affect the entire blade](#exception-cases-that-affect-the-entire-blade)
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. If there is a working copy of the sample in the Dogfood environment, it is also included.
 
