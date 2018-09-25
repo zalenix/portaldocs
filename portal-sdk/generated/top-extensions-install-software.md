@@ -17,14 +17,24 @@ Install the following software. Your team should be aware of the most current do
 
       [https://www.microsoft.com/en-us/download/details.aspx?id=41703](https://www.microsoft.com/en-us/download/details.aspx?id=41703)
 
-1. Visual Studio 2015 update 3 that is located at [https://www.visualstudio.com/vs/older-downloads/](https://www.visualstudio.com/vs/older-downloads/). An SKU of Professional or greater is required.
-
-1. TypeScript 2.3.3 for Visual Studio 2015 that is dated May 22, 2017. It is located at [http://download.microsoft.com/download/6/D/8/6D8381B0-03C1-4BD2-AE65-30FF0A4C62DA/2.3.3-TS-release-dev14update3-20170519.1/TypeScript_Dev14Full.exe](http://download.microsoft.com/download/6/D/8/6D8381B0-03C1-4BD2-AE65-30FF0A4C62DA/2.3.3-TS-release-dev14update3-20170519.1/TypeScript_Dev14Full.exe)
-
 1. Node.js LTS 8.11.1 or later. It is located at 
 [https://nodejs.org/dist/v8.11.1/node-v8.11.1-x64.msi](https://nodejs.org/dist/v8.11.1/node-v8.11.1-x64.msi).
 
-1. Node tools that are located at [https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1](https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1)
+1. Install Visual Studio
+
+   If using Visual Studio 2017:
+
+      1. Visual Studio 2017 Professional or Enterpise that is located at [https://visualstudio.microsoft.com/downloads/](https://visualstudio.microsoft.com/downloads/).  
+
+      1. TypeScript 2.3.3 for Visual Studio 2017 that is dated May 22, 2017. It is located at [http://download.microsoft.com/download/7/0/A/70A6AC0E-8934-4396-A43E-445059F430EA/2.3.3-TS-release-dev14update3-20170519.1/TypeScript_SDK.exe](http://download.microsoft.com/download/7/0/A/70A6AC0E-8934-4396-A43E-445059F430EA/2.3.3-TS-release-dev14update3-20170519.1/TypeScript_SDK.exe)
+
+   If using Visual Studio 2015
+
+      1. Visual Studio 2015 update 3 that is located at [https://www.visualstudio.com/vs/older-downloads/](https://www.visualstudio.com/vs/older-downloads/). An SKU of Professional or greater is required.
+
+      1. TypeScript 2.3.3 for Visual Studio 2015 that is dated May 22, 2017. It is located at [http://download.microsoft.com/download/6/D/8/6D8381B0-03C1-4BD2-AE65-30FF0A4C62DA/2.3.3-TS-release-dev14update3-20170519.1/TypeScript_Dev14Full.exe](http://download.microsoft.com/download/6/D/8/6D8381B0-03C1-4BD2-AE65-30FF0A4C62DA/2.3.3-TS-release-dev14update3-20170519.1/TypeScript_Dev14Full.exe)
+
+      1. Node tools that are located at [https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1](https://github.com/Microsoft/nodejstools/releases/tag/v1.3.1)
 
 1. Azure Portal SDK that is located at [http://aka.ms/portalfx/download](http://aka.ms/portalfx/download)
 

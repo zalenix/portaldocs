@@ -281,8 +281,12 @@ function writeDocsToFile(aggregate, outputDir, prodSdkVersionTags) {
     const downloadLinks = util.format("Download Latest Release: <a href=\"%s\">%s</a>", aggregate[latestDownloadableSdkVersion].downloadUrl, latestDownloadableSdkVersion);
     const sortedProdSdkVersionTag = Object.keys(prodSdkVersionTags).sort(versioncompare).reverse();
     let perCloudDownloadLinks = "";
+
     sortedProdSdkVersionTag.forEach(function (version) {
-        perCloudDownloadLinks += util.format("<br/> Download <a href=\"%s\">%s</a> : %s", aggregate[version].downloadUrl, version, prodSdkVersionTags[version].join(","));
+        var cloudDownloadVersionLinks = aggregate[version].downloadUrl 
+            ? util.format("<a href=\"%s\">%s</a> : %s", aggregate[version].downloadUrl, version, prodSdkVersionTags[version].join(","))
+            : util.format("%s : %s", version, prodSdkVersionTags[version].join(","));
+        perCloudDownloadLinks += util.format("<br/> Download %s", cloudDownloadVersionLinks);
     });
 
     downloadsDoc.write(util.format("# Download Portal SDK \n %s \n <table><tr><th>Download</th><th>Detail</th><th>Breaking Changes</th></tr>", perCloudDownloadLinks || downloadLinks));

@@ -147,8 +147,7 @@ Once you have your key generated, open your ServiceGroupRootReplacements.json fi
     "TargetContainerName": "hostingservice",
     "ContactEmail": "youremail@microsoft.com",
     "PortalExtensionName": "Microsoft_Azure_Monitoring",
-    "FriendlyNames": [ "friendlyname_1", "friendlyname_2", "friendlyname_3" ],
-    "SkipSafeDeployment": "true"
+    "FriendlyNames": [ "friendlyname_1", "friendlyname_2", "friendlyname_3" ]
   }
 }
 ```
