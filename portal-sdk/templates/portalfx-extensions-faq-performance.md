@@ -95,7 +95,7 @@ Subject: YOUR_EXTENSION_NAME: Azure performance office hours
 Location: Conf Room 42/46 (It is already reserved)
 ```
 
-You can also reach out to <a href="mailto:sewatson@microsoft.com?subject=<extensionName>: Azure performance office hours&body=Hello, I need some help with my extension.  Can I meet with you in Building 42, Conference Room 42/46 on Wednesday the <date> from 1:00 to 3:30?">Azure Extension Performance Team at sewatson@microsoft.com</a>.
+You can also reach out to <a href="mailto:sewatson@microsoft.com?subject=&lt;extensionName&gt;:%20Azure%20performance%20office%20hours&body=Hello, I need some help with my extension.  Can I meet with you in Building 42, Conference Room 42/46 on Wednesday the <date> from 1:00 to 3:30?">Azure Extension Performance Team at sewatson@microsoft.com</a>.
 
 <!--###  Extension 'InitialExtensionResponse' is above the bar
 
@@ -119,28 +119,13 @@ SOLUTION:
 
 Run the following query.
 
-```txt
-GetExtensionFailuresSummary(ago(1d), now())
-| where extension contains "<extensionName>"
-```
-
-Update the `<extensionName>` to be your extension, and increase the time range if the last 24 hours is not sufficient. 
 
 The query will return a summary of all the events which your extension failed to load. Then, address the highest impacting issues, per occurence or number of affected users.
 
-| Field name        | Definition |
-| ----------------- | ---------- |
-| extensionName     | The extension the error correlates to |
-| errorState        | The type of error that occurred |
-| error             | The specific error that occurred |
-| Occurences        | Number of occurrences |
-| AffectedUsers     | Number of affected users |
-| AffectedSessions  | Number of affected sessions |
-| any_sessionId     | A sample of an affected session |
-| any_message       | A sample message of what would normally be returned given errorState/error |
+
 
 The query returns a list of errorStates and errors.  For greater details you can use the `any_sessionId` to investigate further.
 
-The errorStates and errors are described in [portalfx-extensions-status-codes](portalfx-extensions-status-codes).
+The errorStates and errors are described in [portalfx-extensions-status-codes.md](portalfx-extensions-status-codes.md).
 
 ## Create

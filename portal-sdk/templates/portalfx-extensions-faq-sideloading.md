@@ -48,7 +48,7 @@ Enable the `allow-insecure-localhost` flag, as described in [https://stackoverfl
 
 ## Where are the FAQ's for general extension debugging?
 
-The FAQs for debugging extensions is located at portalfx-extensions-faq-debugging.md.
+The FAQs for debugging extensions is located at [portalfx-extensions-faq-debugging.md](portalfx-extensions-faq-debugging.md).
 
 * * *
 

@@ -16,6 +16,4 @@ Include the icon in your project normally. Build and  look at the generated file
 For more information, see [top-extensions-style-guide.md#preserve-icon-colors-over-theme-changes](top-extensions-style-guide.md#preserve-icon-colors-over-theme-changes).
 
 * * *
- 
-###
 

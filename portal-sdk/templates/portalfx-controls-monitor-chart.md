@@ -25,7 +25,7 @@ Some of the benefits of using the Monitor Chart are as follows.
 
    The charts support grouping and filtering on the dimensions from multi-dimensional metric data.
 
-If you are onboarding to Azure Monitor for the first time, please reach out to the <a href="mailto:monitoringcontrib@microsoft.com?subject=Azure Monitor Onboarding">Monitoring team</a>. The Monitoring team will add your resource type to a configuration which allows the Monitor Control to fetch metrics for your resources.
+If you are onboarding to Azure Monitor for the first time, please reach out to the <a href="mailto:monitoringcontrib@microsoft.com?subject=Azure%20Monitor%20Onboarding">Monitoring team</a>. The Monitoring team will add your resource type to a configuration which allows the Monitor Control to fetch metrics for your resources.
 
 ### Using the monitor chart control
 

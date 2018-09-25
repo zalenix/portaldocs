@@ -1,20 +1,20 @@
 
 # Telemetry 
 
-  {"gitdown": "include-headings", "file": "../templates/top-extensions-telemetry.md"}
+ The page you requested has moved to [top-extensions-telemetry.md](top-extensions-telemetry.md).
  
 ## Alerting
 
-  {"gitdown": "include-headings", "file": "../templates/top-extensions-telemetry-alerting.md"}
+ The page you requested has moved to [top-extensions-telemetry-alerting.md](top-extensions-telemetry-alerting.md).
 
 ## Performance 
 
-  {"gitdown": "include-headings", "file": "../templates/portalfx-performance-overview.md"}
+ The page you requested has moved to [portalfx-performance-overview.md](portalfx-performance-overview.md).
 
 ## Reliability
 
-  {"gitdown": "include-headings", "file": "../templates/top-extensions-telemetry-reliability.md"}
+ The page you requested has moved to [top-extensions-telemetry-reliability.md](top-extensions-telemetry-reliability.md).
 
 ## Create 
 
-  {"gitdown": "include-headings", "file": "../templates/top-extensions-telemetry-create.md"}
+ The page you requested has moved to [top-extensions-telemetry-create.md](top-extensions-telemetry-create.md).

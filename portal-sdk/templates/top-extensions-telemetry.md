@@ -253,7 +253,7 @@ There is a correspondence between the events and actions that are logged, and th
 
 The following actions and events are logged to **ClientTelemetry** table.
 
-If the rules that correlate table entries to alerts need to be updated for your extension, reach out to <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration&body=My team would like to update the correlation rules for our extension.  The configuration to update is for alert <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafxhot@microsoft.com; azurefxg@microsoft.com</a>  and attach the updated configuration. The email to azurefxg@microsoft.com should contain the information specified in [#programmatic-onboarding](#programmatic-onboarding). We will inform you when the updates are applied. 
+If the rules that correlate table entries to alerts need to be updated for your extension, reach out to <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension%20Alert%20Configuration&body=My team would like to update the correlation rules for our extension.  The configuration to update is for alert <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafxhot@microsoft .com; azurefxg@microsoft .com</a>  and attach the updated configuration. The email to azurefxg@microsoft.com should contain the information specified in [#programmatic-onboarding](#programmatic-onboarding). We will inform you when the updates are applied. 
 
 **NOTE**: These are the names of the actions, which is different from the names of the table columns.
 

@@ -113,7 +113,7 @@ Sample config.json for version 2.0.0.0
 
 ***Do I need to register a new storage account everytime I need to upload zip file ?***
 
-No. Registering a storage account with the hosting service is one-time process, as specified in . This allows the hosting service to find the latest version of your extension.
+No. Registering a storage account with the hosting service is one-time process, as specified in [https://azure.microsoft.com/en-us/services/storage/?v=18.24](https://azure.microsoft.com/en-us/services/storage/?v=18.24). This allows the hosting service to find the latest version of your extension.
 
 * * * 
 
