@@ -124,8 +124,10 @@ Example
 
 <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
 
-<a name="when-sideloading-via-the-query-string-or-fragment-or-via-f5-the-tab-with-the-portal-never-shows-up"></a>
-## When sideloading via the query string or fragment or via F5 the tab with the portal never shows up.
+<a name="sideloading-step-by-step-portal-never-shows-up"></a>
+### Portal never shows up
+
+***When sideloading via the query string or fragment or via F5 the tab with the portal never shows up.***
 
 SOLUTION: 
 
@@ -133,10 +135,10 @@ Check that your browser's popup blocker is not blocking the second tab from bein
 
 * * *
 
-<a name="when-sideloading-via-the-query-string-or-fragment-or-via-f5-the-tab-with-the-portal-never-shows-up-extension-will-not-sideload"></a>
+<a name="sideloading-step-by-step-extension-will-not-sideload"></a>
 ### Extension will not sideload
 
-*** My Extension fails to side load and I get an ERR_INSECURE_RESPONSE in the browser console ***
+***My Extension fails to side load and I get an ERR_INSECURE_RESPONSE in the browser console***
 
 ![ERR_INSECURE_RESPONSE](../media/portalfx-productiontest/errinsecureresponse.png)
 
@@ -152,7 +154,7 @@ Items that are specifically status codes or error messages can be located in [po
 
 * * *
 
-<a name="when-sideloading-via-the-query-string-or-fragment-or-via-f5-the-tab-with-the-portal-never-shows-up-sandboxed-iframe-security"></a>
+<a name="sideloading-step-by-step-sandboxed-iframe-security"></a>
 ### Sandboxed iframe security
 
 ***I get an error 'Security of a sandboxed iframe is potentially compromised by allowing script and same origin access'. How do I fix this?***
@@ -162,7 +164,7 @@ You need to allow the Azure Portal to frame your extension URL. For more informa
 * * *
 
 
-<a name="when-sideloading-via-the-query-string-or-fragment-or-via-f5-the-tab-with-the-portal-never-shows-up-sideloading-in-chrome"></a>
+<a name="sideloading-step-by-step-sideloading-in-chrome"></a>
 ### Sideloading in Chrome
 
 ***Ibiza sideloading in Chrome fails to load parts***
@@ -171,22 +173,22 @@ Enable the `allow-insecure-localhost` flag, as described in [https://stackoverfl
 
 * * *
 
-<a name="where-are-the-faq-s-for-general-extension-debugging"></a>
-## Where are the FAQ&#39;s for general extension debugging?
+<a name="sideloading-step-by-step-where-are-the-faq-s-for-general-extension-debugging"></a>
+### Where are the FAQ&#39;s for general extension debugging?
 
 The FAQs for debugging extensions is located at [portalfx-extensions-faq-debugging.md](portalfx-extensions-faq-debugging.md).
 
 * * *
 
-<a name="are-gallery-packages-sideloaded"></a>
-## Are gallery packages sideloaded?
+<a name="sideloading-step-by-step-are-gallery-packages-sideloaded"></a>
+### Are gallery packages sideloaded?
 
 When configured correctly gallery packages from the extension running on localhost are sideloaded and made available in the portal at  `+ Create a resource >  see all > Local Development`  if your gallery packages are not showing up there see [https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-package-development-and-debugging](https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-package-development-and-debugging).
 
 * * *
 
-<a name="how-do-i-mark-automated-tests-as-test-synthetic-traffic-so-that-it-does-not-show-up-in-reporting"></a>
-## How do I mark automated tests as test/synthetic traffic so that it does not show up in reporting
+<a name="sideloading-step-by-step-how-do-i-mark-automated-tests-as-test-synthetic-traffic-so-that-it-does-not-show-up-in-reporting"></a>
+### How do I mark automated tests as test/synthetic traffic so that it does not show up in reporting?
 
 Automated tests that run against a production environment should be marked as test/synthetic traffic. Use one of the following options to accomplish this.
 
@@ -197,8 +199,8 @@ TestTraffic-<TeamName>-<Component>
 
 * * *
 
-<a name="i-need-to-load-my-extension-from-a-domain-other-then-localhost"></a>
-## I need to load my extension from a domain other then localhost
+<a name="sideloading-step-by-step-i-need-to-load-my-extension-from-a-domain-other-than-localhost"></a>
+### I need to load my extension from a domain other than localhost
 
 We recommend that you sideload using localhost, as specified in [top-extensions-sideloading.md#step-1](top-extensions-sideloading.md#step-1). But if you do have scenarios where you need to sideload the extension that is  not running on localhost, or is mapped by using a `hosts` file to a named domain, use the `registerTestExtension` API. 
 
@@ -262,15 +264,15 @@ To load an extension, extension developers can use the following approach.
 
 * * * 
 
-<a name="can-i-sideload-into-onestb"></a>
-## Can I sideload into onestb?
+<a name="sideloading-step-by-step-can-i-sideload-into-onestb"></a>
+### Can I sideload into onestb?
 
 Onebox-stb has been deprecated. Please do not use it. Instead sideload directly into df, mpac or production.
 
 * * *
 
-<a name="how-can-i-side-load-my-extension-with-obsolete-bundles"></a>
-## How can I side load my extension with obsolete bundles?
+<a name="sideloading-step-by-step-how-can-i-side-load-my-extension-with-obsolete-bundles"></a>
+### How can I side load my extension with obsolete bundles?
 
 See [https://aka.ms/portalfx/obsoletebundles](https://aka.ms/portalfx/obsoletebundles).
 
