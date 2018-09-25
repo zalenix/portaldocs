@@ -28,7 +28,7 @@ Learn how the framework is structured and how it is designed to run in multiple 
 
 ## What's new
 
-* [No-PDL blades and parts](http://top-whats-new#no-pdl.md) - *Reduces the number of files and concepts to build UI*
+* [No-PDL blades and parts](/portal-sdk/generated/top-extensions-no-pdl.md)- *Reduces the number of files and concepts to build UI*
 
 * [Forms without edit scope](/portal-sdk/generated/top-editscopeless-forms.md) - *More intuitive APIs for building forms*
 
