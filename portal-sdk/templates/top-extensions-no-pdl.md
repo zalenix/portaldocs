@@ -16,7 +16,7 @@ All developers who install the Portal Framework SDK that is located at [http://a
 
 First-party extension developers, i.e. Microsoft employees, can view the interfaces with jsdoc comments that are located at [http://aka.ms/portalfx/frameworkclient/content](http://aka.ms/portalfx/frameworkclient/content). External partners may need to contact <a href="mailto:ibizafxpm@microsoft.com?subject=TypeScript">ibizafxpm@microsoft.com</a> or <a href="mailto:ibiza-onboarding@microsoft.com?subject=TypeScript">ibiza-onboarding@microsoft.com</a> instead of using the internal sites that are in this document. 
 
-The Ibiza team will export the jsdocs for the SDK to a public location. When this occurs, there will be a link to that location in  [/portal-sdk/README.md#what's-new](/portal-sdk/README.md#what's-new).
+The Ibiza team will export the jsdocs for the SDK to a public location. When this occurs, there will be a link to that location in  [/README.md#what's-new](/README.md#what's-new).
 
 The following SDK features can be built with **TypeScript** decorators. 
 
