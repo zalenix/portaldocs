@@ -8,7 +8,16 @@ PDL is still supported for backward compatibility, but **TypeScript** decorators
 
 The next few sections provide an overview on what decorators are and how to use them.
 
-* [TypeScript decorator support](TypeScript decorator support)
+* [TypeScript decorator support](#typescript-decorator-support)
+
+* [The context property](#the-context-property)
+
+* [Building a template blade using decorators](#building-a-template-blade-using-decorators)
+
+* [Building a menu blade using decorators](#building-a-menu-blade-using-decorators)
+
+* [EditScopes and type metadata](#editscopes-and-type-metadata) 
+
 
 ## TypeScript decorator support
 
@@ -221,9 +230,15 @@ The following is an example of a menu blade built using decorators.  It uses the
 
 Supplying type metadata to an extension is the way to invoke  advanced Portal behavior, in much the same way that  developers apply attributes to  .NET types to customize  .NET FX behavior for the types. Consequently, for many of the most common form scenarios, the EditScope/Form model is not described in terms of type metadata. For more information about type metadata, see [portalfx-data-typemetadata.md](portalfx-data-typemetadata.md).
 
-For EditScope and Forms, extensions supply [type metadata] for the following scenarios: 
+For EditScope and Forms, extensions supply [type metadata] for the following scenarios. 
 
-## Editable grid
+* [Editable grid](#editable-grid)
+
+* [Track edits](#track-edits)
+
+* [Loading indicators](#loading-indicators)
+
+### Editable grid
 
 The editable grid was developed to work exclusively with EditScope 'entity' arrays. An EditScope 'entity' array is one where created/updated/deleted array items are tracked individually by EditScope. To grant this special treatment to an array in the EditScope/Form model, supply type metadata for the type of the array items (for the `T` in `KnockoutObservableArray<T>`). The type is marked as an "entity type" and, the property/properties that constitute the entity's 'id' are specified in the following examples. 
 
