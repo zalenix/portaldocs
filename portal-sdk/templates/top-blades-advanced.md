@@ -129,6 +129,6 @@ You may have a scenario where the current user can't use the blade for some unex
 
 A user may try to deep link to a blade for a resource that no longer exists. In this case you can call `container.notFound()` and provide a message. A generic not found UI will be presented to the user.
 
-## The data required to load the blade failed for some unknown reason (e.g. 500 internal server error)
+#### The data required to load the blade failed for some unknown reason (e.g. 500 internal server error)
 
 If your blade cannot load because of an unexpected error then you should call the `container.fail()` API. The message you provide here will be logged, but not presented to the user. This is because you should only use this API for unexpected errors. If you are handling an expected error condition then you should either use the `enableNotice()` API or do some custom rendering if the scenario requires it.
