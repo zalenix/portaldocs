@@ -44,7 +44,6 @@ The following SDK features cannot be built with decorators.
 
 * **extension definition**: A very small amount of PDL that provides general metadata about the extension.
 
-
 ## The context property
 
 The context property contains APIs that interact with the Shell. It is  populated by the framework previous to calling  the `onInitialize()` function, which should perform all of the initialization work for the extension. Consequently,  constructors are  not needed to populate the context property. This is a fairly common [dependency injection technique](top-extensions-glossary.md).
@@ -59,25 +58,23 @@ The framework provided `TemplateBlade.Context` type takes two generic parameters
 
 * The second generic parameter is the type of the model data, which is the `DataContext` object for your Blade or Part. 
 
-This makes the context property aware of your data context in a strongly typed way.
+This makes the context property aware of the data context in a way that is strongly typed.
 
-**NOTE**: In this example there is an API on the context called `context.container.closeCurrentBlade()`.  This function takes no parameters.
-
-This sample  blade can be modified to  return data to its parent, which is  the blade or part that opened it, by adding  the `returns data` decorator, as in the following code.
-
-**NOTE**: Not all blades need this behavior, and it does come with the consequence that the child blade is not deep-linkable if it requires a parent blade. 
+In the following example, there is an API on the context called `context.container.closeCurrentBlade()`.  This function takes no parameters. This sample blade can be modified to return data to its parent, which is the blade or part that opened it, by adding  the `returns data` decorator, as in the following code.
 
 ```
         @TemplateBlade.ReturnsData.Decorator()
 ```
 
-The previous code  will cause a compiler error because the  decorator changes the context in a way that must be declared.  The `closeCurrentBlade()` function that previously took no arguments now needs to accept the data to return to the parent blade. To do so, add `& TemplateBlade.ReturnsData.Context<{ value: string }>` to the declaration, as in the following example.
+**NOTE**: Not all blades need this behavior, and it does come with the consequence that the child blade is not deep-linkable if it requires a parent blade. 
+
+The previous code, by itself, will cause a compiler error, because the decorator changes the context in a way that must be declared.  The `closeCurrentBlade()` function that previously took no arguments now needs to accept the data to return to the parent blade. To do so, add `& TemplateBlade.ReturnsData.Context<{ value: string }>` to the declaration, as in the following example.
 
 ```
   public context: TemplateBlade.Context<void, BladesArea.DataContext> & TemplateBlade.ReturnsData.Context<{ value: string }>;
 ```
 
-This uses **TypeScript** [intersection types](top-extensions-glossary.md) to overload the `closeCurrentBlade` function to look like `closeCurrentBlade(data: { value: string })` so that when it is used, the compiler will enforce that data is provided to it in the following format. 
+This uses **TypeScript** [intersection types](top-extensions-glossary.md) to overload the `closeCurrentBlade` function to look like `closeCurrentBlade(data: { value: string })` so that when it is used, the compiler will enforce the rule that data is provided to it in the following format. 
 
 ```
   context.container.closeCurrentBlade({
@@ -87,9 +84,7 @@ This uses **TypeScript** [intersection types](top-extensions-glossary.md) to ove
 
 Intersection types combine the members of all types that get and'd together.
 
-When the project is built, the compiler will also produce an auto generated blade reference file that gives the same level of type safety to the parent blade.  The following is code that the parent blade would have.  
-
-**NOTE**: The callback that fires when `SimpleTemplateBlade` closes has the type information about the data being returned.
+When the project is built, the compiler will also generate a blade reference file that provides this sort of type safety to the parent blade. The callback that fires when `SimpleTemplateBlade` closes contains the type information for the data that is returned. The following is code for the parent blade.  
 
 ```
     context.container.openBlade(new BladeReferences.SimpleTemplateBlade((reason: BladeClosedReason, data: {value: string}) => {
@@ -100,14 +95,13 @@ When the project is built, the compiler will also produce an auto generated blad
         }));
 ```
 
-Each time an additional decorator is added, it should be incorporated into the context declaration as done here. 
-
+Each time an additional decorator is added, it is incorporated into this context declaration. 
 
 ## Building a template blade using decorators 
 
-In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory and  `<dirParent>`  is the `SamplesExtension\` directory. Links to Dogfood copies of samples are included as appropriate. 
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK.  Links to working samples are included as appropriate. 
 
-This section demonstrates how to create a "Hello World" template blade using decorators. The template blade is represented by a single TypeScript file in a Visual Studio project. The source code for the template blade is located at `<dir>/Client/V2/Blades/Template/SimpleTemplateBlade.ts` in the Azure samples. The working copy of the same source can be viewed at [simple Template Blade](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/TemplateBladesBlade/simpleTemplateBlade).
+This section demonstrates how to create a "Hello World" template blade using decorators. The template blade is represented by a single TypeScript file in a Visual Studio project. The source code for the template blade is located at `<dir>/Client/V2/Blades/Template/SimpleTemplateBlade.ts`. The working copy of the same source can be viewed at [https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/TemplateBladesBlade/simpleTemplateBlade](https://df.onecloud.azure-test.net/?SamplesExtension=true#blade/SamplesExtension/TemplateBladesBlade/simpleTemplateBlade).
 
 There are several options that can be specified as properties on the object that is sent to the decorator. The following code contains the simplest scenario where only an HTML template is needed.  The template is provided inline.
 
@@ -117,131 +111,122 @@ A relative path to an html file that contains the template can also be provided.
 
   {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#DecoratorReference"}
 
-In addition, the TypeScript programming model requires a context property to be present in the  blade class. For more information about the context property, see [the context property](#the-context-property).  The context property is populated by the framework by default and contains APIs that can be called to interact with the shell. The following code describes the context property.
+In addition, the TypeScript programming model requires a context property to be present in the  blade class. For more information about the context property, see [the context property](#the-context-property).  The context property is populated by the framework by default and contains APIs that can be called to interact with the Shell. The following code describes the context property.
   
   {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Blades/Template/SimpleTemplateBlade.ts", "section": "docs#Context"}
 
 For more information about building single page applications, and how to develop blades and parts for the Portal using **TypeScript** decorators, see the video located at  [https://aka.ms/portalfx/typescriptdecorators](https://aka.ms/portalfx/typescriptdecorators).
 
-
-
 ## Building a menu blade using decorators
 
 The following is an example of a menu blade built using decorators.  It uses the `@MenuBlade` decorator.  This decorator puts two constraints on the type.
 
-1.  It requires  the public `viewModel` property.  The property is of type `MenuBlade.ViewModel2` and provides APIs to setup the menu.
-1.  It requires the public 'context' property.  The property is of type `MenuBlade.Context`, as in the following code.
+1. It requires  the public `viewModel` property.  The property is of type `MenuBlade.ViewModel2` and provides APIs to setup the menu.
 
-```ts
-/// <reference path="../../../TypeReferences.d.ts" />
+1. It requires the public 'context' property.  The property is of type `MenuBlade.Context`, as in the following code.
 
-import BladesArea = require("../BladesArea");
-import ClientResources = require("ClientResources");
-import BladeReferences = require("../../../_generated/BladeReferences");
-import MenuBlade = require("Fx/Composition/MenuBlade");
+    ```ts
+    /// <reference path="../../../TypeReferences.d.ts" />
 
-export = Main;
+    import BladesArea = require("../BladesArea");
+    import ClientResources = require("ClientResources");
+    import BladeReferences = require("../../../_generated/BladeReferences");
+    import MenuBlade = require("Fx/Composition/MenuBlade");
 
-module Main {
-    "use strict";
+    export = Main;
 
-    @MenuBlade.Decorator()
-    export class TemplateBladesBlade {
-        public title = ClientResources.templateBladesBladeTitle;
-        public subtitle = ClientResources.samples;
+    module Main {
+        "use strict";
 
-        public context: MenuBlade.Context<void, BladesArea.DataContext>;
+        @MenuBlade.Decorator()
+        export class TemplateBladesBlade {
+            public title = ClientResources.templateBladesBladeTitle;
+            public subtitle = ClientResources.samples;
 
-        public viewModel: MenuBlade.ViewModel2;
+            public context: MenuBlade.Context<void, BladesArea.DataContext>;
 
-        public onInitialize() {
-            const { container } = this.context;
+            public viewModel: MenuBlade.ViewModel2;
 
-            this.viewModel = MenuBlade.ViewModel2.create(container, {
-                groups: [
-                    {
-                        id: "default",
-                        displayText: "",
-                        items: [
-                            {
-                                id: "simpleTemplateBlade",
-                                displayText: ClientResources.simpleTemplateBlade,
-                                icon: null,
-                                supplyBladeReference: () => {
-                                    return new BladeReferences.SimpleTemplateBladeReference();
-                                }
-                            },
-                            {
-                                id: "templateBladeWithShield",
-                                displayText: ClientResources.templateBladeWithShield,
-                                icon: null,
-                                supplyBladeReference: () => {
-                                    return new BladeReferences.TemplateBladeWithShieldReference();
-                                }
-                            },
-                            {
-                                id: "templateBladeWithCommandBar",
-                                displayText: ClientResources.templateBladeWithCommandBar,
-                                icon: null,
-                                supplyBladeReference: () => {
-                                    return new BladeReferences.TemplateBladeWithCommandBarReference();
-                                }
-                            },
-                            {
-                                id: "templateBladeReceivingDataFromChildBlade",
-                                displayText: ClientResources.templateBladeReceivingDataFromChildBlade,
-                                icon: null,
-                                supplyBladeReference: () => {
-                                    return new BladeReferences.TemplateBladeReceivingDataFromChildBladeReference();
-                                }
-                            },
-                            {
-                                id: "templateBladeWithSettings",
-                                displayText: ClientResources.templateBladeWithSettings,
-                                icon: null,
-                                supplyBladeReference: () => {
-                                    return new BladeReferences.TemplateBladeWithSettingsReference();
-                                }
-                            },
-                            {
-                                id: "templateBladeInMenuBlade",
-                                displayText: ClientResources.templateBladeInMenuBlade,
-                                icon: null,
-                                supplyBladeReference: () => {
-                                    return new BladeReferences.TemplateBladeInMenuBladeReference();
-                                }
-                            },
-                        ]
-                    }
-                ],
-                defaultId: "simpleTemplateBlade"
-            });
+            public onInitialize() {
+                const { container } = this.context;
 
-            return Q();  // This sample loads no data.
+                this.viewModel = MenuBlade.ViewModel2.create(container, {
+                    groups: [
+                        {
+                            id: "default",
+                            displayText: "",
+                            items: [
+                                {
+                                    id: "simpleTemplateBlade",
+                                    displayText: ClientResources.simpleTemplateBlade,
+                                    icon: null,
+                                    supplyBladeReference: () => {
+                                        return new BladeReferences.SimpleTemplateBladeReference();
+                                    }
+                                },
+                                {
+                                    id: "templateBladeWithShield",
+                                    displayText: ClientResources.templateBladeWithShield,
+                                    icon: null,
+                                    supplyBladeReference: () => {
+                                        return new BladeReferences.TemplateBladeWithShieldReference();
+                                    }
+                                },
+                                {
+                                    id: "templateBladeWithCommandBar",
+                                    displayText: ClientResources.templateBladeWithCommandBar,
+                                    icon: null,
+                                    supplyBladeReference: () => {
+                                        return new BladeReferences.TemplateBladeWithCommandBarReference();
+                                    }
+                                },
+                                {
+                                    id: "templateBladeReceivingDataFromChildBlade",
+                                    displayText: ClientResources.templateBladeReceivingDataFromChildBlade,
+                                    icon: null,
+                                    supplyBladeReference: () => {
+                                        return new BladeReferences.TemplateBladeReceivingDataFromChildBladeReference();
+                                    }
+                                },
+                                {
+                                    id: "templateBladeWithSettings",
+                                    displayText: ClientResources.templateBladeWithSettings,
+                                    icon: null,
+                                    supplyBladeReference: () => {
+                                        return new BladeReferences.TemplateBladeWithSettingsReference();
+                                    }
+                                },
+                                {
+                                    id: "templateBladeInMenuBlade",
+                                    displayText: ClientResources.templateBladeInMenuBlade,
+                                    icon: null,
+                                    supplyBladeReference: () => {
+                                        return new BladeReferences.TemplateBladeInMenuBladeReference();
+                                    }
+                                },
+                            ]
+                        }
+                    ],
+                    defaultId: "simpleTemplateBlade"
+                });
+
+                return Q();  // This sample loads no data.
+            }
         }
     }
-}
-```
+    ```
 
 
-## Type metadata
-<!-- TODO:  Move this back to the TypeScript  document -->
-***Q: When do I need to worry about type metadata for my EditScope?***
+## EditScopes and type metadata 
 
-SOLUTION: For many of the most common, simple Form scenarios, there is no need to describe the EditScope/Form model in terms of type metadata. Generally speaking, supplying type metadata is the way to turn on advanced FX behavior, in much the same way that - in .NET - developers apply custom attributes to their .NET types to tailor .NET FX behavior for the types.
+Supplying type metadata to an extension is the way to invoke  advanced Portal behavior, in much the same way that  developers apply attributes to  .NET types to customize  .NET FX behavior for the types. Consequently, for many of the most common form scenarios, the EditScope/Form model is not described in terms of type metadata. For more information about type metadata, see [portalfx-data-typemetadata.md](portalfx-data-typemetadata.md).
 
-For more information about type metadata, see [portalfx-data-typemetadata.md](portalfx-data-typemetadata.md).
+For EditScope and Forms, extensions supply [type metadata] for the following scenarios: 
 
- For EditScope and Forms, extensions supply [type metadata] for the following scenarios: 
+## Editable grid
 
-### Editable grid
+The editable grid was developed to work exclusively with EditScope 'entity' arrays. An EditScope 'entity' array is one where created/updated/deleted array items are tracked individually by EditScope. To grant this special treatment to an array in the EditScope/Form model, supply type metadata for the type of the array items (for the `T` in `KnockoutObservableArray<T>`). The type is marked as an "entity type" and, the property/properties that constitute the entity's 'id' are specified in the following examples. 
 
-### Entity-type
-
-* **Editable grid** - Today's editable grid was developed to work exclusively with EditScope 'entity' arrays. An EditScope 'entity' array is one where created/updated/deleted array items are tracked individually by EditScope. To grant this special treatment to an array in the EditScope/Form model, supply type metadata for the type of the array items (for the `T` in `KnockoutObservableArray<T>`). The type is marked as an "entity type" and, the property/properties that constitute the entity's 'id' are specified in the following examples. 
-
-**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK.
- 
 * In TypeScript:
 
 The TypeScript sample is located at 
@@ -258,10 +243,11 @@ The C# sample is located at
   
 ### Track edits
 
-* **Opting out of edit tracking** - There are Form scenarios where some properties on the EditScope/Form model are not meant for editing but are - possibly - for presentation only. In this situation, the extension can instruct EditScope to *not track* user edits for such EditScope/Form model properties, like so:
+There are Form scenarios where some properties on the EditScope/Form model are not meant for editing but are for presentation only. In this situation, the extension can instruct `EditScope` to opt out of edit tracking user edits for such EditScope/Form model properties, as in the following examples.
 
-In TypeScript:  
+* In TypeScript:  
 
+    ```
     MsPortalFx.Data.Metadata.setTypeMetadata("Employee", {
         properties: {
             accruedVacationDays: { trackEdits: false },
@@ -269,9 +255,11 @@ In TypeScript:
         },
         ...
     });  
+    ```
 
-In C#:  
+* In C#:  
 
+    ```
     [TypeMetadataModel(typeof(Employee))]
     public class Employee
     {
@@ -280,25 +268,25 @@ In C#:
 
         ...
     }  
+    ```
 
 Extensions can supply type metadata to configure their EditScope as follows:  
 
-* When using ParameterProvider, supply the '`editScopeMetadataType`' option to the ParameterProvider constructor.
-* When using EditScopeCache, supply the '`entityTypeName`' option to `MsPortalFx.Data.EditScopeCache.createNew`.
+* When using ParameterProvider, supply the `editScopeMetadataType` option to the `ParameterProvider` constructor.
 
-To either of these, extensions pass the type name used when registering the type metadata via '`MsPortalFx.Data.Metadata.setTypeMetadata`'.  
-  
+* When using EditScopeCache, supply the `entityTypeName` option to `MsPortalFx.Data.EditScopeCache.createNew`.
 
-  
+ Extensions pass the type name to either of these when registering the type metadata by using  `MsPortalFx.Data.Metadata.setTypeMetadata`.  
+    
 ### Loading indicators
 
-Loading indicators should be consistently applied across all blades and parts of the extension. For no-PDL, this is demonstrated in the sample located at  [https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).  The steps for TypeScript and PDL are as follows.
+Loading indicators should be consistently applied across all blades and parts of the extension, as in the sample located at  [https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).  The steps for TypeScript and PDL are as follows.
 
-* Call `container.revealContent()` to limit the time when the part displays  **blocking loading** indicators. For more information, see [portalfx-parts-revealContent.md](portalfx-parts-revealContent.md).
+1. Call `container.revealContent()` to limit the time when the part displays  **blocking loading** indicators. For more information, see [portalfx-parts-revealContent.md](portalfx-parts-revealContent.md).
 
-* Return a `Promise` from the `onInitialize` method that reflects all data-loading for the part. Return the `Promise` from the blade if it is locked or is of type  `<TemplateBlade>`.
+1. Return a `Promise` from the `onInitialize` method that reflects all data-loading for the part. Return the `Promise` from the blade if it is locked or is of type  `<TemplateBlade>`.
 
-* The extension can return a data-loading Promise directly from `onInitialize`, but it will receive compile errors when it attempts to return the result of a call to `queryView.fetch(...)`, `entityView.fetch(...)`, `Base.Net.ajax2(...)`, as in the following code.
+1. The extension can return a data-loading Promise directly from `onInitialize`, but it will receive compile errors when it attempts to return the result of a call to `queryView.fetch(...)`, `entityView.fetch(...)`, `Base.Net.ajax2(...)`, as in the following code.
 
     ```
     public onInitialize() {
@@ -319,7 +307,7 @@ Loading indicators should be consistently applied across all blades and parts of
 
     This application of `Q(...)`  coerces the data-loading Promise into the return type expected for `onInitialize`.  
 
-* For PDL, do not return a `Promise` from the `onInputSet` method previous to the loading of all part data if it removes loading indicators.   The part will seem to be broken or unresponsive if no **loading** indicator is displayed while the data is loading, as in the following code.
+1. For PDL, do not return a `Promise` from the `onInputSet` method previous to the loading of all part data if the part removes loading indicators.   The part will seem to be broken or unresponsive if no **loading** indicator is displayed while the data is loading, as in the following code.
 
 ```ts
 public onInputsSet(inputs: MyPartInputs): Promise {
