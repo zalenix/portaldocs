@@ -9,7 +9,16 @@ PDL is still supported for backward compatibility, but **TypeScript** decorators
 
 The next few sections provide an overview on what decorators are and how to use them.
 
-* [TypeScript decorator support](TypeScript decorator support)
+* [TypeScript decorator support](#typescript-decorator-support)
+
+* [The context property](#the-context-property)
+
+* [Building a template blade using decorators](#building-a-template-blade-using-decorators)
+
+* [Building a menu blade using decorators](#building-a-menu-blade-using-decorators)
+
+* [EditScopes and type metadata](#editscopes-and-type-metadata) 
+
 
 <a name="typescript-decorator-support"></a>
 ## TypeScript decorator support
@@ -271,10 +280,16 @@ The following is an example of a menu blade built using decorators.  It uses the
 
 Supplying type metadata to an extension is the way to invoke  advanced Portal behavior, in much the same way that  developers apply attributes to  .NET types to customize  .NET FX behavior for the types. Consequently, for many of the most common form scenarios, the EditScope/Form model is not described in terms of type metadata. For more information about type metadata, see [portalfx-data-typemetadata.md](portalfx-data-typemetadata.md).
 
-For EditScope and Forms, extensions supply [type metadata] for the following scenarios: 
+For EditScope and Forms, extensions supply [type metadata] for the following scenarios. 
 
-<a name="editable-grid"></a>
-## Editable grid
+* [Editable grid](#editable-grid)
+
+* [Track edits](#track-edits)
+
+* [Loading indicators](#loading-indicators)
+
+<a name="editscopes-and-type-metadata-editable-grid"></a>
+### Editable grid
 
 The editable grid was developed to work exclusively with EditScope 'entity' arrays. An EditScope 'entity' array is one where created/updated/deleted array items are tracked individually by EditScope. To grant this special treatment to an array in the EditScope/Form model, supply type metadata for the type of the array items (for the `T` in `KnockoutObservableArray<T>`). The type is marked as an "entity type" and, the property/properties that constitute the entity's 'id' are specified in the following examples. 
 
@@ -318,7 +333,7 @@ public class Person
     
 ```
   
-<a name="editable-grid-track-edits"></a>
+<a name="editscopes-and-type-metadata-track-edits"></a>
 ### Track edits
 
 There are Form scenarios where some properties on the EditScope/Form model are not meant for editing but are for presentation only. In this situation, the extension can instruct `EditScope` to opt out of edit tracking user edits for such EditScope/Form model properties, as in the following examples.
@@ -356,7 +371,7 @@ Extensions can supply type metadata to configure their EditScope as follows:
 
  Extensions pass the type name to either of these when registering the type metadata by using  `MsPortalFx.Data.Metadata.setTypeMetadata`.  
     
-<a name="editable-grid-loading-indicators"></a>
+<a name="editscopes-and-type-metadata-loading-indicators"></a>
 ### Loading indicators
 
 Loading indicators should be consistently applied across all blades and parts of the extension, as in the sample located at  [https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings](https://df.onecloud.azure-test.net/#blade/SamplesExtension/TemplateBladeWithSettings).  The steps for TypeScript and PDL are as follows.
