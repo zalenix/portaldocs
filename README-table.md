@@ -36,7 +36,7 @@ Couldn't find what you needed? [Ask about the docs on StackOverflow](https://sta
 
 | Name | Location | Purpose |
 | ---- | -------- | ------- |
-| No-PDL blades and parts | http://top-whats-new #no-pdl.md | Reduces the number of files and concepts to build UI |
+| No-PDL blades and parts | [top-extensions-no-pdl.md](/portal-sdk/generated/top-extensions-no-pdl.md)  | Reduces the number of files and concepts to build UI |
 | Forms without edit scope | [top-editscopeless-forms.md](/portal-sdk/generated/top-editscopeless-forms.md) | More intuitive APIs for building forms |
 | EditableGrid V2 | /portal-sdk/generated | Improved APIs designed to work with new forms |
 | Extension availability alerts |  [top-extensions-telemetry-alerting.md](/portal-sdk/generated/top-extensions-telemetry-alerting.md)  | Get notified if your extension goes down |
