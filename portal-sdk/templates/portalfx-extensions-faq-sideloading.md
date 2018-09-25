@@ -3,7 +3,9 @@
 
 <!-- TODO:  FAQ Format is ###Link, ***title***, Description, Solution, 3 Asterisks -->
 
-## When sideloading via the query string or fragment or via F5 the tab with the portal never shows up.
+### Portal never shows up
+
+***When sideloading via the query string or fragment or via F5 the tab with the portal never shows up.***
 
 SOLUTION: 
 
@@ -13,7 +15,7 @@ Check that your browser's popup blocker is not blocking the second tab from bein
 
 ### Extension will not sideload
 
-*** My Extension fails to side load and I get an ERR_INSECURE_RESPONSE in the browser console ***
+***My Extension fails to side load and I get an ERR_INSECURE_RESPONSE in the browser console***
 
 ![ERR_INSECURE_RESPONSE](../media/portalfx-productiontest/errinsecureresponse.png)
 
@@ -46,19 +48,19 @@ Enable the `allow-insecure-localhost` flag, as described in [https://stackoverfl
 
 * * *
 
-## Where are the FAQ's for general extension debugging?
+### Where are the FAQ's for general extension debugging?
 
 The FAQs for debugging extensions is located at [portalfx-extensions-faq-debugging.md](portalfx-extensions-faq-debugging.md).
 
 * * *
 
-##  Are gallery packages sideloaded?
+###  Are gallery packages sideloaded?
 
 When configured correctly gallery packages from the extension running on localhost are sideloaded and made available in the portal at  `+ Create a resource >  see all > Local Development`  if your gallery packages are not showing up there see [https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-package-development-and-debugging](https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-package-development-and-debugging).
 
 * * *
 
-## How do I mark automated tests as test/synthetic traffic so that it does not show up in reporting
+### How do I mark automated tests as test/synthetic traffic so that it does not show up in reporting?
 
 Automated tests that run against a production environment should be marked as test/synthetic traffic. Use one of the following options to accomplish this.
 
@@ -69,7 +71,7 @@ TestTraffic-<TeamName>-<Component>
 
 * * *
 
-## I need to load my extension from a domain other then localhost
+### I need to load my extension from a domain other than localhost
 
 We recommend that you sideload using localhost, as specified in [top-extensions-sideloading.md#step-1](top-extensions-sideloading.md#step-1). But if you do have scenarios where you need to sideload the extension that is  not running on localhost, or is mapped by using a `hosts` file to a named domain, use the `registerTestExtension` API. 
 
@@ -133,13 +135,13 @@ To load an extension, extension developers can use the following approach.
 
 * * * 
 
-## Can I sideload into onestb?
+### Can I sideload into onestb?
 
 Onebox-stb has been deprecated. Please do not use it. Instead sideload directly into df, mpac or production.
 
 * * *
 
-## How can I side load my extension with obsolete bundles?
+### How can I side load my extension with obsolete bundles?
 
 See [https://aka.ms/portalfx/obsoletebundles](https://aka.ms/portalfx/obsoletebundles).
 
