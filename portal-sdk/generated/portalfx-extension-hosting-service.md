@@ -176,7 +176,7 @@ For now, just add this empty file as embedded resource:
 <EmbeddedResource Include="Content\Config\df.onecloud.azure-test.net.json" />
 ```
 
-1. Production: 
+2. Production: 
         Configuration file name should be portal.azure.com.json. 
 ```xml
 <EmbeddedResource Include="Content\Config\portal.azure.com.json" />
@@ -186,21 +186,21 @@ For now, just add this empty file as embedded resource:
         1. MPAC **ms.portal.azure.com**
         1. PROD **portal.azure.com**
 
-    One single configuration file is enough for all three stamps.
+One single configuration file is enough for all three stamps.    
 
-1. Mooncake (portal.azure.cn): 
+3. Mooncake (portal.azure.cn): 
      Configuration file name should be portal.azure.cn.json
 ```xml
 <EmbeddedResource Include="Content\Config\portal.azure.cn.json" />
 ```     
 
-1. Blackforest (portal.microsoftazure.de)
+4. Blackforest (portal.microsoftazure.de)
      Configration file name should be portal.microsoftazure.de.json
 ```xml
 <EmbeddedResource Include="Content\Config\portal.microsoftazure.de.json" />
 ```          
 
-1. Fairfax (portal.azure.us)
+5. Fairfax (portal.azure.us)
     Configuration file name should be portal.azure.us.json
 ```xml
 <EmbeddedResource Include="Content\Config\portal.azure.us.json" />
