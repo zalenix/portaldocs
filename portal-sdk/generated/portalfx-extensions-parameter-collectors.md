@@ -17,15 +17,19 @@ There are three roles in the Parameter Collection Framework.  The primary roles 
 
 A `ViewModel` can play more than one role. Depending on the UI element, specific roles are either optional or required. You will define the roles that the `ViewModel`  and its UI element can play, and develop the logic that will be executed when the UI element is performing that role. 
 
-The framework provides interfaces, base classes, and blade templates to simplify implementation. It includes classes for forms, wizards, pickers, buttons, commands, and other items that the `ViewModel` will extend. The framework also includes PDL templates that correspond to each object that the extension will display on the UI. To implement any of the roles, create a class that extends the corresponding interface, and send an instance of that role implementation to the base class in your constructor.
+The framework provides interfaces, base classes, and blade templates to simplify implementation. It includes classes for forms, pickers, buttons, commands, and other items that the `ViewModel` will extend. The framework also includes PDL templates that correspond to objects that are displayed on the UI, although Typescript is preferred. To implement any of the roles, create a class that extends the corresponding interface, and send an instance of that role implementation to the base class in your constructor.
 
 <!-- TODO: Determine whether the following sections were ever written.   -->
 
 <a name="parameter-collection-more-details"></a>
 ## More details
+
 * *Inputs and Outputs:* More details about inputs, outputs and communication between the UI elements.
+
 * *Role Implementation:* More details about how to implement roles.
+
 * *Base Classes:* More details about base classes and PDL templates.
+
 * PCv2 (Obsolete), located at [portalfx-parameter-collection-v2.md](portalfx-parameter-collection-v2.md).
 
 

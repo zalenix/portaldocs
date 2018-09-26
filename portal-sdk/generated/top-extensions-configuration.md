@@ -1,10 +1,6 @@
 <a name="portal-extension-configuration"></a>
 # Portal Extension Configuration
 
-<!-- document headers are in the individual documents -->
-
-
-The page you requested moved to [top-extensions-configuration.md](top-extensions-configuration.md).
 
 <a name="portal-extension-configuration-process-details"></a>
 ## Process Details
@@ -52,7 +48,6 @@ As per the safe deployment mandate, deployment to production environment is perf
 After the commit has been associated with a workitem, the developer will receive a notification when the config change is deployed to each region.
 
 When the development team wants to subscribe to these changes, ask them to make a comment on the workitem. After they have made changes, they will start receiving the notifications.
-
 <a name="portal-extension-configuration-frequently-asked-questions"></a>
 ## Frequently asked questions
 
