@@ -15,9 +15,10 @@ In the meantime, some gitdown includes are commented out for npm run docs.
 
   {"gitdown": "include-headings", "file": "../templates/portalfx-ui-concepts.md"}
 
-  {"gitdown": "include-headings", "file": "../templates/portalfx-no-pdl-programming.md"}
-  
 <!--
+  gitdown": "include-headings", "file": "../templates/top-extensions-no-pdl.md"}
+  
+
 # Authentication
 
 <!--
@@ -39,12 +40,14 @@ gitdown": "include-headings", "file": "../templates/portalfx-assets.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-essentials.md"}
   
   <!--
-gitdown": "include-headings", "file": "../templates/top-blades-resourcemenu.md"}
+gitdown": "include-headings", "file": "../templates/top-blades-resourcemenublade.md"}
 -->
 
  {"gitdown": "include-headings", "file": "../templates/portalfx-permissions.md"}
 
- {"gitdown": "include-headings", "file": "../templates/portalfx-notifications.md"}
+<!--
+ {"gitdown": "include-headings", "file": "../templates/top-extensions-notifications.md"}
+-->
 
  {"gitdown": "include-headings", "file": "../templates/portalfx-subscriptions.md"}
 
@@ -54,9 +57,10 @@ gitdown": "include-headings", "file": "../templates/top-blades-resourcemenu.md"}
 
  {"gitdown": "include-headings", "file": "../templates/portalfx-extension-pricing-tier.md"}
 
+   <!--
 # Other
 
- {
-   <!--
+
+
  gitdown": "include-headings", "file": "../templates/portalfx-load-configuration.md"}
 -->

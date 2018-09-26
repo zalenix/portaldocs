@@ -1,3 +1,3 @@
 
 
-The page you requested has moved to [top-extensions-blades.md](top-extensions-blades.md).
+The page you requested has moved to [top-blades-templateblade.md](top-blades-templateblade.md).
