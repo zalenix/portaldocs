@@ -1,3 +1,3 @@
-{"gitdown": "contents", "maxLevel": 2}
 
-{"gitdown": "include-file", "file": "./videos.md"}
+The page you requested has moved to [videos.md](videos.md). 
+
