@@ -41,7 +41,7 @@ The terms are in alphabetical order.
 | A/B Testing | Also known as control group/experimental group testing, where software  is divided into two different presentations, or flights, for different user groups. The users are unaware of which version they are testing. |
 | AAD                               | Azure Active Directory |
 | above the fold | Initially displayed on the Web page without scrolling. |
-| accesssibility        | The design of products, devices, services, or environments for people who experience disabilities.                                |
+| accessibility        | The design of products, devices, services, or environments for people who experience disabilities.                                |
 | action bar | A list of actions that an extension can perform, separate from the options that are located on the toolbar. |
 | activity log | A log that contains a record of events or actions that have been performed on a site, or by a user or extension. |
 | AJAX  | Asynchronous JavaScript And XML |
@@ -61,7 +61,7 @@ The terms are in alphabetical order.
 | avatar menu | A menu that contains references to  fields that store images for use as the identifying icon in the Hub account. |
 | availability |  Users can login to a service,  extension, or access panel to use  applications or reset passwords. IT administrators can create, read, write and delete directory  entries  for users, services, and applications.  Also see reliability. |
 | Azure Fundamentals | A set of tenets to which each Azure service is expected to adhere. | 
-|  Azure Insights  |  Activity logs and other tools that provide metadata about extension performance and maintenance. | 
+| Azure Insights  |  Activity logs and other tools that provide metadata about extension performance and maintenance. | 
 | Azure Portal SDK  | Software Development Kit for developing Azure Portal extensions. |
 | Azure Resource Manager (ARM)    | The public API for Azure that accepts calls from the Portal, Azure SDK, and command line.  | 
 
@@ -121,7 +121,7 @@ The terms are in alphabetical order.
 | CSS                       | CSS Release management  | 
 | CTA | Computed Time of Arrival  |
 | curation            | The process of categorizing content around a specific topic or area of interest. Curated items often formed into various types of collections and are displayed together according to theme or purpose. |
-| Custom Deployment | Do-it-Yourself or legacy extension deployment that does not use an Azure Hosting Service. This is not the same as custom configuration of a blade or part. |
+| custom deployment | Do-it-Yourself or legacy extension deployment that does not use an Azure Hosting Service. This is not the same as custom configuration of a blade or part. |
 | custom domain | See domain-based configuration. |
 
 ## D
@@ -129,20 +129,19 @@ The terms are in alphabetical order.
 | Term | Meaning   |
 | ---- | --- |
 | dashboard | Customizable landing page where  users can resize, re-order, pin, or unpin tiles to create a unique start experience. |
-| Data atomization | A technique that binds several data views to one data entity, thus presenting a smooth and  consistent experience to the user. Multiple views that represent the same asset are always in sync. |
+| data atomization | A technique that binds several data views to one data entity, thus presenting a smooth and  consistent experience to the user. Multiple views that represent the same asset are always in sync. |
 | data binding  | The process that establishes a connection between the application UI and the business logic  behind the pane. |
 | data projection | Combining columns of data in a way that is meaningful to the current topic.  For example, the `county` column may be combined with the `state or province` column to provide a meaningful sort by county. |
 | data stack                   | Contains all the information that the browser associates with the current testing session. |
-| decorator | | 
-| deep link                    | A link that jumps directly into the extension within the Portal. Each deep link consists of the Portal URL, the target directory domain name or tenant id (e.g. microsoft.com), the type prefix (i.e. asset, resource, blade, browse, or marketplace), and the actual deep link target. |
-| Deep linking |  Updates the portal URL when a blade is opened, which gives the user a URL that directly navigates to the new blade. |
-| Definition file | A file that provides type information for JavaScript code that is inherently not statically typed. Definition files are a fundamental part of using existing JavaScript libraries in TypeScript, and the file suffix is always  *.d.ts. |
-| Dependency injection technique | A technique whereby one object supplies the dependencies of another object. | 
+| decorator | A function that adds logic  to a class, method, property or parameter. This is simpler than  creating a new class that extends the target class.  | 
+| deep link                    | A link that jumps directly into the extension within the Portal. Each deep link consists of the Portal URL, the target directory domain name or tenant id (e.g. `microsoft.com`), the type prefix (i.e. asset, resource, blade, browse, or marketplace), and the actual target within the extension. |
+| deep linking |  Updates the portal URL when a blade is opened, which results in a URL that directly navigates to the new blade. |
+| definition file | A file that provides type information for JavaScript code that is inherently not statically typed. Definition files are a fundamental part of using existing JavaScript libraries in TypeScript, and the file suffix is always  *.d.ts. |
+| dependency injection technique | A technique whereby one object supplies the dependencies of another object. | 
 | desktop state             | A snapshot. |
 | DEV                       | Development | 
-| Developer Tools Console      | | 
+| Developer Tools Console      | A suite of browser tools, in most browsers, that help developers inspect currently-loaded code, edit pages or variables, diagnose problems, and list requested assets. | 
 | DF                       | Dogfood |
-| diagnostic switch  | |
 | dirty | The contents of a textbox or similar object have been changed from the time that they were originally displayed or instantiated. Related to the most recent value of a variable or observable. |
 | display language  | The locale string that is used to display text in the UI.  |
 | DIY                      | Do It Yourself |
@@ -155,17 +154,17 @@ The terms are in alphabetical order.
 
 | Term | Meaning    |
 | ---- | --- |
-| edge servers | A server that is located on the edge of a network and serves information between two networks, typically between a private network and the Internet. They perform functions like content delivery, security, or mail delivery. |
-| EditScope             | An Azure SDK object that provides a standard way of managing edits over a collection of input fields, blades, and extensions. |
+| edge servers | A server that is located on the border of a network and serves information between two networks, typically between a private network and the Internet. They perform functions like content delivery, security, or mail delivery. |
+| EditScope             | An Azure SDK object that provides a standard way of managing edits over a collection of input or output fields, blades, and extensions. |
 | endpoint             | A device that is connected to a LAN and accepts or transmits communications across a network. In terms of directories or Web pages, there may be several endpoints that are defined on the same device. |
-| Enhanced monitoring  |  |
-| environment              | A configuration of computers in which extensions can be run. For example, environments are Blackforest, Dogfood, Mooncake, and Production.  | 
-| Essentials | An  overview that contains the most important properties of a resource, in addition to  links to other locations in the portal. |
+| enhanced monitoring  | Provides a comprehensive set of over 50 system metrics and  process aggregates for extensions, at differing granularities.  Metrics can be displayed on consoles or  integrated with  third-party applications. |
+| environment              | A configuration of computers in which extensions can be run. For example, some Azure environments are Blackforest, Dogfood, Mooncake, and Production. This is not the same as repository, which contains the source code to run in the environment, although the terms are often used interchangeably.  | 
+| essentials | An  overview that contains the most important properties of a resource, in addition to  other Portal links. |
 | ETW |  Event Tracing for Windows | 
-| experience            | Azure Portal software application. Also see UX. |
-| experimentation | Releasing two slightly different versions of a new feature to  a subsection  segment of the customer base to determine which  version works better or makes the customer happier. | 
-|  Express Version 2 (EV2) |  Safe, secure and compliant way to roll out services to multiple regions across public and private clouds.  | 
-| extension                         | A web application that is loaded by the Portal.  A Web application that was developed using the Azure Portal SDK and is made available to users through the Azure Portal.   |
+| experience            | Azure Portal software application from the user perspective, including the blades to which the user has navigated.  |
+| experimentation | Releasing two slightly different versions of a new feature to segments of the customer base to determine which  version works better or makes the customer happier. | 
+| Express Version 2 (EV2) | Safe, secure and compliant way to roll out services to multiple regions across public and private clouds.  | 
+| extension                         | A web application that is loaded by the Portal.  A web application that was developed using the Azure Portal SDK and is made available to users through the Azure Portal.   |
 | extension stamp              | An instance of a service in a region. Every extension can deploy one or more extension editions based on testing requirements. The main extension is used for production and is the only one that the Portal will load by default. Also known as configuration or configuration file.   | 
 
 ## F
@@ -175,19 +174,19 @@ The terms are in alphabetical order.
 | fat arrow | Typescript lambda function.  It captures the "this" variable from the surrounding context. | 
 | FAQ            | Frequently Asked Questions |
 | feature flag             | A switch that allows a user to turn on or off specific functionalities of an extension. Flags are  passed from the Portal to extensions and their controllers, and are used as an alternative to maintaining multiple source-code branches in order to hide, enable or disable a feature during run time. Most, but not all, feature flags are made available by using the syntax `feature.<featureName> = true`.   |
-| feasibility review | An analysis of a proposed project to determine  whether the project should go ahead, be redesigned, or abandoned altogether, from the perspectives of technical feasibility and financial feasibility. The review should  uncover the  strengths and weaknesses while they are relatively inexpensive to address. Also known as feasibility study. |
+| feasibility review | An analysis of a proposed project to determine  whether the project should go ahead, be redesigned, or abandoned altogether, from the perspectives of technical and financial feasibility. The review should uncover the strengths and weaknesses of a project while they are relatively inexpensive to address. Also known as feasibility study. |
 | feature flag       | A coding technique that allows the enabling or disabling of new code within a solution. It allows the testing and development-level viewing of new features, before they are complete and ready for private preview.  |
 | FF                       | Fairfax |
-| Figma | |
+| Figma | Browser-based UI  design tool that assists teams in prototyping and developing consistent and responsive user experiences. |
 | first chance exception    | An exception's first pass through the debugger. Exceptions are thrown to the debugger first and then to the actual program.  If the exception is not handled by the program, it gets thrown to the debugger a second time. |
 | first-party extension | Internal/ Microsoft extensions that comply with Azure Privacy terms and conditions.  An Azure Portal extension that is developed by Microsoft | 
-| flighting                | The process of directing Internet traffic to various editions of an extension, as specified by stamps that represent different stages or regions, or by friendly names. |
-| flighting       | Similar to experimentation. The process of selecting users who will receive specific pre-production versions of an extension  by adding them to a flight group. Anyone in a flight group will receive packages that are designated for that particular group. Users  who are not in the flight group  will receive  packages that contain  the non-flighted  version of an extension. Eventually there will be only one version of the new extension, whereupon the customer base is expanded by adding flight groups or by releasing the successfully flighted bits to production.  |
-| follower cluster    | A read-only view of a cluster that contains databases. It may have its own set of machines to handle read-only  queries against the database tables. This improves the performance of the cluster  on which the follower cluster is based, especially for the ingestion of new data and the execution of core queries.  |
+| flighting^1^               | The process of directing Internet traffic to various editions of an extension, as specified by stamps that represent different stages or regions, or by friendly names. |
+| flighting^2^       | Similar to experimentation. The process of selecting users who will receive specific pre-production versions of an extension  by adding them to a flight group. Anyone in a flight group will receive packages that are designated for that particular group. Users  who are not in the flight group  will receive  packages that contain  the non-flighted  version of an extension. Eventually there will be only one version of the new extension, whereupon the customer base is expanded by adding flight groups or by releasing the successfully flighted bits to production.  |
+| follower cluster    | A read-only view of a cluster that contains databases. It may have its own set of computers to handle read-only  queries against the database tables. This improves the performance of the cluster  on which the follower cluster is based, especially for the ingestion of new data and the execution of core queries.  |
 | format culture    | The locale string that is used for formatting. |
-| framework     | A software environment that provides large software platform functionality in the process of building and deploying applications. The larger platform is selectively changed by adding developer code to make software applications. |
+| framework     | A software environment that provides large software platform functionality during the process of building and deploying applications. The larger platform is selectively changed by adding developer code to make software applications. |
 | friendly name | Name for a site or an extension that is easier to remember and use than DSN names or IP addresses. Friendly names point to valid versions of an extension that exist in the storage account.  | 
-| FullRevealed  | The ViewModel within the blade or part has received all of the information that is will display. |
+| FullRevealed  | A variable that specifies that the ViewModel within the blade or part has received all of the information that it will display. |
 | FYI            | For Your Information 
 
 ## G
@@ -199,20 +198,19 @@ The terms are in alphabetical order.
 | gallery package       | Contains all assets for a gallery item: icons, screenshots, descriptions, et al. The gallery package is compiled into a file with the .azpkg extension  for transfer between environments. |
 | GB Certificate            | Six Sigma Green Belt Certification.  | 
 | GB Standard               | GB stands for Guobiao, or “National Standard” in Chinese. The GB standard is the basis for testing products that require certification. |  
-|  GD&F  | |
-| Geneva | |
+| GD&F  | |
+| Geneva | A monitoring system that collects stats for use in analyzing and acting on telemetry from  cloud and on-premises environments. |
 | geodistribute        | Distribute the extension to all data centers in various geographical locations. |
 | geodistribution      | The process of deploying software in multiple geographic regions as a single logical database. |
 | geolocation | The identification or estimation of the real-world geographic location of a device, like a mobile phone or Internet-connected computer. |
 | GitHub         | A Web-based hosting service for version control or content management. |
-| General Data Protection Regulation (GDPR) | |
+| GDPR | General Data Protection Regulation |
 
 ## H
 
 | Term | Meaning   |
 | ---- | --- |
-| hammerjs | |
-| hard dependency | | 
+| hammer.js |  A JavaScript library for detecting touch gestures. |
 | hide key | Associated with testing a package previous to publishing it in the Marketplace. Shows specified Marketplace items that are otherwise hidden, or shows unpublished items in the gallery. | 
 | High Contrast theming | A set of screen or Web colors  that make it easier to see letters than with  a normal color scheme.    | 
 | heterogeneous blade activation | dynamic | 
@@ -260,9 +258,9 @@ The terms are in alphabetical order.
 
 | Term | Meaning   |
 | ---- | --- |
-| L&R  | | 
+| L&R  | Learning and Readiness | 
 | lambda expression | An anonymous function that is used to create delegates or expression tree types. |
-| LBA | |
+| LBA  | |
 | LCID | |
 | lifetime | The amount of time an object exists in memory between instantiation and destruction.  It may be automatically destroyed by when a parent object is deallocated, or its existence may be managed by a lifetime manager object or a child lifetime manager object. |
 | lifetime manager | Ensures that any resources that are specifically associated with a blade are disposed of when the blade is closed. Each blade has its own lifetime manager. |
@@ -390,6 +388,7 @@ The terms are in alphabetical order.
 | Relex | |
 | reliability | Every extension meets the reliability Service Level Agreement (SLA) of loading successfully at least 99% of the time. |
 | renminbi (RMB) | the official currency of the People's Republic of China.   |
+| repository            | A file, directory, or server that contains source code and other resources with which to run extensions. A content management system. For example, some repositories are master and dev.  This is not the same as  environment, although the terms are often used interchangeably.  | 
 | resource              | The primary point of entry when a customer wants  to work on or view computing resources  like Web apps, VMs, SQL Databases, or  storage accounts. Typically displayed on the resource browse blade or  resource blade. |
 | resource features     | |
 | resource provider   | A service that supplies the resources that can be deployed and managed by using Resource Manager. Some common resource providers are `Microsoft.Compute`, which supplies the virtual machine resource, `Microsoft.Storage`, which supplies the storage account resource, and `Microsoft.Web`, which supplies resources related to web apps.  |
