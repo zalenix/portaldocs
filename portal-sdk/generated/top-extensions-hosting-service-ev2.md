@@ -121,7 +121,7 @@ In the basic scenario, extension developers can execute **ContentUnbundler** in 
 
 1. KeyVault
 
-The following procedure describes how to set up the KeyVault that is required by the  `ServiceGroupRootReplacements.json` file, as specified in [#configuring-contentunbundler-for-Ev2-based-deployments](#configuring-contentunbundler-for-Ev2-based-deployments).
+    The following procedure describes how to set up the KeyVault that is required by the  `ServiceGroupRootReplacements.json` file, as specified in [#configuring-contentunbundler-for-Ev2-based-deployments](#configuring-contentunbundler-for-Ev2-based-deployments).
 
     1. Set up KeyVault
 
