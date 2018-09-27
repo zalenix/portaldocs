@@ -33,19 +33,19 @@ The following image is an example of Create tab navigation pattern.
 
 Most creates should have a minimum of three tabs: Basics, Tags, Review + create.  All other tabs are optional. Align labels above controls if the screen resolution < 700px.
 
-* Basics
+* [Basics](#basics-tab-layout)
 
     The Basics tab contains most of the required elements needed to deploy a resource successfully.   Set default values when possible to eliminate additional time spent on create.
 	
-* Tags
+* [Tags](#tags)
     
     Tagging resources during creates is now supported when using the Tags control.  Subscription and Resource Group level policies may require users to tag resources during create.  Not including the Tags control may block users from deploying resources.
 	
-* Review + create
+* [Review + create](#review-+-create)
 
-    The Review + create tab allows customers to review configured and defaulted settings before procuring resources.  Use the Summary control to organize and display key/value pairs before create.  Validations are performed before users can successfully submit.  For more information, see #validations. 
+    The Review + create tab allows customers to review configured and defaulted settings before procuring resources.  Use the Summary control to organize and display key/value pairs before create.  Validations are performed before users can successfully submit.  For more information, see [#validations](#validations). 
 
-### Tab Layout
+### Basics tab layout
 
 * Descriptions
     
@@ -63,25 +63,25 @@ Most creates should have a minimum of three tabs: Basics, Tags, Review + create.
 
     All form controls should include help text inside info balloons.
 
-## Sub Creates
+#### Sub Creates
 
 When creating a sub resource, use the sub label property to add a 'Create new' link to open a new blade within a context pane, as in the following image.   Avoid using side blades.
 
 ![alt-text](../media/top-extensions-create/subCreate.png "Sub-create context pane")
 
-## Tags
+### Tags
 
 The Tags control allows users to assign key value pairs to selected Resource Types, as in the following image.
 
 ![alt-text](../media/top-extensions-create/tags.png "Tags control")
 
-## Review + Create
+### Review + Create
 
 This tab allows the user to verify all settings prior to submission, which ensures accuracy and reduces the need for user redeployments.  Use the summary control to help organize content from multiple tabs, as in the following image.
 
 ![alt-text](../media/top-extensions-create/reviewCreate.png "Review + create tab")
 
-### Validations
+#### Validations
 
 Validating the form and template is an essential part of the create process.  When the 'Review + create' tab is loaded, validations begin and a status bar is used to communicate status.  The first step evaluates the form for incomplete fields or invalid entries.  The second step validates the ARM template.   If validation succeeds, the 'Create' button is enabled for submission.
 
