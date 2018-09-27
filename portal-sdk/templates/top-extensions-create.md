@@ -7,7 +7,7 @@ The create experience is one of the most important customer journeys within the 
 
 ## Getting Started
 
-Download the most recent Portal SDK to access a Sample create.   This sample uses NoPDL and includes three essential tabs and two optional tabs.  All the styling and validation patterns are included and can be easily augmented to meet your needs.  The remainder of this document is intended to help you understand the key design principals and create a consistent experience.
+Download the most recent Portal SDK from [http://aka.ms/portalfx/downloads](http://aka.ms/portalfx/downloads) to access a Sample create.   This sample uses NoPDL and includes three essential tabs and two optional tabs.  All the styling and validation patterns are included and can be easily augmented to meet your needs.  The remainder of this document is intended to help you understand the key design principles and create a consistent experience.
 
 ## Design Principles
 

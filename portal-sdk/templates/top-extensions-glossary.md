@@ -215,14 +215,13 @@ The terms are in alphabetical order.
 | High Contrast theming | A set of screen or Web colors  that make it easier to see letters than with  a normal color scheme.    | 
 | heterogeneous blade activation | dynamic | 
 | homogeneous blade activation |  static | 
-| hotfix                       | |
 
 ## I
 
 | Term | Meaning   |
 | ---- | --- |
 | IANA | Internet Assigned Numbers Authority | 
-| IcM  | |
+| IcM  | Incident Management System |
 | idempotent         |  An operation whose result does not change after the initial application. For example, if the client needs to retry a request due to intermittent network issues, the same value will be sent to the server.  This allows the server to ignore the retry if it has already been processed. Even if the request is ignored, the same response will be returned if the client needs the values in the response. |
 | iframe                   | An inline frame, used to embed another document within the current HTML document. |
 | IIS Express       | Internet Information Services. A Web server for hosting anything on the Web. |
