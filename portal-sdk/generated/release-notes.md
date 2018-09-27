@@ -1,5 +1,17 @@
 # Release Notes since 5/26/2018
 
+## 5.0.302.4601
+0 Breaking Changes, 0 Features added and 0 Bugs Fixed
+<table>undefined</table>
+
+## 5.0.302.4401
+0 Breaking Changes, 0 Features added and 2 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3088940'>3088940</a></td><td>Bug Fix</td><td>Fix resjson support in V1 targets</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3061092'>3061092</a></td><td>Bug Fix</td><td>Fairfax_B2C Extension in Portal</td></tr></table>
+
+## 5.0.302.4301
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3078850'>3078850</a></td><td>Bug Fix</td><td>MonitorChartV2: Converted v1 charts with multiple charts always clickthrough to first chart</td></tr></table>
+
 ## 5.0.302.4201
 0 Breaking Changes, 2 Features added and 4 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3078344'>3078344</a></td><td>Feature</td><td>[Partner] SQL Sev2 Unbundler File IO Contention</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3078179'>3078179</a></td><td>Bug Fix</td><td>[NotificationsPane]: Hide related events link</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3074612'>3074612</a></td><td>Feature</td><td>Enable LogicApps extension in Mooncake Azure portal</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3074015'>3074015</a></td><td>Bug Fix</td><td>[Ignite][ARTBrowse][Grid2] ARTBrowse grid is not getting height calculation correctly</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3066433'>3066433</a></td><td>Bug Fix</td><td>[ArmErrorsBlade] Raw Error json editor is only 2 rows high</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3064075'>3064075</a></td><td>Bug Fix</td><td>[ArtBrowse] Bottom of grid cut off</td></tr></table>
