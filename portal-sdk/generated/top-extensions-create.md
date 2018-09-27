@@ -4,6 +4,8 @@
 
 The create experience is one of the most important customer journeys within the Portal, which is why our designers  have spent many months testing and validating different design patterns.    Our most recent design incorporates a full screen blade and uses horizontal tabs to help organize different configuration settings into sections.  The goal is to develop a consistent, simple, intuitive, and quick customer experience across resources. 
 
+[Ask a ‘create’ question on stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-create)
+
 <a name="getting-started"></a>
 ## Getting Started
 
