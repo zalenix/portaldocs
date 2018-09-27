@@ -4,6 +4,8 @@
 
 **NOTE**: This section is only relevant to extension developers who are using [WARM](top-extensions-glossary.md) and [EV2](top-extensions-glossary.md) for deployment, or who plan to migrate to WARM and EV2 for deployment.
 
+## EV2 Integration with hosting service
+
 If you are not familiar with WARM and EV2, it is recommended that you read the documentation provided by their teams. If you have any questions about these systems please reach out to the respective teams.
 
 * Onboard WARM: [https://aka.ms/warm](https://aka.ms/warm)
@@ -37,23 +39,25 @@ In the basic scenario, extension developers can execute **ContentUnbundler** in 
     .
     <Import Project="$(PkgMicrosoft_Portal_Tools_ContentUnbundler)\build\Microsoft.Portal.Tools.ContentUnbundler.targets" />
     ```
-1. Add a ServiceGroupRootReplacements.json file to the root of your project (right next to your web.config file). The `ServiceGroupRootReplacements.json` is a JSON file that defines few properties which are used to generate artifacts that can be used to deploy the extension using EV2. You can define multiple objects in this file, each of those objects will map to a environment that you would like to deploy your extension to. Below are the properties that should be added to those objects.
+1. Add a ServiceGroupRootReplacements.json file to the root of your project (right next to your web.config file). 
 
-	**ServiceGroupRootReplacementsVersion**: The schema version of the json file. The current value is 1.
+    The `ServiceGroupRootReplacements.json` is a JSON file that defines few properties which are used to generate artifacts that can be used to deploy the extension using EV2. You can define multiple objects in this file, each of those objects will map to an environment to which  you would like to deploy your extension. Below are the properties that should be added to those objects.
+
+	**ServiceGroupRootReplacementsVersion**: The schema version of the json file. The current value is 2.
 
     **AzureSubscriptionId**: The Id of the subscription that contains the storage account.
 
-    **CertKeyVaultUri**: The keyvault uri that contains the certificate required by EV2.
+    **CertKeyVaultUri**: The keyvault uri that contains the certificate required by EV2. This will require you to set up keyvault.
 
     **ContactEmail**: The contact email of the extension owners. 
 
-    **TargetStorageConStringKeyVaultUri**: The keyvault Uri that contains the storage account connection string.
+    **TargetStorageConStringKeyVaultUri**: The keyvault Uri that contains the storage account connection string, account key, or SASToken. This will require you to set up keyvault.
 
-    **StorageAccountCredentialsType**: The type of credential provided in the "TargetStorageCredentialsKeyVaultUri" property.  Valid values are "ConnectionString", "AccountKey", or "SASToken".
+    **StorageAccountCredentialsType**: The type of credential provided in the `TargetStorageCredentialsKeyVaultUri` property.  Valid values are "ConnectionString", "AccountKey", or "SASToken".
 
     **TargetContainerName**: The name of the blob container to which to upload the zip files.
 
-    **PortalExtensionName**: The name of the extension as it is registered in the portal. For example Microsoft_Azure_Compute.
+    **PortalExtensionName**: The name of the extension as it is registered in the portal, for example, `Microsoft_Azure_Compute`.
 
     **FriendlyNames**: A string array that contains friendly names that are managed.
 
@@ -122,9 +126,9 @@ The following procedure describes how to set up the KeyVault that is required by
 
         1. The certificate that Ev2 will use to call the hosting service to initate a deployment.
 
-            **NOTE**: Azure ignores this certificate but it is still required. The extension is validated based on an allowed list of storage accounts and the storage credential you supply by using the  `TargetStorageConStringKeyVaultUri` and `TargetContainerName` settings.
+            **NOTE**: Azure ignores this certificate but it is still required. The extension is validated based on an allowed list of storage accounts and the storage credential you supply by using the   `PortalExtensionName`, `TargetStorageConStringKeyVaultUri` and `TargetContainerName` settings.
 
-        1. The credentials to the target storage account where the extension will be deployed. The format of the connection string is the default form `DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1};EndpointSuffix={3}`, which is the format provided from portal.azure.com.
+        1. The credentials to the target storage account where the extension will be deployed. The format of the connection string is the default form `DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1};EndpointSuffix={3}`, which is the format provided from `portal.azure.com`.
     
     1. Onboard to KeyVault
 
@@ -132,7 +136,7 @@ The following procedure describes how to set up the KeyVault that is required by
 
         1. Create a KeyVault. 
 
-        1. Grant Ev2 read access to your KeyVault
+        1. Grant Ev2 read access to your KeyVault.
 
         1. Create an Ev2 Certificate and add it to the KeyVault as a secret. In the following `csproj` config example, the name of the certificate in the KeyVault is `PortalHostingServiceDeploymentCertificate`.
         
@@ -146,16 +150,16 @@ The following procedure describes how to set up the KeyVault that is required by
         New-AzureServiceRollout -ServiceGroupRoot E:\dev\vso\AzureUX-PortalFX\out\ServiceGroupRoot -RolloutSpec E:\dev\vso\AzureUX-PortalFX\out\ServiceGroupRoot\RolloutSpec.24h.json -RolloutInfra Test -Verbose -WaitToComplete
     ```
 
-      Replace \<RolloutSpec> with the path to `RolloutSpec.24h.json` in the build.
+      Replace `\<RolloutSpec>` with the path to `RolloutSpec.24h.json` in the build.
 
 
     **NOTE**: The Ev2 Json templates perform either a 24-hour or a 6-hour rollout to each stage within the hosting service's safe deployment stages. Currently, the gating health check endpoint returns `true` in all cases, so really the check only provides a time gated rollout.  This means that you need to validate the health of the deployment in each stage, or cancel the deployment using the `Stop-AzureServiceRollout` command if something goes wrong. Once a stop is executed, you need to rollback the content to the previous version using the `New-AzureServiceRollout` command.  This document will be updated once health check rules are defined and enforced.  If you would like to implement your own health check endpoint you can customize the Ev2 json specs that are located in the NuGet.
     
-    To perform a [production deployment](https://microsoft.sharepoint.com/:o:/r/teams/WAG/EngSys/deploy/_layouts/15/WopiFrame.aspx?sourcedoc={ecdfb10d-7616-4efd-8499-f210056f808f}&action=edit&wd=target%28Ev2%20Documentation%2Eone%7CD41B1200%2DA6DE%2D4B4D%2DA019%2D8318B6F3A084%2FHOWTO%3A%20Deploy%20a%20service%7C15090502%2D728B%2D4C84%2DAD7B%2D52D403590963%2F%29), or deployment by using the [Warm UX](https://warm/newrelease/ev2), we assume that you have already onboarded to WARM. If not please see the following guidance from the Ev2 team [Ev2 WARM onboarding guidance](https://microsoft.sharepoint.com/:o:/r/teams/WAG/EngSys/deploy/_layouts/15/WopiFrame.aspx?sourcedoc=%7Becdfb10d-7616-4efd-8499-f210056f808f%7D&action=edit&wd=target%28%2F%2FEv2%20Documentation.one%7C3c50b523-523e-452c-b153-6bfac92f4926%2FStep-1%20Onboarding%20to%20PROD%20dependencies%7C4c8d1b1e-8e27-41c2-b36e-f60c3d25ab3e%2F%29). For questions please reach out to  <a href="mailto:ev2sup@microsoft.com?subject=Ev2 WARM onboarding">ev2sup@microsoft.com</a>.
+    To perform a production deployment as specified in [https://aka.ms/portalfx/howtodeploy](https://aka.ms/portalfx/howtodeploy), or deployment by using the Warm UX that is specified in [https://warm/newrelease/ev2](https://warm/newrelease/ev2), we assume that you have already onboarded to WARM. If not please see the Ev2 WARM onboarding guidance located at [https://aka.ms/portalfx/warmonboarding](https://aka.ms/portalfx/warmonboarding). For questions please reach out to  <a href="mailto:ev2sup@microsoft.com?subject=Ev2 WARM onboarding">ev2sup@microsoft.com</a>.
 
 ### What output is generated?
 
-The above configuration will result in a build output as required by Ev2 and the hosting service.
+The preceding  configuration will result in a build output as required by Ev2 and the hosting service. The following  is a sample of the output that gets generated.
 
   ```
   out\retail-amd64\ServiceGroupRoot
@@ -173,9 +177,7 @@ The above configuration will result in a build output as required by Ev2 and the
 
 ### Specify ContentUnbundler bake time
 
-The **ContentUnbundler** EV2 template files that are shipped are now formatted to accept customized monitor durations, which is the time to wait between each stage of a deployment, also known as bake time. To accommodate this, the files have been renamed from:
-`Blackforest.RolloutParameters.PT6H.json`
-to:
+The **ContentUnbundler** EV2 template files that are shipped are now formatted to accept customized monitor durations, which is the time to wait between each stage of a deployment, also known as bake time. To accommodate this, the files have been renamed from `Blackforest.RolloutParameters.PT6H.json` to 
 `Blackforest.RolloutParameters.{MonitorDuration}.json`.
 
 The monitor duration can be specified by updating the  `ServiceGroupRootReplacements.json` file to include a new array called "MonitorDuration", as in the following example.
@@ -201,8 +203,7 @@ If no monitor durations are specified, then the **ContentUnbundler** EV2 generat
 
 ### Skipping safe deployment
 
-**ContentUnbundler** EV2 templates now support generating deployment files that do not include a delay between stages.  This can be enabled by adding the key/value pair 
-`"SkipSafeDeployment": "true" ` in the corresponding environment in the `ServiceGroupRootReplacements.json` file.  The following example adds the SkipSafeDeployment key/value pair to the extension named `Microsoft_MyExtension` in the **MOONCAKE** environment.
+**ContentUnbundler** EV2 templates now support generating deployment files that do not include a delay between stages.  This can be enabled by adding the key/value pair `"SkipSafeDeployment": "true" ` in the corresponding environment in the `ServiceGroupRootReplacements.json` file.  The following example adds the SkipSafeDeployment key/value pair to the extension named `Microsoft_MyExtension` in the **MOONCAKE** environment.
 
   ```
     { 
@@ -227,7 +228,6 @@ To remove a friendly name, just run an EV2 deployment with the `Rolloutspec.Remo
 
 ### WARM Integration with hosting service
 
-  It is assumed that you have already onboarded to WARM if you will be deploying to production, or deploying by using the WARM UX. The production deployment instructions are  
-  specified in the site located at  [https://aka.ms/portalfx/warmproduction](https://aka.ms/portalfx/warmproduction), and the WARM UX deployment instructions are specified in the site located at [https://warm/newrelease/ev2](https://warm/newrelease/ev2).  
+  It is assumed that you have already onboarded to WARM if you will be deploying to production, or deploying by using the WARM UX. The production deployment instructions are    specified in the site located at  [https://aka.ms/portalfx/warmproduction](https://aka.ms/portalfx/warmproduction), and the WARM UX deployment instructions are specified in the site located at [https://warm/newrelease/ev2](https://warm/newrelease/ev2).  
   
   If you have not already onboarded to WARM, see the guidance from the Ev2 team that is located at [https://aka.ms/portalfx/warmonboarding](https://aka.ms/portalfx/warmonboarding). If you have questions, you can reach out to  <a href="mailto:ev2sup@microsoft.com?subject=Ev2 WARM onboarding">ev2sup@microsoft.com</a>.
