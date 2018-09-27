@@ -64,7 +64,7 @@ To allow developers to create new resources from Browse, the asset type can be a
 </AssetType>
 ```
 
-The Browse blade launches the Marketplace item, if specified; otherwise, it launches the Marketplace category blade for the specific menu item id. For example, `gallery/virtualMachines/recommended` is the id for the menu item that can be reached by `Virtual machines > Recommended`. To determine the right Marketplace category, reach out to the <a href="mailto:1store?subject=Marketplace menu item id">Marketplace team</a>. If neither the Marketplace item nor the Marketplace category blade is specified, the Add command will not be available.
+The Browse blade launches the Marketplace item, if specified; otherwise, it launches the Marketplace category blade for the specific menu item id. For example, `gallery/virtualMachines/recommended` is the id for the menu item that can be reached by `Virtual machines > Recommended`. To determine the right Marketplace category, reach out to the <a href="mailto:1store?subject=Marketplace%20menu%20item%20id">Marketplace team</a>. If neither the Marketplace item nor the Marketplace category blade is specified, the Add command will not be available.
 
 ### Customize columns
 

@@ -20,4 +20,4 @@ The playground provides a quick reference for both the options and the contract 
  
 You quickly see every property that can be sent to the control as an option, in addition to all of the properties that it can return.
 
-For specific playground extension issues or general playground extension feedback, please reach out to  <a href="mailto:ibizacontrols@microsoft.com?subject=Playground Extension issues or feedback">ibizacontrols@microsoft.com</a>.
+For specific playground extension issues or general playground extension feedback, please reach out to  <a href="mailto:ibizacontrols@microsoft.com?subject=Playground%20Extension%20issues%20or%20feedback">ibizacontrols@microsoft.com</a>.

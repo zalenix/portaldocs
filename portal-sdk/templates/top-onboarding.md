@@ -67,7 +67,7 @@ Once the name of the extension is finalized, it is time to register the extensio
 
 * For internal partners, the request to register an extension is a pull request, as specified in [top-extensions-publishing.md](top-extensions-publishing.md).
  
-* External teams can submit their requests by reaching out to the <a href="mailto:ibizafxpm@microsoft.com?subject=Onboarding Request: Add <extensionName> to the Portal&body=Extension Name:  <br><br>Company:  <br><br>Brand or Suite:  <br><br>Product or Component:  <br><br> URLs: <br><br>Production: main.<extensionName>.ext.<company>.com<br><br>  Contact info: <br><br>Business Contacts <br><br> Dev leads: <br><br> PROD on-call email for live site incidents: <br><br>">ibizafxpm team</a> with an onboarding request.
+* External teams can submit their requests by reaching out to the <a href="mailto:ibizafxpm@microsoft.com?subject=Onboarding%20Request:%20Add%20<extensionName>%20to%20the%20Portal&body=Extension%20Name:%20%20%0A%0A%Company:%20%20%0A%0ABrand%20or%20Suite:%20%20%0A%0AProduct%20or%20Component:%20%20%0A%0A%20URLs:%20%0A%0AProduction:%20main.<extensionName>.ext.<company>.com%0A%0A%20%20Contact%20info:%20%0A%0ABusiness%20Contacts%20%0A%0A%20Dev%20leads:%20%0A%0A%20PROD%20on-call%20email%20for%20live%20site%20incidents:%20%0A%0A">ibizafxpm team</a> with an onboarding request.
 
 * **NOTE**: Extension names must use standard extension name format, as in the example located at [portalfx-extensions-configuration-overview.md#name](portalfx-extensions-configuration-overview.md#name).
 
@@ -98,7 +98,7 @@ TODO - Example here - Add after the feature is ready (ETA is March or April)
 A few notes about this path:
 * Any user that receives this URL will be able to see your entry point.
 * Any users who receives a deep link to blades within your extension will be able to see that experience even without the feature flag
-* If the extension is integrated into the Marketplace, then that team has its own way of hiding Marketplace items. Contact <a href="mailto:1store@microsoft.com?subject=Integrating a New Extension into the Marketplace">1store@microsoft.com </a> for more details.
+* If the extension is integrated into the Marketplace, then that team has its own way of hiding Marketplace items. Contact <a href="mailto:1store@microsoft.com?subject=Integrating%20a%20New%20Extension%20into%20the%20Marketplace">1store@microsoft.com </a> for more details.
 
 ## Public preview or GA
 

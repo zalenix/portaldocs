@@ -74,7 +74,7 @@ The only limitation on developer-designed flag names is that they cannot contain
 
 <!--TODO:  Determine whether there are other extensions that can be used by developer extensions that require code changes in addition to the query string feature flag. -->
 
-Azure provides a support extension so that every resource that subscribes can assess its health, check the audit logs, get troubleshooting information, or open a support ticket.  Every extension should reach out to the <a href="mailto:AzSFAdoption@microsoft.com?subject=Onboarding with the Support team&body=Hello, I have a new extension that needs to opt in to to the features that Troubleshooting and Support provides.">Azure Self-Help Adoption Core Team at AzSFAdoption@microsoft.com</a> to opt in to the support system and UX integration.
+Azure provides a support extension so that every resource that subscribes can assess its health, check the audit logs, get troubleshooting information, or open a support ticket.  Every extension should reach out to the <a href="mailto:AzSFAdoption@microsoft.com?subject=Onboarding%20with%20the%20Support%20team&body=Hello,%20I%20have%20a%20new%20extension%20that%20needs%20to%20opt%20in%20to%20the%20features%20that%20Troubleshooting%20and%20Support%20provides.">Azure Self-Help Adoption Core Team at AzSFAdoption@microsoft.com</a> to opt in to the support system and UX integration.
 
 The developer needs to add code to the extension for each setting that will be used.  The following flags are used in coordination with the support extension, as specified in [top-blades-settings.md#support-settings](top-blades-settings.md#support-settings).
 

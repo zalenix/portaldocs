@@ -66,7 +66,7 @@ Perform the following steps to enable this.
     }
     ```
 
-1. To ensure backward compatibility, contact the <a href="mailto:ibizafxpm@microsoft.com?subject=[Manifest Caching] on &lt;extensionName&gt; &body=Hi, we have enabled manifest caching on &lt;extensionName&gt; please make the appropriate Portal change."> Portal team</a>  or submit a Work Item Request at the site located at  [https://aka.ms/cachemanifest](https://aka.ms/cachemanifest) so we can update our copy of the value.  
+1. To ensure backward compatibility, contact the <a href="mailto:ibizafxpm@microsoft.com?subject=[Manifest%20Caching]%20on%20&lt;extensionName&gt;&body=Hi, we have enabled manifest caching on &lt;extensionName&gt;.%20Please make the appropriate Portal change.">Portal team</a>  or submit a Work Item Request at the site located at  [https://aka.ms/cachemanifest](https://aka.ms/cachemanifest) so we can update our copy of the value.  
 
 <!-- TODO: Determine whether the following sentence is still required.
     When all extensions have moved to newer SDKs, we can eliminate it.
@@ -140,4 +140,4 @@ To verify that the browser serves the  extension entirely from the cache on subs
 ### Coordinating extension updates with the Portal team
 
 If you make some of these changes, you need to coordinate with the 
- <a href="mailto:ibizafxpm@microsoft.com?subject=[Caching Updates] on &lt;extensionName&gt; &body=Hi, we have enabled client-side caching on &lt;extensionName&gt; please make the appropriate Portal change."> Portal team</a> to make sure that we make corresponding changes for backward compatibility and safe deployment. When we receive this email, we  will stop sending your extension the sessionId part of the query string in the URL.
+ <a href="mailto:ibizafxpm@microsoft.com?subject=[Caching%20Updates]%20on%20&lt;extensionName&gt;&body=Hi,%20we%20have%20enabled%20client-side%20caching%20on%20&lt;extensionName&gt;.%20Please%20make%20the%20appropriate%20Portal%20change."> Portal team</a> to make sure that we make corresponding changes for backward compatibility and safe deployment. When we receive this email, we  will stop sending your extension the sessionId part of the query string in the URL.

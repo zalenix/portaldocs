@@ -50,7 +50,7 @@ Use a global notification when:
 
 	High value notifications might prevent service disruptions, or they may result from research you've done that leads you to believe a high percentage of users will act on your recommendation. Keep in mind that we'll be measuring conversion rates and may ask partners to remove recommendations with low uptake.
 
-If you think your notification warrants the global treatment, contact <a href="mailto:ibizafxpm@microsoft.com?subject=Inblade Notifications">Ibiza Fx PM</a>. We want to avoid spamming users, so the total number of global notifications will be limited. We'll want to collaborate to measure conversion rates, which will involve sharing and analyzing data from multiple sources. 
+If you think your notification warrants the global treatment, contact <a href="mailto:ibizafxpm@microsoft.com?subject=Inblade%20Notifications">Ibiza Fx PM</a>. We want to avoid spamming users, so the total number of global notifications will be limited. We'll want to collaborate to measure conversion rates, which will involve sharing and analyzing data from multiple sources. 
 
 
 [notification_area]: ../media/portalfx-ux-inblade-notifications/in-blade-notification.png

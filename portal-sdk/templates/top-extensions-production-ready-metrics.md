@@ -78,7 +78,7 @@ If any of the reliability computations are below the bar, please investigate and
 
 Each service or extension defines the critical P0 scenarios for their business. The extension is tested using these usability scenarios, with at least ten participants. A success rate of 80% and an experience score of 80% are required for a passing usability score.
 
-If you do not have access to a user research team, then please contact the <a href="mailto:ibiza-onboarding@microsoft.com?subject=Need User Research Team">Portal team</a> for assistance.
+If you do not have access to a user research team, then please contact the <a href="mailto:ibiza-onboarding@microsoft.com?subject=Need%20User%20Research%20Team">Portal team</a> for assistance.
 
 ###	Accessibility
 
@@ -90,7 +90,7 @@ For more information about accessibility, see [top-extensions-accessibility.md](
     
 ### Localization
 
-Nearly 70% of Azure users are from outside of the United States. Therefore, it is important to make Azure a globalized product. There are a few requirements under the "Internationalization" criteria that your service is required to support.  This is the same set of languages that are supported by Azure Portal for GA. For more information about internationalization requirements, see [http://aka.ms/azureintlrequirements](http://aka.ms/azureintlrequirements). For onboarding localization, please reach out to Bruno Lewin and the Internationalization team at <a href="mailto:ibiza-interntnl@microsoft.com?subject=Onboarding localization">Internationalization team</a>.
+Nearly 70% of Azure users are from outside of the United States. Therefore, it is important to make Azure a globalized product. There are a few requirements under the "Internationalization" criteria that your service is required to support.  This is the same set of languages that are supported by Azure Portal for GA. For more information about internationalization requirements, see [http://aka.ms/azureintlrequirements](http://aka.ms/azureintlrequirements). For onboarding localization, please reach out to Bruno Lewin and the Internationalization team at <a href="mailto:ibiza-interntnl@microsoft.com?subject=Onboarding%20localization">Internationalization team</a>.
 
 ###	Create Success Rate
     
