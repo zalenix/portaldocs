@@ -32,7 +32,7 @@ Learn how the framework is structured and how it is designed to run in multiple 
 
 * [Forms without edit scope](/portal-sdk/generated/top-editscopeless-forms.md) - *More intuitive APIs for building forms*
 
-* [EditableGrid V2](http://top-level/editable-grid.md) - *Improved APIs designed to work with new forms*
+* [EditableGrid V2](/portal-sdk/generated/top-extensions-grids.md) - *Improved APIs designed to work with new forms*
 
 * [Extension availability alerts](/portal-sdk/generated/top-extensions-telemetry-alerting.md) - *Get notified if your extension goes down*
 
@@ -204,7 +204,7 @@ Because your extension is Web code, you can make **AJAX** calls to various servi
 
 The Ibiza team provides limited testing support. Due to resource constraints the C# and Node.js frameworks are open source, so that partners can unblock themselves if the Ibiza team cannot make requested improvements as quickly as you might expect.
 
-* [How to choose between test frameworks](top-extensions-testing.md)
+* [How to choose between test frameworks](/portal-sdk/generated/top-extensions-testing.md)
 
 * [Unit testing support](/portal-sdk/generated/top-extensions-unit-test.md)
 
