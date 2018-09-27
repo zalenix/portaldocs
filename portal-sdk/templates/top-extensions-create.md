@@ -3,6 +3,8 @@
 
 The create experience is one of the most important customer journeys within the Portal, which is why our designers  have spent many months testing and validating different design patterns.    Our most recent design incorporates a full screen blade and uses horizontal tabs to help organize different configuration settings into sections.  The goal is to develop a consistent, simple, intuitive, and quick customer experience across resources. 
 
+[Ask a ‘create’ question on stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-create)
+
 ## Getting Started
 
 Download the most recent Portal SDK to access a Sample create.   This sample uses NoPDL and includes three essential tabs and two optional tabs.  All the styling and validation patterns are included and can be easily augmented to meet your needs.  The remainder of this document is intended to help you understand the key design principals and create a consistent experience.
