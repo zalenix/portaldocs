@@ -23,7 +23,7 @@ The next few sections provide an overview on what decorators are and how to use 
 
 All developers who install the Portal Framework SDK that is located at [http://aka.ms/portalfx/download](http://aka.ms/portalfx/download) also install SDK samples on their computers during the installation process. The source for the samples is located in the `Documents\PortalSDK\FrameworkPortal\Extensions\SamplesExtension\Extension\` folder.  
 
-First-party extension developers, i.e. Microsoft employees, can view the interfaces with jsdoc comments that are located at [http://aka.ms/portalfx/frameworkclient/content](http://aka.ms/portalfx/frameworkclient/content). External partners may need to contact <a href="mailto:ibizafxpm@microsoft.com?subject=TypeScript">ibizafxpm@microsoft.com</a> or <a href="mailto:ibiza-onboarding@microsoft.com?subject=TypeScript">ibiza-onboarding@microsoft.com</a> instead of using the internal sites that are in this document. 
+First-party extension developers, i.e. Microsoft employees, can view the interfaces with jsdoc comments that are located at [http://aka.ms/portalfx/frameworkclient/content](http://aka.ms/portalfx/frameworkclient/content). External partners may need to contact <a href="mailto:ibizafxpm@microsoft.com?subject=TypeScript">ibizafxpm@microsoft .com</a> or <a href="mailto:ibiza-onboarding@microsoft.com?subject=TypeScript">ibiza-onboarding@microsoft .com</a> instead of using the internal sites that are in this document. 
 
 The Ibiza team will export the jsdocs for the SDK to a public location. When this occurs, there will be a link to that location in  [/README.md#whats-new](/README.md#whats-new).
 

@@ -14,7 +14,7 @@ Onboarding a service, or developing a Portal extension, has three phases: onboar
 
 ## Kickoff Meeting
  
-There are lots of docs here. We recommend you send mail to <a href="mailto:ibiza-onboarding@microsoft.com?subject=Kickoff%20Meeting%20Request&body=My%20team%20would%20like%20to%20meet%20with%20you%20to%20learn%20about%20the%20Azure%20onboarding%20process.">ibiza-onboarding@microsoft.com</a> and request a kickoff meeting. Someone from our team will spend 30 minutes walking through the process at a high level. We can point you in the right direction regarding the latest patterns and practices. We can also answer any questions you have. Finally, we can talk about how the relationship between our teams is managed.
+There are lots of docs here. We recommend you send mail to <a href="mailto:ibiza-onboarding@microsoft.com?subject=Kickoff%20Meeting%20Request&body=My%20team%20would%20like%20to%20meet%20with%20you%20to%20learn%20about%20the%20Azure%20onboarding%20process.">ibiza-onboarding@microsoft .com</a> and request a kickoff meeting. Someone from our team will spend 30 minutes walking through the process at a high level. We can point you in the right direction regarding the latest patterns and practices. We can also answer any questions you have. Finally, we can talk about how the relationship between our teams is managed.
 
 {"gitdown": "include-file", "file": "../templates/top-extensions-onboarding-with-related-teams.md"}
 
@@ -67,7 +67,7 @@ Once the name of the extension is finalized, it is time to register the extensio
 
 * For internal partners, the request to register an extension is a pull request, as specified in [top-extensions-publishing.md](top-extensions-publishing.md).
  
-* External teams can submit their requests by reaching out to the <a href="mailto:ibizafxpm@microsoft.com?subject=Onboarding%20Request:%20Add%20&lt;extensionName&gt;%20to%20the%20Portal&body=Extension%20Name:%20%20%0A%0A%Company:%20%20%0A%0ABrand%20or%20Suite:%20%20%0A%0AProduct%20or%20Component:%20%20%0A%0A%20URLs:%20%0A%0AProduction:%20main.&lt;extensionName&gt;.ext.&lt;company&gt;.com%0A%0A%20%20Contact%20info:%20%0A%0ABusiness%20Contacts%20%0A%0A%20Dev%20leads:%20%0A%0A%20PROD%20on-call%20email%20for%20live%20site%20incidents:%20%0A%0A">ibizafxpm team</a> with an onboarding request.
+* External teams can submit their requests by reaching out to the <a href="mailto:ibizafxpm@microsoft.com?subject=Onboarding%20Request:%20Add%20&lt;extensionName&gt;%20to%20the%20Portal&body=Extension%20Name:%20%20%0A%0ACompany:%20%20%0A%0ABrand%20or%20Suite:%20%20%0A%0AProduct%20or%20Component:%20%20%0A%0A%20URLs:%20%0A%0AProduction:%20main.&lt;extensionName&gt;.ext.&lt;company&gt;.com%0A%0AContact%20info:%20%0A%0ABusiness%20Contacts%20%0A%0A%20Dev%20leads:%20%0A%0A%20PROD%20on-call%20email%20for%20live%20site%20incidents:%20%0A%0A">ibizafxpm team</a> with an onboarding request.
 
 * **NOTE**: Extension names must use standard extension name format, as in the example located at [portalfx-extensions-configuration-overview.md#name](portalfx-extensions-configuration-overview.md#name).
 
@@ -98,7 +98,7 @@ TODO - Example here - Add after the feature is ready (ETA is March or April)
 A few notes about this path:
 * Any user that receives this URL will be able to see your entry point.
 * Any users who receives a deep link to blades within your extension will be able to see that experience even without the feature flag
-* If the extension is integrated into the Marketplace, then that team has its own way of hiding Marketplace items. Contact <a href="mailto:1store@microsoft.com?subject=Integrating%20a%20New%20Extension%20into%20the%20Marketplace">1store@microsoft.com </a> for more details.
+* If the extension is integrated into the Marketplace, then that team has its own way of hiding Marketplace items. Contact <a href="mailto:1store@microsoft.com?subject=Integrating%20a%20New%20Extension%20into%20the%20Marketplace">1store@microsoft .com </a> for more details.
 
 ## Public preview or GA
 

@@ -166,4 +166,4 @@ For those of you who are already familiar with the environments and their proces
 
 1. Click the "**Create**" button to create the Pull Request.
 
-1. Send email to <a href="mailto:ibiza-onboarding@microsoft.com?subject=Pull%20Request%20link&body=Hello,%20I%20need%20you%20to%20approve%20a%20pull%20request%20and%20expedite%20the%20associated%20request.%20The%20pull%20request%20link%20is%20.%20.%20.">ibiza-onboarding@microsoft.com</a> that contains a link to the Pull Request to get the approval and expedite the request.
+1. Send email to <a href="mailto:ibiza-onboarding@microsoft.com?subject=Pull%20Request%20link&body=Hello,%20I%20need%20you%20to%20approve%20a%20pull%20request%20and%20expedite%20the%20associated%20request.%20The%20pull%20request%20link%20is%20.%20.%20.">ibiza-onboarding@microsoft .com</a> that contains a link to the Pull Request to get the approval and expedite the request.

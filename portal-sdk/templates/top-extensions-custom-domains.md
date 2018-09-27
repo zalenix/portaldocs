@@ -148,7 +148,7 @@ Links are separated into the following three sections.
 
 <sup>1</sup> Settings do not support **FwLinks** or blade references because they are download links, or they are base URLs to which parameter or path information is added dynamically at run-time.
 
-<sup>2</sup> Settings may not currently support the "blank" value, or they may not support values of the types other than the ones listed in the `Default Value` column. If you need to use them, reach out to  <a href="mailto:ibizapxfm@microsoft.com?subject=Settings%20and%20Links">ibizapxfm@microsoft.com</a> so that Ibiza can work with the owner team.
+<sup>2</sup> Settings may not currently support the "blank" value, or they may not support values of the types other than the ones listed in the `Default Value` column. If you need to use them, reach out to  <a href="mailto:ibizapxfm@microsoft.com?subject=Settings%20and%20Links">ibizapxfm@microsoft .com</a> so that Ibiza can work with the owner team.
 
 **NOTE**: Changing to support the unsupported values may result in a delay in delivery time.
 
