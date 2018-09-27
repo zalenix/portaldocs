@@ -19,7 +19,7 @@ Onboarding a service, or developing a Portal extension, has three phases: onboar
 <a name="phase-1-onboarding-kickoff-meeting"></a>
 ## Kickoff Meeting
  
-There are lots of docs here. We recommend you send mail to <a href="mailto:ibiza-onboarding@microsoft.com?subject=Kickoff%20Meeting%20Request&body=My%20team%20would%20like%20to%20meet%20with%20you%20to%20learn%20about%20the%20Azure%20onboarding%20process.">ibiza-onboarding@microsoft.com</a> and request a kickoff meeting. Someone from our team will spend 30 minutes walking through the process at a high level. We can point you in the right direction regarding the latest patterns and practices. We can also answer any questions you have. Finally, we can talk about how the relationship between our teams is managed.
+There are lots of docs here. We recommend you send mail to <a href="mailto:ibiza-onboarding@microsoft.com?subject=Kickoff%20Meeting%20Request&body=My%20team%20would%20like%20to%20meet%20with%20you%20to%20learn%20about%20the%20Azure%20onboarding%20process.">ibiza-onboarding@microsoft .com</a> and request a kickoff meeting. Someone from our team will spend 30 minutes walking through the process at a high level. We can point you in the right direction regarding the latest patterns and practices. We can also answer any questions you have. Finally, we can talk about how the relationship between our teams is managed.
 
 <a name="phase-1-onboarding-onboard-with-related-teams"></a>
 ## Onboard with related teams
@@ -33,7 +33,7 @@ Onboarding to Azure all up is a big task that spans many teams. The doc you are 
 
 1. Azure Marketing Team – Hamid Mahmood
 
-   To ensure that the business goals of the new extension or service are aligned with Azure's business strategy, please reach out to the Integrated Marketing Team or the L&R - Operations - GD&F team at <a href="mailto:ibiza-bmr@microsoft.com?subject=Azure%20Business%20Model%20Review">ibiza-bmr@microsoft.com</a>. Brian Hillger’s team and Stacey Ellingson’s team will guide you through the business model review process. The extension or service is not ready to be onboarded to Azure until its business model has received approval from those teams. Do not proceed with the next step until the business model has received approval.
+   To ensure that the business goals of the new extension or service are aligned with Azure's business strategy, please reach out to the Integrated Marketing Team or the L&R - Operations - GD&F team at <a href="mailto:ibiza-bmr@microsoft.com?subject=Azure%20Business%20Model%20Review">ibiza-bmr@microsoft .com</a>. Brian Hillger’s team and Stacey Ellingson’s team will guide you through the business model review process. The extension or service is not ready to be onboarded to Azure until its business model has received approval from those teams. Do not proceed with the next step until the business model has received approval.
 
 1. Support Team  – Michael Fosmire
 
@@ -59,9 +59,9 @@ Onboarding to Azure all up is a big task that spans many teams. The doc you are 
 
 1. Start the CSS onboarding process with the CSS team at least three months previous to public preview. This process may coincide with the following step. For more information about development phases, see [top-extensions-developmentPhases.md](top-extensions-developmentPhases.md).
 
-1. Decide on a name and URLs for the extension.  You may need to contact emailing <a href="mailto:ibiza-onboarding@microsoft.com?subject=Name%20and%20URLs%20for%20new%20Extension">ibiza-onboarding@microsoft.com</a> to ensure that the name and URL's are unique.
+1. Decide on a name and URLs for the extension.  You may need to contact emailing <a href="mailto:ibiza-onboarding@microsoft.com?subject=Name%20and%20URLs%20for%20new%20Extension">ibiza-onboarding@microsoft .com</a> to ensure that the name and URL's are unique.
 
-1. Schedule a UX feasibility review with the Ibiza team UX contact by emailing <a href="mailto:ibiza-onboarding@microsoft.com?subject=Extension%20Feasibility%20Review">ibiza-onboarding@microsoft.com</a>.  Many extensions have been made more successful by setting up early design reviews with the Azure Portal team. Taking the time to review the design gives extension owners an opportunity to understand how they can leverage Azure Portal design patterns, and ensure that the desired outcome is feasible. 
+1. Schedule a UX feasibility review with the Ibiza team UX contact by emailing <a href="mailto:ibiza-onboarding@microsoft.com?subject=Extension%20Feasibility%20Review">ibiza-onboarding@microsoft .com</a>.  Many extensions have been made more successful by setting up early design reviews with the Azure Portal team. Taking the time to review the design gives extension owners an opportunity to understand how they can leverage Azure Portal design patterns, and ensure that the desired outcome is feasible. 
 
 While the portal team cannot help directly with all of these factors, see [portalfx-extensions-contacts.md](portalfx-extensions-contacts.md) for a list of items with which we can assist you.
 
@@ -122,7 +122,7 @@ Once the name of the extension is finalized, it is time to register the extensio
 
 * For internal partners, the request to register an extension is a pull request, as specified in [top-extensions-publishing.md](top-extensions-publishing.md).
  
-* External teams can submit their requests by reaching out to the <a href="mailto:ibizafxpm@microsoft.com?subject=Onboarding%20Request:%20Add%20&lt;extensionName&gt;%20to%20the%20Portal&body=Extension%20Name:%20%20%0A%0A%Company:%20%20%0A%0ABrand%20or%20Suite:%20%20%0A%0AProduct%20or%20Component:%20%20%0A%0A%20URLs:%20%0A%0AProduction:%20main.&lt;extensionName&gt;.ext.&lt;company&gt;.com%0A%0A%20%20Contact%20info:%20%0A%0ABusiness%20Contacts%20%0A%0A%20Dev%20leads:%20%0A%0A%20PROD%20on-call%20email%20for%20live%20site%20incidents:%20%0A%0A">ibizafxpm team</a> with an onboarding request.
+* External teams can submit their requests by reaching out to the <a href="mailto:ibizafxpm@microsoft.com?subject=Onboarding%20Request:%20Add%20&lt;extensionName&gt;%20to%20the%20Portal&body=Extension%20Name:%20%20%0A%0ACompany:%20%20%0A%0ABrand%20or%20Suite:%20%20%0A%0AProduct%20or%20Component:%20%20%0A%0A%20URLs:%20%0A%0AProduction:%20main.&lt;extensionName&gt;.ext.&lt;company&gt;.com%0A%0AContact%20info:%20%0A%0ABusiness%20Contacts%20%0A%0A%20Dev%20leads:%20%0A%0A%20PROD%20on-call%20email%20for%20live%20site%20incidents:%20%0A%0A">ibizafxpm team</a> with an onboarding request.
 
 * **NOTE**: Extension names must use standard extension name format, as in the example located at [portalfx-extensions-configuration-overview.md#name](portalfx-extensions-configuration-overview.md#name).
 
@@ -156,7 +156,7 @@ TODO - Example here - Add after the feature is ready (ETA is March or April)
 A few notes about this path:
 * Any user that receives this URL will be able to see your entry point.
 * Any users who receives a deep link to blades within your extension will be able to see that experience even without the feature flag
-* If the extension is integrated into the Marketplace, then that team has its own way of hiding Marketplace items. Contact <a href="mailto:1store@microsoft.com?subject=Integrating%20a%20New%20Extension%20into%20the%20Marketplace">1store@microsoft.com </a> for more details.
+* If the extension is integrated into the Marketplace, then that team has its own way of hiding Marketplace items. Contact <a href="mailto:1store@microsoft.com?subject=Integrating%20a%20New%20Extension%20into%20the%20Marketplace">1store@microsoft .com </a> for more details.
 
 <a name="phase-3-deployment-public-preview-or-ga"></a>
 ## Public preview or GA

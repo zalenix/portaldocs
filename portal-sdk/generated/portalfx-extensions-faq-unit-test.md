@@ -199,7 +199,7 @@ Solution: Try the following:
 
 If you receive auth errors against the internal NPM feed see the "Connect to feed" instructions that are located at [https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=AzurePortalNpmRegistry&_a=feed](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=AzurePortalNpmRegistry&_a=feed). 
 
-If you are not a member of any of the Groups on https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=AzurePortalNpmRegistry&_a=settings&view=permissions reach out to <a href="mailto:nickha@microsoft.com?subject=Azure Portal Permissions &body=Hello, I am not a member of any of the groups that are listed in the AzurePortalNpmRegistry.">nickha@microsoft.com</a>.
+If you are not a member of any of the Groups on https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=AzurePortalNpmRegistry&_a=settings&view=permissions reach out to <a href="mailto:nickha@microsoft.com?subject=Azure Portal Permissions &body=Hello, I am not a member of any of the groups that are listed in the AzurePortalNpmRegistry.">nickha@microsoft .com</a>.
 
 ***
 

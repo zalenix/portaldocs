@@ -102,7 +102,7 @@ Subject: YOUR_EXTENSION_NAME: Azure performance office hours
 Location: Conf Room 42/46 (It is already reserved)
 ```
 
-You can also reach out to <a href="mailto:sewatson@microsoft.com?subject=&lt;extensionName&gt;:%20Azure%20performance%20office%20hours&body=Hello, I need some help with my extension.  Can I meet with you in Building 42, Conference Room 42/46 on Wednesday the <date> from 1:00 to 3:30?">Azure Extension Performance Team at sewatson@microsoft.com</a>.
+You can also reach out to <a href="mailto:sewatson@microsoft.com?subject=&lt;extensionName&gt;:%20Azure%20performance%20office%20hours&body=Hello, I need some help with my extension.  Can I meet with you in Building 42, Conference Room 42/46 on Wednesday the <date> from 1:00 to 3:30?">Azure Extension Performance Team at sewatson@microsoft .com</a>.
 
 <!--###  Extension 'InitialExtensionResponse' is above the bar
 

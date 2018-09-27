@@ -114,7 +114,7 @@ After developing and testing an extension for accessibility, if there are still 
 <a name="accessibility-accessibility-planning"></a>
 ## Accessibility Planning
 
-Ibiza has streamlined the process of handling accessibility issues. When we resolve bugs, we send out updates for folks to be aware of progress, in addition to regressing testing updates from vendor teams. Please reach out to  <a href="mailto:ibiza-accessibility@microsoft.com?subject=Accessibility">ibiza-accessibility@microsoft.com</a> if there are any other questions or concerns. 
+Ibiza has streamlined the process of handling accessibility issues. When we resolve bugs, we send out updates for folks to be aware of progress, in addition to regressing testing updates from vendor teams. Please reach out to  <a href="mailto:ibiza-accessibility@microsoft.com?subject=Accessibility">ibiza-accessibility@microsoft .com</a> if there are any other questions or concerns. 
 
 1. If a scenario results in multiple issues, you should  separate those issues in separate bugs. Bugs with multiple issues cannot be resolved reliably.
 
