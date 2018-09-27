@@ -2,7 +2,7 @@
 <a name="overview"></a>
 ## Overview
 
-The Portal uses an internal provider for authentication and authorization. The built-in cloud authentication provider uses Azure Active Directory (AAD), which also supports Microsoft Account users. If your extension needs to differentiate between AAD and MSA users, see [Access claims from the extension server](#access-claims-from-the-extension-server). If you are working on first-party extensions, but you are not sure that your extension scenarios comply with Azure terms and conditions, you may want to reach out to <a href="mailto:ibiza-lca@microsoft.com?subject=Compliance with Azure Terms and Conditions">ibiza-lca@microsoft.com</a>.
+The Portal uses an internal provider for authentication and authorization. The built-in cloud authentication provider uses Azure Active Directory (AAD), which also supports Microsoft Account users. If your extension needs to differentiate between AAD and MSA users, see [Access claims from the extension server](#access-claims-from-the-extension-server). If you are working on first-party extensions, but you are not sure that your extension scenarios comply with Azure terms and conditions, you may want to reach out to <a href="mailto:ibiza-lca@microsoft.com?subject=Compliance%20with%20Azure%20Terms%20and%20Conditions">ibiza-lca@microsoft.com</a>.
 
 During sign-in, the Portal obtains a token that contains claims that identify the signed-in user. The Portal also retrieves directories and subscriptions to which the user has access.
 
@@ -58,7 +58,7 @@ The following example enables `Contoso_Extension`, a sample extension that queri
 
 1. The extension owner creates an RDTask that is located at [http://aka.ms/portalfx/newextension](http://aka.ms/portalfx/newextension).  This is part of the process that onboards the AAD application with the Portal, as specified in [portalfx-extensions-onboarding-aad.md](portalfx-extensions-onboarding-aad.md).
 
-1. The AAD Onboarding Website is located at [https://aadonboardingsite.cloudapp.net/RegisterApp](https://aadonboardingsite.cloudapp.net/RegisterApp). After the Ibiza team creates the app, you can reach out to <a href="mailto:aadonboarding@microsoft.com?subject=Expediting the Onboarding of a new Extension">aadonboarding@microsoft.com</a> to expedite the process.
+1. The AAD Onboarding Website is located at [https://aadonboardingsite.cloudapp.net/RegisterApp](https://aadonboardingsite.cloudapp.net/RegisterApp). After the Ibiza team creates the app, you can reach out to <a href="mailto:aadonboarding@microsoft.com?subject=Expediting%20the%20Onboarding%20of%20a%20new%20Extension">aadonboarding@microsoft.com</a> to expedite the process.
 
 1. Submit the RDTask to register the AAD application into the Portal's extension configuration. This step can be done simultaneously with the previous step.
 
@@ -190,7 +190,7 @@ Tokens received from AAD contain a set of claims that are formatted as key-value
 
 They may include items like a list of directories that the user can  access from ARM, or a list of subscriptions that the user can access from ARM.
 
-Extensions that are not covered by this policy, like the ones that share PII with third-parties, do not have access to the token or its claims, because Microsoft can be sued for abuse or misuse of PII as specified in the  privacy policy. These exceptions need to be approved by reaching out to <a href="mailto:ibiza-lca@microsoft.com?subject=Personally-identifiable Information Policy">ibiza-lca@microsoft.com</a>.
+Extensions that are not covered by this policy, like the ones that share PII with third-parties, do not have access to the token or its claims, because Microsoft can be sued for abuse or misuse of PII as specified in the  privacy policy. These exceptions need to be approved by reaching out to <a href="mailto:ibiza-lca@microsoft.com?subject=Personally-identifiable%20Information%20Policy">ibiza-lca@microsoft.com</a>.
 
 <a name="access-claims-access-claims-from-the-client"></a>
 ### Access claims from the client

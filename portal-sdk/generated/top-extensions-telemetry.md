@@ -19,7 +19,7 @@ If you cannot access **Kusto**, verify whether  you have joined your team's stan
 
 The **Kusto** Explorer application that can be saved to your local computer is located at [http://kusto-us/ke/Kusto.Explorer.application](http://kusto-us/ke/Kusto.Explorer.application).  Queries can also be run against **Kusto**  by using the **Kusto.WebExplorer** that is located at [https://ailoganalyticsportal-privatecluster.cloudapp.net](https://ailoganalyticsportal-privatecluster.cloudapp.net).
 
-The following table contains dashboards that are used to review telemetry data.  If you do not have access to the ones you need, please contact <a href="mailto:ibiza-telemetry@microsoft.com?subject=Do not have dashboard access">Ibiza Telemetry</a>.
+The following table contains dashboards that are used to review telemetry data.  If you do not have access to the ones you need, please contact <a href="mailto:ibiza-telemetry@microsoft.com?subject=Do%20not%20have%20dashboard%20access">Ibiza Telemetry</a>.
 
 | Name        | Dashboard Link       | Documentation                           |
 | ----------- | -------------------- | --------------------------------------- |
@@ -31,11 +31,11 @@ The following table contains Ibiza PM contacts for various Portal Telemetry ques
 
 | Topic | Contact |
 | ----- | ------- |
-| Performance  | <a href="mailto:ibiza-perf@microsoft.com?subject=Performance and Reliability Telemetry">Ibiza Performance and Reliability Telemetry</a> |
-| Create Telemetry | <a href="mailto:ibiza-create@microsoft.com?subject=Extension Create Telemetry">Ibiza Create Telemetry</a> |
-| General telemetry questions |  <a href="mailto:ibiza-telemetry@microsoft.com?subject=Portal Telemetry">Ibiza Telemetry</a>  | 
-| Azure Fx Gauge Team  | <a href="mailto:azurefxg@microsoft.com?subject=Portal Gauge Telemetry">Ibiza Telemetry</a>  |
-| Updating alerts | <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration&body=My team would like to update the correlation rules for our extension.  The configuration to update is for alert <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafxhot@microsoft. com and azurefxg@microsoft. com</a> | 
+| Performance  | <a href="mailto:ibiza-perf@microsoft.com?subject=Performance%20and%20Reliability%20Telemetry">Ibiza Performance and Reliability Telemetry</a> |
+| Create Telemetry | <a href="mailto:ibiza-create@microsoft.com?subject=Extension%20Create%20Telemetry">Ibiza Create Telemetry</a> |
+| General telemetry questions |  <a href="mailto:ibiza-telemetry@microsoft.com?subject=Portal%20Telemetry">Ibiza Telemetry</a>  | 
+| Azure Fx Gauge Team  | <a href="mailto:azurefxg@microsoft.com?subject=Portal%20Gauge%20Telemetry">Ibiza Telemetry</a>  |
+| Updating alerts | <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension%20Alert%20Configuration&body=My%20team%20would%20like%20to%20update%20the%20correlation%20rules%20for%20our%20extension.%20%20The%20configuration%20to%20update%20is%20for%20alert%20<Alert_YOUR_EXTENSION_NAME>.%20%20The%20updated%20configuration%20is%20attached.">ibizafxhot@microsoft. com and azurefxg@microsoft. com</a> | 
 
 Ask Stackoverflow questions on: [https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza-telemetry](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza-telemetry)
 
@@ -81,7 +81,7 @@ The email to `azurefxg@microsoft.com` to update extension alerts should confirm 
 
 1. If you are using the **Kusto** Client SDK to connect, that  `ClientRequestProperties.Application` is set to an appropriate value. If you are using another access method that supports a similar feature, ensure that the extension connects to **Kusto**.
 
-1. Whether you need to create your own functions and tables, including write access, in **Kusto**. This means creating a dedicated database for your team with a suitable name that you supply, for which you will then be responsible for maintaining, including registering with the GDPR scanner, or other similar entities.  If you are not sure  whether you need your own functions or tables, answer this as "No" and file a new request with <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension Alert Configuration Changes&body=My team would like to update the correlation rules for our extension.  The configuration to update is <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafxhot@microsoft.com; azurefxg@microsoft.com</a>  if the answer changes.  The email to azurefxg@microsoft.com should contain the information in this list. 
+1. Whether you need to create your own functions and tables, including write access, in **Kusto**. This means creating a dedicated database for your team with a suitable name that you supply, for which you will then be responsible for maintaining, including registering with the GDPR scanner, or other similar entities.  If you are not sure  whether you need your own functions or tables, answer this as "No" and file a new request with <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension%20Alert%20Configuration%20Changes&body=My%20team%20would%20like%20to%20update%20the%20correlation%20rules%20for%20our%20extension.%20%20The%20configuration%20to%20update%20is%20<Alert_YOUR_EXTENSION_NAME>.%20%20The%20updated%20configuration%20is%20attached.">ibizafxhot@microsoft.com;%20azurefxg@microsoft.com</a>  if the answer changes.  The email to azurefxg@microsoft.com should contain the information in this list. 
 
 Once azurefxg@microsoft.com receives and approves the onboarding request, they will reach out to you.  When your identities are validated, they will enable your app ID with Viewer access for the requested databases. There is no propagation delay associated with enabling programmatic access.
 
@@ -273,7 +273,7 @@ There is a correspondence between the events and actions that are logged, and th
 
 The following actions and events are logged to **ClientTelemetry** table.
 
-If the rules that correlate table entries to alerts need to be updated for your extension, reach out to <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension%20Alert%20Configuration&body=My team would like to update the correlation rules for our extension.  The configuration to update is for alert <Alert_YOUR_EXTENSION_NAME>.  The updated configuration is attached.">ibizafxhot@microsoft .com; azurefxg@microsoft .com</a>  and attach the updated configuration. The email to azurefxg@microsoft.com should contain the information specified in [#programmatic-onboarding](#programmatic-onboarding). We will inform you when the updates are applied. 
+If the rules that correlate table entries to alerts need to be updated for your extension, reach out to <a href="mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com?subject=Extension%20Alert%20Configuration&body=My%20team%20would%20like%20to%20update%20the%20correlation%20rules%20for%20our%20extension.%20%20The%20configuration%20to%20update%20is%20for%20alert%20<Alert_YOUR_EXTENSION_NAME>.%20%20The%20updated%20configuration%20is%20attached.">ibizafxhot@microsoft .com; azurefxg@microsoft .com</a>  and attach the updated configuration. The email to azurefxg@microsoft.com should contain the information specified in [#programmatic-onboarding](#programmatic-onboarding). We will inform you when the updates are applied. 
 
 **NOTE**: These are the names of the actions, which is different from the names of the table columns.
 

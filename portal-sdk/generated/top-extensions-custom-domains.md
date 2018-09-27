@@ -38,13 +38,11 @@ It is recommended, but not required, that domain-based configuration class names
 
 Extensions that are called contain additional code that pushes values to the browser.  The sample code located at [Sample configuration](#sample-configuration) demonstrates the pattern that initializes server-side domain-based configuration.
 
-<!-- TODO:  Determine whether FYI: authentication is applicable here. -->
-
 **NOTE**: Settings like ARM endpoints are not typically candidates for domain-based configuration.
 
 If you and your team have an interest in custom domains, you should read this guide carefully to determine the settings and flags that define the look and feel of your custom sites. The Ibiza team relies on you to manage the extension registration and configuration processes.
 
-**NOTE**: All custom domains must be approved by <a href="mailto:ibiza-onboarding@microsoft.com?subject=Custom Domains">Leon Welicki and Adam Abdelhamed</a> before any work can commence on the extension. Please schedule time with them to discuss the details about the extension and get an approval. 
+**NOTE**: All custom domains must be approved by <a href="mailto:ibiza-onboarding@microsoft.com?subject=Custom%20Domains">Leon Welicki and Adam Abdelhamed</a> before any work can commence on the extension. Please schedule time with them to discuss the details about the extension and get an approval. 
 
 If you have any questions, reach out to Ibiza team at [https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza).
 
@@ -127,8 +125,6 @@ An exception will be thrown if the target of a `[Link]` attribute is not in one 
 
 Your cloud has the option of using configuration settings to override specific links that are displayed by the system. Overriding is optional, and in many cases no overrides are required. Where supported, settings use **FwLinks** instead of absolute URLs because they do not require the Shell to be redeployed if the  destination changes. In addition, **FwLinks** support the user’s in-product language selection, which may be  different from the browser’s default language.  For example, if the user has set the language in the Portal to Chinese, the extension should display Chinese-language pages.
 
-<!-- TODO:  Determine how to use "blank" and "same". Neither one is in the *.json files. This assumes that the "Extension value" column should continue to exist. -->
-
 Each link can be specified as one of the following five values.
 
 * A numeric **FwLink** ID
@@ -147,7 +143,7 @@ Each link can be specified as one of the following five values.
 
 * The word "same"
 
-    The default value should be used. If the default value changes, that change is automatically propagated to the extension.
+    The default value in the column from the table should be used. If the default value changes, that change is automatically propagated to the extension.
 
 Links are separated into the following three sections.
 
@@ -159,7 +155,7 @@ Links are separated into the following three sections.
 
 <sup>1</sup> Settings do not support **FwLinks** or blade references because they are download links, or they are base URLs to which parameter or path information is added dynamically at run-time.
 
-<sup>2</sup> Settings may not currently support the "blank" value, or they may not support values of the types other than the ones listed in the `Default Value` column. If you need to use them, reach out to  <a href="mailto:ibizapxfm@microsoft.com?subject=Settings and Links">ibizapxfm@microsoft.com</a> so that Ibiza can work with the owner team.
+<sup>2</sup> Settings may not currently support the "blank" value, or they may not support values of the types other than the ones listed in the `Default Value` column. If you need to use them, reach out to  <a href="mailto:ibizapxfm@microsoft.com?subject=Settings%20and%20Links">ibizapxfm@microsoft.com</a> so that Ibiza can work with the owner team.
 
 **NOTE**: Changing to support the unsupported values may result in a delay in delivery time.
 
@@ -237,8 +233,6 @@ By allowing the client code in extensions to gain access to configuration settin
 1. The client script loads the configuration from `window.fx.environment` that implements the `FxEnvironment` interface. To declare the new configuration entry, the file `FxEnvironmentExtensions.d.ts` in the `Definitions` folder should be updated for each property that is exposed to the client.
 
 In many cases, the domain-based configuration is needed in client-side **TypeScript**. The extension developer can use the following script to download these values to the client, although there a number of ways to accomplish the same effect.
-
-<!-- TODO:  Correct the code typos in the following sentence by locating the code. -->
 
 1. In `ExtensionExtensionDefinition.cs`, add the configuration class to the `ImportConstructor`.
 
@@ -443,8 +437,6 @@ namespace Microsoft.MyExtension.Configuration
 <a name="domain-based-configuration-branding-and-chrome"></a>
 ## Branding and chrome
 
-<!-- TODO: Determine whether the Custom Domain Questionnaire should include a screen shot of the new extension that is similar to the one described in this section. -->
-
 Custom domains can create or set their own branding and chrome by specifying settings and feature flags.  The titles and labels that are displayed are controlled by the settings in the extension and its configuration files, as in the following image.
 
 ![alt-text](../media/top-extensions-custom-domains/branding-and-chrome.png "Branding and Chrome")
@@ -475,8 +467,6 @@ The following feature flags impact dashboard settings that are not immediately d
 | Description                 | SEO text that is included in the page source that is not visible to the end-user | Microsoft Azure Management Portal | 
 
 * Tile Gallery
-
-<!-- TODO: Determine what the tile gallery has to do with custom domains and/ or the questionnaire template -->
 
 The tile gallery is displayed when the user clicks on `Edit dashboard`. It contains a collection of tiles that can be dragged and dropped on the dashboard. Available tiles can be searched by Category, by Type, by resource group, by tag, or by using the Search string.
 
@@ -724,7 +714,7 @@ The following steps generate the JSON for the dashboard.
 <a name="domain-based-configuration-update-community-clouds"></a>
 ## Update Community Clouds
 
-To add your custom domain to a community cloud, reach out to <a href="mailto:santhosh.somayajulu@microsoft.com?subject=Add Custom Domain to a Community Cloud&body=Hello, we would like to add our new custom domain to a community cloud.">Santhosh Somayajula</a> and we will set up meetings with you and your team to ensure that the custom domain is added to the appropriate environments.
+To add your custom domain to a community cloud, reach out to <a href="mailto:santhosh.somayajulu@microsoft.com?subject=Add%20Custom%20Domain%20to%20a%20Community%20Cloud&body=Hello,%20we%20would%20like%20to%20add%20our%20new%20custom%20domain%20to%20a%20community%20cloud.">Santhosh Somayajula</a> and we will set up meetings with you and your team to ensure that the custom domain is added to the appropriate environments.
 
 Community clouds are primarily in the Dogfood environment, the PROD environment, or some combination thereof.  Within those environments, there are two extensions currently that serve community clouds or custom domains.  The following table describes the extension, the environment, and the area.  All of the associated json files unless otherwise noted are located at [http://aka.ms/portalfx/domainbasedconfiguration](http://aka.ms/portalfx/domainbasedconfiguration).
 
@@ -856,7 +846,7 @@ The following three examples demonstrate how to use the settings that are associ
 
 The following template contains questions that your team answers previous to the granting of the custom domain. You should determine the settings and values for your extension previous to filling out the questionnaire, by reviewing the values in the tables located in the [Override links](#override-links), and  [Branding and chrome](#branding-and-chrome) sections. You may also want to use settings that were specified in [Default Dashboard](#default-dashboard), if you decide to create one.
 
-You and your team should reach out to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Custom Domains">Leon Welicki and Adam Abdelhamed</a> in the process of answering the questionnaire.
+You and your team should reach out to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Custom%20Domains">Leon Welicki and Adam Abdelhamed</a> in the process of answering the questionnaire.
 
 The main questions to answer, other than the settings and values as described in the [Override links](#override-links) and [Branding and chrome](#branding-and-chrome) sections, are the following.
 
@@ -886,7 +876,7 @@ The main questions to answer, other than the settings and values as described in
 
 1. Branding and Chrome Values
 
-    The unique values for settings and feature flags for your extension should be included in the  list specified in the [#branding-and-chrome](#branding-and-chrome) section.  You can make a copy of the tables, or you can reach out to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Custom Domains">Leon Welicki and Adam Abdelhamed</a>.
+    The unique values for settings and feature flags for your extension should be included in the  list specified in the [#branding-and-chrome](#branding-and-chrome) section.  You can make a copy of the tables, or you can reach out to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Custom%20Domains">Leon Welicki and Adam Abdelhamed</a>.
 
 <a name="domain-based-configuration-pull-request"></a>
 ## Pull Request

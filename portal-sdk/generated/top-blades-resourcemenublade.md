@@ -30,7 +30,7 @@ For more information about the APIs that support the Resource menu, see [portalf
 
 For answers to frequently asked questions, see [portalfx-extensions-faq-resourcemenu.md](portalfx-extensions-faq-resourcemenu.md).
 
-If there are any issues please reach out to <a href="mailto:ibiza-menu-blade@microsoft.com?subject=Issues with Resource Samples">Ibiza Menu Blade</a>.
+If there are any issues please reach out to <a href="mailto:ibiza-menu-blade@microsoft.com?subject=Issues%20with%20Resource%20Samples">Ibiza Menu Blade</a>.
 
 **What does the resource menu provide that a menu blade does not?**
 
@@ -119,7 +119,7 @@ public getMenuConfig(resourceInfo: MsPortalFx.Assets.ResourceInformation): MsPor
 }
 ```
 
-The following object is populated and sent to the `getMenuConfig` method. If you would like to see more properties added here, reach out to <a href="mailto:ibiza-menu-blade@microsoft.com?subject=Resource Sample Needs More Properties ">Ibiza Menu Blade</a>.
+The following object is populated and sent to the `getMenuConfig` method. If you would like to see more properties added here, reach out to <a href="mailto:ibiza-menu-blade@microsoft.com?subject=Resource%20Sample%20Needs%20More%20Properties%20">Ibiza Menu Blade</a>.
 
 ```ts
 /**

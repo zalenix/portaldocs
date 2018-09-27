@@ -57,7 +57,7 @@ When you developed an extension, you may have used the procedures specified in
 
     ![alt-text](../media/top-extensions-deployment/azurePortalMarketPlace.png "Azure Portal Marketplace")
 
-    * **PROD:** The Marketplace team accepts fully finished .azkpg files from your team and uploads them to Production to onboard the gallery package. Reach out to <a href="mailto:1store@microsoft.com?subject=Marketplace Onboarding Request&body=Hello, I would like to onboard the attached package to the production environment. The .azkpg package is named <packageName>. ">1store</a> with the zip file to have them install it.
+    * **PROD:** The Marketplace team accepts fully finished .azkpg files from your team and uploads them to Production to onboard the gallery package. Reach out to <a href="mailto:1store@microsoft.com?subject=Marketplace%20Onboarding%20Request&body=Hello,%20I%20would%20like%20to%20onboard%20the%20attached%20package%20to%20the%20production%20environment.%20The%20.azkpg%20package%20is%20named%20<packageName>. ">1store</a> with the zip file to have them install it.
     
     * **DOGFOOD:** Use AzureGallery.exe to upload items to DOGFOOD using the following command:
 
@@ -84,4 +84,3 @@ A Content Delivery Network (CDN) should be included as part of your solution whe
 
 If your extension server uses controllers, there is some flexibility in how they are used. Typically,  messages across long distances suffer more from latency than throughput. For example, total network latency is not as noticeable for one long steady stream of data as it is for many small individual requests for status on many storage accounts. This is because the steady stream of data that is a file upload would be more of a "delay expected" moment that is infrequent, whereas the status messages are needed right away and very often. Consequently, for file uploads, the extension would benefit from fewer servers that are strategically placed, but for messages, the extension benefits from working with more servers that are geolocated with your clients.
 
-<!-- TODO:  add "hotfix" info here for when developers need to walk their code into the 4 environments instead of waiting for the automated processes.-->
