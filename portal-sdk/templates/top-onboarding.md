@@ -67,7 +67,7 @@ Once the name of the extension is finalized, it is time to register the extensio
 
 * For internal partners, the request to register an extension is a pull request, as specified in [top-extensions-publishing.md](top-extensions-publishing.md).
  
-* External teams can submit their requests by reaching out to the <a href="mailto:ibizafxpm@microsoft.com?subject=Onboarding%20Request:%20Add%20<extensionName>%20to%20the%20Portal&body=Extension%20Name:%20%20%0A%0A%Company:%20%20%0A%0ABrand%20or%20Suite:%20%20%0A%0AProduct%20or%20Component:%20%20%0A%0A%20URLs:%20%0A%0AProduction:%20main.<extensionName>.ext.<company>.com%0A%0A%20%20Contact%20info:%20%0A%0ABusiness%20Contacts%20%0A%0A%20Dev%20leads:%20%0A%0A%20PROD%20on-call%20email%20for%20live%20site%20incidents:%20%0A%0A">ibizafxpm team</a> with an onboarding request.
+* External teams can submit their requests by reaching out to the <a href="mailto:ibizafxpm@microsoft.com?subject=Onboarding%20Request:%20Add%20&lt;extensionName&gt;%20to%20the%20Portal&body=Extension%20Name:%20%20%0A%0A%Company:%20%20%0A%0ABrand%20or%20Suite:%20%20%0A%0AProduct%20or%20Component:%20%20%0A%0A%20URLs:%20%0A%0AProduction:%20main.&lt;extensionName&gt;.ext.&lt;company&gt;.com%0A%0A%20%20Contact%20info:%20%0A%0ABusiness%20Contacts%20%0A%0A%20Dev%20leads:%20%0A%0A%20PROD%20on-call%20email%20for%20live%20site%20incidents:%20%0A%0A">ibizafxpm team</a> with an onboarding request.
 
 * **NOTE**: Extension names must use standard extension name format, as in the example located at [portalfx-extensions-configuration-overview.md#name](portalfx-extensions-configuration-overview.md#name).
 
