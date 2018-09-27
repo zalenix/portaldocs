@@ -36,7 +36,7 @@ Through simple integration, your customers can enable CDN on their Azure resourc
 **resourceId**: The id of your ARM resource. For example, if the Azure CDN blade is called from a Storage resource menu, the resourceId for a storage account would resemble the following string. 
 `/subscriptions/93456ca3-e4aa-4986-ab1c-98afe7a12345/resourceGroups/rg1/providers/Microsoft.ClassicStorage/storageAccounts/storagetest1`. 
 
-**location**: The geographic location of your resource, like "West US", or "East Asia". More information about extension versioning is specified in [top-extensions-hosting-service.md#upload-safe-deployment-config](top-extensions-hosting-service.md#upload-safe-deployment-config).
+**location**: The geographic location of your resource, like "West US", or "East Asia". More information about extension versioning is specified in [top-extensions-hosting-service.md#step-6-upload-safe-deployment-config](top-extensions-hosting-service.md#step-6-upload-safe-deployment-config).
 
 **originHostname**: The hostname of the service which is used as an origin for the created CDN endpoints. The hostname cannot contain slashes or protocols; instead it can contain only the domain name, like "storagetest1.blob.core.windows.net" or "webapptest2.azurewebsites.net".
 
