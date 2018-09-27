@@ -41,7 +41,7 @@ Most creates should have a minimum of three tabs: Basics, Tags, Review + create.
     
     Tagging resources during creates is now supported when using the Tags control.  Subscription and Resource Group level policies may require users to tag resources during create.  Not including the Tags control may block users from deploying resources.
 	
-* [Review + create](#review-+-create)
+* [Review + create](#review-create)
 
     The Review + create tab allows customers to review configured and defaulted settings before procuring resources.  Use the Summary control to organize and display key/value pairs before create.  Validations are performed before users can successfully submit.  For more information, see [#validations](#validations). 
 
@@ -75,7 +75,7 @@ The Tags control allows users to assign key value pairs to selected Resource Typ
 
 ![alt-text](../media/top-extensions-create/tags.png "Tags control")
 
-### Review + create
+### Review create
 
 This tab allows the user to verify all settings prior to submission, which ensures accuracy and reduces the need for user redeployments.  Use the summary control to help organize content from multiple tabs, as in the following image.
 
