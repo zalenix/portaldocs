@@ -75,7 +75,7 @@ The Tags control allows users to assign key value pairs to selected Resource Typ
 
 ![alt-text](../media/top-extensions-create/tags.png "Tags control")
 
-### Review + Create
+### Review + create
 
 This tab allows the user to verify all settings prior to submission, which ensures accuracy and reduces the need for user redeployments.  Use the summary control to help organize content from multiple tabs, as in the following image.
 
