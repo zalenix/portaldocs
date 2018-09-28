@@ -76,9 +76,9 @@ Only ibiza has the authority to mint tokens so in order to call external resours
 
 Here is an example that walks you through on how to enable Contoso_Extension, a sample extension, that can query Graph APIs from extension client :
 
-1. To query graph API's, an extension owner would submit [RDTask](http://aka.ms/portalfx/newextension) to onboard AAD Application with the portal.AAD Onboarding can take 5-6 weeks so we recommend extension developers to think about this scenarios early in the design phase.
+1. To query graph APIs, an extension owner would submit [RDTask](http://aka.ms/portalfx/newextension) to onboard AAD Application with the portal and send an e-mail to <a href="mailto:ibiza-onboarding@microsoft.com?subject=AAD onboarding&body=My team would like to onboard to AAD first party app.">ibiza-onboarding@microsoft.com</a> with information about your extension, required permissions and a link to the newly created work item. AAD Onboarding can take 5-6 weeks so we recommend extension developers to think about this scenarios early in the design phase.
 1. Once ibiza team has created the app in [AAD onboarding app](https://aadonboardingsite.cloudapp.net/) you can reach out to  [AAD Onboarding Team](mailto:aadonboarding@microsoft.com) to expedite the process.
-1. Submit [RDTask](http://aka.ms/portalfx/newextension) to register the AAD Applciation created in Step 1 into the portal's extension config. This step can be done in parallel to Step 2.
+1. Submit [RDTask](http://aka.ms/portalfx/newextension) to register the AAD Applciation created in Step 1 into the portal's extension config and send an e-mail to <a href="mailto:ibiza-onboarding@microsoft.com?subject=AAD onboarding&body=My team would like to onboard to AAD first party app.">ibiza-onboarding@microsoft.com</a> with information about your extension, required permissions and a link to the newly created work item. This step can be done in parallel to Step 2.
    In this case the resourceAccess config for your extension in portal would look something like the following:
 
     ```json
