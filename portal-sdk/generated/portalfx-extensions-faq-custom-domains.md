@@ -5,7 +5,7 @@
 <a name="frequently-asked-questions-site-is-not-accessible"></a>
 ### Site is not accessible
 
-*** My site is not accessible from a custom URL in DogFood
+***My site is not accessible from a custom URL in DogFood***
 
 SOLUTION:  Verify that the configuration setting  `Microsoft.Portal.Framework.FrameworkConfiguration.AllowedParentFrame` is correctly set in your extension’s configuration file. Your extension will reject calls from pages from domains and subdomains of the values listed here. For example, a setting value of `df.onecloud.azure-test.net` will NOT allow calls from pages hosted at `df-myExtension.onecloud.azure-test.net`, but a setting of `onecloud.azure-test.net` will allow calls from both `df.onecloud.azure-test.net` and `df-myExtension.onecloud.azure-test.net`.
 
@@ -27,5 +27,5 @@ SOLUTION: Default favorites are user-configurable and stored in `User Settings`.
 
 Yes, if the only difference between your Community Cloud and Production is branding the hiding of other extensions UI. 
 
-However, a major reuse restriction is that you must serve the same PDL to both Production and your Community Cloud. You can serve different domain-based configuration to the user’s browser,  as specified in `AuxDocs`, and you can review  `PortalContext.TrustedAuthorityHost` to determine the  environment from which the client is calling your extension.  However, you cannot change the behavior of server-to-server calls, and PDL is requested by servers.
+However, a major reuse restriction is that you must serve the same PDL to both Production and your Community Cloud. You can serve a different domain-based configuration to the user’s browser,  as specified in `AuxDocs`, and you can review  `PortalContext.TrustedAuthorityHost` to determine the  environment from which the client is calling your extension.  However, you cannot change the behavior of server-to-server calls, and PDL is requested by servers.
 
