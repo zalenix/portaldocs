@@ -1,8 +1,12 @@
-# Release Notes since 5/27/2018
+# Release Notes since 5/28/2018
 
 ## 5.0.302.4601
-0 Breaking Changes, 0 Features added and 0 Bugs Fixed
-<table>undefined</table>
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3104587'>3104587</a></td><td>Bug Fix</td><td>Turn off Advisor notification in production.</td></tr></table>
+
+## 5.0.302.4501
+0 Breaking Changes, 0 Features added and 1 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3009060'>3009060</a></td><td>Bug Fix</td><td>[Error tracker] [Template viewer] Failed to subscribe to changes for the selectable content.deployButton.selectable. Error: [Property Binding] Invalid source model - Model is missing property 'content.deployButton.selectable'.</td></tr></table>
 
 ## 5.0.302.4401
 0 Breaking Changes, 0 Features added and 2 Bugs Fixed
