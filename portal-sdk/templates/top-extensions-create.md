@@ -94,6 +94,10 @@ Include the `tagMap` of a resource from the `TagsByResource` control when constr
 This tab allows the user to verify all settings prior to submission, which ensures accuracy and reduces the need for user redeployments.  Use the summary control to help organize content from multiple tabs, as in the following image.
 
 ![alt-text](../media/top-extensions-create/reviewCreate.png "Review + create tab")
+	
+The extension should set up the create button, as in the following code.
+	
+{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Client/V2/Create/Engine/CreateArmEngineBlade.ts", "section": "docs#CreateButton"}
 
 #### Validations
 
