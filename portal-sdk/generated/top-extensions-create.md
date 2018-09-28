@@ -9,7 +9,9 @@ The create experience is one of the most important customer journeys within the 
 <a name="getting-started"></a>
 ## Getting Started
 
-Download the most recent Portal SDK from [http://aka.ms/portalfx/downloads](http://aka.ms/portalfx/downloads) to access a Sample create.   This sample uses NoPDL and includes three essential tabs and two optional tabs.  All the styling and validation patterns are included and can be easily augmented to meet your needs.  The remainder of this document is intended to help you understand the key design principles and create a consistent experience.
+**NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. 
+
+The  most recent Portal SDK located at [http://aka.ms/portalfx/downloads](http://aka.ms/portalfx/downloads) contains a sample create in `<dir>/Client/V2/Create/Engine/CreateArmEngineBlade.ts`. This sample uses NoPDL and includes three essential tabs and two optional tabs.  All the styling and validation patterns are included and can be easily augmented to meet your needs.  The remainder of this document is intended to help you understand the key design principles and create a consistent experience.
 
 <a name="design-principles"></a>
 ## Design Principles
@@ -38,7 +40,7 @@ The following image is an example of Create tab navigation pattern.
 <a name="tabs"></a>
 ## Tabs
 
-Most creates should have a minimum of three tabs: Basics, Tags, Review + create.  All other tabs are optional. Align labels above controls if the screen resolution < 700px.
+Most creates should have a minimum of three tabs: Basics, Tags, Review + create.  All other tabs are optional. The extension should align labels above controls if the screen resolution < 700px.
 
 * [Basics](#basics-tab-layout)
 
@@ -57,7 +59,7 @@ Most creates should have a minimum of three tabs: Basics, Tags, Review + create.
 
 * Descriptions
     
-    The top of each tab should include a brief description about the content on the page.  When possible  include 'Learn more' links to relevant docs.
+    The top of each tab should include a brief description about the content on the page.  When possible,  include 'Learn more' links to relevant docs.
 	
 * Project Details
 
@@ -78,6 +80,14 @@ When creating a sub resource, use the sub label property to add a 'Create new' l
 
 ![alt-text](../media/top-extensions-create/subCreate.png "Sub-create context pane")
 
+The sample that builds this blade  is in the following code.
+
+<!--
+Un-comment this when the new code source is available.
+
+gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Create/Engine/CreateArmEngineBlade.ts", "section": "docs#SubCreate"}
+-->
+
 <a name="tabs-tags"></a>
 ### Tags
 
@@ -85,12 +95,30 @@ The Tags control allows users to assign key value pairs to selected Resource Typ
 
 ![alt-text](../media/top-extensions-create/tags.png "Tags control")
 
+Include the `tagMap` of a resource from the `TagsByResource` control when constructing the parameters required by the ARM template, as in the following example.
+
+<!--
+Un-comment this when the new code source is available.
+
+gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Create/Engine/CreateArmEngineBlade.ts", "section": "docs#AddTagMapToARMParameters"}
+-->
+
+**NOTE**:  `tagMap` must be converted from an array to a `StringMap`.
+
 <a name="tabs-review-create"></a>
 ### Review create
 
 This tab allows the user to verify all settings prior to submission, which ensures accuracy and reduces the need for user redeployments.  Use the summary control to help organize content from multiple tabs, as in the following image.
 
 ![alt-text](../media/top-extensions-create/reviewCreate.png "Review + create tab")
+	
+The extension should set up the create button, as in the following code.
+	
+<!--
+    Un-comment this when the new code source is available.
+
+gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Create/Engine/CreateArmEngineBlade.ts", "section": "docs#CreateButton"}
+-->
 
 <a name="tabs-review-create-validations"></a>
 #### Validations
