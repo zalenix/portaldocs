@@ -75,7 +75,11 @@ When creating a sub resource, use the sub label property to add a 'Create new' l
 
 The sample that builds this blade  is in the following code.
 
- {"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Create/Engine/CreateArmEngineBlade.ts", "section": "docs#SubCreate"}
+<!--
+Un-comment this when the new code source is available.
+
+gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Create/Engine/CreateArmEngineBlade.ts", "section": "docs#SubCreate"}
+-->
 
 ### Tags
 
@@ -85,7 +89,11 @@ The Tags control allows users to assign key value pairs to selected Resource Typ
 
 Include the `tagMap` of a resource from the `TagsByResource` control when constructing the parameters required by the ARM template, as in the following example.
 
-	{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Create/Engine/CreateArmEngineBlade.ts", "section": "docs#AddTagMapToARMParameters"}
+<!--
+Un-comment this when the new code source is available.
+
+gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Create/Engine/CreateArmEngineBlade.ts", "section": "docs#AddTagMapToARMParameters"}
+-->
 
 **NOTE**:  `tagMap` must be converted from an array to a `StringMap`.
 
@@ -97,7 +105,11 @@ This tab allows the user to verify all settings prior to submission, which ensur
 	
 The extension should set up the create button, as in the following code.
 	
-{"gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Create/Engine/CreateArmEngineBlade.ts", "section": "docs#CreateButton"}
+<!--
+    Un-comment this when the new code source is available.
+
+gitdown": "include-section", "file": "../Samples/SamplesExtension/Extension/Client/V2/Create/Engine/CreateArmEngineBlade.ts", "section": "docs#CreateButton"}
+-->
 
 #### Validations
 
