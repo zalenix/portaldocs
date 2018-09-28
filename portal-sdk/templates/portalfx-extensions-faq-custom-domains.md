@@ -23,5 +23,5 @@ SOLUTION: Default favorites are user-configurable and stored in `User Settings`.
 
 Yes, if the only difference between your Community Cloud and Production is branding the hiding of other extensions UI. 
 
-However, a major reuse restriction is that you must serve the same PDL to both Production and your Community Cloud. You can serve different domain-based configuration to the user’s browser,  as specified in `AuxDocs`, and you can review  `PortalContext.TrustedAuthorityHost` to determine the  environment from which the client is calling your extension.  However, you cannot change the behavior of server-to-server calls, and PDL is requested by servers.
+However, a major reuse restriction is that you must serve the same PDL to both Production and your Community Cloud. You can serve a different domain-based configuration to the user’s browser,  as specified in `AuxDocs`, and you can review  `PortalContext.TrustedAuthorityHost` to determine the  environment from which the client is calling your extension.  However, you cannot change the behavior of server-to-server calls, and PDL is requested by servers.
 

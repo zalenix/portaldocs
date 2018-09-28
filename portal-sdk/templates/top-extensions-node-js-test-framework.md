@@ -1,10 +1,8 @@
 ## Overview
 
-**MsPortalFx-Test** is an end-to-end test framework that runs tests against the Microsoft Azure Portal. It tests extension interactions with user behavior, moreso than extension interactions with the Portal.  Its open source contribution model focuses on partner needs instead of internal Portal needs. It is distributed independently from the SDK to allow developers to develop tests in the same language as the extension.
+**MsPortalFx-Test** is an end-to-end test framework that is written in **TypeScript** abd  runs tests against the Microsoft Azure Portal. It tests extension interactions with user behavior, moreso than extension interactions with the Portal.  Its open source contribution model focuses on partner needs instead of internal Portal needs. It is distributed independently from the SDK to allow developers to develop tests in the same language as the extension.
 
 The test framework interacts with the Portal as a user would, and helps developers make performant and robust extensions when they decrease breaking changes to partner team CI.
-
-The test framework searches for a `config.json` file in the current working directory, which is typically the directory from which  the test is invoked.  If the file is not found, then it will check the parent folder for the file.
 
 ### General Architecture
 
@@ -196,4 +194,13 @@ If the version is incorrect, then you may need to adjust your path variables or 
 
 The full documentation is available on the npm site [https://aka.ms/portalfx/msportalfx-test](https://aka.ms/portalfx/msportalfx-test).  
 
-Additional examples are available in the source code located at [https://github.com/Azure/msportalfx-test/tree/master/test](https://github.com/Azure/msportalfx-test/tree/master/test). This requires access to Microsoft Azure github organization. If you do not have access to the Microsoft Azure github organization and you are part of Microsoft, you can join by following the instructions at [http://aka.ms/azuregithub](http://aka.ms/azuregithub).
+Additional examples are available in the source code located at [https://github.com/Azure/msportalfx-test/tree/master/test](https://github.com/Azure/msportalfx-test/tree/master/test).
+
+If you do not have access to the Microsoft Azure github organization and you are part of Microsoft, you can join by following the instructions at [http://aka.ms/azuregithub](http://aka.ms/azuregithub).
+
+
+### Contributing
+
+Contributions to improve the test framework are encouraged.  If you develop a feature/fix a bug/etc that you feel would be useful to other users of the test framework then please submit a pull request to the Github repository located at [https://aka.ms/portalfx/msportalfx-test](https://aka.ms/portalfx/msportalfx-test).   In order to access the source code and submit a pull request, you need to be part of the Microsoft Azure Github organization.  You can check by using the site located at [http://aka.ms/azuregithub](http://aka.ms/azuregithub).
+
+For detailed instructions, please view the full documentation on the npm site located at  [https://aka.ms/portalfx/msportalfx-test](https://aka.ms/portalfx/msportalfx-test).

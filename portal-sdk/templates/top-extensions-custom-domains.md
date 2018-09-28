@@ -202,12 +202,8 @@ The values listed in the "Extension value" column are recommended values, althou
 | -------------------- | ------------ | ---------- |
 | classicPortal<sup>1</sup>	   | https://manage.windowsazure.com/	| same |
 | contactSupport |	[https://go.microsoft.com/fwLink/?LinkID=733312](https://go.microsoft.com/fwLink/?LinkID=733312)	 | same |
-| html5StorageExceededHelp |	[https://go.microsoft.com/fwLink/?LinkID=522344](https://go.microsoft.com/fwLink/?LinkID=522344)	 | same |
-| javaScriptDisabledHelp |	[https://go.microsoft.com/fwLink/?LinkID=530268](https://go.microsoft.com/fwLink/?LinkID=530268)	 | same |
-| noHtml5StorageHelp |	[https://go.microsoft.com/fwLink/?LinkID=522344](https://go.microsoft.com/fwLink/?LinkID=522344)	 | same |
 | portalVideo |	[https://go.microsoft.com/fwLink/?LinkID=394684](https://go.microsoft.com/fwLink/?LinkID=394684) |	 blank |
 | supportedBrowserMatrix |	[https://go.microsoft.com/fwLink/?LinkID=394683](https://go.microsoft.com/fwLink/?LinkID=394683)	 | same |
-| unsupportedLayoutHelp	 |[https://go.microsoft.com/fwLink/?LinkID=394683](https://go.microsoft.com/fwLink/?LinkID=394683)	 | same |
 
 ## Expose configuration settings
 
@@ -223,7 +219,7 @@ By allowing the client code in extensions to gain access to configuration settin
 
 In many cases, the domain-based configuration is needed in client-side **TypeScript**. The extension developer can use the following script to download these values to the client, although there a number of ways to accomplish the same effect.
 
-1. In `ExtensionExtensionDefinition.cs`, add the configuration class to the `ImportConstructor`.
+1. In `ExtensionDefinition.cs`, add the configuration class to the `ImportConstructor`.
 
 1. Override `IReadOnlyDictionary&lt;string, object&gt; GetExtensionConfiguration(PortalRequestContext context)`  to extend the environment object that is returned to the client, as in the following code.
 
@@ -249,9 +245,7 @@ In many cases, the domain-based configuration is needed in client-side **TypeScr
 
 ### Configuration procedure
 
-<!-- TODO:  Validate the address on the sample source. -->
-
-In this  procedure, a Portal extension named `MyExtension` is customized to add a new configuration named "PageSize". 
+In this procedure, a Portal extension named `MyExtension` is customized to add a new configuration named "PageSize". 
 
 **NOTE**: In this discussion, `<dir>` is the `SamplesExtension\Extension\` directory, and  `<dirParent>`  is the `SamplesExtension\` directory, based on where the samples were installed when the developer set up the SDK. 
 
@@ -497,7 +491,6 @@ When a new user visits your Community Cloud for the first time, the system place
 
 A list of items is as follows.
  
- <!-- TODO:  Determine whether  AzureActiveDirectoryQuickStart  and  Licenses   are implemented yet  -->
 | Extension Name    | Asset ID                       | 
 | ----------------- | ------------------------------ | 
 | MICROSOFT_AAD_IAM | AzureActiveDirectory           |               
@@ -522,7 +515,7 @@ The following steps generate the JSON for the dashboard.
 
 1. Inspect the JSON to confirm that it contains no user-specific values, because this dashboard will be applied to all new users.
 
-1. Paste the following `AzureActiveDirectoryDashboardv2.json` File from AAD into the Default Dashboard JSON. The file is also located at [top-extensions-codestub.md](top-extensions-codestub.md). 
+1. Paste the following `AzureActiveDirectoryDashboardv2.json` File from AAD into the Default Dashboard JSON. 
 
     ```
     {
