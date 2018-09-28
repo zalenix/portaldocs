@@ -308,7 +308,7 @@ However, if a user from Singapoer loads the extension then the user will be serv
 Extensions that intend to use extension hosting service should publish the extracted deployment artifacts (zip file) that are generated during the build along with config.json to a public endpoint. 
 Make sure that all the zip files and config.json are at the same level.
 
-Once you have these files available on a public endpoint, file a request to register this endpoint using the following [link](https://aka.ms/extension-hosting-service/onboarding).
+Once you have these files available on a public endpoint, file a request to register this endpoint using the following [link](https://aka.ms/extension-hosting-service/onboarding) and send an e-mail to <a href="mailto:ibiza-onboarding@microsoft.com?subject=Hosting Service onboarding&body=My team would like to onboard to the Extension Hosting Service.">ibiza-onboarding@microsoft.com</a> with information about the storage account, the uploaded files and a link to the newly created work item.
 
 To onboard the extenion, please provide following information in RDTask:
 
@@ -324,7 +324,7 @@ For example, https://mybizaextensiondf.blob.core.windows.net/extension
 <Storage account that will be used to serve zip files for PROD> 
 For example, https://mybizaextensionprod.blob.core.windows.net/extension
 
-Please submit your onboarding request [here](https://aka.ms/extension-hosting-service/onboarding)
+Please submit your onboarding request [here](https://aka.ms/extension-hosting-service/onboarding) and send an e-mail to <a href="mailto:ibiza-onboarding@microsoft.com?subject=Hosting Service onboarding&body=My team would like to onboard to the Extension Hosting Service.">ibiza-onboarding@microsoft.com</a> with information about the storage account, the uploaded files and a link to the newly created work item.
 
 Here is the SLA for onboarding
 
