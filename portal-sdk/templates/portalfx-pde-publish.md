@@ -31,8 +31,8 @@ To share your PDE with other teams please follow these guidelines:
     <ItemGroup>
         <!-- update the following to pull the PDE from your official build-->
         <Content Include="$(RepoRoot)\src\SDK\Extensions\HubsExtension\TypeScript\HubsExtension\HubsExtension.pde">
-	<!-- update the following to pull in any *.d.ts files that consumers of your extensions PDE will require -->
-	<Content Include="$(RepoRoot)\src\SDK\Extensions\HubsExtension\TypeScript\HubsExtension\ForExport\*.d.ts">
+        <!-- update the following to pull in any *.d.ts files that consumers of your extensions PDE will require -->
+        <Content Include="$(RepoRoot)\src\SDK\Extensions\HubsExtension\TypeScript\HubsExtension\ForExport\*.d.ts">
         <TargetPath>Client\_extensions\Name</TargetPath>
         </Content>
         <!-- include an install.ps1 to both set appropriate build action on pde and to pop documents-->
