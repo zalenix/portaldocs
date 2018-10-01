@@ -11,6 +11,7 @@ To share your PDE with other teams please follow these guidelines:
     - the *.pde file is to be delivered under `/Client/_extensions/<Name>` 
   
     The following nuproj snippet can be used to customimze for your extensions NuGet creation. Most teams name it `Microsoft.Portal.Extensions.<Name>` to be consistent with the produced package name
+    - all *.d.ts files to be delivered under `/Client/_extensions/<Name>/*.d.ts` 
     
     ```xml
 
