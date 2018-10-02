@@ -29,6 +29,7 @@ This tutorial will provide you step by step instructions for creating a UnitTest
 
 +-- Extension
 +-- Extension.UnitTests
+|   +-- test/CreateBlade.test.ts
 |   +-- test/ResourceOverviewBlade.test.ts
 |   +-- test-main.js
 |   +-- karma.conf.js
@@ -111,7 +112,15 @@ Note:
 
 #### Add a test
 
-Add a test to ./test/ResourceOverviewBlade.test.ts.  You can modify this example for your own extension
+Add a CreateBlade test to ./test/CreateBlade.test.ts.  This demonstrates how to provide the provisioning context to your CreateBlade that portal would normally provide via your gallery package. You can modify this example for your own extension.
+
+```typescript
+    
+{"gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/test/CreateBlade.test.ts"}
+
+```
+
+Add a TemplateBlade test to ./test/ResourceOverviewBlade.test.ts.  You can modify this example for your own extension.
 
 ```typescript
     
