@@ -3,6 +3,84 @@
 * To ask a question about breaking changes [use this](https://aka.ms/ask/ibiza-breaking-change)  
 
 
+## 5.0.302.4801
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2996660'>2996660</a></td><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2996660'>[Performance] Prevent extension authors from using <TypeScriptRemoveComments>true</TypeScriptRemoveComments> in their .csproj files (as it removes bundler hints)</a><p><div><p class=MsoNormal><font face="Segoe UI, sans-serif"><span style="font-size:10.5pt;">We've recently
+discovered some partners are building their TypeScript with the
+&quot;</span>TypeScriptRemoveComments<span style="font-size:10.5pt;">&quot; compiler switch set to &quot;true&quot;.</span></font></p>
+
+<p class=MsoNormal><span style="font-size:10.5pt;font-family:&quot;Segoe UI&quot;, sans-serif;">This is&nbsp;</span></p>
+
+<ol style="margin-top:0in;" start=1 type=A>
+ <li class=MsoListParagraph style="margin-left:0in;"><span style="font-size:10.5pt;font-family:&quot;Segoe UI&quot;,sans-serif;">an unnecessary step because our minifier will remove
+     comments anyway at bundling time, and&nbsp;</span></li>
+ <li class=MsoListParagraph style="margin-left:0in;"><span style="font-size:10.5pt;font-family:&quot;Segoe UI&quot;,sans-serif;">hurtful for performance as it removes our
+     build-time-generated bundling hints, like<br>
+     </span><span style="font-size:10.0pt;font-family:Consolas;color:#70AD47;background:black;">/// &lt;amd-bundling root=&quot;true&quot;
+     priority=&quot;0&quot; /&gt;</span><span style="font-size:10.5pt;font-family:&quot;Segoe UI&quot;,sans-serif;"></span></li>
+</ol>
+
+<p class=MsoListParagraph><span style="font-size:10.5pt;font-family:&quot;Segoe UI&quot;, sans-serif;">which means the
+bundler won't be able to use multiple optimizations we generate for your code.</span></p>
+
+<p class=MsoNormal><span style="font-size:10.5pt;font-family:&quot;Segoe UI&quot;, sans-serif;">&nbsp;</span></p>
+
+<p class=MsoNormal><span style="font-size:10.5pt;font-family:&quot;Segoe UI&quot;, sans-serif;">The fix is simply to
+change</span></p>
+
+<p class=MsoNormal style="text-indent:.5in;"><span style="font-size:10.0pt;font-family:Consolas;color:white;background:black;">&lt;TypeScriptRemoveComments&gt;true&lt;/TypeScriptRemoveComments&gt;</span><span style="font-size:10.0pt;font-family:Consolas;color:white;"></span></p>
+
+<p class=MsoNormal><span style="font-size:10.5pt;font-family:&quot;Segoe UI&quot;, sans-serif;">to</span></p>
+
+<p class=MsoNormal style="text-indent:0.5in;"><span style="font-size:10pt;font-family:Consolas;color:white;background:black;">&lt;TypeScriptRemoveComments&gt;false&lt;/TypeScriptRemoveComments&gt;</span><span style="font-size:10pt;font-family:Consolas;color:white;"></span></p><div><span style="font-size:10pt;font-family:Consolas;color:white;background:black;"><br></span></div>
+
+<p class=MsoNormal><span style="font-size:10.5pt;font-family:&quot;Segoe UI&quot;, sans-serif;">in your .csproj file.</span></p>
+
+<p class=MsoNormal><span style="font-size:10.5pt;font-family:&quot;Segoe UI&quot;, sans-serif;">&nbsp;</span></p><p class=MsoNormal><span style="font-family:&quot;Segoe UI&quot;, sans-serif;font-size:10.5pt;text-indent:0.5in;">It’s important to your
+extension’s perf that the ‘removeComments’ TypeScript feature not be
+used.&nbsp; To help fix all extensions quickly, we now detect this bad pattern
+at compile-time:</span></p><p class=MsoNormal style="text-indent:.5in;"><span style="background-color:rgb(0, 0, 0);color:rgb(255, 255, 255);font-family:Consolas;font-size:13.3333px;">&lt;TypeScriptRemoveComments&gt;true&lt;/TypeScriptRemoveComments&gt;</span></p>
+
+<p class=MsoNormal style="margin-left:1.0in;"></p><p class=MsoNormal><span style="font-family:&quot;Segoe UI&quot;, sans-serif;font-size:10.5pt;">and issue a compile error that
+reads:</span></p><p class=MsoNormal><font color="#ff0000" face=Consolas><span style="font-size:13.3333px;">Encountered &lt;TypeScriptRemoveComments&gt;true&lt;/TypeScriptRemoveComments&gt; in your .csproj file.</span></font></p><p class=MsoNormal><font color="#ff0000" face=Consolas><span style="font-size:13.3333px;">This is not supported because it removes our build-time-generated bundler hints,</span></font></p><p class=MsoNormal><font color="#ff0000" face=Consolas><span style="font-size:13.3333px;">like &quot;/// &lt;amd-bundling root=&quot;true&quot; priority=&quot;0&quot; /&gt;&quot;,</span></font></p><p class=MsoNormal><font color="#ff0000" face=Consolas><span style="font-size:13.3333px;">which means the bundler won't be able to use multiple optimizations we generate for</span></font></p><p class=MsoNormal><font color="#ff0000" face=Consolas><span style="font-size:13.3333px;">your code and your extension's load time and blade load times will be impacted.</span></font></p><p class=MsoNormal><font color="#ff0000" face=Consolas><span style="font-size:13.3333px;">The bundler's minifier will still remove comments for you in production code.</span></font></p><p class=MsoNormal><span style="font-size:13.3333px;color:rgb(255, 0, 0);font-family:Consolas;">Please update .csproj files to use&nbsp;</span><span style="color:rgb(255, 0, 0);font-family:Consolas;font-size:13.3333px;">&lt;TypeScriptRemoveComments&gt;true&lt;/TypeScriptRemoveComments&gt;</span><span style="font-size:13.3333px;color:rgb(255, 0, 0);font-family:Consolas;">.</span></p><p class=MsoNormal></p></td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2991037'>2991037</a></td><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2991037'>[Performance] Prevent extension authors from using {"removeComments": true} in their tsconfig.json files (as it removes bundler hints)</a><p><div><p class=MsoNormal><span style="font-size:10.5pt;font-family:&quot;Segoe UI&quot;, sans-serif;">We've recently
+discovered some partners are building their TypeScript with the
+&quot;removeComments&quot; compiler switch set to &quot;true&quot;.</span></p>
+
+<p class=MsoNormal><span style="font-size:10.5pt;font-family:&quot;Segoe UI&quot;, sans-serif;">This is&nbsp;</span></p>
+
+<ol style="margin-top:0in;" start=1 type=A>
+ <li class=MsoListParagraph style="margin-left:0in;"><span style="font-size:10.5pt;font-family:&quot;Segoe UI&quot;,sans-serif;">an unnecessary step because our minifier will remove
+     comments anyway at bundling time, and&nbsp;</span></li>
+ <li class=MsoListParagraph style="margin-left:0in;"><span style="font-size:10.5pt;font-family:&quot;Segoe UI&quot;,sans-serif;">hurtful for performance as it removes our
+     build-time-generated bundling hints, like<br>
+     </span><span style="font-size:10.0pt;font-family:Consolas;color:#70AD47;background:black;">/// &lt;amd-bundling root=&quot;true&quot;
+     priority=&quot;0&quot; /&gt;</span><span style="font-size:10.5pt;font-family:&quot;Segoe UI&quot;,sans-serif;"></span></li>
+</ol>
+
+<p class=MsoListParagraph><span style="font-size:10.5pt;font-family:&quot;Segoe UI&quot;, sans-serif;">which means the
+bundler won't be able to use multiple optimizations we generate for your code.</span></p>
+
+<p class=MsoNormal><span style="font-size:10.5pt;font-family:&quot;Segoe UI&quot;, sans-serif;">&nbsp;</span></p>
+
+<p class=MsoNormal><span style="font-size:10.5pt;font-family:&quot;Segoe UI&quot;, sans-serif;">The fix is simply to
+change</span></p>
+
+<p class=MsoNormal style="text-indent:.5in;"><span style="font-size:10.0pt;font-family:Consolas;color:white;background:black;">&quot;removeComments&quot;: true</span><span style="font-size:10.0pt;font-family:Consolas;color:white;"></span></p>
+
+<p class=MsoNormal><span style="font-size:10.5pt;font-family:&quot;Segoe UI&quot;, sans-serif;">to</span></p>
+
+<p class=MsoNormal style="text-indent:.5in;"><span style="font-size:10.0pt;font-family:Consolas;color:white;background:black;">&quot;removeComments&quot;: false</span><span style="font-size:10.0pt;font-family:Consolas;color:white;"></span></p>
+
+<p class=MsoNormal><span style="font-size:10.5pt;font-family:&quot;Segoe UI&quot;, sans-serif;">in your tsconfig.json
+file.</span></p>
+
+<p class=MsoNormal><span style="font-size:10.5pt;font-family:&quot;Segoe UI&quot;, sans-serif;">&nbsp;</span></p><p class=MsoNormal><span style="font-family:&quot;Segoe UI&quot;, sans-serif;font-size:10.5pt;text-indent:0.5in;">It’s important to your
+extension’s perf that the ‘removeComments’ TypeScript feature not be
+used.&nbsp; To help fix all extensions quickly, we now detect this bad pattern
+at compile-time:</span></p><p class=MsoNormal style="text-indent:.5in;"><span style="font-size:10.0pt;font-family:Consolas;color:white;background:black;">&quot;removeComments&quot;: true</span><span style="font-size:10.0pt;font-family:Consolas;color:white;"></span></p>
+
+<p class=MsoNormal style="margin-left:1.0in;"></p><p class=MsoNormal><span style="font-family:&quot;Segoe UI&quot;, sans-serif;font-size:10.5pt;">and issue a compile error that
+reads:</span></p><p class=MsoNormal><font color="#ff0000" face=Consolas><span style="font-size:13.3333px;">Microsoft.Portal.Framework.PortalFrameworkException: Encountered {&quot;removeComments&quot;: true} in tsconfig.json.</span></font></p><p class=MsoNormal><font color="#ff0000" face=Consolas><span style="font-size:13.3333px;">This is not supported because it removes our build-time-generated bundler hints,</span></font></p><p class=MsoNormal><font color="#ff0000" face=Consolas><span style="font-size:13.3333px;">like &quot;/// &lt;amd-bundling root=&quot;true&quot; priority=&quot;0&quot; /&gt;&quot;,</span></font></p><p class=MsoNormal><font color="#ff0000" face=Consolas><span style="font-size:13.3333px;">which means the bundler won't be able to use multiple optimizations we generate for</span></font></p><p class=MsoNormal><font color="#ff0000" face=Consolas><span style="font-size:13.3333px;">your code and your extension's load time and blade load times will be impacted.</span></font></p><p class=MsoNormal><font color="#ff0000" face=Consolas><span style="font-size:13.3333px;">The bundler's minifier will still remove comments for you in production code.</span></font></p><p class=MsoNormal><font color="#ff0000" face=Consolas><span style="font-size:13.3333px;">Please update tsconfig.json to use {&quot;removeComments&quot;: false}.</span></font></p></div><div></p></td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2990819'>2990819</a></td><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2990819'>close context pane if any, whenever opening a new blade</a><p></p></td></tr></table>
+
 ## 5.0.302.3101
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2990819'>2990819</a></td><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2990819'>close context pane if any, whenever opening a new blade</a><p>No description available for this breaking change.</p></td></tr></table>
 
