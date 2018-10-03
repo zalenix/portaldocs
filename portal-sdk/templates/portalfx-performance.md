@@ -374,7 +374,7 @@ For more information, please create a stack overflow question (https://aka.ms/po
 1. Stop the profiler
 1. Assess the profile
 
-## Idenitifying common slowdowns
+## Identifying common slowdowns
 
 1. Blocking network calls
     - Fetching data - We've seen often that backend services don't have the same performance requirements as the front end experience, because of which you may need to engage your backend team/service to ensure your front end experience can meet the desired performance bar. 
