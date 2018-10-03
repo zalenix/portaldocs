@@ -233,7 +233,7 @@ Sure! Book in some time in the Azure performance office hours.
         1. Compression is enabled
         1. Your service is efficiently geo-distributed (Note: we have seen better performance from having an actual presence in a region vs a CDN)
 - Compression (Brotli)
-    - Move to V2 targets to get this by default
+    - Move to V2 targets to get this by default, see [V2 targets](#v2-targets)
 - Remove controllers 
     - Don't proxy ARM through your controllers
 - Don't require full libraries to make use of a small portion
@@ -387,6 +387,214 @@ For more information, please create a stack overflow question (https://aka.ms/po
 To correctly verify a change you will need to ensure the before and after are instrumented correctly with telemetry. Without that you cannot truly verify the change was helpful.
 We have often seen what seems like a huge win locally transition into a smaller win once it's in production, we've also seen the opposite occur too.
 The main take away is to trust your telemetry and not profiling, production data is the truth. 
+
+# V2 targets
+
+The Azure Portal SDK ships a "V2" targets that is designed to work with CloudBuild. The Azure Portal team and some of the larger extension partners teams have already enabled CloudBuild for their repositories to using the V2 targets. The key value proposition of the V2 targets are:
+
+- Support for compile-on-save of TypeScript files that works with both Visual Studio and VSCode.
+- A highly reliable incremental compilation engine that can significantly reduce local development build times.
+- Support automatically serving content files that are compressed using max Brotli compression. This feature will help extension performance at the 95th percentile where network latency and throughput dominates.
+
+Below are the steps to switch to the V2 targets. A video of the migration steps can be found here: https://msit.microsoftstream.com/video/49879891-7735-44c0-9255-d32162b78ed5?st=1349
+
+## Prerequisites
+
+- Get your extension working with at least Ibiza SDK 5.0.302.1051. The V2 targets are under active development are continuously being improved. Ideally get your extension working with the latest SDK.
+
+## Get your extension building with tsconfig.json
+
+- Fully build your extension to get all of the code-generated files (eg. TypeScript files generated from PDL) generated.
+- Delete any generate d.ts files generated in `$(ProjectDir)Client\Definitions`. You do not have to do anything to files outside of the Client folder.
+- Add a tsconfig.json to the root of the project with the following content. '''Do not deviate unless you know what you are doing.
+
+```json
+  {
+    "compileOnSave": true,
+    "compilerOptions": {
+      "baseUrl": "Client",
+      "declaration": true,
+      "experimentalDecorators": true,
+      "forceConsistentCasingInFileNames": true,
+      "inlineSources": true,
+      "module": "amd",
+      "noEmitHelpers": true,
+      "noImplicitAny": true,
+      "noImplicitThis": true,
+      "paths": {
+        "*": [
+          "*"
+        ]
+      },
+      "outDir": "Output/Content/Scripts",
+      "rootDir": "Client",
+      "removeComments": false,
+      "sourceMap": true,
+      "target": "es5"
+    },
+    "include": [
+      "Client/**/*"
+    ]
+  }
+```
+
+- If the framework d.ts files (e.g. MsPortalFx.d.ts) for your extension are in `$(ProjectDir)\Definitions`, the tsconfig.json "include" setting will not include these files. To include these files for compilation, create the file `$(ProjectDir)Client\TypeReferences.d.ts` and add reference tags to these files. You can also include these files by specifying them in the include section of the tsconfig.json.
+- Run tsc.exe TypeScript compiler that is shipped with the Portal SDK with the project folder as current directory. This will compile the TypeScript files using the tsconfig.json file.
+- You may see new errors because the TypeScript compiler is more strict in checking code when using a tsconfig file. Fix any errors that you see. You may need to remove `/// <reference path="" />` lines from all TypeScript files to fix certain errors.
+- If you see a casing mismatch error, you may need to use "git mv" to rename and change the casing of the file.
+
+## Get extension building using V2 targets
+
+- Remove all `<TypeScriptCompile>` elements from the csproj. Do not remove the `<SvgTypeScriptCompile>` tags. If you use Visual Studio and want to see TypeScript files in the Solution Explorer, you should instead change the element names to None or Content.
+- Remove all TypeScript and PDL MSBuild properties from the csproj. These include:
+
+```xml
+  <PropertyGroup>
+    <TypeScriptExperimentalDecorators>true</TypeScriptExperimentalDecorators>
+    <PortalDefinitionTargetFolder>Client</PortalDefinitionTargetFolder>
+    <PortalDefinitionContentName>.</PortalDefinitionContentName>
+    <PortalDefinitionWriteAmd>true</PortalDefinitionWriteAmd>
+    <EmbeddedTypeScriptResourcePrefixReplace>Client\</EmbeddedTypeScriptResourcePrefixReplace>
+    <EmbeddedTypeScriptResourcePrefix>Content\Scripts\</EmbeddedTypeScriptResourcePrefix>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" Label="TypeScriptConfigurationsDebug">
+    <TypeScriptNoImplicitAny>true</TypeScriptNoImplicitAny>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptGeneratesDeclarations>false</TypeScriptGeneratesDeclarations>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptNoImplicitAny>true</TypeScriptNoImplicitAny>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptGeneratesDeclarations>false</TypeScriptGeneratesDeclarations>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+  </PropertyGroup>
+```
+
+- Add a content tag for the tsconfig.json file to the .csproj:
+
+```xml
+  <Content Include="tsconfig.json" />
+```
+
+- Switch the old tools target to the new tools target ("v2") in the .csproj. The new import targets looks something like:
+
+```xml
+  <Import Project="$(PkgMicrosoft_Portal_Tools)\build\Microsoft.Portal.Tools.V2.targets" />
+```
+
+## Enabling CloudBuild support
+
+- Add the following to the csproj inside an ItemGroup if you have any `<Svg>` tags in the csproj. This tag informs CloudBuild that Svg MsBuild Items are consider inputs to the project.
+
+```xml
+  <AvailableItemName Include="Svg">
+     <Visible>False</Visible>
+  </AvailableItemName>
+```
+
+## Common errors
+
+- Make sure that the `Microsoft.Portal.Tools.V2.targets` is imported after the C# and WebApplication targets. The ordering should look like something before.
+
+```xml
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v15.0\WebApplications\Microsoft.WebApplication.targets" />
+  <Import Project="$(NuGetPath_Microsoft_Portal_Tools)\build\Microsoft.Portal.Tools.V2.targets" Condition="Exists('$(NuGetPath_Microsoft_Portal_Tools)\build\Microsoft.Portal.Tools.V2.targets')" />
+```
+
+## Breaking changes between V1 and V2 targets
+
+- The output location of pde files has been changed from `$(ProjectDir)Client` to `$(OutDir)`.
+
+# Dependency injected view models
+
+The framework supports loading view models using dependency injection. If you migrate your extension to use this programming model, the SDK will no longer generate ViewModelFactories.ts and a large portion of ExtensionDefinition.ts. Consequently you can remove nearly all code in Program.ts. All of your DataContext classes will also be bundled with the associated blade and will no longer be loaded up front.
+
+## Prerequistes
+
+- Migrate to V2 targets if you haven’t done so (See: [V2 targets](#v2-targets))
+- Ensure that the emitDecoratorMetadata compiler option is set to true in the tsconfig.json
+- Upgrade to at least SDK 3001+
+- Cleanup your extension project TypeScript code and remove all uses of export = Main.
+  - Check this PR in the portal repo for an example: https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/1003495?_a=overview
+  - You do not have to remove trailing newlines like the PR.
+- Commit and verify that these changes do not break your extension before starting the actual migration.
+
+## Migration steps
+
+- Delete the generated ViewModelFactories.ts from `Client\_generated`
+- Add the following line to your csproj
+
+```xml
+<EnableDependencyInjectedViewModels>true</EnableDependencyInjectedViewModels>
+```
+
+- Build the extension project
+- Get a copy of the dependency injection migration tool at: [\\\\wimoy-dev\Public\DependencyInjectionMigrator](\\\\wimoy-dev\Public\DependencyInjectionMigrator) and copy it locally.
+  - Look for the string "ViewModels:" in the build logs and copy and paste the JSON to Extension.json in the dependency injection migration tool.
+  - Modify the migration tool source code and put in the path of the folder that contains the TypeScript for your extension
+- Run the tool and migrate your V1 view models.
+  - The tool will modify your source files and perform the following operations:
+    - Add `import * as Di from "Fx/DependencyInjection` to the top of any file with a V1 (pdl) view model
+    - Add `@Di.Class("viewModel")` right before every single V1 view model class
+    - Delete the initialState second parameter of the viewModel classes
+  - The migration tool is based on regex and is not perfect. Review the results and make any necessary adjustments to ensure that it performs those three operations on all V1 viewModels.
+  - The removal of the initialState parameter may cause breaks in your code if your code was referencing the parameter. The portal was always passing null for initialState. You can basically remove all uses of initialState.
+  - If the tool outputs anything besides a completion message, send wimoy an email with the message
+- Optionally, remove any parameters in V1 view models that are no longer needed. In the process of doing so, you may end up with some unused DataContext classes too. You can remove them if they are not used by V2 (no-pdl) view models.
+- Find all V2 view models and add the InjectableModel decorator. Refer to the PRs below for examples.
+  - You can enumerate all of the V2 view models by going through the code in the following generated folders located at the root of your TypeScript build:
+    - _generated\adapters\blade
+    - _generated\adapters\part
+  - DataContext classes referenced by V2 view models cannot be removed even if they are empty
+- Find all DataContext classes that are still referenced by your view models and add the `@Di.Class()` decorator.
+  - Note that `@Di.Class()` is called with no arguments.
+  - You will need to add `import * as Di from "Fx/DependencyInjection` to the top of the files
+- Remove the code in Program.ts that initializes the DataContext classes. Set the generic type parameter of `MsPortalFx.Extension.EntryPointBase` base class specification to void.
+- The constructor of any class that contains a `@Di.Class()` decorator (with or without the "viewModel" argument) cannot contain an parameter that is specified with a non-class type. Some of your view model classes may have a dataContext parameter with an any type or an interface type. Either change the type to a class or remove the parameter entirely.
+- All classes in the dependency chain of migrated view models should be marked with `@Di.Class()` decorator. The dependency injection framework in the Portal only supports constructor injection.
+- Put the following code in your Program.ts right at the module level. Then load your extension through the portal. This will validate that you have correctly migrated the V1 view models. The code should complete almost instantly. Remove the code when you are done.
+
+```typescript
+MsPortalFx.require("Fx/DependencyInjection")
+    .then((di: any) => {
+        const container: any = new di.Container("viewModel");
+        // const container: any = di.createContainer("viewModel"); // In later versions, use this line instead of the one above.
+        (function (array: any[]) {
+            array.forEach(a => {
+                if (a.module) {
+                    MsPortalFx.require(a.module)
+                        .then((m: any) => {
+                            console.log("Loading view model: " + a.module + " " + a.export);
+                            const exportedType = m[a.export];
+                            if (exportedType.ViewModelAdapter) {
+                                // Can't validate V2 view models
+                            }
+                            else {
+                                container._validate(new (<any>window).Map(), exportedType, true);
+                            }
+                        });
+                }
+            });
+        })([/* insert view model json from build log here */ ]);
+});
+```
+
+- Temporarily set `emitDecoratorMetadata` compiler option to false. Then turn on the compiler option `noUnusedParameters` and `noUnusedLocals`. Remove any dead parameters flagged by the compiler. You may find some violations in generated code. Ignore them.
+
+## Pull Request Samples
+
+- https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/1013125?_a=overview
+- https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/1013301?_a=overview
+- https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/1016472?_a=overview
+- https://msazure.visualstudio.com/One/_git/AD-IAM-IPC/pullrequest/1096247?_a=overview
+- https://msazure.visualstudio.com/One/_git/AD-IAM-Services-ADIbizaUX/pullrequest/1098977?_a=overview
+- https://msazure.visualstudio.com/One/_git/MGMT-AppInsights-InsightsPortal/pullrequest/1124038?_a=overview
 
 
 [TelemetryOnboarding]: <portalfx-telemetry-getting-started.md>
