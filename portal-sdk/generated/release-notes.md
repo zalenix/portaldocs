@@ -1,8 +1,8 @@
-# Release Notes since 6/5/2018
+# Release Notes since 6/6/2018
 
 ## 5.0.302.5101
 0 Breaking Changes, 4 Features added and 2 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3123160'>3123160</a></td><td>Bug Fix</td><td>Add objectId and principalId to NullSignInActionProvider</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3105472'>3105472</a></td><td>Bug Fix</td><td>Grid1 error tracker: Unable to get property ''reset'' of null</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3089951'>3089951</a></td><td>Feature</td><td>[Partner] Create Blade is broken in extension template</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3008059'>3008059</a></td><td>Feature</td><td>qcustom in samplesextension causes it to hang on load in VS</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2817923'>2817923</a></td><td>Feature</td><td>Update chrome and firefox versions in CI</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2580073'>2580073</a></td><td>Feature</td><td>Enable the Microsoft_Azure_ContainerRegistries extension</td></tr></table>
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3123160'>3123160</a></td><td>Bug Fix</td><td>Add objectId and principalId to NullSignInActionProvider</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3105472'>3105472</a></td><td>Bug Fix</td><td>Grid1 error tracker: Unable to get property ''reset'' of null</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3089951'>3089951</a></td><td>Feature</td><td>[Partner] Create Blade is broken in extension template</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3008059'>3008059</a></td><td>Feature</td><td>[Partner] qcustom in samplesextension causes it to hang on load in VS</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2817923'>2817923</a></td><td>Feature</td><td>Update chrome and firefox versions in CI</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2580073'>2580073</a></td><td>Feature</td><td>Enable the Microsoft_Azure_ContainerRegistries extension</td></tr></table>
 
 ## 5.0.302.5001
 0 Breaking Changes, 0 Features added and 2 Bugs Fixed
@@ -10,7 +10,7 @@
 
 ## 5.0.302.4901
 0 Breaking Changes, 1 Features added and 0 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3127245'>3127245</a></td><td>Feature</td><td>publish pipeline to internal npm registry broken after build output optimization</td></tr></table>
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3127245'>3127245</a></td><td>Feature</td><td>[Partner] publish pipeline to internal npm registry broken after build output optimization</td></tr></table>
 
 ## 5.0.302.4801
 3 Breaking Changes, 37 Features added and 185 Bugs Fixed
