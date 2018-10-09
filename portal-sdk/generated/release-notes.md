@@ -1,4 +1,4 @@
-# Release Notes since 6/8/2018
+# Release Notes since 6/9/2018
 
 ## 5.0.302.5101
 0 Breaking Changes, 4 Features added and 2 Bugs Fixed
@@ -327,11 +327,3 @@
 ## 5.0.302.1142
 0 Breaking Changes, 0 Features added and 1 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2556199'>2556199</a></td><td>Bug Fix</td><td>Enable Microsoft_Azure_ODG in Fairfax</td></tr></table>
-
-## 5.0.302.1139
-0 Breaking Changes, 2 Features added and 3 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2550505'>2550505</a></td><td>Bug Fix</td><td>Harden ExtensionLoading code</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2550492'>2550492</a></td><td>Feature</td><td>[DSR] Enable DSR Handler for Mooncake</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2525963'>2525963</a></td><td>Bug Fix</td><td>[IRIS] Enormous "IrisStartupNotifications IRIS notifications" warning logs</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2509301'>2509301</a></td><td>Feature</td><td>adding additional stubs to templatebladeharness, support options argument.</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2503625'>2503625</a></td><td>Bug Fix</td><td>Add topic ids to CPM API</td></tr></table>
-
-## 5.0.302.1135
-0 Breaking Changes, 3 Features added and 6 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2532187'>2532187</a></td><td>Bug Fix</td><td>Use correct dSMS path for Azure Cognitive API key</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2529246'>2529246</a></td><td>Bug Fix</td><td>Fix satellite assembly signing</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2527406'>2527406</a></td><td>Bug Fix</td><td>Specify corext flag to include nupkg in CxCache</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2526575'>2526575</a></td><td>Feature</td><td>Enable Microsoft_Azure_Security extensions</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2521919'>2521919</a></td><td>Bug Fix</td><td>Swallow all exceptions when loading assembly for MEF</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2513190'>2513190</a></td><td>Feature</td><td>Expose MultiVMOnboarding feature from portal.azure.com</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2509291'>2509291</a></td><td>Feature</td><td>Resolve node module vulnerabilities from mj as it applies to UT</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2493828'>2493828</a></td><td>Bug Fix</td><td>[Partner Request] - Enable Microsoft_Azure_ElmAdmin extension in dogfood and add in PROD in disable mode</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2320081'>2320081</a></td><td>Bug Fix</td><td>[Screen Reader - Azure Network - Network Interfaces] Screen Reader is not reading the status appeared on the screen after selecting the 'DNS Server Custom' Radio button under DNS Server blade </td></tr></table>
