@@ -289,7 +289,7 @@ function writeDocsToFile(aggregate, outputDir, prodSdkVersionTags) {
         perCloudDownloadLinks += util.format("<br/> Download %s", cloudDownloadVersionLinks);
     });
 
-    downloadsDoc.write(util.format("# Download Portal SDK \n %s \n <table><tr><th>Download</th><th>Detail</th><th>Breaking Changes</th></tr>", perCloudDownloadLinks || downloadLinks));
+    downloadsDoc.write(util.format("# Download Portal SDK \n %s \n\nEach version of the SDK is supported for 120 days. Extensions must upgrade to a newer version of the SDK within 120 days from the release of the SDK version they are currently using as runtime backward compatibility is not supported beyond that. \n\n <table><tr><th>Download</th><th>Detail</th><th>Breaking Changes</th></tr>", perCloudDownloadLinks || downloadLinks));
 
     sortedVersions.forEach(function (version) {
         var result = aggregate[version];
