@@ -25,7 +25,7 @@ We encourage all of our partners that wish to attend to schedule a meeting with 
 ### User experience consistency
 
 - *When?*  Thursdays from 9:00 to 13:00
-- *Where?* B42 (Conf Room 41/15) + Skype (if requested)
+- *Where?* B41 (Conf Room 41/15) + Skype (if requested)
 - *Contacts:* Eric Winner (ewinner), Leon Welicki (lwelicki)
 - *Goals*
     - Provide design + implementation guidance for Azure experiences
@@ -34,4 +34,4 @@ We encourage all of our partners that wish to attend to schedule a meeting with 
 - *How to book time*: Send a meeting request with the following
     - TO: ewinner;lwelicki;
     - Subject: YOUR_EXTENSION_NAME: Azure ux office hours
-    - Location: Conf Room 42/45 (It is already reserved), create a skype meeting if that is preferred
+    - Location: Conf Room 41/15 (It is already reserved), create a skype meeting if that is preferred
