@@ -1,4 +1,4 @@
-# Release Notes since 6/11/2018
+# Release Notes since 6/12/2018
 
 ## 5.0.302.5301
 1 Breaking Changes, 2 Features added and 4 Bugs Fixed
@@ -319,15 +319,3 @@
 ## 5.0.302.1145
 0 Breaking Changes, 0 Features added and 2 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2543655'>2543655</a></td><td>Bug Fix</td><td>Do not wait on response content cache population task</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2391466'>2391466</a></td><td>Bug Fix</td><td>[noPDL] no-PDL should support tsconfig.json with non-default libs</td></tr></table>
-
-## 5.0.302.1144
-0 Breaking Changes, 1 Features added and 1 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2557467'>2557467</a></td><td>Feature</td><td>automatic test run on compile on save for continuous test for dev/test inner loop</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2549180'>2549180</a></td><td>Bug Fix</td><td>Vsix add triple slash directive or migrate to v2 targets with tsconfig to resolve VS Intellisense errors</td></tr></table>
-
-## 5.0.302.1143
-0 Breaking Changes, 1 Features added and 1 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2566606'>2566606</a></td><td>Feature</td><td>Disable DSR handler in MC  :-(</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2543659'>2543659</a></td><td>Bug Fix</td><td>Setup WebApi delegating handler to log all exceptions</td></tr></table>
-
-## 5.0.302.1142
-0 Breaking Changes, 0 Features added and 1 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2556199'>2556199</a></td><td>Bug Fix</td><td>Enable Microsoft_Azure_ODG in Fairfax</td></tr></table>
