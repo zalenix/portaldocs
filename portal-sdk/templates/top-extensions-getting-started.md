@@ -40,11 +40,9 @@ The Azure Portal SDK includes everything you need to build extensions for the po
     ![alt-text](../media/top-extensions-getting-started/ssl1.png "accept ssl prompt")
     ![alt-text](../media/top-extensions-getting-started/ssl2.png "accept sec warning")
 
-1. Your extension will now be side loaded into the production portal. The portal will prompt you to allow your side loaded extension. Click allow.
-
-    a. Note: If you are not seeing the allow Untrusted Extensions dialog please see the [FAQ](#faq) below for solutions to common problems
+1. Your extension will now be side loaded into the production portal. The portal will prompt you to allow your side loaded extension. Click allow. Note: If you are not seeing the allow Untrusted Extensions dialog please see the [FAQ](#faq) below for solutions to common problems
 	
-	![alt-text](../media/top-extensions-getting-started/untrustedextension.png "acceptuntrusted extension")
+![alt-text](../media/top-extensions-getting-started/untrustedextension.png "acceptuntrusted extension")
 	
 Congratulations! You've just created your first extension.
 You will find that the project template has implemented many of the key components of an extension.
