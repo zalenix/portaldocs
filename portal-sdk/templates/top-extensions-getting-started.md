@@ -14,7 +14,8 @@ The Azure Portal SDK includes everything you need to build extensions for the po
 - [Running Unit Tests](#running-unit-tests)
 
 ### Installing the Azure Portal SDK
-	- Install the pre-requisites as documented in [top-extensions-install-software.md]([top-extensions-install-software.md)
+
+- Install the pre-requisites as documented in [top-extensions-install-software.md]([top-extensions-install-software.md)
 
 ### Creating and running an Extension
 
@@ -124,7 +125,7 @@ Click on your resource from within the browse list it will open the resource men
 
 Many of the standard Azure experiences such as tags, locks, and access control have been automatically injected into your menu.
 
-![alt-text](../media/top-extensions-getting-started/resourcemenublade.png "resource menu blade")
+![alt-text](../media/top-extensions-getting-started/ResourceMenuBlade.png "resource menu blade")
 
 In `Client/Resources/MyResourcesViewModel.ts` you can see how the items of the resource menu are customized and added to the resource menu.  For example see the Overview item from the menu is created by creating a MenuItem and the action performed when clicking it is defined via the supplyBladeReference.  In this case it is opening the ResourceOverviewBlade.
 
