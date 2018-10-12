@@ -1,5 +1,3 @@
-{"gitdown": "contents"}
-
 ## Getting Started with the Portal SDK
 
 The Azure Portal SDK includes everything you need to build extensions for the portal. Included are variety of tools and samples that help developers build extensions on top of the framework.  There are three common experiences for Azure resources; Create, Browse, and  Resource Management. This guide will walk you through creating your first extension, running that extension and then running the unit tests for that extension.
