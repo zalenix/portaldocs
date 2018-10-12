@@ -145,21 +145,21 @@ Blades are the main unit of UX that can be built using the SDK. They are basical
 - `Right Click` the `HelloWorld` folder and select `Add > Class… > select TypeScript File > name it HelloWorldBlade.ts`  
 - Add the following TemplateBlade code and read through the comments to understand each component
 	
-```
+```typescript
     import * as TemplateBlade from "Fx/Composition/TemplateBlade";
     import { DataContext } from "../../ResourceArea";
     
     /*
-        * Defines the contract of input parameters required by this blade
-        */
+     * Defines the contract of input parameters required by this blade
+     */
     export interface Parameters {
         readonly id: string;
     }
     
     /*
-        * The template blade decorator lets the framework discover your blade. It is also where you define the html template.
-        * This template shows a simple text data - binding(corresponding data - binding code is below).
-        */
+     * The template blade decorator lets the framework discover your blade. It is also where you define the html template.
+     * This template shows a simple text data - binding(corresponding data - binding code is below).
+     */
     @TemplateBlade.Decorator({
         htmlTemplate: "<div data-bind='text: helloWorldMessage'></div>"
     })
