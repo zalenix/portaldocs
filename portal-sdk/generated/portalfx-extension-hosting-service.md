@@ -55,7 +55,7 @@ This section provides a quick 30-sec overview of how you deploy extension using 
 
 1. You integrate content unbundler, a tool shipped with framework, as part of your build. This tool generates a zip that has all the static files in your extension.
 1. You upload zip file generated in Step #1 to a public read-only storage account owned by your team.
-1. Hosting service polls the storage account, detects the new version and downloads the zip file in each data center within 5 minutes and starts serving the new version to customers around the world.
+1. Hosting service polls the storage account, detects the new version and downloads the zip file in each data center within 30 minutes and starts serving the new version to customers around the world.
 
 <a name="30-sec-overview-prerequisites-for-onboarding-hosting-service-for-all-extensions"></a>
 ### Prerequisites for onboarding hosting service for all extensions
@@ -519,7 +519,7 @@ For performance reasons, once a version is downloaded, it will not be downloaded
 
 3. How much time does hosting service takes to rollout a new version of extension to the relevant stage? 
 
-Hosting service takes about 5 minutes to publsh the latest version to all DCs.
+Hosting service takes about 30 minutes to publish the latest version to all DCs.
 
 4. Some customers of my extension are hitting the old UX even after deploying the latest package. Is there a bug in hosting service ?
 
