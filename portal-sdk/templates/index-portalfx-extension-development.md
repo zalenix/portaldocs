@@ -4,7 +4,7 @@
 
 ## Getting Started
 {"gitdown": "include-headings", "file": "../templates/portalfx-howitworks.md"}
-{"gitdown": "include-headings", "file": "../templates/portalfx-creating-extensions.md"}
+{"gitdown": "include-headings", "file": "../templates/top-extensions-getting-started.md"}
 {"gitdown": "include-headings", "file": "../templates/portalfx-sample-extensions.md"}
 
 ## Common scenarios

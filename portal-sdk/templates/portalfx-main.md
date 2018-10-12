@@ -21,11 +21,10 @@ Azure portal extension development is supported on the Microsoft Windows 8, Wind
 ### 1.3 Running and Debugging Hello World Extension
 
 * [Architecture Overview](portalfx-howitworks.md)
-* [Creating your first extension from project template](portalfx-creating-extensions.md)
-* [Building a Hello World Blade](portalfx-creating-extensions.md#hello-world-for-blades)
+* [Creating your first extension from project template](top-extensions-getting-started.md)
+* [Building a Hello World Blade](top-extensions-getting-started.md#adding-a-blade)
 * [Side-loading your extension in a portal environment](portalfx-testinprod.md#testing-in-production)
 * [Debugging](portalfx-debugging.md#debugging)
-* [Deep linking to a blade you are developing](portalfx-creating-extensions.md#hello-world-for-blades)
 * Add a text box to your Hello World Blade
 * Dock button at the bottom of your blade
 * Add Menu Bar to your Blade

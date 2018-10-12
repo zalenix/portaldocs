@@ -1,6 +1,6 @@
 {"gitdown": "contents"}
 
-# Getting Started with the Portal SDK
+## Getting Started with the Portal SDK
 
 The Azure Portal SDK includes everything you need to build extensions for the portal. Included are variety of tools and samples that help developers build extensions on top of the framework.  There are three common experiences for Azure resources; Create, Browse, and  Resource Management. This guide will walk you through creating your first extension, running that extension and then running the unit tests for that extension.
 
@@ -13,10 +13,10 @@ The Azure Portal SDK includes everything you need to build extensions for the po
 - [Adding a blade](#adding-a-blade)
 - [Running Unit Tests](#running-unit-tests)
 
-## Installing the Azure Portal SDK
+### Installing the Azure Portal SDK
 	- Install the pre-requisites as documented in [top-extensions-install-software.md]([top-extensions-install-software.md)
 
-## Creating and running an Extension
+### Creating and running an Extension
 
 1. Launch **Visual Studio 2017** and navigate to 
 
@@ -53,9 +53,9 @@ You will find that the project template has implemented many of the key componen
 - Resource Menu Blade (How people use and manage resources they have created)
 - Unit Tests
 
-## Exploring the Extension
+### Exploring the Extension
 
-### Marketplace Create Experience
+#### Marketplace Create Experience
 
 The marketplace offers users a consistent way to browse and search the set of curated items that they can purchase/create.  If you plan on selling resources in the portal then you will need to integrate into the marketplace by building and publishing a package to the marketplace service. Contact 1store@microsoft.com to onboard. This section will walk you through the basics of the marketplace.
 
@@ -92,7 +92,7 @@ Fill out the create form and click New to actually create a resource.
 For more information on creating gallery packages and create forms see the [gallery documentation](https://aka.ms/portalfx/gallery).
 Now that you have created a resource it is time to explore how users will find that resource via the browse experience.
 
-### Browse
+#### Browse
 
 The portal exposes a common navigation experience, called 'Browse', that gives end users a list of all the different services and resource types offered by the portal.
 
@@ -114,7 +114,7 @@ For more information on the browse experience see the [browse documentation](htt
 
 Now that you know that the `ResourceOverviewBlade` will be opened when you click on the resource you created in Browse its now time to explore Resource Menu blades.
 
-### Resource Menu Blade
+#### Resource Menu Blade
 
 If you are building an extension for an Azure service then it's likely you have built a resource provider that exposes a top-level resource (e.g. Virtual Machine, Storage account).
 
@@ -141,7 +141,7 @@ The code for this Template Blade is implemented in `/Resource/Blades/Overview/Re
 
 As an exercise review the ResourceOverviewBlade.ts source and try to map the components in the UI to their implementation.
 
-## Adding a Blade
+### Adding a Blade
 Blades are the main unit of UX that can be built using the SDK. They are basically pages that can be loaded in the portal.
 
 - In solution explorer `right click` the `Blades folder > Select Add > New folder`. Name the folder HelloWorld 
@@ -212,7 +212,7 @@ To learn more about:
 - The types of controls available and experiences you can create see Browse through the samples that are located at [top-extensions-samples.md](top-extensions-samples.md) to explore live examples of APIs. Sections, tabs, and other controls can be found in the playground located at [https://aka.ms/portalfx/playground](https://aka.ms/portalfx/playground).
 - How to debug issues loading an extension in the portal, go through the [Debug extension load failures](top-extensions-debugging.md#debug-extension-load-failures) guide.
 
-## Running Unit Tests
+### Running Unit Tests
 
 You may have noticed that there is a Unit Test project within the generated solution you have been working with.  The unit test framework, msportalfx-ut, provides a set APIs to make it simple to instantiate a blades view model, transition the blade lifecycle and assert state of the view model at different stages of that lifecycle.
 
@@ -246,13 +246,13 @@ Test run  output:
 
 To learn more about the unit test framework, namely msportalfx-ut, see the [unit test documentation](https://aka.ms/portalfx/ut).
 
-# Questions?
+## Questions?
 
 Ask questions on: [stackoverflow.microsoft.com](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza), for a set of tags supported by the Azure Portal team see [supported tags](https://aka.ms/portalfx/stackoverflow-sla-tags)
 
-# FAQ:
+## FAQ:
 
-## I receive a "this site is not secure" or "your connection is not private" error when running the extension 
+### I receive a "this site is not secure" or "your connection is not private" error when running the extension 
 
 Example in Edge:
     
@@ -278,11 +278,11 @@ Solution:
 - Leave defaults selected and click through to finish.
 - Terminate all browser instances in taskmgr and F5 again.
 
-## The portal is never loaded so the extension has not sideloaded?
+### The portal is never loaded so the extension has not sideloaded?
 
 This is generally a popup blocker. After running F5 if you only have one tab open to `https://localhost:44300` as opposed to two tabs then it is likely that your popup blocker is stopping the first tab from launching the second tab that loads the portal and sideloads your extension. To solve this simply enable `https://localhost:44300` in your browsers popup blocker.
 
-## I'm stuck. Where can I find help?
+### I'm stuck. Where can I find help?
 
 SOLUTION: There are a few ways to get help.
 - Read the documentation located at [https://aka.ms/portalfx/docs](https://aka.ms/portalfx/docs).
