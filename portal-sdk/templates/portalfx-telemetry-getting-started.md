@@ -44,11 +44,10 @@ We'll update the documentation when we can onboard programmatic access.
 
 [Kusto Discussions](http://idwebelements/GroupManagement.aspx?Group=KusTalk&Operation=join)
 
-### Who can I contact ?
+### Who can I contact
 
 [Ibiza Performance/ Reliability](mailto:ibiza-perf@microsoft.com;ibiza-reliability@microsoft.com) - Telemetry PM for Ibiza Performance and Reliability Telemetry
 
 [Ibiza Create](mailto:ibiza-create@microsoft.com) - Telemetry PM for Ibiza Create Telemetry
 
 [Azure Fx Gauge Team](mailto:azurefxg@microsoft.com) - Telemetry Team
-
