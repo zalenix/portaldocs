@@ -563,8 +563,7 @@ The framework supports loading view models using dependency injection. If you mi
 ```typescript
 MsPortalFx.require("Fx/DependencyInjection")
     .then((di: any) => {
-        const container: any = new di.Container("viewModel");
-        // const container: any = di.createContainer("viewModel"); // In later versions, use this line instead of the one above.
+        const container: any = di.createContainer("viewModel");
         (function (array: any[]) {
             array.forEach(a => {
                 if (a.module) {
