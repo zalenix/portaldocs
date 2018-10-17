@@ -1,5 +1,43 @@
-{"gitdown": "contents"}
+* [Performance Overview](#performance-overview)
+    * [Extension-loading performance](#performance-overview-extension-loading-performance)
+    * [Blade performance](#performance-overview-blade-performance)
+    * [Part performance](#performance-overview-part-performance)
+    * [WxP score](#performance-overview-wxp-score)
+    * [How to assess your performance](#performance-overview-how-to-assess-your-performance)
+        * [Extension-loading](#performance-overview-how-to-assess-your-performance-extension-loading)
+        * [Blade](#performance-overview-how-to-assess-your-performance-blade)
+        * [Part](#performance-overview-how-to-assess-your-performance-part)
+* [Performance Frequently Asked Questions (FAQ)](#performance-frequently-asked-questions-faq)
+    * [My Extension 'load' is above the bar, what should I do](#performance-frequently-asked-questions-faq-my-extension-load-is-above-the-bar-what-should-i-do)
+    * [My Blade 'FullReady' is above the bar, what should I do](#performance-frequently-asked-questions-faq-my-blade-fullready-is-above-the-bar-what-should-i-do)
+    * [My Part 'Ready' is above the bar, what should I do](#performance-frequently-asked-questions-faq-my-part-ready-is-above-the-bar-what-should-i-do)
+    * [My WxP score is below the bar, what should I do](#performance-frequently-asked-questions-faq-my-wxp-score-is-below-the-bar-what-should-i-do)
+    * [Is there any way I can get further help](#performance-frequently-asked-questions-faq-is-there-any-way-i-can-get-further-help)
+* [Performance best practices](#performance-best-practices)
+    * [Operational best practices](#performance-best-practices-operational-best-practices)
+    * [Coding best practices](#performance-best-practices-coding-best-practices)
+    * [General best practices](#performance-best-practices-general-best-practices)
+* [Extension load shim dependencies (removing shims)](#extension-load-shim-dependencies-removing-shims)
+    * [How to fix shim usage](#extension-load-shim-dependencies-removing-shims-how-to-fix-shim-usage)
+        * [Converting your shim to an AMD module](#extension-load-shim-dependencies-removing-shims-how-to-fix-shim-usage-converting-your-shim-to-an-amd-module)
+* [Performance profiling](#performance-profiling)
+    * [How to profile your scenario](#performance-profiling-how-to-profile-your-scenario)
+    * [Identifying common slowdowns](#performance-profiling-identifying-common-slowdowns)
+    * [Verifying a change](#performance-profiling-verifying-a-change)
+* [V2 targets](#v2-targets)
+    * [Prerequisites](#v2-targets-prerequisites)
+    * [Get your extension building with tsconfig.json](#v2-targets-get-your-extension-building-with-tsconfig-json)
+    * [Get extension building using V2 targets](#v2-targets-get-extension-building-using-v2-targets)
+    * [Enabling CloudBuild support](#v2-targets-enabling-cloudbuild-support)
+    * [Common errors](#v2-targets-common-errors)
+    * [Breaking changes between V1 and V2 targets](#v2-targets-breaking-changes-between-v1-and-v2-targets)
+* [Dependency injected view models](#dependency-injected-view-models)
+    * [Prerequistes](#dependency-injected-view-models-prerequistes)
+    * [Migration steps](#dependency-injected-view-models-migration-steps)
+    * [Pull Request Samples](#dependency-injected-view-models-pull-request-samples)
 
+
+<a name="performance-overview"></a>
 # Performance Overview
 
 Portal performance from a customer's perspective is seen as all experiences throughout the product. 
@@ -12,12 +50,14 @@ As an extension author you have a duty to uphold your experience to the performa
 | Part      | < 4 secs       | PartReady                | Time it takes for the part to be rendered and then the part's OnInputsSet to resolve |
 | WxP       | > 80       | N/A                      | An overall experience score, calculated by weighting blade usage and the blade full ready time |
 
+<a name="performance-overview-extension-loading-performance"></a>
 ## Extension-loading performance
 
 Extension-loading performance effects both Blade and Part performance, as your extension is loaded and unloaded as and when it is required.
 In the case where a user is visiting your resource blade for the first time, the Fx will load up your extension and then request the view model, consequently your Blade/Part performance is affected.
 If the user were to browse away from your experience and browse back before your extension is unloaded, obviously the user's second visit will be faster, as they don't pay the cost of loading the extension.
 
+<a name="performance-overview-blade-performance"></a>
 ## Blade performance
 
 Blade performance is spread across a couple of main areas:
@@ -30,6 +70,7 @@ If your blade is a FrameBlade or AppBlade there is an additional initialization 
 
 All of these perf costs are represented under the one 'BladeFullReady' action.
 
+<a name="performance-overview-part-performance"></a>
 ## Part performance
 
 Similar to Blade performance, Part performance is spread across a couple of areas:
@@ -41,6 +82,7 @@ If your part is a FramePart there is an additional initialization message from y
 
 All of these perf costs are represented under the one 'PartReady' action.
 
+<a name="performance-overview-wxp-score"></a>
 ## WxP score
 
 The WxP score is a per extension Weight eXPerience score (WxP). It is calculated by the Azure Portal team as follows:
@@ -67,6 +109,7 @@ WxP = (BladeViewsMeetingTheBar * 95thPercentileBar) / ((BladeViewsMeetingTheBar 
 
 > Note: The model penalizes extensions for blades which have a higher number of views and don’t meet the bar.
 
+<a name="performance-overview-how-to-assess-your-performance"></a>
 ## How to assess your performance
 
 There are two methods to assess your performance:
@@ -79,6 +122,7 @@ There are two methods to assess your performance:
 The first method is definitely the easiest way to determine your current assessment as this is maintained on a regular basis by the Fx team.
 You can, if preferred, run queries locally but ensure you are using the Fx provided Kusto functions to calculate your assessment.
 
+<a name="performance-overview-how-to-assess-your-performance-extension-loading"></a>
 ### Extension-loading
 
 [database('Partner').ExtensionPerformance(ago(1h), now())](https://aka.ms/kwe?cluster=azportal.kusto.windows.net&database=AzurePortal&q=H4sIAAAAAAAAA0tJLElMSixO1VAPSCwqyUstUtfUc60oSc0rzszPC0gtSssvyk3MS07VSEzP1zDM0NRRyMsv19DU5AIAxF6Q5zkAAAA%3D)
@@ -96,6 +140,7 @@ ExtensionPerformance will return a table with the following columns:
 - UsingTheHostingService
   - If the extension is predominantly using the hosting service in production
 
+<a name="performance-overview-how-to-assess-your-performance-blade"></a>
 ### Blade
 
 [database('Partner').BladePerformanceIncludingNetwork(ago(1h), now())](https://aka.ms/kwe?cluster=azportal.kusto.windows.net&database=AzurePortal&q=H4sIAAAAAAAAA0tJLElMSixO1VAPSCwqyUstUtfUc8pJTEkNSC1Kyy%2FKTcxLTvXMS84pTcnMS%2FdLLSnPL8rWSEzP1zDM0NRRyMsv19DU5AIA1W5beEUAAAA%3D)
@@ -137,6 +182,7 @@ BladePerformanceIncludingNetwork will return a table with the following columns
 - AlertSeverity
   - If the blade has opted to be alerted against via the [alerting infrastructure](index-portalfx-extension-monitor.md#performance) and what severity the alert will open at.
 
+<a name="performance-overview-how-to-assess-your-performance-part"></a>
 ### Part
 
 [database('Partner').PartPerformance(ago(1h), now())](https://aka.ms/kwe?cluster=azportal.kusto.windows.net&database=AzurePortal&q=H4sIAAAAAAAAA0tJLElMSixO1VAPSCwqyUstUtfUA7ECUovS8otyE%2FOSUzUS0%2FM1DDM0dRTy8ss1NDW5AIGipTc0AAAA)
@@ -158,9 +204,11 @@ PartPerformance will return a table with the following columns:
 - RedScore
    Number of violations for tracked bars
 
+<a name="performance-frequently-asked-questions-faq"></a>
 # Performance Frequently Asked Questions (FAQ)
 
-## My Extension 'load' is above the bar, what should I do
+<a name="performance-frequently-asked-questions-faq-my-extension-load-is-above-the-bar-what-should-i-do"></a>
+## My Extension &#39;load&#39; is above the bar, what should I do
 
 1. Profile what is happening in your extension load. [Profile your scenario](#performance-profiling)
 1. Are you using the Portal's ARM token? If no, verify if you can use the Portal's ARM token and if yes, follow: [Using the Portal's ARM token](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-api-authentication)
@@ -171,12 +219,13 @@ PartPerformance will return a table with the following columns:
     - If yes, remove your dependency to them and then remove the obsolete bitmask. This is a blocking download before your extension load. See below for further details.
 1. See our [best practices](#performance-best-practices)
 
-## My Blade 'FullReady' is above the bar, what should I do
+<a name="performance-frequently-asked-questions-faq-my-blade-fullready-is-above-the-bar-what-should-i-do"></a>
+## My Blade &#39;FullReady&#39; is above the bar, what should I do
 
 1. Assess what is happening in your Blades's `onInitialize` (no-PDL) or constructor and `onInputsSet` (PDL). [Profile your scenario](#performance-profiling)
     1. Can that be optimized?
 1. If there are any AJAX calls;
-    1. Can they use batch? If so, migrate over to use the [batch api](http://aka.ms/portalfx/docs/batch).
+    1. Can they use batch? If so, migrate over to use the batch api.
     1. Wrap them with custom telemetry and ensure they you aren't spending a large amount of time waiting on the result. If you are to do this, please only log one event per blade load, this will help correlate issues but also reduce unneccesary load on telemetry servers.
 1. Are you using an old PDL "Blade containing Parts"? How many parts are on the blade?
     - If there is only a single part, if you're not using a no-pdl blade or `<TemplateBlade>` migrate your current blade to a no-pdl blade.
@@ -186,21 +235,24 @@ PartPerformance will return a table with the following columns:
     - If it does, ensure the `getMenuConfig` call is returned statically/synchronously (< 10ms). You can make use of the enabled/disabled observable property on menu items, if you need to asynchronously determine to enable a menu item. 
 1. See our [best practices](#performance-best-practices)
 
-## My Part 'Ready' is above the bar, what should I do
+<a name="performance-frequently-asked-questions-faq-my-part-ready-is-above-the-bar-what-should-i-do"></a>
+## My Part &#39;Ready&#39; is above the bar, what should I do
 
 1. Assess what is happening in your Part's `onInitialize` (no-PDL) or constructor and `onInputsSet` (PDL), including time taken in any async operations associated with the returned Promise. [Profile your scenario](#performance-profiling)
     1. Can that be optimized?
 1. If there are any AJAX calls;
-    1. Can they use batch? If so, migrate over to use the [batch api](http://aka.ms/portalfx/docs/batch).
+    1. Can they use batch? If so, migrate over to use the batch api.
     1. Wrap them with custom telemetry and ensure they you aren't spending a large amount of time waiting on the result. If you are to do this, please only log one event per part load, this will help correlate issues but also reduce unneccesary load on telemetry servers.
 1. See our [best practices](#performance-best-practices)
 
+<a name="performance-frequently-asked-questions-faq-my-wxp-score-is-below-the-bar-what-should-i-do"></a>
 ## My WxP score is below the bar, what should I do
 
 Using the [Extension performance/reliability report][Ext-Perf/Rel-Report] you can see the WxP impact for each individual blade. Although given the Wxp calculation,
 if you are drastically under the bar its likely a high usage blade is not meeting the performance bar, if you are just under the bar then it's likely it's a low usage
 blade which is not meeting the bar.
 
+<a name="performance-frequently-asked-questions-faq-is-there-any-way-i-can-get-further-help"></a>
 ## Is there any way I can get further help
 
 Sure! Book in some time in the Azure performance office hours.
@@ -217,8 +269,10 @@ Sure! Book in some time in the Azure performance office hours.
   - Subject: YOUR_EXTENSION_NAME: Azure performance office hours
   - Location: Conf Room 41/24 (It is already reserved)
 
+<a name="performance-best-practices"></a>
 # Performance best practices
 
+<a name="performance-best-practices-operational-best-practices"></a>
 ## Operational best practices
 
 - Enable performance alerts
@@ -244,6 +298,7 @@ Sure! Book in some time in the Azure performance office hours.
     1. Your bundling logic is optimised
     1. Are you serving your iframe experience geo-distributed efficiently?
 
+<a name="performance-best-practices-coding-best-practices"></a>
 ## Coding best practices
 
 - Reduce network calls
@@ -274,6 +329,7 @@ Sure! Book in some time in the Azure performance office hours.
   - Ensure you are returning the relevant blocking promises as part of your initialization path (`onInitialize` or `onInputsSet`), today you maybe cheating the system but that is only hurting your users.
   - Ensure your telemetry is capturing the correct timings
 
+<a name="performance-best-practices-general-best-practices"></a>
 ## General best practices
 
 - Test your scenarios at scale
@@ -290,6 +346,7 @@ Sure! Book in some time in the Azure performance office hours.
     - Accumulate the changes and then update the observable
     - Manually throttle or use `.extend({ rateLimit: 250 });` when initializing the observable
 
+<a name="extension-load-shim-dependencies-removing-shims"></a>
 # Extension load shim dependencies (removing shims)
 
 Extension load shim dependencies are dependencies that are hardcoded into your require config to be downloaded and executed before any other script can be executed.
@@ -297,6 +354,7 @@ Because of the way shims work in requireJS, no assumption can be made about thei
 shims are all fully downloaded and executed. For most extensions today, at best (latest SDK), what this translates to is a shim bundle being downloaded concurrently
  with your extension's entrypoint bundle, meaning a blocking download of OSS libraries that delays any work to initialize your extension.
 
+<a name="extension-load-shim-dependencies-removing-shims-how-to-fix-shim-usage"></a>
 ## How to fix shim usage
 
 To fix this, you have a few options:
@@ -306,6 +364,7 @@ To fix this, you have a few options:
 1. Convert the library to an AMD module
     - By converting the library to an AMD module and adding an amd-dependency tag to files that really need it, you enable the Portal's bundler to bundle said library with its owners (saving a network round-trip) and you move it out of the extension init path.
 
+<a name="extension-load-shim-dependencies-removing-shims-how-to-fix-shim-usage-converting-your-shim-to-an-amd-module"></a>
 ### Converting your shim to an AMD module
 
 Converting your OSS library to an AMD module is very straightforward in most cases.
@@ -356,8 +415,10 @@ Finally, since the bundler will now automatically pick up the library’s file a
 This should cover the vast majority of shim-to-AMD conversion cases.
 For more information, please create a stack overflow question (https://aka.ms/portalfx/ask) and reach out to ibizaperfv@microsoft.com.
 
+<a name="performance-profiling"></a>
 # Performance profiling
 
+<a name="performance-profiling-how-to-profile-your-scenario"></a>
 ## How to profile your scenario
 
 1. Open a browser and load portal using `https://portal.azure.com/?clientoptimizations=bundle&feature.nativeperf=true​`
@@ -372,6 +433,7 @@ For more information, please create a stack overflow question (https://aka.ms/po
 1. Stop the profiler
 1. Assess the profile
 
+<a name="performance-profiling-identifying-common-slowdowns"></a>
 ## Identifying common slowdowns
 
 1. Blocking network calls
@@ -380,12 +442,14 @@ For more information, please create a stack overflow question (https://aka.ms/po
 1. Heavy rendering and CPU from overuse of UI-bound observables
     - Are you updating the same observable repeatedly in a short time frame? Is that reflected in the DOM in any way? Do you have computeds listening to a large number of observables?
 
+<a name="performance-profiling-verifying-a-change"></a>
 ## Verifying a change
 
 To correctly verify a change you will need to ensure the before and after are instrumented correctly with telemetry. Without that you cannot truly verify the change was helpful.
 We have often seen what seems like a huge win locally transition into a smaller win once it's in production, we've also seen the opposite occur too.
 The main take away is to trust your telemetry and not profiling, production data is the truth. 
 
+<a name="v2-targets"></a>
 # V2 targets
 
 The Azure Portal SDK ships a "V2" targets that is designed to work with CloudBuild. The Azure Portal team and some of the larger extension partners teams have already enabled CloudBuild for their repositories to using the V2 targets. The key value proposition of the V2 targets are:
@@ -396,10 +460,12 @@ The Azure Portal SDK ships a "V2" targets that is designed to work with CloudBui
 
 Below are the steps to switch to the V2 targets. A video of the migration steps can be found here: https://msit.microsoftstream.com/video/49879891-7735-44c0-9255-d32162b78ed5?st=1349
 
+<a name="v2-targets-prerequisites"></a>
 ## Prerequisites
 
 - Get your extension working with at least Ibiza SDK 5.0.302.1051. The V2 targets are under active development are continuously being improved. Ideally get your extension working with the latest SDK.
 
+<a name="v2-targets-get-your-extension-building-with-tsconfig-json"></a>
 ## Get your extension building with tsconfig.json
 
 - Fully build your extension to get all of the code-generated files (eg. TypeScript files generated from PDL) generated.
@@ -441,6 +507,7 @@ Below are the steps to switch to the V2 targets. A video of the migration steps 
 - You may see new errors because the TypeScript compiler is more strict in checking code when using a tsconfig file. Fix any errors that you see. You may need to remove `/// <reference path="" />` lines from all TypeScript files to fix certain errors.
 - If you see a casing mismatch error, you may need to use "git mv" to rename and change the casing of the file.
 
+<a name="v2-targets-get-extension-building-using-v2-targets"></a>
 ## Get extension building using V2 targets
 
 - Remove all `<TypeScriptCompile>` elements from the csproj. Do not remove the `<SvgTypeScriptCompile>` tags. If you use Visual Studio and want to see TypeScript files in the Solution Explorer, you should instead change the element names to None or Content.
@@ -485,6 +552,7 @@ Below are the steps to switch to the V2 targets. A video of the migration steps 
   <Import Project="$(PkgMicrosoft_Portal_Tools)\build\Microsoft.Portal.Tools.V2.targets" />
 ```
 
+<a name="v2-targets-enabling-cloudbuild-support"></a>
 ## Enabling CloudBuild support
 
 - Add the following to the csproj inside an ItemGroup if you have any `<Svg>` tags in the csproj. This tag informs CloudBuild that Svg MsBuild Items are consider inputs to the project.
@@ -495,6 +563,7 @@ Below are the steps to switch to the V2 targets. A video of the migration steps 
   </AvailableItemName>
 ```
 
+<a name="v2-targets-common-errors"></a>
 ## Common errors
 
 - Make sure that the `Microsoft.Portal.Tools.V2.targets` is imported after the C# and WebApplication targets. The ordering should look like something before.
@@ -505,16 +574,19 @@ Below are the steps to switch to the V2 targets. A video of the migration steps 
   <Import Project="$(NuGetPath_Microsoft_Portal_Tools)\build\Microsoft.Portal.Tools.V2.targets" Condition="Exists('$(NuGetPath_Microsoft_Portal_Tools)\build\Microsoft.Portal.Tools.V2.targets')" />
 ```
 
+<a name="v2-targets-breaking-changes-between-v1-and-v2-targets"></a>
 ## Breaking changes between V1 and V2 targets
 
 - The output location of pde files has been changed from `$(ProjectDir)Client` to `$(OutDir)`.
 
+<a name="dependency-injected-view-models"></a>
 # Dependency injected view models
 
 The framework supports loading view models using dependency injection. If you migrate your extension to use this programming model, the SDK will no longer generate ViewModelFactories.ts and a large portion of ExtensionDefinition.ts. Consequently you can remove nearly all code in Program.ts. All of your DataContext classes will also be bundled with the associated blade and will no longer be loaded up front.
 
 > If you have any issues throughout this process please post to our [stack overflow](https://aka.ms/portalfx/ask)
 
+<a name="dependency-injected-view-models-prerequistes"></a>
 ## Prerequistes
 
 - Migrate to V2 targets if you haven’t done so (See: [V2 targets](#v2-targets))
@@ -525,6 +597,7 @@ The framework supports loading view models using dependency injection. If you mi
   - You do not have to remove trailing newlines like the PR.
 - Commit and verify that these changes do not break your extension before starting the actual migration.
 
+<a name="dependency-injected-view-models-migration-steps"></a>
 ## Migration steps
 
 - Delete the generated ViewModelFactories.ts from `Client\_generated`
@@ -586,6 +659,7 @@ MsPortalFx.require("Fx/DependencyInjection")
 
 - Temporarily set `emitDecoratorMetadata` compiler option to false. Then turn on the compiler option `noUnusedParameters` and `noUnusedLocals`. Remove any dead parameters flagged by the compiler. You may find some violations in generated code. Ignore them.
 
+<a name="dependency-injected-view-models-pull-request-samples"></a>
 ## Pull Request Samples
 
 - https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/1013125?_a=overview
