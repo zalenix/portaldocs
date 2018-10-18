@@ -38,7 +38,12 @@ The Azure Portal SDK includes everything you need to build extensions for the po
     ![alt-text](../media/top-extensions-getting-started/ssl1.png "accept ssl prompt")
     ![alt-text](../media/top-extensions-getting-started/ssl2.png "accept sec warning")
 
-1. Your extension will now be side loaded into the production portal. The portal will prompt you to allow your side loaded extension. Click allow. Note: If you are not seeing the allow Untrusted Extensions dialog please see the [FAQ](#faq) below for solutions to common problems
+1. Your extension will now be side loaded into the production portal. The portal will prompt you to allow your side loaded extension. Click allow. 
+
+**Note**: If you are not seeing the allow Untrusted Extensions dialog there are two common issues in the [FAQ](#faq).
+
+- please see [popup blocker](#the-portal-is-never-loaded-so-the-extension-has-not-sideloaded)
+- localhost cert is not installed git a [this site is not secure error](#i-receive-a-this-site-is-not-secure-or-your-connection-is-not-private-error-when-running-the-extension)
 	
 ![alt-text](../media/top-extensions-getting-started/untrustedextension.png "acceptuntrusted extension")
 	
@@ -275,7 +280,7 @@ Solution:
 - Leave defaults selected and click through to finish.
 - Terminate all browser instances in taskmgr and F5 again.
 
-### The portal is never loaded so the extension has not sideloaded?
+### The portal is never loaded so the extension has not sideloaded
 
 This is generally a popup blocker. After running F5 if you only have one tab open to `https://localhost:44300` as opposed to two tabs then it is likely that your popup blocker is stopping the first tab from launching the second tab that loads the portal and sideloads your extension. To solve this simply enable `https://localhost:44300` in your browsers popup blocker.
 
