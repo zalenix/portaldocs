@@ -206,12 +206,21 @@ Note:
 * TRX and JUNIT output are generated when running `npm run test` or `npm run test-ci` via karmajs and its karma.conf.js.
 * drop the TRX or JUNIT reporter that is not needed for your CI environment.
 
+![alt-text](../media/top-extensions-getting-started/trxoutput.png "trx output")
+
 #### Code Coverage
 
 By Default the project template/steps above will generate a project configured that also produces code coverage using karma-coverage. The content will be output under ./TestResults/Coverage/**/index.html
 
+![alt-text](../media/top-extensions-getting-started/coverage1.png "code coverage summary")
+
 Note: 
 * coverage results are generated when running  `npm run test` or `npm run test-ci` via karmajs its karma.conf.js.
+
+Clicking through from the summary view to the ResourceOverviewBlade you can see code coverage line by line
+
+![alt-text](../media/top-extensions-getting-started/coverage2.png "code coverage detail")
+
 
 # FAQ
 
