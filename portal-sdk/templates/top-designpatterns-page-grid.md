@@ -1,14 +1,14 @@
-﻿# Page with lists
-A page with one or more lists of items is a common layout for web pages.
+﻿# Page with grids
+Most web pages and portals surface one or more lists of items to present valuable content to their users.
 
 # Context
-In Azure, users interact with lists of items in numerous places.
+In Azure, users frequently interface with objects that are exposed though list views.
 
 # Problem
-User sees a page with lists of items and needs to perform actions on page and items in the list.
+Users arrive at a page with lists of items and need to perform actions on the objects.
 
 # Solution
-The Azure portal uses blades to represent a page and has a grid control to manage lists of items.  Grids consist of objects grouped together and sorted vertically, usually presented with actions that a user can perform on a list item.  Grids are used for surfacing a list of objects to provide meaningful data on each list item. 
+The Azure portal uses blades to represent a page and has a grid control to manage lists of items. Grids consist of objects grouped together and sorted vertically, usually presented with actions that a user can perform on a list item. Grids are used for surfacing a list of objects to provide meaningful data on each list item. 
 
 ## Also known as
 - Browse
@@ -29,7 +29,11 @@ The Azure portal uses blades to represent a page and has a grid control to manag
 # Use when
 Grids are used for surfacing a list of objects to provide meaningful data on each list item. When displaying data in a grid, ensure that users can filter, see an item count, and sort the columns when possible. Grids will often contain more logical data than can be shown directly in a single page. There are two methods that are used to manage large amounts of data: Dynamic scrolling (loading more rows into the grid as a customer scrolls) or using a paginator.
 
-## Anatomy
+## Anatomy<div style="max-width:800px">
+<img alttext=" " src="../media/top-designpatterns-page-grid/grid-anatomy.png"  />
+</div>
+
+
 
 A grid can contain:
 1.  Column header
@@ -38,10 +42,6 @@ A grid can contain:
 4.  Iconography
 5.  Context menu (ellipsis)
 6.  Scrollbar or pagination
-<div style="max-width:800px">
-<img alttext="Page with list anatomy" src="../media/top-designpatterns-page-grid/grid-anatomy.png"  />
-</div>
-
 ## Behaviors
 **Bulk commanding (multi-select)**
 A customer can select one or more items using the leftmost column, then choose a command from the command bar above to perform actions like Remove or Delete. This pattern is ideal for scenarios when a user wants to perform a single action on many list items.
@@ -66,12 +66,16 @@ Actions can be pulled out of the command bar to be in closer proximity to the gr
 
 ## Do
 - Allow for column sorting. Users should be able to sort by ascending and descending order by clicking the column header
+
 - Direct link from table cells. For example, The name of a resource is displayed with link styling, and clicking that link will open the resource
+
 - Apply responsive breakpoints. The default view should render nicely at any size between 1280px and 1920px
+
 - Remember column customization between sessions. Changes applied to columns shown and column widths should be persistent across sessions and browsers
 
 ## Don’t
 - Don’t name a column “Name” if you can be more descriptive. For example, for a list of disks, use “Disk” as the column name
+
 - Don’t use long column labels. Try to avoid situations where valuable grid real estate is consumed because a column header is longer than the data in that column
 
 # Related design patterns

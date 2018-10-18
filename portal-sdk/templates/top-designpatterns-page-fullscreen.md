@@ -1,16 +1,16 @@
-# Full screen 
+# Page Full screen 
 Use navigation patterns for the portal that behave like most websites.
 
 # Context
-As users navigates the portal, they expect a common web interaction experience. 
+As users navigate the portal, they expect a common web interaction experience. 
 
 # Problem
-Earlier portal designs used blades that stacked to the right into horizontally scrolling "journeys".  These stacked blades often resulted jarring context switches with some blades being partially displayed.  Horizontal scrolling is also more foreign than the common vertical scrolling of long web pages.  
+Earlier portal designs used narrow blades that stacked to the right into horizontally scrolling "journeys" as the user navigated.  These stacked blades often resulted in existing blades being partially displayed which made it hard for the user to know where to look and orient where in the portal they were.  Horizontal scrolling is also more foreign than the common vertical scrolling of long web pages.  
 
 Our customers have made it very clear they don’t like horizontal scrolling – in large part because it doesn’t match how they expect to interact with websites.   
 
 # Solution
-In 2017 we moved from narrow blades to full page experiences and have introduced dialogs and context panes to avoid unnecessary context switches.
+In 2017 Azure moved from narrow blades to full page experiences and have introduced dialogs and context panes to avoid unnecessary context switches.
 
 ## Also known as 
 
@@ -20,8 +20,9 @@ In 2017 we moved from narrow blades to full page experiences and have introduced
 
 ## Example images 
 
-![Full screen](../media/top-designpatterns-page-fullscreen/Full-screen-1.png "Full screen example")
-
+<div style="max-width:800px">
+<img alttext="Full screen sample" src="../media/top-designpatterns-page-fullscreen/Full-screen-1.png"  />
+</div>
 ## Example uses
 These Azure resources are good examples of this design pattern 
 
@@ -36,7 +37,9 @@ Full screen is a foundation of any page in the Azure portal. All resources are b
 ## Anatomy  
 A full screen page usually contains:
 
-![Full screen anatomy](../media/top-designpatterns-page-fullscreen/FS_1_Anatomy.png "Full screen anatomy")
+<div style="max-width:800px">
+<img alttext="Full screen anotomy" src="../media/top-designpatterns-page-fullscreen/FS_1_Anatomy.png"  />
+</div>
 
 1. Menu
 2. Toolbar
@@ -46,22 +49,24 @@ A full screen page usually contains:
 
 ## Behavior 
 The current blade should occupy the available screen space and any subsequent user interactions should seek to minimize navigating the user.  This would involve using a Dialog or Context pane for user interaction.
+
 ### Maximized blades 
 All Browse views and Menu blades open full screen by default.
+
 ### Origin snapping 
 In the event a child blade would overflow the current available screen real estate, the newly opened blade snaps to the left of the screen, moving all other blades out of view
+
 ### Navigation and back stack 
 Even though previous blades are no longer visible, your customer can traverse to an earlier blade from their current journey.
+<div style="max-width:200px">
+<img alttext="Breadcrumb" src="../media/top-designpatterns-page-fullscreen/FS_2_Breadcrumbs@2x-400x126.png" />
+</div>
+Use the portal breadcrumbs or the browser back button
 
-![Breadcrumb](../media/top-designpatterns-page-fullscreen/FS_2_Breadcrumbs@2x-400x126.png "breacrumb")
-
-Use the portal breadcrumbs
-
-Or they can use the browser back button
-
-![close blade](../media/top-designpatterns-page-fullscreen/FS_3_X@2x-400x126.png "close blade")
-
-Close the current blade in focus using the Close button in the right corner
+<div style="max-width:200px">
+<img alttext="Close blade" src="../media/top-designpatterns-page-fullscreen/FS_3_X@2x-400x126.png" />
+</div>
+Use the Close button in the right corner
 
 
 ## Do 

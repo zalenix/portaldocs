@@ -28,5 +28,7 @@ The page patterns provide guidance for common page layouts in Azure
 Design toolkits are available so that you can easily create designs that are aligned with these patterns
 
 * Design toolkit [top-designpatterns-toolkits.md](top-designpatterns-toolkits.md)
+* Icon usage, design and production [portalfx-icons.md](portalfx-icons.md)
+* Portal style guide [portalfx-style-guide.md](portalfx-style-guide.md)
 
 

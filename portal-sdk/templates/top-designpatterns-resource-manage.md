@@ -2,7 +2,7 @@
 The Resource Manage pattern provides the configuration and management of a single Azure resource   
 
 # Problem
-Users must manage many different types of Azure resources.  For settings that are common across resources, the user expects a common interaction.  For settings that are unique to a resource, users need a navigation pattern that enables them to easily find those settings.
+Users manage many different types of Azure resources.  For settings that are common across resources, users expect a common interaction.  For settings that are unique to a resource, users need a way to easily find those settings.
 
 # Solution
 The Resource Manage pattern is used to configure and manage a single Azure resource.  The resource manage page is typically opened from a Resource
@@ -20,7 +20,9 @@ Browse experience where the user is seeing a list of resources and needs to see
 ---------
 
 ## Example images
-![Resource manage example](../media/top-designpatterns-resource-manage/Resource-manage-VM.png "Resource manage example")
+<div style="max-width:800px">
+<img alttext="Resource manage example" src="../media/top-designpatterns-resource-manage/Resource-manage-VM.png"  />
+</div>
 
 ## Example uses
 These Azure resources are good examples of this design pattern 
@@ -31,17 +33,6 @@ These Azure resources are good examples of this design pattern 
 
 # Use when 
 Managing a single azure resource.
-
-## Anatomy  
-The resource manage pattern is a full screen experience composed of a resource menu and corresponding resource blades.  Settings that are common across resources have a standard menu item and menu location so that users can easily find them.
-
-![Resource manage anatomy](../media/top-designpatterns-resource-manage/ResManage_1_Anatomy.png "Resource manage anatomy")
-
-A resource manage experience usually contains (EW - need to fix abstracted anatomy):
-
-2. Resource menu
-3. Resource pages opened from the menu items, command bar, commands or links
-
 ## Getting started with resource manage
   
 How to create the resource manage
@@ -54,15 +45,26 @@ experience
    - Add keywords to your menu items to help the user find menu items by searching the resource menu 
 3. Design and Build an Overview page, which serves as the home page for the resource 
 
+## Anatomy  
+The resource manage pattern is a full screen experience composed of a resource menu and corresponding resource blades.  Settings that are common across resources have a standard menu item and menu location so that users can easily find them.
+<div style="max-width:800px">
+<img alttext="Resource manage anatomy" src="../media/top-designpatterns-resource-manage/ResManage_1_Anatomy.png"  />
+</div>
+
+A resource manage experience usually contains (EW - need to fix abstracted anatomy):
+
+2. Resource menu
+3. Resource pages opened from the menu items, command bar, commands or links
+
 ## Behavior 
 
 ### Resource menu  
 
 The resource menu surfaces all pages related to the resource.    The navigation includes pages that are common to all resources throughout the portal. Your
 resource will get those "for free," some common pages require onboarding by the resource provider. You can add as many pages to your resource as you need. Refer to the image below to make sure each new item is grouped properly. Learn more [Resource Menu](top-blades-resourcemenublade.md)
-
-![Resource menu](../media/top-designpatterns-resource-manage/resource-menu.png "Resource menu")
-
+<div style="max-width:200px">
+<img alttext="Resource menu" src="../media/top-designpatterns-resource-manage/resource-menu.png"  />
+</div>
 
 ### Overview page 
 
@@ -71,8 +73,9 @@ always having them drill deeper.    
 ### Resource pages   
 Each menu item opens a page that allows the user to drill deeper for more information.    Monitoring 
 pages requires additional onboarding to Geneva    Resource health requires additional onboarding by RP. 
-
-![Overview page](../media/top-designpatterns-resource-manage/overview.png "Overview page")
+<div style="max-width:800px">
+<img alttext="Resource overview page" src="../media/top-designpatterns-resource-manage/overview.png"  />
+</div>
 
 
 ### Toolbar 
