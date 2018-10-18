@@ -42,7 +42,7 @@ The Azure Portal SDK includes everything you need to build extensions for the po
 
 **Note**: If you are not seeing the allow Untrusted Extensions dialog there are two common issues in the [FAQ](#faq).
 
-- please see [popup blocker](#the_portal_is_never_loaded_so_the_extension_has_not_sideloaded)
+- please see [popup blocker](#the-portal-is-never-loaded-so-the-extension-has-not-sideloaded)
 - localhost cert is not installed git a [this site is not secure error](#i-receive-a-this-site-is-not-secure-or-your-connection-is-not-private-error-when-running-the-extension)
 	
 ![alt-text](../media/top-extensions-getting-started/untrustedextension.png "acceptuntrusted extension")
