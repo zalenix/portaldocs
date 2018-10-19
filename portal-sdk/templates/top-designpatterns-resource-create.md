@@ -74,6 +74,9 @@ When creating a form that includes several fields pertaining to a certain subjec
 
 ### Sub create in a context pane
 Context panes can be used for sub creates within the create flow. The sub create allows users to configure services or to create resources that are related to the main resource that's being created, without losing the overall context.
+<div style="max-width:800px">
+<img alttext="Tabs" src="../media/top-designpatterns-resource-create/subcreate.png"  />
+</div>
 
 ### Info balloons
 If you have input fields that may not be immediately familiar to your customers, include an info balloon that gives them more information.
