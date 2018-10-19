@@ -1,4 +1,5 @@
 # NAME
+This is the template to use when creating a new design pattern document
 
 # Context
 
@@ -11,6 +12,9 @@
 # Examples
 
 ## Example images
+<div style="max-width:800px">
+<img alttext="Example image" src="../media/<folder>/<image_name>.png"  />
+</div>
 
 ## Example uses
 

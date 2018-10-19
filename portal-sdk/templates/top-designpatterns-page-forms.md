@@ -2,20 +2,25 @@
 Forms are the manner in which we gather and validate user input.
 
 # Context
-Customers complete forms in Azure to deploy, configure, file support tickets, and provide feedback. Careful form design has a huge impact on the speed with which users can understand and accurately complete a form.
+Users need to input information when managing Azure resources.
 
 # Problem
+Customers complete forms in Azure to create, deploy and configure resources.  Customers also use the portal to file support tickets and provide feedback. 
 
 # Solution
-
+Well designed input forms enable users to increase the speed and accuracy of input and lead to successful form completion.
 
 ## Also known as
-Create
+* Create
+* Running a command
+* Editing a property
 
 # Examples
 
 ## Example images
-
+<div style="max-width:800px">
+<img alttext="Example image" src="../media/<folder>/<image_name>.png"  />
+</div>
 
 ## Example uses
 * Creating a VM - [Free account virtual machine](https://rc.portal.azure.com/#create/microsoft.freeaccountvirtualmachine)

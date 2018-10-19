@@ -1,6 +1,6 @@
 # Design patterns for common scenarios in Azure
 
-Design patterns for common scenarios describe portal experiences that have matured enough to exhibit a successful pattern, solid usage and formal research results. Azure teams should leverage these design patterns to accelerate extension development and to provide users with a familiar experience as they seek to use new areas of Azure.
+Design patterns provide solutions for common problems in a given context.  In Azure, we document these best practices once several teams encounter a problem, design a solution, research that solution and see solid real-world usage results. Azure teams should leverage these design patterns to accelerate extension development and to provide users with a familiar experience so that users can easily adopt new Azure services.
 
 The following patterns are available
 
@@ -14,8 +14,8 @@ The resource management patterns provide guidance for managing the full lifecy
 3. Resource Manage [top-designpatterns-resource-manage.md](top-designpatterns-resource-manage.md)
 
 
-# Page 
-The page patterns provide guidance for common page layouts in Azure
+# Page layout
+The page layout patterns provide guidance for common page layouts in Azure
 
 1. Fullscreen [top-designpatterns-page-fullscreen.md](top-designpatterns-page-fullscreen.md)
 
@@ -28,7 +28,9 @@ The page patterns provide guidance for common page layouts in Azure
 Design toolkits are available so that you can easily create designs that are aligned with these patterns
 
 * Design toolkit [top-designpatterns-toolkits.md](top-designpatterns-toolkits.md)
+
 * Icon usage, design and production [portalfx-icons.md](portalfx-icons.md)
+
 * Portal style guide [portalfx-style-guide.md](portalfx-style-guide.md)
 
 

@@ -1,5 +1,5 @@
 # Page Full screen 
-Use navigation patterns for the portal that behave like most websites.
+Use navigation patterns for the portal that fill the screen and behave like most websites.
 
 # Context
 As users navigate the portal, they expect a common web interaction experience. 
@@ -10,11 +10,12 @@ Earlier portal designs used narrow blades that stacked to the right into horizon
 Our customers have made it very clear they don’t like horizontal scrolling – in large part because it doesn’t match how they expect to interact with websites.   
 
 # Solution
-In 2017 Azure moved from narrow blades to full page experiences and have introduced dialogs and context panes to avoid unnecessary context switches.
+In 2017 Azure moved from narrow blades to full page experiences and have introduced dialogs and context panes to further avoid unnecessary context switches.
 
 ## Also known as 
 
--   No more horizontal scrolling
+-   Avoid horizontal scrolling
+-   Avoid context switches
 
 # Examples
 
