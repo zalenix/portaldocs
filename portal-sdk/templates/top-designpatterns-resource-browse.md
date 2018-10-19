@@ -56,6 +56,9 @@ The title of a browse page is generally a descriptive, plural noun that reflects
 The toolbar for the browse pattern contains actions that operate against a grid, i.e. 'Add' or 'Delete' a resource, as well as resource-specific actions (for a limited set of resource types). 
 There are two sets of actions on the toolbar. The first set is applicable to for all items on the grid or generic page level actions like ‘Add’ or 'Refresh'. The second set, separated by a pipe, is enabled only when one or more resource items are selected on the grid. 
 
+<div style="max-width:800px">
+<img alttext="Resource browse toolbar" src="../media/top-designpatterns-resource-browse/resource-browse-toolbar.png"/>
+
 The recommended actions for the resource browse toolbar are:
 * Add invokes the resource create experience
 * Edit columns changes the columns in the grid
@@ -78,7 +81,7 @@ Actions can be performed on a specific resource using context menu commands. Rea
 ### Empty state
 When the resource list has no items to display, provide the user with information on how to get started, i.e help links. The icon, message and link come from your asset definition.
 <div style="max-width:800px">
-<img alttext="Resource browse anatomy" src="../media/top-designpatterns-resource-browse/resource-browse-noresources.png"/>
+<img alttext="Empty state" src="../media/top-designpatterns-resource-browse/resource-browse-noresources.png"/>
 
 ## Do 
 

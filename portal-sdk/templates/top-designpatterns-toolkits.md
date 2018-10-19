@@ -1,21 +1,66 @@
 # Toolkits for Azure Experience Design
 
-Note: this is a draft we're releasing to provide designers with components to use in presentations for Ignite 2018. Our 2.0 release will be coming in October. 
 
-### Figma
-The Figma toolkit is available as a Figma library within the Microsoft Azure Figma workgroup. 
+<table style="width:800px; border-style:none; cellpadding=10px">
+<tr>
+<td  width="20%">
+<a href="" target="_blank">
+<img src="../media/top-designpatterns-toolkits/figma.png" style="border-style:solid; border-width:2px; border-color:gray" alt="Figma toolkit">
+</a>
+</td>
 
-No download is necessary.
+<td width="20%">
+<a href="https://microsoft.sharepoint.com/:u:/t/UNI_CE/EeQ7d6ScPtxOn11y9u0uWDMBnxj0aAboy2KnvqBJOnB_VA?e=3WzClt" target="_blank">
+<img src="../media/top-designpatterns-toolkits/sketch.png" style="border-style:solid; border-width:2px; border-color:gray" alt="Sketch toolkit">
+</a>
+</td>
 
-### [Sketch](https://microsoft.sharepoint.com/:u:/t/UNI_CE/EeQ7d6ScPtxOn11y9u0uWDMBnxj0aAboy2KnvqBJOnB_VA?e=3WzClt) - **Load as a Sketch Library** do not open the Sketch version of the toolkit as a file.
+<td width="20%">
+<a href="https://microsoft.sharepoint.com/:f:/t/UNI_CE/EuZaLU4h1I5Fn3L9uL6YRcMBWA4H6ZRXQWbmzUv60KXJWQ?e=gsPway" target="_blank">
+<img src="../media/top-designpatterns-toolkits/xd.png" style="border-style:solid; border-width:2px; border-color:gray" alt="Sketch toolkit">
+</a>
+</td>
 
-### [Adobe XD](https://microsoft.sharepoint.com/:f:/t/UNI_CE/EuZaLU4h1I5Fn3L9uL6YRcMBWA4H6ZRXQWbmzUv60KXJWQ?e=gsPway)
+<td width="20%">
+<a href="https://microsoft.sharepoint.com/:u:/t/UNI_CE/ET_B7JO5tJpCnBrXXaLID9AB9ltbHqj_v6eWkq147cvm_Q?e=zEB7t8" target="_blank">
+<img src="../media/top-designpatterns-toolkits/illustrator.png" style="border-style:solid; border-width:2px; border-color:gray" alt="Sketch toolkit">
+</a>
+</td>
 
-### [Adobe Illustrator](https://microsoft.sharepoint.com/:u:/t/UNI_CE/ET_B7JO5tJpCnBrXXaLID9AB9ltbHqj_v6eWkq147cvm_Q?e=zEB7t8)
+<td width="20%">
+<a href="https://microsoft.sharepoint.com/:f:/t/UNI_CE/EjEXdW54jiBOuWunOWsYLTsBeIZIDPTfPD6fFiMMaYUKDA?e=YSEE8w" target="_blank">
+<img src="../media/top-designpatterns-toolkits/powerpoint.png" style="border-style:solid; border-width:2px; border-color:gray" alt="Sketch toolkit">
+</a>
+</td>
 
-### [Powerpoint](https://microsoft.sharepoint.com/:f:/t/UNI_CE/EjEXdW54jiBOuWunOWsYLTsBeIZIDPTfPD6fFiMMaYUKDA?e=YSEE8w)
+</tr>
 
- 
+<tr>
+<td valign="top">
+<b>Figma</b>
+<br>Available as a Figma library within the Microsoft Azure Figma workgroup. 
+<br>No download is necessary.
+</td>
+<td valign="top">
+<b>Sketch</b>
+<br>Available from UNI/
+<br>Load as a Sketch Library. Do not open the Sketch version of the toolkit as a file.
+</td>
+<td valign="top">
+<b>Adobe XD</b>
+<br>Available from UNI/
+</td>
+<td valign="top">
+<b>Adobe Illustrator</b>
+<br>Available from UNI/
+</td>
+<td valign="top">
+<b>Powerpoint</b>
+<br>Available from UNI/
+</td>
+</tr>
+</table>
+
 ## How to submit new controls or file bugs
 
 If you are interested in submitting new controls to include or have bugs to file, please [contact us](http://aka.ms/azureportaltoolkitsfeedback) with the control details. 

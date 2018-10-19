@@ -37,15 +37,13 @@ Creating a resource in Azure
 
 ## Anatomy  
 <div style="max-width:800px">
-<img alttext="Resource create anatomy" src="../media/top-designpatterns-resource-create/ResCreate_1_Anatomy.png"  />
+<img alttext="Resource create anatomy" src="../media/top-designpatterns-resource-create/resource-create-anatomy.png"  />
 </div>
 
 A resource create experience usually contains:
 1. Tabbed pages
 2. Input fields
-3. Sub create within a context menu
-4. Footer navigation
-5. Post create page
+3. Footer navigation
 
 ## Behavior 
 
@@ -86,6 +84,9 @@ The footer nav contains the call to action (CTA) for creating the resource, as w
 
 ## Post create
 The post create page provides realtime deployment status, help with troubleshooting, and improved error display. Best practice is to include additional information here to help the user learn more about the resource being created, as well as related Azure resources.
+<div style="max-width:800px">
+<img alttext="Tabs" src="../media/top-designpatterns-resource-create/postcreate.png"  />
+</div>
 
 **TODO** - screen shot and anatomy of post-create
 
