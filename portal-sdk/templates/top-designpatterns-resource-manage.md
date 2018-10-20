@@ -120,7 +120,7 @@ information. Learn more [portalfx-extensions-essentials.md](./portalfx-extensio
 ===============
 * Resource Create [top-designpatterns-resource-create.md](top-designpatterns-resource-create.md)
 * Resource Browse [top-designpatterns-resource-browse.md](top-designpatterns-resource-browse.md)
-* Design patterns readme [portalfx_designpatterns_readme.md](portalfx_designpatterns_readme.md)
+* Design patterns readme [portalfx-designpatterns-readme.md](portalfx-designpatterns-readme.md)
 
 # Research and usability
 Coming soon

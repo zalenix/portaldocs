@@ -66,5 +66,5 @@
 If you are interested in submitting new controls to include or have bugs to file, please [contact us](http://aka.ms/azureportaltoolkitsfeedback) with the control details. 
 
 # Design patterns
-* Design patterns readme [portalfx_designpatterns_readme.md](portalfx_designpatterns_readme.md)
+* Design patterns readme [portalfx-designpatterns-readme.md](portalfx-designpatterns-readme.md)
 

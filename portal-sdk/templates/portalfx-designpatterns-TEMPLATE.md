@@ -29,7 +29,7 @@ This is the template to use when creating a new design pattern document
 ## Don't 
 
 # Related design patterns
-* Design patterns readme [portalfx_designpatterns_readme.md](portalfx_designpatterns_readme.md)
+* Design patterns readme [portalfx-designpatterns-readme.md](portalfx-designpatterns-readme.md)
 
 # Research and usability
 

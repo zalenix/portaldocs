@@ -85,7 +85,7 @@ Use the Close button in the right corner
 * Resource Create [top-designpatterns-resource-create.md](top-designpatterns-resource-create.md)
 * Resource Browse [top-designpatterns-resource-browse.md](top-designpatterns-resource-browse.md)
 * Resource Manage [top-designpatterns-resource-manage.md](top-designpatterns-resource-manage.md)
-* Design patterns readme [portalfx_designpatterns_readme.md](portalfx_designpatterns_readme.md)
+* Design patterns readme [portalfx-designpatterns-readme.md](portalfx-designpatterns-readme.md)
 
 # Research and usability
 
