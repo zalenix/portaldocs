@@ -70,7 +70,6 @@ pages requires additional onboarding to Geneva Resource health requires addition
 <img alttext="Resource overview page" src="../media/top-designpatterns-resource-manage/overview.png"  />
 </div>
 
-
 ### Toolbar 
 Toolbar commands should open context panes instead of narrow blades to avoid horizontal scrolling. Learn more [Toolbar](portalfx-controls-toolbar.md), [Context pane](top-extensions-context-panes.md)
 
@@ -121,6 +120,7 @@ information. Learn more [portalfx-extensions-essentials.md](./portalfx-extensio
 ===============
 * Resource Create [top-designpatterns-resource-create.md](top-designpatterns-resource-create.md)
 * Resource Browse [top-designpatterns-resource-browse.md](top-designpatterns-resource-browse.md)
+* Design patterns readme [portalfx_designpatterns_readme.md](portalfx_designpatterns_readme.md)
 
 # Research and usability
 Coming soon

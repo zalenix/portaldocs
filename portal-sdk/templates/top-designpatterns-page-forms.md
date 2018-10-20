@@ -78,6 +78,8 @@ Provide highly visible and specific error messages.
 # Related design patterns
 * Full screen [top-designpatterns-page-fullscreen.md](top-designpatterns-page-fullscreen.md)
 * Resource Create [top-designpatterns-resource-create.md](top-designpatterns-resource-create.md)
+* Design patterns readme [portalfx_designpatterns_readme.md](portalfx_designpatterns_readme.md)
+
 
 # Research and usability
 

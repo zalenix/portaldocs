@@ -103,14 +103,10 @@ The post create page provides realtime deployment status, help with troubleshoot
 
 # Related design patterns
 
--   Full screen
-    [top-designpatterns-page-fullscreen.md](top-designpatterns--page-fullscreen.md)
-
--   Resource Browse
-    [top-designpatterns-resource-browse.md](top-designpatterns-resource-browse.md)
-
--   Resource Manage
-    [top-designpatterns-resource-manage.md](top-designpatterns-resource-manage.md)
+-   Full screen [top-designpatterns-page-fullscreen.md](top-designpatterns--page-fullscreen.md)
+-   Resource Browse [top-designpatterns-resource-browse.md](top-designpatterns-resource-browse.md)
+-   Resource Manage [top-designpatterns-resource-manage.md](top-designpatterns-resource-manage.md)
+* Design patterns readme [portalfx_designpatterns_readme.md](portalfx_designpatterns_readme.md)
 
 # Research and usability 
 Coming soon
