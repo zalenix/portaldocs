@@ -19,7 +19,7 @@ Well designed input forms enable users to increase the speed and accuracy of inp
 
 ## Example images
 <div style="max-width:800px">
-<img alttext="Example image" src="../media/<folder>/<image_name>.png"  />
+<img alttext="Forms example" src="../media/top-designpatterns-page-forms/forms.png"  />
 </div>
 
 ## Example uses
@@ -41,23 +41,36 @@ A form can contain:
 
 **Placeholder text**
 Include placeholder text can be formatted in two ways:
-1.  As instruction
+1. As instruction
+<div style="max-width:400px; margin-left:25px">
+<img alttext="Placeholder instruction" src="../media/top-designpatterns-page-forms/placeholder_text.png"  />
+</div>
+
 2. As an example
+<div style="max-width:200px; margin-left:25px">
+<img alttext="Placeholder example" src="../media/top-designpatterns-page-forms/placeholder-email.png"  />
+</div>
 
 **Form validation**
 Don’t make users guess password requirements. Instead, include the password validation tool in your experience.
+<div style="max-width:400px">
+<img alttext="Form validation" src="../media/top-designpatterns-page-forms/form-validation.png"  />
+</div>
 
 **Toggles vs radio buttons**
 The blue and white toggle used in the portal today has tested poorly among users because it's unclear which option is selected.
 
-Therefore the current guidance is to use radio buttons in favor of the toggle.
+The current guidance is to use radio buttons in favor of the toggle.
+<div style="max-width:200px">
+<img alttext="Radio control" src="../media/top-designpatterns-page-forms/radio-control.png"  />
+</div>
 
 **Error messaging**
 Provide highly visible and specific error messages.
 
 ## Do
 -   Use inline labels and fields for full screen pages and stacked labels and fields for narrow blades
-- 
+
 -   Mark required fields with a * red asterisk to distinguish them from optional fields
 
 -   Include info bubbles if there are input fields that may not be immediately familiar to customers
@@ -74,6 +87,7 @@ Provide highly visible and specific error messages.
 -   Don't include fields that stretch across the full width of the page.
 
 -   Avoid buttons for clearing a form. The risk of accidental deletion outweighs the unlikely need to start over.
+
 
 # Related design patterns
 * Full screen [top-designpatterns-page-fullscreen.md](top-designpatterns-page-fullscreen.md)

@@ -29,7 +29,8 @@ The Azure portal uses blades to represent a page and has a grid control to manag
 # Use when
 Grids are used for surfacing a list of objects to provide meaningful data on each list item. When displaying data in a grid, ensure that users can filter, see an item count, and sort the columns when possible. Grids will often contain more logical data than can be shown directly in a single page. There are two methods that are used to manage large amounts of data: Dynamic scrolling (loading more rows into the grid as a customer scrolls) or using a paginator.
 
-## Anatomy<div style="max-width:800px">
+## Anatomy
+<div style="max-width:800px">
 <img alttext=" " src="../media/top-designpatterns-page-grid/grid-anatomy.png"  />
 </div>
 
