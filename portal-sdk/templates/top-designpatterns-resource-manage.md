@@ -55,7 +55,15 @@ How to create the resource manage experience
 ## Behavior 
 
 ### Resource menu
-The resource menu surfaces all pages related to the resource. The navigation includes pages that are common to all resources throughout the portal. Your resource will get those "for free," while some common pages require onboarding by the resource provider. You can add as many pages to your resource as you need. Refer to the image below to make sure each new item is grouped properly. Learn more [Resource Menu](top-blades-resourcemenublade.md)
+The resource menu surfaces all pages related to the resource. The navigation includes pages that are common to all resources throughout the portal. Your resource will get those "for free," while some common pages require onboarding by the resource provider. You can add as many pages to your resource as you need. 
+The Resource Menu enables navigation to manage the resource instance and is divided into well know parts:
+* Top items: items common to all resources Overview, Activity logs, Access control (IAM), Tags, Diagnose and solve problems
+* SETTINGS: a grouping of the menu that enables configuration of resource settings.
+* MONITORING: a grouping of the menu that enables monitoring the resource
+* SUPPORT + TROUBLESHOOTING: a grouping of the menu that enables navigation to support and troubleshooting info
+
+Refer to the image below to make sure each new item is grouped properly. Learn more [Resource Menu](top-blades-resourcemenublade.md)
+<!-- TODO get updated screenshot that matches new fluent styling -->
 <div style="max-width:200px">
 <img alttext="Resource menu" src="../media/top-designpatterns-resource-manage/resource-menu.png"  />
 </div>
@@ -71,15 +79,21 @@ pages requires additional onboarding to Geneva Resource health requires addition
 </div>
 
 ### Toolbar 
-Toolbar commands should open context panes instead of narrow blades to avoid horizontal scrolling. Learn more [Toolbar](portalfx-controls-toolbar.md), [Context pane](top-extensions-context-panes.md)
+Toolbar commands should open context panes instead of narrow blades to avoid horizontal scrolling. The resource toolbar should contain commands common to all resources
+* Delete - delete the current resource
+* Move - a dropdown menu to move the current resource to a different **resource group** or **subscription**
+* Refresh - refresh the overview page
+The resource toolbar should also contain resource-specific commands for easy access.
+Learn more [Toolbar](portalfx-controls-toolbar.md), [Context pane](top-extensions-context-panes.md)
 
 ### Essentials panel
-The essentials panel surfaces properties that are common throughout all Azure
-resources as well as important resource specific properties. User feedback has
-shown us that our customers rely heavily on the essentials panel for looking up
-information. Learn more [portalfx-extensions-essentials.md](./portalfx-extensions-essentials.md)
+The essentials panel surfaces key properties that are common throughout all Azure resources as well as important resource specific properties. User feedback has
+shown that customers rely heavily on the essentials panel for looking up information. The Essentials sections is conceptually divided in two well know parts:
+* Platform fields: fields that are common to all resources Resource Group, Status, Location, Subscription, Subscription ID 
+* Domain specific fields: fields that are specific to one domain or type of resource (e.g. ftp user in a WebApp, Replication in Storage, etc.)
+Learn more [portalfx-extensions-essentials.md](./portalfx-extensions-essentials.md)
 
-### Content
+### Content area
 * *Must* meet the performance bar – the overview page is the most viewed blade for your resource   
 * Content to guide the user to get the most from the resource  
 * Resource properties to indicate important resource configuration  

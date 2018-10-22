@@ -1,11 +1,11 @@
 ﻿# Resource Browse 
-The resource browse pattern provides resource discovery and management across resource types in multiple subscriptions and resource groups.
+The resource browse pattern provides resource discovery and management across multiple subscriptions and resource groups.
 
 # Context
-Customers create and manage many resources of different types in Azure.
+In order to manage a single resource instance, a customer typically navigates to the list of all resources of that type (or from All Resources)
 
 # Problem
-Customers want to see a single view of all of their resources, filter and sort the list of resources, perform actions on items in the list, and navigate to the details for an item in the list.
+Customers want to see a single view of all of their resources, filter and sort the list of resources, perform actions on items in the list, and navigate to the details for a specific resource they are looking for.  When the user has no resources of that type, the user needs guidance on the value of the resource, links to any supplemental docs and a button to create a resource instance.
 
 # Solution
 The resource browse pattern surfaces a user’s resources by highlighting top-level pieces of resource data in a grid view. Resource browse provides easy filtering, searching, sorting and grouping within the list. The user can perform bulk actions to take action on selected resources directly from the list. Selecting a resource from the browse experience opens the resource to invoke the resource manage experience.
