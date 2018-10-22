@@ -65,7 +65,7 @@ Provide highly visible and specific error messages.
 -   Left align all the of the input fields in a column. Jagged edges are difficult to skim
 
 -   Visually group related labels and fields. [Labels should be close to the fields](https://www.nngroup.com/articles/form-design-white-space/) they describe (immediately above the field for context panes or next to the field for long forms). Avoid ambiguous spacing where labels are equidistant from multiple fields.
-- 
+
 ## Don't 
 -   Don't use the toggle picker when a property has two options. (See above 'Toggles vs radio buttons')
 

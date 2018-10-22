@@ -131,7 +131,6 @@ Learn more [portalfx-extensions-essentials.md](./portalfx-extensions-essentials.
 * Don’t build your overview page as a PDL blade   
 
 # Related design patterns
-===============
 * Resource Create [top-designpatterns-resource-create.md](top-designpatterns-resource-create.md)
 * Resource Browse [top-designpatterns-resource-browse.md](top-designpatterns-resource-browse.md)
 * Design patterns readme [portalfx-designpatterns-readme.md](portalfx-designpatterns-readme.md)
