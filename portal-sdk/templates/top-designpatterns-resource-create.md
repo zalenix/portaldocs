@@ -42,7 +42,7 @@ Creating a resource in Azure
 
 A resource create experience usually contains:
 1. Tabs with descriptive text and learn more links to switch between logical input steps
-2. Input fields divided into logical sections with a lot of instructional, descriptive text
+2. Input fields divided into logical sections with concise, instructional, descriptive text for each section
 3. Footer navigation with buttons to navigate tabs and submit form
 
 ### Design Principles
@@ -57,14 +57,14 @@ Follow these recommendations when designing your Create form:
 
 ### Navigation
 
-Use the tabs & sections to organize content. The Basics tab should be the starting point for all creates and where essential configurations should be placed. The design should allow for quick deployments at any time with unrestricted navigation between tabs. Enabling customers to freely navigate reduces the friction for customers looking to learn about your resource which can lead to additional deployments.
+Use the tabs & sections to organize content. The `Basics` tab should be the starting point for all creates and contain essential configuration info. The design should allow for quick resource creation at any time with unrestricted navigation between tabs. Enabling customers to freely navigate the tabs reduces the friction for customers looking to learn about your resource.  The combination of quick creates and tab exploration can lead to additional resource deployments over time.
 
 ![alt-text](../media/top-extensions-create/Tabs.png "Create experience with Tabs")
 
 ## Behavior 
 
 ### Tabs
-Tabs help to group sections of the create experience into manageable categories. Tabs also separate required fields from optional fields for faster configuration.
+Tabs group sections of the create experience into manageable categories. Tabs also separate required information from optional information for simpler configuration.
 
 Most creates should have a minimum of 3 tabs; `Basics`, `Tags`, `Review + create`.  All other tabs are optional.
 
@@ -74,6 +74,9 @@ Most creates should have a minimum of 3 tabs; `Basics`, `Tags`, `Review + create
 
 #### Basics
 The first tab contains fields required for creating the resource. Set default values when possible to eliminate additional time spent on create.
+
+**Project Details**: Represents the collection of Subscription and Resource Group controls.  To include the visual connector between Subscription and RG, set `Nested = True` on the RG control.  The default text for Project Details is `Select the subscription to manage deployed resources and costs. Use resource groups like folders to organize and manage all your resources.`
+
 The `Basics` tab should contain the typical fields for Azure resources
 * `Subscription` + `Resource group`
 * `Name`
@@ -81,12 +84,10 @@ The `Basics` tab should contain the typical fields for Azure resources
 * SKU/Cost/Pricing tier 
 
 #### Optional tabs
-Additional tabs are used to organize optional settings specific to your resource.  Tab naming recommendations
+Additional tabs are used to organize optional settings specific to your resource.  Tabs should have short names, typically a noun.
 
 #### Tags
-Tagging resources during creates is now supported when using the Tags control. Subscription and Resource Group level policies may require users to tag resources during create. Not including the Tags control may block users from deploying resources.
-
-The Tags control, allows users to assign key value pairs to selected Resource Types.	
+Many enterprise customers are starting to create subscription and resource group polices that require tagging resources at create time.  Not including the `Tags` tab will block those users from deploying resources using the portal.  The `Tags` tab contains the tags control, which allows users to assign key value pairs to the selected Resource Types.	
 
 ![alt-text](../media/top-extensions-create/Tags.png "Tags control")
 
@@ -99,13 +100,11 @@ Allowing the user to verify all settings prior to submission ensures accuracy an
 
 **Descriptions**: The top of each tab should include a brief description about the content to follow. When possible include `Learn more` links to relevant docs.
 
-**Project Details**: Represents the collection of Subscription and Resource Group controls.  To include the visual connector between Subscription and RG, set `Nested = True` on the RG control.  The default text for Project Details is `Select the subscription to manage deployed resources and costs. Use resource groups like folders to organize and manage all your resources.`
-
 **Section Headers**: Used to separate common settings within a tab.
 
 **Alignment**: Stack labels above controls if the screen resolution < 700px.
 	
-**Info Bubbles**: All form controls should incl
+**Info Bubbles**: If you have input fields that may not be immediately familiar to your customers, include an info bubble that shows more information.
 
 ### Grouped input fields
 When creating a form that includes several fields pertaining to a certain subject, you can group them with a header that gives the user a clear indication of what they’re being asked for. You can also add explanatory text just below the group header if the task may not be immediately clear to the user.
@@ -117,16 +116,13 @@ Context panes can be used for sub creates within the create flow. The sub create
 <img alttext="Tabs" src="../media/top-designpatterns-resource-create/subcreate.png"  />
 </div>
 
-### Info balloons
-If you have input fields that may not be immediately familiar to your customers, include an info balloon that gives them more information.
-
 ### Footer navigation
 The footer nav contains the call to action (CTA) for creating the resource, as well as two buttons used for navigating between tabs. If your resource supports created templates, you can include an affordance for that in the footer nav.
 
 ## Post create
 The post create page provides realtime deployment status, help with troubleshooting, and improved error display. Best practice is to include additional information here to help the user learn more about the resource being created, as well as related Azure resources.
 <div style="max-width:800px">
-<img alttext="Tabs" src="../media/top-designpatterns-resource-create/postcreate.png"  />
+<img alttext="Tabs" src="../media/top-designpatterns-resource-create/post-create.png"  />
 </div>
 
 <!-- **TODO** - screen shot and anatomy of post-create -->
