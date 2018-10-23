@@ -55,18 +55,58 @@ How to create the resource manage experience
 ## Behavior 
 
 ### Resource menu
-The resource menu surfaces all pages related to the resource. The navigation includes pages that are common to all resources throughout the portal. Your resource will get those "for free," while some common pages require onboarding by the resource provider. You can add as many pages to your resource as you need. 
-The Resource Menu enables navigation to manage the resource instance and is divided into well know parts:
-* Top items: items common to all resources Overview, Activity logs, Access control (IAM), Tags, Diagnose and solve problems
-* SETTINGS: a grouping of the menu that enables configuration of resource settings.
-* MONITORING: a grouping of the menu that enables monitoring the resource
-* SUPPORT + TROUBLESHOOTING: a grouping of the menu that enables navigation to support and troubleshooting info
+The resource menu surfaces all pages related to the resource. The navigation includes pages that are common to all resources throughout the portal. Your resource will get those "for free," while some common pages require onboarding by the resource provider. You can add as many pages to your resource as you need  The Resource Menu enables navigation to manage the resource instance.  Refer to the table below to make sure each new item is grouped properly. Learn more [Resource Menu](top-blades-resourcemenublade.md)
 
-Refer to the image below to make sure each new item is grouped properly. Learn more [Resource Menu](top-blades-resourcemenublade.md)
+<table style="width:800px; border-style:none; cellpadding=10px">
+<tr>
+<td width="30%" align=center valign=top>
 <!-- TODO get updated screenshot that matches new fluent styling -->
 <div style="max-width:200px">
 <img alttext="Resource menu" src="../media/top-designpatterns-resource-manage/resource-menu.png"  />
 </div>
+</td>
+<td valign=top>
+Resource menu parts:
+<br><br>
+Top items: items common to all resources
+<ul>
+<li>Overview</li>
+<li>Activity logs</li>
+<li>Access control (IAM)</li>
+<li>Tags</li>
+<li>Diagnose and solve problems</li>
+</ul>
+<br>
+SETTINGS: a grouping of the menu that enables configuration of resource settings
+<ul>
+<li><i>Resource-specific settings items</i></li>
+<li>Properties</li>
+<li>Locks</li>
+<li>Automation script</li>
+</ul>
+<br>
+<i>Resource-specific groups and items</i>
+<br><br>
+MONITORING: a grouping of the menu that enables monitoring the resource
+<ul>
+<li>Alerts</li>
+<li>Metrics</li>
+<li>Diagnostic settings</li>
+<li>Logs</li>
+<li><i>Resource-specific monitoring items</i></li>
+</ul>
+<br>
+SUPPORT + TROUBLESHOOTING: a grouping of the menu that enables navigation to support and troubleshooting info
+<ul>
+<li>Resource health</li>
+<li><i>Resource-specific support + troubleshooting items</i></li>
+<li>Create support request</li>
+<ul>
+</td>
+</tr>
+</table>
+
+
 
 ### Overview page
 The overview page is the home page for a resource. It provides customers with key information about the resource, thus saving them clicks and time by not always having them drill deeper.     

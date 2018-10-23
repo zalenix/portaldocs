@@ -125,8 +125,6 @@ The post create page provides realtime deployment status, help with troubleshoot
 <img alttext="Tabs" src="../media/top-designpatterns-resource-create/post-create.png"  />
 </div>
 
-<!-- **TODO** - screen shot and anatomy of post-create -->
-
 ## Do 
 -   Do put all the required fields on the first tab so the user has the option to quickly create your resource
 

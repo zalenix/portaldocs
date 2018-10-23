@@ -32,7 +32,7 @@ User needs to input information
 
 ## Anatomy
 <div style="max-width:800px">
-<img alttext="Form anatomy" src="../media/<folder>/<form-anatomy>.png"  />
+<img alttext="Form anatomy" src="../media/top-designpatterns-page-forms/form-anatomy.png"  />
 </div>
 A form can contain:
 1. Labels and corresponding input fields
