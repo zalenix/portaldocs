@@ -1,14 +1,14 @@
 ﻿# Resource Create 
-The resource create pattern allows for the creation of Azure resources leveraging the full screen create pattern.
+The resource create pattern enables a simple, intuitive, and quick customer experience for creating resources.
 
 # Context
-Users need to create Azure resources 
+Users need to create Azure resources.
 
 # Problem
-Creating a resource in Azure can vary from a simple form with a few required fields to a complex experience with many fields, concepts and related resources.
+Creating a resource in Azure can vary from a simple resource with a few required fields to a complex one with many fields, concepts and related resources.
 
 # Solution
-The resource create pattern enables quick configuration of a new resource using minimal parameters. The experience uses discoverable tabs to separate related configuration steps and guide the user who wants to do more complex configuration during the create process.
+The resource create pattern enables quick configuration of a new resource using minimal fields and default values. The pattern also enables users to walk through detailed configuration options in order to manually set many resource options.  The experience uses a fullscreen page with tabs to separate related configuration steps and guide the user during the create process.
 
 
 ## Also known as 
@@ -41,30 +41,63 @@ Creating a resource in Azure
 </div>
 
 A resource create experience usually contains:
-1. Tabbed pages
-2. Input fields
-3. Footer navigation
+1. Tabs with descriptive text and learn more links to switch between logical input steps
+2. Input fields divided into logical sections with a lot of instructional, descriptive text
+3. Footer navigation with buttons to navigate tabs and submit form
+
+### Design Principles
+
+Follow these recommendations when designing your Create form:
+
+1. Single, full screen blade.
+2. Logical steps using the existing Tabs control.
+3. Allow customers to easily and freely navigate between tabs.
+4. Include descriptive and supportive text.
+5. Ability to quickly deploy resources with minimal input.
+
+### Navigation
+
+Use the tabs & sections to organize content. The Basics tab should be the starting point for all creates and where essential configurations should be placed. The design should allow for quick deployments at any time with unrestricted navigation between tabs. Enabling customers to freely navigate reduces the friction for customers looking to learn about your resource which can lead to additional deployments.
+
+![alt-text](../media/top-extensions-create/Tabs.png "Create experience with Tabs")
 
 ## Behavior 
 
 ### Tabs
-Tabs help to group sections of the create experience into manageable categories. Tabs also separate required fields from optional fieldsfor faster configuration. 
+Tabs help to group sections of the create experience into manageable categories. Tabs also separate required fields from optional fields for faster configuration. 
 <div style="max-width:800px">
 <img alttext="Tabs" src="../media/top-designpatterns-resource-create/Tabs.png"  />
 </div>
 
--   **Basics**: The first tab contains fields required for creating the resource.
+#### Basics
+The first tab contains fields required for creating the resource. Set default values when possible to eliminate additional time spent on create.
 
--   **Optional tabs**: Additional tabs are used to organize optional settings specific to your resource.  Tab naming recommendations
+#### Optional tabs
+Additional tabs are used to organize optional settings specific to your resource.  Tab naming recommendations
 
--   **Tags**: This tab allows users to give tags to the resource using key/value pairs.
+#### Tags
+Tagging resources during creates is now supported when using the Tags control. Subscription and Resource Group level policies may require users to tag resources during create. Not including the Tags control may block users from deploying resources.
 
--   **Review + create**: The final tab summarizes the settings across all tabs and validates the inputs against Azure before creating the resource.
+The Tags control, allows users to assign key value pairs to selected Resource Types.	
 
-### Explanatory text 
-Adding one or two descriptive sentences at the top of each tab gives the user content at a highly visible part of the page. Here’s an example of how you can structure your text:
+![alt-text](../media/top-extensions-create/Tags.png "Tags control")
 
-Configure \<this feature\> to enable your resource to perform \<this action\>. Learn more
+#### Review + Create
+Allowing the user to verify all settings prior to submission ensures accuracy and reduces the need for user redeployments.  Use the summary control to help organize content from multiple tabs.  Disable the create button until validation succeeds.
+
+![alt-text](../media/top-extensions-create/Review.png "Review + Create")
+
+### Tab Layout
+
+**Descriptions**: The top of each tab should include a brief description about the content to follow. When possible include `Learn more` links to relevant docs.
+
+**Project Details**: Represents the collection of Subscription and Resource Group controls.  To include the visual connector between Subscription and RG, set `Nested = True` on the RG control.  The default text for Project Details is `Select the subscription to manage deployed resources and costs. Use resource groups like folders to organize and manage all your resources.`
+
+**Section Headers**: Used to separate common settings within a tab.
+
+**Alignment**: Stack labels above controls if the screen resolution < 700px.
+	
+**Info Bubbles**: All form controls should incl
 
 ### Grouped input fields
 When creating a form that includes several fields pertaining to a certain subject, you can group them with a header that gives the user a clear indication of what they’re being asked for. You can also add explanatory text just below the group header if the task may not be immediately clear to the user.
@@ -88,7 +121,7 @@ The post create page provides realtime deployment status, help with troubleshoot
 <img alttext="Tabs" src="../media/top-designpatterns-resource-create/postcreate.png"  />
 </div>
 
-**TODO** - screen shot and anatomy of post-create
+<!-- **TODO** - screen shot and anatomy of post-create -->
 
 ## Do 
 -   Do put all the required fields on the first tab so the user has the option to quickly create your resource
@@ -118,9 +151,7 @@ Coming soon
 
 ## Tips and tricks 
 
--   Use the ResourceMenu blade to get started building your resource manage
-    experience
--   Screen resolution - If screen resolution is less than 700px, set left aligned = false.
+-   Screen resolution - If screen resolution is less than 700px, set left aligned = false
 
 ## Related documentation
 
