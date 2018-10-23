@@ -28,8 +28,12 @@ Well designed input forms enable users to increase the speed and accuracy of inp
 * Editing a property
 
 # Use when
+User needs to input information
 
 ## Anatomy
+<div style="max-width:800px">
+<img alttext="Form anatomy" src="../media/<folder>/<form-anatomy>.png"  />
+</div>
 A form can contain:
 1. Labels and corresponding input fields
 2. 'Save' and 'Discard' commands, 'Ok' and 'Cancel,' or another call to action
@@ -71,7 +75,7 @@ Provide highly visible and specific error messages.
 ## Do
 -   Use inline labels and fields for full screen pages and stacked labels and fields for narrow blades
 
--   Mark required fields with a * red asterisk to distinguish them from optional fields
+-   Mark required fields with a red asterisk * to distinguish them from optional fields
 
 -   Include info bubbles if there are input fields that may not be immediately familiar to customers
 

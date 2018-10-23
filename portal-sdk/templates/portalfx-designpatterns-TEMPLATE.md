@@ -1,5 +1,5 @@
 # NAME
-This is the template to use when creating a new design pattern document
+<!-- This is the template to use when creating a new design pattern document -->
 
 # Context
 
@@ -17,6 +17,7 @@ This is the template to use when creating a new design pattern document
 </div>
 
 ## Example uses
+<!-- Descriptions and ideally deep links into the portal for running examples -->
 
 # Use when
 
@@ -40,3 +41,4 @@ This is the template to use when creating a new design pattern document
 ## Tips and tricks
 
 ## Related documentation
+<!-- Links to related developer docs -->

@@ -74,6 +74,11 @@ Most creates should have a minimum of 3 tabs; `Basics`, `Tags`, `Review + create
 
 #### Basics
 The first tab contains fields required for creating the resource. Set default values when possible to eliminate additional time spent on create.
+The `Basics` tab should contain the typical fields for Azure resources
+* `Subscription` + `Resource group`
+* `Name`
+* `Region` - this field used to be referred to as Location, now we use the term Region
+* SKU/Cost/Pricing tier 
 
 #### Optional tabs
 Additional tabs are used to organize optional settings specific to your resource.  Tab naming recommendations
@@ -129,6 +134,8 @@ The post create page provides realtime deployment status, help with troubleshoot
 ## Do 
 -   Do put all the required fields on the first tab so the user has the option to quickly create your resource
 
+-   Mark required fields with the red asterisk
+
  - Include info bubbles if there are input fields that may not be
    immediately familiar to your customers
 
@@ -139,6 +146,7 @@ The post create page provides realtime deployment status, help with troubleshoot
 
 # Related design patterns
 
+-   Forms [top-designpatterns-page-forms.md](top-designpatterns--page-forms.md)
 -   Full screen [top-designpatterns-page-fullscreen.md](top-designpatterns--page-fullscreen.md)
 -   Resource Browse [top-designpatterns-resource-browse.md](top-designpatterns-resource-browse.md)
 -   Resource Manage [top-designpatterns-resource-manage.md](top-designpatterns-resource-manage.md)
@@ -154,10 +162,16 @@ Coming soon
 
 ## Tips and tricks 
 
+-   Set a maximimu width of 600px for the tab content area that contains input fields
 -   Screen resolution - If screen resolution is less than 700px, set left aligned = false
 
 ## Related documentation
 
--   Resource Create
-    [top-extensions-create.md](./top-extensions-create.md)
+-   Resource Create [top-extensions-create.md](./top-extensions-create.md)
+-   Tabs control
+-   Subscription + resource group control
+-   Region control
+-   Tags control
+
+
 
