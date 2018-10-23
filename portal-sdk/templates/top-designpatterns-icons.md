@@ -1,4 +1,14 @@
-﻿# How to prepare icons
+﻿# Icons
+Icons are used in commands, resource menus, blades, titles and portal navigation. The portal places some special requirements on the types of icons you can use. All icons are required to be SVG files so that icons will scale on high resolution devices, and for automatic theming.
+In many cases, you will not need to provide your own icons, as the SDK framework includes a large library of icons for common uses.
+
+## Related icon documents
+
+* Icons [portalfx-icons.md](portalfx-icons.md)
+* Built-in icons [portalfix-icons-builtin.md](portalfix-icons-builtin.md)
+* Creating icons [portalfx-icons-creation.md](portalfx-icons-creation.md)
+
+## How to prepare icons created in Illustrator
 This page covers how to properly export an icon that you've created in Illustrator to use in the Azure portal. Illustrator provides several ways to save a file as an SVG but this is the recommended method.
 
 1. Make sure the colors you used are in the approved color palette

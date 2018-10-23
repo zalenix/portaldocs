@@ -29,8 +29,11 @@ Design toolkits are available so that you can easily create designs that are ali
 
 * Design toolkit [top-designpatterns-toolkits.md](top-designpatterns-toolkits.md)
 
-* Icon usage, design and production [portalfx-icons.md](portalfx-icons.md)
-
 * Portal style guide [portalfx-style-guide.md](portalfx-style-guide.md)
+
+* Icons [top-designpatterns-icons.md](top-designpatterns-icons.md)
+
+* 
+
 
 
