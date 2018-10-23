@@ -77,7 +77,7 @@ Use the Close button in the right corner
 
 ## Don't 
 
-* Blades shouldn’t open at a specified size, instead the page should open as “maximized”
+* Blades shouldn’t open at a specified size, instead the page should open as “maximized” (`InitialDisplayState="Maximized"`)
 * When linking to a site outside of Azure, such as documentation, don’t open the page in the same browser window. It should open in an new tab.
 
 # Related design patterns
@@ -103,6 +103,6 @@ Coming soon
 
 ## Related documentation
 
-* Blade sizes []()
+* Blade [top-extensions-blades.md](top-extensions-blades.md)
 * Context Pane [top-extensions-context-panes.md](top-extensions-context-panes.md)
 * Dialog [top-extensions-dialogs.md](top-extensions-dialogs.md)

@@ -91,3 +91,4 @@ Actions can be pulled out of the command bar to be in closer proximity to the gr
 ## Tips and tricks
 
 ## Related documentation
+* Grid control [portalfx-controls-grid.md](portalfx-controls-grid.md)

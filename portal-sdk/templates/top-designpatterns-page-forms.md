@@ -111,3 +111,4 @@ Provide highly visible and specific error messages.
 * Context Pane [top-extensions-context-panes.md](top-extensions-context-panes.md)
 * Dialog [top-extensions-dialogs.md](top-extensions-dialogs.md)
 * Forms [top-extensions-forms.md](top-extensions-forms.md)
+* Forms [portalfx-forms.md](portalfx-forms.md)

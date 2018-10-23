@@ -207,4 +207,4 @@ passed to the essentials control:  includeTags:true 
 * Essentials [portalfx-extensions-essentials.md](./portalfx-extensions-essentials.md)
 * Toolbar control [portalfx-controls-toolbar.md](portalfx-controls-toolbar.md) 
 * Context Pane [top-extensions-context-panes.md](top-extensions-context-panes.md)
-* Properties page
+* Properties page [portalfx-blades-properties.md](portalfx-blades-properties.md)

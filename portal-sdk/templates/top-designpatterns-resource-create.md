@@ -162,10 +162,7 @@ Coming soon
 ## Related documentation
 
 -   Resource Create [top-extensions-create.md](./top-extensions-create.md)
--   Tabs control
--   Subscription + resource group control
--   Region control
--   Tags control
+
 
 
 
