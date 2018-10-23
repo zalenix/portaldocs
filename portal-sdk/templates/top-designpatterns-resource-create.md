@@ -64,7 +64,10 @@ Use the tabs & sections to organize content. The Basics tab should be the starti
 ## Behavior 
 
 ### Tabs
-Tabs help to group sections of the create experience into manageable categories. Tabs also separate required fields from optional fields for faster configuration. 
+Tabs help to group sections of the create experience into manageable categories. Tabs also separate required fields from optional fields for faster configuration.
+
+Most creates should have a minimum of 3 tabs; `Basics`, `Tags`, `Review + create`.  All other tabs are optional.
+
 <div style="max-width:800px">
 <img alttext="Tabs" src="../media/top-designpatterns-resource-create/Tabs.png"  />
 </div>
