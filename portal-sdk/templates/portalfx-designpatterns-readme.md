@@ -33,7 +33,6 @@ Design toolkits are available so that you can easily create designs that are ali
 
 * Icons [top-designpatterns-icons.md](top-designpatterns-icons.md)
 
-* 
 
 
 
