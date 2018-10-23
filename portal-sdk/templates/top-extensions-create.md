@@ -12,7 +12,7 @@ The  most recent Portal SDK contains a sample create in `SamplesExtension/Client
 
 ### Related design patterns
 
--   Resource Create [top-designpatterns-resource-create.md](top-designpatterns--resource-create.md)
+-   Resource Create [top-designpatterns-resource-create.md](top-designpatterns-resource-create.md)
 
 ### Design Principles
 
