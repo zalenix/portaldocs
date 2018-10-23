@@ -1,4 +1,4 @@
-# Release Notes since 6/22/2018
+# Release Notes since 6/23/2018
 
 ## 5.0.302.5601
 10 Breaking Changes, 111 Features added and 522 Bugs Fixed
@@ -303,7 +303,3 @@
 ## 5.0.302.1186
 0 Breaking Changes, 1 Features added and 0 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2565158'>2565158</a></td><td>Feature</td><td>[Config] Remove Delegate Token for ARM and enable Extension (MWaaS)</td></tr></table>
-
-## 5.0.302.1185
-0 Breaking Changes, 1 Features added and 3 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2617164'>2617164</a></td><td>Bug Fix</td><td>Log responses to settings calls that return 500</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2601301'>2601301</a></td><td>Bug Fix</td><td>Set IncludeErrorDetailPolicy.Always to capture client error</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2598166'>2598166</a></td><td>Bug Fix</td><td>MonitorChartV2: Appinsights Sum metrics are displaying incorrect data when going to MDM</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2597154'>2597154</a></td><td>Feature</td><td>Enable Insights to Monitoring extension redirect in Public Prod</td></tr></table>
