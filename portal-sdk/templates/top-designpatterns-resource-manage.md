@@ -109,7 +109,7 @@ SUPPORT + TROUBLESHOOTING: a grouping of the menu that enables navigation to sup
 
 
 ### Overview page
-The overview page is the home page for a resource. It provides customers with key information about the resource, thus saving them clicks and time by not always having them drill deeper.     
+The overview page is the home page for a resource. It displays key information and actions for the resource.
 
 ### Resource pages   
 Each menu item opens a page that allows the user to drill deeper for more information. Monitoring 
@@ -128,7 +128,7 @@ Learn more [Toolbar](portalfx-controls-toolbar.md), [Context pane](top-extensio
 
 ### Essentials panel
 The essentials panel surfaces key properties that are common throughout all Azure resources as well as important resource specific properties. User feedback has
-shown that customers rely heavily on the essentials panel for looking up information. The Essentials sections is conceptually divided in two well know parts:
+shown that they rely heavily on the essentials panel for looking up information. The Essentials sections is conceptually divided in two well know parts:
 * Platform fields: fields that are common to all resources Resource Group, Status, Location, Subscription, Subscription ID 
 * Domain specific fields: fields that are specific to one domain or type of resource (e.g. ftp user in a WebApp, Replication in Storage, etc.)
 Learn more [portalfx-extensions-essentials.md](./portalfx-extensions-essentials.md)

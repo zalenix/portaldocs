@@ -2,10 +2,10 @@
 The resource browse pattern provides resource discovery and management across multiple subscriptions and resource groups.
 
 # Context
-In order to manage a single resource instance, a customer typically navigates to the list of all resources of that type (or from All Resources)
+In order to manage a single Azure resource, a user locates that item in a list of resources.
 
 # Problem
-Customers want to see a single view of all of their resources, filter and sort the list of resources, perform actions on items in the list, and navigate to the details for a specific resource they are looking for.  When the user has no resources of that type, the user needs guidance on the value of the resource, links to any supplemental docs and a button to create a resource instance.
+Users need to see a filterable and sortable list of resources, perform actions on items in the list, and navigate to the details for a specific resource they are looking for.  When the user has no resources of that type, the user needs guidance on the value of the resource, links to any supplemental docs and a button to create a resource instance.
 
 # Solution
 The resource browse pattern surfaces a user’s resources by highlighting top-level pieces of resource data in a grid view. Resource browse provides easy filtering, searching, sorting and grouping within the list. The user can perform bulk actions to take action on selected resources directly from the list. Selecting a resource from the browse experience opens the resource to invoke the resource manage experience.
@@ -71,7 +71,7 @@ The filter panel contains properties that are common across all resource types d
 Coming soon: Additional sets of filters pertaining to each selected resource type will be available in the filter panel. This allows for narrowing down results based on attributes related to a resource type. For example, filter a virtual machine based on IP address, location and availability set.
 
 ### Grid content
-By default, browse shows the resource name, resource group, location and subscription. We recommend you choose key resource properties to display as columns so that the customer can differentiate between resources in the grid. You can specify default columns and available columns that the user can add using the 'Edit columns' command. 
+By default, browse shows the resource name, resource group, location and subscription. We recommend you choose key resource properties to display as columns so that the user can differentiate between resources in the grid. You can specify default columns and available columns that the user can add using the 'Edit columns' command. 
 
 You can also group the content of the grid by resource type, subscription, resource group or location. This would reorganize the list items into groups. Read more on the grid pattern page.
 

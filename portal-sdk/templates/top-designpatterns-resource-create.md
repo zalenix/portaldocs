@@ -1,5 +1,5 @@
 ﻿# Resource Create 
-The resource create pattern enables a simple, intuitive, and quick customer experience for creating resources.
+The resource create pattern enables a simple, intuitive, and quick experience for creating resources.
 
 # Context
 Users need to create Azure resources.
@@ -51,13 +51,13 @@ Follow these recommendations when designing your Create form:
 
 1. Single, full screen blade.
 2. Logical steps using the existing Tabs control.
-3. Allow customers to easily and freely navigate between tabs.
+3. Easily and freely navigate between tabs.
 4. Include descriptive and supportive text.
 5. Ability to quickly deploy resources with minimal input.
 
 ### Navigation
 
-Use the tabs & sections to organize content. The `Basics` tab should be the starting point for all creates and contain essential configuration info. The design should allow for quick resource creation at any time with unrestricted navigation between tabs. Enabling customers to freely navigate the tabs reduces the friction for customers looking to learn about your resource.  The combination of quick creates and tab exploration can lead to additional resource deployments over time.
+Use the tabs & sections to organize content. The `Basics` tab should be the starting point for all creates and contain essential configuration info. The design should allow for quick resource creation at any time with unrestricted navigation between tabs. Enabling users to freely navigate the tabs reduces the friction for users looking to learn about your resource.  The combination of quick creates and tab exploration can lead to additional resource deployments over time.
 
 ![alt-text](../media/top-extensions-create/Tabs.png "Create experience with Tabs")
 
@@ -87,7 +87,7 @@ The `Basics` tab should contain the typical fields for Azure resources
 Additional tabs are used to organize optional settings specific to your resource.  Tabs should have short names, typically a noun.
 
 #### Tags
-Many enterprise customers are starting to create subscription and resource group polices that require tagging resources at create time.  Not including the `Tags` tab will block those users from deploying resources using the portal.  The `Tags` tab contains the tags control, which allows users to assign key value pairs to the selected Resource Types.	
+Many enterprises are starting to create subscription and resource group polices that require tagging resources at create time.  Not including the `Tags` tab will block those users from deploying resources using the portal.  The `Tags` tab contains the tags control, which allows users to assign key value pairs to the selected Resource Types.	
 
 ![alt-text](../media/top-extensions-create/Tags.png "Tags control")
 
@@ -104,7 +104,7 @@ Allowing the user to verify all settings prior to submission ensures accuracy an
 
 **Alignment**: Stack labels above controls if the screen resolution < 700px.
 	
-**Info Bubbles**: If you have input fields that may not be immediately familiar to your customers, include an info bubble that shows more information.
+**Info Bubbles**: If you have input fields that may not be immediately familiar to users, include an info bubble that shows more information.
 
 ### Grouped input fields
 When creating a form that includes several fields pertaining to a certain subject, you can group them with a header that gives the user a clear indication of what they’re being asked for. You can also add explanatory text just below the group header if the task may not be immediately clear to the user.
@@ -131,7 +131,7 @@ The post create page provides realtime deployment status, help with troubleshoot
 -   Mark required fields with the red asterisk
 
  - Include info bubbles if there are input fields that may not be
-   immediately familiar to your customers
+   immediately familiar
 
 ## Don't 
 -   When moving your resource to full screen, don’t just map your existing create experience to separate tabs.

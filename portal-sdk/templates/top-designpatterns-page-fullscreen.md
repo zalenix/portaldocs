@@ -7,7 +7,7 @@ As users navigate the portal, they expect a common web interaction experience.
 # Problem
 Earlier portal designs used narrow blades that stacked to the right into horizontally scrolling "journeys" as the user navigated.  These stacked blades often resulted in existing blades being partially displayed which made it hard for the user to know where to look and orient where in the portal they were.  Horizontal scrolling is also more foreign than the common vertical scrolling of long web pages.  
 
-Our customers have made it very clear they don’t like horizontal scrolling – in large part because it doesn’t match how they expect to interact with websites.   
+Users have made it very clear they don’t like horizontal scrolling – in large part because it doesn’t match how they expect to interact with websites.   
 
 # Solution
 In 2017 Azure moved from narrow blades to full page experiences and have introduced dialogs and context panes to further avoid unnecessary context switches.
@@ -58,7 +58,7 @@ All Browse views and Menu blades open full screen by default.
 In the event a child blade would overflow the current available screen real estate, the newly opened blade snaps to the left of the screen, moving all other blades out of view
 
 ### Navigation and back stack 
-Even though previous blades are no longer visible, your customer can traverse to an earlier blade from their current journey.
+Even though previous blades are no longer visible, the user can traverse to an earlier blade from their current journey.
 <div style="max-width:200px">
 <img alttext="Breadcrumb" src="../media/top-designpatterns-page-fullscreen/FS_2_Breadcrumbs@2x-400x126.png" />
 </div>

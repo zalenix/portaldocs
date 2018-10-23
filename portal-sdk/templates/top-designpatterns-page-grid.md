@@ -27,7 +27,7 @@ The Azure portal uses blades to represent a page and has a grid control to manag
 
 
 # Use when
-Grids are used for surfacing a list of objects to provide meaningful data on each list item. When displaying data in a grid, ensure that users can filter, see an item count, and sort the columns when possible. Grids will often contain more logical data than can be shown directly in a single page. There are two methods that are used to manage large amounts of data: Dynamic scrolling (loading more rows into the grid as a customer scrolls) or using a paginator.
+Grids are used for surfacing a list of objects to provide meaningful data on each list item. When displaying data in a grid, ensure that users can filter, see an item count, and sort the columns when possible. Grids will often contain more logical data than can be shown directly in a single page. There are two methods that are used to manage large amounts of data: Dynamic scrolling (loading more rows into the grid as the user scrolls) or using a paginator.
 
 ## Anatomy
 <div style="max-width:800px">
@@ -45,7 +45,7 @@ A grid can contain:
 6.  Scrollbar or pagination
 ## Behaviors
 **Bulk commanding (multi-select)**
-A customer can select one or more items using the leftmost column, then choose a command from the command bar above to perform actions like Remove or Delete. This pattern is ideal for scenarios when a user wants to perform a single action on many list items.
+A user can select one or more items using the leftmost column, then choose a command from the command bar above to perform actions like Remove or Delete. This pattern is ideal for scenarios when a user wants to perform a single action on many list items.
 <div style="max-width:400px">
 <img alttext="Bulk commanding" src="../media/top-designpatterns-page-grid/bulk-commanding.png"  />
 </div>
@@ -57,7 +57,7 @@ The ellipses on the right edge of each row contain commands for cases where mult
 </div>
 
 **Hierarchical grid**
-This pattern allows our customers to expand a parent row to directly see the parent’s children without changing a customer’s context. Often the child rows contain links that allow our customers to navigate directly to view or edit the child object. Currently the hierarchical grid can only accommodate a single column with the parent/child hierarchy. Common design practice is to try to place the hierarchy column as one of the leftmost columns in the grid to allow for more text in the expanded rows. Also, note that not every row in a hierarchy column needs to have children for this pattern to be useful.
+This pattern allows users to expand a parent row to directly see the parent’s children without changing the user’s context. Often the child rows contain links that allow our users to navigate directly to view or edit the child object. Currently the hierarchical grid can only accommodate a single column with the parent/child hierarchy. Common design practice is to try to place the hierarchy column as one of the leftmost columns in the grid to allow for more text in the expanded rows. Also, note that not every row in a hierarchy column needs to have children for this pattern to be useful.
 
 **Editable grid**
 Inline add allows a user to quickly add or edit an item in the context of the list, without having to open a context pane or a new page. This interaction model is ideal for objects that don’t require a great deal of fields to fill out. The editable grid allows for various controls within a list item, like dropdowns or checkboxes.

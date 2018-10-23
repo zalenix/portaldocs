@@ -5,7 +5,7 @@ Forms are the manner in which we gather and validate user input.
 Users need to input information when managing Azure resources.
 
 # Problem
-Customers complete forms in Azure to create, deploy and configure resources.  Customers also use the portal to file support tickets and provide feedback. 
+Users complete forms in Azure to create, deploy and configure resources.  Users also use the portal to file support tickets and provide feedback. 
 
 # Solution
 Well designed input forms enable users to increase the speed and accuracy of input and lead to successful form completion.
@@ -77,7 +77,7 @@ Provide highly visible and specific error messages.
 
 -   Mark required fields with a red asterisk * to distinguish them from optional fields
 
--   Include info bubbles if there are input fields that may not be immediately familiar to customers
+-   Include info bubbles if there are input fields that may not be immediately familiar
 
 -   Left align all the of the input fields in a column. Jagged edges are difficult to skim
 
