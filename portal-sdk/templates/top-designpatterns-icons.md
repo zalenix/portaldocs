@@ -32,3 +32,7 @@ This page covers how to properly export an icon that you've created in Illustrat
  <div style="max-width:400px">
 <img alttext="Page with list example" src="../media/top-designpatterns-icons/icons-layers-dont.png"  />
 </div>
+
+# Design patterns
+* Design patterns readme [portalfx-designpatterns-readme.md](portalfx-designpatterns-readme.md)
+
