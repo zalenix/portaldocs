@@ -10,6 +10,10 @@ Ask a `create` questions on [Stack Overflow](https://stackoverflow.microsoft.com
 
 The  most recent Portal SDK contains a sample create in `SamplesExtension/Client/V2/Create/Engine/CreateArmEngineBlade.ts`. This sample uses NoPDL and includes 3 essential tabs and 2 optional tabs. All the styling and validation patterns are included and can be easily augmented to meet your needs. The remainder of this document is intended to help you understand the key design principles and create a consistent experience.
 
+### Related design patterns
+
+-   Resource Create [top-designpatterns-resource-create.md](top-designpatterns--resource-create.md)
+
 ### Design Principles
 
 Here are the top 5 guidelines you should follow when designing your Create form:
