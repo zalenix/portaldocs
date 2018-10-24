@@ -36,7 +36,7 @@ This `options` object will be passed by the extension to `container.openDialog(y
 
 ## Dialogs with custom buttons
 
-To specify a dialog with custom buttons, send an array to the `buttons` property in the `dialogOptions`. This implementation is in the following code.
+To specify a dialog with custom buttons, send an array to the `buttons` property in the `dialogOptions`, illustrated here:
 
 ```typescript
 /**
