@@ -32,7 +32,7 @@ The properties for this implementation of the dialog are as follows.
 | telemetryName | The name that is logged for any telemetry events that occur while the user interacts with the dialog. |
 | title | The string that is shown to the user as the title of the dialog. |
 
-After the `options` object is defined, the extension can call `container.openDialog(yourDialogOptions)` and send in the `dialogOptions`.
+This `options` object will be passed by the extension to `container.openDialog(yourDialogOptions)` to open the dialog.
 
 ## Dialogs with custom buttons
 
