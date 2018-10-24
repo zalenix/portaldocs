@@ -1,15 +1,14 @@
 ﻿# Resource Create 
-The resource create pattern enables a simple, intuitive, and quick experience for creating resources.
+The resource create pattern provides a simple, intuitive and quick experience for creating resources.
 
 # Context
 Users need to create Azure resources.
 
 # Problem
-Creating a resource in Azure can vary from a simple resource with a few required fields to a complex one with many fields, concepts and related resources.
+Creating a resource in Azure can vary from a simple experience with a few required fields to a complex one with many fields, concepts and related resources.
 
 # Solution
-The resource create pattern enables quick configuration of a new resource using minimal fields and default values. The pattern also enables users to walk through detailed configuration options in order to manually set many resource options.  The experience uses a fullscreen page with tabs to separate related configuration steps and guide the user during the create process.
-
+The resource create pattern enables quick configuration of a new resource by using a minimum number of fields and providing default values. The pattern also enables users to walk through detailed configuration options in order to manually set many resource options.  The experience uses a fullscreen page with tabs to separate related configuration steps and guide the user during the create process.
 
 ## Also known as 
 
@@ -17,7 +16,6 @@ The resource create pattern enables quick configuration of a new resource using 
 - Tabbed create  
 
 # Examples 
----------
 
 ## Example image
 <div style="max-width:800px">
@@ -31,7 +29,6 @@ These Azure resources are good examples of this design pattern 
 * [IoT hub](https://rc.portal.azure.com/#create/Microsoft.IotHub)
 * [Kubernetes service](https://rc.portal.azure.com/#create/microsoft.aks)
 
-
 # Use when
 Creating a resource in Azure
 
@@ -40,17 +37,17 @@ Creating a resource in Azure
 <img alttext="Resource create anatomy" src="../media/top-designpatterns-resource-create/resource-create-anatomy.png"  />
 </div>
 
-A resource create experience usually contains:
+The resource create experience contains:
 1. Tabs with descriptive text and learn more links to switch between logical input steps
-2. Input fields divided into logical sections with concise, instructional, descriptive text for each section
-3. Footer navigation with buttons to navigate tabs and submit form
+2. Input fields divided into logical sections with concise, instructional text for each section
+3. Footer navigation with buttons to navigate to previous and next tabs and submit the form
 
 ### Design Principles
 
 Follow these recommendations when designing your Create form:
 
 1. Single, full screen blade.
-2. Logical steps using the existing Tabs control.
+2. Logical steps provided by the existing `Tabs` control.
 3. Easily and freely navigate between tabs.
 4. Include descriptive and supportive text.
 5. Ability to quickly deploy resources with minimal input.
@@ -64,7 +61,7 @@ Use the tabs & sections to organize content. The `Basics` tab should be the star
 ## Behavior 
 
 ### Tabs
-Tabs group sections of the create experience into manageable categories. Tabs also separate required information from optional information for simpler configuration.
+Tabs group sections of the create experience into manageable categories. Tabs can also be used to separate required information from optional information for simpler configuration.
 
 Most creates should have a minimum of 3 tabs; `Basics`, `Tags`, `Review + create`.  All other tabs are optional.
 
@@ -75,13 +72,11 @@ Most creates should have a minimum of 3 tabs; `Basics`, `Tags`, `Review + create
 #### Basics
 The first tab contains fields required for creating the resource. Set default values when possible to eliminate additional time spent on create.
 
-**Project Details**: Represents the collection of Subscription and Resource Group controls.  To include the visual connector between Subscription and RG, set `Nested = True` on the RG control.  The default text for Project Details is `Select the subscription to manage deployed resources and costs. Use resource groups like folders to organize and manage all your resources.`
-
 The `Basics` tab should contain the typical fields for Azure resources
-* `Subscription` + `Resource group`
-* `Name`
-* `Region` - this field used to be referred to as Location, now we use the term Region
-* SKU/Cost/Pricing tier 
+* Project Details - Groups the `Subscription` and `Resource Group` controls.  The default text for Project Details is `Select the subscription to manage deployed resources and costs. Use resource groups like folders to organize and manage all your resources.`
+* `Name` - the name of the resource
+* `Region` - used to be referred to as Location
+* SKU/Cost/Pricing tier - enable the user to control the cost of the resource
 
 #### Optional tabs
 Additional tabs are used to organize optional settings specific to your resource.  Tabs should have short names, typically a noun.
@@ -100,7 +95,7 @@ Allowing the user to verify all settings prior to submission ensures accuracy an
 
 **Descriptions**: The top of each tab should include a brief description about the content to follow. When possible include `Learn more` links to relevant docs.
 
-**Section Headers**: Used to separate common settings within a tab.
+**Section Headers**: Used to separate common settings within a tab including a description for the section.
 
 **Alignment**: Stack labels above controls if the screen resolution < 700px.
 	
@@ -158,6 +153,7 @@ Coming soon
 
 -   Set a maximimu width of 600px for the tab content area that contains input fields
 -   Screen resolution - If screen resolution is less than 700px, set left aligned = false
+-   To include the visual connector between Subscription and RG, set `Nested = True` on the RG control.  
 
 ## Related documentation
 
