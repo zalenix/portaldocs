@@ -68,7 +68,7 @@ The sample is located at `<dir>\Client\V2\Dialogs\DialogSamplesBlade.ts` and in 
 
 ## Targeting the dialog at a specific element or cssSelector
 
-If you want to provide context to which the dialog applies, for example, confirming a delete of a certain item, this can be made possible by specifying a `string | FxElement` which either captures the `cssSelector` or, in the case of `FxElement`, the element of the control or `div`.
+If you want to provide context to which the dialog applies, for example, confirming a delete of a certain item, you can supply a CSS selector string or an `FxElement` as the 'target' property on your 'DialogOptions':
 
 When the `fxClick` element is clicked, it generates a `FxElement` which is sent as a parameter to the onClick `fxClick` handler, as is specified in the sample located at `<dir>\Client\V2\Dialogs\DialogSamplesBlade.ts` and in the following example.
 
