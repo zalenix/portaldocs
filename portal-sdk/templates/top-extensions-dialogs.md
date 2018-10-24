@@ -26,7 +26,7 @@ The properties for this implementation of the dialog are as follows.
 
 | Property | Definition |
 | -------- | ---------- |
-| Buttons | The buttons to surface to the user. These can be the predefined button combinations that the framework offers, or you can specify your own custom labels, as specified in [#dialogs-with-custom-buttons](#dialogs-with-custom-buttons). |
+| buttons | The buttons to surface to the user. These can be the predefined button combinations that the framework offers, or you can specify your own custom labels, as specified in [#dialogs-with-custom-buttons](#dialogs-with-custom-buttons). |
 | Content | The string or `htmlContent` to display to the user. |
 | onClosed | A callback function that is called when the user closes the dialog by selecting a button. |
 | telemetryName | The name that is logged for any telemetry events that occur while the user interacts with the dialog. |
