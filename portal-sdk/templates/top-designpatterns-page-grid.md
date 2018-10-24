@@ -34,8 +34,6 @@ Grids are used for surfacing a list of objects to provide meaningful data on eac
 <img alttext=" " src="../media/top-designpatterns-page-grid/grid-anatomy.png"  />
 </div>
 
-
-
 A grid can contain:
 1.  Column header
 2.  Column sorter
@@ -47,13 +45,13 @@ A grid can contain:
 **Bulk commanding (multi-select)**
 A user can select one or more items using the leftmost column, then choose a command from the command bar above to perform actions like Remove or Delete. This pattern is ideal for scenarios when a user wants to perform a single action on many list items.
 <div style="max-width:400px">
-<img alttext="Bulk commanding" src="../media/top-designpatterns-page-grid/bulk-commanding.png"  />
+<img alttext="Bulk commanding" src="../media/top-designpatterns-page-grid/Bulk-Commanding.png"  />
 </div>
 
 **Context menu**
 The ellipses on the right edge of each row contain commands for cases where multiple actions are possible for a single selected row, like Edit or Delete. Common design practice is to keep all commands in the context menu rather than putting an icon, i.e. a trash can for Delete, directly on the grid. Context menus can have child context menus, made available with a chevron at the right edge of a parent context menu item.
 <div style="max-width:400px">
-<img alttext="Context menu" src="../media/top-designpatterns-page-grid/context-menu.png"  />
+<img alttext="Context menu" src="../media/top-designpatterns-page-grid/Context-Menu.png"  />
 </div>
 
 **Hierarchical grid**
