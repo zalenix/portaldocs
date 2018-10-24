@@ -76,7 +76,7 @@ When the `fxClick` element is clicked, it generates a `FxElement` which is sent 
 
 To target the location of the `fxClick` the extension defines the `target` property on the `dialogOptions` as `evt.target`, the parameter defined by the `fxClick` onClick handler. The dialog will then open within the context of the element.
 
-To target elements by using `cssSelectors`, send the specific `cssSelector` as a string to the `target` property on the `dialogOptions`.
+To target elements by using a CSS selector, send the specific CSS selector string to the `target` property on the `dialogOptions`.
 
 ## Positioning the dialog when targeting
 
