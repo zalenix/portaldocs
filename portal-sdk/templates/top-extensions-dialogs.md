@@ -30,7 +30,7 @@ The properties for this implementation of the dialog are as follows.
 | content | The string or `htmlContent` to display to the user. |
 | onClosed | A callback function that is called when the user closes the dialog by selecting a button. |
 | telemetryName | The name that is logged for any telemetry events that occur while the user interacts with the dialog. |
-| Title | The string that is shown to the user as the title of the dialog. |
+| title | The string that is shown to the user as the title of the dialog. |
 
 After the `options` object is defined, the extension can call `container.openDialog(yourDialogOptions)` and send in the `dialogOptions`.
 
