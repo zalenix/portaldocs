@@ -60,7 +60,7 @@ export interface CustomDialogButton {
 
 In a dialog, if you want to allow the user to pick a value from a slider or interact with some other custom UI, make use of a custom HTML template. You can achieve that by providing an object of type `HtmlContent` to the `content` property in the dialog options.
 
-Here we define our custom dialog `ViewModel`, which only contains a slider control. We then define a simple html template, which is only the control, and specify our `dialogViewModel`.
+Here we define our custom dialog `ViewModel`, which only contains a slider control. We then define a simple html template, which is only the control, and specify our `dialogViewModel`:
 
 The sample is located at `<dir>\Client\V2\Dialogs\DialogSamplesBlade.ts` and in the following code.
 
