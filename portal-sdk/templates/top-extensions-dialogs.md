@@ -70,7 +70,7 @@ The sample is located at `<dir>\Client\V2\Dialogs\DialogSamplesBlade.ts` and in 
 
 If you want to provide context to which the dialog applies, for example, confirming a delete of a certain item, you can supply a CSS selector string or an `FxElement` as the 'target' property on your 'DialogOptions':
 
-When the `fxClick` element is clicked, it generates a `FxElement` which is sent as a parameter to the onClick `fxClick` handler, as is specified in the sample located at `<dir>\Client\V2\Dialogs\DialogSamplesBlade.ts` and in the following example.
+When the `fxClick` element is clicked, it generates a `FxElement` which is sent as a parameter to the callback function supplied to `fxClick`:
 
 {"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V2/Dialogs/DialogSamplesBlade.ts", "section": "top-extensions-dialogs-targeting"}
 
