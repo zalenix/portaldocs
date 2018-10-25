@@ -1,13 +1,15 @@
-# Building browse experiences
+# Browse
 
-The Favorites in the left nav and the Browse menu are the primary ways to launch tools and services within the portal. The default favorites are determined by C+E leadership based on the highest grossing services with the most engaged customers. New services will start in the Browse menu and, based on those metrics or the number of favorites surpasses other defaults, the list can be updated.
+The Favorites in the left nav and the 'All services' menu are the primary ways to launch tools and services within the portal. The default favorites are determined by C+E leadership based on the highest grossing services with the most engaged customers. New services will start in the 'All services' menu and, based on those metrics or the number of favorites surpasses other defaults, the list can be updated.
+
+## Building browse experiences
 
 There are 2 ways you can be surfaced in Browse:
 
 1. [Browse](#building-browse-experiences-browse-for-arm-resources) for ARM resources
 1. [Custom blade](#building-browse-experiences-custom-blade) if you have a single instance and not a list of resources
 
-## Browse for ARM resources
+### Browse for ARM resources
 
 ARM Browse automatically queries ARM for resources of a specific type and displays them in a paged grid.
 
@@ -34,7 +36,110 @@ ARM Browse requires the following:
 * Asset blade must accept a single `Id` input property
 * Asset id must be the resource id (not an object)
 
-### Add command
+#### Handling ARM kinds
+
+If the resource you wish to expose does not have kinds then please skip to the next topic.
+
+ARM has the capability for a resource to define kinds, in some cases you may want to
+treat those kinds separately in the portal.
+
+To define a kind for your asset, you need to declare the kind as a child of the `Asset` within PDL.
+Firstly you will need to specify a default kind, this kind inherits the blade/part defined in the Asset.
+The default kind is identified with `IsDefault="true"`.
+
+If your resource exposes multiple kinds you can declare them as siblings of the default kind.
+
+Exposing your kind within the 'All services' menu will require your kind/asset to be curated within the Portal Framework. The framework also offers ways for grouping kinds together when browsing to those kinds.
+There are two options you can use group your kinds:
+
+1. KindGroup
+    * This will define a separate `KindGroup` within your extensions definition which can be used as a way to define a single view for mulitple kinds while also keeping the individual kind view.
+1. MergedKind
+    * Similar to `KindGroup` `MergedKind`s will group various kinds together and present them in a single view, except `MergedKind` forces any instance of the individual kinds to be viewed as the merged view.
+
+```xml
+<!--
+    This asset type represents a watch instance.
+
+    An asset type represents an asset object in the system independent of other objects in the system.
+    It represents a singular class of objects distinctively but without connection to other objects.
+
+    This asset type includes a resource type which represents a watch instance in the resource map.
+
+    A resource type represents an asset specifically in a resource map where the connections between
+    objects is important.  It represents a way to map resources in a resource map to the underlying
+    assets in the system.
+
+    It includes the resource map icons which are used in the resource map control.
+
+    Watch is an "abstract" asset type, there is no such thing as a "watch", the default
+    watch type is a "apple" watch.  Other specializations are based on function.
+  -->
+  <AssetType Name="Watch"
+             ViewModel="{ViewModel Name=WatchViewModel, Module=./Watch/AssetType/Watch}"
+             CompositeDisplayName="{Resource AssetTypeNames.Watch, Module=ClientResources}"
+             Icon="{Svg IsLogo=true, File=../../Svg/Watches/generic.svg}"
+             BladeName="AppleWatchBlade"
+             PartName="AppleWatchTile"
+             UseResourceMenu="true"
+             MarketplaceItemId="Microsoft/watch">
+    <Browse Type="ResourceType"
+            UseCustomConfig="true"
+            UseSupplementalData="true" />
+    <ResourceType ResourceTypeName="Microsoft.Test/watches"
+                  ApiVersion="2017-04-01">
+      <Kind Name="apple"
+            IsDefault="true"
+            CompositeDisplayName="{Resource AssetTypeNames.Watch.Apple, Module=ClientResources}"
+            Icon="{Svg IsLogo=true, File=../../Svg/Watches/apple.svg}" />
+      <Kind Name="lg"
+            CompositeDisplayName="{Resource AssetTypeNames.Watch.LG, Module=ClientResources}"
+            Icon="{Svg IsLogo=true, File=../../Svg/Watches/lg.svg}"
+            BladeName="LgWatchBlade"
+            PartName="LgWatchTile" />
+      <Kind Name="samsung"
+            CompositeDisplayName="{Resource AssetTypeNames.Watch.Samsung, Module=ClientResources}"
+            Icon="{Svg IsLogo=true, File=../../Svg/Watches/samsung.svg}"
+            BladeName="SamsungWatchBlade"
+            PartName="SamsungWatchTile" />
+      <Kind Name="fitbit"
+            CompositeDisplayName="{Resource AssetTypeNames.Watch.Fitbit, Module=ClientResources}"
+            Icon="{Svg IsLogo=true, File=../../Svg/Watches/fitbit.svg}"
+            BladeName="FitbitWatchBlade"
+            PartName="FitbitWatchTile" />
+      <!--
+        The 'android' kind group wraps the lg and samsung kinds into a single kind. The 'android' kind is an abstract
+        kind. There should never be a watch with the kind set to 'android'. Instead it's used to group kinds into
+        a single list. However, 'lg' watches and be seen separately, same with 'samsung' watches. The 'android' kind
+        will be emitted to the manifest as a kind.
+      -->
+      <KindGroup Name="android"
+            CompositeDisplayName="{Resource AssetTypeNames.Watch.Android, Module=ClientResources}"
+            Icon="{Svg IsLogo=true, File=../../Svg/Watches/android.svg}">
+        <KindReference KindName="lg" />
+        <KindReference KindName="samsung" />
+      </KindGroup>
+      <!--
+        The 'garmin-merged' kind has two merged kinds, 'garmin' and 'garmin2'. The 'garmin-merged' kind is not a real
+        kind and is not emitted to the manifest as a kind, it is organizational only.
+      -->
+      <MergedKind Name="garmin-merged">
+        <Kind Name="garmin"
+              CompositeDisplayName="{Resource AssetTypeNames.Watch.Garmin, Module=ClientResources}"
+              Icon="{Svg IsLogo=true, File=../../Svg/Watches/garmin.svg}"
+              BladeName="GarminWatchBlade"
+              PartName="GarminWatchTile" />
+        <Kind Name="garmin2"
+              CompositeDisplayName="{Resource AssetTypeNames.Watch.Garmin2, Module=ClientResources}"
+              Icon="{Svg IsLogo=true, File=../../Svg/Watches/garmin2.svg}"
+              BladeName="Garmin2WatchBlade"
+              PartName="Garmin2WatchTile" />
+      </MergedKind>
+    </ResourceType>
+  </AssetType>
+```
+
+#### Add command
 
 To allow people to create new resources from Browse, you can associate your asset type with a Marketplace item or category:
 
@@ -51,7 +156,7 @@ To allow people to create new resources from Browse, you can associate your asse
 
 The Browse blade will launch the Marketplace item, if specified; otherwise, it will launch the Marketplace category blade for the specific menu item id (e.g. `gallery/virtualMachines/recommended` for Virtual machines > Recommended). To determine the right Marketplace category, contact the <a href="mailto:1store?subject=Marketplace menu item id">Marketplace team</a>. If neither is specified, the Add command won't be available.
 
-### Customizing columns
+#### Customizing columns
 
 By default, ARM Browse only shows the resource name, group, location, and subscription. To customize the columns, add a view-model to the `AssetType` and indicate that you have custom Browse config:
 
@@ -75,7 +180,7 @@ class BookViewModel implements ExtensionDefinition.ViewModels.ResourceTypes.Book
 
 The `getBrowseConfig()` function provides the following configuration options for your Browse blade:
 
-* **`columns`** - List of custom columns the user will be able to choose to display (coming soon)
+* **`columns`** - List of custom columns the user will be able to choose to display
 * **`defaultColumns`** - List of column ids that will be used by default
 * **`properties`** - Additional properties used by formatted columns (e.g. HTML formatting)
 
@@ -88,7 +193,7 @@ class BookViewModel implements ExtensionDefinition.ViewModels.ResourceTypes.Book
 
     public getBrowseConfig(): PromiseV<MsPortalFx.Assets.BrowseConfig> {
         return Q.resolve({
-            // columns the user will be able to choose to display (coming soon)
+            // columns the user will be able to choose to display
             columns: [
                 {
                     id: "author",
@@ -126,7 +231,7 @@ Notice that the genre column actually renders 2 properties: genre and subgenre. 
 
 At this point, you should be able to compile and see your columns show up in your Browse blade. Of course, you still need to populate your supplemental data. Let's do that now...
 
-### Providing supplemental data
+#### Providing supplemental data
 
 In order to specify supplemental data to display on top of the standard resource columns, you'll need to opt in to specifying supplemental data in PDL:
 
@@ -244,7 +349,7 @@ class BookViewModel implements ExtensionDefinition.ViewModels.ResourceTypes.Book
 
 If you need to expose different commands based on some other metadata, you can also specify the the command group in `SupplementalData.contextMenu` in the same way.
 
-### Adding an informational message/link
+#### Adding an informational message/link
 
 If you need to display an informational message and/or link above the list of resources, add an `infoBox` to your Browse config:
 
@@ -276,9 +381,9 @@ class BookViewModel implements ExtensionDefinition.ViewModels.ResourceTypes.Book
 }
 ```
 
-## Custom blade
+### Custom blade
 
-If you don't have a list of resources and simply need to add a custom blade to Browse, you can define an asset type with a `Browse` type of `AssetTypeBlade`. This tells Browse to launch the blade associated with the asset type. Note that the asset type doesn't actually refer to an instance of a resource in this case. This is most common for services that are only provisioned once per directory or horizontal services (Cost Management, Monitoring, Azure Advisor etc...). In this case, the `PluralDisplayName` is used in the Browse menu, but the other display names are ignored. Feel free to set them to the same value.
+If you don't have a list of resources and simply need to add a custom blade to Browse, you can define an asset type with a `Browse` type of `AssetTypeBlade`. This tells Browse to launch the blade associated with the asset type. Note that the asset type doesn't actually refer to an instance of a resource in this case. This is most common for services that are only provisioned once per directory or horizontal services (Cost Management, Monitoring, Azure Advisor etc...). In this case, the `PluralDisplayName` is used in the 'All services' menu, but the other display names are ignored. Feel free to set them to the same value.
 
 ```xml
 <AssetType
@@ -289,3 +394,20 @@ If you don't have a list of resources and simply need to add a custom blade to B
   <Browse Type="AssetTypeBlade" />
 </AssetType>
 ```
+
+## Curating browse assets
+
+When adding a new 'Asset' to your extension and exposing it through the 'All services' menu, by default it will be grouped in the 'Other' category.
+In order to get your 'Asset' correctly categorized you will need to make a request to the Portal Framework to curate your 'Asset'.
+
+For the portal to correct curate your 'Asset' we will need the 'ExtensionName' and 'AssetName' as defined in your extension.
+
+Please contact [ibizafxpm@microsoft.com](mailto:ibizafxpm@microsoft.com) with the following template:
+
+* Subject: 'Browse curation requestion - YourAssetName'
+* Body:
+  * 'ExtensioName - YourExtensionName'
+  * 'AssetName - YourAssetName'
+  * 'KindName - YourKindName' (If applicable)
+  * 'Category - DesiredCategory'
+  * 'Portal environment - portal.azure.com (etc...)'
