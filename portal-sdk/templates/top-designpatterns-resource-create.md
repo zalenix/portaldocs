@@ -101,9 +101,12 @@ Allowing the user to verify all settings prior to submission ensures accuracy an
 	
 **Info Bubbles**: If you have input fields that may not be immediately familiar to users, include an info bubble that shows more information.
 
-### Grouped input fields
-When creating a form that includes several fields pertaining to a certain subject, you can group them with a header that gives the user a clear indication of what they’re being asked for. You can also add explanatory text just below the group header if the task may not be immediately clear to the user.
-![Grouped input fields](..media/top-designpatterns-resource-create/grouped-input-fields.png)
+### Sections that group input fields
+When creating a form that includes several fields pertaining to a certain subject, you can group them into a section with a header that gives the user a clear indication of what they’re being asked for. You can also add explanatory text just below the group header if the task may not be immediately clear to the user.
+
+<div style="max-width:800px">
+<img alttext="Tabs" src="../media/top-designpatterns-resource-create/Grouped-input-fields.png" />
+</div>
 
 ### Sub create in a context pane
 Context panes can be used for sub creates within the create flow. The sub create allows users to configure services or to create resources that are related to the main resource that's being created, without losing the overall context.
