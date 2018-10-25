@@ -38,7 +38,8 @@
 <tr>
 <td valign="top">
 <b>Figma</b>
-<br>Available as a Figma library within the Microsoft Azure Figma workgroup. 
+<br>Available as a Figma library within the Microsoft Azure Figma workgroup. Email If you want access to the Figma toolkit, just send a quick email requesting access to:
+CDS_Figma_Admins@microsoft.com to request access.
 <br>No download is necessary.
 </td>
 <td valign="top">
