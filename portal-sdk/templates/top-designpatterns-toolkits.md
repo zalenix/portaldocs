@@ -1,35 +1,35 @@
 # Toolkits for Azure Experience Design
 
 
-<table style="width:800px; border-style:none; cellpadding=10px">
+<table style="width:750px; border-style:none; cellpadding=10px">
 <tr>
-<td  width="20%">
+<td  width="150px">
 <a href="" target="_blank">
 <img src="../media/top-designpatterns-toolkits/figma.png" style="border-style:solid; border-width:2px; border-color:gray" alt="Figma toolkit">
 </a>
 </td>
 
-<td width="20%">
+<td width="150px">
 <a href="https://microsoft.sharepoint.com/:u:/t/UNI_CE/EeQ7d6ScPtxOn11y9u0uWDMBnxj0aAboy2KnvqBJOnB_VA?e=3WzClt" target="_blank">
 <img src="../media/top-designpatterns-toolkits/sketch.png" style="border-style:solid; border-width:2px; border-color:gray" alt="Sketch toolkit">
 </a>
 </td>
 
-<td width="20%">
+<td width="150px">
 <a href="https://microsoft.sharepoint.com/:f:/t/UNI_CE/EuZaLU4h1I5Fn3L9uL6YRcMBWA4H6ZRXQWbmzUv60KXJWQ?e=gsPway" target="_blank">
-<img src="../media/top-designpatterns-toolkits/xd.png" style="border-style:solid; border-width:2px; border-color:gray" alt="Sketch toolkit">
+<img src="../media/top-designpatterns-toolkits/xd.png" style="border-style:solid; border-width:2px; border-color:gray" alt="XD toolkit">
 </a>
 </td>
 
-<td width="20%">
+<td width="150px">
 <a href="https://microsoft.sharepoint.com/:u:/t/UNI_CE/ET_B7JO5tJpCnBrXXaLID9AB9ltbHqj_v6eWkq147cvm_Q?e=zEB7t8" target="_blank">
-<img src="../media/top-designpatterns-toolkits/illustrator.png" style="border-style:solid; border-width:2px; border-color:gray" alt="Sketch toolkit">
+<img src="../media/top-designpatterns-toolkits/illustrator.png" style="border-style:solid; border-width:2px; border-color:gray" alt="Illustator toolkit">
 </a>
 </td>
 
-<td width="20%">
+<td width="150px">
 <a href="https://microsoft.sharepoint.com/:f:/t/UNI_CE/EjEXdW54jiBOuWunOWsYLTsBeIZIDPTfPD6fFiMMaYUKDA?e=YSEE8w" target="_blank">
-<img src="../media/top-designpatterns-toolkits/powerpoint.png" style="border-style:solid; border-width:2px; border-color:gray" alt="Sketch toolkit">
+<img src="../media/top-designpatterns-toolkits/powerpoint.png" style="border-style:solid; border-width:2px; border-color:gray" alt="Powerpoint toolkit">
 </a>
 </td>
 
