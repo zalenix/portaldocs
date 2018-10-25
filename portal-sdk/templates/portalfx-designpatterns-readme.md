@@ -29,7 +29,7 @@ Design toolkits and resources are available so that you can easily create design
 
 * Design toolkits [top-designpatterns-toolkits.md](top-designpatterns-toolkits.md)
 
-* Portal style guide [portalfx-style-guide.md](portalfx-style-guide.md)
+* Style guide [top-designpatterns-style-guide.md](top-designpatterns-style-guide.md)
 
 * Icons [top-designpatterns-icons.md](top-designpatterns-icons.md)
 
