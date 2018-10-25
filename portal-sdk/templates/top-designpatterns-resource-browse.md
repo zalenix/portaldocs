@@ -22,7 +22,7 @@ The resource browse pattern shows resources by displaying key resource propertie
 
 ## Example images
 <div style="max-width:800px">
-<img alttext="Resource browse example" src="../media/top-designpatterns-resource-browse/Resource-browse-1.png"  />
+<img alttext="Resource browse example" src="../media/top-designpatterns-resource-browse/resource-browse-1.png"  />
 </div>
 
 ## Example uses
@@ -82,7 +82,7 @@ Actions can be performed on a specific resource using context menu commands. Rea
 ### Empty state
 When the resource list has no items to display, provide the user with information on how to get started, i.e help links. The icon, message and link come from your asset definition.
 <div style="max-width:800px">
-<img alttext="Empty state" src="../media/top-designpatterns-resource-browse/resource-browse-noresources.png"/>
+<img alttext="Empty state" src="../media/top-designpatterns-resource-browse/resource-browse-NoResources.png"/>
 
 ## Do 
 
