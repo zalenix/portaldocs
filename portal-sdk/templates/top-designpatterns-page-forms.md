@@ -8,7 +8,12 @@ Users input information when managing Azure resources.
 Users need to input information to create, deploy and configure resources.  Users also file support tickets and provide feedback by entering information in the portal.
 
 # Solution
-The portal offers several input methods with consistent field and form validation to ensure users can easily input information and understand whether that info is valid.  Well designed input forms enable users to increase the speed and accuracy of input and lead to successful form completion.
+The portal offers several input options with consistent field and form validation to ensure users can easily input information and understand whether that info is valid.  
+* `Dialogs` are used for very simple input/acknowledgment.  
+* `Context panes` are used for input when more space is needed and the input form does not need to invoke any child blades.  
+* `Full screen blades` can be used for input when the input form needs the space or will invoke a child blade
+* `Wizard` is used to guide a user as they provide input when creating azure resources
+In all cases, the field layout and validation are consistent.  Well designed input forms enable users to increase the speed and accuracy of input and lead to successful form completion.
 
 ## Also known as
 
