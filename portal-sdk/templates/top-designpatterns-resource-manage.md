@@ -155,22 +155,14 @@ Display guiding content and key information about the resource
 * Design patterns readme [portalfx-designpatterns-readme.md](portalfx-designpatterns-readme.md)
 
 # Research and usability
-Coming soon
 
 # Telemetry
-Coming soon
 
 # For developers 
-How to create the resource manage experience 
-1. Use the ResourceMenu SDK building block 
-2. Set the common items and resource specific items in the menu
-   - Enable the recommended flags to show typical menu items linked to common pages 
-   - Add resource-specific menu items to built in groups as necessary 
-   - Add resource-specific menu groups and items, provided you are not creating menu groups with fewer than 3 items   
-   - Add keywords to your menu items to help the user find menu items by searching the resource menu 
-3. Build an Overview page, which serves as the home page for the resource 
+Developers can use the following information to get started implementing this pattern
 
 ## Tips and tricks 
+* Use the ResourceMenu SDK building block 
 
 * Opt in to ResourceMenu using the AssetType `UseResourceMenu="true"` option
     * Assign keywords to your Resource Menu items to help the user find items   

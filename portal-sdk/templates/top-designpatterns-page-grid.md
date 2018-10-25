@@ -85,6 +85,7 @@ Actions can be pulled out of the command bar to be in closer proximity to the gr
 # Telemetry
 
 # For developers
+Developers can use the following information to get started implementing this pattern
 
 ## Tips and tricks
 

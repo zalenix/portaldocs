@@ -96,6 +96,7 @@ Research history and retrospective for Azure Portal Full Screen
 Coming soon
 
 # For developers 
+Developers can use the following information to get started implementing this pattern
 
 ## Tips and tricks 
 

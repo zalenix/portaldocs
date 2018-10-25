@@ -31,6 +31,8 @@ This page covers how to properly export an icon that you've created in Illustrat
 * Design patterns readme [portalfx-designpatterns-readme.md](portalfx-designpatterns-readme.md)
 
 # For developers 
+Developers can use the following information to get started implementing this pattern
+
 ## Related documents
 
 * Icons [portalfx-icons.md](portalfx-icons.md)

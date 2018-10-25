@@ -142,16 +142,15 @@ The post create page provides realtime deployment status, help with troubleshoot
 -   Design patterns readme [portalfx-designpatterns-readme.md](portalfx-designpatterns-readme.md)
 
 # Research and usability 
-Coming soon
 
 # Telemetry
-Coming soon
 
 # For developers 
+Developers can use the following information to get started implementing this pattern
 
 ## Tips and tricks 
 
--   Set a maximimu width of 600px for the tab content area that contains input fields
+-   Set a maximimum width of 600px for the tab content area that contains input fields
 -   Screen resolution - If screen resolution is less than 700px, set left aligned = false
 -   To include the visual connector between Subscription and RG, set `Nested = True` on the RG control.  
 

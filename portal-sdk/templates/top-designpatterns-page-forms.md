@@ -13,6 +13,7 @@ The portal offers several input options with consistent field and form validatio
 * `Context panes` are used for input when more space is needed and the input form does not need to invoke any child blades.  
 * `Full screen blades` can be used for input when the input form needs the space or will invoke a child blade
 * `Wizard` is used to guide a user as they provide input when creating azure resources
+
 In all cases, the field layout and validation are consistent.  Well designed input forms enable users to increase the speed and accuracy of input and lead to successful form completion.
 
 ## Also known as
@@ -50,18 +51,18 @@ A form can contain:
 **Placeholder text**
 Include placeholder text can be formatted in two ways:
 1. As instruction
-<div style="max-width:400px; margin-left:25px">
+<div style="max-width:300px; margin-left:25px">
 <img alttext="Placeholder instruction" src="../media/top-designpatterns-page-forms/placeholder_text.png"  />
 </div>
 
 2. As an example
-<div style="max-width:200px; margin-left:25px">
+<div style="max-width:150px; margin-left:25px">
 <img alttext="Placeholder example" src="../media/top-designpatterns-page-forms/placeholder-email.png"  />
 </div>
 
 **Form validation**
 Don’t make users guess password requirements. Instead, include the password validation tool in your experience.
-<div style="max-width:400px">
+<div style="max-width:300px">
 <img alttext="Form validation" src="../media/top-designpatterns-page-forms/form-validation.png"  />
 </div>
 
@@ -69,7 +70,7 @@ Don’t make users guess password requirements. Instead, include the password va
 The blue and white toggle used in the portal today has tested poorly among users because it's unclear which option is selected.
 
 The current guidance is to use radio buttons in favor of the toggle.
-<div style="max-width:200px">
+<div style="max-width:150px">
 <img alttext="Radio control" src="../media/top-designpatterns-page-forms/radio-control.png"  />
 </div>
 
@@ -108,6 +109,7 @@ Provide highly visible and specific error messages.
 # Telemetry
 
 # For developers
+Developers can use the following information to get started implementing this pattern
 
 ## Tips and tricks
 

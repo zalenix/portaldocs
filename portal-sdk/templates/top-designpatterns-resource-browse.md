@@ -112,6 +112,7 @@ When the resource list has no items to display, provide the user with informatio
 # Telemetry
 
 # For developers 
+Developers can use the following information to get started implementing this pattern
 
 ## Tips and tricks 
 

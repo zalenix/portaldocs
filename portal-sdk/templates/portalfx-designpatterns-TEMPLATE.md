@@ -59,6 +59,7 @@
 <!-- Links to portal telemetry showing the solution usage -->
 
 # For developers
+Developers can use the following information to get started implementing this pattern
 
 ## Tips and tricks
 <!-- Bulleted list of tips and tricks for developers -->
