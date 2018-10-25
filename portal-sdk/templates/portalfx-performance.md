@@ -518,7 +518,6 @@ The framework supports loading view models using dependency injection. If you mi
 ## Prerequistes
 
 - Migrate to V2 targets if you haven’t done so (See: [V2 targets](#v2-targets))
-- Ensure that the emitDecoratorMetadata compiler option is set to true in the tsconfig.json
 - Upgrade to at least SDK 3001+
 - Cleanup your extension project TypeScript code and remove all uses of export = Main.
   - Check this PR in the portal repo for an example: https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/1003495?_a=overview
@@ -527,6 +526,7 @@ The framework supports loading view models using dependency injection. If you mi
 
 ## Migration steps
 
+- Ensure that the emitDecoratorMetadata compiler option is set to true in the tsconfig.json
 - Delete the generated ViewModelFactories.ts from `Client\_generated`
 - Add the following line to your csproj
 
@@ -555,10 +555,11 @@ The framework supports loading view models using dependency injection. If you mi
 - Find all DataContext classes that are still referenced by your view models and add the `@Di.Class()` decorator.
   - Note that `@Di.Class()` is called with no arguments.
   - You will need to add `import * as Di from "Fx/DependencyInjection` to the top of the files
+  - The migration validation script in one of the steps below can help you track down all of the DataContext classes that need to be annotated.
 - Remove the code in Program.ts that initializes the DataContext classes. Set the generic type parameter of `MsPortalFx.Extension.EntryPointBase` base class specification to void.
 - The constructor of any class that contains a `@Di.Class()` decorator (with or without the "viewModel" argument) cannot contain an parameter that is specified with a non-class type. Some of your view model classes may have a dataContext parameter with an any type or an interface type. Either change the type to a class or remove the parameter entirely.
 - All classes in the dependency chain of migrated view models should be marked with `@Di.Class()` decorator. The dependency injection framework in the Portal only supports constructor injection.
-- Put the following code in your Program.ts right at the module level. Then load your extension through the portal. This will validate that you have correctly migrated the V1 view models. The code should complete almost instantly. Remove the code when you are done.
+- Put the following code in your Program.ts right at the module level. Then load your extension through the portal. This load all of your view models and validate that you have correctly migrated the V1 view models. Remove the code when you are done.
 
 ```typescript
 MsPortalFx.require("Fx/DependencyInjection")
@@ -575,7 +576,7 @@ MsPortalFx.require("Fx/DependencyInjection")
                                 // Can't validate V2 view models
                             }
                             else {
-                                container._validate(new (<any>window).Map(), exportedType, true);
+                                container._validate(new (<any>window).Map(), exportedType);
                             }
                         });
                 }
@@ -588,12 +589,14 @@ MsPortalFx.require("Fx/DependencyInjection")
 
 ## Pull Request Samples
 
-- https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/1013125?_a=overview
-- https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/1013301?_a=overview
-- https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/1016472?_a=overview
-- https://msazure.visualstudio.com/One/_git/AD-IAM-IPC/pullrequest/1096247?_a=overview
-- https://msazure.visualstudio.com/One/_git/AD-IAM-Services-ADIbizaUX/pullrequest/1098977?_a=overview
-- https://msazure.visualstudio.com/One/_git/MGMT-AppInsights-InsightsPortal/pullrequest/1124038?_a=overview
+- https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/1013125
+- https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/1013301
+- https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/1016472
+- https://msazure.visualstudio.com/One/_git/AD-IAM-IPC/pullrequest/1096247
+- https://msazure.visualstudio.com/One/_git/AD-IAM-Services-ADIbizaUX/pullrequest/1098977
+- https://msazure.visualstudio.com/One/_git/MGMT-AppInsights-InsightsPortal/pullrequest/1124038
+- https://msazure.visualstudio.com/One/_git/AzureUX-IaaSExp/pullrequest/1176274
+- https://msazure.visualstudio.com/One/_git/AzureUX-IaaSExp/pullrequest/1159718
 
 
 [TelemetryOnboarding]: <portalfx-telemetry-getting-started.md>
