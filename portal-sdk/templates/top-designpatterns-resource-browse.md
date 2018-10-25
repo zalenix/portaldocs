@@ -5,7 +5,7 @@ The resource browse pattern provides resource discovery and management at scale 
 In order to manage a single Azure resource, users often locate the resource in a list.
 
 # Problem
-Users need to see a filterable and sortable list of resources, perform actions on items in the list, and navigate to the details for a specific resource.  When the user has no resources of that type, the user needs guidance on the value of the resource, links to any supplemental docs and a button to create a resource instance.
+Users need to see a list of resources, perform actions on items in the list, and navigate to the details for a specific resource.  When the user has no resources of that type, the user needs guidance on the value of the resource, links to any supplemental docs and a button to create a resource instance.
 
 # Solution
 The resource browse pattern shows resources by displaying key resource properties in a grid view. Resource browse provides easy filtering, searching, sorting and grouping within the list. The user can perform bulk actions on selected resources directly from the list. Selecting a resource from the browse experience opens the resource to invoke the `resource manage` experience.
@@ -122,10 +122,11 @@ When the resource list has no items to display, provide the user with informatio
 
 ## Related documentation
 
+<!-- TODO Fixup links when new browse publishes -->
+* Building browse experiences [top-extension-browse.md](top-extension-browse.md)
+    * Add command [portalfx-browse.md#add-command](portalfx-browse.md#add-command)
+    * Customizing columns [portalfx-browse.md#add-command](portalfx-browse.md#add-command)
+    * Context menu commands [portalfx-browse.md#adding-context-menu-commands](portalfx-browse.md#adding-context-menu-commands)
 * Assets [portalfx-assets.md](portalfx-assets.md)
-* Building browse experiences [portalfx-browse.md](portalfx-browse.md)
-* Add command [portalfx-browse.md#add-command](portalfx-browse.md#add-command)
-* Customizing columns [portalfx-browse.md#add-command](portalfx-browse.md#add-command)
-* Context menu commands [portalfx-browse.md#adding-context-menu-commands](portalfx-browse.md#adding-context-menu-commands)
-* Empty state messaging [portalfx-assets.md#assets-defining-your-asset-type](portalfx-assets.md#assets-defining-your-asset-type)
+    * Empty state messaging [portalfx-assets.md#assets-defining-your-asset-type](portalfx-assets.md#assets-defining-your-asset-type)
 

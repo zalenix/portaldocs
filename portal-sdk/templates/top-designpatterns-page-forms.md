@@ -2,35 +2,34 @@
 Forms are the manner in which we gather and validate user input.
 
 # Context
-Users need to input information when managing Azure resources.
+Users input information when managing Azure resources.
 
 # Problem
-Users complete forms in Azure to create, deploy and configure resources.  Users also use the portal to file support tickets and provide feedback. 
+Users input information to create, deploy and configure resources.  Users also file support tickets and provide feedback by entering information in the portal.
 
 # Solution
 Well designed input forms enable users to increase the speed and accuracy of input and lead to successful form completion.
 
 ## Also known as
-* Create
-* Running a command
-* Editing a property
 
 # Examples
 
 ## Example images
+<!-- TODO get example images of dialogs and context panes -->
 <div style="max-width:800px">
 <img alttext="Forms example" src="../media/top-designpatterns-page-forms/forms.png"  />
 </div>
 
 ## Example uses
-* Creating a VM - [Free account virtual machine](https://rc.portal.azure.com/#create/microsoft.freeaccountvirtualmachine)
-* Running a command - 
-* Editing a property
+* Stopping a VM - Dialog 
+* Tagging a resource - Context Pane
+* Creating a VM - Wizard [Free account virtual machine](https://rc.portal.azure.com/#create/microsoft.freeaccountvirtualmachine)
 
 # Use when
 User needs to input information
 
 ## Anatomy
+<!-- TODO get anatomy for dialog and context pane Use common numbers for elements -->
 <div style="max-width:800px">
 <img alttext="Form anatomy" src="../media/top-designpatterns-page-forms/form-anatomy.png"  />
 </div>
@@ -38,7 +37,7 @@ A form can contain:
 1. Labels and corresponding input fields
 2. 'Save' and 'Discard' commands, 'Ok' and 'Cancel,' or another call to action
 3. Error messaging
-4. Form validation
+4. Field and Form validation
 
 ## Behavior
 
