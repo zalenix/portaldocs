@@ -5,10 +5,10 @@ Forms are the manner in which we gather and validate user input.
 Users input information when managing Azure resources.
 
 # Problem
-Users input information to create, deploy and configure resources.  Users also file support tickets and provide feedback by entering information in the portal.
+Users need to input information to create, deploy and configure resources.  Users also file support tickets and provide feedback by entering information in the portal.
 
 # Solution
-Well designed input forms enable users to increase the speed and accuracy of input and lead to successful form completion.
+The portal offers several input methods with consistent field and form validation to ensure users can easily input information and understand whether that info is valid.  Well designed input forms enable users to increase the speed and accuracy of input and lead to successful form completion.
 
 ## Also known as
 

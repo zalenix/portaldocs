@@ -1,15 +1,21 @@
 <!-- This is the template to use when creating a new design pattern document -->
 # <NAME>
-<!-- Fill in the name above and then write a short description of the design pattern -->
+<!-- Fill in the name above and then write a short description of the design pattern.  For example
+"Forms are the manner in which we gather and validate user input."
+-->
 
 # Context
-<!-- Short description of the context -->
+<!-- Short description of the context.  For example, "Users input information when managing Azure resources." -->
 
 # Problem
-<!-- Short description of the problem -->
+<!-- Short description of the problem.  For example, 
+"Users need to input information to create, deploy and configure resources."
+-->
 
 # Solution
-<!-- Short description of the solution -->
+<!-- Short description of the solution For example 
+"The portal offers several input methods with consistent field and form validation to ensure users can easily input information and understand whether that info is valid.  " 
+-->
 
 ## Also known as
 <!-- Bulleted list of other terms used to describe the solution, if any -->
