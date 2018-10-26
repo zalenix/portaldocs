@@ -73,7 +73,7 @@ It would be great to provide guidance around this to partners in the patterns si
 
 ### Validation
 
-**Placeholder text**
+#### Placeholder text
 Include placeholder text can be formatted in two ways:
 1. As an instruction
 <div style="max-width:300px; margin-left:25px">
@@ -85,17 +85,17 @@ Include placeholder text can be formatted in two ways:
 <img alttext="Placeholder example" src="../media/top-designpatterns-page-forms/placeholder-email.png"  />
 </div>
 
-**Field validation**
+#### Field validation
 Don’t make users guess password requirements. Instead, include the password validation tool in your experience.
 <div style="max-width:300px">
 <img alttext="Form validation" src="../media/top-designpatterns-page-forms/form-validation.png"  />
 </div>
 
-**Error messaging**
+#### Error messaging
 Provide highly visible and specific error messages.
 
 ### Control recommendations
-**Use radio buttons instead of toggles**
+#### Use radio buttons instead of toggles
 The blue and white toggle used in the portal today has tested poorly among users because it's unclear which option is selected, especially if the choice is between 2 options.
 
 The current guidance is to use radio buttons in favor of the toggle.
@@ -110,13 +110,14 @@ The current guidance is to use radio buttons in favor of the toggle.
 * Use `Yes` and `No` buttons when there is a confirmation question in the dialog - "Delete this VM?"
 
 #### Context pane
+<!-- TODO do we want buttons for close or dismiss or rely solely on the "x" in corner -->
 * Use buttons at the bottom of the page
-* Use `Ok` and `Cancel` when the user is entering info
-<!-- TODO is this optional - do we want to rely on the "x" in corner -->
 * Use `Dismiss` when the context pane is showing read only information
+* Use `Save` and `Discard` when the user is creating an item
+* Use `Ok` and `Cancel` when the user is editing info
 
 #### Fullscreen blade
-* Use the toolbar when
+* Use the toolbar
 
 #### Create wizard - see the [resource create pattern](top-designpatterns-resource-create.md) for details
 
