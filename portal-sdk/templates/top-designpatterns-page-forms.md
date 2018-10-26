@@ -31,6 +31,11 @@ The portal offers several variations of forms with consistent field and form val
 <img alttext="Forms example" src="../media/top-designpatterns-page-forms/forms-context-pane.png"  />
 </div>
 
+### Full screen blade
+<div style="max-width:800px">
+<img alttext="Forms example" src="../media/top-designpatterns-page-forms/forms-full-screen-blade.png"  />
+</div>
+
 ### Wizard
 <div style="max-width:800px">
 <img alttext="Forms example" src="../media/top-designpatterns-page-forms/forms.png"  />
@@ -39,7 +44,7 @@ The portal offers several variations of forms with consistent field and form val
 ## Example uses
 * Stopping a VM - Dialog 
 * Tagging a VM - Context Pane
-* Creating an alert rule - Full screen blade
+* Moving a resource to a different resource group - Full screen blade
 * Creating a VM - Wizard [Free account virtual machine](https://rc.portal.azure.com/#create/microsoft.freeaccountvirtualmachine)
 
 # Use when
@@ -107,13 +112,23 @@ The current guidance is to use radio buttons in favor of the toggle.
 #### Context pane
 <!-- TODO do we want buttons for close or dismiss or rely solely on the "x" in corner -->
 * Use buttons at the bottom of the page
-* Use `Dismiss` when the context pane is showing read only information - VM Connect
-* Use `Save` and `Discard` when the user is creating an item 
-<!-- Edit columns uses `Apply` and `Reset`, no close button -->
-* Use `Ok` and `Cancel` when the user is editing info 
+    * Use `Dismiss` when the context pane is showing read only information - VM Connect
+    * Use `Save` and `Discard` when the user is creating an item 
+    <!-- Edit columns uses `Apply` and `Reset`, no close button -->
+    * Use `Ok` and `Cancel` when the user is editing info 
+* Use a toolbar at the top of the page - Tag resource
+    * Page represents a more fully featured management experience
+    * No `Close` button, the blade has an `X` in the upper right corner to close it
+
 
 #### Fullscreen blade
-* Use a toolbar at the top of the page
+* Use `Ok` button at the bottom of the page - Move to different resource group
+    * No `Cancel` button, the blade has an `X` in the upper right corner to close it
+* Use a toolbar at the top of the page - Manage alert rules
+    * Page represents a more fully featured management experience 
+    * Page is invoked from `Resource menu` - most of these blades have toolbars - VM > Diagnostics settings
+    * No `Close` button, the blade has an `X` in the upper right corner to close it
+
 
 #### Create wizard - see the [resource create pattern](top-designpatterns-resource-create.md) for details
 
