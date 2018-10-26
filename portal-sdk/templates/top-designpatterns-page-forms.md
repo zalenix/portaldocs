@@ -2,15 +2,15 @@
 Forms are the manner in which we gather and validate user input.
 
 # Context
-Users input information when managing Azure resources.
+Users enter information to manage Azure resources.
 
 # Problem
-Users need to input information to create, deploy and configure resources.  Users also file support tickets and provide feedback by entering information in the portal.
+Users need to input information to create, configure and manage resources.  Users also file support tickets and provide feedback by entering information in the portal.
 
 # Solution
-The portal offers several input options with consistent field and form validation to ensure users can easily input information and understand whether that info is valid.  
+The portal offers several form variations with consistent field and form validation to ensure users can easily input information and understand whether that info is valid.  
 * `Dialogs` are used for very simple input/acknowledgment and appear next to the user click target
-* `Context panes` are used when more space is needed and the input form does not need to invoke any child blades.  Context panes appear on the rightside of the screen, can vary in size and float over other context.
+* `Context panes` are used when more space is needed and the input form does not need to invoke any child blades.  Context panes appear on the rightside of the screen, can vary in width and float over other content.
 * `Full screen blades` are used when the input form needs the space or will invoke a child blade
 * `Wizard` is a type of full screen blade with tabs across the top and is used to guide a user as they provide input when creating azure resources
 
@@ -64,41 +64,62 @@ From Leon
 The overall situation of “Save” command vs “Save” / “Cancel” or “OK” / “Cancel” buttons is very inconsistent across the board
 It would be great to provide guidance around this to partners in the patterns site
 -->
-2. 'Save' and 'Discard' commands, 'Ok' and 'Cancel,' or another call to action
+2. Command buttons or another call to action
 3. Error messaging
 4. Field and Form validation
 
 ## Behavior
 
 
+### Validation
+
 **Placeholder text**
 Include placeholder text can be formatted in two ways:
-1. As instruction
+1. As an instruction
 <div style="max-width:300px; margin-left:25px">
 <img alttext="Placeholder instruction" src="../media/top-designpatterns-page-forms/placeholder_text.png"  />
 </div>
 
-2. As an example
+2. As an example of valid input format
 <div style="max-width:150px; margin-left:25px">
 <img alttext="Placeholder example" src="../media/top-designpatterns-page-forms/placeholder-email.png"  />
 </div>
 
-**Form validation**
+**Field validation**
 Don’t make users guess password requirements. Instead, include the password validation tool in your experience.
 <div style="max-width:300px">
 <img alttext="Form validation" src="../media/top-designpatterns-page-forms/form-validation.png"  />
 </div>
 
-**Toggles vs radio buttons**
-The blue and white toggle used in the portal today has tested poorly among users because it's unclear which option is selected.
+**Error messaging**
+Provide highly visible and specific error messages.
+
+### Control recommendations
+**Use radio buttons instead of toggles**
+The blue and white toggle used in the portal today has tested poorly among users because it's unclear which option is selected, especially if the choice is between 2 options.
 
 The current guidance is to use radio buttons in favor of the toggle.
 <div style="max-width:150px">
 <img alttext="Radio control" src="../media/top-designpatterns-page-forms/radio-control.png"  />
 </div>
 
-**Error messaging**
-Provide highly visible and specific error messages.
+### Command button recommendations
+
+#### Dialog
+* Use `Ok` and `Cancel` buttons when the user is making a choice and then confirming - VM "Attach network interface"
+* Use `Yes` and `No` buttons when there is a confirmation question in the dialog - "Delete this VM?"
+
+#### Context pane
+* Use buttons at the bottom of the page
+* Use `Ok` and `Cancel` when the user is entering info
+<!-- TODO is this optional - do we want to rely on the "x" in corner -->
+* Use `Dismiss` when the context pane is showing read only information
+
+#### Fullscreen blade
+* Use the toolbar when
+
+#### Create wizard - see the [resource create pattern](top-designpatterns-resource-create.md) for details
+
 
 ## Do
 -   Use inline labels and fields for full screen pages and stacked labels and fields for narrow blades
