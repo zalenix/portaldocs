@@ -1,12 +1,11 @@
 # Toolkits for Azure Experience Design
 
 
-<table style=" border-style:none; cellpadding:10px">
+<table style="border-style:none; cellpadding:10px">
 <tr>
+<!-- Figma does not have a link -->
 <td  width="20%" height="200px">
-<a href="" target="_blank">
 <img src="../media/top-designpatterns-toolkits/figma.png" style="border-style:solid; border-width:2px; border-color:gray" alt="Figma toolkit">
-</a>
 </td>
 
 <td  width="20%" height="200px">
