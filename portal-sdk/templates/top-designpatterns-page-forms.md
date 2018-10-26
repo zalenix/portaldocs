@@ -8,13 +8,7 @@ Users enter information to manage Azure resources.
 Users need to input information to create, configure and manage resources.  Users also file support tickets and provide feedback by entering information in the portal.
 
 # Solution
-The portal offers several form variations with consistent field and form validation to ensure users can easily input information and understand whether that info is valid.  
-* `Dialogs` are used for very simple input/acknowledgment and appear next to the user click target
-* `Context panes` are used when more space is needed and the input form does not need to invoke any child blades.  Context panes appear on the rightside of the screen, can vary in width and float over other content.
-* `Full screen blades` are used when the input form needs the space or will invoke a child blade
-* `Wizard` is a type of full screen blade with tabs across the top and is used to guide a user as they provide input when creating azure resources
-
-In all cases, the field layout and validation are consistent.  Well designed input forms enable users to increase the speed and accuracy of input and lead to successful form completion.
+The portal offers several variations of forms with consistent field and form validation to ensure users can easily input information and understand whether that info is valid.  The form variations are `dialogs`, `context panes`, `full screen blades` and `wizards`.  In all cases, the field layout and validation are consistent.  Well designed input forms enable users to increase the speed and accuracy of input and lead to successful form completion.
 
 ## Also known as
 
@@ -45,31 +39,31 @@ In all cases, the field layout and validation are consistent.  Well designed inp
 ## Example uses
 * Stopping a VM - Dialog 
 * Tagging a VM - Context Pane
+* Creating an alert rule - Full screen blade
 * Creating a VM - Wizard [Free account virtual machine](https://rc.portal.azure.com/#create/microsoft.freeaccountvirtualmachine)
 
 # Use when
-User needs to input information
+Choose among these available options when designing experiences for the user to enter information.
+
+* `Dialogs` are used for very simple input/acknowledgment and appear next to the user click target
+* `Context panes` are used when more space is needed and the input form does not need to invoke any child blades.  Context panes appear on the rightside of the screen, vary in width and float over other content.
+* `Full screen blades` are used when the input form needs the space or will invoke a child blade
+* `Wizard` is a type of full screen blade with tabs across the top and is used to guide a user as they provide input when creating azure resources
 
 ## Anatomy
 <!-- TODO get anatomy for dialog and context pane Use common numbers for elements -->
 <div style="max-width:800px">
 <img alttext="Form anatomy" src="../media/top-designpatterns-page-forms/form-anatomy.png"  />
 </div>
+
 A form can contain:
 1. Labels and corresponding input fields
-<!-- TODO resolve and give strong guidance on Save, Discard, Ok, Cancel 
-From MVP summit 2018 (March)
-MVPs want consistency on patterns. Save/commit changes to blades were brought up as an example. "Is there a design/UI language enforcement in portal? It seems that patterns are very irregular across experiences." The MVP talked about save and finish being different steps depending on the blade (some blades end there, some others need further confirmation to commit the changes). "Can you block them (other extensions) when they are not consistent?".
-From Leon
-The overall situation of “Save” command vs “Save” / “Cancel” or “OK” / “Cancel” buttons is very inconsistent across the board
-It would be great to provide guidance around this to partners in the patterns site
--->
 2. Command buttons or another call to action
 3. Error messaging
 4. Field and Form validation
 
 ## Behavior
-
+As the user enters information, field content is validated.  Upon form submission, the entire form is validated.
 
 ### Validation
 
@@ -104,20 +98,22 @@ The current guidance is to use radio buttons in favor of the toggle.
 </div>
 
 ### Command button recommendations
-
+<!-- Should the "submit" buttons for forms always be active, so that user can get form validation -->
 #### Dialog
-* Use `Ok` and `Cancel` buttons when the user is making a choice and then confirming - VM "Attach network interface"
+* Use `Ok` and `Cancel` buttons when the user is entering info and then confirming  - VM "Attach network interface"
 * Use `Yes` and `No` buttons when there is a confirmation question in the dialog - "Delete this VM?"
+<!-- Should clicking away from dialog cause it to close?  It does for Stop/Delete VM (Yes, No) but not the Attach/Detach example below -->
 
 #### Context pane
 <!-- TODO do we want buttons for close or dismiss or rely solely on the "x" in corner -->
 * Use buttons at the bottom of the page
-* Use `Dismiss` when the context pane is showing read only information
-* Use `Save` and `Discard` when the user is creating an item
-* Use `Ok` and `Cancel` when the user is editing info
+* Use `Dismiss` when the context pane is showing read only information - VM Connect
+* Use `Save` and `Discard` when the user is creating an item 
+<!-- Edit columns uses `Apply` and `Reset`, no close button -->
+* Use `Ok` and `Cancel` when the user is editing info 
 
 #### Fullscreen blade
-* Use the toolbar
+* Use a toolbar at the top of the page
 
 #### Create wizard - see the [resource create pattern](top-designpatterns-resource-create.md) for details
 
@@ -159,7 +155,7 @@ Developers can use the following information to get started implementing this pa
 ## Tips and tricks
 
 ## Related documentation
-* Context Pane [top-extensions-context-panes.md](top-extensions-context-panes.md)
 * Dialog [top-extensions-dialogs.md](top-extensions-dialogs.md)
+* Context Pane [top-extensions-context-panes.md](top-extensions-context-panes.md)
 * Forms [top-extensions-forms.md](top-extensions-forms.md)
 * Forms [portalfx-forms.md](portalfx-forms.md)
