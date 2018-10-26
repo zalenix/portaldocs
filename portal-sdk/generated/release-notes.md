@@ -1,5 +1,13 @@
 # Release Notes since 6/26/2018
 
+## 5.0.302.6701
+0 Breaking Changes, 0 Features added and 0 Bugs Fixed
+<table>undefined</table>
+
+## 5.0.302.6601
+0 Breaking Changes, 2 Features added and 3 Bugs Fixed
+<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3223285'>3223285</a></td><td>Bug Fix</td><td>Ignore manifests that do not have a pageVersion attribute</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3197715'>3197715</a></td><td>Bug Fix</td><td>[IcM 87610443/87611263] Nullref in resource menu blade when trying to log an error</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3186905'>3186905</a></td><td>Bug Fix</td><td>[MonitorChartPart] Incident 86563037 and 86609742: Dashboard - Can Not Update Metric after changing time range, and dashboard time is changed to 24 hours on loading the dashboard.</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3165519'>3165519</a></td><td>Feature</td><td>Onboard DocumentDB to prewarming</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3155753'>3155753</a></td><td>Feature</td><td>Publish/Register and enable (On-board) Microsoft_Azure_Migrate extension in Fairfax / US Government stack</td></tr></table>
+
 ## 5.0.302.6501
 0 Breaking Changes, 0 Features added and 1 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3221103'>3221103</a></td><td>Bug Fix</td><td>Revert controller parameter rename to fix routing</td></tr></table>
@@ -23,6 +31,10 @@
 ## 5.0.302.5801
 0 Breaking Changes, 1 Features added and 4 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3203903'>3203903</a></td><td>Bug Fix</td><td>Improve lcl file parsing in V2 targets</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3200770'>3200770</a></td><td>Bug Fix</td><td>[Hotfix] Template viewer: Add to library button never gets enabled</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3183504'>3183504</a></td><td>Feature</td><td>[Partner] include AmdResourceDefinition bundle in msportalfx-ut fxscripts.js</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3181522'>3181522</a></td><td>Bug Fix</td><td>[PostCreate] InferredBladePinPartDeploymentDetailsOverviewBlade load availability is 0%</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3157332'>3157332</a></td><td>Bug Fix</td><td>[Data grid] Data grid does not update UX even though dataSource returns new items</td></tr></table>
+
+## 5.0.302.5603
+0 Breaking Changes, 0 Features added and 0 Bugs Fixed
+<table>undefined</table>
 
 ## 5.0.302.5601
 10 Breaking Changes, 111 Features added and 522 Bugs Fixed
