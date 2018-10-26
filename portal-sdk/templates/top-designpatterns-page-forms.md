@@ -9,10 +9,10 @@ Users need to input information to create, deploy and configure resources.  User
 
 # Solution
 The portal offers several input options with consistent field and form validation to ensure users can easily input information and understand whether that info is valid.  
-* `Dialogs` are used for very simple input/acknowledgment.  
-* `Context panes` are used for input when more space is needed and the input form does not need to invoke any child blades.  
-* `Full screen blades` can be used for input when the input form needs the space or will invoke a child blade
-* `Wizard` is used to guide a user as they provide input when creating azure resources
+* `Dialogs` are used for very simple input/acknowledgment and appear next to the user click target
+* `Context panes` are used when more space is needed and the input form does not need to invoke any child blades.  Context panes appear on the rightside of the screen, can vary in size and float over other context.
+* `Full screen blades` are used when the input form needs the space or will invoke a child blade
+* `Wizard` is a type of full screen blade with tabs across the top and is used to guide a user as they provide input when creating azure resources
 
 In all cases, the field layout and validation are consistent.  Well designed input forms enable users to increase the speed and accuracy of input and lead to successful form completion.
 
@@ -21,14 +21,30 @@ In all cases, the field layout and validation are consistent.  Well designed inp
 # Examples
 
 ## Example images
-<!-- TODO get example images of dialogs and context panes -->
+
+### Dialog
+<div style="max-width:800px">
+<img alttext="Forms example" src="../media/top-designpatterns-page-forms/forms-dialog.png"  />
+</div>
+
+### Context Pane - narrow
+<div style="max-width:800px">
+<img alttext="Forms example" src="../media/top-designpatterns-page-forms/forms-context-pane-narrow.png"  />
+</div>
+
+### Context Pane - wide
+<div style="max-width:800px">
+<img alttext="Forms example" src="../media/top-designpatterns-page-forms/forms-context-pane.png"  />
+</div>
+
+### Wizard
 <div style="max-width:800px">
 <img alttext="Forms example" src="../media/top-designpatterns-page-forms/forms.png"  />
 </div>
 
 ## Example uses
 * Stopping a VM - Dialog 
-* Tagging a resource - Context Pane
+* Tagging a VM - Context Pane
 * Creating a VM - Wizard [Free account virtual machine](https://rc.portal.azure.com/#create/microsoft.freeaccountvirtualmachine)
 
 # Use when
