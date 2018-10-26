@@ -110,9 +110,9 @@ The overview page is the home page for a resource. It displays key information a
 
 #### Toolbar 
 Toolbar commands should open context panes instead of narrow blades to avoid horizontal scrolling. The resource toolbar should contain commands common to all resources
-* Delete - delete the current resource
-* Move - a dropdown menu to move the current resource to a different **resource group** or **subscription**
-* Refresh - refresh the overview page
+* `Delete` - delete the current resource
+* `Move` - a dropdown menu to move the current resource to a different **resource group** or **subscription**
+* `Refresh` - refresh the overview page
 The resource toolbar should also contain resource-specific commands for easy access.
 Learn more [Toolbar](portalfx-controls-toolbar.md), [Context pane](top-extensions-context-panes.md)
 
@@ -181,6 +181,7 @@ Developers can use the following information to get started implementing this pa
     * To display tags in the Essentials Panel, add this line to the options object
 passed to the essentials control:  `includeTags:true`
     * Make sure you have efficient APIs for overview data 
+    * Include standard Overview page actions - `Move`, `Delete` and `Refresh`
 
 * Make sure your RP has onboarded to Geneva for metrics and logs so you can
 enable the monitoring menu items 

@@ -1,9 +1,16 @@
 ﻿# Style guide
 
-The Azure portal has a color pallette and type ramp that resonate with customers and meets accessibility requirements.
+The Azure portal has 4 themes, a color pallette and type ramp that resonate with customers and meets accessibility requirements.
 
-* Style guide [Azure Portal Style Guide PDF](../media/top-designpatterns-style-guide/Azure-Portal-Style-Guide.pdf)
 
+## Key style items
+* Segoe UI is the standard typeface of the Azure portal
+* "Use sentence case" for headers and labels. WE DO NOT USER ALL UPPERCASE
+* Use 13px as the smallest font
+* Wrap text at 75 characters per line
+
+## Full style guide
+* Full Style guide [Azure Portal Style Guide PDF](../media/top-designpatterns-style-guide/Azure-Portal-Style-Guide.pdf)
 
 # Screen resolutions
 Ensure that your designs work well at all P0 resolutions.  Based on telemetry data \(see below\), resolution priorities are:

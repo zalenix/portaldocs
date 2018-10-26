@@ -17,6 +17,11 @@ The resource management patterns provide guidance for managing the full lifecy
 # Page 
 The page patterns provide guidance for common page layouts in Azure
 
+## Page design recommendations
+* Pages should be `fullscreen`
+* Each page that is displaying data should have a `Refresh` button
+
+## Page patterns
 1. Fullscreen [top-designpatterns-page-fullscreen.md](top-designpatterns-page-fullscreen.md)
 
 2. Page with lists [top-designpatterns-page-grid.md](top-designpatterns-page-grid.md)

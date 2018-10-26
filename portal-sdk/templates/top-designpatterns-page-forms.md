@@ -41,6 +41,13 @@ User needs to input information
 </div>
 A form can contain:
 1. Labels and corresponding input fields
+<!-- TODO resolve and give strong guidance on Save, Discard, Ok, Cancel 
+From MVP summit 2018 (March)
+MVPs want consistency on patterns. Save/commit changes to blades were brought up as an example. "Is there a design/UI language enforcement in portal? It seems that patterns are very irregular across experiences." The MVP talked about save and finish being different steps depending on the blade (some blades end there, some others need further confirmation to commit the changes). "Can you block them (other extensions) when they are not consistent?".
+From Leon
+The overall situation of “Save” command vs “Save” / “Cancel” or “OK” / “Cancel” buttons is very inconsistent across the board
+It would be great to provide guidance around this to partners in the patterns site
+-->
 2. 'Save' and 'Discard' commands, 'Ok' and 'Cancel,' or another call to action
 3. Error messaging
 4. Field and Form validation
