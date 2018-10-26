@@ -5,7 +5,7 @@ The Azure portal has 4 themes, a color pallette and type ramp that resonate with
 
 ## Key style items
 * Segoe UI is the standard typeface of the Azure portal
-* "Use sentence case" for headers and labels. WE DO NOT USER ALL UPPERCASE
+* Use sentence case for headers and labels. DO NOT USE ALL UPPERCASE, IT IS HARD TO READ
 * Use 13px as the smallest font
 * Wrap text at 75 characters per line
 
