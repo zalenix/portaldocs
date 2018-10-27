@@ -94,27 +94,38 @@ If your asset type is in preview, set the `IsPreview="true"` property. If the as
 
 You can hide your asset in different environments by setting the hideassettypes feature flag in your config to a comma-separated list of asset type names. 
 
+<a href="https://msit.microsoftstream.com/video/7399869a-4f8f-415e-9346-5b77f069b567?st=50" target="_blank">
+  Watch the Hiding Asset Types video here
+  <img src="../media/portalfx-assets/hidingassettypes.png" />
+</a>
+
+
 ##### Self hosted:
 
 Replace '*' with the desired environment, for documentation regarding enabling feature flags in self hosted extensions [click here.](portalfx-extension-flags.md#feature-flags)
+
+```xml
 
         <Setting name="Microsoft.StbPortal.Website.Configuration.ApplicationConfiguration.DefaultQueryString" value="{
             '*': {
                      'microsoft_azure_compute_hideassettypes':"AzureContainerService,ContainerGroup,ManagedClusters,VirtualWan"
             }
         }" />
-
+```
  
 ##### Hosting service:
 
 If you’re using the hosting service, you can do this by updating your domainname.json (e.g. portal.azure.cn.json file)
  
+```json
 
     {
       "features": {
         "hideassettypes": "AzureContainerService,ContainerGroup,ManagedClusters,VirtualWan"
       }
     }
+
+```
 
 ###### Testing your hidden asset
 
