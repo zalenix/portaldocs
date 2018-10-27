@@ -1,4 +1,4 @@
-# Release Notes since 6/26/2018
+# Release Notes since 6/27/2018
 
 ## 5.0.302.6701
 0 Breaking Changes, 0 Features added and 0 Bugs Fixed
@@ -311,23 +311,3 @@
 ## 5.0.302.1193
 0 Breaking Changes, 4 Features added and 3 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2645448'>2645448</a></td><td>Feature</td><td>Enable the Activity Log blade redirect in Public Prod</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2641604'>2641604</a></td><td>Feature</td><td>Change pinnable blade without pinned part error to be warning</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2640382'>2640382</a></td><td>Feature</td><td>Enable ownership enforcement of PortalFx</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2612764'>2612764</a></td><td>Bug Fix</td><td>Dashboard uncompress is creating incorrect container model for inferred pinned parts</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2596848'>2596848</a></td><td>Bug Fix</td><td>Imported dashboards are not compatible with redirect part</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2579463'>2579463</a></td><td>Bug Fix</td><td>MonitorChartv2: Click-through from pinned parts from non-AI resources to MEv2 broken</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2566842'>2566842</a></td><td>Feature</td><td>[Config] Microsoft_Azure_AnalysisServices: Extension load - delegation token</td></tr></table>
-
-## 5.0.302.1192
-0 Breaking Changes, 0 Features added and 1 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2639495'>2639495</a></td><td>Bug Fix</td><td>Add missing [JsonProperty] to TypeMetadata TypeName</td></tr></table>
-
-## 5.0.302.1191
-0 Breaking Changes, 3 Features added and 2 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2638116'>2638116</a></td><td>Feature</td><td>[Preorder] Enable prod flighting as merge is deployed</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2637902'>2637902</a></td><td>Bug Fix</td><td>Insert new line between modules in ContentUnbundler generated MsPortalFx.js</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2598749'>2598749</a></td><td>Feature</td><td>Enable prewarming flighting in production</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2597154'>2597154</a></td><td>Feature</td><td>Enable Insights to Monitoring extension redirect in Public Prod</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2566118'>2566118</a></td><td>Bug Fix</td><td>Error dialog should use copy to clipboard api instead of depending on copy button</td></tr></table>
-
-## 5.0.302.1190
-0 Breaking Changes, 0 Features added and 1 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2634694'>2634694</a></td><td>Bug Fix</td><td>Fix lost of HttpContext.Current in SettingsController</td></tr></table>
-
-## 5.0.302.1189
-0 Breaking Changes, 0 Features added and 1 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2634388'>2634388</a></td><td>Bug Fix</td><td>Always emit TypeMetadata as camel case</td></tr></table>
-
-## 5.0.302.1188
-0 Breaking Changes, 1 Features added and 2 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2633994'>2633994</a></td><td>Bug Fix</td><td>Null ref in UI.Initialize related to securityTokensManager</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2629791'>2629791</a></td><td>Bug Fix</td><td>[Preorder] Fix preorder makeJsUrl</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2614588'>2614588</a></td><td>Feature</td><td>[Browse] Remove national cloud curation from all but SQL</td></tr></table>
