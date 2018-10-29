@@ -27,6 +27,10 @@ When using AppBlade, developers are responsible for the following.
 * Controls
 
     Building your own controls, or using available alternatives to Ibiza Fx controls
+    
+* Localization and Regional settings
+
+    In addition to making sure your code is properly globalized and localized, ensure that you’re passing and respecting international preferences from the Portal for “Display Language” and “Format Culture” as outlined in [portalfx-localization.md#locale-in-the-portal](portalfx-localization.md#locale-in-the-portal).
 
 To create a FrameBlade, you need to create 3 artifacts.
 
