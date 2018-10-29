@@ -170,7 +170,7 @@ Follow the button recommendations above
 # Related design patterns
 * Full screen [designpatterns-page-fullscreen.md](designpatterns-page-fullscreen.md)
 * Resource Create [designpatterns-resource-create.md](designpatterns-resource-create.md)
-* Design patterns readme [portalfx-designpatterns-readme.md](portalfx-designpatterns-readme.md)
+* Design patterns readme [top-designpatterns-readme.md](top-designpatterns-readme.md)
 
 
 # Research and usability

@@ -9,7 +9,7 @@ In many cases, you will not need to provide your own icons, as the SDK framework
 This page covers how to properly export an icon that you've created in Illustrator to use in the Azure portal. Illustrator provides several ways to save a file as an SVG but this is the recommended method.
 
 1. Make sure the colors you used are in the approved color palette
-	Claire to get link to palette
+<!--TODO Claire to get link to palette -->
 2. Save the icon by going to File > Save As...
 3. In the Save As window, change the 'Save as type:'  to .SVG (*.SVG) in the dropdown
 4. Hit 'Save.' This will invoke the SVG Options window
@@ -31,7 +31,7 @@ This page covers how to properly export an icon that you've created in Illustrat
 </div>
 
 # Design patterns
-* Design patterns readme [portalfx-designpatterns-readme.md](portalfx-designpatterns-readme.md)
+* Design patterns readme [top-designpatterns-readme.md](top-designpatterns-readme.md)
 
 # For developers 
 Developers can use the following information to get started implementing this pattern

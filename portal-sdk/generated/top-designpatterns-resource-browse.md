@@ -123,7 +123,7 @@ When the resource list has no items to display, provide the user with informatio
 * Full screen [top-designpatterns-page-fullscreen.md](top-designpatterns-page-fullscreen.md)
 * Resource Create [top-designpatterns-resource-create.md](top-designpatterns-resource-create.md)
 * Resource Manage [top-designpatterns-resource-manage.md](top-designpatterns-resource-manage.md)
-* Design patterns readme [portalfx-designpatterns-readme.md](portalfx-designpatterns-readme.md)
+* Design patterns readme [top-designpatterns-readme.md](top-designpatterns-readme.md)
 
 <a name="research-and-usability"></a>
 # Research and usability
