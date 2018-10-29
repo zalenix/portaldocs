@@ -1,4 +1,4 @@
-# Release Notes since 6/28/2018
+# Release Notes since 6/29/2018
 
 ## 5.0.302.6701
 0 Breaking Changes, 0 Features added and 0 Bugs Fixed
@@ -303,11 +303,3 @@
 ## 5.0.302.1195
 0 Breaking Changes, 3 Features added and 4 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2654167'>2654167</a></td><td>Bug Fix</td><td>User type hint from shell should always win</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2650155'>2650155</a></td><td>Bug Fix</td><td>Knockout sanitization error in ArmErrorsBlade</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2623453'>2623453</a></td><td>Bug Fix</td><td>Missing redirect for InferredPinnedPartDeploymentDetailsOverviewBlade</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2623450'>2623450</a></td><td>Feature</td><td>PDL: Allow inferred pinned parts to be redirected for blades which no longer exist</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2623447'>2623447</a></td><td>Bug Fix</td><td>Redirect InferredPinnedPartSettingsBlade to SettingsBladePart</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2610316'>2610316</a></td><td>Feature</td><td>Sticky flight compute AFD in T-Ring in production</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2599209'>2599209</a></td><td>Feature</td><td>Call hosting service setcookie API to track telemetry and prewarm the prewarm endpoint</td></tr></table>
-
-## 5.0.302.1194
-0 Breaking Changes, 0 Features added and 1 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2650321'>2650321</a></td><td>Bug Fix</td><td>Don't capture FxImpl.origin or FxImpl.protocol</td></tr></table>
-
-## 5.0.302.1193
-0 Breaking Changes, 4 Features added and 3 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2645448'>2645448</a></td><td>Feature</td><td>Enable the Activity Log blade redirect in Public Prod</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2641604'>2641604</a></td><td>Feature</td><td>Change pinnable blade without pinned part error to be warning</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2640382'>2640382</a></td><td>Feature</td><td>Enable ownership enforcement of PortalFx</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2612764'>2612764</a></td><td>Bug Fix</td><td>Dashboard uncompress is creating incorrect container model for inferred pinned parts</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2596848'>2596848</a></td><td>Bug Fix</td><td>Imported dashboards are not compatible with redirect part</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2579463'>2579463</a></td><td>Bug Fix</td><td>MonitorChartv2: Click-through from pinned parts from non-AI resources to MEv2 broken</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2566842'>2566842</a></td><td>Feature</td><td>[Config] Microsoft_Azure_AnalysisServices: Extension load - delegation token</td></tr></table>
