@@ -18,22 +18,27 @@ The portal offers several variations of forms with consistent field and form val
 
 ### Dialog
 <div style="max-width:800px">
-<img alttext="Forms example" src="../media/top-designpatterns-page-forms/forms-dialog.png"  />
+<img alttext="Forms example - dialog" src="../media/top-designpatterns-page-forms/forms-dialog.png"  />
 </div>
 
 ### Context Pane - narrow
 <div style="max-width:800px">
-<img alttext="Forms example" src="../media/top-designpatterns-page-forms/forms-context-pane-narrow.png"  />
+<img alttext="Forms example - narrow context pane" src="../media/top-designpatterns-page-forms/forms-context-pane-narrow.png"  />
 </div>
 
 ### Context Pane - wide
 <div style="max-width:800px">
-<img alttext="Forms example" src="../media/top-designpatterns-page-forms/forms-context-pane.png"  />
+<img alttext="Forms example - wide context pane" src="../media/top-designpatterns-page-forms/forms-context-pane.png"  />
 </div>
 
 ### Full screen blade
 <div style="max-width:800px">
-<img alttext="Forms example" src="../media/top-designpatterns-page-forms/forms-full-screen-blade.png"  />
+<img alttext="Forms example - full screen blade" src="../media/top-designpatterns-page-forms/forms-full-screen-blade.png"  />
+</div>
+
+### Full screen blade from resource menu
+<div style="max-width:800px">
+<img alttext="Forms example - full screen blade from resource menu" src="../media/top-designpatterns-page-forms/forms-full-screen-blade-from-menu.png"  />
 </div>
 
 ### Wizard
@@ -42,10 +47,11 @@ The portal offers several variations of forms with consistent field and form val
 </div>
 
 ## Example uses
-* Stopping a VM - Dialog 
-* Tagging a VM - Context Pane
-* Moving a VM to a different resource group - Full screen blade
-* Creating a VM - Wizard [Free account virtual machine](https://rc.portal.azure.com/#create/microsoft.freeaccountvirtualmachine)
+* Stopping a VM - dialog 
+* Tagging a VM - context pane
+* Moving a VM to a different resource group - full screen blade
+* Editing VM diagnostic settings - full screen blade from resource menu
+* Creating a VM - wizard [Free account virtual machine](https://rc.portal.azure.com/#create/microsoft.freeaccountvirtualmachine)
 
 # Use when
 Choose among these available options when designing experiences for the user to enter information.
@@ -53,6 +59,7 @@ Choose among these available options when designing experiences for the user to 
 * `Dialogs` are used for very simple input/acknowledgment and appear next to the user click target
 * `Context panes` are used when more space is needed and the input form does not need to invoke any child blades.  Context panes appear on the rightside of the screen, vary in width and float over other content.
 * `Full screen blades` are used when the input form needs the space or will invoke a child blade
+* `Full screen blades from resource menu` are used when the input form is invoked directly from the resource's resource menu and serves the purpose of showing the current information and the edit experience for that information
 * `Wizard` is a type of full screen blade with tabs across the top and is used to guide a user as they provide input when creating azure resources
 
 ## Anatomy
@@ -126,12 +133,12 @@ Follow the button recommendations above
 
 #### Fullscreen blade form - command buttons
 * Use buttons at the bottom of the page, follow button recommendations above
-* Use a toolbar at the top of the page only if page represents a more fully featured management experience - VM > Alerts > Manage alert rules
+* Use a toolbar at the top of the page only if page represents a more fully featured management experience - `VM > Alerts > Manage alert rules`
     * All buttons go in the toolbar using the naming conventions above
     * No `Close` button, the blade has an `X` in the upper right corner to close it
 
 #### Fullscreen blade from opened from a resource menu - command buttons
-* Use a toolbar at the top of the page when the form is opened from a resource menu - VM > Tags and VM > Diagnostics settings
+* Use a toolbar at the top of the page when the form is opened from a resource menu - `VM > Tags` and `VM > Diagnostics settings`
 * All actions go in the toolbar using the naming conventions above
 * No `Close` button, the blade has an `X` in the upper right corner to close it
 
