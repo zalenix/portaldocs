@@ -152,7 +152,7 @@ Display guiding content and key information about the resource
 # Related design patterns
 * Resource Create [designpatterns-resource-create.md](designpatterns-resource-create.md)
 * Resource Browse [designpatterns-resource-browse.md](designpatterns-resource-browse.md)
-* Design patterns readme [top-designpatterns-readme.md](top-designpatterns-readme.md)
+* Design patterns readme [top-designpatterns.md](top-designpatterns.md)
 
 # Research and usability
 
