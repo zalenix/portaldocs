@@ -103,6 +103,7 @@ The current guidance is to use radio buttons in favor of the toggle.
 </div>
 
 ### Command button recommendations
+The buttons for submitting and cancelling a form should follow these recommendations.  The sections for each type of form follow this list and call out any special casing for that form type.
 * Buttons are at the bottom of the page in a non-scrollable docked area
 * Use a single `Close` button if experience is informational only
 * Use `Yes` and `No` buttons for destructive actions and include a confirmation question in the dialog - "Delete this VM?"
