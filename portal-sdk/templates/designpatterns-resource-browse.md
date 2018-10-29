@@ -22,7 +22,7 @@ The resource browse pattern shows resources by displaying key resource propertie
 
 ## Example images
 <div style="max-width:800px">
-<img alttext="Resource browse example" src="../media/top-designpatterns-resource-browse/resource-browse-1.png"  />
+<img alttext="Resource browse example" src="../media/designpatterns-resource-browse/resource-browse-1.png"  />
 </div>
 
 ## Example uses
@@ -37,7 +37,7 @@ Building an extension to manage Azure resources
 
 ## Anatomy  
 <div style="max-width:800px">
-<img alttext="Resource browse anatomy" src="../media/top-designpatterns-resource-browse/resource-browse-anatomy.png"/>
+<img alttext="Resource browse anatomy" src="../media/designpatterns-resource-browse/resource-browse-anatomy.png"/>
 </div>
 
 The resource browse pattern is full screen experience that usually contains:
@@ -57,7 +57,7 @@ The toolbar for the browse pattern contains actions that operate against a grid,
 There are two sets of actions on the toolbar. The first set of actions do not require a grid row selection and operate at the page level, for exampple `Add`, `Edit columns` and `Refresh`. The second set, separated by a pipe, is enabled only when one or more resource items are selected on the grid. 
 
 <div style="max-width:800px">
-<img alttext="Resource browse toolbar" src="../media/top-designpatterns-resource-browse/resource-browse-toolbar.png"/>
+<img alttext="Resource browse toolbar" src="../media/designpatterns-resource-browse/resource-browse-toolbar.png"/>
 
 The recommended actions for the resource browse toolbar are:
 * `Add` invokes the resource create experience
@@ -82,7 +82,7 @@ Actions can be performed on a specific resource using context menu commands. Rea
 ### Empty state
 When the resource list has no items to display, provide the user with information on how to get started, i.e help links. The icon, message and link come from your asset definition.
 <div style="max-width:800px">
-<img alttext="Empty state" src="../media/top-designpatterns-resource-browse/resource-browse-NoResources.png"/>
+<img alttext="Empty state" src="../media/designpatterns-resource-browse/resource-browse-NoResources.png"/>
 
 ## Do 
 
@@ -101,10 +101,10 @@ When the resource list has no items to display, provide the user with informatio
 
 # Related design patterns
 
-* Grid [top-designpatterns-page-grid.md](top-designpatterns-page-grid.md)
-* Full screen [top-designpatterns-page-fullscreen.md](top-designpatterns-page-fullscreen.md)
-* Resource Create [top-designpatterns-resource-create.md](top-designpatterns-resource-create.md)
-* Resource Manage [top-designpatterns-resource-manage.md](top-designpatterns-resource-manage.md)
+* Grid [designpatterns-page-grid.md](designpatterns-page-grid.md)
+* Full screen [designpatterns-page-fullscreen.md](designpatterns-page-fullscreen.md)
+* Resource Create [designpatterns-resource-create.md](designpatterns-resource-create.md)
+* Resource Manage [designpatterns-resource-manage.md](designpatterns-resource-manage.md)
 * Design patterns readme [portalfx-designpatterns-readme.md](portalfx-designpatterns-readme.md)
 
 # Research and usability
