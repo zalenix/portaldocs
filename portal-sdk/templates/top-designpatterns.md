@@ -7,11 +7,11 @@ The following patterns are available
 # Resource Management
 The resource management patterns provide guidance for managing the full lifecycle of Azure resources.
 
-1. Resource Create [top-designpatterns-resource-create.md](top-designpatterns-resource-create.md)
+1. Resource Create [designpatterns-resource-create.md](designpatterns-resource-create.md)
 
-2. Resource Browse [top-designpatterns-resource-browse.md](top-designpatterns-resource-browse.md)
+2. Resource Browse [designpatterns-resource-browse.md](designpatterns-resource-browse.md)
 
-3. Resource Manage [top-designpatterns-resource-manage.md](top-designpatterns-resource-manage.md)
+3. Resource Manage [designpatterns-resource-manage.md](designpatterns-resource-manage.md)
 
 
 # Page 
@@ -22,21 +22,21 @@ The page patterns provide guidance for common page layouts in Azure
 * Each page that is displaying data should have a `Refresh` button
 
 ## Page patterns
-1. Fullscreen [top-designpatterns-page-fullscreen.md](top-designpatterns-page-fullscreen.md)
+1. Fullscreen [designpatterns-page-fullscreen.md](designpatterns-page-fullscreen.md)
 
-2. Page with lists [top-designpatterns-page-grid.md](top-designpatterns-page-grid.md)
+2. Page with lists [designpatterns-page-grid.md](designpatterns-page-grid.md)
 
-3. Forms [top-designpatterns-page-forms.md](top-designpatterns-page-forms.md)
+3. Forms [designpatterns-page-forms.md](designpatterns-page-forms.md)
 
 
 # Design toolkits and resources
 Design toolkits and resources are available so that you can easily create designs that leverage these patterns
 
-* Design toolkits [top-designpatterns-toolkits.md](top-designpatterns-toolkits.md)
+* Design toolkits [designpatterns-toolkits.md](designpatterns-toolkits.md)
 
-* Style guide [top-designpatterns-style-guide.md](top-designpatterns-style-guide.md)
+* Style guide [designpatterns-style-guide.md](designpatterns-style-guide.md)
 
-* Icons [top-designpatterns-icons.md](top-designpatterns-icons.md)
+* Icons [designpatterns-icons.md](designpatterns-icons.md)
 
 
 

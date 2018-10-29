@@ -15,19 +15,19 @@ This page covers how to properly export an icon that you've created in Illustrat
 4. Hit 'Save.' This will invoke the SVG Options window
 5. Make sure your settings in the SVG Options window are as follows, then hit OK
 <div style="max-width:600px">
-<img alttext="Page with list example" src="../media/top-designpatterns-icons/icons-export-settings.png"  />
+<img alttext="Page with list example" src="../media/designpatterns-icons/icons-export-settings.png"  />
 </div>
 
 ## Do
  - Put all artwork onto a single layer, like this
 <div style="max-width:400px">
-<img alttext="Page with list example" src="../media/top-designpatterns-icons/icons-layers-do.png"  />
+<img alttext="Page with list example" src="../media/designpatterns-icons/icons-layers-do.png"  />
 </div>
 
 ## Don't
  - Keep artwork on multiple layers, like this
  <div style="max-width:400px">
-<img alttext="Page with list example" src="../media/top-designpatterns-icons/icons-layers-dont.png"  />
+<img alttext="Page with list example" src="../media/designpatterns-icons/icons-layers-dont.png"  />
 </div>
 
 # Design patterns
