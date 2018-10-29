@@ -14,7 +14,7 @@ This page covers how to properly export an icon that you've created in Illustrat
 3. In the Save As window, change the 'Save as type:'  to .SVG (*.SVG) in the dropdown
 4. Hit 'Save.' This will invoke the SVG Options window
 5. Make sure your settings in the SVG Options window are as follows, then hit OK
-<div style="max-width:600px">
+<div style="max-width:400px">
 <img alttext="Page with list example" src="../media/designpatterns-icons/icons-export-settings.png"  />
 </div>
 
@@ -31,7 +31,7 @@ This page covers how to properly export an icon that you've created in Illustrat
 </div>
 
 # Design patterns
-* Design patterns readme [top-designpatterns.md](top-designpatterns.md)
+* Design patterns [top-designpatterns.md](top-designpatterns.md)
 
 # For developers 
 Developers can use the following information to get started implementing this pattern
