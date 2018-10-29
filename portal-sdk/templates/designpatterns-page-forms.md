@@ -5,10 +5,10 @@ Forms are the manner in which we gather and validate user input.
 Users enter information to manage Azure resources.
 
 # Problem
-Users need to input information to create, configure and manage resources.  Users also file support tickets and provide feedback by entering information in the portal.
+Users need to enter information to create, configure and manage resources.  Users file support tickets and provide feedback by entering information in the portal.
 
 # Solution
-The portal offers several variations of forms with consistent field and form validation to ensure users can easily input information and understand whether that info is valid.  The form variations are `dialogs`, `context panes`, `full screen blades` and `wizards`.  In all cases, the field layout and validation are consistent.  Well designed input forms enable users to increase the speed and accuracy of input and lead to successful form completion.
+The portal offers several variations of forms with consistent field layout and form validation to ensure users can easily enter information and understand whether that info is valid.  The form variations are `dialogs`, `context panes`, `full screen blades` and `wizards`.  Well designed forms enable users to increase the speed and accuracy of input and lead to successful form completion.
 
 ## Also known as
 
@@ -170,7 +170,7 @@ Follow the button recommendations above
 # Related design patterns
 * Full screen [designpatterns-page-fullscreen.md](designpatterns-page-fullscreen.md)
 * Resource Create [designpatterns-resource-create.md](designpatterns-resource-create.md)
-* Design patterns readme [top-designpatterns.md](top-designpatterns.md)
+* Design patterns [top-designpatterns.md](top-designpatterns.md)
 
 
 # Research and usability

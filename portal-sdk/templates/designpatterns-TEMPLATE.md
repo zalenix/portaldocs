@@ -50,7 +50,7 @@
 
 # Related design patterns
 <!-- Links to related design patterns.  Always include the link to the readme -->
-* Design patterns readme [top-designpatterns.md](top-designpatterns.md)
+* Design patterns [top-designpatterns.md](top-designpatterns.md)
 
 # Research and usability
 <!-- Links to the research for the solution -->
