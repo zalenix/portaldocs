@@ -103,7 +103,8 @@ The current guidance is to use radio buttons in favor of the toggle.
 </div>
 
 ### Command button recommendations
-The buttons for submitting and cancelling a form should follow these recommendations.  The sections for each type of form follow this list and call out any special casing for that form type.
+The buttons for submitting and cancelling a form should follow these recommendations.  The sections for each type of form follow this list and call out any special casing for that form type.  Sometimes a forms blade is invoked from multiple places.  For example, the `Tag resource` blade is invoked from a resource menu on most Azure resource and also invoked in a context pane from the essentials control.  In this case, the `Tag resource` blade is designed as a fullscreen blade form opened from a resource menu and does not follow the recommendations of a typical context blade form.
+
 * Buttons are at the bottom of the page in a non-scrollable docked area
 * Use a single `Close` button if experience is informational only
 * Use `Yes` and `No` buttons for destructive actions and include a confirmation question in the dialog - "Delete this VM?"
@@ -112,24 +113,25 @@ The buttons for submitting and cancelling a form should follow these recommendat
 
 <!-- TODO Should the "submit" buttons for forms always be active, so that user can get form validation -->
 <!-- TODO Edit columns uses `Apply` and `Reset`, no close button -->
+<!-- TODO Tag resource uses toolbar, no close button -->
 
-#### Dialog command buttons
+#### Dialog - command buttons
 Follow the button recommendations above
 <!-- TODO Should clicking away from dialog cause it to close?  It does for Stop/Delete VM (Yes, No) but not the Attach/Detach nic example -->
 
-#### Context pane command buttons
+#### Context pane - command buttons
 * Use buttons at the bottom of the page, follow button recommendations above
-* Don't use a toolbar at the top of the page - example Tag resource
+* Don't use a toolbar at the top of the page
     * If context pane contains a grid, attach grid actions to the grid with a grid-level toolbar
 
-#### Fullscreen blade form command buttons
+#### Fullscreen blade form - command buttons
 * Use buttons at the bottom of the page, follow button recommendations above
 * Use a toolbar at the top of the page only if page represents a more fully featured management experience - VM > Alerts > Manage alert rules
     * All buttons go in the toolbar using the naming conventions above
     * No `Close` button, the blade has an `X` in the upper right corner to close it
 
-#### Fullscreen blade form opened from resource menu command buttons
-* Use a toolbar at the top of the page when the form is opened from a resource menu - VM > Diagnostics settings
+#### Fullscreen blade from opened from a resource menu - command buttons
+* Use a toolbar at the top of the page when the form is opened from a resource menu - VM > Tags and VM > Diagnostics settings
 * All actions go in the toolbar using the naming conventions above
 * No `Close` button, the blade has an `X` in the upper right corner to close it
 
