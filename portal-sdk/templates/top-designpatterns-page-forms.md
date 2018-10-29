@@ -44,7 +44,7 @@ The portal offers several variations of forms with consistent field and form val
 ## Example uses
 * Stopping a VM - Dialog 
 * Tagging a VM - Context Pane
-* Moving a resource to a different resource group - Full screen blade
+* Moving a VM to a different resource group - Full screen blade
 * Creating a VM - Wizard [Free account virtual machine](https://rc.portal.azure.com/#create/microsoft.freeaccountvirtualmachine)
 
 # Use when
@@ -103,34 +103,37 @@ The current guidance is to use radio buttons in favor of the toggle.
 </div>
 
 ### Command button recommendations
-<!-- Should the "submit" buttons for forms always be active, so that user can get form validation -->
-#### Dialog
-* Use `Ok` and `Cancel` buttons when the user is entering info and then confirming  - VM "Attach network interface"
-* Use `Yes` and `No` buttons when there is a confirmation question in the dialog - "Delete this VM?"
-<!-- Should clicking away from dialog cause it to close?  It does for Stop/Delete VM (Yes, No) but not the Attach/Detach example below -->
+* Buttons are at the bottom of the page in a non-scrollable docked area
+* Use a single `Close` button if experience is informational only
+* Use `Yes` and `No` buttons for destructive actions and include a confirmation question in the dialog - "Delete this VM?"
+* Use the "action name", like `Move`, `Save`, `Attach`, `Add`, for the submit button and `Cancel` as the button to close the dialog
+* Use `Ok` and `Cancel` as a last resort if a better action name is not apparent
 
-#### Context pane
-<!-- TODO do we want buttons for close or dismiss or rely solely on the "x" in corner -->
-* Use buttons at the bottom of the page
-    * Use `Dismiss` when the context pane is showing read only information - VM Connect
-    * Use `Save` and `Discard` when the user is creating an item 
-    <!-- Edit columns uses `Apply` and `Reset`, no close button -->
-    * Use `Ok` and `Cancel` when the user is editing info 
-* Use a toolbar at the top of the page - Tag resource
-    * Page represents a more fully featured management experience
+<!-- TODO Should the "submit" buttons for forms always be active, so that user can get form validation -->
+<!-- TODO Edit columns uses `Apply` and `Reset`, no close button -->
+
+#### Dialog command buttons
+Follow the button recommendations above
+<!-- TODO Should clicking away from dialog cause it to close?  It does for Stop/Delete VM (Yes, No) but not the Attach/Detach nic example -->
+
+#### Context pane command buttons
+* Use buttons at the bottom of the page, follow button recommendations above
+* Don't use a toolbar at the top of the page - example Tag resource
+    * If context pane contains a grid, attach grid actions to the grid with a grid-level toolbar
+
+#### Fullscreen blade form command buttons
+* Use buttons at the bottom of the page, follow button recommendations above
+* Use a toolbar at the top of the page only if page represents a more fully featured management experience - VM > Alerts > Manage alert rules
+    * All buttons go in the toolbar using the naming conventions above
     * No `Close` button, the blade has an `X` in the upper right corner to close it
 
-
-#### Fullscreen blade
-* Use `Ok` button at the bottom of the page - Move to different resource group
-    * No `Cancel` button, the blade has an `X` in the upper right corner to close it
-* Use a toolbar at the top of the page - Manage alert rules
-    * Page represents a more fully featured management experience 
-    * Page is invoked from `Resource menu` - most of these blades have toolbars - VM > Diagnostics settings
-    * No `Close` button, the blade has an `X` in the upper right corner to close it
+#### Fullscreen blade form opened from resource menu command buttons
+* Use a toolbar at the top of the page when the form is opened from a resource menu - VM > Diagnostics settings
+* All actions go in the toolbar using the naming conventions above
+* No `Close` button, the blade has an `X` in the upper right corner to close it
 
 
-#### Create wizard - see the [resource create pattern](top-designpatterns-resource-create.md) for details
+#### Create wizard command buttons - see the [resource create pattern](top-designpatterns-resource-create.md) for details
 
 
 ## Do
