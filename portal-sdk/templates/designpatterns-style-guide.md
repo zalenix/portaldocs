@@ -35,7 +35,7 @@ Reports showing portal usage
 
 
 # Related design patterns
-* Design patterns readme [portalfx-designpatterns-readme.md](portalfx-designpatterns-readme.md)
+* Design patterns readme [top-designpatterns.md](top-designpatterns.md)
 
 
 # For developers 
