@@ -558,6 +558,7 @@ The framework supports loading view models using dependency injection. If you mi
   - The migration validation script in one of the steps below can help you track down all of the DataContext classes that need to be annotated.
 - Remove the code in Program.ts that initializes the DataContext classes. Set the generic type parameter of `MsPortalFx.Extension.EntryPointBase` base class specification to void.
 - The constructor of any class that contains a `@Di.Class()` decorator (with or without the "viewModel" argument) cannot contain an parameter that is specified with a non-class type. Some of your view model classes may have a dataContext parameter with an any type or an interface type. Either change the type to a class or remove the parameter entirely.
+  - When this rule is violated, you will see errors like `Cannot compose 'Object' because it is not correctly decorated`.
 - All classes in the dependency chain of migrated view models should be marked with `@Di.Class()` decorator. The dependency injection framework in the Portal only supports constructor injection.
 - Put the following code in your Program.ts right at the module level. Then load your extension through the portal. This load all of your view models and validate that you have correctly migrated the V1 view models. Remove the code when you are done.
 
