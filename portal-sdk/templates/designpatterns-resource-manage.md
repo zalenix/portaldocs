@@ -121,7 +121,9 @@ The essentials panel surfaces key properties that are common throughout all Azur
 shown that they rely heavily on the essentials panel for looking up information. The Essentials sections is conceptually divided in two well know parts:
 * Platform fields: fields that are common to all resources Resource Group, Status, Location, Subscription, Subscription ID 
 * Domain specific fields: fields that are specific to one domain or type of resource (e.g. ftp user in a WebApp, Replication in Storage, etc.)
+* Labels for fields should be limited to less than 150px in length
 * Tags - display and manage the tags assigned to this resource
+
 Learn more [portalfx-extensions-essentials.md](./portalfx-extensions-essentials.md)
 
 #### Content area
