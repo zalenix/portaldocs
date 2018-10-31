@@ -7,7 +7,7 @@
     ms.topic="get-started-article"
     ms.date="09/09/2015" 
     ms.author="mattshel"/> 
-
+<!-- TODO rationalize with new create -->
 ## Create ##
 
 The best online buying experiences are fast, painless, and intuitive, and customers who create a new resource expect the same thing. Our Create goal is to move the user through your flow as quickly as possible, while still ending up with a resource that's functional and *usable* right away. Also remember that Create is a way to hook components and objects together (e.g., create the container, add objects, map your data, etc.) and is often ongoing, even after the resource is created. It isn't a black box, one-and-done deal. 
