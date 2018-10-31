@@ -1,1 +1,2 @@
-The page you requested has moved to [designpatterns-page-grid.md](designpatterns-page-grid.md). 
+
+For design guidance see [designpatterns-page-grid.md](designpatterns-page-grid.md). 
