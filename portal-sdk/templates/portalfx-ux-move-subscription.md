@@ -1,11 +1,1 @@
-
-<tags
-    ms.service="portalfx"
-    ms.workload="portalfx"
-    ms.tgt_pltfrm="portalfx"
-    ms.devlang="portalfx"
-    ms.topic="get-started-article"
-    ms.date="07/23/2015" 
-    ms.author="mattshel"/> 
-
-## Coming soon ##
+For design guidance see [designpatterns-resource-manage.md](designpatterns-resource-manage.md). 
