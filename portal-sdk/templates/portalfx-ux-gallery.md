@@ -7,7 +7,7 @@
     ms.topic="get-started-article"
     ms.date="07/23/2015" 
     ms.author="mattshel"/> 
-
+<!-- TODO UX FILE cleanup -->
 ## The Marketplace ##
 
 The Marketplace is your first stop on the road to [onboarding your extension](../../gallery-sdk/generated/index-gallery.md#gallery-overview). It's the place customers will go to look for your service and where they'll make purchase decisions. Before you can add your service to the Marketplace, you have to create and publish a marketplace item. We provide you with [a package](../../gallery-sdk/generated/index-gallery.md#gallery-item-specificiations) that includes all the metadata you'll need. That metadata controls how your service appears in the Marketplace. Here's some metadata examples:

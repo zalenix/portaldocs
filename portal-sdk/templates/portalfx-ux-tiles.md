@@ -7,7 +7,7 @@
     ms.topic="get-started-article"
     ms.date="07/16/2015" 
     ms.author="mattshel"/>    
-
+<!-- TODO UX FILE cleanup -->
 ## Tiles ##
 
 Tiles represent distinct chunks of information on a blade. Domain-specific tiles show information about a resource (for example, a subnets list in virtual networks, usage quotas in hosting plans, etc). More generic tiles might show the overall health of the resource, any child resources, billing info, auditing, etc. 

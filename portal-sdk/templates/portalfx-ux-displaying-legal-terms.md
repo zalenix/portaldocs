@@ -7,7 +7,7 @@
     ms.topic="get-started-article"
     ms.date="11/6/2015" 
     ms.author="brhavard"/>
-
+<!-- TODO UX FILE cleanup -->
 # Displaying legal terms in a create form
 
 ## Overview

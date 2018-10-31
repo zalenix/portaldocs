@@ -7,7 +7,7 @@
     ms.topic="get-started-article"
     ms.date="07/23/2015" 
     ms.author="mattshel"/>  
-
+<!-- TODO UX FILE cleanup -->
 ## AssetPart ##
 
 An AssetPart represents an an Azure resource (like a Web app, SQL Database, SQL Server, VM, Storage account, etc.). When a user clicks the AssetPart, the associated resource blade opens. The AssetPart should show the following (at a minimum): 
