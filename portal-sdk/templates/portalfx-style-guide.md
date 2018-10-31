@@ -1,3 +1,6 @@
+## Style Guide: For designers
+For an overall style guide refer to the [designpatterns-style-guide.md](designpatterns-style-guide.md)
+
 # Style Guide
 
 The portal includes a built in list of CSS classes that may be used inside of your templates.
