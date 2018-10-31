@@ -1,3 +1,6 @@
+## Style Guide: For designers
+For an overall style guide refer to the [designpatterns-style-guide.md](designpatterns-style-guide.md)
+
 ## Style Guide: Color Palette
 The portal offers a built-in set of coloring classes based on a core palette. Using these classes ensures a consistent experience for all users. This is especially important when the color conveys meaning, or differentiating data.
 
