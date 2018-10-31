@@ -7,7 +7,7 @@
     ms.topic="get-started-article"
     ms.date="09/15/2015" 
     ms.author="mattshel"/>    
-
+<!-- TODO UX FILE cleanup -->
 ## Settings ##
 
 The Settings blade is an integral piece of the resource experience. It opens with the main resource blade, so it's a quick way for users to change settings, view properties, and find resource features. We introduced it based on feedback that the portal was  unstructured and hard to learn, since settings, properties, and features weren't always discoverable across different resource blades. From a holistic standpoint, users think of the Settings blade as a table of contents for the resource.

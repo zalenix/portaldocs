@@ -7,9 +7,7 @@
     ms.topic="get-started-article"
     ms.date="09/11/2015" 
     ms.author="mattshel"/> 
-
-
-
+<!-- TODO UX FILE cleanup -->
 ## Pricing tier ##
 
 If your resource comes in different sizes or SKUs, make sure to include the pricing tier in your create flow. Aim for 3 recommended sizes (or SKUs) on each pricing card, with specific, concise descriptions for each. 

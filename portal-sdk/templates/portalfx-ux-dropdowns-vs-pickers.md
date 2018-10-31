@@ -7,7 +7,7 @@
     ms.topic="get-started-article"
     ms.date="07/23/2015" 
     ms.author="mattshel"/>  
-
+<!-- TODO UX FILE cleanup -->
 ## Dropdowns vs. pickers ##
 
 Using dropdowns can dramatically reduce the number of blades you need to use. "Blade fatigue" (too many blades open at once) is a common customer complaint.

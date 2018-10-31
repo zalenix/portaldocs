@@ -7,7 +7,7 @@
     ms.topic="get-started-article"
     ms.date="07/17/2015" 
     ms.author="mattshel"/>   
-
+<!-- TODO UX FILE cleanup -->
 ## Tile gallery ##
 
 Users add tiles to resource blades from the tile gallery. The launch point for tile gallery is in the "**...**" menu in the status bar at the top of every resource blade:

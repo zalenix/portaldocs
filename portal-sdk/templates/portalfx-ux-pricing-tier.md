@@ -1,3 +1,4 @@
+<!-- TODO UX FILE cleanup -->
 ## Pricing tiers
 
 Azure pricing is based on two values: a **tier** and a **plan** (or size). The most common **tiers** are Basic, Standard, and Premium. **Plans** are typically represented by a number, and reflects how many features are in a plan - 1 is fairly lightweight, while 3 is feature-heavy. The tier name is paired with the plan number to form the pricing tier (e.g., B1 Basic, S1 Standard, P2 Premium, etc). Each tier is represented by a pricing "card." We automatically show 3 recommended pricing tier cards based on the user's situation.

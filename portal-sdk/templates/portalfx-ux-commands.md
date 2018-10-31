@@ -7,7 +7,7 @@
     ms.topic="get-started-article"
     ms.date="07/16/2015" 
     ms.author="mattshel"/>    
-
+<!-- TODO UX FILE cleanup -->
 ## Commands ##
 
 Commands encapsulate an action and subsequent behavior. Commands can be shell commands (built-in), or custom  commands that you create. 

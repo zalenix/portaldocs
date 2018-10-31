@@ -1,3 +1,6 @@
+## Style Guide: For designers
+For an overall style guide refer to the [designpatterns-style-guide.md](designpatterns-style-guide.md)
+
 ## Style Guide: Custom CSS Files
 
 Extension developers may choose to combine commonly used classes into a CSS file. CSS styles defined in stylesheets are sanitized using the same rules as the style attribute (see below). All custom class names must start with the `.ext-` prefix, identifying classes which are owned by the extension. First,
