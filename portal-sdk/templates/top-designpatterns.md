@@ -1,6 +1,6 @@
-# Design patterns for common scenarios in Azure
+# Design patterns for common Azure scenarios
 
-Design patterns provide solutions for common problems in a given context.  In Azure, we document these best practices once several teams encounter a problem, use a well researched common solution and see successful real-world usage. Azure teams should leverage these design patterns to accelerate extension development and to provide users with a familiar experience so that users can easily adopt new Azure services.
+These design patterns provide solutions for common scenerios in Azure.  In Azure, we formalize these best practices once several teams have a similar problem, use a well researched shared approach and see successful real-world usage of the common solution. Azure teams should leverage these design patterns to accelerate extension development and to provide users with a familiar experience so that users can easily adopt new Azure services.
 
 The following patterns are available
 

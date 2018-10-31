@@ -117,11 +117,30 @@ The resource toolbar should also contain resource-specific commands for easy acc
 Learn more [Toolbar](portalfx-controls-toolbar.md), [Context pane](top-extensions-context-panes.md)
 
 #### Essentials panel
-The essentials panel surfaces key properties that are common throughout all Azure resources as well as important resource specific properties. User feedback has
-shown that they rely heavily on the essentials panel for looking up information. The Essentials sections is conceptually divided in two well know parts:
-* Platform fields: fields that are common to all resources Resource Group, Status, Location, Subscription, Subscription ID 
-* Domain specific fields: fields that are specific to one domain or type of resource (e.g. ftp user in a WebApp, Replication in Storage, etc.)
-* Tags - display and manage the tags assigned to this resource
+The essentials panel surfaces key properties that are common for all Azure resources and important resource specific properties. User feedback has
+shown that they rely heavily on the essentials panel for looking up information.  Properties can contain links, and can open blades containing related resources (for example, resource group, subscription, hosting plan, etc). The links can also point to external sites. 
+
+The Essentials sections is conceptually divided in two well know parts:
+
+**Ordering guidelines**
+
+Here are the field ordering guidelines.  
+
+**Common resource properties - Left column**
+* Resource group
+* Status
+* Location
+* Subscription name (as a link to a child blade)
+* Subscription ID
+
+**Resource-specific properties - Right column**
+* Up to 5 domain-specific fields.
+* Labels for fields should be limited a maximum length of 150px.
+
+**Tags** 
+* Display and manage the tags assigned to this resource
+* Enabled with control option
+
 Learn more [portalfx-extensions-essentials.md](./portalfx-extensions-essentials.md)
 
 #### Content area
@@ -193,7 +212,7 @@ diagnose/troubleshooting and resource health menu items 
 ## Related documentation
 
 * Resource Menu [top-blades-resourcemenublade.md](./top-blades-resourcemenublade.md)
-* Essentials [portalfx-extensions-essentials.md](./portalfx-extensions-essentials.md)
+* Essentials [portalfx-controls-essentials.md](./portalfx-controls-essentials.md)
 * Toolbar control [portalfx-controls-toolbar.md](portalfx-controls-toolbar.md) 
 * Context Pane [top-extensions-context-panes.md](top-extensions-context-panes.md)
 * Properties page [portalfx-blades-properties.md](portalfx-blades-properties.md)
