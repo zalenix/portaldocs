@@ -28,7 +28,7 @@ Install the following software. Your team should be aware of the most current do
 
       1. TypeScript 2.3.3 for Visual Studio 2017 that is dated May 22, 2017. It is located at [http://download.microsoft.com/download/7/0/A/70A6AC0E-8934-4396-A43E-445059F430EA/2.3.3-TS-release-dev14update3-20170519.1/TypeScript_SDK.exe](http://download.microsoft.com/download/7/0/A/70A6AC0E-8934-4396-A43E-445059F430EA/2.3.3-TS-release-dev14update3-20170519.1/TypeScript_SDK.exe)
 
-   If using Visual Studio 2015
+   If using Visual Studio 2015:
 
       1. Visual Studio 2015 update 3 that is located at [https://www.visualstudio.com/vs/older-downloads/](https://www.visualstudio.com/vs/older-downloads/). An SKU of Professional or greater is required.
 

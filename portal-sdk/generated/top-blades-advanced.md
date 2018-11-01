@@ -111,6 +111,7 @@ import * as BladesArea from "../BladesArea";
     htmlTemplate: "" +
         "<div><a data-bind='fxclick: onShowStatusClick'>Click</a> to show/clear status bar.</div>",
 })
+@TemplateBlade.InjectableModel.Decorator(BladesArea.DataContext)
 export class TemplateBladeWithStatusBar {
     public title = ClientResources.templateBladeWithStatusBar;
     public subtitle: string;
