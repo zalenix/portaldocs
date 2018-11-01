@@ -7,7 +7,7 @@
     ms.topic="get-started-article"
     ms.date="07/23/2015" 
     ms.author="mattshel"/>  
-
+<!-- TODO UX FILE cleanup -->
 <a name="assetpart"></a>
 ## AssetPart ##
 

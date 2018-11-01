@@ -107,31 +107,38 @@ If your asset type is in preview, set the `IsPreview="true"` property. If the as
 <a name="assets-defining-your-asset-type-how-to-hide-your-asset-in-different-environments"></a>
 #### How to hide your asset in different environments
 
-You can hide your asset in different environments by setting the hideassettypes feature flag in your config to a comma-separated list of asset type names. 
+You can hide your asset in different environments by setting the hideassettypes feature flag in your config to a comma-separated list of asset type names.
+
+<a href="https://msit.microsoftstream.com/video/7399869a-4f8f-415e-9346-5b77f069b567?st=50" target="_blank">
+  Watch the Hiding Asset Types video here
+  <img src="../media/portalfx-assets/hidingassettypes.png" />
+</a>
 
 <a name="assets-defining-your-asset-type-how-to-hide-your-asset-in-different-environments-self-hosted"></a>
-##### Self hosted:
+##### Self hosted
 
 Replace '*' with the desired environment, for documentation regarding enabling feature flags in self hosted extensions [click here.](portalfx-extension-flags.md#feature-flags)
 
+```xml
         <Setting name="Microsoft.StbPortal.Website.Configuration.ApplicationConfiguration.DefaultQueryString" value="{
             '*': {
                      'microsoft_azure_compute_hideassettypes':"AzureContainerService,ContainerGroup,ManagedClusters,VirtualWan"
             }
         }" />
+```
 
- 
 <a name="assets-defining-your-asset-type-how-to-hide-your-asset-in-different-environments-hosting-service"></a>
-##### Hosting service:
+##### Hosting service
 
 If you’re using the hosting service, you can do this by updating your domainname.json (e.g. portal.azure.cn.json file)
- 
 
+```json
     {
       "features": {
         "hideassettypes": "AzureContainerService,ContainerGroup,ManagedClusters,VirtualWan"
       }
     }
+```
 
 <a name="assets-defining-your-asset-type-how-to-hide-your-asset-in-different-environments-hosting-service-testing-your-hidden-asset"></a>
 ###### Testing your hidden asset
@@ -139,25 +146,23 @@ If you’re using the hosting service, you can do this by updating your domainna
 To test enable your hidden asset for testing purposes, you will need to update the hide asset feature flag to exclude the asset you want to show and ensure you have feature.canmodifyextensions set.
 
 For the desired environment append the following feature flags.
-> If you want to test showing all hidden assets, make sure to specify some value, 'x' as an example, for the 'hideassettypes' feature flag.
+> If you want to test showing all hidden assets, you can specify all the assets as a comma seperated list to the 'showassettypes' feature flag.
 
-```
-    ?microsoft_azure_mynewextension_hideassettypes=MyNewAsset
+```txt
+    ?feature.showassettypes=MyNewAsset
     &microsoft_azure_mynewextension=true
     &feature.canmodifyextensions=true
 ```
 
 For example:
-https://rc.portal.azure.com/?microsoft_azure_compute_hideassettypes=VirtualMachine&microsoft_azure_compute=true&feature.canmodifyextensions=true
-
+https://rc.portal.azure.com/?feature.showassettypes=VirtualMachine&microsoft_azure_compute=true&feature.canmodifyextensions=true
 
 <a name="assets-defining-your-asset-type-handling-empty-browse"></a>
 #### Handling empty browse
 
 The framework offers the ability to display a description and links in the case that the users filters return no results.
-    
->NOTE: This will also display if the user visits the browse experience and they have not yet created the given resource.
 
+>NOTE: This will also display if the user visits the browse experience and they have not yet created the given resource.
 
 ![Empty browse](../media/portalfx-assets/empty-browse.png)
 
