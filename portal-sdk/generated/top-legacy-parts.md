@@ -98,12 +98,13 @@ The following procedure demonstrates how to use a button part.
 * This sample uses the base class implementation. You can also implement the
 * interface MsPortalFx.ViewModels.ButtonPartContract.
 */
+@Di.Class("viewModel")
 export class ButtonPartViewModel extends MsPortalFx.ViewModels.ButtonPart {
 
    /**
     * Initialize the part.
     */
-   constructor(container: MsPortalFx.ViewModels.PartContainerContract, initialState: any, dataContext: DataContext) {
+   constructor(container: MsPortalFx.ViewModels.PartContainerContract) {
        super();
        this.title(ClientResources.AssetTypeNames.Robot.singular);
        this.shortTitle(ClientResources.AssetTypeNames.Robot.singular);
@@ -181,6 +182,7 @@ That's too many clicks!
 /**
 * Example view model for a custom part
 */
+@Di.Class("viewModel")
 export class ExampleCustomPartViewModel {
 
    // Public properties bound to the UI in the part's template
@@ -192,7 +194,7 @@ export class ExampleCustomPartViewModel {
    /**
     * Constructs an instance of the custom part view model.
     */
-   constructor(container: MsPortalFx.ViewModels.PartContainerContract, initialState: any, dataContext: PartsArea.DataContext) {
+   constructor() {
    }
 
    public increaseClickCount(): void {
@@ -290,7 +292,7 @@ container.registerSelectable(
         openInContextPane: true,
         parameterCollector: collector,
     });
-  
+
 ```
 
 If the part that is being developed is associated with an Ibiza asset like an ARM resource, then it should be associated with an asset type and have a single input definition whose `IsAssetId` property is `true`.  If this is not the case then the part will appear in the **General** category of the part gallery.
@@ -404,15 +406,9 @@ The following is the TypeScript code that reads and writes settings. It is also 
    ```typescript
 
 import ClientResources = require("ClientResources");
-import PartsArea = require("../../PartsArea");
-import ExtensionDefinition = require("../../../../_generated/ExtensionDefinition");
+import ExtensionDefinition = require("_generated/ExtensionDefinition");
+
 import Def = ExtensionDefinition.ViewModels.V1$Parts.GeneralGalleryPart;
-
-export = Main;
-
-module Main {
-"use strict";
-
 import FxViewModels = MsPortalFx.ViewModels;
 import PartContainerContract = FxViewModels.PartContainerContract;
 import FxConfiguration = MsPortalFx.Composition.Configuration;
@@ -421,8 +417,8 @@ import TimeUnit = FxConfiguration.TimeUnit;
 // We have to explicitly define our Inputs contract here rather than use Def.InputsContract since there is a PDL
 // compiler bug where <Part.InputDefinitions> are not represented on Def.InputsContract.
 export interface Inputs {
-    timeRange: FxConfiguration.TimeRange;
-    otherParameter: string;
+timeRange: FxConfiguration.TimeRange;
+otherParameter: string;
 }
 
 // We have to use this over Def.Settings because Def.Settings includes an old 'content' property that is no longer
@@ -433,145 +429,145 @@ export type Settings = Def.Settings$content$0;
 export type PartConfiguration = FxConfiguration.Part.ValuesWithMetadata<Inputs, Settings>;
 
 export enum BackgroundColor {
-    Default,
-    Blue,
-    Green,
-    Yellow,
+Default,
+Blue,
+Green,
+Yellow,
 }
 
 export enum FontStyle {
-    Default,
-    Muted,
-    AllCaps,
+Default,
+Muted,
+AllCaps,
 }
 
+@Di.Class("viewModel")
 export class GeneralGalleryPart implements Def.Contract {
-    public configOnDropSelectable: FxViewModels.Selectable<FxViewModels.DynamicBladeSelection>;
-    public configureHotSpot: FxViewModels.Controls.HotSpot.ViewModel;
+public configOnDropSelectable: FxViewModels.Selectable<FxViewModels.DynamicBladeSelection>;
+public configureHotSpot: FxViewModels.Controls.HotSpot.ViewModel;
 
-    public timeRange = ko.observable<string>();
-    public otherParameter = ko.observable<string>();
-    public css: KnockoutObservableBase<any>;  // For the 'css' binding in the corresponding HTML template.
-    public location: string;
+public timeRange = ko.observable<string>();
+public otherParameter = ko.observable<string>();
+public css: KnockoutObservableBase<any>;  // For the 'css' binding in the corresponding HTML template.
+public location: string;
 
-    // These are required by the portal presently.  Re: Part Settings, the Part below works exclusively in terms of
-    // 'configuration.updateValues' to update settings values and 'onInputsSet(..., settings)' to receive settings values.
-    public colorSettingValue = ko.observable<BackgroundColor>();
-    public fontSettingValue = ko.observable<FontStyle>();
+// These are required by the portal presently.  Re: Part Settings, the Part below works exclusively in terms of
+// 'configuration.updateValues' to update settings values and 'onInputsSet(..., settings)' to receive settings values.
+public colorSettingValue = ko.observable<BackgroundColor>();
+public fontSettingValue = ko.observable<FontStyle>();
 
-    // These store the raw color and font style values supplied to the Part.
-    private _colorSetting = ko.observable<BackgroundColor>();
-    private _fontSetting = ko.observable<FontStyle>();
+// These store the raw color and font style values supplied to the Part.
+private _colorSetting = ko.observable<BackgroundColor>();
+private _fontSetting = ko.observable<FontStyle>();
 
-    constructor(container: PartContainerContract, initialState: any, context: PartsArea.DataContext) {
+constructor(container: PartContainerContract) {
 
-        container.partTitle(ClientResources.generalGalleryPartTitle);
+    container.partTitle(ClientResources.generalGalleryPartTitle);
 
-        // Create the HotSpot control that the user will click.
-        this.configureHotSpot = new FxViewModels.Controls.HotSpot.ViewModel(container);
-        this.configureHotSpot.clickableDuringCustomize = true;
-        //parts#PartGalleryConfigOnDropDoc
-        // Configure the HotSpot's Selectable so it will be implicitly activated when the user drops this Part on a Dashboard.
-        const bladeSelection: FxViewModels.DynamicBladeSelection = {
-            detailBlade: ExtensionDefinition.BladeNames.pdlGeneralGalleryPartConfigurationBlade,
-            detailBladeInputs: {},
+    // Create the HotSpot control that the user will click.
+    this.configureHotSpot = new FxViewModels.Controls.HotSpot.ViewModel(container);
+    this.configureHotSpot.clickableDuringCustomize = true;
+    //parts#PartGalleryConfigOnDropDoc
+    // Configure the HotSpot's Selectable so it will be implicitly activated when the user drops this Part on a Dashboard.
+    const bladeSelection: FxViewModels.DynamicBladeSelection = {
+        detailBlade: ExtensionDefinition.BladeNames.pdlGeneralGalleryPartConfigurationBlade,
+        detailBladeInputs: {},
+    };
+    const hotSpotSelectable = new FxViewModels.Selectable({
+        selectedValue: bladeSelection,
+    });
+    hotSpotSelectable.getDefaultSelection = () => {
+        return Q(bladeSelection);
+    };
+    this.configureHotSpot.selectable = hotSpotSelectable;
+    this.configOnDropSelectable = hotSpotSelectable;
+
+    // Create a ParameterCollector that will open the configure Blade to modify 'configuration' -- this Part's Configuration.
+    const configuration = container.activateConfiguration<Inputs, Def.SettingsContract>();
+    const collector = new FxViewModels.ParameterCollector<PartConfiguration>(container, {
+        selectable: hotSpotSelectable,
+
+        // The Parts Configuration values are sent to the Provider Blade to be edited by the user.
+        supplyInitialData: configuration.getValues.bind(configuration),
+
+        // The edited Configuration values are returned from the Provider Blade and updated in this Part.
+        // Any edits will cause 'onInputsSet' to be called again, since this is the method where the Part receives a new, consistent
+        // set of inputs/settings.
+        receiveResult: configuration.updateValues.bind(configuration),
+    });
+
+    // This Selectable must be dynamically registered due to a PDL compiler bug that rejects any <BladeAction> that opens a
+    // <ContextBlade> from a HotSpot.
+    container.registerSelectable(
+        container,
+        "GeneralGalleryPartConfigSelectable",
+        hotSpotSelectable,
+        {
+            openInContextPane: true,
+            parameterCollector: collector,
+        });
+    //parts#PartGalleryConfigOnDropDoc
+    // For fringe cases, this illustrates how the Part can understand whether it is located on a Dashboard or a Blade.
+    // Importantly, the Part behavior shouldn't change between Dashboard and Blade.
+    this.location = container.location === FxViewModels.PartLocation.Dashboard ?
+        ClientResources.generalGalleryPartDashboardLocation :
+        ClientResources.generalGalleryPartBladeLocation;
+
+    // Data-driven styling for the Part.
+    this.css = ko.computed(container, () => {
+        const colorSetting = this._colorSetting();
+        const fontSetting = this._fontSetting();
+        return {
+            "msportalfx-bgcolor-h2": colorSetting === BackgroundColor.Blue,
+            "msportalfx-bgcolor-i2": colorSetting === BackgroundColor.Green,
+            "msportalfx-bgcolor-j2": colorSetting === BackgroundColor.Yellow,
+            "msportalfx-text-muted-50": fontSetting === FontStyle.Muted,
+            "msportalfx-text-header-small": fontSetting === FontStyle.AllCaps,
         };
-        const hotSpotSelectable = new FxViewModels.Selectable({
-            selectedValue: bladeSelection,
-        });
-        hotSpotSelectable.getDefaultSelection = () => {
-            return Q(bladeSelection);
-        };
-        this.configureHotSpot.selectable = hotSpotSelectable;
-        this.configOnDropSelectable = hotSpotSelectable;
+    });
+}
 
-        // Create a ParameterCollector that will open the configure Blade to modify 'configuration' -- this Part's Configuration.
-        const configuration = container.activateConfiguration<Inputs, Def.SettingsContract>();
-        const collector = new FxViewModels.ParameterCollector<PartConfiguration>(container, {
-            selectable: hotSpotSelectable,
+public onInputsSet(inputs: Inputs, settings: Def.SettingsContract): MsPortalFx.Base.Promise {
 
-            // The Parts Configuration values are sent to the Provider Blade to be edited by the user.
-            supplyInitialData: configuration.getValues.bind(configuration),
+    // Any changes to the Part's Configuration values (see 'updateValues' above) will cause 'onInputsSet' to be called with the
+    // new inputs/settings values.
+    this.timeRange(inputs.timeRange ? timeRangeToString(inputs.timeRange) : ClientResources.generalGalleryPartNone);
+    this.otherParameter(inputs.otherParameter || ClientResources.generalGalleryPartNone);
+    this._colorSetting(settings && settings.content && settings.content.colorSettingValue || BackgroundColor.Default);
+    this._fontSetting(settings && settings.content && settings.content.fontSettingValue || FontStyle.Default);
 
-            // The edited Configuration values are returned from the Provider Blade and updated in this Part.
-            // Any edits will cause 'onInputsSet' to be called again, since this is the method where the Part receives a new, consistent
-            // set of inputs/settings.
-            receiveResult: configuration.updateValues.bind(configuration),
-        });
-
-        // This Selectable must be dynamically registered due to a PDL compiler bug that rejects any <BladeAction> that opens a
-        // <ContextBlade> from a HotSpot.
-        container.registerSelectable(
-            container,
-            "GeneralGalleryPartConfigSelectable",
-            hotSpotSelectable,
-            {
-                openInContextPane: true,
-                parameterCollector: collector,
-            });
-          //parts#PartGalleryConfigOnDropDoc
-        // For fringe cases, this illustrates how the Part can understand whether it is located on a Dashboard or a Blade.
-        // Importantly, the Part behavior shouldn't change between Dashboard and Blade.
-        this.location = container.location === FxViewModels.PartLocation.Dashboard ?
-            ClientResources.generalGalleryPartDashboardLocation :
-            ClientResources.generalGalleryPartBladeLocation;
-
-        // Data-driven styling for the Part.
-        this.css = ko.computed(container, () => {
-            const colorSetting = this._colorSetting();
-            const fontSetting = this._fontSetting();
-            return {
-                "msportalfx-bgcolor-h2": colorSetting === BackgroundColor.Blue,
-                "msportalfx-bgcolor-i2": colorSetting === BackgroundColor.Green,
-                "msportalfx-bgcolor-j2": colorSetting === BackgroundColor.Yellow,
-                "msportalfx-text-muted-50": fontSetting === FontStyle.Muted,
-                "msportalfx-text-header-small": fontSetting === FontStyle.AllCaps,
-            };
-        });
-    }
-
-    public onInputsSet(inputs: Inputs, settings: Def.SettingsContract): MsPortalFx.Base.Promise {
-
-        // Any changes to the Part's Configuration values (see 'updateValues' above) will cause 'onInputsSet' to be called with the
-        // new inputs/settings values.
-        this.timeRange(inputs.timeRange ? timeRangeToString(inputs.timeRange) : ClientResources.generalGalleryPartNone);
-        this.otherParameter(inputs.otherParameter || ClientResources.generalGalleryPartNone);
-        this._colorSetting(settings && settings.content && settings.content.colorSettingValue || BackgroundColor.Default);
-        this._fontSetting(settings && settings.content && settings.content.fontSettingValue || FontStyle.Default);
-
-        return null;
-    }
+    return null;
+}
 }
 
 function timeRangeToString(timeRange: FxConfiguration.TimeRange): string {
-    if (timeRange.relative) {
-        const duration = timeRange.relative.duration;
-        const plural = duration > 1;
-        let timeUnit: string;
-        switch (timeRange.relative.timeUnit) {
-            case TimeUnit.Minute:
-                timeUnit = plural ? ClientResources.timeUnitMinutes : ClientResources.timeUnitMinute;
-                break;
-            case TimeUnit.Hour:
-                timeUnit = plural ? ClientResources.timeUnitHours : ClientResources.timeUnitHour;
-                break;
-            case TimeUnit.Day:
-                timeUnit = plural ? ClientResources.timeUnitDays : ClientResources.timeUnitDay;
-                break;
-            case TimeUnit.Week:
-                timeUnit = plural ? ClientResources.timeUnitWeeks : ClientResources.timeUnitWeek;
-                break;
-            case TimeUnit.Month:
-                timeUnit = plural ? ClientResources.timeUnitMonths : ClientResources.timeUnitMonth;
-                break;
-            case TimeUnit.Year:
-                timeUnit = plural ? ClientResources.timeUnitYears : ClientResources.timeUnitYear;
-                break;
-        }
-        return "{0} {1} {2}".format(ClientResources.timeRangeLast, duration, timeUnit);
-    } else {
-        return "{0} - {1}".format(timeRange.absolute.from, timeRange.absolute.to);
+if (timeRange.relative) {
+    const duration = timeRange.relative.duration;
+    const plural = duration > 1;
+    let timeUnit: string;
+    switch (timeRange.relative.timeUnit) {
+        case TimeUnit.Minute:
+            timeUnit = plural ? ClientResources.timeUnitMinutes : ClientResources.timeUnitMinute;
+            break;
+        case TimeUnit.Hour:
+            timeUnit = plural ? ClientResources.timeUnitHours : ClientResources.timeUnitHour;
+            break;
+        case TimeUnit.Day:
+            timeUnit = plural ? ClientResources.timeUnitDays : ClientResources.timeUnitDay;
+            break;
+        case TimeUnit.Week:
+            timeUnit = plural ? ClientResources.timeUnitWeeks : ClientResources.timeUnitWeek;
+            break;
+        case TimeUnit.Month:
+            timeUnit = plural ? ClientResources.timeUnitMonths : ClientResources.timeUnitMonth;
+            break;
+        case TimeUnit.Year:
+            timeUnit = plural ? ClientResources.timeUnitYears : ClientResources.timeUnitYear;
+            break;
     }
+    return "{0} {1} {2}".format(ClientResources.timeRangeLast, duration, timeUnit);
+} else {
+    return "{0} - {1}".format(timeRange.absolute.from, timeRange.absolute.to);
 }
 }
 

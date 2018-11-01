@@ -166,6 +166,37 @@ You are required to check the quality of your extension. We have standardized wa
 There is no blocking exit criteria, which means you do not have to prove that the extension's performance and reliability are in the required range. However, once you ship, the Portal team will monitor the quality of the extension. Extensions that do not meet the required quality bar will be flagged in executive reviews and will be asked to improve their quality as soon as possible.
 
 When you are ready for all users to see your experience, you will enable your entry point as shown in the following example and then deploy your extension.
+
+<a name="steps-to-portal-onboarding"></a>
+# Steps to Portal onboarding
+
+Azure portal onboarding steps listed below assumes that all new services have completed the onboarding meeting with [ibiza-onboarding@microsoft.com](mailTo:ibiza-onboarding@microsoft.com) team and that you have downloaded the Azure portal SDK to start the development of your extension. If you have not had either the onboarding meeting or have developed the extension, please discuss with the Azure portal team on the requirements.
+
+<a name="steps-to-portal-onboarding-hosting-service"></a>
+## Hosting Service
+1) Create storage account for each environment 
+eg: Dogfood, Prod, Mooncake, Fairfax and BlackForest
+2) Create a container under the storage account with anonymous read access
+![storage container](./../media/portalfx-extensions-onboarding/hosting-service-storage-container.png)
+3) Upload the [config.json](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-extension-hosting-service.md#step-6-upload-safe-deployment-config) and the [generated zip file](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-extension-hosting-service.md#step-5-execute-content-unbundler-as-part-of-build-to-generate-zip-file) from your build. 
+4) Create a hosting service onboarding [workitem](https://aka.ms/extension-hosting-service/onboarding)
+5) Send email to [ibiza-onboarding@microsoft.com](mailTo:ibiza-onboarding@microsoft.com) with the workitem details and extension details.
+
+Note:  Incorrect or insufficient information in the workitem could delay the onboarding process. 
+
+<a name="steps-to-portal-onboarding-portal-framework"></a>
+## Portal Framework
+1) Register your extension with Azure portal framework by raising a pull request to the appropriate extension config json. eg: extensions.dogfood.json, extensions.prod.json etc,.
+2) Always raise the PR to the Dev branch
+3) For Prod config chanages, once the PR is approved, please cherry pick the change to Mpac and then to Prod. Portal team does not auto merge the changes to other branches
+4) Always cherry-pick the change from previous downlevel branch. eg: Dev to Mpac, Mpac to Prod.
+5) Here is a sample PR change for dogfood branch.
+![storage container](./../media/portalfx-extensions-onboarding/portal-framework-extension-config.png)
+
+<a name="steps-to-portal-onboarding-aad-onboarding"></a>
+## AAD Onboarding
+1) For teams that require Graph access and AAD app for per extension tokens, please create a [workitem](http://aka.ms/portalfx/newextension)
+2) Send email to [ibiza-onboarding@microsoft.com](mailTo:ibiza-onboarding@microsoft.com) with the workitem details and extension details. 
 <!--
 TODO - Add an example after the feature is ready (ETA is March or April )
 -->

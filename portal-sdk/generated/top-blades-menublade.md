@@ -21,6 +21,7 @@ The following code demonstrates how to define a menu blade `ViewModel` to open t
  ```typescript
 
 @MenuBlade.Decorator()
+@MenuBlade.InjectableModel.Decorator(BladesArea.DataContext)
 export class SampleMenuBlade {
 public title = BladeClientResources.menuBladeTitle;
 public subtitle = ClientResources.samples;
