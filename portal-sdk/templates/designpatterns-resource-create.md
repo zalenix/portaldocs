@@ -63,7 +63,7 @@ Use the tabs & sections to organize content. The `Basics` tab should be the star
 ### Tabs
 Tabs group sections of the create experience into manageable categories. Tabs can also be used to separate required information from optional information for simpler configuration.
 
-Most creates should have a minimum of 3 tabs; `Basics`, `Tags`, `Review + create`.  All other tabs are optional.
+Most creates should have a minimum of 3 tabs; `Basics`, `Tags`, `Review + create`.  All other tabs are optional.  Tab naming should follow sentence case, with only the first letter capitalized unless the words are proper nouns, acronyms or brand names.
 
 <div style="max-width:800px">
 <img alttext="Tabs" src="../media/designpatterns-resource-create/Tabs.png"  />
@@ -79,7 +79,7 @@ The `Basics` tab should contain the typical fields for Azure resources
 * SKU/Cost/Pricing tier - enable the user to control the cost of the resource
 
 #### Optional tabs
-Additional tabs are used to organize optional settings specific to your resource.  Tabs should have short names, typically a noun.
+Additional tabs are used to organize optional settings specific to your resource.  Tabs should have short names, typically a noun. Tab naming should follow sentence case, with only the first letter capitalized unless the words are proper nouns, acronyms or brand names.
 
 #### Tags
 Many enterprises are starting to create subscription and resource group polices that require tagging resources at create time.  Not including the `Tags` tab will block those users from deploying resources using the portal.  The `Tags` tab contains the tags control, which allows users to assign key value pairs to the selected Resource Types.	
@@ -103,7 +103,7 @@ Allowing the user to verify all settings prior to submission ensures accuracy an
 
 ### Sections that group input fields
 When creating a form that includes several fields pertaining to a certain subject, you can group them into a section with a header that gives the user a clear indication of what they’re being asked for. You can also add explanatory text just below the group header if the task may not be immediately clear to the user.
-
+Section headers should follow sentence case, with only the first letter capitalized unless the words are proper nouns, acronyms or brand names.
 <div style="max-width:800px">
 <img alttext="Tabs" src="../media/designpatterns-resource-create/Grouped-input-fields.png" />
 </div>
