@@ -1,6 +1,6 @@
-# Release Notes since 7/3/2018
+# Release Notes since 7/4/2018
 
-## 5.0.302.7003
+## 5.0.302.7005
 0 Breaking Changes, 0 Features added and 0 Bugs Fixed
 <table>undefined</table>
 
@@ -303,7 +303,3 @@
 ## 5.0.302.1198
 0 Breaking Changes, 1 Features added and 4 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2677341'>2677341</a></td><td>Bug Fix</td><td>dSMS certificate paths in Blackforest are incorrect</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2643545'>2643545</a></td><td>Feature</td><td>update SqlAzureExtension with hosting service uri (light-up) in PROD</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2641007'>2641007</a></td><td>Bug Fix</td><td>[Deployment Manager] Remove parameters from rejected data.</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2640590'>2640590</a></td><td>Bug Fix</td><td>[MonitorChart] Maintain metric definition type when using MDM Provider</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2556199'>2556199</a></td><td>Bug Fix</td><td>Enable Microsoft_Azure_ODG in Fairfax</td></tr></table>
-
-## 5.0.302.1197
-0 Breaking Changes, 0 Features added and 3 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2651422'>2651422</a></td><td>Bug Fix</td><td>[MonitorChartV2] Scatter charts not working in edge</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2627747'>2627747</a></td><td>Bug Fix</td><td>Fix XSS issue in the link property in Essentials</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2587504'>2587504</a></td><td>Bug Fix</td><td>Resource Group Overview Lens pinned part missing.</td></tr></table>
