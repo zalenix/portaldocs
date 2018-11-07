@@ -1,5 +1,5 @@
 <a name="azure-portal-a-composed-web-application"></a>
-# Azure Portal -- A composed web application
+# Azure Portal - A composed web application
 
 The Azure Portal web application is based on a UI composition system whose primary design goal is to enable the integration of UI built by hundreds of teams into a single, robust single-page web application.
 
