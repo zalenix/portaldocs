@@ -1,4 +1,4 @@
-# Release Notes since 7/6/2018
+# Release Notes since 7/7/2018
 
 ## 5.0.302.7005
 0 Breaking Changes, 0 Features added and 0 Bugs Fixed
@@ -15,6 +15,10 @@
 ## 5.0.302.6801
 0 Breaking Changes, 3 Features added and 8 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3259098'>3259098</a></td><td>Bug Fix</td><td>Expose the global singleton dependency injection container</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3229698'>3229698</a></td><td>Bug Fix</td><td>Change to error text for asset type cache failures broke tests</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3223616'>3223616</a></td><td>Bug Fix</td><td>[IcM] nullref in the skinny browse tile when the location name map is not ready when the recents are calculated (_recentResourceHandler)</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3212668'>3212668</a></td><td>Bug Fix</td><td>Negative z-index in SpecPicker cause layout rendering issue.</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3211597'>3211597</a></td><td>Bug Fix</td><td>[IcM] nullref in browse (base.ts) due to null promise returned by asset type cache</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3202097'>3202097</a></td><td>Bug Fix</td><td>Blade load telemetry for BrowseV2 does not include the initial data load and supplemental telemetry does not include the complete data load</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3189515'>3189515</a></td><td>Bug Fix</td><td>Remove AppInsightsExtension from FullWidthOptOutExtensions</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3183796'>3183796</a></td><td>Feature</td><td>Remove extensions from varying their extension name with uriFormat</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3140754'>3140754</a></td><td>Bug Fix</td><td>Add more checks when cleaning up tests with inconclusive assert</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2994021'>2994021</a></td><td>Feature</td><td>[Performance] Provide a way for extensions to separate resource files </td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2934328'>2934328</a></td><td>Feature</td><td>Add URL rewrite for www subdomain to go to main domain</td></tr></table>
+
+## 5.0.302.6701
+0 Breaking Changes, 0 Features added and 0 Bugs Fixed
+<table>undefined</table>
 
 ## 5.0.302.6601
 0 Breaking Changes, 2 Features added and 3 Bugs Fixed
@@ -43,6 +47,10 @@
 ## 5.0.302.5801
 0 Breaking Changes, 1 Features added and 4 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3203903'>3203903</a></td><td>Bug Fix</td><td>Improve lcl file parsing in V2 targets</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3200770'>3200770</a></td><td>Bug Fix</td><td>[Hotfix] Template viewer: Add to library button never gets enabled</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3183504'>3183504</a></td><td>Feature</td><td>[Partner] include AmdResourceDefinition bundle in msportalfx-ut fxscripts.js</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3181522'>3181522</a></td><td>Bug Fix</td><td>[PostCreate] InferredBladePinPartDeploymentDetailsOverviewBlade load availability is 0%</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=3157332'>3157332</a></td><td>Bug Fix</td><td>[Data grid] Data grid does not update UX even though dataSource returns new items</td></tr></table>
+
+## 5.0.302.5607
+0 Breaking Changes, 0 Features added and 0 Bugs Fixed
+<table>undefined</table>
 
 ## 5.0.302.5603
 0 Breaking Changes, 0 Features added and 0 Bugs Fixed
@@ -299,7 +307,3 @@
 ## 5.0.302.1199
 0 Breaking Changes, 1 Features added and 2 Bugs Fixed
 <table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2639670'>2639670</a></td><td>Bug Fix</td><td>[Error tracker] UI.SessionHandler: Error calling graph for policy details</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2599017'>2599017</a></td><td>Bug Fix</td><td>Check if a tenant has any token lifetime policy prior to session validation</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2595777'>2595777</a></td><td>Feature</td><td>[extension hosting service]  Extension Microsoft_Azure_RecoveryServices , Changing URI to hosting service</td></tr></table>
-
-## 5.0.302.1198
-0 Breaking Changes, 1 Features added and 4 Bugs Fixed
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2677341'>2677341</a></td><td>Bug Fix</td><td>dSMS certificate paths in Blackforest are incorrect</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2643545'>2643545</a></td><td>Feature</td><td>update SqlAzureExtension with hosting service uri (light-up) in PROD</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2641007'>2641007</a></td><td>Bug Fix</td><td>[Deployment Manager] Remove parameters from rejected data.</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2640590'>2640590</a></td><td>Bug Fix</td><td>[MonitorChart] Maintain metric definition type when using MDM Provider</td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2556199'>2556199</a></td><td>Bug Fix</td><td>Enable Microsoft_Azure_ODG in Fairfax</td></tr></table>
