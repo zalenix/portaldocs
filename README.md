@@ -179,19 +179,17 @@ Because your extension is Web code, you can make **AJAX** calls to various servi
 
 ## Debugging
 
-* [Use developer mode](/portal-sdk/generated/top-extensions-hosting-service-procedures.md#update-isdevelopmentmode-flag)
+* [Using debug mode](/portal-sdk/generated/top-extensions-debugging.md#debug-mode)
 
-* [Use debug mode](/portal-sdk/generated/top-extensions-debugging.md#debug-mode)
+* [Debugging extension load failures](/portal-sdk/generated/top-extensions-debugging.md#debug-extension-load-failures)
 
-* [Debug extension load failures](/portal-sdk/generated/top-extensions-debugging.md#debug-extension-load-failures)
+* [Debugging console errors](/portal-sdk/generated/top-extensions-debugging.md#debug-console-errors)
 
-* [Debug console errors](/portal-sdk/generated/top-extensions-debugging.md#debug-console-errors)
+* [Debugging javascript](/portal-sdk/generated/top-extensions-debugging.md#debug-javascript)
 
-* [Debug javascript](/portal-sdk/generated/top-extensions-debugging.md#debug-javascript)
+* [Debugging knockout](/portal-sdk/generated/top-extensions-debugging.md#debug-knockout)
 
-* [Debug knockout](/portal-sdk/generated/top-extensions-debugging.md#debug-knockout)
-
-* [Debug the data stack](/portal-sdk/generated/top-extensions-debugging.md#debug-the-data-stack)
+* [Debugging the data stack](/portal-sdk/generated/top-extensions-debugging.md#debug-the-data-stack)
 
 ## Performance
 
@@ -200,8 +198,6 @@ Because your extension is Web code, you can make **AJAX** calls to various servi
 ## Testing
 
 The Ibiza team provides limited testing support. Due to resource constraints the C# and Node.js frameworks are open source, so that partners can unblock themselves if the Ibiza team cannot make requested improvements as quickly as you might expect.
-
-* [How to choose between test frameworks](/portal-sdk/generated/top-extensions-testing.md)
 
 * [Unit testing support](/portal-sdk/generated/top-extensions-unit-test.md)
 
@@ -217,15 +213,13 @@ The Ibiza team collects standard telemetry for generic actions like blade openin
 
 * [Portal telemetry overview](/portal-sdk/generated/top-extensions-telemetry.md)
 
-* [Getting access to raw portal telemetry data](/portal-sdk/generated/top-extensions-telemetry.md)
+* [Set up and verify telemetry logging from your extension](/portal-sdk/generated/top-extensions-telemetry.md#logging-telemetry)
 
-* [Consuming telemetry via pre-built Power BI dashboards](/portal-sdk/generated/top-extensions-telemetry-create.md)
+* [Getting access to raw portal telemetry data](/portal-sdk/generated/top-extensions-telemetry.md#viewing-telemetry)
 
-* [Performance and reliability monitoring](/portal-sdk/generated/top-extensions-telemetry-reliability.md)
+* [Consuming telemetry via pre-built Power BI dashboards](/portal-sdk/generated/top-extensions-telemetry.md#power-bi-reports)
 
-* [Collecting feedback from your users(Alert monitoring)](/portal-sdk/generated/top-extensions-telemetry-alerting.md)
-
-* [Set up and verify telemetry logging from your extension](/portal-sdk/generated/top-extensions-telemetry-logging.md)
+* [Performance and reliability monitoring](/portal-sdk/generated/top-telemetry-alerting.md)
 
 [Ask about telemetry on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-telemetry)
 
@@ -245,13 +239,13 @@ The Azure portal supports multiple languages and locales. You will need to local
 
 * [Localization overview and supported languages](/portal-sdk/generated/top-extensions-localization-globalization.md)
 
-* [Setting up localization for your extension](/portal-sdk/generated/top-extensions-localization-globalization.md#localizing-your-extension)
+* [Setting up localization for your extension](/portal-sdk/generated/top-extensions-localization-globalization.md#localizing-build)
 
 * [Setting up localization for your gallery package](/portal-sdk/generated/top-extensions-localization-globalization.md#marketplace)
 
 * [Testing localization with side-loading](/portal-sdk/generated/top-extensions-localization-globalization.md#testing-localization)
 
-* [Formatting numbers, currencies and dates](/portal-sdk/generated/top-extensions-localization-globalization.md#globalization-api)
+* [Formatting numbers, currencies and dates](/portal-sdk/generated/top-extensions-localization-globalization.md#formatting-numbers-currencies-and-dates)
 
 [Ask about localization / globalization on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-localization-global)
 
@@ -266,10 +260,6 @@ The Azure Portal strives to meet high accessibility standards to ensure the prod
 [Ask about accessibility on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-accessibility)
 
 ## Deploying your extension
-
-<!--
-* [Deploy your extension](/portal-sdk/generated/top-extensions-deployment.md)
--->
 
 Learn how to deploy your extension to the various clouds and environments.
 * [Extension registration, environments, clouds and Ibiza team SLAs](/portal-sdk/generated/top-extensions-publishing.md)
@@ -286,9 +276,9 @@ The Ibiza team provides and operates a common Extension Hosting Service that mak
 
 * [Onboarding your extension to the Extension Hosting Service](/portal-sdk/generated/top-extensions-hosting-service.md#step-by-step-onboarding)
 
-* [Validating extension registration with the Extension Hosting Service](/portal-sdk/generated/portal-sdk/generated/top-extensions-hosting-service.md#register-the-extension))
+* [Registring your extension with the Extension Hosting Service](/portal-sdk/generated/top-extensions-hosting-service.md#registering-your-extension-with-the-hosting-service)
 
-* [Versioning your extension](/portal-sdk/generated/top-extensions-versioning.md)
+* [Deploying a new version of an extension](/portal-sdk/generated/top-extensions-hosting-service.md#deploying-a-new-version-of-an-extension)
 
 * [Deploying your extension using Express V2 and the Extension Hosting Service](/portal-sdk/generated/top-extensions-hosting-service-ev2.md)
 
@@ -312,16 +302,6 @@ These features are supported, but have had no recent investment. No additional i
 
 * [EditScope](/portal-sdk/generated/top-legacy-editscopes.md)
 
-## Additional resources
-
-The documents are combinations from all the previous topics. Consequently, there may be some repetition.
-
-* [Best practices](/portal-sdk/generated/top-extensions-bp.md)
-
-* [Frequently asked questions](/portal-sdk/generated/top-extensions-faq.md)
-
-* [Glossary](/portal-sdk/generated/top-extensions-glossary.md)
-
 # Marketplace/Gallery developer resources
 
 1. [Gallery overview](/gallery-sdk/generated/index-gallery.md#gallery-overview)
@@ -344,3 +324,4 @@ The documents are combinations from all the previous topics. Consequently, there
 
 1. [Gallery frequently asked questions](/gallery-sdk/generated/index-gallery.md#gallery-frequently-asked-questions)
 
+This is our new index which contains our refreshed docs. If you do not like our new index/docs, you can find the old index [here](old-README.md).
