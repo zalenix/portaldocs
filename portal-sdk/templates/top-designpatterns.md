@@ -28,6 +28,8 @@ The page patterns provide guidance for common page layouts in Azure
 
 3. Forms [designpatterns-page-forms.md](designpatterns-page-forms.md)
 
+4. Filtering [designpatterns-page-filtering.md](designpatterns-page-filtering.md)
+
 
 # Design toolkits and resources
 Design toolkits and resources are available so that you can easily create designs that leverage these patterns
