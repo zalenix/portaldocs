@@ -1,10 +1,10 @@
 * [Performance Overview](#performance-overview)
-    * [Extension performance](#performance-overview-extension-performance)
+    * [Extension-loading performance](#performance-overview-extension-loading-performance)
     * [Blade performance](#performance-overview-blade-performance)
     * [Part performance](#performance-overview-part-performance)
     * [WxP score](#performance-overview-wxp-score)
     * [How to assess your performance](#performance-overview-how-to-assess-your-performance)
-        * [Extension](#performance-overview-how-to-assess-your-performance-extension)
+        * [Extension-loading](#performance-overview-how-to-assess-your-performance-extension-loading)
         * [Blade](#performance-overview-how-to-assess-your-performance-blade)
         * [Part](#performance-overview-how-to-assess-your-performance-part)
 * [Performance Frequently Asked Questions (FAQ)](#performance-frequently-asked-questions-faq)
@@ -50,12 +50,12 @@ As an extension author you have a duty to uphold your experience to the performa
 | Part      | < 4 secs       | PartReady                | Time it takes for the part to be rendered and then the part's OnInputsSet to resolve |
 | WxP       | > 80       | N/A                      | An overall experience score, calculated by weighting blade usage and the blade full ready time |
 
-<a name="performance-overview-extension-performance"></a>
-## Extension performance
+<a name="performance-overview-extension-loading-performance"></a>
+## Extension-loading performance
 
-Extension performance effects both Blade and Part performance, as your extension is loaded and unloaded as and when it is required.
-In the case a user is visiting your resource blade for the first time, the Fx will load up your extension and then request the view model, consequently your Blade/Part performance is affected.
-If the user were to browse away from your experience and browse back before your extension is unloaded obviously second visit will be faster, as they don't pay the cost of loading the extension.
+Extension-loading performance effects both Blade and Part performance, as your extension is loaded and unloaded as and when it is required.
+In the case where a user is visiting your resource blade for the first time, the Fx will load up your extension and then request the view model, consequently your Blade/Part performance is affected.
+If the user were to browse away from your experience and browse back before your extension is unloaded, obviously the user's second visit will be faster, as they don't pay the cost of loading the extension.
 
 <a name="performance-overview-blade-performance"></a>
 ## Blade performance
@@ -63,12 +63,12 @@ If the user were to browse away from your experience and browse back before your
 Blade performance is spread across a couple of main areas:
 
 1. Blade's constructor
-1. Blade's onInitialize or onInputsSet
-1. Any Parts within the Blade become ready
+1. Blade's 'onInitialize' or 'onInputsSet'
+1. (PDL-based `<Blade>` only) Any Parts nested within the Blade become ready
 
 If your blade is a FrameBlade or AppBlade there is an additional initialization message from your iframe to your viewmodel which is also tracked, see the samples extension [framepage.js](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx?path=%2Fsrc%2FSDK%2FAcceptanceTests%2FExtensions%2FSamplesExtension%2FExtension%2FContent%2FScripts%2Fframepage.js&version=GBproduction&_a=contents) for an example of what messages are required.
 
-All of which are encapsulated under the one 'BladeFullReady' action.
+All of these perf costs are represented under the one 'BladeFullReady' action.
 
 <a name="performance-overview-part-performance"></a>
 ## Part performance
@@ -76,16 +76,16 @@ All of which are encapsulated under the one 'BladeFullReady' action.
 Similar to Blade performance, Part performance is spread across a couple of areas:
 
 1. Part's constructor
-1. Part's onInitialize or onInputsSet
+1. Part's 'onInitialize' or 'onInputsSet'
 
 If your part is a FramePart there is an additional initialization message from your iframe to your viewmodel which is also tracked, see the samples extension [framepage.js](https://msazure.visualstudio.com/One/Azure%20Portal/_git/AzureUX-PortalFx?path=%2Fsrc%2FSDK%2FAcceptanceTests%2FExtensions%2FSamplesExtension%2FExtension%2FContent%2FScripts%2Fframepage.js&version=GBproduction&_a=contents) for an example of what messages are required.
 
-All of which are encapsulated under the one 'PartReady' action.
+All of these perf costs are represented under the one 'PartReady' action.
 
 <a name="performance-overview-wxp-score"></a>
 ## WxP score
 
-The WxP score is a per extension Weight eXPerience score (WxP). It is calculated by the as follows:
+The WxP score is a per extension Weight eXPerience score (WxP). It is calculated by the Azure Portal team as follows:
 
 ```txt
 
@@ -107,7 +107,7 @@ WxP = (BladeViewsMeetingTheBar * 95thPercentileBar) / ((BladeViewsMeetingTheBar 
 
 ```
 
-As you can see the model penalizes the number of views which don’t meet the bar and weights those.
+> Note: The model penalizes extensions for blades which have a higher number of views and don’t meet the bar.
 
 <a name="performance-overview-how-to-assess-your-performance"></a>
 ## How to assess your performance
@@ -122,23 +122,23 @@ There are two methods to assess your performance:
 The first method is definitely the easiest way to determine your current assessment as this is maintained on a regular basis by the Fx team.
 You can, if preferred, run queries locally but ensure you are using the Fx provided Kusto functions to calculate your assessment.
 
-<a name="performance-overview-how-to-assess-your-performance-extension"></a>
-### Extension
+<a name="performance-overview-how-to-assess-your-performance-extension-loading"></a>
+### Extension-loading
 
 [database('Partner').ExtensionPerformance(ago(1h), now())](https://aka.ms/kwe?cluster=azportal.kusto.windows.net&database=AzurePortal&q=H4sIAAAAAAAAA0tJLElMSixO1VAPSCwqyUstUtfUc60oSc0rzszPC0gtSssvyk3MS07VSEzP1zDM0NRRyMsv19DU5AIAxF6Q5zkAAAA%3D)
 
 ExtensionPerformance will return a table with the following columns:
 
 - Extension
-    - The name of the extension
+  - The name of the extension
 - Loads
-    - How many times the extension was loaded within the given date range
+  - How many times the extension was loaded within the given date range
 - 50th, 80th, 95th
-    - The time it takes for your extension to initialize. This is captured under the `ExtensionLoad` action in telemetry
+  - The time it takes for your extension to initialize. This is captured under the `ExtensionLoad` action in telemetry
 - HostingServiceloads
-    - The number of loads from the hosting service
+  - The number of loads from the hosting service
 - UsingTheHostingService
-    - If the extension is predominantly using the hosting service in production
+  - If the extension is predominantly using the hosting service in production
 
 <a name="performance-overview-how-to-assess-your-performance-blade"></a>
 ### Blade
@@ -154,33 +154,33 @@ It is only loaded once (1) in the menu blade out of its 10 loads. Its overall re
 
 BladePerformanceIncludingNetwork will return a table with the following columns
 
- - FullBladeName, Extension, BladeName
-   - Blade/Extension identifiers
- - BladeCount
-   - The number of blade loads within the given date range
- - InMenuLoads
-   - The number of in menu blade loads within the given date range
- - PctOfMenuLoads
-   - The percentage of in menu blade loads within the given date range
- - Samples
-   - The number of loads which were tracking the number of XHR requests
- - StaticMenu
-   - If the `getMenuConfig` call returns within < 10ms, only applicable to ResourceMenu cases
- - MenuConfigDuration95
-   - The 95th percentile of the `getMenuConfig` call
- - LockedBlade
-   - If the blade is locked, ideally blades are now template blades or no-pdl
-   - All no-pdl and template blades are locked, pdl blades can be made locked by setting the locked property to true
- - XHRCount, XHRCount95th, XHRMax
-   - The 50th percentile (95th or MAX) of XHR requests sent which correlate to that blade load
- - Bytes
-   - Bytes transferred to the client via XHR requests
- - FullDuration50, 80, 95, 99
-   - The time it takes for the `BladeFullReady` + (`PctOfMenuLoads` * the `getMenuConfig` to resolve)
- - RedScore
-   - Number of violations for tracked bars
- - AlertSeverity
-   - If the blade has opted to be alerted against via the [alerting infrastructure](index-portalfx-extension-monitor.md#performance) and what severity the alert will open at.
+- FullBladeName, Extension, BladeName
+  - Blade/Extension identifiers
+- BladeCount
+  - The number of blade loads within the given date range
+- InMenuLoads
+  - The number of in menu blade loads within the given date range
+- PctOfMenuLoads
+  - The percentage of in menu blade loads within the given date range
+- Samples
+  - The number of loads which were tracking the number of XHR requests
+- StaticMenu
+  - If the `getMenuConfig` call returns within < 10ms, only applicable to ResourceMenu cases
+- MenuConfigDuration95
+  - The 95th percentile of the `getMenuConfig` call
+- LockedBlade
+  - If the blade is locked, ideally blades are now template blades or no-pdl
+  - All no-pdl and template blades are locked, pdl blades can be made locked by setting the locked property to true
+- XHRCount, XHRCount95th, XHRMax
+  - The 50th percentile (95th or MAX) of XHR requests sent which correlate to that blade load
+- Bytes
+  - Bytes transferred to the client via XHR requests
+- FullDuration50, 80, 95, 99
+  - The time it takes for the `BladeFullReady` + (`PctOfMenuLoads` * the `getMenuConfig` to resolve)
+- RedScore
+  - Number of violations for tracked bars
+- AlertSeverity
+  - If the blade has opted to be alerted against via the [alerting infrastructure](index-portalfx-extension-monitor.md#performance) and what severity the alert will open at.
 
 <a name="performance-overview-how-to-assess-your-performance-part"></a>
 ### Part
@@ -190,19 +190,19 @@ BladePerformanceIncludingNetwork will return a table with the following columns
 PartPerformance will return a table with the following columns:
 
 - FullPartName, Extension, PartName
-    - Part/Extension identifiers
+  - Part/Extension identifiers
 - PartCount
-    - How many times the part was loaded within the given date range
+  - How many times the part was loaded within the given date range
 - Samples
-    - The number of loads which were tracking the number of XHR requests
+  - The number of loads which were tracking the number of XHR requests
 - XHRCount, XHRCount95th, XHRMax
-    - The 50th percentile (95th or MAX) of XHR requests sent which correlate to that part load (*) This is a rough heuristic, based on a 1% sampling.
+  - The 50th percentile (95th or MAX) of XHR requests sent which correlate to that part load (*) This is a rough heuristic, based on a 1% sampling.
 - Bytes
-    - Bytes transferred to the client via XHR requests
+  - Bytes transferred to the client via XHR requests
 - 50th, 80th, 95th, 99th
-    - The time it takes for your part to resolve its `onInputsSet` or `onInitialize` promise. This is captured under the `PartReady` action in telemetry
- - RedScore
-   - Number of violations for tracked bars 
+  - The time it takes for your part to resolve its `onInputsSet` or `onInitialize` promise. This is captured under the `PartReady` action in telemetry
+- RedScore
+   Number of violations for tracked bars
 
 <a name="performance-frequently-asked-questions-faq"></a>
 # Performance Frequently Asked Questions (FAQ)
@@ -222,26 +222,26 @@ PartPerformance will return a table with the following columns:
 <a name="performance-frequently-asked-questions-faq-my-blade-fullready-is-above-the-bar-what-should-i-do"></a>
 ## My Blade &#39;FullReady&#39; is above the bar, what should I do
 
-1. Assess what is happening in your Blades's `onInitialize` or constructor and `onInputsSet`. [Profile your scenario](#performance-profiling)
+1. Assess what is happening in your Blades's `onInitialize` (no-PDL) or constructor and `onInputsSet` (PDL). [Profile your scenario](#performance-profiling)
     1. Can that be optimized?
 1. If there are any AJAX calls;
-    1. Can they use batch? If so, migrate over to use the batch api.
+    1. Can they use batch? If so, migrate over to use the [batch api](http://aka.ms/portalfx/docs/batch).
     1. Wrap them with custom telemetry and ensure they you aren't spending a large amount of time waiting on the result. If you are to do this, please only log one event per blade load, this will help correlate issues but also reduce unneccesary load on telemetry servers.
-1. How many parts are on the blade?
+1. Are you using an old PDL "Blade containing Parts"? How many parts are on the blade?
     - If there is only a single part, if you're not using a no-pdl blade or `<TemplateBlade>` migrate your current blade to a no-pdl blade.
     - If there are multiple parts, migrate over to use a no-pdl blade.
     - Ensure to support any old pinned parts when you migrate.
 1. Does your blade open within a resource menu blade?
-    - If it does, ensure the `getMenuConfig` call is returned statically (< 10ms). You can make use of the enabled/disabled observable property on menu items, if you need to asynchronously determine to enable a menu item. 
+    - If it does, ensure the `getMenuConfig` call is returned statically/synchronously (< 10ms). You can make use of the enabled/disabled observable property on menu items, if you need to asynchronously determine to enable a menu item. 
 1. See our [best practices](#performance-best-practices)
-    
+
 <a name="performance-frequently-asked-questions-faq-my-part-ready-is-above-the-bar-what-should-i-do"></a>
 ## My Part &#39;Ready&#39; is above the bar, what should I do
 
-1. Assess what is happening in your Part's `onInitialize` or constructor and `onInputsSet`. [Profile your scenario](#performance-profiling)
+1. Assess what is happening in your Part's `onInitialize` (no-PDL) or constructor and `onInputsSet` (PDL), including time taken in any async operations associated with the returned Promise. [Profile your scenario](#performance-profiling)
     1. Can that be optimized?
 1. If there are any AJAX calls;
-    1. Can they use batch? If so, migrate over to use the batch api.
+    1. Can they use batch? If so, migrate over to use the [batch api](http://aka.ms/portalfx/docs/batch).
     1. Wrap them with custom telemetry and ensure they you aren't spending a large amount of time waiting on the result. If you are to do this, please only log one event per part load, this will help correlate issues but also reduce unneccesary load on telemetry servers.
 1. See our [best practices](#performance-best-practices)
 
@@ -261,13 +261,13 @@ Sure! Book in some time in the Azure performance office hours.
 - __Where?__ B41 (Conf Room 41/24)
 - __Contacts:__ Sean Watson (sewatson)
 - __Goals__
-    - Help extensions to meet the performance bar
-    - Help extensions to measure performance 
-    - Help extensions to understand their current performance status
+  - Help extensions to meet the performance bar
+  - Help extensions to measure performance
+  - Help extensions to understand their current performance status
 - __How to book time__: Send a meeting request with the following
-    - TO: sewatson;
-    - Subject: YOUR_EXTENSION_NAME: Azure performance office hours
-    - Location: Conf Room 41/24 (It is already reserved)
+  - TO: sewatson;
+  - Subject: YOUR_EXTENSION_NAME: Azure performance office hours
+  - Location: Conf Room 41/24 (It is already reserved)
 
 <a name="performance-best-practices"></a>
 # Performance best practices
@@ -276,22 +276,22 @@ Sure! Book in some time in the Azure performance office hours.
 ## Operational best practices
 
 - Enable performance alerts
-    - To ensure your experience never regresses unintentionally, you can opt into configurable alerting on your extension, blade and part load times. See [performance alerting](index-portalfx-extension-monitor.md#performance)
+  - To ensure your experience never regresses unintentionally, you can opt into configurable alerting on your extension, blade and part load times. See [performance alerting](index-portalfx-extension-monitor.md#performance)
 - Move to [hosting service](portalfx-extension-hosting-service.md#extension-hosting-service)
-    - We've seen every team who have onboarded to the hosting service get some performance benefit from the migration. 
-        - Performance benefits vary from team to team given your current infrastructure
-        - We've commonly seen teams improve their performance by > 0.5s at the 95th  
-    - If you are not on the hosting service ensure;
-        1. Homepage caching is enabled
-        1. Persistent content caching is enabled
-        1. Compression is enabled
-        1. Your service is efficiently geo-distributed (Note: we have seen better performance from having an actual presence in a region vs a CDN)
+  - We've seen every team who have onboarded to the hosting service get some performance benefit from the migration.
+    - Performance benefits vary from team to team given your current infrastructure
+    - We've commonly seen teams improve their performance by > 0.5s at the 95th  
+  - If you are not on the hosting service ensure;
+      1. [Homepage caching](portalfx-performance-caching-homepage.md) is enabled
+      1. [Persistent content caching](portalfx-extension-persistent-caching-of-scripts.md) is enabled
+      1. [Compression](#v2-targets) is enabled
+      1. Your service is efficiently geo-distributed (Note: we have seen better performance from having an actual presence in a region vs a CDN)
 - Compression (Brotli)
-    - Move to V2 targets to get this by default, see [V2 targets](#v2-targets)
-- Remove controllers 
-    - Don't proxy ARM through your controllers
+  - Move to V2 targets to get this by default, see [V2 targets](#v2-targets)
+- Remove controllers
+  - Don't proxy ARM through your controllers
 - Don't require full libraries to make use of a small portion
-    - Is there another way to get the same result?
+  - Is there another way to get the same result?
 - If you're using iframe experiences
     1. Ensure you have the correct caching enabled
     1. Ensure you have compression enabled
@@ -302,56 +302,49 @@ Sure! Book in some time in the Azure performance office hours.
 ## Coding best practices
 
 - Reduce network calls
-    - Ideally 1 network call per blade
-    - Utilise `batch` to make network requests, see our [batch documentation](http://aka.ms/portalfx/docs/batch)
+  - Ideally 1 network call per blade
+  - Utilise `batch` to make network requests, see our [batch documentation](http://aka.ms/portalfx/docs/batch)
 - Remove automatic polling
-    - If you need to poll, only poll on the second request and ensure `isBackgroundTask: true` in the batch call
-- Optimize bundling (Avoiding the waterfall)
-    ```typescript
-    /// <amd-bunding root="true" priority="0" />
-
-    import ClientResources = require("ClientResources");
-    ```
+  - If you need to poll, only poll on the second request and ensure `isBackgroundTask: true` in the batch call
 - Remove all dependencies on obsoleted code
-    - Loading any required obsoleted bundles is a blocking request during your extension load times
-    - See https://aka.ms/portalfx/obsoletebundles for further details
+  - Loading any required obsoleted bundles is a blocking request during your extension load times
+  - See https://aka.ms/portalfx/obsoletebundles for further details
 - Use the Portal's ARM token
 - Don't use old PDL blades composed of parts: [hello world template blade](portalfx-no-pdl-programming.md#building-a-hello-world-template-blade-using-decorators)
-    - Each part on the blade has its own viewmodel and template overhead, switching to a no-pdl template blade will mitigate that overhead
+  - Each part on the blade has its own viewmodel and template overhead, switching to a no-pdl template blade will mitigate that overhead
 - Use the latest controls available: see https://aka.ms/portalfx/playground
-    - This will minimise your observable usage
-    - The newer controls are AMD'd reducing what is required to load your blade
+  - This will minimise your observable usage
+  - The newer controls are AMD'd reducing what is required to load your blade
 - Remove Bad CSS selectors
-    - Build with warnings as errors and fix them
-    - Bad CSS selectors are defined as selectors which end in HTML elements for example `.class1 .class2 .class3 div { background: red; }`
-        - Since CSS is evaluated from right-to-left the browser will find all `div` elements first, this is obviously expensive
+  - Build with warnings as errors and fix them
+  - Bad CSS selectors are defined as selectors which end in HTML elements for example `.class1 .class2 .class3 div { background: red; }`
+    - Since CSS is evaluated from right-to-left the browser will find all `div` elements first, this is obviously expensive
 - Fix your telemetry
-    - Ensure you are returning the relevant blocking promises as part of your initialization path (`onInitialize` or `onInputsSet`), today you maybe cheating the system but that is only hurting your users.
-    - Ensure your telemetry is capturing the correct timings
+  - Ensure you are returning the relevant blocking promises as part of your initialization path (`onInitialize` or `onInputsSet`), today you maybe cheating the system but that is only hurting your users.
+  - Ensure your telemetry is capturing the correct timings
 
 <a name="performance-best-practices-general-best-practices"></a>
 ## General best practices
 
 - Test your scenarios at scale
-    - How does your scenario deal with 100s of subscriptions or 1000s of resources?
-    - Are you fanning out to gather all subscriptions, if so do not do that.
-        - Limit the default experience to first N subscriptions and have the user determine their own scope.
+  - How does your scenario deal with 100s of subscriptions or 1000s of resources?
+  - Are you fanning out to gather all subscriptions, if so do not do that.
+    - Limit the default experience to first N subscriptions and have the user determine their own scope.
 - Develop in diagnostics mode
-    - Use https://portal.azure.com?trace=diagnostics to detect console performance warnings
-        - Using too many defers
-        - Using too many ko.computed dependencies
+  - Use https://portal.azure.com?trace=diagnostics to detect console performance warnings
+    - Using too many defers
+    - Using too many ko.computed dependencies
 - Be wary of observable usage
-    - Try not to use them unless necessary
-    - Don't aggressively update UI-bound observables
-        - Accumulate the changes and then update the observable
-        - Manually throttle or use `.extend({ rateLimit: 250 });` when initializing the observable
-
+  - Try not to use them unless necessary
+  - Don't aggressively update UI-bound observables
+    - Accumulate the changes and then update the observable
+    - Manually throttle or use `.extend({ rateLimit: 250 });` when initializing the observable
 
 <a name="extension-load-shim-dependencies-removing-shims"></a>
 # Extension load shim dependencies (removing shims)
 
 Extension load shim dependencies are dependencies that are hardcoded into your require config to be downloaded and executed before any other script can be executed.
-Because of the way shims work in requireJS, no assumption can be made about their usage and you end up blocking download and execution of any dependent script until 
+Because of the way shims work in requireJS, no assumption can be made about their usage and you end up blocking download and execution of any dependent script until
 shims are all fully downloaded and executed. For most extensions today, at best (latest SDK), what this translates to is a shim bundle being downloaded concurrently
  with your extension's entrypoint bundle, meaning a blocking download of OSS libraries that delays any work to initialize your extension.
 
@@ -379,7 +372,7 @@ What you want to do is wrap all of the library’s code with a define statement 
 
 Taking an actual file as an example, here's the diff for the hammer.js OSS library:
 
-```
+```txt
     --------------------------------------------------------------------------
     4    4       * Copyright (c) 2014 Jorik Tangelder <j.tangelder@gmail.com>;
     5    5       * Licensed under the MIT license */
@@ -415,7 +408,6 @@ Finally, since the bundler will now automatically pick up the library’s file a
 
 This should cover the vast majority of shim-to-AMD conversion cases.
 For more information, please create a stack overflow question (https://aka.ms/portalfx/ask) and reach out to ibizaperfv@microsoft.com.
-
 
 <a name="performance-profiling"></a>
 # Performance profiling
@@ -586,11 +578,12 @@ Below are the steps to switch to the V2 targets. A video of the migration steps 
 
 The framework supports loading view models using dependency injection. If you migrate your extension to use this programming model, the SDK will no longer generate ViewModelFactories.ts and a large portion of ExtensionDefinition.ts. Consequently you can remove nearly all code in Program.ts. All of your DataContext classes will also be bundled with the associated blade and will no longer be loaded up front.
 
+> If you have any issues throughout this process please post to our [stack overflow](https://aka.ms/portalfx/ask)
+
 <a name="dependency-injected-view-models-prerequistes"></a>
 ## Prerequistes
 
 - Migrate to V2 targets if you haven’t done so (See: [V2 targets](#v2-targets))
-- Ensure that the emitDecoratorMetadata compiler option is set to true in the tsconfig.json
 - Upgrade to at least SDK 3001+
 - Cleanup your extension project TypeScript code and remove all uses of export = Main.
   - Check this PR in the portal repo for an example: https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/1003495?_a=overview
@@ -600,6 +593,7 @@ The framework supports loading view models using dependency injection. If you mi
 <a name="dependency-injected-view-models-migration-steps"></a>
 ## Migration steps
 
+- Ensure that the emitDecoratorMetadata compiler option is set to true in the tsconfig.json
 - Delete the generated ViewModelFactories.ts from `Client\_generated`
 - Add the following line to your csproj
 
@@ -628,10 +622,12 @@ The framework supports loading view models using dependency injection. If you mi
 - Find all DataContext classes that are still referenced by your view models and add the `@Di.Class()` decorator.
   - Note that `@Di.Class()` is called with no arguments.
   - You will need to add `import * as Di from "Fx/DependencyInjection` to the top of the files
+  - The migration validation script in one of the steps below can help you track down all of the DataContext classes that need to be annotated.
 - Remove the code in Program.ts that initializes the DataContext classes. Set the generic type parameter of `MsPortalFx.Extension.EntryPointBase` base class specification to void.
-- The constructor of any class that contains a `@Di.Class()` decorator (with or without the "viewModel" argument) cannot contain an parameter that is specified with a non-class type. Some of your view model classes may have a dataContext parameter with an any type or an interface type. Either change the type to a class or remove the parameter entirely.
+- The constructor of any class that contains a `@Di.Class()` decorator (with or without the "viewModel" argument) cannot contain an parameter that is specified with a non-class type. Some of your view model classes may have a dataContext or container parameter with an any type or an interface type. Either change the type to a class or remove the parameter entirely.
+  - When this rule is violated, you will see errors like `Cannot compose 'Object' because it is not correctly decorated`.
 - All classes in the dependency chain of migrated view models should be marked with `@Di.Class()` decorator. The dependency injection framework in the Portal only supports constructor injection.
-- Put the following code in your Program.ts right at the module level. Then load your extension through the portal. This will validate that you have correctly migrated the V1 view models. The code should complete almost instantly. Remove the code when you are done.
+- Put the following code in your Program.ts right at the module level. Then load your extension through the portal. This load all of your view models and validate that you have correctly migrated the V1 view models. Remove the code when you are done.
 
 ```typescript
 MsPortalFx.require("Fx/DependencyInjection")
@@ -648,7 +644,7 @@ MsPortalFx.require("Fx/DependencyInjection")
                                 // Can't validate V2 view models
                             }
                             else {
-                                container._validate(new (<any>window).Map(), exportedType, true);
+                                container._validate(new (<any>window).Map(), exportedType);
                             }
                         });
                 }
@@ -662,13 +658,14 @@ MsPortalFx.require("Fx/DependencyInjection")
 <a name="dependency-injected-view-models-pull-request-samples"></a>
 ## Pull Request Samples
 
-- https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/1013125?_a=overview
-- https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/1013301?_a=overview
-- https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/1016472?_a=overview
-- https://msazure.visualstudio.com/One/_git/AD-IAM-IPC/pullrequest/1096247?_a=overview
-- https://msazure.visualstudio.com/One/_git/AD-IAM-Services-ADIbizaUX/pullrequest/1098977?_a=overview
-- https://msazure.visualstudio.com/One/_git/MGMT-AppInsights-InsightsPortal/pullrequest/1124038?_a=overview
-
+- https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/1013125
+- https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/1013301
+- https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/1016472
+- https://msazure.visualstudio.com/One/_git/AD-IAM-IPC/pullrequest/1096247
+- https://msazure.visualstudio.com/One/_git/AD-IAM-Services-ADIbizaUX/pullrequest/1098977
+- https://msazure.visualstudio.com/One/_git/MGMT-AppInsights-InsightsPortal/pullrequest/1124038
+- https://msazure.visualstudio.com/One/_git/AzureUX-IaaSExp/pullrequest/1176274
+- https://msazure.visualstudio.com/One/_git/AzureUX-IaaSExp/pullrequest/1159718
 
 [TelemetryOnboarding]: <portalfx-telemetry-getting-started.md>
 [Ext-Perf/Rel-Report]: <http://aka.ms/portalfx/dashboard/extensionperf>

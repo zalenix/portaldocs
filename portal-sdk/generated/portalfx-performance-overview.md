@@ -144,18 +144,6 @@ Some of the main factors in extension performance are associated with network pe
 
     You can identify Unnecessary network calls by using the scenarios located in [The BladePerformanceIncludingNetwork method](#the-bladeperformanceincludingnetwork-method).
 
-1.	Waterfalling bundling
-
-    If any waterfalls exist within the extension, ensure you have the proper bundling hinting in place, as specified in the optimize bundling document located at [top-extensions-hosting-service.md#execute-content-unbundler-to-generate-zip-file](top-extensions-hosting-service.md#execute-content-unbundler-to-generate-zip-file).
-
-    The waterfall can be avoided or reduced by using the following code.
-
-      ```
-      /// <amd-bunding root="true" priority="0" />
-
-      import ClientResources = require("ClientResources");
-    ```
-
 1.	Heavy rendering and CPU from overuse of UI-bound observables
 
     Guidelines on how to use observables are located in [portalfx-blades-viewmodel.md](portalfx-blades-viewmodel.md).
