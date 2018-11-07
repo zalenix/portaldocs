@@ -35,7 +35,7 @@ Dashboard
 
 Activity log
 <div style="max-width:800px">
-<img alttext="Time range" src="../media/designpatterns-page-filtering/activity-log.PNG"  />
+<img alttext="Time range" src="../media/designpatterns-page-filtering/activity-log.png"  />
 </div>
 
 ## Example uses
