@@ -157,7 +157,7 @@ Currently alerts run every 60 minutes assessing the previous 60 minute and previ
 
 ## How do I know my extension's current customization?
 
-Click the [this link][alerting-extension-customization] and replace `HubsExtension` with `YOUR_EXTENSION_NAME` and run Kusto function, GetExtensionCustomizationJson. Or go to [https://azportal.kusto.windows.net/Partner][kusto-partner-database] to open Kusto.Explorer and run Kusto function, 
+Click the [this link][alerting-extension-customization] and replace `HubsExtension` with `YOUR_EXTENSION_NAME` and run Kusto function, GetExtensionCustomizationJson. Or go to [https://azportalpartner.kusto.windows.net/Phms][kusto-phms-database] to open Kusto.Explorer and run Kusto function, 
 GetExtensionCustomizationJson("YOUR_EXTENSION_NAME"). The regex is supported. You can view alert customization of onboarded extensions. The extension alert customization only exists once you have onboarded to the alerting infrastructure.
 > The customizaztion has a daily sync from the SQL database at 5:00 pm PST.
 
@@ -167,5 +167,5 @@ GetExtensionCustomizationJson("YOUR_EXTENSION_NAME"). The regex is supported. Yo
 1. We will respond as soon as possible and apply the updates
 
 [alerting-onboarding]: https://aka.ms/portalfx/alerting-onboarding
-[alerting-extension-customization]: https://azportal.kusto.windows.net/Partner?query=GetExtensionCustomizationJson%28%5C%22HubsExtension%5C%22%29
-[kusto-partner-database]: https://azportal.kusto.windows.net/Partner
+[alerting-extension-customization]: https://azportalpartner.kusto.windows.net/Phms?query=GetExtensionCustomizationJson%28%22HubsExtension%22%29
+[kusto-phms-database]: https://azportalpartner.kusto.windows.net/Phms

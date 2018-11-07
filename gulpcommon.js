@@ -180,7 +180,8 @@ var self = module.exports = {
             ".pdl": { regEx: xmlCommentRegEx, template: xmlSnippetTemplate },
             ".html": { regEx: xmlCommentRegEx, template: xmlSnippetTemplate },
             ".cs": { regEx: codeCommentRegEx, template: "```csharp\n%s\n```" },
-            ".ts": { regEx: codeCommentRegEx, template: "```typescript\n%s\n```" }
+            ".ts": { regEx: codeCommentRegEx, template: "```typescript\n%s\n```" },
+            ".js": { regEx: codeCommentRegEx, template: "```javascript\n%s\n```" }
         };
         const fileExtension = path.extname(config.file);
         const sectionPattern = util.format(extRegEx[fileExtension].regEx, config.section, config.section);
