@@ -225,7 +225,7 @@ PartPerformance will return a table with the following columns:
 1. Assess what is happening in your Blades's `onInitialize` (no-PDL) or constructor and `onInputsSet` (PDL). [Profile your scenario](#performance-profiling)
     1. Can that be optimized?
 1. If there are any AJAX calls;
-    1. Can they use batch? If so, migrate over to use the batch api.
+    1. Can they use batch? If so, migrate over to use the [batch api](http://aka.ms/portalfx/docs/batch).
     1. Wrap them with custom telemetry and ensure they you aren't spending a large amount of time waiting on the result. If you are to do this, please only log one event per blade load, this will help correlate issues but also reduce unneccesary load on telemetry servers.
 1. Are you using an old PDL "Blade containing Parts"? How many parts are on the blade?
     - If there is only a single part, if you're not using a no-pdl blade or `<TemplateBlade>` migrate your current blade to a no-pdl blade.
@@ -241,7 +241,7 @@ PartPerformance will return a table with the following columns:
 1. Assess what is happening in your Part's `onInitialize` (no-PDL) or constructor and `onInputsSet` (PDL), including time taken in any async operations associated with the returned Promise. [Profile your scenario](#performance-profiling)
     1. Can that be optimized?
 1. If there are any AJAX calls;
-    1. Can they use batch? If so, migrate over to use the batch api.
+    1. Can they use batch? If so, migrate over to use the [batch api](http://aka.ms/portalfx/docs/batch).
     1. Wrap them with custom telemetry and ensure they you aren't spending a large amount of time waiting on the result. If you are to do this, please only log one event per part load, this will help correlate issues but also reduce unneccesary load on telemetry servers.
 1. See our [best practices](#performance-best-practices)
 
@@ -306,12 +306,6 @@ Sure! Book in some time in the Azure performance office hours.
   - Utilise `batch` to make network requests, see our [batch documentation](http://aka.ms/portalfx/docs/batch)
 - Remove automatic polling
   - If you need to poll, only poll on the second request and ensure `isBackgroundTask: true` in the batch call
-- Optimize bundling (Avoiding the waterfall)
-    ```typescript
-    /// <amd-bunding root="true" priority="0" />
-
-    import ClientResources = require("ClientResources");
-    ```
 - Remove all dependencies on obsoleted code
   - Loading any required obsoleted bundles is a blocking request during your extension load times
   - See https://aka.ms/portalfx/obsoletebundles for further details
