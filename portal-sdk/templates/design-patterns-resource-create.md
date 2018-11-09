@@ -19,7 +19,7 @@ The resource create pattern enables quick configuration of a new resource by usi
 
 ## Example image
 <div style="max-width:800px">
-<img alttext="Resource create example" src="../media/designpatterns-resource-create/Resource-create-1.png"  />
+<img alttext="Resource create example" src="../media/design-patterns-resource-create/Resource-create-1.png"  />
 </div>
 
 ## Example uses
@@ -34,7 +34,7 @@ Creating a resource in Azure
 
 ## Anatomy  
 <div style="max-width:800px">
-<img alttext="Resource create anatomy" src="../media/designpatterns-resource-create/resource-create-anatomy.png"  />
+<img alttext="Resource create anatomy" src="../media/design-patterns-resource-create/resource-create-anatomy.png"  />
 </div>
 
 The resource create experience contains:
@@ -66,7 +66,7 @@ Tabs group sections of the create experience into manageable categories. Tabs ca
 Most creates should have a minimum of 3 tabs; `Basics`, `Tags`, `Review + create`.  All other tabs are optional.  Tab naming should follow sentence case, with only the first letter capitalized unless the words are proper nouns, acronyms or brand names.
 
 <div style="max-width:800px">
-<img alttext="Tabs" src="../media/designpatterns-resource-create/Tabs.png"  />
+<img alttext="Tabs" src="../media/design-patterns-resource-create/Tabs.png"  />
 </div>
 
 #### Basics
@@ -105,13 +105,13 @@ Allowing the user to verify all settings prior to submission ensures accuracy an
 When creating a form that includes several fields pertaining to a certain subject, you can group them into a section with a header that gives the user a clear indication of what they’re being asked for. You can also add explanatory text just below the group header if the task may not be immediately clear to the user.
 Section headers should follow sentence case, with only the first letter capitalized unless the words are proper nouns, acronyms or brand names.
 <div style="max-width:800px">
-<img alttext="Tabs" src="../media/designpatterns-resource-create/Grouped-input-fields.png" />
+<img alttext="Tabs" src="../media/design-patterns-resource-create/Grouped-input-fields.png" />
 </div>
 
 ### Sub create in a context pane
 Context panes can be used for sub creates within the create flow. The sub create allows users to configure services or to create resources that are related to the main resource that's being created, without losing the overall context.
 <div style="max-width:800px">
-<img alttext="Tabs" src="../media/designpatterns-resource-create/subcreate.png"  />
+<img alttext="Tabs" src="../media/design-patterns-resource-create/subcreate.png"  />
 </div>
 
 ### Footer navigation
@@ -120,7 +120,7 @@ The footer nav contains the call to action (CTA) for creating the resource, as w
 ## Post create
 The post create page provides realtime deployment status, help with troubleshooting, and improved error display. Best practice is to include additional information here to help the user learn more about the resource being created, as well as related Azure resources.
 <div style="max-width:800px">
-<img alttext="Tabs" src="../media/designpatterns-resource-create/post-create.png"  />
+<img alttext="Tabs" src="../media/design-patterns-resource-create/post-create.png"  />
 </div>
 
 ## Do 
@@ -138,10 +138,10 @@ The post create page provides realtime deployment status, help with troubleshoot
 
 # Related design patterns
 
--   Forms [designpatterns-page-forms.md](designpatterns--page-forms.md)
--   Full screen [designpatterns-page-fullscreen.md](designpatterns--page-fullscreen.md)
--   Resource Browse [designpatterns-resource-browse.md](designpatterns-resource-browse.md)
--   Resource Manage [designpatterns-resource-manage.md](designpatterns-resource-manage.md)
+-   Forms [design-patterns-page-forms.md](design-patterns--page-forms.md)
+-   Full screen [design-patterns-page-fullscreen.md](design-patterns--page-fullscreen.md)
+-   Resource Browse [design-patterns-resource-browse.md](design-patterns-resource-browse.md)
+-   Resource Manage [design-patterns-resource-manage.md](design-patterns-resource-manage.md)
 -   Design patterns [top-design.md](top-design.md)
 
 # Research and usability 

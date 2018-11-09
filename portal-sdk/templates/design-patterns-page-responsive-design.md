@@ -45,13 +45,13 @@ Max width: 700px
 ### Editable grid text boxes
 Min width: 80px
 <div style="max-width:800px">
-<img alttext="Example image" src="../media/designpatterns-responsive-design/editable-grid-min-width.png"  />
+<img alttext="Example image" src="../media/design-patterns-responsive-design/editable-grid-min-width.png"  />
 </div>
 
 Max width: 265px 
 This example has slightly narrower text boxes at 220px
 <div style="max-width:800px">
-<img alttext="Example image" src="../media/designpatterns-responsive-design/editable-grid-max-width.png"  />
+<img alttext="Example image" src="../media/design-patterns-responsive-design/editable-grid-max-width.png"  />
 </div>
 
 ## Success critera

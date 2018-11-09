@@ -10,7 +10,7 @@ The Azure portal has 4 themes, a color pallette and type ramp that resonate with
 * Wrap text at 75 characters per line
 
 ## Full style guide
-* Full Style guide [Azure Portal Style Guide PDF](../media/designpatterns-style-guide/Azure-Portal-Style-Guide.pdf)
+* Full Style guide [Azure Portal Style Guide PDF](../media/design-patterns-style-guide/Azure-Portal-Style-Guide.pdf)
 
 # Screen resolutions
 Ensure that your designs work well at all P0 resolutions.  Based on telemetry data \(see below\), resolution priorities are:
