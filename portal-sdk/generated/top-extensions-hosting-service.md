@@ -305,7 +305,7 @@ For national clouds, there are only 2 stages as outlined below -
 **Blackforest:**
 
 - stage1: germanynortheast
- -stage2: All other blackforest regions
+- stage2: All other blackforest regions
 
 **Fairfax:**
 
