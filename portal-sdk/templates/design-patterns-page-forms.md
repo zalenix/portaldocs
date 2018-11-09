@@ -18,32 +18,32 @@ The portal offers several variations of forms with consistent field layout and f
 
 ### Dialog
 <div style="max-width:800px">
-<img alttext="Forms example - dialog" src="../media/designpatterns-page-forms/forms-dialog.png"  />
+<img alttext="Forms example - dialog" src="../media/design-patterns-page-forms/forms-dialog.png"  />
 </div>
 
 ### Context Pane - narrow
 <div style="max-width:800px">
-<img alttext="Forms example - narrow context pane" src="../media/designpatterns-page-forms/forms-context-pane-narrow.png"  />
+<img alttext="Forms example - narrow context pane" src="../media/design-patterns-page-forms/forms-context-pane-narrow.png"  />
 </div>
 
 ### Context Pane - wide
 <div style="max-width:800px">
-<img alttext="Forms example - wide context pane" src="../media/designpatterns-page-forms/forms-context-pane.png"  />
+<img alttext="Forms example - wide context pane" src="../media/design-patterns-page-forms/forms-context-pane.png"  />
 </div>
 
 ### Full screen blade
 <div style="max-width:800px">
-<img alttext="Forms example - full screen blade" src="../media/designpatterns-page-forms/forms-full-screen-blade.png"  />
+<img alttext="Forms example - full screen blade" src="../media/design-patterns-page-forms/forms-full-screen-blade.png"  />
 </div>
 
 ### Full screen blade from resource menu
 <div style="max-width:800px">
-<img alttext="Forms example - full screen blade from resource menu" src="../media/designpatterns-page-forms/forms-full-screen-blade-from-menu.png"  />
+<img alttext="Forms example - full screen blade from resource menu" src="../media/design-patterns-page-forms/forms-full-screen-blade-from-menu.png"  />
 </div>
 
 ### Wizard
 <div style="max-width:800px">
-<img alttext="Forms example" src="../media/designpatterns-page-forms/forms.png"  />
+<img alttext="Forms example" src="../media/design-patterns-page-forms/forms.png"  />
 </div>
 
 ## Example uses
@@ -65,7 +65,7 @@ Choose among these available options when designing experiences for the user to 
 ## Anatomy
 <!-- TODO get anatomy for dialog and context pane Use common numbers for elements -->
 <div style="max-width:800px">
-<img alttext="Form anatomy" src="../media/designpatterns-page-forms/form-anatomy.png"  />
+<img alttext="Form anatomy" src="../media/design-patterns-page-forms/form-anatomy.png"  />
 </div>
 
 A form can contain:
@@ -83,18 +83,18 @@ As the user enters information, field content is validated.  Upon form submissio
 Include placeholder text can be formatted in two ways:
 1. As an instruction
 <div style="max-width:300px; margin-left:25px">
-<img alttext="Placeholder instruction" src="../media/designpatterns-page-forms/placeholder_text.png"  />
+<img alttext="Placeholder instruction" src="../media/design-patterns-page-forms/placeholder_text.png"  />
 </div>
 
 2. As an example of valid input format
 <div style="max-width:150px; margin-left:25px">
-<img alttext="Placeholder example" src="../media/designpatterns-page-forms/placeholder-email.png"  />
+<img alttext="Placeholder example" src="../media/design-patterns-page-forms/placeholder-email.png"  />
 </div>
 
 #### Field validation
 Don’t make users guess password requirements. Instead, include the password validation tool in your experience.
 <div style="max-width:300px">
-<img alttext="Form validation" src="../media/designpatterns-page-forms/form-validation.png"  />
+<img alttext="Form validation" src="../media/design-patterns-page-forms/form-validation.png"  />
 </div>
 
 #### Error messaging
@@ -106,7 +106,7 @@ The blue and white toggle used in the portal today has tested poorly among users
 
 The current guidance is to use radio buttons in favor of the toggle.
 <div style="max-width:150px">
-<img alttext="Radio control" src="../media/designpatterns-page-forms/radio-control.png"  />
+<img alttext="Radio control" src="../media/design-patterns-page-forms/radio-control.png"  />
 </div>
 
 ### Command button recommendations
@@ -143,7 +143,7 @@ Follow the button recommendations above
 * No `Close` button, the blade has an `X` in the upper right corner to close it
 
 
-#### Create wizard command buttons - see the [resource create pattern](designpatterns-resource-create.md) for details
+#### Create wizard command buttons - see the [resource create pattern](design-patterns-resource-create.md) for details
 
 
 ## Do
@@ -168,9 +168,9 @@ Follow the button recommendations above
 
 
 # Related design patterns
-* Full screen [designpatterns-page-fullscreen.md](designpatterns-page-fullscreen.md)
-* Resource Create [designpatterns-resource-create.md](designpatterns-resource-create.md)
-* Design patterns [top-designpatterns.md](top-designpatterns.md)
+* Full screen [design-patterns-page-fullscreen.md](design-patterns-page-fullscreen.md)
+* Resource Create [design-patterns-resource-create.md](design-patterns-resource-create.md)
+* Design patterns [top-design.md](top-design.md)
 
 
 # Research and usability

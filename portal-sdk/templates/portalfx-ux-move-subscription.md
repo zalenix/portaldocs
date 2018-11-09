@@ -1,1 +1,1 @@
-For design guidance see [designpatterns-resource-manage.md](designpatterns-resource-manage.md). 
+For design guidance see [design-patterns-resource-manage.md](design-patterns-resource-manage.md). 

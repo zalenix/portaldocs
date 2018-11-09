@@ -17,7 +17,7 @@ The Resource Manage pattern is used to configure and manage a single Azure 
 
 ## Example images
 <div style="max-width:800px">
-<img alttext="Resource manage example" src="../media/designpatterns-resource-manage/resource-overview.png"  />
+<img alttext="Resource manage example" src="../media/design-patterns-resource-manage/resource-overview.png"  />
 </div>
 
 ## Example uses
@@ -33,7 +33,7 @@ Managing a single azure resource.
 The resource manage pattern is a full screen experience composed of a resource menu and corresponding resource blades. Settings that are common across resources have a standard menu item and menu location so that users can easily find them.
 <!-- TODO - get updated resource manage anatomy image -->
 <div style="max-width:800px">
-<img alttext="Resource manage anatomy" src="../media/designpatterns-resource-manage/resource-manage-anatomy.png"  />
+<img alttext="Resource manage anatomy" src="../media/design-patterns-resource-manage/resource-manage-anatomy.png"  />
 </div>
 
 A resource manage experience usually contains:
@@ -52,7 +52,7 @@ The resource menu offers a way to navigate to all pages related to the resource.
 <td width="30%" align=center valign=top>
 <!-- TODO get updated screenshot that matches new fluent styling -->
 <div style="max-width:200px">
-<img alttext="Resource menu" src="../media/designpatterns-resource-manage/resource-menu.png"  />
+<img alttext="Resource menu" src="../media/design-patterns-resource-manage/resource-menu.png"  />
 </div>
 </td>
 <td valign=top>
@@ -104,7 +104,7 @@ pages requires additional onboarding to Geneva Resource health requires addition
 The overview page is the home page for a resource. It displays key information and actions for the resource.  The overview page should contain a `toolbar`, `essentials panel`, and `content area`.
 
 <div style="max-width:800px">
-<img alttext="Resource overview page" src="../media/designpatterns-resource-manage/overview.png"  />
+<img alttext="Resource overview page" src="../media/design-patterns-resource-manage/overview.png"  />
 </div>
 
 
@@ -169,9 +169,9 @@ Display guiding content and key information about the resource
 * Don’t build your overview page as a PDL blade   
 
 # Related design patterns
-* Resource Create [designpatterns-resource-create.md](designpatterns-resource-create.md)
-* Resource Browse [designpatterns-resource-browse.md](designpatterns-resource-browse.md)
-* Design patterns [top-designpatterns.md](top-designpatterns.md)
+* Resource Create [design-patterns-resource-create.md](design-patterns-resource-create.md)
+* Resource Browse [design-patterns-resource-browse.md](design-patterns-resource-browse.md)
+* Design patterns [top-design.md](top-design.md)
 
 # Research and usability
 

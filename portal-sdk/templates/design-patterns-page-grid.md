@@ -19,7 +19,7 @@ The Azure portal uses blades to represent a page and has a grid control to manag
 
 ## Example images
 <div style="max-width:800px">
-<img alttext="Page with list example" src="../media/designpatterns-page-grid/Resource-browse.png"  />
+<img alttext="Page with list example" src="../media/design-patterns-page-grid/Resource-browse.png"  />
 </div>
 ## Example uses
 -   [All resources](https://ms.portal.azure.com/#blade/HubsExtension/ArtBrowseBlade/resourceType/Microsoft.Resources%2Fresources)
@@ -31,7 +31,7 @@ Grids are used for surfacing a list of objects to provide meaningful data on eac
 
 ## Anatomy
 <div style="max-width:800px">
-<img alttext=" " src="../media/designpatterns-page-grid/grid-anatomy.png"  />
+<img alttext=" " src="../media/design-patterns-page-grid/grid-anatomy.png"  />
 </div>
 
 A grid can contain:
@@ -45,13 +45,13 @@ A grid can contain:
 **Bulk commanding (multi-select)**
 A user can select one or more items using the leftmost column, then choose a command from the command bar above to perform actions like Remove or Delete. This pattern is ideal for scenarios when a user wants to perform a single action on many list items.
 <div style="max-width:400px">
-<img alttext="Bulk commanding" src="../media/designpatterns-page-grid/Bulk-Commanding.png"  />
+<img alttext="Bulk commanding" src="../media/design-patterns-page-grid/Bulk-Commanding.png"  />
 </div>
 
 **Context menu**
 The ellipses on the right edge of each row contain commands for cases where multiple actions are possible for a single selected row, like Edit or Delete. Common design practice is to keep all commands in the context menu rather than putting an icon, i.e. a trash can for Delete, directly on the grid. Context menus can have child context menus, made available with a chevron at the right edge of a parent context menu item.
 <div style="max-width:400px">
-<img alttext="Context menu" src="../media/designpatterns-page-grid/Context-Menu.png"  />
+<img alttext="Context menu" src="../media/design-patterns-page-grid/Context-Menu.png"  />
 </div>
 
 **Hierarchical grid**
@@ -78,7 +78,7 @@ Actions can be pulled out of the command bar to be in closer proximity to the gr
 - Don’t use long column labels. Try to avoid situations where valuable grid real estate is consumed because a column header is longer than the data in that column
 
 # Related design patterns
-* Design patterns [top-designpatterns.md](top-designpatterns.md)
+* Design patterns [top-design.md](top-design.md)
 
 # Research and usability
 

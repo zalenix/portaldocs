@@ -22,7 +22,7 @@ In 2017 Azure moved from narrow blades to full page experiences and have introdu
 ## Example images 
 
 <div style="max-width:800px">
-<img alttext="Full screen sample" src="../media/designpatterns-page-fullscreen/Full-screen-1.png"  />
+<img alttext="Full screen sample" src="../media/design-patterns-page-fullscreen/Full-screen-1.png"  />
 </div>
 ## Example uses
 These Azure resources are good examples of this design pattern 
@@ -39,7 +39,7 @@ Full screen is a foundation of any page in the Azure portal. All resources are b
 A full screen page usually contains:
 
 <div style="max-width:800px">
-<img alttext="Full screen anotomy" src="../media/designpatterns-page-fullscreen/FS_1_Anatomy.png"  />
+<img alttext="Full screen anotomy" src="../media/design-patterns-page-fullscreen/FS_1_Anatomy.png"  />
 </div>
 
 1. Menu
@@ -60,12 +60,12 @@ In the event a child blade would overflow the current available screen real esta
 ### Navigation and back stack 
 Even though previous blades are no longer visible, the user can traverse to an earlier blade from their current journey.
 <div style="max-width:200px">
-<img alttext="Breadcrumb" src="../media/designpatterns-page-fullscreen/FS_2_Breadcrumbs@2x-400x126.png" />
+<img alttext="Breadcrumb" src="../media/design-patterns-page-fullscreen/FS_2_Breadcrumbs@2x-400x126.png" />
 </div>
 Use the portal breadcrumbs or the browser back button
 
 <div style="max-width:200px">
-<img alttext="Close blade" src="../media/designpatterns-page-fullscreen/FS_3_X@2x-400x126.png" />
+<img alttext="Close blade" src="../media/design-patterns-page-fullscreen/FS_3_X@2x-400x126.png" />
 </div>
 Use the Close button in the right corner
 
@@ -82,10 +82,10 @@ Use the Close button in the right corner
 
 # Related design patterns
 
-* Resource Create [designpatterns-resource-create.md](designpatterns-resource-create.md)
-* Resource Browse [designpatterns-resource-browse.md](designpatterns-resource-browse.md)
-* Resource Manage [designpatterns-resource-manage.md](designpatterns-resource-manage.md)
-* Design patterns [top-designpatterns.md](top-designpatterns.md)
+* Resource Create [design-patterns-resource-create.md](design-patterns-resource-create.md)
+* Resource Browse [design-patterns-resource-browse.md](design-patterns-resource-browse.md)
+* Resource Manage [design-patterns-resource-manage.md](design-patterns-resource-manage.md)
+* Design patterns [top-design.md](top-design.md)
 
 # Research and usability
 

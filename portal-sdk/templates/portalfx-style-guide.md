@@ -1,5 +1,5 @@
 ## Style Guide: For designers
-For an overall style guide refer to the [designpatterns-style-guide.md](designpatterns-style-guide.md)
+For an overall style guide refer to the [design-patterns-style-guide.md](design-patterns-style-guide.md)
 
 # Style Guide
 

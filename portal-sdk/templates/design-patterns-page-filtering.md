@@ -30,12 +30,12 @@ The portal enbales users to add, remove and customize filters on pages so that u
 <!-- Include example image of the solution in the portal -->
 Dashboard
 <div style="max-width:800px">
-<img alttext="Full time range" src="../media/designpatterns-page-filtering/dashboard.PNG"  />
+<img alttext="Full time range" src="../media/design-patterns-page-filtering/dashboard.PNG"  />
 </div>
 
 Activity log
 <div style="max-width:800px">
-<img alttext="Time range" src="../media/designpatterns-page-filtering/activity-log.png"  />
+<img alttext="Time range" src="../media/design-patterns-page-filtering/activity-log.png"  />
 </div>
 
 ## Example uses
@@ -62,12 +62,12 @@ Activity log
 
 Time range filtering - full set of options
 <div style="max-width:800px">
-<img alttext="Full time range" src="../media/designpatterns-page-filtering/filter-time-range-1.PNG"  />
+<img alttext="Full time range" src="../media/design-patterns-page-filtering/filter-time-range-1.PNG"  />
 </div>
 
 Time range filtering - fewer options
 <div style="max-width:800px">
-<img alttext="Time range" src="../media/designpatterns-page-filtering/filter-time-range-2.PNG"  />
+<img alttext="Time range" src="../media/design-patterns-page-filtering/filter-time-range-2.PNG"  />
 </div>
 
 ## Do
@@ -78,7 +78,7 @@ Time range filtering - fewer options
 
 # Related design patterns
 <!-- Links to related design patterns.  Always include the link to the readme -->
-* Design patterns [top-designpatterns.md](top-designpatterns.md)
+* Design patterns [top-design.md](top-design.md)
 
 # Research and usability
 <!-- Links to the research for the solution -->
