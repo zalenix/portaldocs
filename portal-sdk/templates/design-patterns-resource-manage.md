@@ -171,7 +171,7 @@ Display guiding content and key information about the resource
 # Related design patterns
 * Resource Create [designpatterns-resource-create.md](designpatterns-resource-create.md)
 * Resource Browse [designpatterns-resource-browse.md](designpatterns-resource-browse.md)
-* Design patterns [top-designpatterns.md](top-designpatterns.md)
+* Design patterns [top-design.md](top-design.md)
 
 # Research and usability
 

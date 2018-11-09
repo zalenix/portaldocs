@@ -170,7 +170,7 @@ Follow the button recommendations above
 # Related design patterns
 * Full screen [designpatterns-page-fullscreen.md](designpatterns-page-fullscreen.md)
 * Resource Create [designpatterns-resource-create.md](designpatterns-resource-create.md)
-* Design patterns [top-designpatterns.md](top-designpatterns.md)
+* Design patterns [top-design.md](top-design.md)
 
 
 # Research and usability

@@ -35,7 +35,7 @@ Reports showing portal usage
 
 
 # Related design patterns
-* Design patterns [top-designpatterns.md](top-designpatterns.md)
+* Design patterns [top-design.md](top-design.md)
 
 
 # For developers 

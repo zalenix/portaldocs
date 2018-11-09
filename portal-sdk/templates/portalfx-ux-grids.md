@@ -1,2 +1,2 @@
 
-For design guidance see [designpatterns-page-grid.md](designpatterns-page-grid.md). 
+For design guidance see [design-patterns-page-grid.md](design-patterns-page-grid.md). 

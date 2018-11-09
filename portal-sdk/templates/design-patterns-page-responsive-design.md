@@ -68,7 +68,7 @@ This example has slightly narrower text boxes at 220px
 
 # Related design patterns
 <!-- Links to related design patterns.  Always include the link to the readme -->
-* Design patterns [top-designpatterns.md](top-designpatterns.md)
+* Design patterns [top-design.md](top-design.md)
 
 # Research and usability
 <!-- Links to the research for the solution -->

@@ -31,7 +31,7 @@ This page covers how to properly export an icon that you've created in Illustrat
 </div>
 
 # Design patterns
-* Design patterns [top-designpatterns.md](top-designpatterns.md)
+* Design patterns [top-design.md](top-design.md)
 
 # For developers 
 Developers can use the following information to get started implementing this pattern
