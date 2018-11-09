@@ -1,4 +1,4 @@
-# Azure portal extension documentation
+# Azure portal extension development documentation
 
 This is the home page for all documentation related to onboarding, developing, operating, and anything else to do with owning an Azure portal extension.
 
@@ -193,7 +193,7 @@ Because your extension is Web code, you can make **AJAX** calls to various servi
 
 ## Performance
 
-* [Performance profiling](/portal-sdk/generated/top-extensions-performance-profiling.md)
+* [Performance profiling](/portal-sdk/generated/top-extensions-performance.md)
 
 ## Testing
 
@@ -211,13 +211,13 @@ The Ibiza team provides limited testing support. Due to resource constraints the
 
 The Ibiza team collects standard telemetry for generic actions like blade opening and command execution. We also collect performance, reliability, and user feedback information that facilitates the operation of your extension. You can also write your own events by using the telemetry system. Ibiza supports alerting for common operations scenarios.
 
-* [Portal telemetry overview](/portal-sdk/generated/top-extensions-telemetry.md)
+* [Portal telemetry overview](/portal-sdk/generated/top-telemetry.md)
 
-* [Set up and verify telemetry logging from your extension](/portal-sdk/generated/top-extensions-telemetry.md#logging-telemetry)
+* [Set up and verify telemetry logging from your extension](/portal-sdk/generated/top-telemetry.md#logging-telemetry)
 
-* [Getting access to raw portal telemetry data](/portal-sdk/generated/top-extensions-telemetry.md#viewing-telemetry)
+* [Getting access to raw portal telemetry data](/portal-sdk/generated/top-telemetry.md#viewing-telemetry)
 
-* [Consuming telemetry via pre-built Power BI dashboards](/portal-sdk/generated/top-extensions-telemetry.md#power-bi-reports)
+* [Consuming telemetry via pre-built Power BI dashboards](/portal-sdk/generated/top-telemetry.md#power-bi-reports)
 
 * [Performance and reliability monitoring](/portal-sdk/generated/top-telemetry-alerting.md)
 
@@ -276,7 +276,7 @@ The Ibiza team provides and operates a common Extension Hosting Service that mak
 
 * [Onboarding your extension to the Extension Hosting Service](/portal-sdk/generated/top-extensions-hosting-service.md#step-by-step-onboarding)
 
-* [Registring your extension with the Extension Hosting Service](/portal-sdk/generated/top-extensions-hosting-service.md#registering-your-extension-with-the-hosting-service)
+* [Registring your extension with the Extension Hosting Service](/portal-sdk/generated/top-extensions-hosting-service.md#step-9-registering-your-extension-with-the-hosting-service)
 
 * [Deploying a new version of an extension](/portal-sdk/generated/top-extensions-hosting-service.md#deploying-a-new-version-of-an-extension)
 

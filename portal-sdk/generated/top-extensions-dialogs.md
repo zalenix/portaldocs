@@ -1,5 +1,14 @@
-{"gitdown": "contents"}
+* [Dialogs](#dialogs)
+    * [When to use dialogs](#dialogs-when-to-use-dialogs)
+    * [The dialog API](#dialogs-the-dialog-api)
+    * [Dialogs with custom buttons](#dialogs-dialogs-with-custom-buttons)
+    * [Displaying complex scenarios in dialogs](#dialogs-displaying-complex-scenarios-in-dialogs)
+    * [Targeting the dialog at a specific element or cssSelector](#dialogs-targeting-the-dialog-at-a-specific-element-or-cssselector)
+    * [Positioning the dialog when targeting](#dialogs-positioning-the-dialog-when-targeting)
+    * [Handling the dialog result (onClosed)](#dialogs-handling-the-dialog-result-onclosed)
 
+
+<a name="dialogs"></a>
 # Dialogs
 
 Dialogs allow the developer to display information to the user with very little navigation. Dialogs may be as simple as a short confirmation, or as complex as a form. They can be both targeted and non-targeted, such that they either display at the top of the blade or they display in context of another piece of UI. The following is an image of a non-targeted dialog.
@@ -10,10 +19,12 @@ The following is an image of a targeted dialog.
 
 ![alt-text](../media/portalfx-ui-concepts/dialog-targeted.png "Targeted dialog")
 
+<a name="dialogs-when-to-use-dialogs"></a>
 ## When to use dialogs
 
 Dialogs are great to use in cases where an extension requests a confirmation from the user, or if it needs the user to update a small piece of information. Dialogs are more lightweight than context blades; however, if the dialog becomes overloaded, you may want to use a context blade instead.
 
+<a name="dialogs-the-dialog-api"></a>
 ## The dialog API
 
 Dialogs expose various options that allow developers to customize the dialog experience. To open a dialog, the extension should specify `dialogOptions`. The simplest form of those options is illustrated here:
@@ -34,6 +45,7 @@ The properties for this implementation of the dialog are as follows.
 
 This `options` object will be passed by the extension to `container.openDialog(yourDialogOptions)` to open the dialog.
 
+<a name="dialogs-dialogs-with-custom-buttons"></a>
 ## Dialogs with custom buttons
 
 To specify a dialog with custom buttons, send an array to the `buttons` property in the `dialogOptions`, illustrated here:
@@ -57,6 +69,7 @@ export interface CustomDialogButton {
 {"ThatWhichShouldNotBeNamed": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V2/Dialogs/DialogSamplesBlade.ts", "section": "top-extensions-dialogs-custom-buttons"}
 -->
 
+<a name="dialogs-displaying-complex-scenarios-in-dialogs"></a>
 ## Displaying complex scenarios in dialogs
 
 In a dialog, if you want to allow the user to pick a value from a slider or interact with some other custom UI, make use of a custom HTML template. You can achieve that by providing an object of type `HtmlContent` to the `content` property in the dialog options.
@@ -67,6 +80,7 @@ Here we define our custom dialog `ViewModel`, which only contains a slider contr
 {"ThatWhichShouldNotBeNamed": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V2/Dialogs/DialogSamplesBlade.ts", "section": "#top-extensions-dialogs-slider-dialog"}
 -->
 
+<a name="dialogs-targeting-the-dialog-at-a-specific-element-or-cssselector"></a>
 ## Targeting the dialog at a specific element or cssSelector
 
 If you want to provide context to which the dialog applies, for example, confirming a delete of a certain item, you can supply a CSS selector string or an `FxElement` as the 'target' property on your 'DialogOptions':
@@ -80,6 +94,7 @@ To target the location of the `fxClick` the extension defines the `target` prope
 
 To target elements by using a CSS selector, send the specific CSS selector string to the `target` property on the `dialogOptions`.
 
+<a name="dialogs-positioning-the-dialog-when-targeting"></a>
 ## Positioning the dialog when targeting
 
 When the extension specifies a target, it should also specify where the dialog is displayed,  relative to that target. To do so, you can send a `positionHint` to the `dialogOptions`. The screen positioning will be honored if the space is available; otherwise, it will fallback to an available space.
@@ -96,6 +111,7 @@ export const enum DialogPosition {
 }
 ```
 
+<a name="dialogs-handling-the-dialog-result-onclosed"></a>
 ## Handling the dialog result (onClosed)
 
 There are two reasons why the dialog would be closed;
