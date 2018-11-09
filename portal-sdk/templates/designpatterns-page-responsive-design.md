@@ -19,9 +19,7 @@ There are a few quick fixes you can make to set minimum and maximum widths for y
 # Examples
 
 ## Example images
-<div style="max-width:800px">
-<img alttext="Example image" src="../media/<folder>/<image_name>.png"  />
-</div>
+
 
 ## Example uses
 

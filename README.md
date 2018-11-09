@@ -1,6 +1,6 @@
 # Azure portal extension documentation
 
-This is the home page for all documentation related to onboarding, developing, operating, and anything else to do with owning an Azure portal extension.
+This is the home page for all documentation related to onboarding, designing, developing, operating, and anything else to do with owning an Azure portal extension.
 
 Couldn't find what you needed? [Ask about the docs on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-missing-docs).
 
@@ -46,6 +46,13 @@ Learn how the framework is structured and how it is designed to run in multiple 
 * [TreeView improvements](/portal-sdk/generated/) - *Checkboxes, commands, and Load More / Virtualization*
 
 -->
+
+## Design patterns  
+
+Design patterns provide solutions for common Azure scenerios.  Azure teams should leverage these design patterns to accelerate extension development and to provide users with a familiar experience so that users can easily adopt new Azure services.  Initial design patterns are focussed on [resources for designers](/portal-sdk/generated/top-designpatterns.md#design-toolkits-and-resources), [resource management](/portal-sdk/generated/top-designpatterns.md#resource-management), and [page layouts](/portal-sdk/generated/top-designpatterns.md#page).
+
+* [Design patterns](/portal-sdk/generated/top-designpatterns.md)
+
 
 ## Development guide
 
