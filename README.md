@@ -49,7 +49,7 @@ Learn how the framework is structured and how it is designed to run in multiple 
 
 ## Design guide  
 
-Design patterns provide solutions for common Azure scenerios.  Azure teams should leverage these design patterns to accelerate extension development and to provide users with a familiar experience so that users can easily adopt new Azure services.  Initial design patterns are focussed on [design tools and guidance](/portal-sdk/generated/top-design.md#design-toolkits-and-resources), [resource management pattern](/portal-sdk/generated/top-design.md#resource-management), and [common page layouts](/portal-sdk/generated/top-design.md#page).
+Design patterns provide solutions for common Azure scenarios.  By leveraging these patterns, Azure teams will accelerate extension development and provide users with a familiar experience so that users can easily adopt new Azure services.  The design guide covers [design toolkits, style guidance](/portal-sdk/generated/top-design.md#design-toolkits-and-resources), [common page layouts](/portal-sdk/generated/top-design.md#page) and [the resource management pattern](/portal-sdk/generated/top-design.md#resource-management).
 
 * [Design guide](/portal-sdk/generated/top-design.md)
 
