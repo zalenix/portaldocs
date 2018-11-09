@@ -186,6 +186,7 @@ function generateDynamicDocs(portalFxLogs, outputDir, prodSdkVersionTags) {
         const changeType = entity.Type._;
         const sdkVersion = entity.PartitionKey._;
         const isBreakingChange = entity.IsBreakingChange._;
+        const isReleaseNote = entity.IsReleaseNote && entity.IsReleaseNote._;
         const title = entity.Title ? entity.Title._ : "";
         const workItemUrl = getWorkItemUrl(changeType);
         aggregate[sdkVersion] = aggregate[sdkVersion] || { breakingCount: 0, featureCount: 0, bugFixCount: 0, downloadUrl: "", dateInProd: entity.Date._, breakingChanges: { rows: "", titles: [] } };
@@ -208,7 +209,7 @@ function generateDynamicDocs(portalFxLogs, outputDir, prodSdkVersionTags) {
         }
 
         //add row to release notes
-        if (changeType != "Commit") {
+        if (isReleaseNote) {
             rnRows = rnRows.concat(util.format(releaseNoteRowTemplate,
                 workItemUrl,
                 entity.RowKey._,
