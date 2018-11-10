@@ -1,10 +1,10 @@
 # Release Notes since 7/9/2018
 
-## 5.0.302.7007
+## 5.0.302.7501
 0 Breaking Changes, 0 Features added and 0 Bugs Fixed
 <table>undefined</table>
 
-## 5.0.302.7005
+## 5.0.302.7007
 0 Breaking Changes, 0 Features added and 0 Bugs Fixed
 <table>undefined</table>
 
