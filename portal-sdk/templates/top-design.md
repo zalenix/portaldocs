@@ -22,6 +22,7 @@ The page patterns provide guidance for common page layouts in Azure
 * Each page that is displaying data should have a `Refresh` button
 
 ## Page patterns
+
 1. Fullscreen [design-patterns-page-fullscreen.md](design-patterns-page-fullscreen.md)
 
 2. Page with lists [design-patterns-page-grid.md](design-patterns-page-grid.md)

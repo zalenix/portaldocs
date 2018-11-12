@@ -6,8 +6,18 @@ The Azure portal has 4 themes, a color pallette and type ramp that resonate with
 ## Key style items
 * Segoe UI is the standard typeface of the Azure portal
 * Use sentence case for headers and labels. DO NOT USE ALL UPPERCASE, IT IS HARD TO READ
-* Use 13px as the smallest font
+* Use 13px as body-text size
 * Wrap text at 75 characters per line
+* All the line style icons align with the monoline icon style from Full MDL Icon font.
+* We use 4 px grid system. The smallest padding/margin is 4 px. 
+
+
+### External link
+Links that open in new browser instances should follow this styling
+
+<div style="max-width:600px">
+<img alttext="external link" src="../media/design-patterns-style-guide/external-link.jpg"  />
+</div>
 
 ## Full style guide
 * Full Style guide [Azure Portal Style Guide PDF](../media/design-patterns-style-guide/Azure-Portal-Style-Guide.pdf)
