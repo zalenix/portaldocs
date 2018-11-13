@@ -1,1 +1,1 @@
-For design guidance see [design-patterns-resource-create.md](design-patterns-resourece-create.md). 
+For design guidance see [design-patterns-resource-create.md](design-patterns-resource-create.md). 
