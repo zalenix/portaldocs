@@ -2,7 +2,7 @@
 
 ### Should I use an action bar or a commands toolbar on my form?
 
-It depends on the scenario that drives the UX. If the form will capture some data from the user and expect the blade to be closed after submitting the changes, then use an action bar, as specified in [pdesign-patterns-resource-create.md](design-patterns-resource-create.md).  However, if the form will edit or update some data, and expect the user to make multiple changes before the blade is closed, then use commands, as specified in [portalfx-commands.md](portalfx-commands.md). 
+It depends on the scenario that drives the UX. If the form will capture some data from the user and expect the blade to be closed after submitting the changes, then use an action bar, as specified in [design-patterns-resource-create.md](design-patterns-resource-create.md).  However, if the form will edit or update some data, and expect the user to make multiple changes before the blade is closed, then use commands, as specified in [portalfx-commands.md](portalfx-commands.md). 
 
 * Action Bar
 
