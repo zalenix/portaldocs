@@ -78,6 +78,9 @@ The `Basics` tab should contain the typical fields for Azure resources
 * `Region` - used to be referred to as Location
 * SKU/Cost/Pricing tier - enable the user to control the cost of the resource
 
+If your resource comes in different sizes or SKUs, make sure to include the pricing tier in your create flow. To make it easy for users to update resources sizes and SKUs, include the pricing tier in the resource manage experience.
+<!-- TODO UX add info on pricing tier using grid for easy comparison -->
+
 #### Optional tabs
 Additional tabs are used to organize optional settings specific to your resource.  Tabs should have short names, typically a noun. Tab naming should follow sentence case, with only the first letter capitalized unless the words are proper nouns, acronyms or brand names.
 
