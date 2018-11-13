@@ -53,4 +53,4 @@ Developers can use the following information to get started implementing this pa
 
 ## Related documents
 The portal includes a built in list of CSS classes that may be used inside of your templates.
-* Style guide [portalfx-style-guide.md](portalfx-style-guide.md)
+* Style for extensions [portalfx-extensions-style.md](portalfx-extensions-style.md)
