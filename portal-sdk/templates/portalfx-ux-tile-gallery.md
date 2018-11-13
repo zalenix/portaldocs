@@ -10,7 +10,7 @@
 <!-- TODO UX FILE cleanup -->
 ## Tile gallery ##
 
-Users add tiles to resource blades from the tile gallery. The launch point for tile gallery is in the "**...**" menu in the status bar at the top of every resource blade:
+Users add tiles to the dashboard from the tile gallery. The launch point for tile gallery is the "Edit" command at the top of the dashboard:
 
 ![Add tiles][tile_gallery1]
 
@@ -30,7 +30,6 @@ The gallery is searchable, and tiles can be filtered by category. Drag and drop 
 - Asset part
 
 ### How to configure tiles in the gallery ###
-
 
 
 - Choose a name 
