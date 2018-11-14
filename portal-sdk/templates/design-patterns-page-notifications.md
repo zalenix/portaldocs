@@ -1,9 +1,48 @@
-<!-- TODO UX FILE cleanup -->
-## Notifications ##
+<!-- This is the template to use when creating a new design pattern document -->
+# Page notifications
+<!-- Fill in the name above and then write a short description of the design pattern.  For example
+"Forms are the manner in which we gather and validate user input."
+-->
 
+# Context
+<!-- Short description of the context.  For example, "Users input information when managing Azure resources." -->
+
+# Problem
+<!-- Short description of the problem.  For example, 
+"Users need to input information to create, deploy and configure resources."
+-->
+
+# Solution
+The portal offers several mechanisms to notify users that something is wrong.
+
+
+## Also known as
+<!-- Bulleted list of other terms used to describe the solution, if any -->
+
+# Examples
+
+## Example images
+<!-- Include example image of the solution in the portal -->
+<div style="max-width:800px">
+<img alttext="Example image" src="../media/<folder>/<image_name>.png"  />
+</div>
+
+## Example uses
+<!-- Descriptions and ideally deep links into the portal for running examples -->
+
+# Use when
+<!-- Description of when to use this solution.  For example "User is creating a resource" -->
 Use in-blade notifications to alert users that something is wrong (a VM is stopped, a website exceeds its quota and is suspended, a certificate will expire soon, etc.), or that they may benefit from trying a new feature. Don't use these notifications just to tell users their services are running normally. 
 
 Use global notifications sparingly and only for critical or high value alerts.
+
+## Anatomy
+<!-- Image demonstrating the solution with numerical callouts to the solution components.
+     Bulleted list of the callouts with explanations of each
+-->
+
+## Behavior
+<!-- Description of overall behavior -->
 
 ###In-blade notifications###
 
@@ -52,6 +91,31 @@ Use a global notification when:
 	High value notifications might prevent service disruptions, or they may result from research you've done that leads you to believe a high percentage of users will act on your recommendation. Keep in mind that we'll be measuring conversion rates and may ask partners to remove recommendations with low uptake.
 
 If you think your notification warrants the global treatment, contact [Ibiza Fx PM](mailto:ibizafxpm@microsoft.com). We want to avoid spamming users, so the total number of global notifications will be limited. We'll want to collaborate to measure conversion rates, which will involve sharing and analyzing data from multiple sources. 
+
+## Do
+<!-- Bulleted list of reminders for best practices-->
+
+## Don't 
+<!-- Bulleted list of things to avoid -->
+
+# Related design patterns
+<!-- Links to related design patterns.  Always include the link to the readme -->
+* Design patterns [top-design.md](top-design.md)
+
+# Research and usability
+<!-- Links to the research for the solution -->
+
+# Telemetry
+<!-- Links to portal telemetry showing the solution usage -->
+
+# For developers
+Developers can use the following information to get started implementing this pattern
+
+## Tips and tricks
+<!-- Bulleted list of tips and tricks for developers -->
+
+## Related documentation
+<!-- Links to related developer docs -->
 
 
 [notification_area]: ../media/design-patterns-page-notifications/in-blade-notification.png
