@@ -54,8 +54,8 @@ Use a global notification when:
 If you think your notification warrants the global treatment, contact [Ibiza Fx PM](mailto:ibizafxpm@microsoft.com). We want to avoid spamming users, so the total number of global notifications will be limited. We'll want to collaborate to measure conversion rates, which will involve sharing and analyzing data from multiple sources. 
 
 
-[notification_area]: ../media/portalfx-ux-inblade-notifications/in-blade-notification.png
-[recco_blades]: ../media/portalfx-ux-inblade-notifications/recco_blades.png
-[notification_hub]: ../media/portalfx-ux-inblade-notifications/notification_topbar.png
+[notification_area]: ../media/design-patterns-page-notifications/in-blade-notification.png
+[recco_blades]: ../media/design-patterns-page-notifications/recco_blades.png
+[notification_hub]: ../media/design-patterns-page-notifications/notification_topbar.png
 
 
