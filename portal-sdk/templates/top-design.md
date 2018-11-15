@@ -20,21 +20,21 @@ Design guidance for common page layouts in Azure.
 
 ### Page patterns
 
-[Full screen](design-patterns-page-fullscreen.md)
+* [Full screen](design-patterns-page-fullscreen.md)
 
-[Grids](design-patterns-page-grid.md)
+* [Grids](design-patterns-page-grid.md)
 
-[Forms](design-patterns-page-forms.md)
+* [Forms](design-patterns-page-forms.md)
 
-[Filtering](design-patterns-page-filtering.md)
+* [Filtering](design-patterns-page-filtering.md)
 
 
 ## Design toolkits and resources
 USe these tools to easily create designs that leverage these patterns
 
-[Design toolkits](design-patterns-toolkits.md)
+* [Design toolkits](design-patterns-toolkits.md)
 
-[Style guide](design-patterns-style-guide.md)
+* [Style guide](design-patterns-style-guide.md)
 
-[Icons](design-patterns-icons.md)
+* [Icons](design-patterns-icons.md)
 
