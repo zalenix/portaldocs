@@ -428,7 +428,7 @@ For more information, please create a stack overflow question (https://aka.ms/po
 <a name="using-the-portal-s-arm-token"></a>
 # Using the Portal&#39;s ARM token
 
-If you aren't using the Portal's ARM token today, there will be a blocking request together your custom token before your extension can call ARM. This drastically hurts performance and even more so at the higher percentiles.
+If you aren't using the Portal's ARM token today, there will be a blocking request to gather your custom token before your extension can call ARM. This drastically hurts performance and even more so at the higher percentiles.
 
 Below is an example PR of another team making this change.
 https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/867497?_a=overview
