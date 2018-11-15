@@ -25,6 +25,8 @@ The page patterns provide guidance for common page layouts in Azure
 
 1. Fullscreen [design-patterns-page-fullscreen.md](design-patterns-page-fullscreen.md)
 
+1. Responsive pages [design-patterns-page-responsive-design.md](design-patterns-page-responsive-design.md)
+
 2. Page with lists [design-patterns-page-grid.md](design-patterns-page-grid.md)
 
 3. Forms [design-patterns-page-forms.md](design-patterns-page-forms.md)
