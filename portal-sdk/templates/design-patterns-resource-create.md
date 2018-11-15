@@ -1,4 +1,4 @@
-﻿# Resource Create 
+﻿# Resource create 
 The resource create pattern provides a simple, intuitive and quick experience for creating resources.
 
 # Context
@@ -12,6 +12,7 @@ The resource create pattern enables quick configuration of a new resource by usi
 
 ## Also known as 
 
+- Wizard
 - Full screen create
 - Tabbed create  
 
@@ -38,25 +39,25 @@ Creating a resource in Azure
 </div>
 
 The resource create experience contains:
-1. Tabs with descriptive text and learn more links to switch between logical input steps
-2. Input fields divided into logical sections with concise, instructional text for each section
-3. Footer navigation with buttons to navigate to previous and next tabs and submit the form
+1. Tabs to switch between logical input steps
+2. Descriptive text and learn more links
+3. Input fields divided into logical sections with concise, instructional text for each section
+4. Footer navigation with buttons to navigate to previous and next tabs and submit the form
 
-### Design Principles
+### Design principles
 
-Follow these recommendations when designing your Create form:
+Follow these recommendations when designing your create experience:
 
-1. Single, full screen blade.
-2. Logical steps provided by the existing `Tabs` control.
-3. Easily and freely navigate between tabs.
-4. Include descriptive and supportive text.
-5. Ability to quickly deploy resources with minimal input.
+1. All actions occur within a ingle, full screen page
+2. Steps are ordered logically using the existing `Tabs` control
+3. Navigating between tabs is not restrictive
+4. Descriptive and supportive text is easily discoverable
+5. Minimal inputs are required for quick deployment
 
 ### Navigation
+Use tabs and sections of input fields to organize content. The `Basics` tab is the starting point for all creates and contains essential configuration info. The experience allows to quickly create a resource at any time with unrestricted navigation between tabs. Enabling customers to freely navigate the tabs reduces the friction for users looking to learn about your resource. The combination of quick creates and tab exploration can lead to additional resource deployments over time.
 
-Use the tabs & sections to organize content. The `Basics` tab should be the starting point for all creates and contain essential configuration info. The design should allow for quick resource creation at any time with unrestricted navigation between tabs. Enabling users to freely navigate the tabs reduces the friction for users looking to learn about your resource.  The combination of quick creates and tab exploration can lead to additional resource deployments over time.
-
-![alt-text](../media/top-extensions-create/Tabs.png "Create experience with Tabs")
+![alt-text](../media/design-patterns-resource-create/Resource-create-1.png "Create experience with tabs")
 
 ## Behavior 
 
@@ -73,7 +74,7 @@ Most creates should have a minimum of 3 tabs; `Basics`, `Tags`, `Review + create
 The first tab contains fields required for creating the resource. Set default values when possible to eliminate additional time spent on create.
 
 The `Basics` tab should contain the typical fields for Azure resources
-* Project Details - Groups the `Subscription` and `Resource Group` controls.  The default text for Project Details is `Select the subscription to manage deployed resources and costs. Use resource groups like folders to organize and manage all your resources.`
+* Project details - Groups the `Subscription` and `Resource Group` controls. The default text for Project details is `Select the subscription to manage deployed resources and costs. Use resource groups like folders to organize and manage all your resources.`
 * `Name` - the name of the resource
 * `Region` - used to be referred to as Location
 * SKU/Cost/Pricing tier - enable the user to control the cost of the resource
@@ -89,7 +90,7 @@ Many enterprises are starting to create subscription and resource group polices 
 
 ![alt-text](../media/top-extensions-create/Tags.png "Tags control")
 
-#### Review + Create
+#### Review + create
 Allowing the user to verify all settings prior to submission ensures accuracy and reduces the need for user redeployments.  Use the summary control to help organize content from multiple tabs.  Disable the create button until validation succeeds.
 
 ![alt-text](../media/top-extensions-create/Review.png "Review + Create")
@@ -98,7 +99,7 @@ Allowing the user to verify all settings prior to submission ensures accuracy an
 
 **Descriptions**: The top of each tab should include a brief description about the content to follow. When possible include `Learn more` links to relevant docs.
 
-**Section Headers**: Used to separate common settings within a tab including a description for the section.
+**Section headers**: Used to separate common settings within a tab including a description for the section.
 
 **Alignment**: Stack labels above controls if the screen resolution < 700px.
 	
