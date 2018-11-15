@@ -1,7 +1,7 @@
 ## Style Guide: For designers
 For an overall style guide refer to the [design-patterns-style-guide.md](design-patterns-style-guide.md)
 
-## Style Guide: Style Sanitization
+## Style: Style Sanitization
 
 To ensure a consistent and sandboxed experience in the portal, CSS is analyzed at runtime to filter out disallowed properties or values. A typical example of a disallowed style is "`position: fixed;`", which would allow developers to move content outside of their parts.
 

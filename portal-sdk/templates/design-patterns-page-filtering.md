@@ -113,7 +113,7 @@ A link with text `Reset filters` that restores the page filters to the state whe
 
 
 ## Behavior
-<!-- Description of overall behavior -->
+<!-- TODO UX - resolve bldae pinning behavior - blade pinned with filter set?  resolve with activity logs -->
 ### Selecting filter value
 Upon selection, the filter will open a dialog box that enables users to configure the filter
 
@@ -129,7 +129,6 @@ The filter configuration is saved when
 * Single selection list - when the user makes the select.  This is shown in the `Add filter` behavior
 * Multi-selection list - when the user closes or clicks away from the filter.  This is shown in the `Subscription filter` in the `All resources` page
 * A group of multi-selection lists - when the user closes or clicks away from the filter.  This is shown in the `Metrics` page
-* Radio grouping - when the user selects the `Apply` button.  Any other action will keep the filter in its existing state.  This is shown in the `Time range filter` on the `Activity logs` page
 * Multiple controls - when the user selects the `Apply` button.  Any other action will keep the filter in its existing state.  This is shown in the `Time range ftiler` on the `Dashboard` page
 
 ### Adding a filter

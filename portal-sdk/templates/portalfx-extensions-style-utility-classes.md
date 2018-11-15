@@ -1,7 +1,7 @@
 ## Style Guide: For designers
 For an overall style guide refer to the [design-patterns-style-guide.md](design-patterns-style-guide.md)
 
-## Style Guide: Utility Classes
+## Style: Utility Classes
 
 There are several built-in classes that make working with the portal just a little bit easier.
 
