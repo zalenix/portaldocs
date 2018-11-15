@@ -44,8 +44,13 @@ Use filtering when it is possible for the list of items to exceed what can be di
 
 ## Anatomy
 
-### Page 
-The search field, filters, add filter and reset filter controls are all logically on one continuous line.
+### Page or grid
+To filter a page or grid, a collection of controls are controls are all logically on one continuous line.
+* Search - a text entry box to perform text matching against items
+* Filter - 0 or more filters to easily filter a particular aspect of the items in the list
+* Add filter - a control to add more filters to the page. A page that contains a fixed set of non-removable filters and no additional filters, does not need an `Add filter` control.
+* Reset filters - a link to reset the filters on the page to the same state as when the page was initially loaded
+
 <div style="max-width:800px">
 <img alttext="Time range" src="../media/design-patterns-page-filtering/anatomy-page.PNG"  />
 </div>
@@ -56,14 +61,18 @@ The single line of controls will wrap one control at a time, as needed
 <img alttext="Time range" src="../media/design-patterns-page-filtering/anatomy-page-wrap-1.PNG"  />
 </div>
 
+
 <div style="max-width:500px">
 <img alttext="Time range" src="../media/design-patterns-page-filtering/anatomy-page-wrap-2.PNG"  />
 </div>
+
 
 <div style="max-width:400px">
 <img alttext="Time range" src="../media/design-patterns-page-filtering/anatomy-page-wrap-3.PNG"  />
 </div>
 
+### Search 
+A text box where the user enters text to match against the result set.
 
 ### Filter 
 The filter itself will display
@@ -88,7 +97,7 @@ Configuring the filter will open a filter configuration dialog where users can s
 <!-- TODO UX get image of filter configuration-->
 
 ### Add filter 
-Control that uses the same visual style as the filters and includes an `Add` icon and the text to `Add filter`.  A page that contains a fixed set of non-removable filters and no additional filters, does not need an `Add filter` control.
+Control that uses the same visual style as the filters and includes an `Add` icon and the text to `Add filter`.  
 
 The configuration dialog for `Add filter` is a searchable list of available filters in normal font.
 <!-- TODO UX screenshot with correct text style text label should be singular -->
@@ -96,7 +105,7 @@ The configuration dialog for `Add filter` is a searchable list of available filt
 <img alttext="Time range" src="../media/design-patterns-page-filtering/add-filter.PNG"  />
 </div>
 
-### Reset filter 
+### Reset filters
 A link with text `Reset filters` that restores the page filters to the state when the page was opened
 <div style="max-width:200px">
 <img alttext="Time range" src="../media/design-patterns-page-filtering/reset-filters.PNG"  />
