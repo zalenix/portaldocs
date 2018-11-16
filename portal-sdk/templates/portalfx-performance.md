@@ -227,6 +227,7 @@ Sure! Book in some time in the Azure performance office hours.
 - Ensure your extension isn't using [obsolete bundles](https://aka.ms/portalfx/obsoletebundles)
 - Use the [Portal's ARM delegation token](#using-the-portals-arm-token)
 - Migrate your extension to [dependency injection](#dependency-injected-view-models)
+- Ensure you aren't making any network requests in your extension boot path (Program.ts file)
 
 ## Operational best practices
 
@@ -241,6 +242,7 @@ Sure! Book in some time in the Azure performance office hours.
       1. Your service is efficiently geo-distributed (Note: we have seen better performance from having an actual presence in a region vs a CDN)
 - Compression (Brotli)
   - Move to V2 targets to get this by default, see [V2 targets](#v2-targets)
+- Use the [Portal's ARM delegation token](#using-the-portals-arm-token)
 - Remove controllers
   - Don't proxy ARM through your controllers
 - Don't require full libraries to make use of a small portion
@@ -265,7 +267,6 @@ Sure! Book in some time in the Azure performance office hours.
 - Remove all dependencies on obsoleted code
   - Loading any required obsoleted bundles is a blocking request during your extension load times
   - See https://aka.ms/portalfx/obsoletebundles for further details
-- Use the [Portal's ARM delegation token](#using-the-portals-arm-token)
 - Use the latest controls available: see https://aka.ms/portalfx/playground
   - This will minimise your observable usage
   - The newer controls are AMD'd reducing what is required to load your blade
@@ -274,7 +275,7 @@ Sure! Book in some time in the Azure performance office hours.
   - Bad CSS selectors are defined as selectors which end in HTML elements for example `.class1 .class2 .class3 div { background: red; }`
     - Since CSS is evaluated from right-to-left the browser will find all `div` elements first, this is obviously expensive
 - Don't use extension level defined style sheets
-    - These can be declared as `<Stylesheet>` unscoped to Blades or Parts in PDL or 
+    - These can be declared as `<Stylesheet>` unscoped to Blades or Parts in PDL
 - Fix your telemetry
   - Ensure you are returning the relevant blocking promises as part of your initialization path (`onInitialize` or `onInputsSet`), today you maybe cheating the system but that is only hurting your users.
   - Ensure your telemetry is capturing the correct timings
