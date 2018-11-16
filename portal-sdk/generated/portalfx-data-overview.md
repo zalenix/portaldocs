@@ -25,7 +25,7 @@ When a Blade or Part view model is instantiated, its constructor is supplied wit
 
 ```typescript
 
-constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: MasterDetailArea.DataContext) {
+constructor(container: MsPortalFx.ViewModels.ContainerContract, dataContext: MasterDetailArea.DataContext) {
     super();
 
     this.title(ClientResources.masterDetailEditMasterBladeTitle);
@@ -64,11 +64,9 @@ From a code organization standpoint, you can think of an Area as little more tha
 Typically, the DataContext associated with a particular Area is instantiated from the '`initialize()`' method of '`\Client\Program.ts`', the entry point of your extension:
 
 ```typescript
-
-this.viewModelFactories.V1$MasterDetail().setDataContextFactory<typeof MasterDetailV1>(
-    "./V1/MasterDetail/MasterDetailArea",
-    (contextModule) => new contextModule.DataContext());
-
+        this.viewModelFactories.V1$$MasterDetail().setDataContextFactory<typeof MasterDetailV1>(
+            "./V1/MasterDetail/MasterDetailArea",
+            (contextModule) => new contextModule.DataContext());
 ```
 
 There is a single DataContext class per Area. That class is - by convention - to be named '`[AreaName]Area.ts`'. For example, the 'MasterDetail' area of the samples has a '`MasterDetailArea.ts`' file created at the following location:
@@ -80,6 +78,7 @@ There is a single DataContext class per Area. That class is - by convention - to
 /**
 * Context for data samples.
 */
+@Di.Class()
 export class DataContext {
    /**
     * This QueryCache will hold all the website data we get from the website controller.
@@ -123,8 +122,8 @@ From an API perspective these DataCache classes all share the same API and usage
 
 ```typescript
 
-this.websiteEntities = new MsPortalFx.Data.EntityCache<SamplesExtension.DataModels.WebsiteModel, number>({
-    entityTypeName: SamplesExtension.DataModels.WebsiteModelType,
+this.websiteEntities = new MsPortalFx.Data.EntityCache<WebsiteModel, number>({
+    entityTypeName: WebsiteModelMetadata.name,
     sourceUri: MsPortalFx.Data.uriFormatter(Util.appendSessionId(DataShared.websiteByIdUri), true),
     findCachedEntity: {
         queryCache: this.websitesQuery,
@@ -151,7 +150,7 @@ this._websiteEntityView = dataContext.websiteEntities.createView(container);
 /**
  * Invoked when the blade's inputs change
  */
-public onInputsSet(inputs: Def.BrowseMasterListViewModel.InputsContract): MsPortalFx.Base.Promise {
+public onInputsSet(): MsPortalFx.Base.Promise {
     return this._websitesQueryView.fetch({ runningStatus: this.runningStatus.value() });
 }
 

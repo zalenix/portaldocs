@@ -126,19 +126,19 @@ Any template based UI in the portal (e.g. template blades or template parts can 
 
 When using HTML and framework controls you have some control over styling. These documents walk through the relevant topics.
 
-* [Styling and theming](/portal-sdk/generated/top-extensions-style-guide.md)
+* [Styling and theming](/portal-sdk/generated/top-extensions-styling.md)
 
-* [HTML, CSS, and SVG sanitization](/portal-sdk/generated/top-extensions-style-guide.md#html-and-css-sanitization)
+* [HTML, CSS, and SVG sanitization](/portal-sdk/generated/top-extensions-styling.md#html-and-css-sanitization)
 
-* [Adding custom CSS](/portal-sdk/generated/top-extensions-style-guide.md#adding-custom-css)
+* [Adding custom CSS](/portal-sdk/generated/top-extensions-styling.md#adding-custom-css)
 
-* [Layout classes](/portal-sdk/generated/top-extensions-style-guide.md#layout-classes)
+* [Layout classes](/portal-sdk/generated/top-extensions-styling.md#layout-classes)
 
-* [Theming](/portal-sdk/generated/top-extensions-style-guide.md#theming)
+* [Theming](/portal-sdk/generated/top-extensions-styling.md#theming)
 
-* [Typography](/portal-sdk/generated/top-extensions-style-guide.md#typography)
+* [Typography](/portal-sdk/generated/top-extensions-styling.md#typography)
 
-* [Iconography](/portal-sdk/generated/top-extensions-style-guide.md#iconography)
+* [Iconography](/portal-sdk/generated/top-extensions-styling.md#iconography)
 
 ### Forms
 

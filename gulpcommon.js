@@ -173,7 +173,7 @@ var self = module.exports = {
         });
 
         const xmlCommentRegEx = "<!--[ ]?%s[ ]?-->([^]+?)<!--[ ]%s[ ]-->";
-        const codeCommentRegEx = "\\/\\/%s([^]+?)\\/\\/%s";
+        const codeCommentRegEx = "\\/\\/[ ]?%s([^]+?)\\/\\/[ ]?%s";
         const ejsCommentRegEx = "<%\\s*\\/\\*[ ]?%s[ ]?\\*\\/\\s*%>([^]+?)<%\\s*\\/\\*[ ]?%s[ ]?\\*\\/\\s*%>";
         const xmlSnippetTemplate = "```xml\n%s\n```";
         const extRegEx = {
@@ -183,7 +183,7 @@ var self = module.exports = {
             ".cs": { regEx: codeCommentRegEx, template: "```csharp\n%s\n```" },
             ".ts": { regEx: codeCommentRegEx, template: "```typescript\n%s\n```" },
             ".tsx": { regEx: codeCommentRegEx, template: "```typescript\n%s\n```" },
-            ".ejs": { regEx: codeCommentRegEx, template: xmlSnippetTemplate }
+            ".ejs": { regEx: ejsCommentRegEx, template: xmlSnippetTemplate }
         };
         const fileExtension = path.extname(config.file);
         const sectionPattern = util.format(extRegEx[fileExtension].regEx, config.section, config.section);
