@@ -163,7 +163,7 @@ PartPerformance will return a table with the following columns:
 ## My Extension 'load' is above the bar, what should I do
 
 1. Profile what is happening in your extension load. [Profile your scenario](#performance-profiling)
-1. Are you using the Portal's ARM token? If no, verify if you can use the Portal's ARM token and if yes, follow: [Using the Portal's ARM token](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-api-authentication)
+1. Are you using the Portal's ARM token? If no, verify if you can use the Portal's ARM token and if yes, follow: [Using the Portal's ARM token](#using-portals-arm-token)
 1. Are you on the hosting service? If no, migrate to the hosting service: [Hosting service documentation](portalfx-extension-hosting-service.md#extension-hosting-service)
     - If you are, have you enabled prewarming? 
         - Follow http://aka.ms/portalfx/docs/prewarming to enable prewarming for your extension load.
@@ -219,10 +219,17 @@ Sure! Book in some time in the Azure performance office hours.
 
 # Performance best practices
 
+## Checklist 
+
+- Migrate to the [hosting service](portalfx-extension-hosting-service.md#extension-hosting-service)
+- Enable [prewarming](http://aka.ms/portalfx/docs/prewarming), running your extension in a web worker
+- Ensure your extension isn't using [shims](#extension-load-shim-dependencies-removing-shims)
+- Ensure your extension isn't using [obsolete bundles](https://aka.ms/portalfx/obsoletebundles)
+- Use the [Portal's ARM delegation token](#using-the-portals-arm-token)
+- Migrate your extension to [dependency injection](#dependency-injected-view-models)
+
 ## Operational best practices
 
-- Enable performance alerts
-  - To ensure your experience never regresses unintentionally, you can opt into configurable alerting on your extension, blade and part load times. See [performance alerting](index-portalfx-extension-monitor.md#performance)
 - Move to [hosting service](portalfx-extension-hosting-service.md#extension-hosting-service)
   - We've seen every team who have onboarded to the hosting service get some performance benefit from the migration.
     - Performance benefits vary from team to team given your current infrastructure
@@ -238,6 +245,8 @@ Sure! Book in some time in the Azure performance office hours.
   - Don't proxy ARM through your controllers
 - Don't require full libraries to make use of a small portion
   - Is there another way to get the same result?
+- Enable performance alerts
+  - To ensure your experience never regresses unintentionally, you can opt into configurable alerting on your extension, blade and part load times. See [performance alerting](index-portalfx-extension-monitor.md#performance)
 - If you're using iframe experiences
     1. Ensure you have the correct caching enabled
     1. Ensure you have compression enabled
@@ -249,14 +258,14 @@ Sure! Book in some time in the Azure performance office hours.
 - Reduce network calls
   - Ideally 1 network call per blade
   - Utilise `batch` to make network requests, see our [batch documentation](http://aka.ms/portalfx/docs/batch)
+- Don't use old PDL blades composed of parts: [hello world template blade](portalfx-no-pdl-programming.md#building-a-hello-world-template-blade-using-decorators)
+  - Each part on the blade has its own viewmodel and template overhead, switching to a no-pdl template blade will mitigate that overhead
 - Remove automatic polling
   - If you need to poll, only poll on the second request and ensure `isBackgroundTask: true` in the batch call
 - Remove all dependencies on obsoleted code
   - Loading any required obsoleted bundles is a blocking request during your extension load times
   - See https://aka.ms/portalfx/obsoletebundles for further details
-- Use the Portal's ARM token
-- Don't use old PDL blades composed of parts: [hello world template blade](portalfx-no-pdl-programming.md#building-a-hello-world-template-blade-using-decorators)
-  - Each part on the blade has its own viewmodel and template overhead, switching to a no-pdl template blade will mitigate that overhead
+- Use the [Portal's ARM delegation token](#using-the-portals-arm-token)
 - Use the latest controls available: see https://aka.ms/portalfx/playground
   - This will minimise your observable usage
   - The newer controls are AMD'd reducing what is required to load your blade
@@ -264,6 +273,8 @@ Sure! Book in some time in the Azure performance office hours.
   - Build with warnings as errors and fix them
   - Bad CSS selectors are defined as selectors which end in HTML elements for example `.class1 .class2 .class3 div { background: red; }`
     - Since CSS is evaluated from right-to-left the browser will find all `div` elements first, this is obviously expensive
+- Don't use extension level defined style sheets
+    - These can be declared as `<Stylesheet>` unscoped to Blades or Parts in PDL or 
 - Fix your telemetry
   - Ensure you are returning the relevant blocking promises as part of your initialization path (`onInitialize` or `onInputsSet`), today you maybe cheating the system but that is only hurting your users.
   - Ensure your telemetry is capturing the correct timings
@@ -345,40 +356,41 @@ At the top of your file, where dependencyPath is the path to your AMD OSS librar
 /// <amd-dependency path="hammer" />
 ```
 
-Finally, since the bundler will now automatically pick up the library’s file and bundle it properly, you can remove the shim code from your C#; you can find said code by looking for derived classes of ContentBundleDefinition.
+Finally, since the bundler will now automatically pick up the library’s file and bundle it properly, you can remove the shim code from your C#; you can find said code by looking for derived classes of `ContentBundleDefinition`.
 
 This should cover the vast majority of shim-to-AMD conversion cases.
 For more information, please create a stack overflow question (https://aka.ms/portalfx/ask) and reach out to ibizaperfv@microsoft.com.
 
-# Performance profiling
+# Using the Portal's ARM token
 
-## How to profile your scenario
+If you aren't using the Portal's ARM token today, there will be a blocking request to gather your custom token before your extension can call ARM. This drastically hurts performance and even more so at the higher percentiles.
 
-1. Open a browser and load portal using `https://portal.azure.com/?clientoptimizations=bundle&feature.nativeperf=true​`
-    - `clientOptimizations=bundle` will allow you to assess which bundles are being downloaded in a user friendly manner
-    - `feature.nativeperf=true` will expose native performance markers within your profile traces, allowing you to accurately match portal telemetry markers to the profile
-1. Go to a blank dashboard​
-1. Clear cache (hard reset), remove all application data and reload the portal​
-1. Use the browsers profiling timeline to throttle both network and CPU, this best reflects the 95th percentile scenario, then start the profiler
-1. Walk through your desired scenario
-    - Switch to the desired dashboard
-    - Deep link to your blade, make sure to keep the feature flags in the deep link. Deeplinking will isolate as much noise as possible from your profile
-1. Stop the profiler
-1. Assess the profile
+Below is an example PR of another team making this change.
+https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/867497?_a=overview
 
-## Identifying common slowdowns
+## Ensure you verify:
+- If you do not require your own token, and you currently aren’t relying on server side validation of the token you should be able to make the change easily.
+- If you do require your own token, assess if that is necessary and migrate to the Portal’s token if possible.
+- If you’re relying on server side validation, please update that validation to validate the Portal App Id instead – if that is sufficient for you.
 
-1. Blocking network calls
-    - Fetching data - We've seen often that backend services don't have the same performance requirements as the front end experience, because of which you may need to engage your backend team/service to ensure your front end experience can meet the desired performance bar. 
-    - Required files - Downloading more than what is required, try to minimise your total payload size. 
-1. Heavy rendering and CPU from overuse of UI-bound observables
-    - Are you updating the same observable repeatedly in a short time frame? Is that reflected in the DOM in any way? Do you have computeds listening to a large number of observables?
+To fix this it is a simple change to the Portal’s config here: http://aka.ms/portalfx/extensionsprodjson
+See below for further details.
 
-## Verifying a change
+Please send a pull request to the portal’s config with your change. Unfortunately, we don’t like to make config changes on behalf of extensions.
+- To send a pull request first create a work item (https://aka.ms/portalfx/configtask)
+- Then create a new branch from that work item via the ‘create a new branch’ link 
+- Make your required changes in the correct files
+- Send the PR and include GuruA and SanSom as the reviewers.
 
-To correctly verify a change you will need to ensure the before and after are instrumented correctly with telemetry. Without that you cannot truly verify the change was helpful.
-We have often seen what seems like a huge win locally transition into a smaller win once it's in production, we've also seen the opposite occur too.
-The main take away is to trust your telemetry and not profiling, production data is the truth. 
+Please make this change in all applicable environments, dogfood, PROD, FF, BF, and MC.
+The config files follow the naming convention of ‘Extension.*.json’ – where * is the environment.
+
+## Changes required
+
+You need to move the oAuthClientId and oAuthClientCertificate properties to be defined on the non-arm resourceAccess.
+See the PR below for an example of these changes. 
+https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/867497?_a=overview
+
 
 # V2 targets
 
@@ -512,7 +524,7 @@ The framework supports loading view models using dependency injection. If you mi
 ## Prerequistes
 
 - Migrate to V2 targets if you haven’t done so (See: [V2 targets](#v2-targets))
-- Upgrade to at least SDK 3001+
+- Upgrade to at least SDK 5.0.302.3001+
 - Cleanup your extension project TypeScript code and remove all uses of export = Main.
   - Check this PR in the portal repo for an example: https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/1003495?_a=overview
   - You do not have to remove trailing newlines like the PR.
@@ -592,6 +604,36 @@ MsPortalFx.require("Fx/DependencyInjection")
 - https://msazure.visualstudio.com/One/_git/MGMT-AppInsights-InsightsPortal/pullrequest/1124038
 - https://msazure.visualstudio.com/One/_git/AzureUX-IaaSExp/pullrequest/1176274
 - https://msazure.visualstudio.com/One/_git/AzureUX-IaaSExp/pullrequest/1159718
+
+# Performance profiling
+
+## How to profile your scenario
+
+1. Open a browser and load portal using `https://portal.azure.com/?clientoptimizations=bundle&feature.nativeperf=true​`
+    - `clientOptimizations=bundle` will allow you to assess which bundles are being downloaded in a user friendly manner
+    - `feature.nativeperf=true` will expose native performance markers within your profile traces, allowing you to accurately match portal telemetry markers to the profile
+1. Go to a blank dashboard​
+1. Clear cache (hard reset), remove all application data and reload the portal​
+1. Use the browsers profiling timeline to throttle both network and CPU, this best reflects the 95th percentile scenario, then start the profiler
+1. Walk through your desired scenario
+    - Switch to the desired dashboard
+    - Deep link to your blade, make sure to keep the feature flags in the deep link. Deeplinking will isolate as much noise as possible from your profile
+1. Stop the profiler
+1. Assess the profile
+
+## Identifying common slowdowns
+
+1. Blocking network calls
+    - Fetching data - We've seen often that backend services don't have the same performance requirements as the front end experience, because of which you may need to engage your backend team/service to ensure your front end experience can meet the desired performance bar. 
+    - Required files - Downloading more than what is required, try to minimise your total payload size. 
+1. Heavy rendering and CPU from overuse of UI-bound observables
+    - Are you updating the same observable repeatedly in a short time frame? Is that reflected in the DOM in any way? Do you have computeds listening to a large number of observables?
+
+## Verifying a change
+
+To correctly verify a change you will need to ensure the before and after are instrumented correctly with telemetry. Without that you cannot truly verify the change was helpful.
+We have often seen what seems like a huge win locally transition into a smaller win once it's in production, we've also seen the opposite occur too.
+The main take away is to trust your telemetry and not profiling, production data is the truth. 
 
 [TelemetryOnboarding]: <portalfx-telemetry-getting-started.md>
 [Ext-Perf/Rel-Report]: <http://aka.ms/portalfx/dashboard/extensionperf>
