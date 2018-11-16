@@ -1,7 +1,7 @@
 <a name="azure-portal-extension-development-documentation"></a>
 # Azure portal extension development documentation
 
-This is the home page for all documentation related to onboarding, developing, operating, and anything else to do with owning an Azure portal extension.
+This is the home page for all documentation related to onboarding, designing, developing, operating, and anything else to do with owning an Azure portal extension.
 
 Couldn't find what you needed? [Ask about the docs on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-missing-docs).
 
@@ -50,6 +50,14 @@ Learn how the framework is structured and how it is designed to run in multiple 
 * [TreeView improvements](/portal-sdk/generated/) - *Checkboxes, commands, and Load More / Virtualization*
 
 -->
+
+<a name="azure-portal-extension-development-documentation-design-guide"></a>
+## Design guide
+
+Design patterns provide solutions for common Azure scenarios.  By leveraging these patterns, Azure teams will accelerate extension development and provide users with a familiar experience so that users can easily adopt new Azure services.  The design guide covers [design toolkits, style guidance](/portal-sdk/generated/top-design.md#design-toolkits-and-resources), [common page layouts](/portal-sdk/generated/top-design.md#page) and [the resource management pattern](/portal-sdk/generated/top-design.md#resource-management).
+
+* [Design guide](/portal-sdk/generated/top-design.md)
+
 
 <a name="azure-portal-extension-development-documentation-development-guide"></a>
 ## Development guide
@@ -130,19 +138,19 @@ Any template based UI in the portal (e.g. template blades or template parts can 
 
 When using HTML and framework controls you have some control over styling. These documents walk through the relevant topics.
 
-* [Styling and theming](/portal-sdk/generated/top-extensions-style-guide.md)
+* [Styling and theming](/portal-sdk/generated/top-extensions-styling.md)
 
-* [HTML, CSS, and SVG sanitization](/portal-sdk/generated/top-extensions-style-guide.md#html-and-css-sanitization)
+* [HTML, CSS, and SVG sanitization](/portal-sdk/generated/top-extensions-styling.md#html-and-css-sanitization)
 
-* [Adding custom CSS](/portal-sdk/generated/top-extensions-style-guide.md#adding-custom-css)
+* [Adding custom CSS](/portal-sdk/generated/top-extensions-styling.md#adding-custom-css)
 
-* [Layout classes](/portal-sdk/generated/top-extensions-style-guide.md#layout-classes)
+* [Layout classes](/portal-sdk/generated/top-extensions-styling.md#layout-classes)
 
-* [Theming](/portal-sdk/generated/top-extensions-style-guide.md#theming)
+* [Theming](/portal-sdk/generated/top-extensions-styling.md#theming)
 
-* [Typography](/portal-sdk/generated/top-extensions-style-guide.md#typography)
+* [Typography](/portal-sdk/generated/top-extensions-styling.md#typography)
 
-* [Iconography](/portal-sdk/generated/top-extensions-style-guide.md#iconography)
+* [Iconography](/portal-sdk/generated/top-extensions-styling.md#iconography)
 
 <a name="azure-portal-extension-development-documentation-development-guide-forms"></a>
 ### Forms

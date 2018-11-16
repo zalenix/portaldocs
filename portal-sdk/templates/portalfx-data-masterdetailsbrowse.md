@@ -31,7 +31,11 @@ contains an EditScopeCache which is used in the master detail edit scenario.
 If you're creating a new Area one more step that needs to be done is to edit your `Program.ts` file to create the DataContext when your 
 extension is loaded. Find the `initializeDataContexts` method and then use the `setDataContextFactory` method to set the DataContext like so:
 
-{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/Program.ts", "section": "data#createDataContext"}
+```typescript
+        this.viewModelFactories.V1$$MasterDetail().setDataContextFactory<typeof MasterDetailV1>(
+            "./V1/MasterDetail/MasterDetailArea",
+            (contextModule) => new contextModule.DataContext());
+```
 
 ### The websites QueryCache and EntityCache
 Now that we've gone over the DataContext that is be available to all blades in the Area let's go over the data caches we'll use

@@ -30,6 +30,7 @@ The DataContext for the MasterDetail Area contains the following:
 /**
 * Context for data samples.
 */
+@Di.Class()
 export class DataContext {
    /**
     * This QueryCache will hold all the website data we get from the website controller.
@@ -55,11 +56,9 @@ If you're creating a new Area one more step that needs to be done is to edit you
 extension is loaded. Find the `initializeDataContexts` method and then use the `setDataContextFactory` method to set the DataContext like so:
 
 ```typescript
-
-this.viewModelFactories.V1$MasterDetail().setDataContextFactory<typeof MasterDetailV1>(
-    "./V1/MasterDetail/MasterDetailArea",
-    (contextModule) => new contextModule.DataContext());
-
+        this.viewModelFactories.V1$$MasterDetail().setDataContextFactory<typeof MasterDetailV1>(
+            "./V1/MasterDetail/MasterDetailArea",
+            (contextModule) => new contextModule.DataContext());
 ```
 
 <a name="master-details-browse-scenario-the-websites-querycache-and-entitycache"></a>
@@ -72,7 +71,7 @@ The first is the QueryCache. We use a QueryCache to cache a list of items as opp
 ```typescript
 
 this.websitesQuery = new QueryCache<WebsiteModel, WebsiteQueryParams>({
-    entityTypeName: SamplesExtension.DataModels.WebsiteModelType,
+    entityTypeName: WebsiteModelMetadata.name,
 
     // when fetch() is called on the cache the params will be passed to this function and it
     // should return the right URI for getting the data
@@ -109,7 +108,7 @@ The other cache used in this sample is the EntityCache:
 ```typescript
 
 this.websiteEntities = new EntityCache<WebsiteModel, number>({
-    entityTypeName: SamplesExtension.DataModels.WebsiteModelType,
+    entityTypeName: WebsiteModelMetadata.name,
 
     // uriFormatter() is a function that helps you fill in the parameters passed by the fetch()
     // call into the URI used to query the backend. In this case websites are identified by a number
@@ -193,7 +192,7 @@ As is standard practice we'll call the view's `fetch` method on the blade's `onI
 /**
  * Invoked when the blade's inputs change
  */
-public onInputsSet(inputs: Def.BrowseMasterListViewModel.InputsContract): MsPortalFx.Base.Promise {
+public onInputsSet(): MsPortalFx.Base.Promise {
     return this._websitesQueryView.fetch({ runningStatus: this.runningStatus.value() });
 }
 
@@ -244,8 +243,8 @@ Then in the `onInputsSet` we call `fetch` passing the ID of the website we want 
 ```typescript
 
 /**
-* Invoked when the blade's inputs change.
-*/
+ * Invoked when the blade's inputs change.
+ */
 public onInputsSet(inputs: Def.BrowseDetailViewModel.InputsContract): MsPortalFx.Base.Promise {
     return this._websiteEntityView.fetch(inputs.currentItemId);
 }
