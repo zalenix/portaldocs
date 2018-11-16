@@ -1,7 +1,7 @@
 ## Style Guide: For designers
 For an overall style guide refer to the [design-patterns-style-guide.md](design-patterns-style-guide.md)
 
-## Style Guide: Themed Color Classes
+## Style: Themed Color Classes
 
 Base colors within the portal have been outfitted to change based on user-chosen themes. Since the actual hex values of these colors are determined by the theme definitions themselves, acceptable contrast between elements must be maintained by framework. In order to react to theme changes and maintain readability, the following classes have been made available to extension authors:
 
