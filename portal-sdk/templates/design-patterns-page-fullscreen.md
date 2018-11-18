@@ -82,9 +82,9 @@ Use the Close button in the right corner
 
 ## Related design patterns
 
-* Resource Create [design-patterns-resource-create.md](design-patterns-resource-create.md)
-* Resource Browse [design-patterns-resource-browse.md](design-patterns-resource-browse.md)
-* Resource Manage [design-patterns-resource-manage.md](design-patterns-resource-manage.md)
+* Create a Resource [design-patterns-resource-create.md](design-patterns-resource-create.md)
+* Browse Resources [design-patterns-resource-browse.md](design-patterns-resource-browse.md)
+* Manage a Resource [design-patterns-resource-manage.md](design-patterns-resource-manage.md)
 * Design patterns [top-design.md](top-design.md)
 
 ## Research and usability

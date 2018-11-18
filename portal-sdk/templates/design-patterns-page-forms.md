@@ -115,7 +115,7 @@ The buttons for submitting and cancelling a form should follow these recommendat
 * Buttons are at the bottom of the page in a non-scrollable docked area
 * Use a single `Close` button if experience is informational only
 * Use `Yes` and `No` buttons for destructive actions and include a confirmation question in the dialog - "Delete this VM?"
-* Use the "action name", like `Move`, `Save`, `Attach`, `Add`, for the submit button and `Cancel` as the button to close the dialog
+* Use the "action name", like **Move**, **Save**, **Attach**, **Add**, for the submit button and `Cancel` as the button to close the dialog
 * Use `Ok` and `Cancel` as a last resort if a better action name is not apparent
 
 <!-- TODO Should the "submit" buttons for forms always be active, so that user can get form validation -->
@@ -169,7 +169,7 @@ Follow the button recommendations above
 
 ## Related design patterns
 * Full screen [design-patterns-page-fullscreen.md](design-patterns-page-fullscreen.md)
-* Resource Create [design-patterns-resource-create.md](design-patterns-resource-create.md)
+* Create a Resource [design-patterns-resource-create.md](design-patterns-resource-create.md)
 * Design patterns [top-design.md](top-design.md)
 
 

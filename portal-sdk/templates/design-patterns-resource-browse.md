@@ -1,28 +1,27 @@
-﻿# Resource Browse 
-The resource browse pattern provides resource discovery and management at scale spanning multiple subscriptions and resource groups.
+﻿# Browse Resources
+The browse resources pattern provides resource discovery and management of multiple resources spanning multiple subscriptions and resource groups.
 
 ### Context
-In order to manage a single Azure resource, users often locate the resource in a list.
+When managing Azure resources, users want to locate resources in a list, perform operations against items in the list and navigate to a specific resource.
 
 ### Problem
 Users need to see a list of resources, perform actions on items in the list, and navigate to the details for a specific resource.  When the user has no resources of that type, the user needs guidance on the value of the resource, links to any supplemental docs and a button to create a resource instance.
 
 ### Solution
-The resource browse pattern shows resources by displaying key resource properties in a grid view. Resource browse provides easy filtering, searching, sorting and grouping within the list. The user can perform bulk actions on selected resources directly from the list. Selecting a resource from the browse experience opens the resource to invoke the `resource manage` experience.
+The browse resources pattern shows resources by displaying key resource properties in a grid view. browse resources provides easy filtering, searching, sorting and grouping within the list. The user can perform bulk actions on selected resources directly from the list. Selecting a resource from the browse experience opens the resource to invoke the `manage a resource` experience.
 
 
 #### Also known as 
 
 -   Resource list
-
 -   Browse
+-   Resource browse
   
-
 ### Examples 
 
 #### Example images
 <div style="max-width:800px">
-<img alttext="Resource browse example" src="../media/design-patterns-resource-browse/resource-browse-1.png"  />
+<img alttext="browse resources example" src="../media/design-patterns-resource-browse/resource-browse-1.png"  />
 </div>
 
 #### Example uses
@@ -33,14 +32,14 @@ These Azure resources are good examples of this design pattern 
 -   [Virtual machines](https://rc.portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Compute%2FVirtualMachines) 
 
 ### Use when
-Building an extension to manage Azure resources
+Showing a list of Azure resources
 
 ### Anatomy  
 <div style="max-width:800px">
-<img alttext="Resource browse anatomy" src="../media/design-patterns-resource-browse/resource-browse-anatomy.png"/>
+<img alttext="browse resources anatomy" src="../media/design-patterns-resource-browse/resource-browse-anatomy.png"/>
 </div>
 
-The resource browse pattern is full screen experience that usually contains:
+The browse resources pattern is full screen experience that usually contains:
 1. Toolbar
 2. Search
 3. Record count
@@ -54,18 +53,18 @@ The title of a browse page is generally a descriptive, plural noun that reflects
 
 #### Toolbar commands
 The toolbar for the browse pattern contains actions that operate against a grid, i.e. 'Add' or 'Delete' a resource, as well as resource-specific actions (for a limited set of resource types). 
-There are two sets of actions on the toolbar. The first set of actions do not require a grid row selection and operate at the page level, for exampple `Add`, `Edit columns` and `Refresh`. The second set, separated by a pipe, is enabled only when one or more resource items are selected on the grid. 
+There are two sets of actions on the toolbar. The first set of actions do not require a grid row selection and operate at the page level, for exampple **Add**, **Edit columns** and **Refresh**. The second set, separated by a pipe, is enabled only when one or more resource items are selected on the grid. 
 
 <div style="max-width:800px">
-<img alttext="Resource browse toolbar" src="../media/design-patterns-resource-browse/resource-browse-toolbar.png"/>
+<img alttext="browse resources toolbar" src="../media/design-patterns-resource-browse/resource-browse-toolbar.png"/>
 
-The recommended actions for the resource browse toolbar are:
-* `Add` invokes the resource create experience
-* `Edit columns` changes the columns in the grid
-* `Refresh` repopulates the grid with fresh data
+The recommended actions for the browse resources toolbar are:
+* **Add** invokes the resource create experience
+* **Edit columns** changes the columns in the grid
+* **Refresh** repopulates the grid with fresh data
 * `|` separator for the row-level actions
-* `Assign tags` enables tagging for the selected grid items
-* `Delete` will permanently remove the selected grid items from Azure
+* **Assign tags** enables tagging for the selected grid items
+* **Delete** will permanently remove the selected grid items from Azure
 
 #### Filtering
 The filter panel contains properties that are common across all resource types displayed in the grid.
@@ -97,21 +96,21 @@ When the resource list has no items to display, provide the user with informatio
 
 ### Don't 
 
-- Don’t offer a resource browse experience that doesn’t have any resource-specific properties    
+- Don’t offer a browse resources experience that doesn’t have any resource-specific properties    
 
 ### Related design patterns
 
 * Grid [design-patterns-page-grid.md](design-patterns-page-grid.md)
 * Full screen [design-patterns-page-fullscreen.md](design-patterns-page-fullscreen.md)
-* Resource Create [design-patterns-resource-create.md](design-patterns-resource-create.md)
-* Resource Manage [design-patterns-resource-manage.md](design-patterns-resource-manage.md)
+* Create a Resource [design-patterns-resource-create.md](design-patterns-resource-create.md)
+* Manage a Resource [design-patterns-resource-manage.md](design-patterns-resource-manage.md)
 * Design patterns [top-design.md](top-design.md)
 
 ### Research and usability
 
 ### Telemetry
 
-## For developers 
+ # For developers 
 Developers can use the following information to get started implementing this pattern
 
 ### Tips and tricks 

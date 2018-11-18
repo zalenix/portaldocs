@@ -80,7 +80,7 @@ The `Basics` tab should contain the typical fields for Azure resources
 * `Region` - used to be referred to as Location
 * SKU/Cost/Pricing tier - enable the user to control the cost of the resource
 
-If your resource comes in different sizes or SKUs, make sure to include the pricing tier in your create flow. To make it easy for users to update resources sizes and SKUs, include the pricing tier in the resource manage experience.
+If your resource comes in different sizes or SKUs, make sure to include the pricing tier in your create flow. To make it easy for users to update resources sizes and SKUs, include the pricing tier in the manage a resource experience.
 <!-- TODO UX add info on pricing tier using grid for easy comparison -->
 
 #### Optional tabs
@@ -145,8 +145,8 @@ The post create page provides realtime deployment status, help with troubleshoot
 
 -   Forms [design-patterns-page-forms.md](design-patterns--page-forms.md)
 -   Full screen [design-patterns-page-fullscreen.md](design-patterns--page-fullscreen.md)
--   Resource Browse [design-patterns-resource-browse.md](design-patterns-resource-browse.md)
--   Resource Manage [design-patterns-resource-manage.md](design-patterns-resource-manage.md)
+-   Browse Resources [design-patterns-resource-browse.md](design-patterns-resource-browse.md)
+-   Manage a Resource [design-patterns-resource-manage.md](design-patterns-resource-manage.md)
 -   Design patterns [top-design.md](top-design.md)
 
 ## Research and usability 
@@ -160,11 +160,11 @@ Developers can use the following information to get started implementing this pa
 
 -   Set a maximimum width of 600px for the tab content area that contains input fields
 -   Screen resolution - If screen resolution is less than 700px, set left aligned = false
--   To include the visual connector between Subscription and RG, set `Nested = True` on the RG control.  
+-   To include the visual connector between Subscription and resource group, set `Nested = True` on the RG control.  
 
 ## Related documentation
 
--   Resource Create [top-extensions-create.md](./top-extensions-create.md)
+-   Create a Resource [top-extensions-create.md](./top-extensions-create.md)
 
 
 

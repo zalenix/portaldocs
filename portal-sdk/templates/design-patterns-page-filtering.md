@@ -97,7 +97,7 @@ Configuring the filter will open a filter configuration dialog where users can s
 <!-- TODO UX get image of filter configuration-->
 
 ### Add filter 
-Control that uses the same visual style as the filters and includes an `Add` icon and the text to `Add filter`.  
+Control that uses the same visual style as the filters and includes an **Add** icon and the text to `Add filter`.  
 
 The configuration dialog for `Add filter` is a searchable list of available filters in normal font.
 <!-- TODO UX screenshot with correct text style text label should be singular -->
