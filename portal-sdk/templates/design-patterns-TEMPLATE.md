@@ -4,34 +4,34 @@
 "Forms are the manner in which we gather and validate user input."
 -->
 
-# Context
+## Context
 <!-- Short description of the context.  For example, "Users input information when managing Azure resources." -->
 
-# Problem
+## Problem
 <!-- Short description of the problem.  For example, 
 "Users need to input information to create, deploy and configure resources."
 -->
 
-# Solution
+## Solution
 <!-- Short description of the solution For example 
 "The portal offers several input methods with consistent field and form validation to ensure users can easily input information and understand whether that info is valid.  " 
 -->
 
-## Also known as
+### Also known as
 <!-- Bulleted list of other terms used to describe the solution, if any -->
 
-# Examples
+## Examples
 
-## Example images
+### Example images
 <!-- Include example image of the solution in the portal -->
 <div style="max-width:800px">
 <img alttext="Example image" src="../media/<folder>/<image_name>.png"  />
 </div>
 
-## Example uses
+### Example uses
 <!-- Descriptions and ideally deep links into the portal for running examples -->
 
-# Use when
+## Use when
 <!-- Description of when to use this solution.  For example "User is creating a resource" -->
 
 ## Anatomy
@@ -48,14 +48,14 @@
 ## Don't 
 <!-- Bulleted list of things to avoid -->
 
-# Related design patterns
+## Related design patterns
 <!-- Links to related design patterns.  Always include the link to the readme -->
 * Design patterns [top-design.md](top-design.md)
 
-# Research and usability
+## Research and usability
 <!-- Links to the research for the solution -->
 
-# Telemetry
+## Telemetry
 <!-- Links to portal telemetry showing the solution usage -->
 
 # For developers

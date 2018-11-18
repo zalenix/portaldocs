@@ -39,12 +39,12 @@ Designing at 1366 force a focus on the most important information. When designin
 1366 x768 (or 1280 x 720) are still the resolutions used at events, so we want to ensure everything looks great at 1366. 
 
 
-## Telemetry
+### Telemetry
 Reports showing portal usage
 [Screen resolution telemetry](https://msit.powerbi.com/groups/me/dashboards/7b218d20-f0aa-4858-b0f9-567386a0ac1c)
 
 
-# Related design patterns
+## Related design patterns
 * Design patterns [top-design.md](top-design.md)
 
 

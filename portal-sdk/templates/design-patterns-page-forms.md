@@ -1,20 +1,20 @@
 ﻿# Forms
 Forms are the manner in which we gather and validate user input.
 
-# Context
+## Context
 Users enter information to manage Azure resources.
 
-# Problem
+## Problem
 Users need to enter information to create, configure and manage resources.  Users file support tickets and provide feedback by entering information in the portal.
 
-# Solution
+## Solution
 The portal offers several variations of forms with consistent field layout and form validation to ensure users can easily enter information and understand whether that info is valid.  The form variations are `dialogs`, `context panes`, `full screen blades` and `wizards`.  Well designed forms enable users to increase the speed and accuracy of input and lead to successful form completion.
 
-## Also known as
+### Also known as
 
-# Examples
+## Examples
 
-## Example images
+### Example images
 
 ### Dialog
 <div style="max-width:800px">
@@ -46,14 +46,14 @@ The portal offers several variations of forms with consistent field layout and f
 <img alttext="Forms example" src="../media/design-patterns-page-forms/forms.png"  />
 </div>
 
-## Example uses
+### Example uses
 * Stopping a VM - dialog 
 * Tagging a VM - context pane
 * Moving a VM to a different resource group - full screen blade
 * Editing VM diagnostic settings - full screen blade from resource menu
 * Creating a VM - wizard [Free account virtual machine](https://rc.portal.azure.com/#create/microsoft.freeaccountvirtualmachine)
 
-# Use when
+## Use when
 Choose among these available options when designing experiences for the user to enter information.
 
 * `Dialogs` are used for very simple input/acknowledgment and appear next to the user click target
@@ -167,15 +167,15 @@ Follow the button recommendations above
 -   Avoid buttons for clearing a form. The risk of accidental deletion outweighs the unlikely need to start over.
 
 
-# Related design patterns
+## Related design patterns
 * Full screen [design-patterns-page-fullscreen.md](design-patterns-page-fullscreen.md)
 * Resource Create [design-patterns-resource-create.md](design-patterns-resource-create.md)
 * Design patterns [top-design.md](top-design.md)
 
 
-# Research and usability
+## Research and usability
 
-# Telemetry
+## Telemetry
 
 # For developers
 Developers can use the following information to get started implementing this pattern

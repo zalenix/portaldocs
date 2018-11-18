@@ -1,29 +1,29 @@
 # Responsive design
 Here are some guidelines for making your experience look good at all resolutions.
 
-# Context
+## Context
 When we say responsive design, it’s shorthand for an Azure layout that responds dynamically to different browser window sizes or thresholds.
 
 Template blades allow extensions to define their design with almost all of the same flexibility and responsiveness of a traditional website. We do NOT mean “responsiveness” as it relates to mobile devices. Azure remains a rich desktop experience and is still optimized for use on laptop screens and monitors.
 
-# Problem
+## Problem
 Without the proper settings in place, content will stretch infinitely on large screens.
 
-# Solution
+## Solution
 There are a few quick fixes you can make to set minimum and maximum widths for your UI elements.
 
-## Also known as
+### Also known as
 - Min width
 - Max width
 
-# Examples
+## Examples
 
-## Example images
+### Example images
 
 
-## Example uses
+### Example uses
 
-# Use when
+## Use when
 All Azure experiences should should consider responsive design with set minimum and maximum content widths.
 
 ## Anatomy
@@ -66,14 +66,14 @@ This example has slightly narrower text boxes at 220px
 
 ## Don't 
 
-# Related design patterns
+## Related design patterns
 <!-- Links to related design patterns.  Always include the link to the readme -->
 * Design patterns [top-design.md](top-design.md)
 
-# Research and usability
+## Research and usability
 <!-- Links to the research for the solution -->
 
-# Telemetry
+## Telemetry
 <!-- Links to portal telemetry showing the solution usage -->
 
 # For developers

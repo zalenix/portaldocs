@@ -1,32 +1,32 @@
 ﻿# Resource Manage 
 The Resource Manage pattern provides the configuration and management of a single Azure resource.
 
-# Problem
+## Problem
 Users manage many different types of Azure resources. For settings that are common across resources, users expect a common interaction. For settings that are unique to a resource, users need a way to easily find those settings.
 
-# Solution
+## Solution
 The Resource Manage pattern is used to configure and manage a single Azure resource by using a resource menu to navigate the resource blades. The resource manage page is typically opened from the resource browse page, when the user needs to see more details or make a change to a specific resource. The resource manage page can also be opened from related resources that link to it.
 
-## Also known as 
+### Also known as 
 -   Resource blade 
 -   Resource detail
 -   Resource menu  
 
-# Examples
+## Examples
 ---------
 
-## Example images
+### Example images
 <div style="max-width:800px">
 <img alttext="Resource manage example" src="../media/design-patterns-resource-manage/resource-overview.png"  />
 </div>
 
-## Example uses
+### Example uses
 These Azure resources are good examples of this design pattern 
 
 -   Redis cache
 -   [Virtual machines](https://rc.portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Compute%2FVirtualMachines)
 
-# Use when 
+## Use when 
 Managing a single azure resource.
 
 ## Anatomy  
@@ -168,14 +168,14 @@ Display guiding content and key information about the resource
 
 * Don’t build your overview page as a PDL blade   
 
-# Related design patterns
+## Related design patterns
 * Resource Create [design-patterns-resource-create.md](design-patterns-resource-create.md)
 * Resource Browse [design-patterns-resource-browse.md](design-patterns-resource-browse.md)
 * Design patterns [top-design.md](top-design.md)
 
-# Research and usability
+## Research and usability
 
-# Telemetry
+## Telemetry
 
 # For developers 
 Developers can use the following information to get started implementing this pattern
