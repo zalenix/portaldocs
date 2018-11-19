@@ -6,8 +6,8 @@ The Favorites in the left nav and the 'All services' menu are the primary ways t
 
 There are 2 ways you can be surfaced in Browse:
 
-1. [Browse](#building-browse-experiences-browse-for-arm-resources) for ARM resources
-1. [Custom blade](#building-browse-experiences-custom-blade) if you have a single instance and not a list of resources
+1. [Browse](#browse-for-arm-resources) for ARM resources
+1. [Custom blade](#custom-blade) if you have a single instance and not a list of resources
 
 ### Browse for ARM resources
 
@@ -31,10 +31,125 @@ That's it, you can see an example of that below
 
 ![No-code Browse grid](../media/portalfx-browse/nocode.png)
 
-ARM Browse requires the following:
+All asset types have the following requirements:
 
-* Asset blade must accept a single `Id` input property
-* Asset id must be the resource id (not an object)
+1. The asset type blade **_must_** have a single `id` parameter that is the asset id
+1. The asset type part must be the same as the blade's pinned part
+
+> Asset types that represent Azure Resource Manager (ARM) resource types also have the following requirements:
+
+1. The asset id **_must_** be the string resource id
+1. The ARM RP manifest should include a RP, resource type, and resource kind metadata
+
+#### Defining your asset type
+To define your asset type, simply add the following snippet to PDL:
+
+```xml
+<AssetType
+    Name="MyAsset"
+    ServiceDisplayName="{Resource MyAsset.service, Module=ClientResources}"
+    SingularDisplayName="{Resource MyAsset.singular, Module=ClientResources}"
+    PluralDisplayName="{Resource MyAsset.plural, Module=ClientResources}"
+    LowerSingularDisplayName="{Resource MyAsset.lowerSingular, Module=ClientResources}"
+    LowerPluralDisplayName="{Resource MyAsset.lowerPlural, Module=ClientResources}"
+    Keywords="{Resource MyAsset.keywords, Module=ClientResources}"
+    Description="{Resource MyAsset.description, Module=ClientResources}"
+    Icon="{Resource Content.MyExtension.Images.myAsset, Module=./../_generated/Svg}"
+    BladeName="MyAssetBlade"
+    PartName="MyAssetPart"
+    IsPreview="true">
+  ...
+</AssetType>
+```
+
+The name can be anything, since it's scoped to your extension. You'll be typing this a lot, so keep it succinct, yet clear -- it will be used to identify asset types in telemetry.
+
+In order to provide a modern voice and tone within the portal, asset types have 4 different display names. The portal will use the most appropriate display name given the context. If your asset type display name includes an acronym or product name that is always capitalized, use the same values for upper and lower display name properties (e.g. `PluralDisplayName` and `LowerPluralDisplayName` may both use `SQL databases`). Do not share strings between singular and plural display name properties.
+
+* The 'All services' (browse) menu shows the `ServiceDisplayName` in the list of browseable asset types. If `ServiceDisplayName` is not available, `PluralDisplayName` will be shown instead
+* The All Resources blade uses the `SingularDisplayName` in the Type column, when visible
+* Browse v2 uses the `LowerPluralDisplayName` when there are no resources (e.g. "No web apps to display")
+* Browse v2 uses the `LowerPluralDisplayName` as the text filter placeholder
+
+Filtering functionality within the 'All services' (browse) menu searches over `Keywords`. `Keywords` is a comma-separated set of words or phrases which
+allow users to search for your asset by identifiers other than than the set display names.
+
+Remember, your part and blade should both have a single `id` input parameter, which is the asset id:
+
+```xml
+<Part Name="MyAssetPart" ViewModel="MyAssetPartViewModel" AssetType="MyAsset" AssetIdProperty="id" ...>
+  <Part.Properties>
+    <!-- Required. Must be the only input parameter. -->
+    <Property Name="id" Source="{DataInput Property=id}" />
+  </Part.Properties>
+  <BladeAction Blade="MyAssetBlade">
+    <BladeInput Source="id" Parameter="id" />
+  </BladeAction>
+  ...
+</Part>
+
+<Blade Name="MyAssetBlade" ViewModel="MyAssetBladeViewModel" AssetType="MyAsset" AssetIdProperty="id">
+  <Blade.Parameters>
+    <!-- Required. Must be the only input parameter. -->
+    <Parameter Name="id" Type="Key" />
+  </Blade.Parameters>
+  <Blade.Properties>
+    <Property Name="id" Source="{BladeParameter Name=id}" />
+  </Blade.Properties>
+  ...
+</Blade>
+```
+
+If your asset type is in preview, set the `IsPreview="true"` property. If the asset type is GA, simply remove the property (the default is `false`).
+
+##### How to hide your asset in different environments
+
+You can hide your asset in different environments by setting the hideassettypes feature flag in your config to a comma-separated list of asset type names.
+
+<a href="https://msit.microsoftstream.com/video/7399869a-4f8f-415e-9346-5b77f069b567?st=50" target="_blank">
+  Watch the Hiding Asset Types video here
+  <img src="../media/portalfx-assets/hidingassettypes.png" />
+</a>
+
+###### Self hosted
+
+Replace '*' with the desired environment, for documentation regarding enabling feature flags in self hosted extensions [click here.](portalfx-extension-flags.md#feature-flags)
+
+```xml
+        <Setting name="Microsoft.StbPortal.Website.Configuration.ApplicationConfiguration.DefaultQueryString" value="{
+            '*': {
+                     'microsoft_azure_compute_hideassettypes':"YOUR_ASSET_NAME, YOUR_OTHER_ASSET_NAME"
+            }
+        }" />
+```
+
+###### Hosting service
+
+If you’re using the hosting service, you can do this by updating your domainname.json (e.g. portal.azure.cn.json file)
+
+```json
+    {
+      "features": {
+        "hideassettypes": "YOUR_ASSET_NAME, YOUR_OTHER_ASSET_NAME"
+      }
+    }
+```
+
+####### Testing your hidden asset
+
+To test enable your hidden asset for testing purposes, you will need to update the hide asset feature flag to exclude the asset you want to show and ensure you have feature.canmodifyextensions set.
+
+For the desired environment append the following feature flags.
+> If you want to test showing all hidden assets, you can specify all the assets as a comma seperated list to the 'showassettypes' feature flag.
+
+```txt
+    ?feature.showassettypes=MyNewAsset
+    &microsoft_azure_mynewextension=true
+    &feature.canmodifyextensions=true
+```
+
+For example:
+https://rc.portal.azure.com/?feature.showassettypes=VirtualMachine&microsoft_azure_compute=true&feature.canmodifyextensions=true
 
 #### Handling ARM kinds
 
@@ -155,6 +270,28 @@ To allow people to create new resources from Browse, you can associate your asse
 ```
 
 The Browse blade will launch the Marketplace item, if specified; otherwise, it will launch the Marketplace category blade for the specific menu item id (e.g. `gallery/virtualMachines/recommended` for Virtual machines > Recommended). To determine the right Marketplace category, contact the <a href="mailto:1store?subject=Marketplace menu item id">Marketplace team</a>. If neither is specified, the Add command won't be available.
+
+#### Handling empty browse
+
+The framework offers the ability to display a description and links in the case that the users filters return no results.
+
+>NOTE: This will also display if the user visits the browse experience and they have not yet created the given resource.
+
+![Empty browse](../media/portalfx-assets/empty-browse.png)
+
+To opt in to this experience you need to provide a `description` and a `link`, these are properties that you provide on your Asset.
+
+```xml
+<AssetType  
+    Name="MyAsset"
+    ...
+    Description="{Resource MyAsset.description, Module=ClientResources}">
+    ...
+    <Link Title="{Resource MyAsset..linkTitle1, Module=ClientResources}" Uri="http://www.bing.com"/>
+    <Link Title="{Resource MyAsset.linkTitle2, Module=ClientResources}" Uri="http://www.bing.com"/>
+    ...
+  </AssetType>
+```
 
 #### Customizing columns
 

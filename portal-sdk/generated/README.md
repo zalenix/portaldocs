@@ -166,7 +166,7 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 
 * [Blades that create or provision resources and services](/portal-sdk/generated/top-extensions-create.md)
 
-* [Add your resource or service into the Browse menu](/portal-sdk/generated/top-extensions-browse.md)
+* [Add your resource or service into the 'All services' (browse) menu](/portal-sdk/generated/top-extensions-browse.md)
 
 [Ask about browse integration on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-browse)
 
