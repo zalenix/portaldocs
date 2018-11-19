@@ -1,22 +1,22 @@
 # Filtering
 Filtering enables users to quickly winnow down a list or chart to display the result set they are seeking.
 
-# Context
+## Context
 Users need to configure lists of resources and graphical representations of data to show only the information they need to see.
 
-# Problem
+## Problem
 Users have a lot of resources in Azure and need to see a subset if items.  Azure also stores time series data and users need to see a specific time range of that data.
 
-# Solution
+## Solution
 The portal enables users to add, remove and customize filters so that users can see exactly what they want.
 
-## Also known as
+### Also known as
 <!-- Bulleted list of other terms used to describe the solution, if any -->
 * Pill filters
 
-# Examples
+## Examples
 
-## Example images
+### Example images
 <!-- Include example image of the solution in the portal -->
 Dashboard
 <div style="max-width:800px">
@@ -31,7 +31,7 @@ Activity log
 <img alttext="Time range" src="../media/design-patterns-page-filtering/activity-log.png"  />
 </div>
 
-## Example uses
+### Example uses
 
 * `Dashboard` 
 * `All resources`
@@ -39,7 +39,7 @@ Activity log
 * `Metrics`  
 * `Virtual Machine Size`
 
-# Use when
+## Use when
 Use filtering when it is possible for the list of items to exceed what can be displayed on one page.  Also use filtering when showing time series data on a page or chart so that the user can filter to specific ranges.
 
 ## Anatomy
@@ -97,7 +97,7 @@ Configuring the filter will open a filter configuration dialog where users can s
 <!-- TODO UX get image of filter configuration-->
 
 ### Add filter 
-Control that uses the same visual style as the filters and includes an `Add` icon and the text to `Add filter`.  
+Control that uses the same visual style as the filters and includes an **Add** icon and the text to `Add filter`.  
 
 The configuration dialog for `Add filter` is a searchable list of available filters in normal font.
 <!-- TODO UX screenshot with correct text style text label should be singular -->
@@ -154,14 +154,14 @@ If additional options won't add value to the scenario, keep it clean and simple.
 ## Don't 
 <!-- Bulleted list of things to avoid -->
 
-# Related design patterns
+## Related design patterns
 <!-- Links to related design patterns.  Always include the link to the readme -->
 * Design patterns [top-design.md](top-design.md)
 
-# Research and usability
+## Research and usability
 <!-- Links to the research for the solution -->
 
-# Telemetry
+## Telemetry
 <!-- Links to portal telemetry showing the solution usage -->
 
 # For developers

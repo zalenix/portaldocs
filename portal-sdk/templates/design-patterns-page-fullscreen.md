@@ -1,37 +1,37 @@
 # Page Full screen 
 Use navigation patterns for the portal that fill the screen and behave like most websites.
 
-# Context
+## Context
 As users navigate the portal, they expect a common web interaction experience. 
 
-# Problem
+## Problem
 Earlier portal designs used narrow blades that stacked to the right into horizontally scrolling "journeys" as the user navigated.  These stacked blades often resulted in existing blades being partially displayed which made it hard for the user to know where to look and orient where in the portal they were.  Horizontal scrolling is also more foreign than the common vertical scrolling of long web pages.  
 
 Users have made it very clear they don’t like horizontal scrolling – in large part because it doesn’t match how they expect to interact with websites.   
 
-# Solution
+## Solution
 In 2017 Azure moved from narrow blades to full page experiences and have introduced dialogs and context panes to further avoid unnecessary context switches.
 
-## Also known as 
+### Also known as 
 
 -   Avoid horizontal scrolling
 -   Avoid context switches
 
-# Examples
+## Examples
 
-## Example images 
+### Example images 
 
 <div style="max-width:800px">
 <img alttext="Full screen sample" src="../media/design-patterns-page-fullscreen/Full-screen-1.png"  />
 </div>
-## Example uses
+### Example uses
 These Azure resources are good examples of this design pattern 
 
 * Creating a VM - [Free account virtual machine](https://rc.portal.azure.com/#create/microsoft.freeaccountvirtualmachine)
 * Browsing all resources - [All resources](https://rc.portal.azure.com/#blade/HubsExtension/ArtBrowseBlade/resourceType/Microsoft.Resources%2Fresources)
 * Virtual Machine 
 
-# Use when
+## Use when
 Full screen is a foundation of any page in the Azure portal. All resources are built upon full screen experiences.
 
 
@@ -80,19 +80,19 @@ Use the Close button in the right corner
 * Blades shouldn’t open at a specified size, instead the page should open as “maximized” (`InitialDisplayState="Maximized"`)
 * When linking to a site outside of Azure, such as documentation, don’t open the page in the same browser window. It should open in an new tab.
 
-# Related design patterns
+## Related design patterns
 
-* Resource Create [design-patterns-resource-create.md](design-patterns-resource-create.md)
-* Resource Browse [design-patterns-resource-browse.md](design-patterns-resource-browse.md)
-* Resource Manage [design-patterns-resource-manage.md](design-patterns-resource-manage.md)
+* Create a Resource [design-patterns-resource-create.md](design-patterns-resource-create.md)
+* Browse Resources [design-patterns-resource-browse.md](design-patterns-resource-browse.md)
+* Manage a Resource [design-patterns-resource-manage.md](design-patterns-resource-manage.md)
 * Design patterns [top-design.md](top-design.md)
 
-# Research and usability
+## Research and usability
 
 Research history and retrospective for Azure Portal Full Screen
 [Full screen history and retrospective](https://microsoft.sharepoint.com/:p:/r/teams/azureteams/aapt/azureux/portalfx/_layouts/15/Doc.aspx?sourcedoc=%7B78bf3a97-2ccc-4920-886d-ce508980c3d8%7D&action=default)
 
-# Telemetry
+## Telemetry
 Coming soon
 
 # For developers 

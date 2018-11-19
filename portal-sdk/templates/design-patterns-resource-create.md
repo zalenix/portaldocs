@@ -1,35 +1,37 @@
-﻿# Resource Create 
-The resource create pattern provides a simple, intuitive and quick experience for creating resources.
+﻿# Create a resource
+The "create a resource" pattern provides a simple, intuitive and quick experience for creating resources.
 
-# Context
-Users need to create Azure resources.
+## Context
+Users want to create Azure resources.
 
-# Problem
+## Problem
 Creating a resource in Azure can vary from a simple experience with a few required fields to a complex one with many fields, concepts and related resources.
 
-# Solution
+## Solution
 The resource create pattern enables quick configuration of a new resource by using a minimum number of fields and providing default values. The pattern also enables users to walk through detailed configuration options in order to manually set many resource options.  The experience uses a fullscreen page with tabs to separate related configuration steps and guide the user during the create process.
 
-## Also known as 
+### Also known as 
 
 - Full screen create
-- Tabbed create  
+- Tabbed create 
+- Create wizard
+- Resource create 
 
-# Examples 
+## Examples 
 
 ## Example image
 <div style="max-width:800px">
 <img alttext="Resource create example" src="../media/design-patterns-resource-create/Resource-create-1.png"  />
 </div>
 
-## Example uses
+### Example uses
 These Azure resources are good examples of this design pattern 
 
 * [Free account virtual machine](https://rc.portal.azure.com/#create/microsoft.freeaccountvirtualmachine)
 * [IoT hub](https://rc.portal.azure.com/#create/Microsoft.IotHub)
 * [Kubernetes service](https://rc.portal.azure.com/#create/microsoft.aks)
 
-# Use when
+## Use when
 Creating a resource in Azure
 
 ## Anatomy  
@@ -78,7 +80,7 @@ The `Basics` tab should contain the typical fields for Azure resources
 * `Region` - used to be referred to as Location
 * SKU/Cost/Pricing tier - enable the user to control the cost of the resource
 
-If your resource comes in different sizes or SKUs, make sure to include the pricing tier in your create flow. To make it easy for users to update resources sizes and SKUs, include the pricing tier in the resource manage experience.
+If your resource comes in different sizes or SKUs, make sure to include the pricing tier in your create flow. To make it easy for users to update resources sizes and SKUs, include the pricing tier in the manage a resource experience.
 <!-- TODO UX add info on pricing tier using grid for easy comparison -->
 
 #### Optional tabs
@@ -139,17 +141,17 @@ The post create page provides realtime deployment status, help with troubleshoot
 
 -   Don't include lengthy and unclear explanatory text. It should be used to clarify and set expectations in a few short sentences
 
-# Related design patterns
+## Related design patterns
 
 -   Forms [design-patterns-page-forms.md](design-patterns--page-forms.md)
 -   Full screen [design-patterns-page-fullscreen.md](design-patterns--page-fullscreen.md)
--   Resource Browse [design-patterns-resource-browse.md](design-patterns-resource-browse.md)
--   Resource Manage [design-patterns-resource-manage.md](design-patterns-resource-manage.md)
+-   Browse Resources [design-patterns-resource-browse.md](design-patterns-resource-browse.md)
+-   Manage a Resource [design-patterns-resource-manage.md](design-patterns-resource-manage.md)
 -   Design patterns [top-design.md](top-design.md)
 
-# Research and usability 
+## Research and usability 
 
-# Telemetry
+## Telemetry
 
 # For developers 
 Developers can use the following information to get started implementing this pattern
@@ -158,11 +160,11 @@ Developers can use the following information to get started implementing this pa
 
 -   Set a maximimum width of 600px for the tab content area that contains input fields
 -   Screen resolution - If screen resolution is less than 700px, set left aligned = false
--   To include the visual connector between Subscription and RG, set `Nested = True` on the RG control.  
+-   To include the visual connector between Subscription and resource group, set `Nested = True` on the RG control.  
 
 ## Related documentation
 
--   Resource Create [top-extensions-create.md](./top-extensions-create.md)
+-   Create a Resource [top-extensions-create.md](./top-extensions-create.md)
 
 
 

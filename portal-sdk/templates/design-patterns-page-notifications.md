@@ -4,33 +4,33 @@
 "Forms are the manner in which we gather and validate user input."
 -->
 
-# Context
+## Context
 <!-- Short description of the context.  For example, "Users input information when managing Azure resources." -->
 
-# Problem
+## Problem
 <!-- Short description of the problem.  For example, 
 "Users need to input information to create, deploy and configure resources."
 -->
 
-# Solution
+## Solution
 The portal offers several mechanisms to notify users that something is wrong.
 
 
-## Also known as
+### Also known as
 <!-- Bulleted list of other terms used to describe the solution, if any -->
 
-# Examples
+## Examples
 
-## Example images
+### Example images
 <!-- Include example image of the solution in the portal -->
 <div style="max-width:800px">
 <img alttext="Example image" src="../media/<folder>/<image_name>.png"  />
 </div>
 
-## Example uses
+### Example uses
 <!-- Descriptions and ideally deep links into the portal for running examples -->
 
-# Use when
+## Use when
 <!-- Description of when to use this solution.  For example "User is creating a resource" -->
 Use in-blade notifications to alert users that something is wrong (a VM is stopped, a website exceeds its quota and is suspended, a certificate will expire soon, etc.), or that they may benefit from trying a new feature. Don't use these notifications just to tell users their services are running normally. 
 
@@ -98,14 +98,14 @@ If you think your notification warrants the global treatment, contact [Ibiza Fx 
 ## Don't 
 <!-- Bulleted list of things to avoid -->
 
-# Related design patterns
+## Related design patterns
 <!-- Links to related design patterns.  Always include the link to the readme -->
 * Design patterns [top-design.md](top-design.md)
 
-# Research and usability
+## Research and usability
 <!-- Links to the research for the solution -->
 
-# Telemetry
+## Telemetry
 <!-- Links to portal telemetry showing the solution usage -->
 
 # For developers

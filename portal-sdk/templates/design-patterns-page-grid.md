@@ -1,32 +1,32 @@
 ﻿# Page with grids
 Most web pages and portals surface one or more lists of items to present valuable content to their users.
 
-# Context
+## Context
 In Azure, users frequently interface with objects that are exposed though list views.
 
-# Problem
+## Problem
 Users arrive at a page with lists of items and need to perform actions on the objects.
 
-# Solution
+## Solution
 The Azure portal uses blades to represent a page and has a grid control to manage lists of items. Grids consist of objects grouped together and sorted vertically, usually presented with actions that a user can perform on a list item. Grids are used for surfacing a list of objects to provide meaningful data on each list item. 
 
-## Also known as
+### Also known as
 - Browse
 - Grid
 - List
 
-# Examples
+## Examples
 
-## Example images
+### Example images
 <div style="max-width:800px">
 <img alttext="Page with list example" src="../media/design-patterns-page-grid/Resource-browse.png"  />
 </div>
-## Example uses
+### Example uses
 -   [All resources](https://ms.portal.azure.com/#blade/HubsExtension/ArtBrowseBlade/resourceType/Microsoft.Resources%2Fresources)
 -   [All users](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)
 
 
-# Use when
+## Use when
 Grids are used for surfacing a list of objects to provide meaningful data on each list item. When displaying data in a grid, ensure that users can filter, see an item count, and sort the columns when possible. Grids will often contain more logical data than can be shown directly in a single page. There are two methods that are used to manage large amounts of data: Dynamic scrolling (loading more rows into the grid as the user scrolls) or using a paginator.
 
 ## Anatomy
@@ -77,12 +77,12 @@ Actions can be pulled out of the command bar to be in closer proximity to the gr
 
 - Don’t use long column labels. Try to avoid situations where valuable grid real estate is consumed because a column header is longer than the data in that column
 
-# Related design patterns
+## Related design patterns
 * Design patterns [top-design.md](top-design.md)
 
-# Research and usability
+## Research and usability
 
-# Telemetry
+## Telemetry
 
 # For developers
 Developers can use the following information to get started implementing this pattern

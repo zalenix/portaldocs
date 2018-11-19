@@ -1,42 +1,46 @@
-﻿# Resource Manage 
-The Resource Manage pattern provides the configuration and management of a single Azure resource.
+﻿# Manage a Resource
+The manage a resource pattern provides the configuration and management of a single Azure resource.
 
-# Problem
+## Context
+Users wants to manage all aspects of an Azure resoruce.
+
+## Problem
 Users manage many different types of Azure resources. For settings that are common across resources, users expect a common interaction. For settings that are unique to a resource, users need a way to easily find those settings.
 
-# Solution
-The Resource Manage pattern is used to configure and manage a single Azure resource by using a resource menu to navigate the resource blades. The resource manage page is typically opened from the resource browse page, when the user needs to see more details or make a change to a specific resource. The resource manage page can also be opened from related resources that link to it.
+## Solution
+The Manage a Resource pattern is used to configure and manage a single Azure resource by using a resource menu to navigate the resource blades. The manage a resource page is typically opened from the browse resources page, when the user needs to see more details or make a change to a specific resource. The manage a resource page can also be opened from related resources that link to it.
 
-## Also known as 
+### Also known as 
 -   Resource blade 
 -   Resource detail
--   Resource menu  
+-   Resource menu 
+-   Resource manage 
 
-# Examples
+## Examples
 ---------
 
-## Example images
+### Example images
 <div style="max-width:800px">
 <img alttext="Resource manage example" src="../media/design-patterns-resource-manage/resource-overview.png"  />
 </div>
 
-## Example uses
+### Example uses
 These Azure resources are good examples of this design pattern 
 
 -   Redis cache
 -   [Virtual machines](https://rc.portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Compute%2FVirtualMachines)
 
-# Use when 
+## Use when 
 Managing a single azure resource.
 
 ## Anatomy  
-The resource manage pattern is a full screen experience composed of a resource menu and corresponding resource blades. Settings that are common across resources have a standard menu item and menu location so that users can easily find them.
-<!-- TODO - get updated resource manage anatomy image -->
+The manage a resource pattern is a full screen experience composed of a resource menu and corresponding resource blades. Settings that are common across resources have a standard menu item and menu location so that users can easily find them.
+<!-- TODO - get updated manage a resource anatomy image -->
 <div style="max-width:800px">
 <img alttext="Resource manage anatomy" src="../media/design-patterns-resource-manage/resource-manage-anatomy.png"  />
 </div>
 
-A resource manage experience usually contains:
+A manage a resource experience usually contains:
 
 1. Resource menu with common and specific items to manage all aspects of this resource
 2. Resource pages opened from the menu items, commands or links
@@ -110,9 +114,9 @@ The overview page is the home page for a resource. It displays key information a
 
 #### Toolbar 
 Toolbar commands should open context panes instead of narrow blades to avoid horizontal scrolling. The resource toolbar should contain commands common to all resources
-* `Delete` - delete the current resource
-* `Move` - a dropdown menu to move the current resource to a different **resource group** or **subscription**
-* `Refresh` - refresh the overview page
+* **Delete** - delete the current resource
+* **Move** - a dropdown menu to move the current resource to a different **resource group** or **subscription**
+* **Refresh** - refresh the overview page
 The resource toolbar should also contain resource-specific commands for easy access.
 Learn more [Toolbar](portalfx-controls-toolbar.md), [Context pane](top-extensions-context-panes.md)
 
@@ -168,14 +172,14 @@ Display guiding content and key information about the resource
 
 * Don’t build your overview page as a PDL blade   
 
-# Related design patterns
-* Resource Create [design-patterns-resource-create.md](design-patterns-resource-create.md)
-* Resource Browse [design-patterns-resource-browse.md](design-patterns-resource-browse.md)
+## Related design patterns
+* Create a Resource [design-patterns-resource-create.md](design-patterns-resource-create.md)
+* Browse Resources [design-patterns-resource-browse.md](design-patterns-resource-browse.md)
 * Design patterns [top-design.md](top-design.md)
 
-# Research and usability
+## Research and usability
 
-# Telemetry
+## Telemetry
 
 # For developers 
 Developers can use the following information to get started implementing this pattern
@@ -200,7 +204,7 @@ Developers can use the following information to get started implementing this pa
     * To display tags in the Essentials Panel, add this line to the options object
 passed to the essentials control:  `includeTags:true`
     * Make sure you have efficient APIs for overview data 
-    * Include standard Overview page actions - `Move`, `Delete` and `Refresh`
+    * Include standard Overview page actions - **Move**, **Delete** and **Refresh**
 
 * Make sure your RP has onboarded to Geneva for metrics and logs so you can
 enable the monitoring menu items 
