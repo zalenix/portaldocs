@@ -30,6 +30,9 @@
 
 ### Example uses
 <!-- Descriptions and ideally deep links into the portal for running examples -->
+<ul>
+<li><a href="" target="_blank">Portal opens in new tab</a></li>
+</ul>
 
 ## Use when
 <!-- Description of when to use this solution.  For example "User is creating a resource" -->

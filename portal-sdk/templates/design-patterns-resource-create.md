@@ -27,9 +27,12 @@ The resource create pattern enables quick configuration of a new resource by usi
 ### Example uses
 These Azure resources are good examples of this design pattern 
 
-* [Free account virtual machine](https://rc.portal.azure.com/#create/microsoft.freeaccountvirtualmachine)
-* [IoT hub](https://rc.portal.azure.com/#create/Microsoft.IotHub)
-* [Kubernetes service](https://rc.portal.azure.com/#create/microsoft.aks)
+<ul>
+<li>Create a <a href="https://rc.portal.azure.com/#create/microsoft.freeaccountvirtualmachine" target="_blank">Free account virtual machine</a></li>
+<li>Create an <a href="https://rc.portal.azure.com/#create/Microsoft.IotHub" target="_blank">IoT hub</a></li>
+<li>Create a <a href="https://rc.portal.azure.com/#create/microsoft.aks" target="_blank">Kubernetes service</a></li>
+</ul>
+
 
 ## Use when
 Creating a resource in Azure
