@@ -80,12 +80,12 @@ Use the Close button in the right corner
 * Blades shouldn’t open at a specified size, instead the page should open as “maximized” (`InitialDisplayState="Maximized"`)
 * When linking to a site outside of Azure, such as documentation, don’t open the page in the same browser window. It should open in an new tab.
 
-## Related design patterns
+## Related design guidelines
 
 * Create a Resource [design-patterns-resource-create.md](design-patterns-resource-create.md)
 * Browse Resources [design-patterns-resource-browse.md](design-patterns-resource-browse.md)
 * Manage a Resource [design-patterns-resource-manage.md](design-patterns-resource-manage.md)
-* Design patterns [top-design.md](top-design.md)
+* Design guidelines [top-design.md](top-design.md)
 
 ## Research and usability
 

@@ -167,10 +167,10 @@ Follow the button recommendations above
 -   Avoid buttons for clearing a form. The risk of accidental deletion outweighs the unlikely need to start over.
 
 
-## Related design patterns
+## Related design guidelines
 * Full screen [design-patterns-page-fullscreen.md](design-patterns-page-fullscreen.md)
 * Create a Resource [design-patterns-resource-create.md](design-patterns-resource-create.md)
-* Design patterns [top-design.md](top-design.md)
+* Design guidelines [top-design.md](top-design.md)
 
 
 ## Research and usability

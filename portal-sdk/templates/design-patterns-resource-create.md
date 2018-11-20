@@ -141,15 +141,22 @@ The post create page provides realtime deployment status, help with troubleshoot
 
 -   Don't include lengthy and unclear explanatory text. It should be used to clarify and set expectations in a few short sentences
 
-## Related design patterns
+## Related design guidelines
 
 -   Forms [design-patterns-page-forms.md](design-patterns--page-forms.md)
 -   Full screen [design-patterns-page-fullscreen.md](design-patterns--page-fullscreen.md)
 -   Browse Resources [design-patterns-resource-browse.md](design-patterns-resource-browse.md)
 -   Manage a Resource [design-patterns-resource-manage.md](design-patterns-resource-manage.md)
--   Design patterns [top-design.md](top-design.md)
+-   Design guidelines [top-design.md](top-design.md)
 
 ## Research and usability 
+
+* Create March 2017: https://hits.microsoft.com/study/6006240 
+* Create – sub-create Jan 2018: https://hits.microsoft.com/study/6005381 
+* Create – sub-create Feb 2018: https://hits.microsoft.com/study/6005427 
+* Create – Tabs + links Sept 2018: https://hits.microsoft.com/study/6005479 
+* Post create March 2018: https://hits.microsoft.com/study/6006070 
+
 
 ## Telemetry
 

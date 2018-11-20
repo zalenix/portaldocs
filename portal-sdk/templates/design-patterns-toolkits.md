@@ -65,6 +65,6 @@ CDS_Figma_Admins@microsoft.com to request access.
 
 If you are interested in submitting new controls to include or have bugs to file, please [contact us](http://aka.ms/azureportaltoolkitsfeedback) with the control details. 
 
-# Design patterns
-* Design patterns [top-design.md](top-design.md)
+# Design guidelines
+* Design guidelines [top-design.md](top-design.md)
 

@@ -98,9 +98,9 @@ If you think your notification warrants the global treatment, contact [Ibiza Fx 
 ## Don't 
 <!-- Bulleted list of things to avoid -->
 
-## Related design patterns
-<!-- Links to related design patterns.  Always include the link to the readme -->
-* Design patterns [top-design.md](top-design.md)
+## Related design guidelines
+<!-- Links to Related design guidelines.  Always include the link to the readme -->
+* Design guidelines [top-design.md](top-design.md)
 
 ## Research and usability
 <!-- Links to the research for the solution -->

@@ -172,10 +172,10 @@ Display guiding content and key information about the resource
 
 * Don’t build your overview page as a PDL blade   
 
-## Related design patterns
+## Related design guidelines
 * Create a Resource [design-patterns-resource-create.md](design-patterns-resource-create.md)
 * Browse Resources [design-patterns-resource-browse.md](design-patterns-resource-browse.md)
-* Design patterns [top-design.md](top-design.md)
+* Design guidelines [top-design.md](top-design.md)
 
 ## Research and usability
 

@@ -77,8 +77,8 @@ Actions can be pulled out of the command bar to be in closer proximity to the gr
 
 - Don’t use long column labels. Try to avoid situations where valuable grid real estate is consumed because a column header is longer than the data in that column
 
-## Related design patterns
-* Design patterns [top-design.md](top-design.md)
+## Related design guidelines
+* Design guidelines [top-design.md](top-design.md)
 
 ## Research and usability
 
