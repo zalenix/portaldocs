@@ -1,4 +1,4 @@
-# Page Full screen 
+# Full screen pages
 Use navigation patterns for the portal that fill the screen and behave like most websites.
 
 ## Context
@@ -24,6 +24,7 @@ In 2017 Azure moved from narrow blades to full page experiences and have introdu
 <div style="max-width:800px">
 <img alttext="Full screen sample" src="../media/design-patterns-page-fullscreen/Full-screen-1.png"  />
 </div>
+
 ### Example uses
 These Azure resources are good examples of this design pattern 
 
@@ -47,6 +48,7 @@ A full screen page usually contains:
 3. Content area
 4. Context pane
 5. Dialog
+<!-- TODO UX - get screenshot for anatomy that includes Dialog -->
 
 ## Behavior 
 The current blade should occupy the available screen space and any subsequent user interactions should seek to minimize navigating the user.  This would involve using a Dialog or Context pane for user interaction.

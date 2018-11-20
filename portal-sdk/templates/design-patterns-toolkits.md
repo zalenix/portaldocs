@@ -1,4 +1,4 @@
-# Toolkits for Azure Experience Design
+# Toolkits for designing Azure experiences
 
 
 <table style="border-style:none; cellpadding:10px">
@@ -43,19 +43,23 @@ CDS_Figma_Admins@microsoft.com to request access.
 </td>
 <td valign="top">
 <b>Sketch</b>
+<a href="https://microsoft.sharepoint.com/:u:/t/UNI_CE/EeQ7d6ScPtxOn11y9u0uWDMBnxj0aAboy2KnvqBJOnB_VA?e=3WzClt" target="_blank"> toolkit </a>
 <br>Available from UNI/
 <br>Load as a Sketch Library. Do not open the Sketch version of the toolkit as a file.
 </td>
 <td valign="top">
 <b>Adobe XD</b>
+<a href="https://microsoft.sharepoint.com/:f:/t/UNI_CE/EuZaLU4h1I5Fn3L9uL6YRcMBWA4H6ZRXQWbmzUv60KXJWQ?e=gsPway" target="_blank"> toolkit </a>
 <br>Available from UNI/
 </td>
 <td valign="top">
 <b>Adobe Illustrator</b>
+<a href="https://microsoft.sharepoint.com/:u:/t/UNI_CE/ET_B7JO5tJpCnBrXXaLID9AB9ltbHqj_v6eWkq147cvm_Q?e=zEB7t8" target="_blank"> toolkit </a>
 <br>Available from UNI/
 </td>
 <td valign="top">
 <b>Powerpoint</b>
+<a href="https://microsoft.sharepoint.com/:f:/t/UNI_CE/EjEXdW54jiBOuWunOWsYLTsBeIZIDPTfPD6fFiMMaYUKDA?e=YSEE8w" target="_blank"> toolkit </a>
 <br>Available from UNI/
 </td>
 </tr>

@@ -25,10 +25,10 @@ The Manage a Resource pattern is used to configure and manage a single Azure�
 </div>
 
 ### Example uses
-These Azure resources are good examples of this design pattern 
+These Azure resources are good examples of this design pattern.  Links to specific resources cannot be included in the documentation, so find a resource of this type and navigate to it to see the resource management experience. 
 
 -   Redis cache
--   [Virtual machines](https://rc.portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Compute%2FVirtualMachines)
+-   Virtual machine
 
 ## Use when 
 Managing a single azure resource.
@@ -101,11 +101,10 @@ SUPPORT + TROUBLESHOOTING: a grouping of the menu that enables navigation to sup
 </table>
 
 ### Resource pages   
-Each menu item opens a page that allows the user to drill deeper for more information. Monitoring 
-pages requires additional onboarding to Geneva Resource health requires additional onboarding by RP. 
+Each menu item opens a page that allows the user to drill deeper for more information. Monitoring pages and Resource health require the resource provider to do additional onboarding.
 
 ### Overview page
-The overview page is the home page for a resource. It displays key information and actions for the resource.  The overview page should contain a `toolbar`, `essentials panel`, and `content area`.
+The overview page is the home page for a resource. It displays key information and actions for the resource.  The overview page should contain a toolbar, essentials panel, and content area.
 
 <div style="max-width:800px">
 <img alttext="Resource overview page" src="../media/design-patterns-resource-manage/overview.png"  />
@@ -115,7 +114,7 @@ The overview page is the home page for a resource. It displays key information a
 #### Toolbar 
 Toolbar commands should open context panes instead of narrow blades to avoid horizontal scrolling. The resource toolbar should contain commands common to all resources
 * **Delete** - delete the current resource
-* **Move** - a dropdown menu to move the current resource to a different **resource group** or **subscription**
+* **Move** - a dropdown menu to move the current resource to a different resource group or subscription
 * **Refresh** - refresh the overview page
 The resource toolbar should also contain resource-specific commands for easy access.
 Learn more [Toolbar](portalfx-controls-toolbar.md), [Context pane](top-extensions-context-panes.md)
@@ -124,26 +123,34 @@ Learn more [Toolbar](portalfx-controls-toolbar.md), [Context pane](top-extensio
 The essentials panel surfaces key properties that are common for all Azure resources and important resource specific properties. User feedback has
 shown that they rely heavily on the essentials panel for looking up information.  Properties can contain links, and can open blades containing related resources (for example, resource group, subscription, hosting plan, etc). The links can also point to external sites. 
 
-The Essentials sections is conceptually divided in two well know parts:
+The Essentials sections is divided in two well know parts, the left column contains properties common to all resources and the right column contains properties that are specific to this resource.
 
 **Ordering guidelines**
-
-Here are the field ordering guidelines.  
-
-**Common resource properties - Left column**
-* Resource group
-* Status
-* Location
-* Subscription name (as a link to a child blade)
-* Subscription ID
-
-**Resource-specific properties - Right column**
-* Up to 5 domain-specific fields.
-* Labels for fields should be limited a maximum length of 150px.
-
-**Tags** 
-* Display and manage the tags assigned to this resource
-* Enabled with control option
+<table>
+<tr>
+  <th align="left"> Common resource properties - Left column</th>
+  <th align="left"> Resource-specific properties - Right column</th>
+</tr>
+<tr>
+  <td>
+Resource group<br>
+Status<br>
+Location<br>
+Subscription name (link to subscription blade)<br>
+Subscription ID<br>
+</td>
+  <td valign="top">
+Up to 5 resource-specific fields. <br>
+Labels should be limited a maximum length of 150px.<br>
+  </td>
+</tr>
+<tr>
+  <td colspan="2">
+<b>Tags</b><br>
+Display and manage the tags assigned to this resource.  Enabled with control option <br>
+  </td>
+</tr>
+</table>
 
 Learn more [portalfx-extensions-essentials.md](./portalfx-extensions-essentials.md)
 

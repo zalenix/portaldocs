@@ -27,9 +27,10 @@ The browse resources pattern shows resources by displaying key resource properti
 ### Example uses
 These Azure resources are good examples of this design pattern 
 
--   [All resources](https://rc.portal.azure.com/#blade/HubsExtension/ArtBrowseBlade/resourceType/Microsoft.Resources%2Fresources)
-
--   [Virtual machines](https://rc.portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Compute%2FVirtualMachines) 
+<ul>
+<li>Browse <a href="https://rc.portal.azure.com/#blade/HubsExtension/ArtBrowseBlade/resourceType/Microsoft.Resources%2Fresources" target="_blank">all resources</a></li>
+<li>Browse <a href="https://rc.portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Compute%2FVirtualMachines" target="_blank">virtual machines</a></li>
+</ul>
 
 ## Use when
 Showing a list of Azure resources
@@ -73,7 +74,7 @@ Coming soon: Additional sets of filters pertaining to each selected resource typ
 ### Grid content
 By default, browse shows the `resource name`, `resource group`, `location`(aka region) and `subscription`. We recommend you choose key resource properties to display as columns so that the user can differentiate between resources in the grid. You can specify default columns and available columns that the user can add using the 'Edit columns' command. 
 
-You can also group the content of the grid by resource type, subscription, resource group or location. This would reorganize the list items into groups. Read more on the grid pattern page.
+You can also group the content of the grid by resource type, subscription, resource group or location. This would reorganize the list items into groups. Read more on the grid pattern page [design-patterns-page-grid.md](design-patterns-page-grid.md).
 
 ### Leveraging the context menu
 Actions can be performed on a specific resource using context menu commands. Read more on the `grid design pattern`.
