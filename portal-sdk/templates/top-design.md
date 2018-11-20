@@ -2,7 +2,7 @@
 
 These design guidelines provide solutions for common scenerios in Azure.  In Azure, we formalize these best practices once several teams have a similar problem, use a well researched shared approach, and see successful real-world usage of the common solution. Azure teams should leverage these design guidelines to accelerate extension development and to provide users with a familiar experience so that users can easily adopt new Azure services.
 
-## Resource management
+## Resource management patterns
 The resource management patterns provide guidance for managing the full lifecycle of Azure resources.
 
 * Create a resource [design-patterns-resource-create.md](design-patterns-resource-create.md)
