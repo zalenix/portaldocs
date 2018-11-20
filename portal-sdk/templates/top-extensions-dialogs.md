@@ -18,9 +18,7 @@ Dialogs are great to use in cases where an extension requests a confirmation fro
 
 Dialogs expose various options that allow developers to customize the dialog experience. To open a dialog, the extension should specify `dialogOptions`. The simplest form of those options is illustrated here:
 
-<!--
-{"ThatWhichShouldNotBeNamed": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V2/Dialogs/DialogSamplesBlade.ts", "section": "top-extensions-dialogs-open"}
--->
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V2/Dialogs/DialogSamplesBlade.ts", "section": "docs#top-extensions-dialogs-open"}
 
 The properties for this implementation of the dialog are as follows.
 
@@ -53,9 +51,7 @@ export interface CustomDialogButton {
     button: DialogButton;
 }
 ```
-<!--
-{"ThatWhichShouldNotBeNamed": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V2/Dialogs/DialogSamplesBlade.ts", "section": "top-extensions-dialogs-custom-buttons"}
--->
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V2/Dialogs/DialogSamplesBlade.ts", "section": "docs#top-extensions-dialogs-custom-buttons"}
 
 ## Displaying complex scenarios in dialogs
 
@@ -63,9 +59,7 @@ In a dialog, if you want to allow the user to pick a value from a slider or inte
 
 Here we define our custom dialog `ViewModel`, which only contains a slider control. We then define a simple html template, which is only the control, and specify our `dialogViewModel`:
 
-<!--
-{"ThatWhichShouldNotBeNamed": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V2/Dialogs/DialogSamplesBlade.ts", "section": "#top-extensions-dialogs-slider-dialog"}
--->
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V2/Dialogs/DialogSamplesBlade.ts", "section": "docs#top-extensions-dialogs-slider-dialog"}
 
 ## Targeting the dialog at a specific element or cssSelector
 
@@ -73,9 +67,8 @@ If you want to provide context to which the dialog applies, for example, confirm
 
 When the `fxClick` element is clicked, it generates a `FxElement` which is sent as a parameter to the callback function supplied to `fxClick`:
 
-<!--
-{"ThatWhichShouldNotBeNamed": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V2/Dialogs/DialogSamplesBlade.ts", "section": "top-extensions-dialogs-targeting"}
--->
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V2/Dialogs/DialogSamplesBlade.ts", "section": "docs#top-extensions-dialogs-targeting"}
+
 To target the location of the `fxClick` the extension defines the `target` property on the `dialogOptions` as `evt.target`, the parameter defined by the `fxClick` onClick handler. The dialog will then open within the context of the element.
 
 To target elements by using a CSS selector, send the specific CSS selector string to the `target` property on the `dialogOptions`.
@@ -109,6 +102,4 @@ When handling the `onClosed` callback you will receive a `DialogResult` object. 
 
 The easiest way to process the options is to use a switch case and have a case for each of the buttons you declared and cancel (due to the auto close). In the example below we have custom buttons declared but they map to the standard button enums. Then in the onClosed callback we will receive the corresponding button as the result.
 
-<!--
-{"ThatWhichShouldNotBeNamed": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V2/Dialogs/DialogSamplesBlade.ts", "section": "#top-extensions-dialogs-on-closed"}
--->
+{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/V2/Dialogs/DialogSamplesBlade.ts", "section": "docs#top-extensions-dialogs-on-closed"}
