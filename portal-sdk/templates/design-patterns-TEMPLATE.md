@@ -9,7 +9,7 @@
 
 ## Problem
 <!-- Short description of the problem.  For example, 
-"Users need to input information to create, deploy and configure resources."
+"Users want to input information to create, deploy and configure resources."
 -->
 
 ## Solution

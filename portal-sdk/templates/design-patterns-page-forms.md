@@ -5,7 +5,7 @@ Forms are the manner in which we gather and validate user input.
 Users enter information to manage Azure resources.
 
 ## Problem
-Users need to enter information to create, configure and manage resources.  Users file support tickets and provide feedback by entering information in the portal.
+Users want to enter information to create, configure and manage resources.  Users file support tickets and provide feedback by entering information in the portal.
 
 ## Solution
 The portal offers several variations of forms with consistent field layout and form validation to ensure users can easily enter information and understand whether that info is valid.  The form variations are `dialogs`, `context panes`, `full screen blades` and `wizards`.  Well designed forms enable users to increase the speed and accuracy of input and lead to successful form completion.

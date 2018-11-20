@@ -5,10 +5,10 @@ The manage a resource pattern provides the configuration and management of 
 Users wants to manage all aspects of an Azure resoruce.
 
 ## Problem
-Users manage many different types of Azure resources. For settings that are common across resources, users expect a common interaction. For settings that are unique to a resource, users need a way to easily find those settings.
+Users manage many different types of Azure resources. For settings that are common across resources, users expect a common interaction. For settings that are unique to a resource, users want a way to easily find those settings.
 
 ## Solution
-The Manage a Resource pattern is used to configure and manage a single Azure resource by using a resource menu to navigate the resource blades. The manage a resource page is typically opened from the browse resources page, when the user needs to see more details or make a change to a specific resource. The manage a resource page can also be opened from related resources that link to it.
+The Manage a Resource pattern is used to configure and manage a single Azure resource by using a resource menu to navigate the resource blades. The manage a resource page is typically opened from the browse resources page, when the user wants to see more details or make a change to a specific resource. The manage a resource page can also be opened from related resources that link to it.
 
 ### Also known as 
 -   Resource blade 
@@ -46,10 +46,10 @@ A manage a resource experience usually contains:
 2. Resource pages opened from the menu items, commands or links
 
 ## Behavior 
-When a resource is opened in azure the resource menu is loaded and the Overview page for the resource is displayed.  The user can then select other menu items as needed.
+When a resource is opened in azure the resource menu is loaded and the Overview page for the resource is displayed.  The user can then select other menu items .
 
 ### Resource menu
-The resource menu offers a way to navigate to all pages related to the resource. The navigation includes pages that are common to all resources throughout the portal. Your resource will get those "for free," although some common pages require onboarding by the resource provider. You can add as many pages to your resource as you need  Refer to the table below to make sure each item is grouped properly. Learn more [Resource Menu](top-blades-resourcemenublade.md)
+The resource menu offers a way to navigate to all pages related to the resource. The navigation includes pages that are common to all resources throughout the portal. Your resource will get those "for free," although some common pages require onboarding by the resource provider. You can have additional pages for your resource.  Refer to the table below to make sure each item is grouped properly. Learn more [Resource Menu](top-blades-resourcemenublade.md)
 
 <table style="width:800px; border-style:none; cellpadding=10px">
 <tr>

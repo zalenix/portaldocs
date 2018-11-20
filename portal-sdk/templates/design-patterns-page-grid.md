@@ -5,7 +5,7 @@ Most web pages and portals surface one or more lists of items to present valuabl
 In Azure, users frequently interface with objects that are exposed though list views.
 
 ## Problem
-Users arrive at a page with lists of items and need to perform actions on the objects.
+Users arrive at a page with lists of items and want to perform actions on the objects.
 
 ## Solution
 The Azure portal uses blades to represent a page and has a grid control to manage lists of items. Grids consist of objects grouped together and sorted vertically, usually presented with actions that a user can perform on a list item. Grids are used for surfacing a list of objects to provide meaningful data on each list item. 

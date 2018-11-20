@@ -2,10 +2,10 @@
 Filtering enables users to quickly winnow down a list or chart to display the result set they are seeking.
 
 ## Context
-Users need to configure lists of resources and graphical representations of data to show only the information they need to see.
+Users want to configure lists of resources and graphical representations of data to show only the information they want to see.
 
 ## Problem
-Users have a lot of resources in Azure and need to see a subset if items.  Azure also stores time series data and users need to see a specific time range of that data.
+Users have a lot of resources in Azure and want to see a subset if items.  Azure also stores time series data and users want to see a specific time range of that data.
 
 ## Solution
 The portal enables users to add, remove and customize filters so that users can see exactly what they want.
@@ -48,7 +48,7 @@ Use filtering when it is possible for the list of items to exceed what can be di
 To filter a page or grid, a collection of controls are controls are all logically on one continuous line.
 * Search - a text entry box to perform text matching against items
 * Filter - 0 or more filters to easily filter a particular aspect of the items in the list
-* Add filter - a control to add more filters to the page. A page that contains a fixed set of non-removable filters and no additional filters, does not need an `Add filter` control.
+* Add filter - a control to add more filters to the page. A page that contains a fixed set of non-removable filters and no additional filters, will not have an `Add filter` control.
 * Reset filters - a link to reset the filters on the page to the same state as when the page was initially loaded
 
 <div style="max-width:800px">
@@ -56,7 +56,7 @@ To filter a page or grid, a collection of controls are controls are all logicall
 </div>
 Wrapping behavior
 
-The single line of controls will wrap one control at a time, as needed
+The single line of controls will wrap one control at a time.
 <div style="max-width:600px">
 <img alttext="Time range" src="../media/design-patterns-page-filtering/anatomy-page-wrap-1.PNG"  />
 </div>
