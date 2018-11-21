@@ -35,7 +35,7 @@ Managing a single azure resource.
 
 ## Anatomy  
 The manage a resource pattern is a full screen experience composed of a resource menu and corresponding resource blades. Settings that are common across resources have a standard menu item and menu location so that users can easily find them.
-<!-- TODO - get updated manage a resource anatomy image -->
+<!-- TODO UX - get updated manage a resource anatomy image -->
 <div style="max-width:800px">
 <img alttext="Resource manage anatomy" src="../media/design-patterns-resource-manage/resource-manage-anatomy.png"  />
 </div>
