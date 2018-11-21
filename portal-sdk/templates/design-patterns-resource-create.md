@@ -134,8 +134,8 @@ The post create page provides realtime deployment status, help with troubleshoot
 
 ## Related design guidelines
 
--   Forms [design-patterns-page-forms.md](design-patterns--page-forms.md)
--   Full screen [design-patterns-page-fullscreen.md](design-patterns--page-fullscreen.md)
+-   Forms [design-patterns-page-forms.md](design-patterns-page-forms.md)
+-   Full screen [design-patterns-page-fullscreen.md](design-patterns-page-fullscreen.md)
 -   Browse Resources [design-patterns-resource-browse.md](design-patterns-resource-browse.md)
 -   Manage a Resource [design-patterns-resource-manage.md](design-patterns-resource-manage.md)
 -   Design guidelines [top-design.md](top-design.md)
