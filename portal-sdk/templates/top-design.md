@@ -41,6 +41,11 @@ Design toolkits and resources are available so that you can easily create design
 
 * Icons [design-patterns-icons.md](design-patterns-icons.md)
 
+* Writing guides - key resources to brand voice and content style and standards for Azure and the Business Applications Group within the Cloud + AI division. These two guides supply quick answers and essential direction for anyone who creates content — whether for brand naming, product design, documentation, marketing, PR, events, or other customer communications. 
+     * Microsoft Cloud Style Guide (https://worldready.cloudapp.net/Styleguide/Read?id=2696&topicid=25351)
+     * Microsoft Writing Style Guide http://aka.ms/style
+
+
 
 
 
