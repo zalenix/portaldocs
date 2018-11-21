@@ -1,5 +1,5 @@
-<a name="toolkits-for-azure-experience-design"></a>
-# Toolkits for Azure Experience Design
+<a name="toolkits-for-designing-azure-experiences"></a>
+# Toolkits for designing Azure experiences
 
 
 <table style="border-style:none; cellpadding:10px">
@@ -29,7 +29,7 @@
 
 <td  width="20%" height="200px">
 <a href="https://microsoft.sharepoint.com/:f:/t/UNI_CE/EjEXdW54jiBOuWunOWsYLTsBeIZIDPTfPD6fFiMMaYUKDA?e=YSEE8w" target="_blank">
-<img src="../media/design-patterns-toolkits/powerpoint.png" style="border-style:solid; border-width:2px; border-color:gray" alt="Powerpoint toolkit">
+<img src="../media/design-patterns-toolkits/powerpoint.png" style="border-style:solid; border-width:2px; border-color:gray" alt="PowerPoint toolkit">
 </a>
 </td>
 
@@ -38,36 +38,45 @@
 <tr>
 <td valign="top">
 <b>Figma</b>
+<br>No download is necessary.
 <br>Available as a Figma library within the Microsoft Azure Figma workgroup. Email If you want access to the Figma toolkit, just send a quick email requesting access to:
 CDS_Figma_Admins@microsoft.com to request access.
 <br>No download is necessary.
 </td>
 <td valign="top">
 <b>Sketch</b>
+<br>
+<a href="https://microsoft.sharepoint.com/:u:/t/UNI_CE/EeQ7d6ScPtxOn11y9u0uWDMBnxj0aAboy2KnvqBJOnB_VA?e=3WzClt" target="_blank">Open toolkit </a>
 <br>Available from UNI/
 <br>Load as a Sketch Library. Do not open the Sketch version of the toolkit as a file.
 </td>
 <td valign="top">
 <b>Adobe XD</b>
+<br>
+<a href="https://microsoft.sharepoint.com/:f:/t/UNI_CE/EuZaLU4h1I5Fn3L9uL6YRcMBWA4H6ZRXQWbmzUv60KXJWQ?e=gsPway" target="_blank">Open toolkit </a>
 <br>Available from UNI/
 </td>
 <td valign="top">
 <b>Adobe Illustrator</b>
+<br>
+<a href="https://microsoft.sharepoint.com/:u:/t/UNI_CE/ET_B7JO5tJpCnBrXXaLID9AB9ltbHqj_v6eWkq147cvm_Q?e=zEB7t8" target="_blank">Open toolkit </a>
 <br>Available from UNI/
 </td>
 <td valign="top">
-<b>Powerpoint</b>
+<b>PowerPoint</b>
+<br>
+<a href="https://microsoft.sharepoint.com/:f:/t/UNI_CE/EjEXdW54jiBOuWunOWsYLTsBeIZIDPTfPD6fFiMMaYUKDA?e=YSEE8w" target="_blank">Open toolkit </a>
 <br>Available from UNI/
 </td>
 </tr>
 </table>
 
-<a name="toolkits-for-azure-experience-design-how-to-submit-new-controls-or-file-bugs"></a>
+<a name="toolkits-for-designing-azure-experiences-how-to-submit-new-controls-or-file-bugs"></a>
 ## How to submit new controls or file bugs
 
 If you are interested in submitting new controls to include or have bugs to file, please [contact us](http://aka.ms/azureportaltoolkitsfeedback) with the control details. 
 
-<a name="design-patterns"></a>
-# Design patterns
-* Design patterns [top-design.md](top-design.md)
+<a name="design-guidelines"></a>
+# Design guidelines
+* Design guidelines [top-design.md](top-design.md)
 

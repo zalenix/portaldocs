@@ -1,43 +1,44 @@
-<a name="design-patterns-for-common-azure-scenarios"></a>
-# Design patterns for common Azure scenarios
+<a name="design-guidelines"></a>
+# Design Guidelines
 
-These design patterns provide solutions for common scenerios in Azure.  In Azure, we formalize these best practices once several teams have a similar problem, use a well researched shared approach and see successful real-world usage of the common solution. Azure teams should leverage these design patterns to accelerate extension development and to provide users with a familiar experience so that users can easily adopt new Azure services.
+These design guidelines provide solutions for common scenerios in Azure.  In Azure, we formalize these best practices once several teams have a similar problem, use a well researched shared approach, and see successful real-world usage of the common solution. Azure teams should leverage these design guidelines to accelerate extension development and to provide users with a familiar experience so that users can easily adopt new Azure services.
 
-The following patterns are available
-
-<a name="resource-management"></a>
-# Resource Management
+<a name="design-guidelines-resource-management-patterns"></a>
+## Resource management patterns
 The resource management patterns provide guidance for managing the full lifecycle of Azure resources.
 
-1. Resource Create [design-patterns-resource-create.md](design-patterns-resource-create.md)
+* Create a resource [design-patterns-resource-create.md](design-patterns-resource-create.md)
 
-2. Resource Browse [design-patterns-resource-browse.md](design-patterns-resource-browse.md)
+* Browse resources [design-patterns-resource-browse.md](design-patterns-resource-browse.md)
 
-3. Resource Manage [design-patterns-resource-manage.md](design-patterns-resource-manage.md)
+* Manage a resource [design-patterns-resource-manage.md](design-patterns-resource-manage.md)
 
 
-<a name="page"></a>
-# Page
+<a name="design-guidelines-page"></a>
+## Page
 The page patterns provide guidance for common page layouts in Azure
 
-<a name="page-page-design-recommendations"></a>
-## Page design recommendations
-* Pages should be `fullscreen`
-* Each page that is displaying data should have a `Refresh` button
+<a name="design-guidelines-page-page-design-recommendations"></a>
+### Page design recommendations
+* Pages should be full screen so that we do not displaying partial pages and avoid horizontal scrolling
+* Each page that is displaying data should have a **Refresh** command
 
-<a name="page-page-patterns"></a>
-## Page patterns
-1. Fullscreen [design-patterns-page-fullscreen.md](design-patterns-page-fullscreen.md)
+<a name="design-guidelines-page-page-patterns"></a>
+### Page patterns
 
-2. Page with lists [design-patterns-page-grid.md](design-patterns-page-grid.md)
+* Full screen [design-patterns-page-fullscreen.md](design-patterns-page-fullscreen.md)
 
-3. Forms [design-patterns-page-forms.md](design-patterns-page-forms.md)
+* Responsive pages [design-patterns-page-responsive-design.md](design-patterns-page-responsive-design.md)
 
-4. Filtering [design-patterns-page-filtering.md](design-patterns-page-filtering.md)
+* Page with lists [design-patterns-page-grid.md](design-patterns-page-grid.md)
+
+* Forms [design-patterns-page-forms.md](design-patterns-page-forms.md)
+
+* Filtering [design-patterns-page-filtering.md](design-patterns-page-filtering.md)
 
 
-<a name="design-toolkits-and-resources"></a>
-# Design toolkits and resources
+<a name="design-guidelines-design-toolkits-and-resources"></a>
+## Design toolkits and resources
 Design toolkits and resources are available so that you can easily create designs that leverage these patterns
 
 * Design toolkits [design-patterns-toolkits.md](design-patterns-toolkits.md)
