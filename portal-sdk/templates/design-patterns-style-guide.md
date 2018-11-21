@@ -1,6 +1,8 @@
-﻿# Style guide
+﻿# Style guide tips
+Here are some quick tips to align with the portal color themes, color pallette and type ramp that resonate with customers and meets accessibility requirements. 
 
-The Azure portal has 4 themes, a color pallette and type ramp that resonate with customers and meets accessibility requirements.
+## Full style guide
+* Full Style guide [Azure Portal Style Guide PDF](../media/design-patterns-style-guide/Azure-Portal-Style-Guide.pdf)
 
 
 ## Key style items
@@ -9,7 +11,7 @@ The Azure portal has 4 themes, a color pallette and type ramp that resonate with
 * Use 13px as body-text size
 * Wrap text at 75 characters per line
 * All the line style icons align with the monoline icon style from Full MDL Icon font.
-* We use 4 px grid system. The smallest padding/margin is 4 px. 
+* We use 4px grid system. The smallest padding/margin is 4px. 
 
 
 ### External link
@@ -19,29 +21,23 @@ Links that open in new browser instances should follow this styling
 <img alttext="external link" src="../media/design-patterns-style-guide/external-link.jpg"  />
 </div>
 
-## Full style guide
-* Full Style guide [Azure Portal Style Guide PDF](../media/design-patterns-style-guide/Azure-Portal-Style-Guide.pdf)
 
-# Screen resolutions
+## Screen resolutions
 Ensure that your designs work well at all P0 resolutions.  Based on telemetry data \(see below\), resolution priorities are:
 
 * P0 - experience needs to be great
-    * 1366 - portal team uses 1366 x 786 as a baseline.  This is often the resolutions at events (Ignite, Build, etc)
+    * 1366 - portal team uses 1366 × 786 as a baseline.  This is often the resolutions at events (Ignite, Build, etc)
     * 1920 
 * P1 - experience needs to work
     * \>1920 
 * P3 – experience needs to work
     * 1024
 
-
-Designing at 1366 force a focus on the most important information. When designing initially for larger sizes, there is a tendency to push more features and functionality onto the screen.  Designs scales up to a larger resolution more easily than a design for larger resolutions like 1920 can scale down to 1366 in terms of data density etc.
-
-1366 x768 (or 1280 x 720) are still the resolutions used at events, so we want to ensure everything looks great at 1366. 
-
+Designing for 1366 forces a focus on the most important information.    
 
 ### Telemetry
 Reports showing portal usage
-[Screen resolution telemetry](https://msit.powerbi.com/groups/me/dashboards/7b218d20-f0aa-4858-b0f9-567386a0ac1c)
+[Screen resolution telemetry](https://msit.powerbi.com/groups/4f11aaa4-1faf-4bf3-9983-1dc7351bf5b6/reports/bdd70bcd-ff00-44d6-a29b-4ba942c59867/ReportSection)
 
 
 ## Related design guidelines
@@ -51,6 +47,6 @@ Reports showing portal usage
 # For developers 
 Developers can use the following information to get started implementing this pattern
 
-## Related documents
+## Related documentation
 The portal includes a built in list of CSS classes that may be used inside of your templates.
 * Style for extensions [portalfx-extensions-style.md](portalfx-extensions-style.md)
