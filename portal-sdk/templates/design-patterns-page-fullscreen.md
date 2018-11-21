@@ -95,7 +95,10 @@ Research history and retrospective for Azure Portal Full Screen
 [Full screen history and retrospective](https://microsoft.sharepoint.com/:p:/r/teams/azureteams/aapt/azureux/portalfx/_layouts/15/Doc.aspx?sourcedoc=%7B78bf3a97-2ccc-4920-886d-ce508980c3d8%7D&action=default)
 
 ## Telemetry
-Coming soon
+
+* Non full screen pages with more than 2000 views over last 28 days [View report](https://aka.ms/portalfx/fundamentals/nonfullscreenblades)
+
+* Non full screen resource creation pages with more than 100 views in last 28 days [View report](https://aka.ms/portalfx/fundamentals/nonfullscreencreate)
 
 # For developers 
 Developers can use the following information to get started implementing this pattern
