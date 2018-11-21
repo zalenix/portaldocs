@@ -1,11 +1,11 @@
 # Filtering
-Filtering enables users to quickly winnow down a list or chart to display the result set they are seeking.
+Filtering enables users to quickly winnow down a list, table or chart to display the result set they are seeking.
 
 ## Context
-Users need to configure lists of resources and graphical representations of data to show only the information they need to see.
+Users configure lists of resources and graphical representations of data to show only the information they want to see.
 
 ## Problem
-Users have a lot of resources in Azure and need to see a subset if items.  Azure also stores time series data and users need to see a specific time range of that data.
+Users have a lot of resources in Azure and want to see a subset if items.  Azure also stores time series data and users want to see a specific time range of that data.
 
 ## Solution
 The portal enables users to add, remove and customize filters so that users can see exactly what they want.
@@ -19,6 +19,7 @@ The portal enables users to add, remove and customize filters so that users can 
 ### Example images
 <!-- Include example image of the solution in the portal -->
 Dashboard
+
 <div style="max-width:800px">
 <img alttext="Full time range" src="../media/design-patterns-page-filtering/dashboard.PNG"  />
 </div>
@@ -27,36 +28,39 @@ All resources
 <!-- TODO UX screenshot of new browse -->
 
 Activity log
+
 <div style="max-width:800px">
 <img alttext="Time range" src="../media/design-patterns-page-filtering/activity-log.png"  />
 </div>
 
 ### Example uses
 
-* `Dashboard` 
-* `All resources`
-* `Activity logs`
-* `Metrics`  
-* `Virtual Machine Size`
+* Dashboard
+* All resources
+* Activity logs
+* Metrics
+* Virtual Machine Size
 
 ## Use when
-Use filtering when it is possible for the list of items to exceed what can be displayed on one page.  Also use filtering when showing time series data on a page or chart so that the user can filter to specific ranges.
+Use filtering when it is possible for the items to exceed what can be displayed on one page.  Also use filtering when showing time series data on a page or chart so that the user can filter to specific ranges.
 
 ## Anatomy
 
-### Page or grid
-To filter a page or grid, a collection of controls are controls are all logically on one continuous line.
-* Search - a text entry box to perform text matching against items
-* Filter - 0 or more filters to easily filter a particular aspect of the items in the list
-* Add filter - a control to add more filters to the page. A page that contains a fixed set of non-removable filters and no additional filters, does not need an `Add filter` control.
-* Reset filters - a link to reset the filters on the page to the same state as when the page was initially loaded
+### Page or table
+These controls are all logically on one continuous line.
+* Search: a text entry box to perform text matching against items
+* Filter: zero or more filters to easily filter a particular aspect of the items in the list
+* Add filter: a control to add more filters to the page. A page that contains a fixed set of non-removable filters and no additional filters, will not have an `Add filter` control.
+* Reset filters: a link to reset the filters on the page to the same state as when the page was initially loaded
 
 <div style="max-width:800px">
 <img alttext="Time range" src="../media/design-patterns-page-filtering/anatomy-page.PNG"  />
 </div>
+
 Wrapping behavior
 
-The single line of controls will wrap one control at a time, as needed
+The single line of controls will wrap one control at a time.
+
 <div style="max-width:600px">
 <img alttext="Time range" src="../media/design-patterns-page-filtering/anatomy-page-wrap-1.PNG"  />
 </div>
@@ -75,9 +79,9 @@ The single line of controls will wrap one control at a time, as needed
 A text box where the user enters text to match against the result set.
 
 ### Filter 
-The filter itself will display
-* current state of filter with filter `type` in normal text and filter `configuration` in bold
-    * a pill in an unconfigured state will show `None` as the configuration text
+The filter displays
+* current state of filter with `type` in normal text and filter `configuration` in bold
+    * a filter in an unconfigured state will show `None` as the configuration text
 * visual indicator that filter can be interacted with
 * if removable
     * visual indicator to separate the delete click target area from the filter selection target area
@@ -154,9 +158,9 @@ If additional options won't add value to the scenario, keep it clean and simple.
 ## Don't 
 <!-- Bulleted list of things to avoid -->
 
-## Related design patterns
-<!-- Links to related design patterns.  Always include the link to the readme -->
-* Design patterns [top-design.md](top-design.md)
+## Related design guidelines
+<!-- Links to Related design guidelines.  Always include the link to the readme -->
+* Design guidelines [top-design.md](top-design.md)
 
 ## Research and usability
 <!-- Links to the research for the solution -->

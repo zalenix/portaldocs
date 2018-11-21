@@ -66,12 +66,14 @@ This example has slightly narrower text boxes at 220px
 
 ## Don't 
 
-## Related design patterns
-<!-- Links to related design patterns.  Always include the link to the readme -->
-* Design patterns [top-design.md](top-design.md)
+## Related design guidelines
+<!-- Links to Related design guidelines.  Always include the link to the readme -->
+* Design guidelines [top-design.md](top-design.md)
 
 ## Research and usability
-<!-- Links to the research for the solution -->
+Research often finds issues with experiences that do not follow guidelines on page and field maximum widths.
+
+* Consider reducing the horizontal width of the form field. - [The ellipsis was not a clear call to action.](https://hits.microsoft.com/Insight/1079450)
 
 ## Telemetry
 <!-- Links to portal telemetry showing the solution usage -->

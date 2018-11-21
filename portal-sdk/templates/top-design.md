@@ -1,8 +1,8 @@
 # Design Guidelines
 
-These design patterns provide solutions for common scenerios in Azure.  In Azure, we formalize these best practices once several teams have a similar problem, use a well researched shared approach, and see successful real-world usage of the common solution. Azure teams should leverage these design patterns to accelerate extension development and to provide users with a familiar experience so that users can easily adopt new Azure services.
+These design guidelines provide solutions for common scenerios in Azure.  In Azure, we formalize these best practices once several teams have a similar problem, use a well researched shared approach, and see successful real-world usage of the common solution. Azure teams should leverage these design guidelines to accelerate extension development and to provide users with a familiar experience so that users can easily adopt new Azure services.
 
-## Resource management
+## Resource management patterns
 The resource management patterns provide guidance for managing the full lifecycle of Azure resources.
 
 * Create a resource [design-patterns-resource-create.md](design-patterns-resource-create.md)
@@ -16,8 +16,8 @@ The resource management patterns provide guidance for managing the full lifecy
 The page patterns provide guidance for common page layouts in Azure
 
 ### Page design recommendations
-* Pages should be `full screen`
-* Each page that is displaying data should have a **Refresh** button
+* Pages should be full screen so that we do not displaying partial pages and avoid horizontal scrolling
+* Each page that is displaying data should have a **Refresh** command
 
 ### Page patterns
 

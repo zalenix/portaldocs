@@ -9,7 +9,7 @@
 
 ## Problem
 <!-- Short description of the problem.  For example, 
-"Users need to input information to create, deploy and configure resources."
+"Users want to input information to create, deploy and configure resources."
 -->
 
 ## Solution
@@ -60,7 +60,7 @@ The in-blade notification area relies on color and text to communicate severity.
 
 - Red band + error icon: Alerts about an existing problem (e.g., "Your website's certificate has expired").
 
-- Purple band + rocket icon: No problems to report, but we're recommending an additional feature, a separate service, or anything else that the user doesn't have (but might need). Also known as "upsell."
+- Purple band + rocket icon: No problems to report, but we're recommending an additional feature, a separate service, or anything else that the user doesn't have (but might want). Also known as "upsell."
 
 ####The recommendation blades####
 
@@ -98,9 +98,9 @@ If you think your notification warrants the global treatment, contact [Ibiza Fx 
 ## Don't 
 <!-- Bulleted list of things to avoid -->
 
-## Related design patterns
-<!-- Links to related design patterns.  Always include the link to the readme -->
-* Design patterns [top-design.md](top-design.md)
+## Related design guidelines
+<!-- Links to Related design guidelines.  Always include the link to the readme -->
+* Design guidelines [top-design.md](top-design.md)
 
 ## Research and usability
 <!-- Links to the research for the solution -->

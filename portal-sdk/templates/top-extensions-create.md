@@ -2,7 +2,7 @@
 
 ### Overview
 
-The create experience is one of the most important customer journeys within the portal. Which is why our designers have spent many months testing and validating different design patterns. Our most recent design incorporates a full screen blade and uses horizontal tabs to help organize different configuration settings into sections. The goal is to develop a consistent, simple, intuitive, and quick customer experience across resources.
+The create experience is one of the most important customer journeys within the portal. Which is why our designers have spent many months testing and validating different design guidelines. Our most recent design incorporates a full screen blade and uses horizontal tabs to help organize different configuration settings into sections. The goal is to develop a consistent, simple, intuitive, and quick customer experience across resources.
 
 Ask a `create` questions on [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-create)
 	
@@ -10,7 +10,7 @@ Ask a `create` questions on [Stack Overflow](https://stackoverflow.microsoft.com
 
 The  most recent Portal SDK contains a sample create in `SamplesExtension/Client/V2/Create/Engine/CreateArmEngineBlade.ts`. This sample uses NoPDL and includes 3 essential tabs and 2 optional tabs. All the styling and validation patterns are included and can be easily augmented to meet your needs. The remainder of this document is intended to help you understand the key design principles and create a consistent experience.
 
-### Related design patterns
+### Related design guidelines
 
 -   Create a Resource [top-design-patterns-resource-create.md](top-design-patterns-resource-create.md)
 

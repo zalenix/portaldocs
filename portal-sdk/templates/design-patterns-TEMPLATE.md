@@ -9,7 +9,7 @@
 
 ## Problem
 <!-- Short description of the problem.  For example, 
-"Users need to input information to create, deploy and configure resources."
+"Users want to input information to create, deploy and configure resources."
 -->
 
 ## Solution
@@ -30,6 +30,9 @@
 
 ### Example uses
 <!-- Descriptions and ideally deep links into the portal for running examples -->
+<ul>
+<li><a href="" target="_blank">Portal opens in new tab</a></li>
+</ul>
 
 ## Use when
 <!-- Description of when to use this solution.  For example "User is creating a resource" -->
@@ -48,9 +51,9 @@
 ## Don't 
 <!-- Bulleted list of things to avoid -->
 
-## Related design patterns
-<!-- Links to related design patterns.  Always include the link to the readme -->
-* Design patterns [top-design.md](top-design.md)
+## Related design guidelines
+<!-- Links to Related design guidelines.  Always include the link to the readme -->
+* Design guidelines [top-design.md](top-design.md)
 
 ## Research and usability
 <!-- Links to the research for the solution -->

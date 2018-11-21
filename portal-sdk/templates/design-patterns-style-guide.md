@@ -44,8 +44,8 @@ Reports showing portal usage
 [Screen resolution telemetry](https://msit.powerbi.com/groups/me/dashboards/7b218d20-f0aa-4858-b0f9-567386a0ac1c)
 
 
-## Related design patterns
-* Design patterns [top-design.md](top-design.md)
+## Related design guidelines
+* Design guidelines [top-design.md](top-design.md)
 
 
 # For developers 

@@ -30,8 +30,8 @@ This page covers how to properly export an icon that you've created in Illustrat
 <img alttext="Page with list example" src="../media/design-patterns-icons/icons-layers-dont.png"  />
 </div>
 
-# Design patterns
-* Design patterns [top-design.md](top-design.md)
+# Design guidelines
+* Design guidelines [top-design.md](top-design.md)
 
 # For developers 
 Developers can use the following information to get started implementing this pattern
