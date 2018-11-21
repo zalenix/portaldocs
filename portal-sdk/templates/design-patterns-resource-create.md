@@ -151,6 +151,8 @@ The post create page provides realtime deployment status, help with troubleshoot
 
 ## Telemetry
 
+* Non full screen resource creation pages with more than 100 views in last 28 days [View report](https://aka.ms/portalfx/fundamentals/nonfullscreencreate)
+
 # For developers 
 Developers can use the following information to get started implementing this pattern
 
