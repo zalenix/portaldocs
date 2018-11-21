@@ -38,6 +38,7 @@ These Azure resources are good examples of this design pattern 
 Creating a resource in Azure
 
 ## Anatomy  
+<!-- TODO UX get screenshot that includes "Learn more" links in section text -->
 <div style="max-width:800px">
 <img alttext="Resource create anatomy" src="../media/design-patterns-resource-create/resource-create-anatomy.png"  />
 </div>

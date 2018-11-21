@@ -36,6 +36,7 @@ These Azure resources are good examples of this design pattern 
 Showing a list of Azure resources
 
 ## Anatomy  
+<!-- TODO UX get latest screenshot, ensure it has all elements of anatomy -->
 <div style="max-width:800px">
 <img alttext="browse resources anatomy" src="../media/design-patterns-resource-browse/resource-browse-anatomy.png"/>
 </div>
@@ -85,7 +86,7 @@ When the resource list has no items to display, provide the user with informatio
 <img alttext="Empty state" src="../media/design-patterns-resource-browse/resource-browse-NoResources.png"/>
 
 ## Do 
-
+<!-- TODO UX verify whether Name is a good column header -->
 - Include some common columns in your grid: `Name`, `location` and `subscription`
 
 - Include key resource properties as columns for the specific resource types
