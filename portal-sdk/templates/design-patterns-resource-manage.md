@@ -59,8 +59,10 @@ The resource menu offers a way to navigate to all pages related to the resource.
 </div>
 </td>
 <td valign=top>
+
 ### Resource menu contents
 <br>
+
 **Top level**
 <br>Pages common to all resources
 
