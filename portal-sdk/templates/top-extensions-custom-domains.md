@@ -2,6 +2,8 @@
 
 * [Overview](#overview)
 
+* [Onboarding process](#onboarding-process)
+
 * [Configuration APIs](#configuration-apis)
 
 * [Expose configuration settings](#expose-configuration-settings)
@@ -18,13 +20,11 @@
 
 * [Sample configuration](#sample-configuration)
 
-* [Questionnaire Template](#questionnaire-template) 
-
 * [Pull Request](#pull-request) 
 
 ## Overview
 
-Custom domains, or domain-based configurations, allow the Portal and extensions to dynamically obtain settings that are based on the URL that was used to access the Portal. Domain-based configuration is based on the domain host address of the Shell, instead of the extension. For example, the domain-based settings are different between the `contoso.portal.azure.com` URL and the `portal.azure.com` URL when using the URL's to access the Portal. In addition, extensions are not required to support additional host names in order to take advantage of domain-based configuration.
+Custom domains, or domain-based configurations, are primarily meant for services that are either part of OR align with Microsoft Azure and which have large footprint that demands a dedicated and customized experience. Some of the custom domains like `aad.portal.azure.com`, `intuneeducation.portal.azure.com` and `devicemanagement.microsoft.com` are good examples where the experience is created from Azure portal repository with few customizations that the framework allows.
 
 Some partner needs are met at the deployment level. For example, national clouds like China, Germany, or Government, can use normal configuration with no dynamic tests at runtime.  Items that are based on which domain  is running the extension include  ARM and RP URLs, or AAD client application IDs.  
 
@@ -43,6 +43,42 @@ If you and your team have an interest in custom domains, you should read this gu
 **NOTE**: All custom domains must be approved by <a href="mailto:ibiza-onboarding@microsoft.com?subject=Custom%20Domains">Leon Welicki and Adam Abdelhamed</a> before any work can commence on the extension. Please schedule time with them to discuss the details about the extension and get an approval. 
 
 If you have any questions, reach out to Ibiza team at [https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza).
+
+## Onboarding process
+
+The following section contains questions that partner teams are expected to answer prior to the granting of the custom domain. You should determine the settings and values for your extension previous to filling out the questionnaire, by reviewing the values in the tables located in the [Override links](#override-links), and  [Branding and chrome](#branding-and-chrome) sections. You may also want to use settings that were specified in [Default Dashboard](#default-dashboard), if you decide to create one.
+
+Partner team should reach out to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Custom%20Domains">Leon Welicki and Adam Abdelhamed</a> in the process of answering the questionnaire.
+
+The main questions to answer, other than the settings and values as described in the [Override links](#override-links) and [Branding and chrome](#branding-and-chrome) sections, are the following.
+
+1. Why do you need a Custom Domain?
+
+1. What is the name of the extension in Ibiza Portal?
+
+1. When do you expect the extension to be ready for deployment?
+
+1. What are the expected timelines for various tasks and coordination? 
+
+    | Requirement                        | Estimated Completion Date |
+    | ---------------------------------- | ------------------------- |
+    | Azure Portal team PM Lead approval |                           |
+    | Completed Questionnaire            |                           |
+    | Completed Default Dashboard Json   |                           |
+    | Planning for Dev work              | 1 week                    |
+    | Dev work                           | 3-4 weeks after scheduling, subject to resource availability | 
+    | Deployments                        | Post dev work 2-3 weeks to Prod based on Safe deployment schedule | 
+
+1. What URL's will your extension require for the custom domain?
+
+	| Setting name / notes	| Default Value	        | Extension value                  |
+    | --------------------- | --------------------  | -------------------------------- |
+    | Production URL        | `portal.azure.com`    | `aad.portal.azure.com`           |
+    | Dogfood URL           | `df.portal.azure.com` | `df-aad.onecloud.azure-test.net` |
+
+1. Branding and Chrome Values
+
+    The unique values for settings and feature flags for your extension should be included in the  list specified in the [#branding-and-chrome](#branding-and-chrome) section.  You can make a copy of the tables, or you can reach out to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Custom%20Domains">Leon Welicki and Adam Abdelhamed</a>.
 
 ## Configuration APIs
 
@@ -812,41 +848,7 @@ The following three examples demonstrate how to use the settings that are associ
 
 **NOTE**: `gettingStarted`, `support`, and `termsAndConditions` are members of the  `links` parameter in the `config` variable.
 
-## Questionnaire template
 
-The following template contains questions that your team answers previous to the granting of the custom domain. You should determine the settings and values for your extension previous to filling out the questionnaire, by reviewing the values in the tables located in the [Override links](#override-links), and  [Branding and chrome](#branding-and-chrome) sections. You may also want to use settings that were specified in [Default Dashboard](#default-dashboard), if you decide to create one.
-
-You and your team should reach out to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Custom%20Domains">Leon Welicki and Adam Abdelhamed</a> in the process of answering the questionnaire.
-
-The main questions to answer, other than the settings and values as described in the [Override links](#override-links) and [Branding and chrome](#branding-and-chrome) sections, are the following.
-
-1. Why do you need a Custom Domain?
-
-1. What is the name of the extension in Ibiza Portal?
-
-1. When do you expect the extension to be ready for deployment?
-
-1. What are the expected timelines for various tasks and coordination? 
-
-    | Requirement                        | Estimated Completion Date |
-    | ---------------------------------- | ------------------------- |
-    | Azure Portal team PM Lead approval |                           |
-    | Completed Questionnaire            |                           |
-    | Completed Default Dashboard Json   |                           |
-    | Planning for Dev work              | 1 week                    |
-    | Dev work                           | 3-4 weeks after scheduling, subject to resource availability | 
-    | Deployments                        | Post dev work 2-3 weeks to Prod based on Safe deployment schedule | 
-
-1. What URL's will your extension require for the custom domain?
-
-	| Setting name / notes	| Default Value	        | Extension value                  |
-    | --------------------- | --------------------  | -------------------------------- |
-    | Production URL        | `portal.azure.com`    | `aad.portal.azure.com`           |
-    | Dogfood URL           | `df.portal.azure.com` | `df-aad.onecloud.azure-test.net` |
-
-1. Branding and Chrome Values
-
-    The unique values for settings and feature flags for your extension should be included in the  list specified in the [#branding-and-chrome](#branding-and-chrome) section.  You can make a copy of the tables, or you can reach out to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Custom%20Domains">Leon Welicki and Adam Abdelhamed</a>.
 
 ## Pull Request
 

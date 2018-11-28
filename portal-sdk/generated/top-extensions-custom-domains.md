@@ -1,7 +1,8 @@
-<a name="domain-based-configuration"></a>
 # Domain-based configuration
 
 * [Overview](#overview)
+
+* [Onboarding process](#onboarding-process)
 
 * [Configuration APIs](#configuration-apis)
 
@@ -19,14 +20,11 @@
 
 * [Sample configuration](#sample-configuration)
 
-* [Questionnaire Template](#questionnaire-template) 
-
 * [Pull Request](#pull-request) 
 
-<a name="domain-based-configuration-overview"></a>
 ## Overview
 
-Custom domains, or domain-based configurations, allow the Portal and extensions to dynamically obtain settings that are based on the URL that was used to access the Portal. Domain-based configuration is based on the domain host address of the Shell, instead of the extension. For example, the domain-based settings are different between the `contoso.portal.azure.com` URL and the `portal.azure.com` URL when using the URL's to access the Portal. In addition, extensions are not required to support additional host names in order to take advantage of domain-based configuration.
+Custom domains, or domain-based configurations, are primarily meant for services that are either part of OR align with Microsoft Azure and which have large footprint that demands a dedicated and customized experience. Some of the custom domains like `aad.portal.azure.com`, `intuneeducation.portal.azure.com` and `devicemanagement.microsoft.com` are good examples where the experience is created from Azure portal repository with few customizations that the framework allows.
 
 Some partner needs are met at the deployment level. For example, national clouds like China, Germany, or Government, can use normal configuration with no dynamic tests at runtime.  Items that are based on which domain  is running the extension include  ARM and RP URLs, or AAD client application IDs.  
 
@@ -46,7 +44,42 @@ If you and your team have an interest in custom domains, you should read this gu
 
 If you have any questions, reach out to Ibiza team at [https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza](https://stackoverflow.microsoft.com/questions/tagged?tagnames=ibiza).
 
-<a name="domain-based-configuration-configuration-apis"></a>
+## Onboarding process
+
+The following section contains questions that partner teams are expected to answer prior to the granting of the custom domain. You should determine the settings and values for your extension previous to filling out the questionnaire, by reviewing the values in the tables located in the [Override links](#override-links), and  [Branding and chrome](#branding-and-chrome) sections. You may also want to use settings that were specified in [Default Dashboard](#default-dashboard), if you decide to create one.
+
+Partner team should reach out to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Custom%20Domains">Leon Welicki and Adam Abdelhamed</a> in the process of answering the questionnaire.
+
+The main questions to answer, other than the settings and values as described in the [Override links](#override-links) and [Branding and chrome](#branding-and-chrome) sections, are the following.
+
+1. Why do you need a Custom Domain?
+
+1. What is the name of the extension in Ibiza Portal?
+
+1. When do you expect the extension to be ready for deployment?
+
+1. What are the expected timelines for various tasks and coordination? 
+
+    | Requirement                        | Estimated Completion Date |
+    | ---------------------------------- | ------------------------- |
+    | Azure Portal team PM Lead approval |                           |
+    | Completed Questionnaire            |                           |
+    | Completed Default Dashboard Json   |                           |
+    | Planning for Dev work              | 1 week                    |
+    | Dev work                           | 3-4 weeks after scheduling, subject to resource availability | 
+    | Deployments                        | Post dev work 2-3 weeks to Prod based on Safe deployment schedule | 
+
+1. What URL's will your extension require for the custom domain?
+
+	| Setting name / notes	| Default Value	        | Extension value                  |
+    | --------------------- | --------------------  | -------------------------------- |
+    | Production URL        | `portal.azure.com`    | `aad.portal.azure.com`           |
+    | Dogfood URL           | `df.portal.azure.com` | `df-aad.onecloud.azure-test.net` |
+
+1. Branding and Chrome Values
+
+    The unique values for settings and feature flags for your extension should be included in the  list specified in the [#branding-and-chrome](#branding-and-chrome) section.  You can make a copy of the tables, or you can reach out to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Custom%20Domains">Leon Welicki and Adam Abdelhamed</a>.
+
 ## Configuration APIs
 
  The Shell provides two APIs that support domain-based configuration. The following is the recommended implementation methodology, although partners and developers can implement domain-based configuration in many ways.
@@ -55,14 +88,12 @@ If you have any questions, reach out to Ibiza team at [https://stackoverflow.mic
 
 * [The getSharedSettings function](#the-getSharedSettings-function)
 
-<a name="domain-based-configuration-configuration-apis-the-trustedauthorityhost-function"></a>
 ### The trustedAuthorityHost function
 
 The Server-side `PortalContext.TrustedAuthorityHost` function returns the host name under which the extension was loaded. For example, an extension may need to know if it is being called from `portal.azure.com` or `contoso.azure.com`. In the first case `TrustedAuthorityHost` will contain `portal.azure.com` and in the second, `contoso.azure.com`.
  
 **NOTE**: If the extension needs to change its configuration based on the domain of the caller, the recommended solution is to use domain-based configuration, which is designed specifically for this sort of work.  It is preferred over coding directly against values returned by `PortalContext.TrustedAuthorityHost`.
 
-<a name="domain-based-configuration-configuration-apis-the-getsharedsettings-function"></a>
 ### The getSharedSettings function
 
 In the `MsPortalFx.Settings.getSharedSettings()` function, selected values from the Shell are exposed through an RPC call for the following reasons.
@@ -99,7 +130,6 @@ Links are automatically expanded according to the user's domain, tenant, and lan
 
 The extension should support all three formats if they are intended to be used in custom portal.
 
-<a name="domain-based-configuration-configuration-apis-the-getsharedsettings-function-the-link-attribute"></a>
 #### The link attribute
 
 <!-- TODO: Determine where the  `{culture}` code should be in the FwLink template. -->
@@ -120,7 +150,6 @@ An exception will be thrown if the target of a `[Link]` attribute is not in one 
 
 * A http or https URL
 
-<a name="domain-based-configuration-configuration-apis-the-getsharedsettings-function-override-links"></a>
 #### Override links
 
 Your cloud has the option of using configuration settings to override specific links that are displayed by the system. Overriding is optional, and in many cases no overrides are required. Where supported, settings use **FwLinks** instead of absolute URLs because they do not require the Shell to be redeployed if the  destination changes. In addition, **FwLinks** support the user’s in-product language selection, which may be  different from the browser’s default language.  For example, if the user has set the language in the Portal to Chinese, the extension should display Chinese-language pages.
@@ -161,7 +190,6 @@ Links are separated into the following three sections.
 
 * * *
 
-<a name="domain-based-configuration-configuration-apis-the-getsharedsettings-function-shell-links"></a>
 #### Shell Links
 
 The values listed in the "Extension value" column are recommended values, although they can be customized for your extension. 
@@ -183,7 +211,6 @@ The values listed in the "Extension value" column are recommended values, althou
 | joinResearchPanel | [https://www.surveymonkey.com/](https://www.surveymonkey.com/) | same |
 | learnAzureCli<sup>2</sup> | 	[https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-azure-resource-manager/](https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-azure-resource-manager/)	 | same |
  
-<a name="domain-based-configuration-configuration-apis-the-getsharedsettings-function-hubs-links"></a>
 #### Hubs links
 
 | Setting name / notes  | Default Value | Extension Value |
@@ -205,7 +232,6 @@ The values listed in the "Extension value" column are recommended values, althou
 | pricingHelp<sup>2</sup> | [https://go.microsoft.com/fwLink/?LinkID=829091](https://go.microsoft.com/fwLink/?LinkID=829091)  | same |
 | azureStatus<sup>2</sup> | [https://status.azure.com](https://status.azure.com)  | same |
  
-<a name="domain-based-configuration-configuration-apis-the-getsharedsettings-function-error-page-links"></a>
 #### Error Page Links
 	
 | Setting name / notes | Default Value |	Extension Value |
@@ -215,7 +241,6 @@ The values listed in the "Extension value" column are recommended values, althou
 | portalVideo |	[https://go.microsoft.com/fwLink/?LinkID=394684](https://go.microsoft.com/fwLink/?LinkID=394684) |	 blank |
 | supportedBrowserMatrix |	[https://go.microsoft.com/fwLink/?LinkID=394683](https://go.microsoft.com/fwLink/?LinkID=394683)	 | same |
 
-<a name="domain-based-configuration-expose-configuration-settings"></a>
 ## Expose configuration settings
 
 Configuration settings are typically used to control application behavior like timeout values, page size, endpoints, ARM version number, and other items. With the .NET framework, managed code can easily load configurations; however, most of the extension implementation is client-side JavaScript.
@@ -254,7 +279,6 @@ In many cases, the domain-based configuration is needed in client-side **TypeScr
 
 1. Update `ExtensionFxEnvironment.d.ts` to include **TypeScript** definitions for the new values that are being downloaded to the client. The settings and feature flags are specified in [#branding-and-chrome](#branding-and-chrome).
 
-<a name="domain-based-configuration-expose-configuration-settings-configuration-procedure"></a>
 ### Configuration procedure
 
 In this procedure, a Portal extension named `MyExtension` is customized to add a new configuration named "PageSize". 
@@ -324,7 +348,6 @@ The new configuration entry is now defined. To use the configuration, add the fo
 
 An extended version of this procedure can be used to transfer domain-based-configurations, like correctly formatted FwLinks, to the client.
 
-<a name="domain-based-configuration-configure-the-dictionary"></a>
 ## Configure the dictionary
 
 The `DictionaryConfiguration` class allows strongly-typed JSON blobs to be defined in the configuration file, and selected based on an arbitrary, case-insensitive key. For example, the Shell and Hubs use the class to choose between the following two types of domain-specific configuration sets. 
@@ -345,7 +368,6 @@ At runtime, the strongly typed settings for a specific key are obtained by using
 
 A example of deriving a configuration class is located at [Sample configuration](#sample-configuration).
 
-<a name="domain-based-configuration-configure-the-dictionary-the-configuration-class"></a>
 ### The configuration class
 
 To create a configuration class, derive a class from `StringDictionaryConfiguration&lt;T&gt;`, where `T` is the type of the settings class.
@@ -364,7 +386,6 @@ namespace Microsoft.MyExtension.Configuration
 
 Nested objects, like `Billing.EA.ShowPricing`, are fully supported, as in the sample code located at [Sample configuration](#sample-configuration).
 
-<a name="domain-based-configuration-configure-the-dictionary-the-settings-class"></a>
 ### The settings class
 
 The settings class is a data transport object. In this example, the configuration class name is  `MySettings`, and the settings class's namespace is `Microsoft.MyExtension.Configuration`.
@@ -428,7 +449,6 @@ namespace Microsoft.MyExtension.Configuration
 
 **NOTE**: The deserializer handles camel-case to pascal-case conversion when the code uses JSON property name conventions in the config file and C# name conventions in the configuration classes.
 
-<a name="domain-based-configuration-branding-and-chrome"></a>
 ## Branding and chrome
 
 Custom domains can create or set their own branding and chrome by specifying settings and feature flags.  The titles and labels that are displayed are controlled by the settings in the extension and its configuration files, as in the following image.
@@ -473,7 +493,6 @@ The tile gallery is displayed when the user clicks on `Edit dashboard`. It conta
 | hidePartsGalleryPivots  | Hides parts types picker from parts gallery. Does not disable the category picker  | false |
 | hiddenGalleryParts      | Hides listed parts from the parts gallery, like `All Resources`, `Service Health`, and others  | empty |
 
-<a name="domain-based-configuration-curation"></a>
 ## Curation
 
 Curation allows items that are displayed on the left navigation bar to be added, removed, and reordered. It is optional because the extension can inherit from the production environment. Curation is an alternative to hiding items programmatically, or making them accessible by using deep links. For example, you can hide the ability to create new storage accounts from users, and still allow the extension to open the `Storage Accounts` property and then open the `usage logs` blades for a storage account that was created for one of the extension's assets.
@@ -484,7 +503,6 @@ A browsable asset type is one that is defined in the `PDL` file by using the `Br
 
 ![alt-text](../media/top-extensions-custom-domains/curation.png "Categories and asset types")
 
-<a name="domain-based-configuration-curation-curation-categories"></a>
 ### Curation categories
 
 Curation provides a significant degree of flexibility, which can be overwhelming because options are NOT mutually exclusive. For example, the production curation definition can be programmatically modified in the following ways.
@@ -503,7 +521,6 @@ Use `Curation by AssetType` to list only items from the extension, and perhaps s
 
 * Default all items to go under "Security + Identity" category, including "Help + Support"
  
-<a name="domain-based-configuration-curation-default-favorites"></a>
 ### Default Favorites
 
 When a new user visits your Community Cloud for the first time, the system places several asset types in the far left navigation bar. The extension can also control which items are placed there, in addition to the order in which they are displayed. The only restriction is that these items must also exist in the Category Curation.
@@ -518,7 +535,6 @@ A list of items is as follows.
 | MICROSOFT_AAD_IAM | Application                    |                      
 | MICROSOFT_AAD_IAM | Licenses                       | 
 
-<a name="domain-based-configuration-default-dashboard"></a>
 ## Default Dashboard
 
 The default dashboard JSON controls what parts are displayed on the dashboard for new users. Existing users will use the `Reset Dashboard` option to view updated versions of the default dashboard. 
@@ -704,7 +720,6 @@ The following steps generate the JSON for the dashboard.
     }
     ```
 
-<a name="domain-based-configuration-update-community-clouds"></a>
 ## Update Community Clouds
 
 To add your custom domain to a community cloud, reach out to <a href="mailto:santhosh.somayajulu@microsoft.com?subject=Add%20Custom%20Domain%20to%20a%20Community%20Cloud&body=Hello,%20we%20would%20like%20to%20add%20our%20new%20custom%20domain%20to%20a%20community%20cloud.">Santhosh Somayajula</a> and we will set up meetings with you and your team to ensure that the custom domain is added to the appropriate environments.
@@ -720,7 +735,6 @@ Community clouds are primarily in the Dogfood environment, the PROD environment,
 | IntuneEducation | Dogfood | Dashboard | `DomainBasedConfiguration.dogfood.json` |
 | IntuneEducation | PROD    | Dashboard | `DomainBasedConfiguration.prod.json` |
 
-<a name="domain-based-configuration-sample-configuration"></a>
 ## Sample configuration
 
 The following three examples demonstrate how to use the settings that are associated with custom domains.
@@ -834,80 +848,13 @@ The following three examples demonstrate how to use the settings that are associ
 
 **NOTE**: `gettingStarted`, `support`, and `termsAndConditions` are members of the  `links` parameter in the `config` variable.
 
-<a name="domain-based-configuration-questionnaire-template"></a>
-## Questionnaire template
 
-The following template contains questions that your team answers previous to the granting of the custom domain. You should determine the settings and values for your extension previous to filling out the questionnaire, by reviewing the values in the tables located in the [Override links](#override-links), and  [Branding and chrome](#branding-and-chrome) sections. You may also want to use settings that were specified in [Default Dashboard](#default-dashboard), if you decide to create one.
 
-You and your team should reach out to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Custom%20Domains">Leon Welicki and Adam Abdelhamed</a> in the process of answering the questionnaire.
-
-The main questions to answer, other than the settings and values as described in the [Override links](#override-links) and [Branding and chrome](#branding-and-chrome) sections, are the following.
-
-1. Why do you need a Custom Domain?
-
-1. What is the name of the extension in Ibiza Portal?
-
-1. When do you expect the extension to be ready for deployment?
-
-1. What are the expected timelines for various tasks and coordination? 
-
-    | Requirement                        | Estimated Completion Date |
-    | ---------------------------------- | ------------------------- |
-    | Azure Portal team PM Lead approval |                           |
-    | Completed Questionnaire            |                           |
-    | Completed Default Dashboard Json   |                           |
-    | Planning for Dev work              | 1 week                    |
-    | Dev work                           | 3-4 weeks after scheduling, subject to resource availability | 
-    | Deployments                        | Post dev work 2-3 weeks to Prod based on Safe deployment schedule | 
-
-1. What URL's will your extension require for the custom domain?
-
-	| Setting name / notes	| Default Value	        | Extension value                  |
-    | --------------------- | --------------------  | -------------------------------- |
-    | Production URL        | `portal.azure.com`    | `aad.portal.azure.com`           |
-    | Dogfood URL           | `df.portal.azure.com` | `df-aad.onecloud.azure-test.net` |
-
-1. Branding and Chrome Values
-
-    The unique values for settings and feature flags for your extension should be included in the  list specified in the [#branding-and-chrome](#branding-and-chrome) section.  You can make a copy of the tables, or you can reach out to  <a href="mailto:ibiza-onboarding@microsoft.com?subject=Custom%20Domains">Leon Welicki and Adam Abdelhamed</a>.
-
-<a name="domain-based-configuration-pull-request"></a>
 ## Pull Request
 
 The pull request should include the definition of the new domain for the environment in which it will run. Remember to add a meaningful description to the PR, and attach information like RDTasks or screenshots. A sample pull request that modifies the Intune curation file to add a new asset type is located at [http://aka.ms/portalfx/intune-pr](http://aka.ms/portalfx/intune-pr). For more information about sending pull requests, see [top-extensions-publishing.md](top-extensions-publishing.md). 
 
  <!--gitdown": "include-file", "file": "../templates/portalfx-extensions-bp-custom-domains.md"} -->
 
- 
-<a name="domain-based-configuration-frequently-asked-questions"></a>
-## Frequently Asked Questions
-
-<a name="domain-based-configuration-frequently-asked-questions-site-is-not-accessible"></a>
-### Site is not accessible
-
-***My site is not accessible from a custom URL in DogFood***
-
-SOLUTION:  Verify that the configuration setting  `Microsoft.Portal.Framework.FrameworkConfiguration.AllowedParentFrame` is correctly set in your extension’s configuration file. Your extension will reject calls from pages from domains and subdomains of the values listed here. For example, a setting value of `df.onecloud.azure-test.net` will NOT allow calls from pages hosted at `df-myExtension.onecloud.azure-test.net`, but a setting of `onecloud.azure-test.net` will allow calls from both `df.onecloud.azure-test.net` and `df-myExtension.onecloud.azure-test.net`.
-
-* * * 
-
-<a name="domain-based-configuration-frequently-asked-questions-default-favorites-list-do-not-match-the-submitted-list"></a>
-### Default favorites list do not match the submitted list
-
-***I changed the default favorites definition, but am still seeing the old one.***
-
-SOLUTION: Default favorites are user-configurable and stored in `User Settings`. The system generates and saves the user's default favorites only if they haven’t been previously generated for the user. To force a refresh, reset your desktop.
-
-* * *
-
-<a name="domain-based-configuration-frequently-asked-questions-shared-url-for-cloud-and-production"></a>
-### Shared URL for cloud and production
-
-***Can I point my Community Cloud and Production to the same extension URL?***
-
-Yes, if the only difference between your Community Cloud and Production is branding the hiding of other extensions UI. 
-
-However, a major reuse restriction is that you must serve the same PDL to both Production and your Community Cloud. You can serve a different domain-based configuration to the user’s browser,  as specified in `AuxDocs`, and you can review  `PortalContext.TrustedAuthorityHost` to determine the  environment from which the client is calling your extension.  However, you cannot change the behavior of server-to-server calls, and PDL is requested by servers.
-
-
+ {"gitdown": "include-file", "file": "../templates/portalfx-extensions-faq-custom-domains.md"}
 
