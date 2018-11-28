@@ -60,18 +60,18 @@ The resource menu offers a way to navigate to all pages related to the resource.
 </td>
 <td valign=top>
 ### Resource menu contents
-
+<br>
 **Top level**
-Pages common to all resources
+<br>Pages common to all resources
 
 **Settings**
-A grouping of the menu that surfaces configuration settings on a resource
+<br>A grouping of the menu that surfaces configuration settings on a resource
 
 **Monitoring**
-Services that give visibility into a resource
+<br>Services that give visibility into a resource
  
 **Support + troubleshooting**
-Tools to help users find and resolve issues with a resource
+<br>Tools to help users find and resolve issues with a resource
 </td>
 </tr>
 </table>
