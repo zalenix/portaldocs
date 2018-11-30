@@ -71,11 +71,8 @@ a blade view model,
 export class RobotSpecPickerV3BladeViewModel extends MsPortalFx.ViewModels.Blade {
    /**
     * Creates the view model for the spec picker blade.
-    *
-    * @param container The view model for the blade container.
-    * @param dataContext The data context for the Create area.
     */
-   constructor(container: MsPortalFx.ViewModels.ContainerContract, dataContext: HubsArea.DataContext) {
+   constructor() {
        super();
        this.title(ClientResources.vmSpecPickerBladeTitle);
        this.subtitle(ClientResources.vmSpecPickerBladeSubtitle);

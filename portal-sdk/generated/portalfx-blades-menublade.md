@@ -69,7 +69,7 @@ constructor(container: MsPortalFx.ViewModels.ContainerContract) {
                                     createEngineOptions: CreateEngine.createEngineOptions,
                                 };
                             },
-                            receiveResult: result => {
+                            receiveResult: () => {
                                 // Intentionally blank. The launched blade is responsible for the create operation.
                             },
                         });

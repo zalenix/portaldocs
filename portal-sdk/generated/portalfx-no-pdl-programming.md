@@ -62,6 +62,7 @@ Here is an example of a very simple template blade, represented by a single TpeS
 ```typescript
 
 /// <reference path="../../../TypeReferences.d.ts" />
+
 import * as ClientResources from "ClientResources";
 import * as TemplateBlade from "Fx/Composition/TemplateBlade";
 import * as BladesArea from "../BladesArea";

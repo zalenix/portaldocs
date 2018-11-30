@@ -17,7 +17,7 @@ read the data from the server & `saveEditScopeChanges` will write it back:
 ```typescript
 
 const editScopeCache = EditScopeCache.createNew<WebsiteModel, number>({
-    supplyExistingData: (websiteId, lifetime) => {
+    supplyExistingData: (websiteId) => {
         return FxBaseNet.ajax({
             uri: Util.appendSessionId(MsPortalFx.Base.Resources.getAppRelativeUri("/api/Websites/" + websiteId)), // this particular endpoint requires sessionId to be in query string
             type: "GET",
@@ -34,7 +34,7 @@ const editScopeCache = EditScopeCache.createNew<WebsiteModel, number>({
             };
         });
     },
-    saveEditScopeChanges: (websiteId, editScope, edits, lifetime, dataToUpdate) => {
+    saveEditScopeChanges: (websiteId, editScope) => {
         // get the website from the edit scope
         const website = editScope.root;
 
@@ -136,7 +136,7 @@ saveCommand.command = {
         const editScopeDirty = !!editScope ? editScope.dirty() : false;
         return !this._saving() && editScopeDirty;
     }),
-    execute: (context: any): FxBase.Promise => {
+    execute: (): FxBase.Promise => {
         return this._editScopeView.editScope().saveChanges();
     },
 };
@@ -152,7 +152,7 @@ discardCommand.command = {
         const editScopeDirty = !!editScope ? editScope.dirty() : false;
         return !this._saving() && editScopeDirty;
     }),
-    execute: (context: any): FxBase.Promise => {
+    execute: (): FxBase.Promise => {
         this._editScopeView.editScope().revertAll();
         return null;
     },

@@ -67,8 +67,6 @@ import * as ClientResources from "ClientResources";
 
 const global = window;
 
-"use strict";
-
 function mockAsyncOperationToGetDataToSendToFrame() {
     return Q.delay(2000).then(() => {
         return {
@@ -138,7 +136,7 @@ To access the part references from within a blade, the extension imports the fol
 
 ```typescript
 
-import { PinnableBladePinnedPartReference } from "../../../_generated/PartReferences";
+import { PinnableBladePinnedPartReference } from "_generated/PartReferences";
 
 ```
 
