@@ -118,8 +118,8 @@ From an API perspective these DataCache classes all share the same API and usage
 
 ```typescript
 
-this.websiteEntities = new MsPortalFx.Data.EntityCache<SamplesExtension.DataModels.WebsiteModel, number>({
-    entityTypeName: SamplesExtension.DataModels.WebsiteModelType,
+this.websiteEntities = new MsPortalFx.Data.EntityCache<WebsiteModel, number>({
+    entityTypeName: WebsiteModelMetadata.name,
     sourceUri: MsPortalFx.Data.uriFormatter(Util.appendSessionId(DataShared.websiteByIdUri), true),
     findCachedEntity: {
         queryCache: this.websitesQuery,
@@ -146,7 +146,7 @@ this._websiteEntityView = dataContext.websiteEntities.createView(container);
 /**
  * Invoked when the blade's inputs change
  */
-public onInputsSet(inputs: Def.BrowseMasterListViewModel.InputsContract): MsPortalFx.Base.Promise {
+public onInputsSet(): MsPortalFx.Base.Promise {
     return this._websitesQueryView.fetch({ runningStatus: this.runningStatus.value() });
 }
 

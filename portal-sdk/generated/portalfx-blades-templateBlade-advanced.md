@@ -177,7 +177,7 @@ The settings are also passed to onInputsSet.
 
 ```typescript
 
-public onInputsSet(inputs: Def.TemplateBladeWithSettingsViewModel.InputsContract, settings: Def.TemplateBladeWithSettingsViewModel.SettingsContract): MsPortalFx.Base.Promise {
+public onInputsSet(_ /* inputs */: Def.TemplateBladeWithSettingsViewModel.InputsContract, settings: Def.TemplateBladeWithSettingsViewModel.SettingsContract): MsPortalFx.Base.Promise {
     // Any changes to the  Configuration values (see 'updateValues' above) will cause 'onInputsSet' to be called with the
     // new inputs/settings values.
     this._colorSetting(settings && settings.content && settings.content.colorSettingValue || BackgroundColor.Default);

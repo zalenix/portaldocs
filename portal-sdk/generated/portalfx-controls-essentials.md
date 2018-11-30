@@ -287,6 +287,12 @@ public onInitialize(): Q.Promise<void> {
  * Initializes the Essentials control.
  */
 private _initializeControl(): void {
+    const bladeLink: BladeLink = {
+        bladeReference: ko.observable(new BladeReferences.NoParameterChildBladeReference()),
+    };
+    const resourceLink: ResourceLink = {
+        resourceId: "/subscriptions/sub123/resourceGroups/accounts/providers/Microsoft.test/accounts/Peter",
+    };
     this.essentials =  Essentials.create(this.context.container, {
         resourceId: "/subscriptions/sub123/resourcegroups/servertest/providers/Microsoft.test/virtualservers/default1",
         includeTags: true,
@@ -301,6 +307,14 @@ private _initializeControl(): void {
             label: ClientResources.essentialsItem,
             value: "Bing.com",
             onClick: new ClickableLink(ko.observable("http://www.bing.com")),
+        }, {
+            label: ClientResources.essentialsItem,
+            value: "Blade Link",
+            onClick: bladeLink,
+        }, {
+            label: ClientResources.essentialsItem,
+            value: "Resource Link",
+            onClick: resourceLink,
         }, {
             label: ClientResources.essentialsMultiLineItem,
             lines: [{

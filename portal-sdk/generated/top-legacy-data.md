@@ -114,7 +114,7 @@ The first is the QueryCache. We use a QueryCache to cache a list of items as opp
 ```typescript
 
 this.websitesQuery = new QueryCache<WebsiteModel, WebsiteQueryParams>({
-    entityTypeName: SamplesExtension.DataModels.WebsiteModelType,
+    entityTypeName: WebsiteModelMetadata.name,
 
     // when fetch() is called on the cache the params will be passed to this function and it
     // should return the right URI for getting the data
@@ -151,7 +151,7 @@ The other cache used in this sample is the EntityCache:
 ```typescript
 
 this.websiteEntities = new EntityCache<WebsiteModel, number>({
-    entityTypeName: SamplesExtension.DataModels.WebsiteModelType,
+    entityTypeName: WebsiteModelMetadata.name,
 
     // uriFormatter() is a function that helps you fill in the parameters passed by the fetch()
     // call into the URI used to query the backend. In this case websites are identified by a number
@@ -235,7 +235,7 @@ As is standard practice we'll call the view's `fetch` method on the blade's `onI
 /**
  * Invoked when the blade's inputs change
  */
-public onInputsSet(inputs: Def.BrowseMasterListViewModel.InputsContract): MsPortalFx.Base.Promise {
+public onInputsSet(): MsPortalFx.Base.Promise {
     return this._websitesQueryView.fetch({ runningStatus: this.runningStatus.value() });
 }
 
@@ -428,8 +428,8 @@ From an API perspective these DataCache classes all share the same API and usage
 
 ```typescript
 
-this.websiteEntities = new MsPortalFx.Data.EntityCache<SamplesExtension.DataModels.WebsiteModel, number>({
-    entityTypeName: SamplesExtension.DataModels.WebsiteModelType,
+this.websiteEntities = new MsPortalFx.Data.EntityCache<WebsiteModel, number>({
+    entityTypeName: WebsiteModelMetadata.name,
     sourceUri: MsPortalFx.Data.uriFormatter(Util.appendSessionId(DataShared.websiteByIdUri), true),
     findCachedEntity: {
         queryCache: this.websitesQuery,
@@ -456,7 +456,7 @@ this._websiteEntityView = dataContext.websiteEntities.createView(container);
 /**
  * Invoked when the blade's inputs change
  */
-public onInputsSet(inputs: Def.BrowseMasterListViewModel.InputsContract): MsPortalFx.Base.Promise {
+public onInputsSet(): MsPortalFx.Base.Promise {
     return this._websitesQueryView.fetch({ runningStatus: this.runningStatus.value() });
 }
 
@@ -897,7 +897,7 @@ A naive implementation of this might go something like this (ignore the lines ab
 
 ```typescript
 
-const projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
+const projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionLifetime, (_ /* itemLifetime */, robot) => {
     const projectionId = this._uuid++;
     this._logMapFunctionRunning(projectionId, robot);
     return <RobotDetails>{
@@ -975,7 +975,7 @@ A correct implemenation of the map above then looks like (again ignore uuid and 
 
 ```typescript
 
-const projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
+const projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionLifetime, (_ /* itemLifetime */, robot) => {
     const projectionId = this._uuid++;
     this._logMapFunctionRunning(projectionId, robot);
     return <RobotDetails>{
@@ -996,7 +996,7 @@ Now that you understand how `map()` works we can introduce `mapInto()`. Here's t
 
 ```typescript
 
-const projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
+const projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProjectionLifetime, (_ /* itemLifetime */, robot) => {
     const projectionId = this._uuid++;
     this._logMapFunctionRunning(projectionId, robot);
     return <RobotDetails>{
@@ -1015,7 +1015,7 @@ You can see how it reacts by clicking on the 'Proper mapInto' button and then ad
 
 ```typescript
 
-const projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
+const projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProjectionLifetime, (_ /* itemLifetime */, robot) => {
     const projectionId = this._uuid++;
     this._logMapFunctionRunning(projectionId, robot);
     return <RobotDetails>{
@@ -1056,7 +1056,7 @@ this._view = dataContext.robotData.robotsQuery.createView(container);
 // As items are added or removed from the underlying items array,
 // individual changed items will be re-evaluated to create the computed
 // value in the resulting observable array.
-const projectedItems = this._view.items.mapInto<RobotDetails>(container, (itemLifetime, robot) => {
+const projectedItems = this._view.items.mapInto<RobotDetails>(container, (_ /* itemLifetime */, robot) => {
     return <RobotDetails>{
         name: robot.name,
         computedName: ko.pureComputed(() => {
@@ -1157,8 +1157,8 @@ In many scenarios, users expect to see their rendered data update implicitly as 
 
 ```typescript
 
-public robotsQuery = new MsPortalFx.Data.QueryCache<SamplesExtension.DataModels.Robot, any>({
-    entityTypeName: SamplesExtension.DataModels.RobotType,
+public robotsQuery = new MsPortalFx.Data.QueryCache<Robot, any>({
+    entityTypeName: RobotMetadata.name,
     sourceUri: () => Util.appendSessionId(RobotData._apiRoot),
     poll: true,
 });
@@ -1250,7 +1250,7 @@ As server data changes, there are scenario where the extension should *take expl
 
 ```typescript
 
-public updateRobot(robot: SamplesExtension.DataModels.Robot): FxBase.PromiseV<any> {
+public updateRobot(robot: Robot): FxBase.PromiseV<any> {
     return FxBaseNet.ajax({
         uri: Util.appendSessionId(RobotData._apiRoot + robot.name()),
         type: "PUT",
@@ -1305,7 +1305,7 @@ As mentioned above, this method will issue an AJAX call (either using the '`supp
 
 ```typescript
 
-public updateRobot(robot: SamplesExtension.DataModels.Robot): FxBase.PromiseV<any> {
+public updateRobot(robot: Robot): FxBase.PromiseV<any> {
     return FxBaseNet.ajax({
         uri: Util.appendSessionId(RobotData._apiRoot + robot.name()),
         type: "PUT",
@@ -1327,53 +1327,9 @@ If the (optional) '`predicate`' parameter is supplied to the '`refreshAll`' call
   
 The '`refresh`' method is useful when the server data changes are known to be specific to a single cache entry (a single query in the case of QueryCache, a single entity 'id' in the case of EntityCache).
 
-```typescript
+code sample coming soon to SamplesExtension in D:\ws\Ship-Sync-AuxDocs-Github\doc\portal-sdk\Samples\SamplesExtension\Extension\Client\V1\ResourceTypes\SparkPlug\SparkPlugData.ts
 
-const promises: FxBase.Promise[] = [];
-this.sparkPlugsQuery.refresh({}, null);
-MsPortalFx.makeArray(sparkPlugs).forEach((sparkPlug) => {
-    promises.push(this.sparkPlugEntities.refresh(sparkPlug, null));
-});
-return Q.all(promises);
-
-```
-
-```typescript
-
-public updateSparkPlug(sparkPlug: SparkPlugModel): FxBase.Promise {
-    let promise: FxBase.Promise;
-    const uri = appendSessionId(SparkPlugData._apiRoot);
-    if (useFrameworkPortal) {
-        // Using framework portal (NOTE: this is not allowed against ARM).
-        // NOTE: do NOT use invoke API since it doesn't handle CORS.
-        promise = FxBaseNet.ajaxExtended<any>({
-            headers: { accept: applicationJson },
-            isBackgroundTask: false,
-            setAuthorizationHeader: true,
-            setTelemetryHeader: "Update" + entityType,
-            type: "PATCH",
-            uri: uri + "&api-version=" + entityVersion,
-            data: ko.toJSON(convertToResource(sparkPlug)),
-            contentType: applicationJson,
-            useFxArmEndpoint: true,
-        });
-    } else {
-        // Using local controller.
-        promise = FxBaseNet.ajax({
-            uri: uri,
-            type: "PATCH",
-            contentType: "application/json",
-            data: ko.toJSON(sparkPlug),
-        });
-    }
-
-    return promise.then(() => {
-        // This will refresh the set of data that is available in the underlying data cache.
-        SparkPlugData._debouncer.execute([this._getSparkPlugId(sparkPlug)]);
-    });
-}
-
-```
+code sample coming soon to SamplesExtension in D:\ws\Ship-Sync-AuxDocs-Github\doc\portal-sdk\Samples\SamplesExtension\Extension\Client\V1\ResourceTypes\SparkPlug\SparkPlugData.ts
   
 Using '`refresh`', only *a single AJAX call* will be issued to the server.
 
@@ -1386,7 +1342,7 @@ In some scenarios, AJAX calls to the server to refresh cached data can be *avoid
 
 ```typescript
 
-public createRobot(robot: SamplesExtension.DataModels.Robot): FxBase.PromiseV<any> {
+public createRobot(robot: Robot): FxBase.PromiseV<any> {
     return FxBaseNet.ajax({
         uri: Util.appendSessionId(RobotData._apiRoot),
         type: "POST",
@@ -1399,8 +1355,8 @@ public createRobot(robot: SamplesExtension.DataModels.Robot): FxBase.PromiseV<an
         // This function is executed on each data set selected by the query params.
         // params: any The query params
         // dataSet: MsPortalFx.Data.DataSet The dataset to modify
-        this.robotsQuery.applyChanges((params, dataSet) => {
-            // Duplicates on the client the same modification to the datacache which has occured on the server.
+        this.robotsQuery.applyChanges((_ /* params */, dataSet) => {
+            // Duplicates on the client the same modification to the datacache which has occurred on the server.
             // In this case, we created a robot in the ca, so we will reflect this change on the client side.
             dataSet.addItems(0, [robot]);
         });
@@ -1413,7 +1369,7 @@ public createRobot(robot: SamplesExtension.DataModels.Robot): FxBase.PromiseV<an
 
 ```typescript
 
-public deleteRobot(robot: SamplesExtension.DataModels.Robot): FxBase.PromiseV<any> {
+public deleteRobot(robot: Robot): FxBase.PromiseV<any> {
     return FxBaseNet.ajax({
         uri: Util.appendSessionId(RobotData._apiRoot + robot.name()),
         type: "DELETE",
@@ -1427,8 +1383,8 @@ public deleteRobot(robot: SamplesExtension.DataModels.Robot): FxBase.PromiseV<an
         // This function is executed on each data set selected by the query params.
         // params: any The query params
         // dataSet: MsPortalFx.Data.DataSet The dataset to modify
-        this.robotsQuery.applyChanges((params, dataSet) => {
-            // Duplicates on the client the same modification to the datacache which has occured on the server.
+        this.robotsQuery.applyChanges((_ /* params */, dataSet) => {
+            // Duplicates on the client the same modification to the datacache which has occurred on the server.
             // In this case, we deleted a robot in the cache, so we will reflect this change on the client side.
             dataSet.removeItem(robot);
         });
@@ -1448,7 +1404,7 @@ Now, when the server data for a given cache entry *has been entirely deleted*, t
 
 ```typescript
 
-public deleteComputer(computer: SamplesExtension.DataModels.Computer): FxBase.PromiseV<any> {
+public deleteComputer(computer: Computer): FxBase.PromiseV<any> {
     return FxBaseNet.ajax({
         uri: Util.appendSessionId(ComputerData._apiRoot + computer.name()),
         type: "DELETE",
@@ -1462,8 +1418,8 @@ public deleteComputer(computer: SamplesExtension.DataModels.Computer): FxBase.Pr
         // This function is executed on each data set selected by the query params.
         // params: any The query params
         // dataSet: MsPortalFx.Data.DataSet The dataset to modify
-        this.computersQuery.applyChanges((params, dataSet) => {
-            // Duplicates on the client the same modification to the datacache which has occured on the server.
+        this.computersQuery.applyChanges((_ /* params */, dataSet) => {
+            // Duplicates on the client the same modification to the datacache which has occurred on the server.
             // In this case, we deleted a computer in the cache, so we will reflect this change on the client side.
             dataSet.removeItem(computer);
         });

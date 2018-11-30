@@ -105,7 +105,7 @@ const columns: MsPortalFx.ViewModels.Controls.Lists.Grid.Column[] = [
     {
         itemKey: "ssnId",
         name: ko.observable<string>(ClientResources.controlSampleSsn),
-        getCellAriaLabel: (item: SamplesExtension.DataModels.Person) => {
+        getCellAriaLabel: (item: Person) => {
             return ClientResources.gridCellAriaLabel.format(item.name(), item.ssnId());
         },
     },

@@ -179,8 +179,8 @@ This '`getEntityArrayWithEdits`' is particularly useful in ParameterProvider's '
 
 ```typescript
 
-this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<DataModels.ServerConfig[], KnockoutObservableArray<DataModels.ServerConfig>>(container, {
-    editScopeMetadataType: DataModels.ServerConfigType,
+this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<ServerConfig[], KnockoutObservableArray<ServerConfig>>(container, {
+    editScopeMetadataType: ServerConfigMetadata.name,
     mapIncomingDataForEditScope: (incoming) => {
         return ko.observableArray(incoming);  // Editable grid can only bind to an observable array.
     },
@@ -188,7 +188,7 @@ this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<DataModels.
         const editScope = this.parameterProvider.editScope();
 
         // Use EditScope's 'getEntityArrayWithEdits' to return an array with all created/updated/deleted items.
-        return editScope.getEntityArrayWithEdits<DataModels.ServerConfig>(outgoing).arrayWithEdits;
+        return editScope.getEntityArrayWithEdits<ServerConfig>(outgoing).arrayWithEdits;
     },
 });
 
@@ -199,16 +199,16 @@ And there is a corresponding '`applyArrayAsEdits`' EditScope method that simplif
 
 ```typescript
 
-this.itemsCollector = new MsPortalFx.ViewModels.ParameterCollector<DataModels.ServerConfig[]>(container, {
+this.itemsCollector = new MsPortalFx.ViewModels.ParameterCollector<ServerConfig[]>(container, {
     selectable: this.itemsSelector.selectable,
     supplyInitialData: () => {
         const editScope = this._editScopeView.editScope();
 
         // Use EditScope's 'getEntityArrayWithEdits' to develop an array with all created/updated/deleted items
         // in this entity array.
-        return editScope.getEntityArrayWithEdits<DataModels.ServerConfig>(editScope.root.serverConfigs).arrayWithEdits;
+        return editScope.getEntityArrayWithEdits<ServerConfig>(editScope.root.serverConfigs).arrayWithEdits;
     },
-    receiveResult: (result: DataModels.ServerConfig[]) => {
+    receiveResult: (result: ServerConfig[]) => {
         const editScope = this._editScopeView.editScope();
 
         // Use EditScope's 'applyArrayWithEdits' to examine the array returned from the Provider Blade

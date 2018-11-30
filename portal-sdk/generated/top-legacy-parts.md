@@ -104,7 +104,7 @@ export class ButtonPartViewModel extends MsPortalFx.ViewModels.ButtonPart {
    /**
     * Initialize the part.
     */
-   constructor(container: MsPortalFx.ViewModels.PartContainerContract, dataContext: DataContext) {
+   constructor(container: MsPortalFx.ViewModels.PartContainerContract) {
        super();
        this.title(ClientResources.AssetTypeNames.Robot.singular);
        this.shortTitle(ClientResources.AssetTypeNames.Robot.singular);
@@ -194,7 +194,7 @@ export class ExampleCustomPartViewModel {
    /**
     * Constructs an instance of the custom part view model.
     */
-   constructor(container: MsPortalFx.ViewModels.PartContainerContract, dataContext: PartsArea.DataContext) {
+   constructor() {
    }
 
    public increaseClickCount(): void {
@@ -405,10 +405,9 @@ The following is the TypeScript code that reads and writes settings. It is also 
    ```typescript
 
 import ClientResources = require("ClientResources");
-import PartsArea = require("../../PartsArea");
-import ExtensionDefinition = require("../../../../_generated/ExtensionDefinition");
-import Def = ExtensionDefinition.ViewModels.V1$Parts.GeneralGalleryPart;
+import ExtensionDefinition = require("_generated/ExtensionDefinition");
 
+import Def = ExtensionDefinition.ViewModels.V1$Parts.GeneralGalleryPart;
 import FxViewModels = MsPortalFx.ViewModels;
 import PartContainerContract = FxViewModels.PartContainerContract;
 import FxConfiguration = MsPortalFx.Composition.Configuration;
@@ -460,7 +459,7 @@ public fontSettingValue = ko.observable<FontStyle>();
 private _colorSetting = ko.observable<BackgroundColor>();
 private _fontSetting = ko.observable<FontStyle>();
 
-constructor(container: PartContainerContract, context: PartsArea.DataContext) {
+constructor(container: PartContainerContract) {
 
     container.partTitle(ClientResources.generalGalleryPartTitle);
 
