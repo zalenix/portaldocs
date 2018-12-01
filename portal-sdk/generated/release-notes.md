@@ -1,4 +1,4 @@
-# Release Notes since 7/30/2018
+# Release Notes since 8/1/2018
 
 ## 5.0.302.8901
 7 Breaking Changes, 93 Features added and 322 Bugs Fixed
@@ -274,16 +274,4 @@
 
 ## 5.0.302.1249
 0 Breaking Changes, 4 Features added and 4 Bugs Fixed
-<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
-
-## 5.0.302.1247
-0 Breaking Changes, 0 Features added and 4 Bugs Fixed
-<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
-
-## 5.0.302.1246
-0 Breaking Changes, 2 Features added and 0 Bugs Fixed
-<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
-
-## 5.0.302.1244
-0 Breaking Changes, 1 Features added and 3 Bugs Fixed
 <table></table>
