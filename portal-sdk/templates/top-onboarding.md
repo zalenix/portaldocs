@@ -112,7 +112,7 @@ When you are ready for all users to see your experience, you will enable your en
 
 Azure portal onboarding steps listed below assumes that all new services have completed the onboarding meeting with [ibiza-onboarding@microsoft.com](mailTo:ibiza-onboarding@microsoft.com) team and that you have downloaded the Azure portal SDK to start the development of your extension. If you have not had either the onboarding meeting or have developed the extension, please discuss with the Azure portal team on the requirements.
 
-## Hosting Service 
+## Step 1 - Hosting Service
 
 To use the Extension Hosting Service after you have developed your extension, you will have to onboard onto the Extension Hosting service separately. You will have to follow the steps in [this document](/portal-sdk/generated/top-extensions-hosting-service.md#) to have your extension to be ready for deploying onto the hosting service. The reason we have the steps below is to let you do these things in parallel - 
 1) Create storage account for each environment 
@@ -123,9 +123,16 @@ eg: Dogfood, Prod, Mooncake, Fairfax and BlackForest
 4) Create a hosting service onboarding [workitem](https://aka.ms/extension-hosting-service/onboarding)
 5) Send email to [ibiza-onboarding@microsoft.com](mailTo:ibiza-onboarding@microsoft.com) with the workitem details and extension details.
 
-Note:  Incorrect or insufficient information in the workitem could delay the onboarding process. 
+Note:  Incorrect or insufficient information in the workitem could delay the onboarding process.
 
-## Portal Framework
+## How to verify if hosting service onboarding is complete?
+
+1. Check Hosting Service API Diagnostics log for [Dogfood](https://hosting.onecloud.azure-test.net/api/diagnostics) or [Production](https://hosting.portal.azure.net/api/diagnostics) in web browser.
+2. Press Ctrl+F to find your extension routeprefix that registered for your service. Eg: storage
+![storage](./../media/portalfx-extensions-onboarding/validate-hostingsvc-onboarding.png)
+![storage](./../media/portalfx-extensions-onboarding/validate-hostingsvc-onboarding-prod.png)
+
+## Step 2 - Portal Framework
 1) Register your extension with Azure portal framework by raising a pull request to the appropriate extension config json. eg: extensions.dogfood.json, extensions.prod.json etc,.
 2) Always raise the PR to the Dev branch
 3) For Prod config chanages, once the PR is approved, please cherry pick the change to Mpac and then to Prod. Portal team does not auto merge the changes to other branches
@@ -133,7 +140,17 @@ Note:  Incorrect or insufficient information in the workitem could delay the onb
 5) Here is a sample PR change for dogfood branch.
 ![storage container](./../media/portalfx-extensions-onboarding/portal-framework-extension-config.png)
 
-## AAD Onboarding
+## How to verify if portal framework onboarding is complete?
+
+1. Add a comment in the workitem associated with the pull request to get notified of deployment. 
+2. Check [Commit Search](https://aka.ms/portalfx/commitsearch) with the commit id and [deployment pipeline](http://simonp-sites/pipeline).
+3. If the changes are deployed you should find them in the API diagnostics log in respective branches [DF](https://df.onecloud.azure-test.net/api/diagnostics), [RC](https://rc.portal.azure.com/api/diagnostics), [MPAC](https://ms.portal.azure.com/api/diagnostics) or [PROD](https://portal.azure.com/api/diagnostics)
+![DF](./../media/portalfx-extensions-onboarding/validate-framework-config-df.png)
+![RC](./../media/portalfx-extensions-onboarding/validate-framework-config-rc.png)
+
+Note : Please DO NOT get the pull request approved, bypassed or completed without hosting service onboarding complete and required DNS entries created.  
+
+## Step 3 - AAD Onboarding
 1) For teams that require Graph access and AAD app for per extension tokens, please create a [workitem](http://aka.ms/portalfx/newextension)
 2) Send email to [ibiza-onboarding@microsoft.com](mailTo:ibiza-onboarding@microsoft.com) with the workitem details and extension details. 
 <!--
