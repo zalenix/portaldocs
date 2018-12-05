@@ -118,6 +118,7 @@ To use the Extension Hosting Service after you have developed your extension, yo
 1) Create storage account for each environment 
 eg: Dogfood, Prod, Mooncake, Fairfax and BlackForest
 2) Create a container under the storage account with anonymous read access
+
 ![storage container](./../media/portalfx-extensions-onboarding/hosting-service-storage-container.png)
 3) Upload the [config.json](/portal-sdk/generated/top-extensions-hosting-service.md#step-8-upload-safe-deployment-config) and the [generated zip file](/portal-sdk/generated/top-extensions-hosting-service.md#step-7-execute-content-unbundler-as-part-of-build-to-generate-zip-file) from your build. 
 4) Create a hosting service onboarding [workitem](https://aka.ms/extension-hosting-service/onboarding)
@@ -129,7 +130,9 @@ Note:  Incorrect or insufficient information in the workitem could delay the onb
 
 1. Check Hosting Service API Diagnostics log for [Dogfood](https://hosting.onecloud.azure-test.net/api/diagnostics) or [Production](https://hosting.portal.azure.net/api/diagnostics) in web browser.
 2. Press Ctrl+F to find your extension routeprefix that registered for your service. Eg: storage
+
 ![storage](./../media/portalfx-extensions-onboarding/validate-hostingsvc-onboarding.png)
+
 ![storage](./../media/portalfx-extensions-onboarding/validate-hostingsvc-onboarding-prod.png)
 
 ## Step 2 - Portal Framework
@@ -138,6 +141,7 @@ Note:  Incorrect or insufficient information in the workitem could delay the onb
 3) For Prod config chanages, once the PR is approved, please cherry pick the change to Mpac and then to Prod. Portal team does not auto merge the changes to other branches
 4) Always cherry-pick the change from previous downlevel branch. eg: Dev to Mpac, Mpac to Prod.
 5) Here is a sample PR change for dogfood branch.
+
 ![storage container](./../media/portalfx-extensions-onboarding/portal-framework-extension-config.png)
 
 ## How to verify if portal framework onboarding is complete?
@@ -145,7 +149,9 @@ Note:  Incorrect or insufficient information in the workitem could delay the onb
 1. Add a comment in the workitem associated with the pull request to get notified of deployment. 
 2. Check [Commit Search](https://aka.ms/portalfx/commitsearch) with the commit id and [deployment pipeline](http://simonp-sites/pipeline).
 3. If the changes are deployed you should find them in the API diagnostics log in respective branches [DF](https://df.onecloud.azure-test.net/api/diagnostics), [RC](https://rc.portal.azure.com/api/diagnostics), [MPAC](https://ms.portal.azure.com/api/diagnostics) or [PROD](https://portal.azure.com/api/diagnostics)
+
 ![DF](./../media/portalfx-extensions-onboarding/validate-framework-config-df.png)
+
 ![RC](./../media/portalfx-extensions-onboarding/validate-framework-config-rc.png)
 
 Note : Please DO NOT get the pull request approved, bypassed or completed without hosting service onboarding complete and required DNS entries created.  
