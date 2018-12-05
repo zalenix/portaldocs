@@ -1,4 +1,4 @@
-#Azure Portal SDK packages
+# Azure Portal SDK packages
 
 ## Updating your extension to a newer version of the SDK
 
