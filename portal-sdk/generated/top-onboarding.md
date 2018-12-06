@@ -112,6 +112,8 @@ When you are ready for all users to see your experience, you will enable your en
 
 Azure portal onboarding steps listed below assumes that all new services have completed the onboarding meeting with [ibiza-onboarding@microsoft.com](mailTo:ibiza-onboarding@microsoft.com) team and that you have downloaded the Azure portal SDK to start the development of your extension. If you have not had either the onboarding meeting or have developed the extension, please discuss with the Azure portal team on the requirements.
 
+Note : Step 1 and Step 2 below are sequential and required to complete the Portal onboarding. Step 3 is optional unless the onboarding service requires dedicated tokens. 
+
 ## Step 1 - Hosting Service
 
 To use the Extension Hosting Service after you have developed your extension, you will have to onboard onto the Extension Hosting service separately. You will have to follow the steps in [this document](/portal-sdk/generated/top-extensions-hosting-service.md#) to have your extension to be ready for deploying onto the hosting service. The reason we have the steps below is to let you do these things in parallel - 
@@ -120,6 +122,7 @@ eg: Dogfood, Prod, Mooncake, Fairfax and BlackForest
 2) Create a container under the storage account with anonymous read access
 
 ![storage container](./../media/portalfx-extensions-onboarding/hosting-service-storage-container.png)
+
 3) Upload the [config.json](/portal-sdk/generated/top-extensions-hosting-service.md#step-8-upload-safe-deployment-config) and the [generated zip file](/portal-sdk/generated/top-extensions-hosting-service.md#step-7-execute-content-unbundler-as-part-of-build-to-generate-zip-file) from your build. 
 4) Create a hosting service onboarding [workitem](https://aka.ms/extension-hosting-service/onboarding)
 5) Send email to [ibiza-onboarding@microsoft.com](mailTo:ibiza-onboarding@microsoft.com) with the workitem details and extension details.
@@ -143,6 +146,10 @@ Note:  Incorrect or insufficient information in the workitem could delay the onb
 5) Here is a sample PR change for dogfood branch.
 
 ![storage container](./../media/portalfx-extensions-onboarding/portal-framework-extension-config.png)
+
+Note : Extension name cannot be changed once onboarding is complete. It will require a new onboarding and redirecting to the new extension.
+
+![storage container](./../media/portalfx-extensions-onboarding/framework-extension-redirect-config.png)
 
 ## How to verify if portal framework onboarding is complete?
 
