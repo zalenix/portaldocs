@@ -1,4 +1,8 @@
-# Release Notes since 8/10/2018
+# Release Notes since 8/11/2018
+
+## 5.0.302.9205
+0 Breaking Changes, 0 Features added and 0 Bugs Fixed
+<table>undefined</table>
 
 ## 5.0.302.9201
 0 Breaking Changes, 5 Features added and 1 Bugs Fixed
@@ -262,8 +266,4 @@
 
 ## 5.0.302.1257
 1 Breaking Changes, 2 Features added and 8 Bugs Fixed
-<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
-
-## 5.0.302.1256
-0 Breaking Changes, 4 Features added and 1 Bugs Fixed
 <table></table>
