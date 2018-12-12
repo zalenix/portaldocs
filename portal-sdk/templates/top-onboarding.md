@@ -166,6 +166,9 @@ Note : Please DO NOT get the pull request approved, bypassed or completed withou
 ## Step 3 - AAD Onboarding
 1) For teams that require Graph access and AAD app for per extension tokens, please create a [workitem](http://aka.ms/portalfx/newextension)
 2) Send email to [ibiza-onboarding@microsoft.com](mailTo:ibiza-onboarding@microsoft.com) with the workitem details and extension details. 
+
+Here is the list of [graph endpoints](https://msft.spoppe.com/sites/Identity/MSODS/SitePages/AAD%20Environments.aspx) for different clouds
+
 <!--
 TODO - Add an example after the feature is ready (ETA is March or April )
 -->
