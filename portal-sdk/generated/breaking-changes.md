@@ -1,4 +1,4 @@
-# Breaking Changes since 8/15/2018 
+# Breaking Changes since 8/16/2018 
 * Additional Q&A about breaking changes can be found [here](./breaking-changes.md) 
 * To ask a question about breaking changes [use this](https://aka.ms/ask/ibiza-breaking-change)  
 
@@ -258,6 +258,3 @@ reads:</span></p><p class=MsoNormal><font color="#ff0000" face=Consolas><span st
  <li class=MsoListParagraph style="margin-left:0in;">Microsoft.Portal.TestFramework</li>
  <li class=MsoListParagraph style="margin-left:0in;">Microsoft.Portal.Tools</li>
 </ol></div><div>- You will see an error saying there is a conflict between two versions of Newtonsoft.Json</div><div><br></div><div><b>Solution</b></div><div>-Update to version 11.01 of Newtonsoft.Json</div><div style="background-color:transparent;box-sizing:content-box;height:18.62px;margin:0px;overflow:visible;padding:0px;"><b style="background-color:transparent;box-sizing:content-box;height:auto;margin:0px;overflow:visible;padding:0px;"><br></b></div><div></p></td></tr><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2307265'>2307265</a></td><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2307265'>[Essentials] while tags are being rendered can we have '---' like other properties</a><p><div>Test framework changes were made in order to support the new HTML layouts</div><div></p></td></tr></table>
-
-## 5.0.302.1257
-<table><tr><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2792135'>2792135</a></td><td><a href='https://msazure.visualstudio.com/DefaultCollection/One/_queries?id=2792135'>Enforce minimum bake time of 30 minutes for EV2 hosting service deployments.</a><p><div>EV2 (content unbundler) deployment templates now have a minimum monitor duration (aka bake time) of 30 minutes (PT30M).&nbsp; This was done to reduce failures caused by missing/late monitoring health reports which cause deployment failures.</div><div><br></div><div>If you need to deploy faster than 30 minutes then consider using the skip safe deployment feature (see <a href="https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-extension-hosting-service-advanced.md#faqs" aria-label="CTRL+Click or CTRL+Enter to follow link https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-extension-hosting-service-advanced.md#faqs">Deploy FAQ</a> section in the Portal Documentation)<br><div></p></td></tr></table>
