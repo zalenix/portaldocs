@@ -29,6 +29,7 @@ This tutorial will provide you step by step instructions for creating a UnitTest
 
 +-- Extension
 +-- Extension.UnitTests
+|   +-- test/CreateBlade.test.ts
 |   +-- test/ResourceOverviewBlade.test.ts
 |   +-- test-main.js
 |   +-- karma.conf.js
@@ -111,7 +112,15 @@ Note:
 
 #### Add a test
 
-Add a test to ./test/ResourceOverviewBlade.test.ts.  You can modify this example for your own extension
+Add a CreateBlade test to ./test/CreateBlade.test.ts.  This demonstrates how to provide the provisioning context to your CreateBlade that portal would normally provide via your gallery package. You can modify this example for your own extension.
+
+```typescript
+    
+{"gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/test/CreateBlade.test.ts"}
+
+```
+
+Add a TemplateBlade test to ./test/ResourceOverviewBlade.test.ts.  You can modify this example for your own extension.
 
 ```typescript
     
@@ -197,12 +206,21 @@ Note:
 * TRX and JUNIT output are generated when running `npm run test` or `npm run test-ci` via karmajs and its karma.conf.js.
 * drop the TRX or JUNIT reporter that is not needed for your CI environment.
 
+![alt-text](../media/top-extensions-getting-started/trxoutput.png "trx output")
+
 #### Code Coverage
 
 By Default the project template/steps above will generate a project configured that also produces code coverage using karma-coverage. The content will be output under ./TestResults/Coverage/**/index.html
 
+![alt-text](../media/top-extensions-getting-started/coverage1.png "code coverage summary")
+
 Note: 
 * coverage results are generated when running  `npm run test` or `npm run test-ci` via karmajs its karma.conf.js.
+
+Clicking through from the summary view to the ResourceOverviewBlade you can see code coverage line by line
+
+![alt-text](../media/top-extensions-getting-started/coverage2.png "code coverage detail")
+
 
 # FAQ
 

@@ -160,6 +160,10 @@ For those of you who are already familiar with the environments and their proces
 
    ![alt-text](../media/top-extensions-publishing/commit-button-enabled.png "Enabled Commit button")
 
+1. Update the enabled extension count in [DeploymentSettingsTests.cs](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx?path=%2Fsrc%2FStbPortal%2FWebsite.Server.Tests%2FDeploymentSettingsTests.cs&version=GBdev)
+
+   ![alt-text](../media/top-extensions-publishing/update-extension-count.png "Enabled Commit button")
+
 1. Click on the **Create a pull request** link.
 
    ![alt-text](../media/top-extensions-publishing/pull-request-create.png "Create the pull request")
@@ -171,3 +175,19 @@ For those of you who are already familiar with the environments and their proces
 1. Click the "**Create**" button to create the Pull Request.
 
 1. Send email to <a href="mailto:ibiza-onboarding@microsoft.com?subject=Pull Request link&body=Hello, I need you to approve a pull request and expedite the associated request. The pull request link is . . .">ibiza-onboarding@microsoft.com</a> that contains a link to the Pull Request to get the approval and expedite the request.
+
+1. Completion of PR is subject to passing all the required validations. 
+
+1. PortalFx Dev branch could get locked sometimes depending on the CI status. If you notice the PR is blocked due to a branch lock, please work with our CI Rep as indicated in the PR.
+
+   ![alt-text](../media/top-extensions-publishing/branch-locked.png "Verify pull request")
+
+1. Once the PR is completed, **partners are responsible for cherry-picking their changes to next level branches** ex: Mpac, Production. 
+
+1. Changes to Dogfood config need not be cherry-picked and get automerged from Dev branch to Dogfood branch. 
+
+1. Changes made to Production config in the dev branch **must be cherry-picked to Mpac** branch after verifying the changes are working as expected in the [RC portal](https://rc.portal.azure.com).
+
+1. Changes made to Production config in the mpac branch **must be cherry-picked to Production** branch after verifying the changes are working as expected. 
+
+1. All changes to the framework configuration will follow the standard SLA as mentioned in our [Service level agreement for deployment](top-extensions-svc-lvl-agreements.md#service-level-agreement-for-deployment)

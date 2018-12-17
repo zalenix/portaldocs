@@ -1,3 +1,1 @@
-{"gitdown": "contents", "maxLevel": 0}
-
-{"gitdown": "include-file", "file": "./portalfx.md"}
+{"gitdown": "include-file", "file": "../../README.md"}

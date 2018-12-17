@@ -55,7 +55,11 @@ contains an EditScopeCache which is used in the master detail edit scenario.
 If you're creating a new Area one more step that needs to be done is to edit your `Program.ts` file to create the DataContext when your 
 extension is loaded. Find the `initializeDataContexts` method and then use the `setDataContextFactory` method to set the DataContext like so:
 
-code sample coming soon to SamplesExtension in D:\ws\Ship-Sync-AuxDocs-Github\doc\portal-sdk\Samples\SamplesExtension\Extension\Client\Program.ts
+```typescript
+        this.viewModelFactories.V1$$MasterDetail().setDataContextFactory<typeof MasterDetailV1>(
+            "./V1/MasterDetail/MasterDetailArea",
+            (contextModule) => new contextModule.DataContext());
+```
 
 <a name="master-details-browse-scenario-the-websites-querycache-and-entitycache"></a>
 ### The websites QueryCache and EntityCache

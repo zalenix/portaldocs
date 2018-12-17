@@ -32,6 +32,7 @@ This tutorial will provide you step by step instructions for creating a UnitTest
 
 +-- Extension
 +-- Extension.UnitTests
+|   +-- test/CreateBlade.test.ts
 |   +-- test/ResourceOverviewBlade.test.ts
 |   +-- test-main.js
 |   +-- karma.conf.js
@@ -170,7 +171,61 @@ Note:
 <a name="unit-test-framework-creating-a-project-from-scratch-with-visual-studio-code-dev-build-time-configuration-add-a-test"></a>
 #### Add a test
 
-Add a test to ./test/ResourceOverviewBlade.test.ts.  You can modify this example for your own extension
+Add a CreateBlade test to ./test/CreateBlade.test.ts.  This demonstrates how to provide the provisioning context to your CreateBlade that portal would normally provide via your gallery package. You can modify this example for your own extension.
+
+```typescript
+    
+import { DataContext } from "Resource/ResourceArea";
+import { CreateBlade } from "Resource/Create/ViewModels/CreateBlade";
+import * as sinon from "sinon";
+import { TemplateBladeHarness } from "msportalfx-ut/Harness";
+
+describe("Create Blade Tests", () => {
+  let server: sinon.SinonFakeServer;
+
+  beforeEach(function () {
+    server = sinon.fakeServer.create();
+    server.respondImmediately = true;
+  });
+
+  afterEach(function () {
+    server.restore();
+  });
+
+  it("Verify initial state of CreateBlade", () => {
+    return TemplateBladeHarness.initializeBlade(CreateBlade, {
+      parameters: null,
+      dataContext: new DataContext,
+      provisioningContext: {
+        initialValues: { locationNames: [], subscriptionIds: [] },
+        telemetryId: "",
+        provisioningConfig: {
+          dashboardPartReference: {
+            dashboardPartKeyId: "id",
+            options: {
+              extensionName: "ExtensionTemplate",
+            },
+            partName: "ResourcePart",
+            parameters: null,
+          },
+        },
+        marketplaceItem: null,
+      },
+      beforeOnInitializeCalled: (blade) => {
+        console.log("Add any before on init tests here");
+      },
+      afterOnInitializeCalled: (blade) => {
+        console.log("Add any after on init tests here");
+      },
+    }).then((blade) => {
+      console.log("Add any init complete tests here");
+    });
+  });
+});
+
+```
+
+Add a TemplateBlade test to ./test/ResourceOverviewBlade.test.ts.  You can modify this example for your own extension.
 
 ```typescript
     
@@ -522,13 +577,22 @@ Note:
 * TRX and JUNIT output are generated when running `npm run test` or `npm run test-ci` via karmajs and its karma.conf.js.
 * drop the TRX or JUNIT reporter that is not needed for your CI environment.
 
+![alt-text](../media/top-extensions-getting-started/trxoutput.png "trx output")
+
 <a name="unit-test-framework-creating-a-project-from-scratch-with-visual-studio-code-test-results-code-coverage"></a>
 #### Code Coverage
 
 By Default the project template/steps above will generate a project configured that also produces code coverage using karma-coverage. The content will be output under ./TestResults/Coverage/**/index.html
 
+![alt-text](../media/top-extensions-getting-started/coverage1.png "code coverage summary")
+
 Note: 
 * coverage results are generated when running  `npm run test` or `npm run test-ci` via karmajs its karma.conf.js.
+
+Clicking through from the summary view to the ResourceOverviewBlade you can see code coverage line by line
+
+![alt-text](../media/top-extensions-getting-started/coverage2.png "code coverage detail")
+
 
 <a name="faq"></a>
 # FAQ

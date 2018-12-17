@@ -7,7 +7,7 @@ The SDK has several framework features that make it easier to implement UX that 
 - [Browse](top-extensions-browse.md) - Integrates your resource type into the portal's main menu that categorizes and lists resources.
 - [Resource Menu](top-blades-resourcemenublade.md) - Provides a base implementation of a menu blade, with standard resource features (e.g. RBAC, Locks, Audit Logs) automatically injected into the menu. 
 - Search - Azure resources are automatically integrated into the potal's global search
-- [Tile Gallery Integration](portalfx-ux-tile-gallery.md) - Exposes tiles for your resource in the portal's tile gallery
+- [Tile Gallery Integration](top-extensions-parts.md) - Exposes tiles for your resource in the portal's tile gallery
 
 The majority of the docs apply to these types of extensions.  The next few sections talk about building the less common, but still awesome, non Azure resource based extension.
 
@@ -34,7 +34,7 @@ The [Browse](portalfx-browse.md) experience can serve as a user's main entry poi
 
 ### Dashboard integration
 
-If you are interested in contributing tiles (a.k.a. parts) to the dashboard via the [tile gallery](portalfx-ux-tile-gallery.md) you can do that, even if your service is not Azure based. Note that these non-Azure tiles will all be shown in the 'General' pivot.  The other pivots only support Azure resources. Note that the dashboard sharing feature requires an Azure subscription.  Users without an Azure subscription can have multiple, private dashboards.
+If you are interested in contributing tiles (a.k.a. parts) to the dashboard via the [tile gallery](top-extensions-parts.md) you can do that, even if your service is not Azure based. Note that these non-Azure tiles will all be shown in the 'General' pivot.  The other pivots only support Azure resources. Note that the dashboard sharing feature requires an Azure subscription.  Users without an Azure subscription can have multiple, private dashboards.
 
 ### Portal capabilities that require being backed by an ARM resource
 

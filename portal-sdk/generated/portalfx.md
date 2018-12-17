@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿
 <a name="home"></a>
 # Home
@@ -52,3 +53,7 @@ Feeling Lost? Reach out to Community: [Stackoverflow](/portal-sdk/generated/inde
 # Code of Conduct
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+=======
+
+The page you requested has moved to [/README.md](/README.md).
+>>>>>>> 51c5d8a6f9c77315861cd881794f30d57d3f63a2

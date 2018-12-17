@@ -69,7 +69,7 @@ The marketplace houses all Microsoft and partner offerings, ranging from simple 
 Before your package is allowed into the marketplace, you'll need to onboard with the Marketplace team. You'll also be expected to supply a set of marketplace icons for each one of your packages.  
 
 
-[Learn more](portalfx-ux-gallery.md)
+[Learn more](/gallery-sdk/generated/index-gallery.md#gallery-overview)
 
 
 

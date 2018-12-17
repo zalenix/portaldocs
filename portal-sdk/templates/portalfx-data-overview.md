@@ -48,7 +48,11 @@ From a code organization standpoint, you can think of an Area as little more tha
 
 Typically, the DataContext associated with a particular Area is instantiated from the '`initialize()`' method of '`\Client\Program.ts`', the entry point of your extension:
 
-{"gitdown": "include-section", "file":"../Samples/SamplesExtension/Extension/Client/Program.ts", "section": "data#createDataContext"}
+```typescript
+        this.viewModelFactories.V1$$MasterDetail().setDataContextFactory<typeof MasterDetailV1>(
+            "./V1/MasterDetail/MasterDetailArea",
+            (contextModule) => new contextModule.DataContext());
+```
 
 There is a single DataContext class per Area. That class is - by convention - to be named '`[AreaName]Area.ts`'. For example, the 'MasterDetail' area of the samples has a '`MasterDetailArea.ts`' file created at the following location:
 

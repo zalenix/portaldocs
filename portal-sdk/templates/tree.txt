@@ -1,0 +1,548 @@
+On branch master_template
+Your branch is up to date with 'origin/master_template'.
+
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Changes to be committed:
+
+	modified:   ../../.gitignore
+	modified:   ../../gulpcommon.js
+	new file:   ../../old-README.md
+	new file:   ../generated/design-patterns-TEMPLATE.md
+	new file:   ../generated/design-patterns-icons.md
+	new file:   ../generated/design-patterns-page-filtering.md
+	new file:   ../generated/design-patterns-page-forms.md
+	new file:   ../generated/design-patterns-page-fullscreen.md
+	new file:   ../generated/design-patterns-page-grid.md
+	new file:   ../generated/design-patterns-page-notifications.md
+	new file:   ../generated/design-patterns-page-responsive-design.md
+	new file:   ../generated/design-patterns-resource-browse.md
+	new file:   ../generated/design-patterns-resource-create.md
+	new file:   ../generated/design-patterns-resource-manage.md
+	new file:   ../generated/design-patterns-style-guide.md
+	new file:   ../generated/design-patterns-toolkits.md
+	deleted:    ../generated/index-portalfx-extension-style-guide.md
+	modified:   ../generated/index-videos.md
+	new file:   ../generated/msportalfx-test-configuration.md
+	new file:   ../generated/msportalfx-test-overview.md
+	modified:   ../generated/msportalfx-test.md
+	modified:   ../generated/portalfx-assets.md
+	modified:   ../generated/portalfx-blades-bladeKinds.md
+	modified:   ../generated/portalfx-blades-context.md
+	deleted:    ../generated/portalfx-design.md
+	modified:   ../generated/portalfx-dictionaryconfiguration.md
+	modified:   ../generated/portalfx-domain-based-configuration-example.md
+	modified:   ../generated/portalfx-domain-based-configuration-pattern.md
+	modified:   ../generated/portalfx-domain-based-configuration.md
+	modified:   ../generated/portalfx-editscopeless-forms.md
+	modified:   ../generated/portalfx-editscopeless-procedure.md
+	modified:   ../generated/portalfx-extension-onboarding.md
+	modified:   ../generated/portalfx-extensions-bp-blades.md
+	new file:   ../generated/portalfx-extensions-faq-custom-domains.md
+	new file:   ../generated/portalfx-extensions-faq-sideloading.md
+	modified:   ../generated/portalfx-extensions-getting-started-procedure.md
+	modified:   ../generated/portalfx-forms-sections.md
+	modified:   ../generated/portalfx-office-hours.md
+	modified:   ../generated/portalfx-performance-overview.md
+	modified:   ../generated/portalfx-performance.md
+	deleted:    ../generated/portalfx-style-guide-custom-css-file.md
+	deleted:    ../generated/portalfx-style-guide-themed-color-classes.md
+	modified:   ../generated/portalfx-telemetry-alerting-availability.md
+	modified:   ../generated/portalfx-telemetry-alerting-create.md
+	modified:   ../generated/portalfx-telemetry-alerting-error-messages.md
+	modified:   ../generated/portalfx-telemetry-alerting-performance.md
+	modified:   ../generated/portalfx-telemetry-getting-started.md
+	modified:   ../generated/portalfx-telemetry-kusto-databases.md
+	modified:   ../generated/portalfx-telemetry.md
+	deleted:    ../generated/portalfx-ux-add-columns.md
+	deleted:    ../generated/portalfx-ux-assetpart.md
+	deleted:    ../generated/portalfx-ux-commands.md
+	deleted:    ../generated/portalfx-ux-configure-resource.md
+	deleted:    ../generated/portalfx-ux-create-forms.md
+	deleted:    ../generated/portalfx-ux-create-from-browse.md
+	deleted:    ../generated/portalfx-ux-displaying-legal-terms.md
+	deleted:    ../generated/portalfx-ux-dropdowns-vs-pickers.md
+	deleted:    ../generated/portalfx-ux-essentials.md
+	deleted:    ../generated/portalfx-ux-find-in-browse.md
+	deleted:    ../generated/portalfx-ux-forms.md
+	deleted:    ../generated/portalfx-ux-gallery.md
+	deleted:    ../generated/portalfx-ux-grids.md
+	deleted:    ../generated/portalfx-ux-inblade-notifications.md
+	deleted:    ../generated/portalfx-ux-join-marketplace.md
+	deleted:    ../generated/portalfx-ux-monitoring.md
+	deleted:    ../generated/portalfx-ux-move-resource-group.md
+	deleted:    ../generated/portalfx-ux-move-subscription.md
+	deleted:    ../generated/portalfx-ux-packages.md
+	deleted:    ../generated/portalfx-ux-performance.md
+	deleted:    ../generated/portalfx-ux-pricing-tier.md
+	deleted:    ../generated/portalfx-ux-properties.md
+	deleted:    ../generated/portalfx-ux-quickstart.md
+	deleted:    ../generated/portalfx-ux-resource-blade.md
+	deleted:    ../generated/portalfx-ux-resource-settings.md
+	deleted:    ../generated/portalfx-ux-resource-tools.md
+	deleted:    ../generated/portalfx-ux-select-column.md
+	deleted:    ../generated/portalfx-ux-settings.md
+	deleted:    ../generated/portalfx-ux-show-commands.md
+	deleted:    ../generated/portalfx-ux-show-subitems.md
+	deleted:    ../generated/portalfx-ux-standard-resource-elements.md
+	deleted:    ../generated/portalfx-ux-tile-gallery.md
+	deleted:    ../generated/portalfx-ux-tiles.md
+	deleted:    ../generated/portalfx-ux-tools.md
+	deleted:    ../generated/portalfx-ux-two-create-options.md
+	deleted:    ../generated/portalfx-ux-using-pricing-tier.md
+	deleted:    ../generated/portalfx-ux-wizards-vs-simple.md
+	new file:   ../generated/top-az-framework.md
+	modified:   ../generated/top-blades-advanced.md
+	new file:   ../generated/top-design.md
+	new file:   ../generated/top-extensions-accessibility.md
+	modified:   ../generated/top-extensions-architecture.md
+	new file:   ../generated/top-extensions-authentication-flow.md
+	new file:   ../generated/top-extensions-authentication-procedures.md
+	new file:   ../generated/top-extensions-authentication.md
+	new file:   ../generated/top-extensions-browse.md
+	new file:   ../generated/top-extensions-create.md
+	modified:   ../generated/top-extensions-custom-deployment.md
+	new file:   ../generated/top-extensions-custom-domains.md
+	new file:   ../generated/top-extensions-data-ajax.md
+	new file:   ../generated/top-extensions-dialogs.md
+	modified:   ../generated/top-extensions-getting-started.md
+	new file:   ../generated/top-extensions-hosting-service-ev2.md
+	modified:   ../generated/top-extensions-hosting-service.md
+	modified:   ../generated/top-extensions-install-software.md
+	new file:   ../generated/top-extensions-lifetime.md
+	new file:   ../generated/top-extensions-localization-globalization.md
+	new file:   ../generated/top-extensions-node-js-test-framework.md
+	new file:   ../generated/top-extensions-notifications.md
+	modified:   ../generated/top-extensions-packages.md
+	new file:   ../generated/top-extensions-performance.md
+	modified:   ../generated/top-extensions-publishing.md
+	new file:   ../generated/top-extensions-samples-controls-deprecated.md
+	new file:   ../generated/top-extensions-sharing-blades-and-parts.md
+	modified:   ../generated/top-extensions-sideloading.md
+	new file:   ../generated/top-extensions-styling.md
+	modified:   ../generated/top-extensions-unit-test.md
+	deleted:    ../generated/top-extensions.controls.md
+	new file:   ../generated/top-legacy-blades-template-pdl.md
+	new file:   ../generated/top-legacy-editscopes.md
+	modified:   ../generated/top-onboarding.md
+	new file:   ../generated/top-telemetry-alerting.md
+	new file:   ../generated/top-telemetry.md
+	modified:   ../generated/top-third-party-onboarding.md
+	modified:   ../gulpfile.js
+	new file:   ../media/ClaireTest/Sample.png
+	new file:   ../media/design-patterns-icons/icons-export-settings.png
+	new file:   ../media/design-patterns-icons/icons-layers-do.png
+	new file:   ../media/design-patterns-icons/icons-layers-dont.png
+	new file:   ../media/design-patterns-page-filtering/activity-log.png
+	new file:   ../media/design-patterns-page-filtering/add-filter.PNG
+	new file:   ../media/design-patterns-page-filtering/anatomy-filter-removable.PNG
+	new file:   ../media/design-patterns-page-filtering/anatomy-filter.PNG
+	new file:   ../media/design-patterns-page-filtering/anatomy-page-wrap-1.PNG
+	new file:   ../media/design-patterns-page-filtering/anatomy-page-wrap-2.PNG
+	new file:   ../media/design-patterns-page-filtering/anatomy-page-wrap-3.PNG
+	new file:   ../media/design-patterns-page-filtering/anatomy-page.PNG
+	new file:   ../media/design-patterns-page-filtering/dashboard.PNG
+	new file:   ../media/design-patterns-page-filtering/filter-multi-select.PNG
+	new file:   ../media/design-patterns-page-filtering/filter-time-range-1.PNG
+	new file:   ../media/design-patterns-page-filtering/filter-time-range-2.PNG
+	new file:   ../media/design-patterns-page-filtering/reset-filters.PNG
+	new file:   ../media/design-patterns-page-forms/dialog_from_command.png
+	new file:   ../media/design-patterns-page-forms/form-anatomy.png
+	new file:   ../media/design-patterns-page-forms/form-validation.png
+	new file:   ../media/design-patterns-page-forms/form_validation.png
+	new file:   ../media/design-patterns-page-forms/forms-context-pane-narrow.png
+	new file:   ../media/design-patterns-page-forms/forms-context-pane.png
+	new file:   ../media/design-patterns-page-forms/forms-dialog.png
+	new file:   ../media/design-patterns-page-forms/forms-full-screen-blade-from-menu.png
+	new file:   ../media/design-patterns-page-forms/forms-full-screen-blade.png
+	new file:   ../media/design-patterns-page-forms/forms.png
+	new file:   ../media/design-patterns-page-forms/placeholder-email.png
+	new file:   ../media/design-patterns-page-forms/placeholder_email.png
+	new file:   ../media/design-patterns-page-forms/placeholder_text.png
+	new file:   ../media/design-patterns-page-forms/radio-control.png
+	new file:   ../media/design-patterns-page-forms/radio_control.png
+	new file:   ../media/design-patterns-page-forms/toggle-control.png
+	new file:   ../media/design-patterns-page-forms/toggle_control.png
+	new file:   ../media/design-patterns-page-fullscreen/FS_1_Anatomy.png
+	new file:   ../media/design-patterns-page-fullscreen/FS_2_Breadcrumbs@2x-400x126.png
+	new file:   ../media/design-patterns-page-fullscreen/FS_3_X@2x-400x126.png
+	new file:   ../media/design-patterns-page-fullscreen/Full-screen-1.png
+	new file:   ../media/design-patterns-page-grid/Bulk-Commanding.png
+	new file:   ../media/design-patterns-page-grid/Context-Menu.png
+	new file:   ../media/design-patterns-page-grid/Resource-browse.png
+	new file:   ../media/design-patterns-page-grid/grid-anatomy.png
+	renamed:    ../media/portalfx-ux-inblade-notifications/in-blade-notification.png -> ../media/design-patterns-page-notifications/in-blade-notification.png
+	renamed:    ../media/portalfx-ux-inblade-notifications/notification_topbar.png -> ../media/design-patterns-page-notifications/notification_topbar.png
+	renamed:    ../media/portalfx-ux-inblade-notifications/recco_blades.png -> ../media/design-patterns-page-notifications/recco_blades.png
+	new file:   ../media/design-patterns-resource-browse/ResBrowse_1_Anatomy.png
+	new file:   ../media/design-patterns-resource-browse/ResBrowse_2_Toolbar.png
+	new file:   ../media/design-patterns-resource-browse/ResBrowse_3_NoRes_1.png
+	new file:   ../media/design-patterns-resource-browse/ResBrowse_3_NoRes_2.png
+	new file:   ../media/design-patterns-resource-browse/Resource-browse-2.png
+	new file:   ../media/design-patterns-resource-browse/resource-browse-1.png
+	new file:   ../media/design-patterns-resource-browse/resource-browse-NoResources.png
+	new file:   ../media/design-patterns-resource-browse/resource-browse-anatomy.png
+	new file:   ../media/design-patterns-resource-browse/resource-browse-toolbar.png
+	new file:   ../media/design-patterns-resource-create/Grouped-input-fields.png
+	new file:   ../media/design-patterns-resource-create/PostCreate.png
+	new file:   ../media/design-patterns-resource-create/ResCreate_1_Anatomy.png
+	new file:   ../media/design-patterns-resource-create/ResCreate_2_Tabs.png
+	new file:   ../media/design-patterns-resource-create/Resource-create-1.png
+	new file:   ../media/design-patterns-resource-create/Resource-create-2.png
+	new file:   ../media/design-patterns-resource-create/Resource-create-3.png
+	new file:   ../media/design-patterns-resource-create/Resource-create-VM.png
+	new file:   ../media/design-patterns-resource-create/Tabs.png
+	new file:   ../media/design-patterns-resource-create/post-create.png
+	new file:   ../media/design-patterns-resource-create/resource-create-anatomy.png
+	new file:   ../media/design-patterns-resource-create/subcreate.png
+	new file:   ../media/design-patterns-resource-manage/Essentials.png
+	new file:   ../media/design-patterns-resource-manage/ResManage_1_Anatomy.png
+	new file:   ../media/design-patterns-resource-manage/Resource-manage-VM.png
+	new file:   ../media/design-patterns-resource-manage/anatomy.png
+	new file:   ../media/design-patterns-resource-manage/overview.png
+	new file:   ../media/design-patterns-resource-manage/resource-manage-anatomy.png
+	new file:   ../media/design-patterns-resource-manage/resource-menu.png
+	new file:   ../media/design-patterns-resource-manage/resource-overview.png
+	new file:   ../media/design-patterns-style-guide/Azure-Portal-Style-Guide.pdf
+	new file:   ../media/design-patterns-style-guide/external-link.jpg
+	new file:   ../media/design-patterns-toolkits/figma.png
+	new file:   ../media/design-patterns-toolkits/illustrator.png
+	new file:   ../media/design-patterns-toolkits/powerpoint.png
+	new file:   ../media/design-patterns-toolkits/sketch.png
+	new file:   ../media/design-patterns-toolkits/xd.png
+	new file:   ../media/portalfx-assets/hidingassettypes.png
+	modified:   ../media/portalfx-browse/nocode.png
+	new file:   ../media/portalfx-extensions-onboarding/hosting-service-storage-container.png
+	new file:   ../media/portalfx-extensions-onboarding/portal-framework-extension-config.png
+	new file:   ../media/portalfx-productiontest/errinsecureresponse.png
+	deleted:    ../media/portalfx-style-guide/horizontal-float-simple.png
+	deleted:    ../media/portalfx-style-guide/horizontal-float-varying.png
+	deleted:    ../media/portalfx-style-guide/horizontal-inlineblock-normal.png
+	deleted:    ../media/portalfx-style-guide/horizontal-inlineblock-simple.png
+	deleted:    ../media/portalfx-style-guide/horizontal-inlineblock-vertical.png
+	deleted:    ../media/portalfx-ux-add-columns/Column_chooser.JPG
+	deleted:    ../media/portalfx-ux-add-columns/column_chooser.png
+	deleted:    ../media/portalfx-ux-assetpart/Assetpart_pin.JPG
+	deleted:    ../media/portalfx-ux-assetpart/Assetpart_tile.JPG
+	deleted:    ../media/portalfx-ux-commands/Command_bar.jpg
+	deleted:    ../media/portalfx-ux-commands/Command_confirm.jpg
+	deleted:    ../media/portalfx-ux-commands/Commands.jpg
+	deleted:    ../media/portalfx-ux-create-forms/Creator_selector.jpg
+	deleted:    ../media/portalfx-ux-create-forms/Info_icon.jpg
+	deleted:    ../media/portalfx-ux-create-forms/Info_triggered.jpg
+	deleted:    ../media/portalfx-ux-create-forms/Location_dropdown.jpg
+	deleted:    ../media/portalfx-ux-create-forms/Locked_field.jpg
+	deleted:    ../media/portalfx-ux-create-forms/Pickers_and_dropdowns.jpg
+	deleted:    ../media/portalfx-ux-create-forms/Pin_to_dash.jpg
+	deleted:    ../media/portalfx-ux-create-forms/Pricing_card_1.jpg
+	deleted:    ../media/portalfx-ux-create-forms/Pricing_card_2.jpg
+	deleted:    ../media/portalfx-ux-create-forms/Primary_validation.jpg
+	deleted:    ../media/portalfx-ux-create-forms/Primary_validation_error.jpg
+	deleted:    ../media/portalfx-ux-create-forms/Recommended_pricing.jpg
+	deleted:    ../media/portalfx-ux-create-forms/Required_field.jpg
+	deleted:    ../media/portalfx-ux-create-forms/Single_blade_create.jpg
+	deleted:    ../media/portalfx-ux-create-forms/Single_blade_create_2.jpg
+	deleted:    ../media/portalfx-ux-create-forms/Subscription_dropdown.jpg
+	deleted:    ../media/portalfx-ux-create-forms/Wizard_create_2.jpg
+	deleted:    ../media/portalfx-ux-create-forms/Wizard_with_basics.jpg
+	deleted:    ../media/portalfx-ux-create-forms/simple_create.jpg
+	deleted:    ../media/portalfx-ux-create-forms/simple_create.png
+	deleted:    ../media/portalfx-ux-create-forms/wizard_create.jpg
+	deleted:    ../media/portalfx-ux-create-forms/wizard_create.png
+	deleted:    ../media/portalfx-ux-create-from-browse/Create_from_browse.JPG
+	deleted:    ../media/portalfx-ux-create-from-browse/create_from_browse.png
+	deleted:    ../media/portalfx-ux-displaying-legal-terms/legal_dev_service_sample.png
+	deleted:    ../media/portalfx-ux-displaying-legal-terms/legal_selector_sample.png
+	deleted:    ../media/portalfx-ux-displaying-legal-terms/legal_vm_sample.png
+	deleted:    ../media/portalfx-ux-dropdowns-vs-pickers/dropdowns.JPG
+	deleted:    ../media/portalfx-ux-dropdowns-vs-pickers/dropdowns_pickers.jpg
+	deleted:    ../media/portalfx-ux-essentials/Essentials.PNG
+	deleted:    ../media/portalfx-ux-essentials/essentials.JPG
+	deleted:    ../media/portalfx-ux-forms/Button.png
+	deleted:    ../media/portalfx-ux-forms/checkbox.png
+	deleted:    ../media/portalfx-ux-forms/columns.png
+	deleted:    ../media/portalfx-ux-forms/copy_label.png
+	deleted:    ../media/portalfx-ux-forms/create.png
+	deleted:    ../media/portalfx-ux-forms/dropdown.png
+	deleted:    ../media/portalfx-ux-forms/form_style_full.png
+	deleted:    ../media/portalfx-ux-forms/form_style_full_border.png
+	deleted:    ../media/portalfx-ux-forms/in_line.png
+	deleted:    ../media/portalfx-ux-gallery/Create_hub.JPG
+	deleted:    ../media/portalfx-ux-gallery/Marketplace_blade.JPG
+	deleted:    ../media/portalfx-ux-gallery/Marketplace_details.JPG
+	deleted:    ../media/portalfx-ux-gallery/wide_icons.JPG
+	deleted:    ../media/portalfx-ux-pricing-tier/pricing_card.JPG
+	deleted:    ../media/portalfx-ux-pricing-tier/pricing_tier.JPG
+	deleted:    ../media/portalfx-ux-resource-blade/resourceblade.jpg
+	deleted:    ../media/portalfx-ux-resource-blade/resourcegraphic.jpg
+	deleted:    ../media/portalfx-ux-settings/Settings2.png
+	deleted:    ../media/portalfx-ux-settings/Settings3.png
+	deleted:    ../media/portalfx-ux-settings/def_cust_settings.png
+	deleted:    ../media/portalfx-ux-settings/def_cust_settings2.PNG
+	deleted:    ../media/portalfx-ux-settings/def_cust_settings3.jpg
+	deleted:    ../media/portalfx-ux-settings/settings.JPG
+	deleted:    ../media/portalfx-ux-show-commands/show_commands.png
+	deleted:    ../media/portalfx-ux-tiles/Data_rollup.JPG
+	deleted:    ../media/portalfx-ux-tiles/Data_visualization.JPG
+	deleted:    ../media/portalfx-ux-tiles/List.JPG
+	deleted:    ../media/portalfx-ux-tiles/Relevant_info.JPG
+	deleted:    ../media/portalfx-ux-tiles/Status.JPG
+	deleted:    ../media/portalfx-ux-tiles/Tile table.JPG
+	deleted:    ../media/portalfx-ux-tiles/Upsell.JPG
+	deleted:    ../media/portalfx-ux-tiles/alert_rules.png
+	deleted:    ../media/portalfx-ux-tiles/line_chart.png
+	deleted:    ../media/portalfx-ux-tiles/pricing_tier.png
+	deleted:    ../media/portalfx-ux-tiles/rollup.png
+	deleted:    ../media/portalfx-ux-tiles/rollup_large.png
+	deleted:    ../media/portalfx-ux-tiles/rollup_rg.png
+	deleted:    ../media/portalfx-ux-tiles/rollup_xl.png
+	deleted:    ../media/portalfx-ux-tiles/scale.png
+	deleted:    ../media/portalfx-ux-tiles/service_health.png
+	deleted:    ../media/portalfx-ux-tiles/status.png
+	deleted:    ../media/portalfx-ux-tiles/tile_gallery1.jpg
+	deleted:    ../media/portalfx-ux-tiles/tile_gallery2.jpg
+	deleted:    ../media/portalfx-ux-using-pricing-tier/pricing_card.png
+	deleted:    ../media/portalfx-ux-using-pricing-tier/pricing_cards.png
+	deleted:    ../media/portalfx-ux-using-pricing-tier/pricing_tier_blade.png
+	deleted:    ../media/portalfx-ux-using-pricing-tier/pt_infobanner.png
+	deleted:    ../media/portalfx-ux-using-pricing-tier/pt_settings_picker.png
+	new file:   ../media/top-extensions-authentication-flow/authentication.png
+	new file:   ../media/top-extensions-create/Review.png
+	new file:   ../media/top-extensions-create/SubCreates.png
+	new file:   ../media/top-extensions-create/Tabs.png
+	new file:   ../media/top-extensions-create/Tags.png
+	new file:   ../media/top-extensions-custom-domains/branding-and-chrome.png
+	new file:   ../media/top-extensions-custom-domains/curation.png
+	new file:   ../media/top-extensions-dialogs/dialog-non-targeted.png
+	new file:   ../media/top-extensions-dialogs/dialog-targeted.png
+	new file:   ../media/top-extensions-getting-started/AssetTypeBladeName.png
+	new file:   ../media/top-extensions-getting-started/ResourceMenuBlade.png
+	new file:   ../media/top-extensions-getting-started/browse.png
+	new file:   ../media/top-extensions-getting-started/cert1.png
+	new file:   ../media/top-extensions-getting-started/cert2.png
+	new file:   ../media/top-extensions-getting-started/coverage1.png
+	new file:   ../media/top-extensions-getting-started/coverage2.png
+	new file:   ../media/top-extensions-getting-started/createblade.png
+	new file:   ../media/top-extensions-getting-started/createbladecode.png
+	new file:   ../media/top-extensions-getting-started/filenew.png
+	new file:   ../media/top-extensions-getting-started/installcert.png
+	new file:   ../media/top-extensions-getting-started/marketplace1.png
+	new file:   ../media/top-extensions-getting-started/marketplace2.png
+	new file:   ../media/top-extensions-getting-started/marketplace3.png
+	new file:   ../media/top-extensions-getting-started/openbladecode.png
+	new file:   ../media/top-extensions-getting-started/openhelloworldblade.png
+	new file:   ../media/top-extensions-getting-started/resourceType.png
+	new file:   ../media/top-extensions-getting-started/resourcebladecode.png
+	new file:   ../media/top-extensions-getting-started/resourcebladecontent.png
+	new file:   ../media/top-extensions-getting-started/savecert.png
+	new file:   ../media/top-extensions-getting-started/ssl1.png
+	new file:   ../media/top-extensions-getting-started/ssl2.png
+	new file:   ../media/top-extensions-getting-started/trxoutput.png
+	new file:   ../media/top-extensions-getting-started/uidefinition.png
+	new file:   ../media/top-extensions-getting-started/unittest1.png
+	new file:   ../media/top-extensions-getting-started/untrustedextension.png
+	new file:   ../media/top-extensions-getting-started/updatebladeopen.png
+	new file:   ../media/top-extensions-notifications/notification.png
+	new file:   ../media/top-extensions-publishing/branch-locked.png
+	new file:   ../media/top-extensions-publishing/enabledextensioncount.png
+	new file:   ../media/top-extensions-publishing/update-extension-count.png
+	new file:   ../media/top-extensions-sideloading/allowDialog.png
+	new file:   ../media/top-extensions-sideloading/restoreConfiguration.png
+	modified:   README.md
+	new file:   design-patterns-TEMPLATE.md
+	new file:   design-patterns-icons.md
+	new file:   design-patterns-page-filtering.md
+	new file:   design-patterns-page-forms.md
+	new file:   design-patterns-page-fullscreen.md
+	new file:   design-patterns-page-grid.md
+	new file:   design-patterns-page-notifications.md
+	new file:   design-patterns-page-responsive-design.md
+	new file:   design-patterns-resource-browse.md
+	new file:   design-patterns-resource-create.md
+	new file:   design-patterns-resource-manage.md
+	new file:   design-patterns-style-guide.md
+	new file:   design-patterns-toolkits.md
+	modified:   index-portalfx-extension-development.md
+	deleted:    index-portalfx-extension-style-guide.md
+	modified:   index-videos.md
+	new file:   msportalfx-test-configuration.md
+	new file:   msportalfx-test-overview.md
+	modified:   msportalfx-test.md
+	modified:   portalfx-assets.md
+	modified:   portalfx-blades-bladeKinds.md
+	new file:   portalfx-blades-context.md
+	modified:   portalfx-blades-templateBlade-advanced.md
+	modified:   portalfx-blades-templateBlade-reference.md
+	modified:   portalfx-data-masterdetailsbrowse.md
+	modified:   portalfx-data-overview.md
+	modified:   portalfx-data-refreshingdata.md
+	deleted:    portalfx-design.md
+	modified:   portalfx-dictionaryconfiguration.md
+	modified:   portalfx-domain-based-configuration-example.md
+	modified:   portalfx-domain-based-configuration-pattern.md
+	modified:   portalfx-domain-based-configuration.md
+	modified:   portalfx-editscopeless-forms.md
+	modified:   portalfx-editscopeless-procedure.md
+	modified:   portalfx-essentials.md
+	modified:   portalfx-extension-development.md
+	modified:   portalfx-extension-hosting-service-advanced.md
+	modified:   portalfx-extension-onboarding.md
+	modified:   portalfx-extension-resources-vs-non-resources.md
+	deleted:    portalfx-extension-style-guide.md
+	modified:   portalfx-extensions-bp-blades.md
+	new file:   portalfx-extensions-faq-custom-domains.md
+	modified:   portalfx-extensions-faq-forms.md
+	new file:   portalfx-extensions-faq-sideloading.md
+	new file:   portalfx-extensions-style-color-palette.md
+	new file:   portalfx-extensions-style-custom-css-file.md
+	new file:   portalfx-extensions-style-sanitization.md
+	new file:   portalfx-extensions-style-themed-color-classes.md
+	new file:   portalfx-extensions-style-utility-classes.md
+	new file:   portalfx-extensions-style.md
+	modified:   portalfx-forms-sections.md
+	modified:   portalfx-main.md
+	deleted:    portalfx-main.md.orig
+	modified:   portalfx-office-hours.md
+	modified:   portalfx-onboarding.md
+	modified:   portalfx-pde-publish.md
+	modified:   portalfx-performance-overview.md
+	modified:   portalfx-performance.md
+	modified:   portalfx-stackoverflow.md
+	deleted:    portalfx-style-guide-color-palette.md
+	deleted:    portalfx-style-guide-custom-css-file.md
+	deleted:    portalfx-style-guide-style-sanitization.md
+	deleted:    portalfx-style-guide-themed-color-classes.md
+	deleted:    portalfx-style-guide-utility-classes.md
+	deleted:    portalfx-style-guide.md
+	modified:   portalfx-telemetry-alerting-availability.md
+	modified:   portalfx-telemetry-alerting-create.md
+	modified:   portalfx-telemetry-alerting-error-messages.md
+	modified:   portalfx-telemetry-alerting-performance.md
+	modified:   portalfx-telemetry-getting-started.md
+	modified:   portalfx-telemetry-kusto-databases.md
+	modified:   portalfx-telemetry.md
+	modified:   portalfx-ui-concepts.md
+	deleted:    portalfx-ux-add-columns.md
+	deleted:    portalfx-ux-assetpart.md
+	deleted:    portalfx-ux-commands.md
+	deleted:    portalfx-ux-configure-resource.md
+	deleted:    portalfx-ux-create-forms.md
+	deleted:    portalfx-ux-create-from-browse.md
+	deleted:    portalfx-ux-displaying-legal-terms.md
+	deleted:    portalfx-ux-dropdowns-vs-pickers.md
+	deleted:    portalfx-ux-essentials.md
+	deleted:    portalfx-ux-find-in-browse.md
+	deleted:    portalfx-ux-forms.md
+	deleted:    portalfx-ux-gallery.md
+	deleted:    portalfx-ux-grids.md
+	deleted:    portalfx-ux-inblade-notifications.md
+	deleted:    portalfx-ux-join-marketplace.md
+	deleted:    portalfx-ux-monitoring.md
+	deleted:    portalfx-ux-move-resource-group.md
+	deleted:    portalfx-ux-move-subscription.md
+	deleted:    portalfx-ux-packages.md
+	deleted:    portalfx-ux-performance.md
+	deleted:    portalfx-ux-pricing-tier.md
+	deleted:    portalfx-ux-properties.md
+	deleted:    portalfx-ux-quickstart.md
+	deleted:    portalfx-ux-resource-blade.md
+	deleted:    portalfx-ux-resource-settings.md
+	deleted:    portalfx-ux-resource-tools.md
+	deleted:    portalfx-ux-select-column.md
+	deleted:    portalfx-ux-settings.md
+	deleted:    portalfx-ux-show-commands.md
+	deleted:    portalfx-ux-show-subitems.md
+	deleted:    portalfx-ux-standard-resource-elements.md
+	deleted:    portalfx-ux-tile-gallery.md
+	deleted:    portalfx-ux-tiles.md
+	deleted:    portalfx-ux-tools.md
+	deleted:    portalfx-ux-two-create-options.md
+	deleted:    portalfx-ux-using-pricing-tier.md
+	deleted:    portalfx-ux-wizards-vs-simple.md
+	new file:   top-az-framework.md
+	modified:   top-blades-advanced.md
+	modified:   top-blades-frame.md
+	modified:   top-blades-frameblade.md
+	new file:   top-design.md
+	new file:   top-extensions-accessibility.md
+	modified:   top-extensions-architecture.md
+	new file:   top-extensions-authentication-flow.md
+	new file:   top-extensions-authentication-procedures.md
+	new file:   top-extensions-browse.md
+	modified:   top-extensions-configuration.md
+	new file:   top-extensions-create.md
+	modified:   top-extensions-custom-deployment.md
+	new file:   top-extensions-custom-domains.md
+	new file:   top-extensions-data-ajax.md
+	new file:   top-extensions-dialogs.md
+	modified:   top-extensions-getting-started.md
+	new file:   top-extensions-hosting-service-ev2.md
+	modified:   top-extensions-hosting-service.md
+	modified:   top-extensions-install-software.md
+	new file:   top-extensions-lifetime.md
+	new file:   top-extensions-localization-globalization.md
+	new file:   top-extensions-node-js-test-framework.md
+	new file:   top-extensions-notifications.md
+	deleted:    top-extensions-nuget.md
+	modified:   top-extensions-packages.md
+	new file:   top-extensions-performance.md
+	modified:   top-extensions-publishing.md
+	new file:   top-extensions-samples-controls-deprecated.md
+	new file:   top-extensions-sharing-blades-and-parts.md
+	modified:   top-extensions-sideloading.md
+	new file:   top-extensions-styling.md
+	modified:   top-extensions-unit-test.md
+	deleted:    top-extensions.controls.md
+	new file:   top-legacy-blades-template-pdl.md
+	new file:   top-legacy-editscopes.md
+	modified:   top-onboarding.md
+	new file:   top-telemetry-alerting.md
+	new file:   top-telemetry.md
+	modified:   top-third-party-onboarding.md
+
+Unmerged paths:
+  (use "git add/rm <file>..." as appropriate to mark resolution)
+
+	both modified:   ../../README.md
+	both modified:   ../generated/README.md
+	both modified:   ../generated/portalfx-blades-templateBlade-advanced.md
+	both modified:   ../generated/portalfx-blades-templateBlade-reference.md
+	both modified:   ../generated/portalfx-creating-extensions.md
+	both modified:   ../generated/portalfx-data-masterdetailsbrowse.md
+	both modified:   ../generated/portalfx-data-overview.md
+	both modified:   ../generated/portalfx-data-refreshingdata.md
+	both modified:   ../generated/portalfx-extension-hosting-service-advanced.md
+	deleted by them: ../generated/portalfx-extension-style-guide.md
+	both modified:   ../generated/portalfx-load-configuration.md
+	deleted by them: ../generated/portalfx-style-guide-color-palette.md
+	deleted by them: ../generated/portalfx-style-guide-style-sanitization.md
+	deleted by them: ../generated/portalfx-style-guide-utility-classes.md
+	deleted by them: ../generated/portalfx-style-guide.md
+	both modified:   ../generated/portalfx-testinprod.md
+	both modified:   ../generated/portalfx.md
+	both modified:   ../generated/release-notes.md
+	both modified:   ../generated/top-blades-frame.md
+	both modified:   ../generated/top-blades-frameblade.md
+	both modified:   ../generated/top-extensions-configuration.md
+	both modified:   ../generated/top-extensions-context-panes.md
+	both modified:   ../generated/top-extensions-parts.md
+	both modified:   portalfx-creating-extensions.md
+	both modified:   portalfx-load-configuration.md
+	both modified:   portalfx-testinprod.md
+	both modified:   portalfx.md
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	deleted:    portalfx-create.md.orig
+	deleted:    portalfx-extension-onboarding-developer-guide.md.orig
+	deleted:    portalfx-telemetry-alerting-performance.md.orig
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	tree.txt
+

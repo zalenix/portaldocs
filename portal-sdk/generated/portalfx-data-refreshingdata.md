@@ -177,9 +177,61 @@ If the (optional) '`predicate`' parameter is supplied to the '`refreshAll`' call
   
 The '`refresh`' method is useful when the server data changes are known to be specific to a single cache entry (a single query in the case of QueryCache, a single entity 'id' in the case of EntityCache).
 
-code sample coming soon to SamplesExtension in D:\ws\Ship-Sync-AuxDocs-Github\doc\portal-sdk\Samples\SamplesExtension\Extension\Client\V1\ResourceTypes\SparkPlug\SparkPlugData.ts
+```typescript
 
-code sample coming soon to SamplesExtension in D:\ws\Ship-Sync-AuxDocs-Github\doc\portal-sdk\Samples\SamplesExtension\Extension\Client\V1\ResourceTypes\SparkPlug\SparkPlugData.ts
+const promises: Q.Promise<void>[] = [];
+this.enginesQuery.refresh({}, null);
+MsPortalFx.makeArray(engines).forEach((engine) => {
+    promises.push(Q(this.engineEntities.refresh(engine, null)));
+});
+return Q.all(promises);
+
+```
+
+```typescript
+
+public updateEngine(engine: EngineModel): Q.Promise<void> {
+   let promise: Q.Promise<any>;
+   if (useFrameworkPortal) {
+       // Using framework portal (NOTE: this is not allowed against ARM).
+       // NOTE: do NOT use invoke API since it doesn't handle CORS.
+       promise = Q(FxBaseNet.ajaxExtended<any>({
+           headers: { accept: applicationJson },
+           isBackgroundTask: false,
+           setAuthorizationHeader: true,
+           setTelemetryHeader: "Update" + entityType,
+           type: "PATCH",
+           uri: appendSessionId(EngineData._apiRoot + "&api-version=" + entityVersion),
+           data: ko.toJSON(convertToResource(engine)),
+           contentType: applicationJson,
+           useFxArmEndpoint: true,
+       }));
+   } else {
+       // Using local controller.
+       promise = FxBaseNet.ajax({
+           type: "PATCH",
+           uri: appendSessionId(EngineData._apiRoot + "?id=" + engine.id()),
+           data: ko.toJSON(convertToArmResource(engine)),
+           contentType: applicationJson,
+       });
+   }
+
+   return promise.then(() => {
+       if (useFrameworkPortal) {
+           // This will refresh the set of data that is available in the underlying data cache.
+           EngineData._debouncer.execute([this._getEngineId(engine)]);
+       } else {
+           // This will refresh the set of data that is available in the underlying data cache.
+           // The {} params let the cache know to re-fetch any data that matches these parameters.
+           // In the case of this contrived scenario, we always fetch all data.  In the future we
+           // will add a way to refresh all (or selective) caches for a given type.  The second param
+           // manages lifetime, which is not needed in this case.
+           this.enginesQuery.refresh({}, null);
+       }
+   });
+    }
+    
+```
   
 Using '`refresh`', only *a single AJAX call* will be issued to the server.
 
