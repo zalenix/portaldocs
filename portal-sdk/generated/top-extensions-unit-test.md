@@ -83,8 +83,8 @@ always-auth=true
   "description": "",
   "main": "index.js",
   "scripts": {
-    "init": "npm install --no-optional",
-    "prereq": "npm run init && gulp generateAmdModuleFromResx --gulpfile=./node_modules/msportalfx-ut/gulpfile.js --cwd ./",
+    "init": "npm install --no-color --no-optional",
+    "prereq": "npm run init && gulp generateAmdModuleFromResx --no-color --gulpfile=./node_modules/msportalfx-ut/gulpfile.js --silent --cwd ./",
     "build": "npm run prereq && tsc -p tsconfig.json",
     "build-trace": "tsc -p tsconfig.json --diagnostics --listFiles --listEmittedFiles --traceResolution",
     "test": "npm run build && karma start",

@@ -216,4 +216,4 @@ GetExtensionCustomizationJson("YOUR_EXTENSION_NAME"). The regex is supported. Yo
 [safe-deployment-stage]: https://aka.ms/portalfx/alerting/safe-deployment-stage
 [alerting-onboarding]: https://aka.ms/portalfx/alerting-onboarding
 [alerting-extension-customization]: https://azportalpartner.kusto.windows.net/Phms?query=GetExtensionCustomizationJson%28%22HubsExtension%22%29
-[kusto-phms-database]: https://azportal.kusto.windows.net/Partner
+[kusto-phms-database]: https://azportalpartner.kusto.windows.net/Phms

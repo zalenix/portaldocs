@@ -14,7 +14,9 @@
 <a name="development-getting-started"></a>
 ## Getting Started
 
-* [Getting started with the Portal SDK](portalfx-creating-extensions.md#getting-started-with-the-portal-sdk)
+* [Getting Started with the Portal SDK](top-extensions-getting-started.md#getting-started-with-the-portal-sdk)
+* [Questions?](top-extensions-getting-started.md#questions)
+* [FAQ:](top-extensions-getting-started.md#faq)
 
 * [Samples extension](portalfx-sample-extensions.md#samples-extension)
 
@@ -83,9 +85,6 @@
 
 * [Debugging extension load failures](portalfx-debugging-extension-load-failures.md#debugging-extension-load-failures)
 
-* [Testing in production](portalfx-testinprod.md#testing-in-production)
-* [Handling obsolete bundles](portalfx-testinprod.md#handling-obsolete-bundles)
-* [Marking automated tests as test/synthetic traffic](portalfx-testinprod.md#marking-automated-tests-as-test-synthetic-traffic)
 
 
 <a name="development-other"></a>

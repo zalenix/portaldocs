@@ -15,19 +15,11 @@ Here, you develop your Blade or Part as a standard webpage that the Azure Portal
 
 From a 10,000-foot view, there is a single additional step you take when developing your Blade or Part UI as a standard HTML webpage.  With this solution, we require that you load a single '`Az`' script into your webpage and call the '`Az.initialized()`' API to signal to the Azure Portal that your rendering is complete.
 
-```typescript
-
-import Az = require("Az");
-
-```
+code sample coming soon to SamplesExtension in D:\ws\Ship-Sync-AuxDocs-Github\doc\portal-sdk\samples\SampleAzExtension\Src\Components\SampleBlade.tsx
 
     // ...
 
-```typescript
-
-Az.initialized();
-
-```
+code sample coming soon to SamplesExtension in D:\ws\Ship-Sync-AuxDocs-Github\doc\portal-sdk\samples\SampleAzExtension\Src\Components\SampleBlade.tsx
 
 This '`Az`' script is a new, [UMD](https://github.com/umdjs/umd) module that provides a minimal **hosting API** for your Blade and Part UI.  You'll load this new library into your HTML page from a URL passed as part of the IFrame '`src`' URL.  You'll obtain TypeScript type definitions for the new '`Az`' API via the '`@types/Az`' NPM package (TODO: Add links throughout to NPM packages).
 
@@ -67,26 +59,7 @@ where:
 
 Such a Blade can be opened programmatically from TypeScript/JavaScript like so:
 
-```typescript
-
-container.openBlade(new BladeReference(
-    "SampleBlade",
-    "SampleAzExtension",
-    {
-        parameters: {
-            fruit: "apple",
-            color: "red",
-        },
-        onClosed: (reason, data) => {
-            if (reason === BladeClosedReason.ChildClosedSelf && data && data.someReturnedData) {
-                this.previouslyReturnedValue(data.someReturnedData.toString());
-            }
-            log.debug("AzBlade closed.");
-        },
-    }));
-    }
-
-```
+code sample coming soon to SamplesExtension in D:\ws\Ship-Sync-AuxDocs-Github\doc\portal-sdk\samples\SamplesExtension\Extension\Client\V2\Blades\AzBlade\AzBladeLauncherBlade.ts
 
 ...and the associated IFrame's '`src`' URL for this very Blade (simplified for illustration) would be:
 
@@ -95,12 +68,7 @@ container.openBlade(new BladeReference(
 <a name="initialize-az"></a>
 As for the HTML page itself, you'll make simple Ibiza-specific additions to download and initialize the '`Az`' hosting library.  The additions are illustrated here (using the '`ejs`' JavaScript templating library):
 
-```xml
-
-<script type="text/javascript">window.azPortalTrustedOrigin = "<%- trustedPortalOrigin %>";</script>
-<script type="text/javascript" src="<%= azScriptUrl %>"></script>
-
-```
+code sample coming soon to SamplesExtension in D:\ws\Ship-Sync-AuxDocs-Github\doc\portal-sdk\samples\SampleAzExtension\Src\Views\Blade.ejs
 
 Here:
 - '`trustedPortalOrigin`' is the origin of the Azure Portal site that is loading this HTML page into an IFrame.  Only messages from this origin will be intercepted and processed by the '`Az`' library running in your IFrame.  This '`trustedPortalOrigin`' value should be extracted from the '`trustedAuthority`' query parameter from the request for this page (and validated as described [later](#step-d---secure-your-blade---part-html-pages)).
@@ -151,32 +119,11 @@ In scenario #1 (integrating already built/hosted UI), this validation is best do
 
 The '`trustedAuthority`' and '`azscript`' query parameters should be validated to be relative to the Portal origin where your site is expected to show UI.  Typically, this validation varies per-environment for your site.  For instance, your production environment should accept URLs from the 'portal.azure.com' origin.  Your PPE environment might accept URLs only from 'df.onecloud.azure-test.net' (the Azure Portal dogfood environment).  This might resemble:
 
-```typescript
-
-// Ensure the Az script is loaded only from the Azure Portal (and isn't some untrusted script).
-const azScriptUrl = req.query && req.query["azscript"];
-if (!isUrlOnTrustedAzurePortalDomain(azScriptUrl, isDevelopmentMode)) {
-    return renderError();
-}
-
-// Validate that 'trustedAuthority' is an Azure Portal domain.
-const trustedAuthorityParam = req.query && req.query["trustedAuthority"];
-if (!isUrlOnTrustedAzurePortalDomain(trustedAuthorityParam, isDevelopmentMode)) {
-    return renderError();
-}
-
-```
+code sample coming soon to SamplesExtension in D:\ws\Ship-Sync-AuxDocs-Github\doc\portal-sdk\samples\SampleAzExtension\Src\Routes\Blades.ts
 
 As an additional security measure, the HTTP response for your HTML page should include the ['`Content-Security-Policy`' response header](https://en.wikipedia.org/wiki/Content_Security_Policy).  This might resemble:
 
-```typescript
-
-// Return CSP (https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) allowing only the Azure Portal
-// and the site itself to frame this page (or IFrames nested within the page).
-const siteOrigin = `${req.protocol}://${req.get("host")}`;
-res.set("Content-Security-Policy", `frame-ancestors ${trustedAuthorityParam} siteOrigin`);
-
-```
+code sample coming soon to SamplesExtension in D:\ws\Ship-Sync-AuxDocs-Github\doc\portal-sdk\samples\SampleAzExtension\Src\Routes\Blades.ts
 
 This response header causes the browser to reject this HTML page unless loaded into a parent IFrame on the specified trusted domain.
 

@@ -218,7 +218,7 @@ galleryMetadata: {
     title: ClientResources.noPdlGeneralGalleryPartTitle,
     category: ClientResources.partGalleryCategorySample,
     thumbnail: {
-        path: "../../../AmdSvg/sample.svg",
+        path: "../../../Svg/sample.svg",
         isLogo: true,
         stretch: TemplatePart.PartGalleryThumbnailStretch.Fill,
     },
