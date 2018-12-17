@@ -37,6 +37,7 @@ gulp.task('ux', function () {
 gulp.task('portal', function () {
     //required for short path to SamplesExtension
     gulpCommon.createSymlink("portal-sdk/samples/SamplesExtension", "../src/SDK/AcceptanceTests/Extensions/SamplesExtension");
+    gulpCommon.createSymlink("portal-sdk/samples/SampleAzExtension", "../src/SDK/AcceptanceTests/Extensions/SampleAzExtension");
     gulpCommon.createSymlink("portal-sdk/samples/InternalSamplesExtension", "../src/SDK/AcceptanceTests/Extensions/InternalSamplesExtension");
     gulpCommon.createSymlink("portal-sdk/samples/VS", "../src/SDK/devkit/VS");
 

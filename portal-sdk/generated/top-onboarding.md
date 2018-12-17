@@ -19,7 +19,7 @@ Onboarding a service, or developing a Portal extension, has three phases: onboar
 <a name="phase-1-onboarding-kickoff-meeting"></a>
 ## Kickoff Meeting
  
-There are lots of docs here. We recommend you send mail to <a href="mailto:ibiza-onboarding@microsoft.com?subject=Kickoff Meeting Request&body=My team would like to meet with you to learn about the Azure onboarding process.">ibiza-onboarding@microsoft.com</a> and request a kickoff meeting. Someone from our team will spend 30 minutes walking through the process at a high level. We can point you in the right direction regarding the latest patterns and practices. We can also answer any questions you have. Finally, we can talk about how the relationship between our teams is managed.
+There are lots of docs here. We recommend you send mail to [ibiza-onboarding@microsoft.com](<mailto:ibiza-onboarding@microsoft.com?subject=Kickoff Meeting Request&body=My team would like to meet with you to learn about the Azure onboarding process.>) and request a kickoff meeting. Someone from our team will spend 30 minutes walking through the process at a high level. We can point you in the right direction regarding the latest patterns and practices. We can also answer any questions you have. Finally, we can talk about how the relationship between our teams is managed.
 
 <a name="phase-1-onboarding-onboard-with-related-teams"></a>
 ## Onboard with related teams
@@ -80,7 +80,7 @@ Request the following permissions to stay current on product roadmaps, get news 
 
 * Developers should join the  `Azure Portal Partner Contributors - 19668(19668)` group by using this link: [https://myaccess](https://myaccess).
 
-* PMs, Developers, and Developer Leads should subscribe to the partner request process by joining the ```Uservoice ``` group at this link:  [https://aka.ms/portalfx/uservoice](https://aka.ms/portalfx/uservoice). For more information about the partner request process, see [portalfx-extension-partner-request-process.md](portalfx-extension-partner-request-process.md).
+* PMs, Developers, and Developer Leads should subscribe to the partner request process by joining the ```Uservoice ``` group at this link:  [https://aka.ms/portalfx/uservoice](https://aka.ms/portalfx/uservoice). For more information about the partner request process, see [top-extensions-partner-request.md](/portal-sdk/generated/top-extensions-partner-request.md).
 
 * PMs, Developers, and Developer Leads should receive notifications on breaking changes by joining the ```ibizabreak ``` group at  this  link:  [http://igroup/join/ibizabreak](http://igroup/join/ibizabreak).
 
@@ -124,7 +124,7 @@ Once the name of the extension is finalized, it is time to register the extensio
  
 * External teams can submit their requests by reaching out to the <a href="mailto:ibizafxpm@microsoft.com?subject=Onboarding Request: Add <extensionName> to the Portal&body=Extension Name:  <br><br>Company:  <br><br>Brand or Suite:  <br><br>Product or Component:  <br><br> URLs: <br><br>Production: main.<extensionName>.ext.<company>.com<br><br>  Contact info: <br><br>Business Contacts <br><br> Dev leads: <br><br> PROD on-call email for live site incidents: <br><br>">ibizafxpm team</a> with an onboarding request.
 
-* **NOTE**: Extension names must use standard extension name format, as in the example located at [portalfx-extensions-configuration-overview.md#name](portalfx-extensions-configuration-overview.md#name).
+* **NOTE**: Extension names must use standard extension name format, as in the example located [here](/portal-sdk/generated/top-extensions-configuration.md#configuration-file-locations-and-structure).
 
 * **NOTE**:  Extension URLs adhere to the naming requirements located in [portalfx-extensions-cnames.md](portalfx-extensions-cnames.md).
 
@@ -161,11 +161,44 @@ A few notes about this path:
 <a name="phase-3-deployment-public-preview-or-ga"></a>
 ## Public preview or GA
 
-You are required to check the quality of your extension. We have standardized ways of measuring reliability and performance at key areas. If you have a private preview then we have already collected this data for you. For more information about the quality checks and the tools that the portal team provides, see [portalfx-extensions-qualityEssentials.md](portalfx-extensions-qualityEssentials.md).
+You are required to check the quality of your extension. We have standardized ways of measuring reliability and performance at key areas. If you have a private preview then we have already collected this data for you.
 
 There is no blocking exit criteria, which means you do not have to prove that the extension's performance and reliability are in the required range. However, once you ship, the Portal team will monitor the quality of the extension. Extensions that do not meet the required quality bar will be flagged in executive reviews and will be asked to improve their quality as soon as possible.
 
 When you are ready for all users to see your experience, you will enable your entry point as shown in the following example and then deploy your extension.
+
+<a name="steps-to-portal-onboarding"></a>
+# Steps to Portal onboarding
+
+Azure portal onboarding steps listed below assumes that all new services have completed the onboarding meeting with [ibiza-onboarding@microsoft.com](mailTo:ibiza-onboarding@microsoft.com) team and that you have downloaded the Azure portal SDK to start the development of your extension. If you have not had either the onboarding meeting or have developed the extension, please discuss with the Azure portal team on the requirements.
+
+<a name="steps-to-portal-onboarding-hosting-service"></a>
+## Hosting Service
+
+To use the Extension Hosting Service after you have developed your extension, you will have to onboard onto the Extension Hosting service separately. You will have to follow the steps in [this document](/portal-sdk/generated/top-extensions-hosting-service.md#) to have your extension to be ready for deploying onto the hosting service. The reason we have the steps below is to let you do these things in parallel - 
+1) Create storage account for each environment 
+eg: Dogfood, Prod, Mooncake, Fairfax and BlackForest
+2) Create a container under the storage account with anonymous read access
+![storage container](./../media/portalfx-extensions-onboarding/hosting-service-storage-container.png)
+3) Upload the [config.json](/portal-sdk/generated/top-extensions-hosting-service.md#step-8-upload-safe-deployment-config) and the [generated zip file](/portal-sdk/generated/top-extensions-hosting-service.md#step-7-execute-content-unbundler-as-part-of-build-to-generate-zip-file) from your build. 
+4) Create a hosting service onboarding [workitem](https://aka.ms/extension-hosting-service/onboarding)
+5) Send email to [ibiza-onboarding@microsoft.com](mailTo:ibiza-onboarding@microsoft.com) with the workitem details and extension details.
+
+Note:  Incorrect or insufficient information in the workitem could delay the onboarding process. 
+
+<a name="steps-to-portal-onboarding-portal-framework"></a>
+## Portal Framework
+1) Register your extension with Azure portal framework by raising a pull request to the appropriate extension config json. eg: extensions.dogfood.json, extensions.prod.json etc,.
+2) Always raise the PR to the Dev branch
+3) For Prod config chanages, once the PR is approved, please cherry pick the change to Mpac and then to Prod. Portal team does not auto merge the changes to other branches
+4) Always cherry-pick the change from previous downlevel branch. eg: Dev to Mpac, Mpac to Prod.
+5) Here is a sample PR change for dogfood branch.
+![storage container](./../media/portalfx-extensions-onboarding/portal-framework-extension-config.png)
+
+<a name="steps-to-portal-onboarding-aad-onboarding"></a>
+## AAD Onboarding
+1) For teams that require Graph access and AAD app for per extension tokens, please create a [workitem](http://aka.ms/portalfx/newextension)
+2) Send email to [ibiza-onboarding@microsoft.com](mailTo:ibiza-onboarding@microsoft.com) with the workitem details and extension details. 
 <!--
 TODO - Add an example after the feature is ready (ETA is March or April )
 -->

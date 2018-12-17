@@ -17,6 +17,7 @@ Thumbs.db
 /media
 node_modules
 /portal-sdk/index*.md
+/portal-sdk/samples/SampleAzExtension
 /portal-sdk/samples/SamplesExtension
 /portal-sdk/samples/InternalSamplesExtension
 /portal-sdk/samples/VS

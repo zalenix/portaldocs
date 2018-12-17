@@ -22,7 +22,7 @@ Stakeholders: [Leon Welicki, Adam Abdelhamed](mailto:ibiza-onboading-kick@micros
     * Service name
     * Summary of the service and target scenarios
 
-Most extensions have been successful by setting up early design review with Azure portal team. This gives extension owners an opportunity to understand how they can leverage Azure portal's design patterns in their extension.
+Most extensions have been successful by setting up early design review with Azure portal team. This gives extension owners an opportunity to understand how they can leverage Azure portal's Design guidelines in their extension.
 
 feasible.
 <a name="azure-portal-onboarding-subscribe-to-announcements"></a>

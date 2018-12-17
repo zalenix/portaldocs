@@ -1,7 +1,5 @@
-* [How to expose config settings for consumption in the client](#how-to-expose-config-settings-for-consumption-in-the-client)
-* [Step by step walkthrough](#step-by-step-walkthrough)
 
-
+<<<<<<< HEAD
 <a name="how-to-expose-config-settings-for-consumption-in-the-client"></a>
 ## How to expose config settings for consumption in the client
 
@@ -90,3 +88,6 @@ If you have any questions, reach out to Ibiza team on: [https://stackoverflow.mi
 
 An extended version of the above is used to transfer domain based configuration (such as correctly formatted FwLinks) to the client.
 For details and examples, please see [Domain based configuration](portalfx-domain-based-configuration.md).
+=======
+The page you requested has moved to [top-extensions-custom-domains.md](top-extensions-custom-domains.md).
+>>>>>>> 51c5d8a6f9c77315861cd881794f30d57d3f63a2

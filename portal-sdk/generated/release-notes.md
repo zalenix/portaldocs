@@ -278,12 +278,4 @@
 
 ## 5.0.302.1611
 0 Breaking Changes, 0 Features added and 2 Bugs Fixed
-<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
-
-## 5.0.302.1411
-0 Breaking Changes, 0 Features added and 2 Bugs Fixed
-<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
-
-## 5.0.302.1311
-0 Breaking Changes, 2 Features added and 13 Bugs Fixed
 <table></table>

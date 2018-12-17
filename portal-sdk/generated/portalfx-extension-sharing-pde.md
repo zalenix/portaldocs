@@ -10,8 +10,10 @@ To share your PDE with other teams please follow these guidelines:
     
     - use the consistent naming convention `Microsoft.Portal.Extensions.<Name>`
     - the *.pde file is to be delivered under `/Client/_extensions/<Name>` 
-  
+    - all *.d.ts files to be delivered under `/Client/_extensions/<Name>/*.d.ts` 
+
     The following nuproj snippet can be used to customimze for your extensions NuGet creation. Most teams name it `Microsoft.Portal.Extensions.<Name>` to be consistent with the produced package name
+    
     
     ```xml
 
@@ -30,6 +32,8 @@ To share your PDE with other teams please follow these guidelines:
     <ItemGroup>
         <!-- update the following to pull the PDE from your official build-->
         <Content Include="$(RepoRoot)\src\SDK\Extensions\HubsExtension\TypeScript\HubsExtension\HubsExtension.pde">
+        <!-- update the following to pull in any *.d.ts files that consumers of your extensions PDE will require -->
+        <Content Include="$(RepoRoot)\src\SDK\Extensions\HubsExtension\TypeScript\HubsExtension\ForExport\*.d.ts">
         <TargetPath>Client\_extensions\Name</TargetPath>
         </Content>
         <!-- include an install.ps1 to both set appropriate build action on pde and to pop documents-->
@@ -74,6 +78,7 @@ To share your PDE with other teams please follow these guidelines:
 		- Then through [here](http://aka.ms/azuregithub) request access to portalfxdocs
 
 - The resulting NuGet is to be published from your official builds to [https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=Official&_a=feed](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=Official&_a=feed). See OneBranch guidance to [publish your package](https://microsoft.sharepoint.com/teams/WAG/EngSys/Implement/OneBranch/Publish%20your%20package.aspx)
+
 * [Sharing your PDE with other teams](#sharing-your-pde-with-other-teams)
 * [Getting started with the Select Members Blade](#getting-started-with-the-select-members-blade)
 * [What is the Select Member Blade?](#what-is-the-select-member-blade)
