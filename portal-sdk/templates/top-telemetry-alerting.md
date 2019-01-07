@@ -619,14 +619,19 @@ Alerts will only trigger when the following criteria are met.
 1. Hourly create successRate is below {minSuccessRateOverPastHour} and hourly create totalcount is above {minTotalCountOverPastHour}
 1. 24-hour create successRate is below {minSuccessRateOverPast24Hours} and 24-hour create totalcount is above {minTotalCountOverPast24Hours}
 
-## Fequently asked questions
 
-### How do I onboard
 
-1. Generate the desired per extension configuration
-    - This can be done by manually editing the JSON file.
-1. Fill out the following work item [https://aka.ms/portalfx/alerting-onboarding][alerting-onboarding] and attach configuration JSON
-1. Set up correlation rules in ICM
+## How do I onboard
+
+
+1. Submit and complete a Pull Request in [Azure Portal Alerting Repo a.k.a. Alerting Repo](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx-Alerting).
+
+> For non-create alert the customization JSON should be located at `products/{YourServiceNameInIcM}/{ExtensionName}.alerting.json`. It's recommended to have an `owners.txt` in the same folder as the customization JSON file. The `owners.txt` has AAD enabled email alias or/and individual MSFT aliases. Anyone from `owners.txt` can approve the Pull Request for any changes within that folder or its subfolder.
+
+> For create alert the customization JSON should be located at `products/IbizaFx/Create/{ExtensionName}.create.alerting.json`.
+
+
+2. Set up correlation rules in ICM
 
 | Field | Value |
 | -----  | ----- |
@@ -653,17 +658,15 @@ Alerts will only trigger when the following criteria are met.
 | Performance - Blade | BladeLoadPerformance |
 | Performance - Part | PartLoadPerformance|
 
-### How do I know my extension's current configuration
+## How do I know my extension's current configuration
 
-Click the [this link][alerting-extension-customization] and replace `HubsExtension` with `YOUR_EXTENSION_NAME` and run Kusto function, GetExtensionCustomizationJson. Or go to [https://azportalpartner.kusto.windows.net/Partner][kusto-partner-database] to open Kusto.Explorer and run Kusto function,
-GetExtensionCustomizationJson("YOUR_EXTENSION_NAME"). The regex is supported. You can view alert customization of onboarded extensions. The extension alert customization only exists once you have onboarded to the alerting infrastructure.
-> The customizaztion has a daily sync from the SQL database starting at 17:00 PST.
+Alerting is running off customization JSONs that live in [Alerting Repo](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx-Alerting). All the non-create alerts customimzation JSONs are located at `products/{YourServiceNameInIcM}/{ExtensionName}.alerting.json`. All the create alerts customization JSONs are located at `products/IbizaFx/Create/{ExtensionName}.create.alerting.json`.
 
-### What happens if I need to update my configuration
+## What happens if I need to update my configuration
 
-1. Contact [ibizafxhot](mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com),
-1. State in the email which configuration you require to be updated and attached the updated configuration
-1. We will respond as soon as possible and apply the updates
+Submit and complete a Pull Request on your extension's customization JSON in [Alerting Repo](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx-Alerting). The update is 'live' once the Pull Request is complete.
+
+> For each extension there's an `owners.txt` that is in the same or parent folder as the JSON. The `owners.txt` has AAD enabled email alias or/and individual MSFT aliases. Anyone from `owners.txt` can approve the Pull Request. The `owners.txt` is created and maintained by extension team.
 
 ### How is mapping done from extension name to IcM team and service names
 
