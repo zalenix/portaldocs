@@ -60,20 +60,13 @@ export class SimpleTemplatePart {
 If you need more control over the DOM and are willing to take on additional burdens regarding accessibility and theming then you can also choose to build a `FramePart` where the contents of the part are implemented by using an iFrame that you can control. The following  example demonstrates  a simple FramePart that shows how to communicate between the visible iFrame and the hidden extension iFrame.
 
 ```
+/// <reference path="../../../FramePage.d.ts" />
+
 import { DataContext } from "../PartsArea";
 import * as FramePart from "Fx/Composition/FramePart";
 import { SvgType } from "Fx/Images";
 import * as ClientResources from "ClientResources";
-
-const global = window;
-
-function mockAsyncOperationToGetDataToSendToFrame() {
-    return Q.delay(2000).then(() => {
-        return {
-            title: ClientResources.noPdlSampleFramePartTitle,
-        };
-    });
-}
+import { OpenBladeApiChildBladeReference } from "_generated/BladeReferences";
 
 @FramePart.Decorator({
     galleryMetadata: {
@@ -89,37 +82,38 @@ export class SampleFramePart {
     public title: string;  // This sample doesn't make use of a title.
     public subtitle: string;  // This sample doesn't make use of a subtitle.
     public onClick: () => void;  // This FramePart doesn't have click behavior.
-
-    public viewModel: FramePart.ViewModel;
-
     public context: FramePart.Context<void, DataContext>;
+
+    /*
+     * View model for the frame part.
+     */
+    public viewModel: FramePart.ViewModelV2Contract;
 
     public onInitialize() {
         const { container } = this.context;
-        const viewModel = this.viewModel = new FramePart.ViewModel(container, {
+        const viewModel = this.viewModel = FramePart.createViewModel(container, {
             src: MsPortalFx.Base.Resources.getContentUri("/Content/SamplesExtension/framepartpage.html"),
+            onReceiveMessage: (message: FramePage.Message) => {
+                switch(message.messageType) {
+                    // This is an example of how to listen for messages from your iframe.
+                    case FramePage.MessageType.OpenBlade:
+                        // In this sample, opening a sample child blade.
+                        container.openBlade(new OpenBladeApiChildBladeReference());
+                        break;
+                    default:
+                        break;
+                }
+            },
         });
 
-        // This is an example of how to listen for messages from your iframe.
-        viewModel.on("getAuthToken", () => {
-            // This is an example of how to post a message back to your iframe.
-            MsPortalFx.Base.Security.getAuthorizationToken().then((token) => {
-                const header = token.header;
-                viewModel.postMessage("getAuthTokenResponse", header);
-            });
+        // This is an example of how to post a message back to your iframe.
+        // Send initialization information to iframe.
+        MsPortalFx.Base.Security.getAuthorizationToken().then((token) => {
+            // Post initialization info from FrameControl to your iframe.
+            viewModel.postMessage({ messageType: FramePage.MessageType.InitInfo, value: { authToken: token.header, resourceId: "testResourceId"}});
         });
 
-        let counter = 0;
-        const timeoutHandle = global.setInterval(() => {
-            viewModel.postMessage("framecontent", "" + (++counter));
-        }, 1000);
-        container.registerForDispose({
-            dispose: () => { global.clearInterval(timeoutHandle); },
-        });
-
-        return mockAsyncOperationToGetDataToSendToFrame().then(info => {
-            viewModel.postMessage("frametitle", info.title);
-        });
+        return Q(); // This sample loads no data.
     }
 }
 

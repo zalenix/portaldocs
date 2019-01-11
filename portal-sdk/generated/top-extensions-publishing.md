@@ -160,18 +160,6 @@ For those of you who are already familiar with the environments and their proces
 
    ![alt-text](../media/top-extensions-publishing/commit-button-enabled.png "Enabled Commit button")
 
-1. Update the enabled extension count in [DeploymentSettingsTests.cs](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx?path=%2Fsrc%2FStbPortal%2FWebsite.Server.Tests%2FDeploymentSettingsTests.cs&version=GBdev)
-
-   ![alt-text](../media/top-extensions-publishing/update-extension-count.png "Enabled Commit button")
-
-1. Click on the **Create a pull request** link.
-
-   ![alt-text](../media/top-extensions-publishing/pull-request-create.png "Create the pull request")
-
-1. Verify the details before the pull request is created.
-
-   ![alt-text](../media/top-extensions-publishing/pull-request-verification.png "Verify pull request")
-
 1. Click the "**Create**" button to create the Pull Request.
 
 1. Send email to <a href="mailto:ibiza-onboarding@microsoft.com?subject=Pull Request link&body=Hello, I need you to approve a pull request and expedite the associated request. The pull request link is . . .">ibiza-onboarding@microsoft.com</a> that contains a link to the Pull Request to get the approval and expedite the request.

@@ -157,8 +157,8 @@ The post create page provides realtime deployment status, help with troubleshoot
 <a name="related-design-guidelines"></a>
 ## Related design guidelines
 
--   Forms [design-patterns-page-forms.md](design-patterns--page-forms.md)
--   Full screen [design-patterns-page-fullscreen.md](design-patterns--page-fullscreen.md)
+-   Forms [design-patterns-page-forms.md](design-patterns-page-forms.md)
+-   Full screen [design-patterns-page-fullscreen.md](design-patterns-page-fullscreen.md)
 -   Browse Resources [design-patterns-resource-browse.md](design-patterns-resource-browse.md)
 -   Manage a Resource [design-patterns-resource-manage.md](design-patterns-resource-manage.md)
 -   Design guidelines [top-design.md](top-design.md)
@@ -175,6 +175,8 @@ The post create page provides realtime deployment status, help with troubleshoot
 
 <a name="telemetry"></a>
 ## Telemetry
+
+* Non full screen resource creation pages with more than 100 views in last 28 days [View report](https://aka.ms/portalfx/fundamentals/nonfullscreencreate)
 
 <a name="for-developers"></a>
 # For developers

@@ -50,7 +50,7 @@ This tutorial will provide you step by step instructions for creating a UnitTest
 ```
 
 Note:
-* This document uses relative paths to indicate where you should add each file relative to the root of your test folder e.g ./package.json indicates adding an index.html at the root of your test project folder Extension.UnitTests/package.json
+* This document uses relative paths to indicate where you should add each file relative to the root of your test folder e.g ./package.json indicates adding an package.json at the root of your test project folder Extension.UnitTests/package.json
 * All code snippets provided are for `Microsoft.Portal.Tools.V2.targets` if you are using it's predecessor `Microsoft.Portal.Tools.targets` see the [FAQ](#FAQ) at the bottom of this document.
 
 <a name="unit-test-framework-creating-a-project-from-scratch-with-visual-studio-code-dev-build-time-configuration"></a>
@@ -83,8 +83,8 @@ always-auth=true
   "description": "",
   "main": "index.js",
   "scripts": {
-    "init": "npm install --no-optional",
-    "prereq": "npm run init && gulp generateAmdModuleFromResx --gulpfile=./node_modules/msportalfx-ut/gulpfile.js --cwd ./",
+    "init": "npm install --no-color --no-optional",
+    "prereq": "npm run init && gulp generateAmdModuleFromResx --no-color --gulpfile=./node_modules/msportalfx-ut/gulpfile.js --silent --cwd ./",
     "build": "npm run prereq && tsc -p tsconfig.json",
     "build-trace": "tsc -p tsconfig.json --diagnostics --listFiles --listEmittedFiles --traceResolution",
     "test": "npm run build && karma start",
@@ -119,7 +119,7 @@ always-auth=true
     "nconf": "0.10.0",
     "requirejs": "2.3.5",
     "sinon": "4.4.3",
-    "typescript": "2.3.3"
+    "typescript": "3.2.1"
   },
   "devDependencies": {
   }
@@ -369,7 +369,7 @@ window.fx.environment.armEndpoint = "https://management.azure.com";
 window.fx.environment.armApiVersion = "2014-04-01";
 
 const allTestFiles = []
-if(window.__karma__) {
+if (window.__karma__) {
   const TEST_REGEXP = /^\/base\/Extension.UnitTests\/Output\/.*(spec|test)\.js$/i;
   // Get a list of all the test files to include
   Object.keys(window.__karma__.files).forEach(function (file) {
@@ -381,16 +381,14 @@ if(window.__karma__) {
       allTestFiles.push(normalizedTestModule)
     }
   });
-} else {
-  // if using index.html rather than the perferred above karmajs as the test host then add files here.
-  allTestFiles.push("./Output/test/ResourceOverviewBlade.test");
 }
 
 mocha.setup({
   ui: "bdd",
   timeout: 60000,
   ignoreLeaks: false,
-  globals: [] });
+  globals: []
+});
 
 rjs = require.config({
   // Karma serves files under /base, which is the basePath from your config file
@@ -401,7 +399,7 @@ rjs = require.config({
     "Shared": "../Extension/Output/Content/Scripts/Shared",
     "sinon": "node_modules/sinon/pkg/sinon",
     "chai": "node_modules/chai/chai",
-},
+  },
   // dynamically load all test files
   deps: allTestFiles,
 
@@ -558,9 +556,6 @@ Using karmajs for a single test run useful for scenarios such as running in CI
 
 `npm run test-ci` launches karmajs in your configured target browsers for a single run.
 
-Using a browser as a host (deprecated):
-`npm run test-dev` opens index.html in your regular browser.
-
 Note that the karma.conf.js is configured to run your tests in both in Edge and Chrome. You may also pick and choose additional browsers via the launcher plugins [documented here](https://karma-runner.github.io/2.0/config/browsers.html).
 
 <a name="unit-test-framework-creating-a-project-from-scratch-with-visual-studio-code-test-results"></a>
@@ -698,35 +693,6 @@ const options : harness.InitializationOptions = {
 harness.init(options);
 
 ...
-
-```
-
-<a name="faq-simple-html-test-harness-for-running-mocha-tests"></a>
-## Simple html test harness for running mocha tests
-
-Even though it is not that useful for gated CI some teams prefer to have a simple index.html for debugging their tests in the browser rather than using the karma Debug view. If you would like this alternative approach use the following.
-
-```html
-
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <title>Mocha Tests</title>
-  <link href="./node_modules/mocha/mocha.css" rel="stylesheet" />
-</head>
-
-<body>
-  <div id="mocha"></div>
-
-  <!-- mocha prereq -->
-  <script type="text/javascript" charset="utf-8" src="./node_modules/mocha/mocha.js"></script>
-  <script type="text/javascript" charset="utf-8" src="./node_modules/chai/chai.js"></script>
-  <script src="./node_modules/msportalfx-ut/lib/FxScripts.js"></script>
-  <script src="./_generated/Ext/ExtensionStringResourcesRequireConfig.js"></script>
-  <script src="./test-main.js"></script>
-</body>
-</html>
 
 ```
 

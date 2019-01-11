@@ -22,6 +22,7 @@ A context pane can be authored as a standard blade implementation. The extension
 An example of using a context pane is located at `<dir>/Client/V1/Navigation/OpenAndCloseBladeApis/ViewModels/OpenBladeApiSamplesViewModel.ts`. It is also in the following code.
 
 ```
+import { Person } from "_generated/SamplesExtension/DataModels/Person";
 import * as Di from "Fx/DependencyInjection";
 import * as OptionsGroup from "Fx/Controls/OptionsGroup";
 import * as FxCompositionBlade from "Fx/Composition/Pdl/Blade";
@@ -40,7 +41,7 @@ import Grid = MsPortalFx.ViewModels.Controls.Lists.Grid;
 import QueryView = MsPortalFx.Data.QueryView;
 
 // Data type used in the grid sample
-export type Person = SamplesExtension.DataModels.Person;
+export type Person = Person;
 
 /**
  * Const function which produces a callback

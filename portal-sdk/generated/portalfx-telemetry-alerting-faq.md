@@ -6,7 +6,7 @@
 
 1. Follow the steps provided in the other links
 
-<a name="fequently-asked-questions-how-do-i-know-my-extensions-current-configuration"></a>
+<a name="fequently-asked-questions-how-do-i-know-my-extension-s-current-configuration"></a>
 ## How do I know my extension&#39;s current configuration?
 
 Alerting is running off customization JSONs that live in [Azure Portal Alerting Repo a.k.a. Alerting Repo][alerting-dev-ops]. All the non-create alerts customimzation JSONs are located at products/{YourServiceNameInIcM}/{ExtensionName}.alerting.json. All the create alerts customization JSONs are located at products/IbizaFx/Create/{ExtensionName}.create.alerting.json.

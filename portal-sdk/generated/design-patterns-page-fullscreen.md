@@ -114,7 +114,10 @@ Research history and retrospective for Azure Portal Full Screen
 
 <a name="full-screen-pages-telemetry"></a>
 ## Telemetry
-Coming soon
+
+* Non full screen pages with more than 2000 views over last 28 days [View report](https://aka.ms/portalfx/fundamentals/nonfullscreenblades)
+
+* Non full screen resource creation pages with more than 100 views in last 28 days [View report](https://aka.ms/portalfx/fundamentals/nonfullscreencreate)
 
 <a name="for-developers"></a>
 # For developers

@@ -171,7 +171,7 @@ Currently alerts run every 60 minutes assessing the previous 60 minute and previ
 | ----- | -------------- |
 | Create - Regression | CreateBladeSuccessRate |
 
-<a name="create-how-do-i-know-my-extensions-current-customization"></a>
+<a name="create-how-do-i-know-my-extension-s-current-customization"></a>
 ## How do I know my extension&#39;s current customization?
 
 Alerting is running off customization JSONs that live in [Azure Portal Alerting Repo a.k.a. Alerting Repo][alerting-dev-ops]. All the non-create alerts customimzation JSONs are located at products/{YourServiceNameInIcM}/{ExtensionName}.alerting.json. All the create alerts customization JSONs are located at products/IbizaFx/Create/{ExtensionName}.create.alerting.json.

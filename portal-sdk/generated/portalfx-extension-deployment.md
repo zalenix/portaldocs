@@ -92,7 +92,7 @@ to enable both the extension and the Gallery item:
 To permanently enable an extension (e.g. if it's ready for general use), please contact the portal team.
 
 <a name="deploy-before-deploying-extension-2-extension-stamps"></a>
-### >
+###  start="2">
 <li>Extension &quot;stamps&quot;</li>
 <
 
@@ -121,7 +121,7 @@ of your extension as registered in the portal. For instance,
 override the stamp.
 
 <a name="deploy-before-deploying-extension-3-understand-extension-runtime-compatibility"></a>
-### >
+###  start="3">
 <li>Understand extension runtime compatibility</li>
 <
 
