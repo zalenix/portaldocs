@@ -277,7 +277,8 @@ Solution:
 
     ![alt-text](../media/top-extensions-getting-started/installcert.png "install cert")
 
-- Leave defaults selected and click through to finish.
+- For `Store Location` select `Local Machine` and click Next
+- Leave the remaining defaults selected and click through to finish.
 - Terminate all browser instances in taskmgr and F5 again.
 
 ### The portal is never loaded so the extension has not sideloaded
