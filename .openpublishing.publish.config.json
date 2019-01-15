@@ -1,22 +1,6 @@
 {
   "docsets_to_publish": [
     {
-      "docset_name": "portaldocs",
-      "build_source_folder": ".",
-      "build_output_subfolder": "portaldocs",
-      "locale": "en-us",
-      "monikers": [],
-      "moniker_ranges": [],
-      "open_to_public_contributors": true,
-      "type_mapping": {
-        "Conceptual": "Content",
-        "ManagedReference": "Content",
-        "RestApi": "Content"
-      },
-      "build_entry_point": "docs",
-      "template_folder": "_themes"
-    },
-    {
       "docset_name": "portalsdk-on-docs",
       "build_source_folder": "portalsdk-on-docs",
       "build_output_subfolder": "portalsdk-on-docs",
