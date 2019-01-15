@@ -532,6 +532,7 @@ Below are the steps to switch to the V2 targets. A video of the migration steps 
 ## Breaking changes between V1 and V2 targets
 
 - The output location of pde files has been changed from `$(ProjectDir)Client` to `$(OutDir)`.
+- The V2 targets uses a different localization model. You should verify that localization is still working by loading the portal with your extension sideloaded and with the query string `?l=fr`.
 
 # Dependency injected view models
 
