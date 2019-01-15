@@ -422,7 +422,7 @@ Below are the steps to switch to the V2 targets. A video of the migration steps 
 
 ## Prerequisites
 
-- Get your extension working with at least Ibiza SDK 5.0.302.1051. The V2 targets are under active development are continuously being improved. Ideally get your extension working with the latest SDK.
+- Get your extension working with at least Ibiza SDK 5.0.302.6501. The V2 targets are under active development are continuously being improved. Ideally get your extension working with the latest SDK.
 
 ## Get your extension building with tsconfig.json
 
