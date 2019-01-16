@@ -6,15 +6,15 @@ Couldn't find what you needed? [Ask about the docs on StackOverflow](https://sta
 
 ## Onboarding a new extension
 
-* [Overview / Get started](/portal-sdk/generated/top-onboarding.md)
+* [Overview / Get started](/azure/portal-sdk/portal-sdk/generated/top-onboarding)
 
-* [Steps that do not involve the Ibiza team](/portal-sdk/generated/top-extensions-onboarding-with-related-teams.md)
+* [Steps that do not involve the Ibiza team](/azure/portal-sdk/portal-sdk/generated/top-extensions-onboarding-with-related-teams)
 
-* [Managing cloud/environment specific configuration](/portal-sdk/generated/top-extensions-configuration.md)
+* [Managing cloud/environment specific configuration](/azure/portal-sdk/portal-sdk/generated/top-extensions-configuration)
 
-* [Production-ready metrics](/portal-sdk/generated/top-extensions-production-ready-metrics.md)
+* [Production-ready metrics](/azure/portal-sdk/portal-sdk/generated/top-extensions-production-ready-metrics)
 
-* [Partner feature request process](/portal-sdk/generated/top-extensions-partner-request.md)
+* [Partner feature request process](/azure/portal-sdk/portal-sdk/generated/top-extensions-partner-request)
 
 Kickoff the onboarding experience by sending a mail to <a href="mailto:ibiza-onboarding@microsoft.com?subject=Kickoff Meeting Request&body=My team would like to meet with you to learn about the Azure onboarding process.">Azure Onboarding Team</a>.
 
@@ -22,17 +22,17 @@ Kickoff the onboarding experience by sending a mail to <a href="mailto:ibiza-onb
 
 Learn how the framework is structured and how it is designed to run in multiple clouds / environments.
 
-* [Architecture overview](/portal-sdk/generated/top-extensions-architecture.md)
+* [Architecture overview](/azure/portal-sdk/portal-sdk/generated/top-extensions-architecture)
 
-* [Authentication flow](/portal-sdk/generated/top-extensions-authentication-flow.md)
+* [Authentication flow](/azure/portal-sdk/portal-sdk/generated/top-extensions-authentication-flow)
 
-* [Authentication procedures](/portal-sdk/generated/top-extensions-authentication-procedures.md)
+* [Authentication procedures](/azure/portal-sdk/portal-sdk/generated/top-extensions-authentication-procedures)
 
 ## Design guide  
 
-Design patterns provide solutions for common Azure scenarios.  By leveraging these patterns, Azure teams will accelerate extension development and provide users with a familiar experience so that users can easily adopt new Azure services.  The design guide covers [design toolkits, style guidance](/portal-sdk/generated/top-design.md#design-toolkits-and-resources), [common page layouts](/portal-sdk/generated/top-design.md#page) and [the resource management pattern](/portal-sdk/generated/top-design.md#resource-management).
+Design patterns provide solutions for common Azure scenarios.  By leveraging these patterns, Azure teams will accelerate extension development and provide users with a familiar experience so that users can easily adopt new Azure services.  The design guide covers [design toolkits, style guidance](/azure/portal-sdk/portal-sdk/generated/top-design#design-toolkits-and-resources), [common page layouts](/azure/portal-sdk/portal-sdk/generated/top-design#page) and [the resource management pattern](/azure/portal-sdk/portal-sdk/generated/top-design#resource-management).
 
-* [Design guide](/portal-sdk/generated/top-design.md)
+* [Design guide](/azure/portal-sdk/portal-sdk/generated/top-design)
 
 ## Development guide
 
@@ -40,19 +40,19 @@ Design patterns provide solutions for common Azure scenarios.  By leveraging the
 
 Azure portal extension development is supported on Windows Server 2012 R2, and Windows 10.
 
-* [Downloads](/portal-sdk/generated/downloads.md)
+* [Downloads](/azure/portal-sdk/portal-sdk/generated/downloads)
 
-* [Release notes](/portal-sdk/generated/release-notes.md)
+* [Release notes](/azure/portal-sdk/portal-sdk/generated/release-notes)
 
-* [Breaking changes](/portal-sdk/generated/breaking-changes.md)
+* [Breaking changes](/azure/portal-sdk/portal-sdk/generated/breaking-changes)
 
-* [Install the SDK](/portal-sdk/generated/top-extensions-install-software.md)
+* [Install the SDK](/azure/portal-sdk/portal-sdk/generated/top-extensions-install-software)
 
-* [Get started](/portal-sdk/generated/top-extensions-getting-started.md)
+* [Get started](/azure/portal-sdk/portal-sdk/generated/top-extensions-getting-started)
 
-* [Updating the SDK](/portal-sdk/generated/top-extensions-packages.md#updating-your-extension-to-a-newer-version-of-the-sdk)
+* [Updating the SDK](/azure/portal-sdk/portal-sdk/generated/top-extensions-packages#updating-your-extension-to-a-newer-version-of-the-sdk)
 
-* [Running your extension locally (a.k.a. sideloading)](/portal-sdk/generated/top-extensions-sideloading.md)
+* [Running your extension locally (a.k.a. sideloading)](/azure/portal-sdk/portal-sdk/generated/top-extensions-sideloading)
 
 [Ask an SDK setup question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-sdkupdate)
 
@@ -60,27 +60,27 @@ Azure portal extension development is supported on Windows Server 2012 R2, and W
 
 Samples show how to do many common development tasks. 
 
-* [Samples](/portal-sdk/generated/top-extensions-samples.md)
+* [Samples](/azure/portal-sdk/portal-sdk/generated/top-extensions-samples)
 
 ### Blades
 
 The primary UI building block is a called a blade. A blade is like a page. It generally takes up the full screen, has a presence in the portal breadcrumb, and has an 'X' button to close it.
 
-* [Overview](/portal-sdk/generated/top-extensions-blades.md)
+* [Overview](/azure/portal-sdk/portal-sdk/generated/top-extensions-blades)
 
-* [TemplateBlade](/portal-sdk/generated/top-blades-templateblade.md)
+* [TemplateBlade](/azure/portal-sdk/portal-sdk/generated/top-blades-templateblade)
 
-* [MenuBlade](/portal-sdk/generated/top-blades-menublade.md)
+* [MenuBlade](/azure/portal-sdk/portal-sdk/generated/top-blades-menublade)
 
-* [ResourceMenuBlade](/portal-sdk/generated/top-blades-resourcemenublade.md)
+* [ResourceMenuBlade](/azure/portal-sdk/portal-sdk/generated/top-blades-resourcemenublade)
 
-* [FrameBlade](/portal-sdk/generated/top-blades-frameblade.md)
+* [FrameBlade](/azure/portal-sdk/portal-sdk/generated/top-blades-frameblade)
 
-* [Opening and closing blades programmatically](/portal-sdk/generated/top-blades-opening-and-closing.md)
+* [Opening and closing blades programmatically](/azure/portal-sdk/portal-sdk/generated/top-blades-opening-and-closing)
 
-* [Advanced TemplateBlade topics](/portal-sdk/generated/top-blades-advanced.md)
+* [Advanced TemplateBlade topics](/azure/portal-sdk/portal-sdk/generated/top-blades-advanced)
 
-* [Blade with tiles](/portal-sdk/generated/top-blades-legacy.md)
+* [Blade with tiles](/azure/portal-sdk/portal-sdk/generated/top-blades-legacy)
 
 [Ask a question about blades on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-blades-parts)
 
@@ -88,7 +88,7 @@ The primary UI building block is a called a blade. A blade is like a page. It ge
 
 If you want your experience to have a presence on Azure dashboards then you will want to build parts (a.k.a. tiles).
 
-* [Developing parts](/portal-sdk/generated/top-extensions-parts.md)
+* [Developing parts](/azure/portal-sdk/portal-sdk/generated/top-extensions-parts)
 
 [Ask a question about parts on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-blades-parts)
 
@@ -96,9 +96,9 @@ If you want your experience to have a presence on Azure dashboards then you will
 
 Any template based UI in the portal (e.g. template blades or template parts can make use of a rich controls library maintained by the Ibiza team.
 
-* [Controls overview](/portal-sdk/generated/top-extensions-controls.md)
+* [Controls overview](/azure/portal-sdk/portal-sdk/generated/top-extensions-controls)
 
-* [Controls playground](/portal-sdk/generated/top-extensions-controls.md#the-controls-playground)
+* [Controls playground](/azure/portal-sdk/portal-sdk/generated/top-extensions-controls#the-controls-playground)
 
 [Ask a controls related question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-controls)
 
@@ -106,15 +106,15 @@ Any template based UI in the portal (e.g. template blades or template parts can 
 
 Many experiences require the user to enter data into a form. The Ibiza controls library provides support for forms. It also provides a TypeScript based section model that lets you build your form in code without expressing all the fields in an html template.
 
-* [Develop forms](/portal-sdk/generated/top-extensions-forms.md)
+* [Develop forms](/azure/portal-sdk/portal-sdk/generated/top-extensions-forms)
 
 [Ask a forms related question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-forms)
 
 ### Common scenarios and integration points
 
-* [Blades that create or provision resources and services](/portal-sdk/generated/top-extensions-create.md)
+* [Blades that create or provision resources and services](/azure/portal-sdk/portal-sdk/generated/top-extensions-create)
 
-* [Add your resource or service into the 'All services' (browse) menu](/portal-sdk/generated/top-extensions-browse.md)
+* [Add your resource or service into the 'All services' (browse) menu](/azure/portal-sdk/portal-sdk/generated/top-extensions-browse)
 
 [Ask about browse integration on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-browse)
 
@@ -122,57 +122,57 @@ Many experiences require the user to enter data into a form. The Ibiza controls 
 
 ### Other UI concepts
 
-* [Context panes](/portal-sdk/generated/top-extensions-context-panes.md)
+* [Context panes](/azure/portal-sdk/portal-sdk/generated/top-extensions-context-panes)
 
-* [Dialogs](/portal-sdk/generated/top-extensions-dialogs.md)
+* [Dialogs](/azure/portal-sdk/portal-sdk/generated/top-extensions-dialogs)
 
-* [Notifications](/portal-sdk/generated/top-extensions-notifications.md)
+* [Notifications](/azure/portal-sdk/portal-sdk/generated/top-extensions-notifications)
 
 ### Loading and managing data
 
 Because your extension is Web code, you can make **AJAX** calls to various services to load data into your UI. The framework provides a data library you can use to manage this data.
 
-* [Making authenticated and batched calls to Azure Resource Manager (ARM) and other endpoints](/portal-sdk/generated/top-extensions-data-ajax.md)
+* [Making authenticated and batched calls to Azure Resource Manager (ARM) and other endpoints](/azure/portal-sdk/portal-sdk/generated/top-extensions-data-ajax)
 
-* [Legacy data management features](/portal-sdk/generated/top-legacy-data.md)
+* [Legacy data management features](/azure/portal-sdk/portal-sdk/generated/top-legacy-data)
 
 [Ask about data management on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-data-caching)
 
 ### Advanced development topics
 
-* [Memory management (LifetimeManager)](/portal-sdk/generated/top-extensions-lifetime.md) 
+* [Memory management (LifetimeManager)](/azure/portal-sdk/portal-sdk/generated/top-extensions-lifetime) 
 
-* [Sharing blades and parts across extensions](/portal-sdk/generated/top-extensions-sharing-blades-and-parts.md)
+* [Sharing blades and parts across extensions](/azure/portal-sdk/portal-sdk/generated/top-extensions-sharing-blades-and-parts)
 
-* [Custom domains (e.g. aad.portal.azure.com)](/portal-sdk/generated/top-extensions-custom-domains.md)
+* [Custom domains (e.g. aad.portal.azure.com)](/azure/portal-sdk/portal-sdk/generated/top-extensions-custom-domains)
 
 ## Debugging
 
-* [Using debug mode](/portal-sdk/generated/top-extensions-debugging.md#debug-mode)
+* [Using debug mode](/azure/portal-sdk/portal-sdk/generated/top-extensions-debugging#debug-mode)
 
-* [Debugging extension load failures](/portal-sdk/generated/top-extensions-debugging.md#debug-extension-load-failures)
+* [Debugging extension load failures](/azure/portal-sdk/portal-sdk/generated/top-extensions-debugging#debug-extension-load-failures)
 
-* [Debugging console errors](/portal-sdk/generated/top-extensions-debugging.md#debug-console-errors)
+* [Debugging console errors](/azure/portal-sdk/portal-sdk/generated/top-extensions-debugging#debug-console-errors)
 
-* [Debugging javascript](/portal-sdk/generated/top-extensions-debugging.md#debug-javascript)
+* [Debugging javascript](/azure/portal-sdk/portal-sdk/generated/top-extensions-debugging#debug-javascript)
 
-* [Debugging knockout](/portal-sdk/generated/top-extensions-debugging.md#debug-knockout)
+* [Debugging knockout](/azure/portal-sdk/portal-sdk/generated/top-extensions-debugging#debug-knockout)
 
-* [Debugging the data stack](/portal-sdk/generated/top-extensions-debugging.md#debug-the-data-stack)
+* [Debugging the data stack](/azure/portal-sdk/portal-sdk/generated/top-extensions-debugging#debug-the-data-stack)
 
 ## Performance
 
-* [Performance profiling](/portal-sdk/generated/top-extensions-performance.md)
+* [Performance profiling](/azure/portal-sdk/portal-sdk/generated/top-extensions-performance)
 
 ## Testing
 
 The Ibiza team provides limited testing support. Due to resource constraints the C# and Node.js frameworks are open source, so that partners can unblock themselves if the Ibiza team cannot make requested improvements as quickly as you might expect.
 
-* [Unit testing support](/portal-sdk/generated/top-extensions-unit-test.md)
+* [Unit testing support](/azure/portal-sdk/portal-sdk/generated/top-extensions-unit-test)
 
-* [C# test framework (Open source)](/portal-sdk/generated/top-extensions-csharp-test-framework.md)
+* [C# test framework (Open source)](/azure/portal-sdk/portal-sdk/generated/top-extensions-csharp-test-framework)
 
-* [Node.js test framework (Open source)](/portal-sdk/generated/top-extensions-node-js-test-framework.md)
+* [Node.js test framework (Open source)](/azure/portal-sdk/portal-sdk/generated/top-extensions-node-js-test-framework)
 
 [Ask a test-related question on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-test)
 
@@ -180,15 +180,15 @@ The Ibiza team provides limited testing support. Due to resource constraints the
 
 The Ibiza team collects standard telemetry for generic actions like blade opening and command execution. We also collect performance, reliability, and user feedback information that facilitates the operation of your extension. You can also write your own events by using the telemetry system. Ibiza supports alerting for common operations scenarios.
 
-* [Portal telemetry overview](/portal-sdk/generated/top-telemetry.md)
+* [Portal telemetry overview](/azure/portal-sdk/portal-sdk/generated/top-telemetry)
 
-* [Set up and verify telemetry logging from your extension](/portal-sdk/generated/top-telemetry.md#logging-telemetry)
+* [Set up and verify telemetry logging from your extension](/azure/portal-sdk/portal-sdk/generated/top-telemetry#logging-telemetry)
 
-* [Getting access to raw portal telemetry data](/portal-sdk/generated/top-telemetry.md#viewing-telemetry)
+* [Getting access to raw portal telemetry data](/azure/portal-sdk/portal-sdk/generated/top-telemetry#viewing-telemetry)
 
-* [Consuming telemetry via pre-built Power BI dashboards](/portal-sdk/generated/top-telemetry.md#power-bi-reports)
+* [Consuming telemetry via pre-built Power BI dashboards](/azure/portal-sdk/portal-sdk/generated/top-telemetry#power-bi-reports)
 
-* [Performance and reliability monitoring](/portal-sdk/generated/top-telemetry-alerting.md)
+* [Performance and reliability monitoring](/azure/portal-sdk/portal-sdk/generated/top-telemetry-alerting)
 
 [Ask about telemetry on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-telemetry)
 
@@ -198,23 +198,23 @@ The Ibiza team collects standard telemetry for generic actions like blade openin
 
 It is common for teams to want to experiment with new capabilities. We offer  framework features that make this possible.
 
-* [Flighting a new version of your extension in MPAC](/portal-sdk/generated/top-extensions-flighting.md)
+* [Flighting a new version of your extension in MPAC](/azure/portal-sdk/portal-sdk/generated/top-extensions-flighting)
 
-* [Feature flags to enable or disable individual features within an environment](/portal-sdk/generated/top-extensions-flags.md)
+* [Feature flags to enable or disable individual features within an environment](/azure/portal-sdk/portal-sdk/generated/top-extensions-flags)
 
 ## Localization and globalization
 
 The Azure portal supports multiple languages and locales. You will need to localize your content.
 
-* [Localization overview and supported languages](/portal-sdk/generated/top-extensions-localization-globalization.md)
+* [Localization overview and supported languages](/azure/portal-sdk/portal-sdk/generated/top-extensions-localization-globalization)
 
-* [Setting up localization for your extension](/portal-sdk/generated/top-extensions-localization-globalization.md#localizing-build)
+* [Setting up localization for your extension](/azure/portal-sdk/portal-sdk/generated/top-extensions-localization-globalization#localizing-build)
 
-* [Setting up localization for your gallery package](/portal-sdk/generated/top-extensions-localization-globalization.md#marketplace)
+* [Setting up localization for your gallery package](/azure/portal-sdk/portal-sdk/generated/top-extensions-localization-globalization#marketplace)
 
-* [Testing localization with side-loading](/portal-sdk/generated/top-extensions-localization-globalization.md#testing-localization)
+* [Testing localization with side-loading](/azure/portal-sdk/portal-sdk/generated/top-extensions-localization-globalization#testing-localization)
 
-* [Formatting numbers, currencies and dates](/portal-sdk/generated/top-extensions-localization-globalization.md#formatting-numbers-currencies-and-dates)
+* [Formatting numbers, currencies and dates](/azure/portal-sdk/portal-sdk/generated/top-extensions-localization-globalization#formatting-numbers-currencies-and-dates)
 
 [Ask about localization / globalization on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-localization-global)
 
@@ -222,18 +222,18 @@ The Azure portal supports multiple languages and locales. You will need to local
 
 The Azure Portal strives to meet high accessibility standards to ensure the product is accessible to to users of all levels of ability. There is regular testing and a process with SLAs for getting issues addressed quickly.
 
-* [Accessibility guidelines](/portal-sdk/generated/top-extensions-accessibility.md)
+* [Accessibility guidelines](/azure/portal-sdk/portal-sdk/generated/top-extensions-accessibility)
 
-* [Accessibility testing and SLAs](/portal-sdk/generated/top-extensions-accessibility.md#accessibility-planning)
+* [Accessibility testing and SLAs](/azure/portal-sdk/portal-sdk/generated/top-extensions-accessibility#accessibility-planning)
 
 [Ask about accessibility on StackOverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-accessibility)
 
 ## Deploying your extension
 
 Learn how to deploy your extension to the various clouds and environments.
-* [Extension registration, environments, clouds and Ibiza team SLAs](/portal-sdk/generated/top-extensions-publishing.md)
+* [Extension registration, environments, clouds and Ibiza team SLAs](/azure/portal-sdk/portal-sdk/generated/top-extensions-publishing)
 
-* [Moving an extension from private preview to public preview to GA](/portal-sdk/generated/top-extensions-developmentPhases.md)
+* [Moving an extension from private preview to public preview to GA](/azure/portal-sdk/portal-sdk/generated/top-extensions-developmentPhases)
 
 [Ask a deployment question on Stackoverflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-deployment)
 
@@ -241,56 +241,54 @@ Learn how to deploy your extension to the various clouds and environments.
 
 The Ibiza team provides and operates a common Extension Hosting Service that makes it easy to get your bits into a globally distributed system without having to manage your own infrastructure.
 
-* [Extension Hosting Service overview](/portal-sdk/generated/top-extensions-hosting-service.md)
+* [Extension Hosting Service overview](/azure/portal-sdk/portal-sdk/generated/top-extensions-hosting-service)
 
-* [Onboarding your extension to the Extension Hosting Service](/portal-sdk/generated/top-extensions-hosting-service.md#step-by-step-onboarding)
+* [Onboarding your extension to the Extension Hosting Service](/azure/portal-sdk/portal-sdk/generated/top-extensions-hosting-service#step-by-step-onboarding)
 
-* [Registring your extension with the Extension Hosting Service](/portal-sdk/generated/top-extensions-hosting-service.md#step-9-registering-your-extension-with-the-hosting-service)
+* [Registring your extension with the Extension Hosting Service](/azure/portal-sdk/portal-sdk/generated/top-extensions-hosting-service#step-9-registering-your-extension-with-the-hosting-service)
 
-* [Deploying a new version of an extension](/portal-sdk/generated/top-extensions-hosting-service.md#deploying-a-new-version-of-an-extension)
+* [Deploying a new version of an extension](/azure/portal-sdk/portal-sdk/generated/top-extensions-hosting-service#deploying-a-new-version-of-an-extension)
 
-* [Deploying your extension using Express V2 and the Extension Hosting Service](/portal-sdk/generated/top-extensions-hosting-service-ev2.md)
+* [Deploying your extension using Express V2 and the Extension Hosting Service](/azure/portal-sdk/portal-sdk/generated/top-extensions-hosting-service-ev2)
 
-* [SLA for registering an extension with the Extension Hosting Service](/portal-sdk/generated/top-extensions-svc-lvl-agreements.md)
+* [SLA for registering an extension with the Extension Hosting Service](/azure/portal-sdk/portal-sdk/generated/top-extensions-svc-lvl-agreements)
 
 ### Custom extension deployment infrastructure
 
-You should strive to use the Extension Hosting Service. If for some reason this is not possible then [learn how to build a custom extension deployment infrastructure](/portal-sdk/generated/top-extensions-custom-deployment.md).
+You should strive to use the Extension Hosting Service. If for some reason this is not possible then [learn how to build a custom extension deployment infrastructure](/azure/portal-sdk/portal-sdk/generated/top-extensions-custom-deployment).
 
 ## Legacy features
 
 These features are supported, but have had no recent investment. No additional investment is planned. There are modern capabilities that should be used instead if you are developing new features.
 
-* [PDL-based programming](/portal-sdk/generated/top-legacy-blades-template-pdl.md)
+* [PDL-based programming](/azure/portal-sdk/portal-sdk/generated/top-legacy-blades-template-pdl)
 
-* [Legacy parts](/portal-sdk/generated/top-legacy-parts.md)
+* [Legacy parts](/azure/portal-sdk/portal-sdk/generated/top-legacy-parts)
 
-* [Legacy data management feature](/portal-sdk/generated/top-legacy-data.md)
+* [Legacy data management feature](/azure/portal-sdk/portal-sdk/generated/top-legacy-data)
 
-* [Controls in the MsPortalFx namespace](/portal-sdk/generated/top-extensions-samples-controls-deprecated.md)
+* [Controls in the MsPortalFx namespace](/azure/portal-sdk/portal-sdk/generated/top-extensions-samples-controls-deprecated)
 
-* [EditScope](/portal-sdk/generated/top-legacy-editscopes.md)
+* [EditScope](/azure/portal-sdk/portal-sdk/generated/top-legacy-editscopes)
 
 # Marketplace/Gallery developer resources
 
-1. [Gallery overview](/gallery-sdk/generated/index-gallery.md#gallery-overview)
+1. [Gallery overview](/azure/portal-sdk/gallery-sdk/generated/index-gallery#gallery-overview)
 
-1. [Gallery item specifications](/gallery-sdk/generated/index-gallery.md#gallery-item-specificiations)
+1. [Gallery item specifications](/azure/portal-sdk/gallery-sdk/generated/index-gallery#gallery-item-specificiations)
 
-1. [Gallery item metadata](/gallery-sdk/generated/index-gallery.md#gallery-item-metadata)
+1. [Gallery item metadata](/azure/portal-sdk/gallery-sdk/generated/index-gallery#gallery-item-metadata)
 
-1. [Gallery item field to UI element mappings](/gallery-sdk/generated/index-gallery.md#gallery-item-field-to-ui-element-mappings)
+1. [Gallery item field to UI element mappings](/azure/portal-sdk/gallery-sdk/generated/index-gallery#gallery-item-field-to-ui-element-mappings)
 
-1. [Gallery package development and debugging](/gallery-sdk/generated/index-gallery.md#gallery-package-development-and-debugging)
+1. [Gallery package development and debugging](/azure/portal-sdk/gallery-sdk/generated/index-gallery#gallery-package-development-and-debugging)
 
-1. [Legacy OneBox development approach](/gallery-sdk/generated/index-gallery.md#legacy-onebox-development-approach)
+1. [Legacy OneBox development approach](/azure/portal-sdk/gallery-sdk/generated/index-gallery#legacy-onebox-development-approach)
 
-1. [Using the "Add to Resource" blade](/gallery-sdk/generated/index-gallery.md#using-the-add-to-resource-blade)
+1. [Using the "Add to Resource" blade](/azure/portal-sdk/gallery-sdk/generated/index-gallery#using-the-add-to-resource-blade)
 
-1. [Your icon tile for the Azure store](/gallery-sdk/generated/index-gallery.md#your-icon-tile-for-the-azure-store)
+1. [Your icon tile for the Azure store](/azure/portal-sdk/gallery-sdk/generated/index-gallery#your-icon-tile-for-the-azure-store)
 
-1. [Developer tooling and productivity](/gallery-sdk/generated/index-gallery.md#developer-tooling-and-productivity)
+1. [Developer tooling and productivity](/azure/portal-sdk/gallery-sdk/generated/index-gallery#developer-tooling-and-productivity)
 
-1. [Gallery frequently asked questions](/gallery-sdk/generated/index-gallery.md#gallery-frequently-asked-questions)
-
-This is our new index which contains our refreshed docs. If you do not like our new index/docs, you can find the old index [here](old-README.md).
+1. [Gallery frequently asked questions](/azure/portal-sdk/gallery-sdk/generated/index-gallery#gallery-frequently-asked-questions)
