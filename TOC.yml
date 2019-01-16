@@ -195,7 +195,7 @@
 - name: Marketplace/Gallery developer resources
   items:
     - name: Gallery overview
-      href:/azure/portal-sdk/gallery-sdk/generated/index-gallery#gallery-overview
+      href: /azure/portal-sdk/gallery-sdk/generated/index-gallery#gallery-overview
     - name: Gallery item specifications
       href: /azure/portal-sdk/gallery-sdk/generated/index-gallery#gallery-item-specificiations
     - name: Gallery item metadata
