@@ -1,2 +1,15 @@
-- name: Index
-  href: README.md
+- name: Azure portal extension development documentation
+  href: index.md
+- name: Onboarding a new extension
+  items:
+    - name: Overview / Get started
+      href: /azure/portal-sdk/portal-sdk/generated/top-onboarding.md
+    - name: Steps that do not involve the Ibiza team
+      href: /azure/portal-sdk/portal-sdk/generated/top-extensions-onboarding-with-related-teams.md
+    - name: Managing cloud/environment specific configuration
+      href: /azure/portal-sdk/portal-sdk/generated/top-extensions-configuration.md
+    - name: Production-ready metrics
+      href: /azure/portal-sdk/portal-sdk/generated/top-extensions-production-ready-metrics.md
+    - name: Partner feature request process
+      href: /azure/portal-sdk/portal-sdk/generated/top-extensions-partner-request.md
+      
