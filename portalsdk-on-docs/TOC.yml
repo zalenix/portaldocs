@@ -2,14 +2,14 @@
   href: index.md
 - name: Onboarding a new extension
   items:
-    - name: Overview / Get started
-      href: /azure/portal-sdk/portal-sdk/generated/top-onboarding.md
+    - name: Overview / Get started - Part 2
+      href: /azure/portal-sdk/portal-sdk/generated/top-onboarding
     - name: Steps that do not involve the Ibiza team
-      href: /azure/portal-sdk/portal-sdk/generated/top-extensions-onboarding-with-related-teams.md
+      href: /azure/portal-sdk/portal-sdk/generated/top-extensions-onboarding-with-related-teams
     - name: Managing cloud/environment specific configuration
-      href: /azure/portal-sdk/portal-sdk/generated/top-extensions-configuration.md
+      href: /azure/portal-sdk/portal-sdk/generated/top-extensions-configuration
     - name: Production-ready metrics
-      href: /azure/portal-sdk/portal-sdk/generated/top-extensions-production-ready-metrics.md
+      href: /azure/portal-sdk/portal-sdk/generated/top-extensions-production-ready-metrics
     - name: Partner feature request process
-      href: /azure/portal-sdk/portal-sdk/generated/top-extensions-partner-request.md
+      href: /azure/portal-sdk/portal-sdk/generated/top-extensions-partner-request
       
