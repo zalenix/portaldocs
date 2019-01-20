@@ -436,6 +436,7 @@ Below are the steps to switch to the V2 targets. A video of the migration steps 
     "compilerOptions": {
       "baseUrl": "Client",
       "declaration": true,
+      "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
       "forceConsistentCasingInFileNames": true,
       "inlineSources": true,
