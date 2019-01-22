@@ -119,7 +119,7 @@ always-auth=true
     "nconf": "0.10.0",
     "requirejs": "2.3.5",
     "sinon": "4.4.3",
-    "typescript": "2.3.3"
+    "typescript": "3.2.1"
   },
   "devDependencies": {
   }

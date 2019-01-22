@@ -36,21 +36,16 @@ To create a FrameBlade, you need to create 3 artifacts.
 1. Register the FrameBlade with your extension by creating a TypeScript class with the @FrameBlade decorator. The samples extension file for this is located at 
   `<dir>/Client/V2/Blades/FrameBlade/SampleFrameBlade.ts` and in the following example.
 
-  import * as ClientResources from "ClientResources";
+  /// <reference path="../../../FramePage.d.ts" />
+
+import * as ClientResources from "ClientResources";
 import { DialogButtons } from "Fx/Composition/Dialog";
 import * as FrameBlade from "Fx/Composition/FrameBlade";
 import * as BladesArea from "../BladesArea";
+import { OpenBladeApiChildBladeReference } from "_generated/BladeReferences";
 
 import Toolbars = MsPortalFx.ViewModels.Toolbars;
 import Toolbar = Toolbars.Toolbar;
-
-function mockAsyncOperationToGetDataToSendToFrame() {
-    return Q.delay(2000).then(() => {
-        return {
-            title: ClientResources.sampleFrameBladeTitle,
-        };
-    });
-}
 
 //top-blades-frameblades#viewmodel
 /**
@@ -61,16 +56,35 @@ function mockAsyncOperationToGetDataToSendToFrame() {
 export class SampleFrameBlade {
     public title = ClientResources.sampleFrameBladeTitle;
     public subtitle: string;  // This FrameBlade doesn't make use of a subtitle.
-
-    public viewModel: FrameBlade.ViewModel;
-
     public context: FrameBlade.Context<void, BladesArea.DataContext>;
+
+    /*
+     * View model for the frame blade.
+     */
+    public viewModel: FrameBlade.ViewModelV2Contract;
 
     public onInitialize() {
         const { container } = this.context;
-
-        const viewModel = this.viewModel = new FrameBlade.ViewModel(container, {
+        const viewModel = this.viewModel = FrameBlade.createViewModel(container, {
             src: MsPortalFx.Base.Resources.getContentUri("/Content/SamplesExtension/framebladepage.html"),
+            onReceiveMessage: (message: FramePage.Message) => {
+                switch(message.messageType) {
+                    // This is an example of how to listen for messages from your iframe.
+                    case FramePage.MessageType.OpenBlade:
+                        // In this sample, opening a sample child blade.
+                        container.openBlade(new OpenBladeApiChildBladeReference());
+                        break;
+                    default:
+                        break;
+                }
+            },
+        });
+
+        // This is an example of how to post a message back to your iframe.
+        // Send initialization information to iframe.
+        MsPortalFx.Base.Security.getAuthorizationToken().then((token) => {
+            // Post initialization info from FrameControl to your iframe.
+            viewModel.postMessage({ messageType: FramePage.MessageType.InitInfo, value: { authToken: token.header, resourceId: "testResourceId"}});
         });
 
         //top-blades-frameblades#viewmodel
@@ -80,18 +94,7 @@ export class SampleFrameBlade {
         commandBar.setItems([this._openLinkButton(), this._openDialogButton()]);
         container.commandBar = commandBar;
 
-        // This is an example of how to listen for messages from your iframe.
-        viewModel.on("getAuthToken", () => {
-            // This is an example of how to post a message back to your iframe.
-            MsPortalFx.Base.Security.getAuthorizationToken().then((token) => {
-                const header = token.header;
-                viewModel.postMessage("getAuthTokenResponse", header);
-            });
-        });
-
-        return mockAsyncOperationToGetDataToSendToFrame().then(info => {
-            viewModel.postMessage("frametitle", info.title);
-        });
+        return Q(); // This sample loads no data.
     }
 
     private _openLinkButton(): Toolbars.OpenLinkButton {
@@ -130,17 +133,21 @@ export class SampleFrameBlade {
 <html>
 
 <head>
-    <title></title>
+    <title>Frame Blade</title>
     <meta charset="utf-8" />
 </head>
 
 <body>
-    <h1 class="fxs-frame-header" style="margin: 0;"></h1>
+    <h1 class="fxs-frame-header" style="margin: 0;">Frame Blade</h1>
     <div class="fxs-frame-token"></div>
-    <input type="text"/>
-    <script src="../Scripts/_oss/q-1.4.1.js"></script>
-    <script>var frameSignature = "FxFrameBlade";</script>
-    <script src="../Scripts/framepage.js"></script>
+    <div class="fxs-frame-content"></div>
+    <button class="fxs-frame-button" type="button">Open Blade</button>
+    <!-- Define frameSignature and allowed origin list -->
+    <script>
+        var frameSignature = "FxFrameBlade";
+        var allowedParentFrameAuthorities = ["df.onecloud.azure-test.net", "portal.azure.com"];
+    </script>
+    <script src="../Scripts/IFrameSample/FramePage.js"></script>
 </body>
 
 </html>
