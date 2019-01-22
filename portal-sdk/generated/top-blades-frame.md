@@ -45,16 +45,35 @@ To create a FrameBlade, you need to create 3 artifacts.
 export class SampleFrameBlade {
    public title = ClientResources.sampleFrameBladeTitle;
    public subtitle: string;  // This FrameBlade doesn't make use of a subtitle.
-
-   public viewModel: FrameBlade.ViewModel;
-
    public context: FrameBlade.Context<void, BladesArea.DataContext>;
+
+   /*
+    * View model for the frame blade.
+    */
+   public viewModel: FrameBlade.ViewModelV2Contract;
 
    public onInitialize() {
        const { container } = this.context;
-
-       const viewModel = this.viewModel = new FrameBlade.ViewModel(container, {
+       const viewModel = this.viewModel = FrameBlade.createViewModel(container, {
            src: MsPortalFx.Base.Resources.getContentUri("/Content/SamplesExtension/framebladepage.html"),
+           onReceiveMessage: (message: FramePage.Message) => {
+               switch(message.messageType) {
+                   // This is an example of how to listen for messages from your iframe.
+                   case FramePage.MessageType.OpenBlade:
+                       // In this sample, opening a sample child blade.
+                       container.openBlade(new OpenBladeApiChildBladeReference());
+                       break;
+                   default:
+                       break;
+               }
+           },
+       });
+
+       // This is an example of how to post a message back to your iframe.
+       // Send initialization information to iframe.
+       MsPortalFx.Base.Security.getAuthorizationToken().then((token) => {
+           // Post initialization info from FrameControl to your iframe.
+           viewModel.postMessage({ messageType: FramePage.MessageType.InitInfo, value: { authToken: token.header, resourceId: "testResourceId"}});
        });
 
        
@@ -67,17 +86,21 @@ export class SampleFrameBlade {
 <html>
 
 <head>
-    <title></title>
+    <title>Frame Blade</title>
     <meta charset="utf-8" />
 </head>
 
 <body>
-    <h1 class="fxs-frame-header" style="margin: 0;"></h1>
+    <h1 class="fxs-frame-header" style="margin: 0;">Frame Blade</h1>
     <div class="fxs-frame-token"></div>
-    <input type="text"/>
-    <script src="../Scripts/_oss/q-1.4.1.js"></script>
-    <script>var frameSignature = "FxFrameBlade";</script>
-    <script src="../Scripts/framepage.js"></script>
+    <div class="fxs-frame-content"></div>
+    <button class="fxs-frame-button" type="button">Open Blade</button>
+    <!-- Define frameSignature and allowed origin list -->
+    <script>
+        var frameSignature = "FxFrameBlade";
+        var allowedParentFrameAuthorities = ["df.onecloud.azure-test.net", "portal.azure.com"];
+    </script>
+    <script src="../Scripts/IFrameSample/FramePage.js"></script>
 </body>
 
 </html>
