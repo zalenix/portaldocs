@@ -1,5 +1,9 @@
 # Release Notes since 9/23/2018
 
+## 5.0.302.11201
+18 Breaking Changes, 121 Features added and 281 Bugs Fixed
+<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
+
 ## 5.0.302.11101
 0 Breaking Changes, 4 Features added and 1 Bugs Fixed
 <table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
