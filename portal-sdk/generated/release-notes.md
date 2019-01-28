@@ -1,8 +1,20 @@
 # Release Notes since 9/28/2018
 
 ## 5.0.302.11701
-0 Breaking Changes, 0 Features added and 0 Bugs Fixed
-<table>undefined</table>
+0 Breaking Changes, 0 Features added and 4 Bugs Fixed
+<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
+
+## 5.0.302.11601
+0 Breaking Changes, 2 Features added and 9 Bugs Fixed
+<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
+
+## 5.0.302.11501
+0 Breaking Changes, 4 Features added and 0 Bugs Fixed
+<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
+
+## 5.0.302.11401
+0 Breaking Changes, 3 Features added and 4 Bugs Fixed
+<table><tr><td>None</td><td>None</td><td>No public work items listed in this build.</td></tr></table>
 
 ## 5.0.302.11301
 0 Breaking Changes, 1 Features added and 2 Bugs Fixed
