@@ -117,6 +117,8 @@ View [all browse resources research](https://hits.microsoft.com/search?q=browse%
 
 ## Telemetry
 
+* Browse frequency by resource type over last 28 days [View report](https://aka.ms/portalfx/fundamentals/browsetelemetry)
+
 # For developers 
 Developers can use the following information to get started implementing this pattern
 
