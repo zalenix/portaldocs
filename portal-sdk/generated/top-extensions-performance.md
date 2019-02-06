@@ -125,7 +125,7 @@ You can, if preferred, run queries locally but ensure you are using the Fx provi
 <a name="performance-overview-how-to-assess-your-performance-extension-loading"></a>
 ### Extension-loading
 
-[database('Partner').ExtensionPerformance(ago(1h), now())](https://aka.ms/kwe?cluster=azportal.kusto.windows.net&database=AzurePortal&q=H4sIAAAAAAAAA0tJLElMSixO1VAPSCwqyUstUtfUc60oSc0rzszPC0gtSssvyk3MS07VSEzP1zDM0NRRyMsv19DU5AIAxF6Q5zkAAAA%3D)
+[database('Framework').ExtensionPerformance(ago(1h), now())](https://dataexplorer.azure.com/clusters/azportalpartner/databases/AzurePortal?query=H4sIAAAAAAAAA0tJLElMSixO1VB3K0rMTS3PL8pW19RzrShJzSvOzM8LSC1Kyy/KTcxLTtVITM/XMMzQ1FHIyy/X0NTk5QIAwN+cVTwAAAA=)
 
 ExtensionPerformance will return a table with the following columns:
 
@@ -143,7 +143,7 @@ ExtensionPerformance will return a table with the following columns:
 <a name="performance-overview-how-to-assess-your-performance-blade"></a>
 ### Blade
 
-[database('Partner').BladePerformanceIncludingNetwork(ago(1h), now())](https://aka.ms/kwe?cluster=azportal.kusto.windows.net&database=AzurePortal&q=H4sIAAAAAAAAA0tJLElMSixO1VAPSCwqyUstUtfUc8pJTEkNSC1Kyy%2FKTcxLTvXMS84pTcnMS%2FdLLSnPL8rWSEzP1zDM0NRRyMsv19DU5AIA1W5beEUAAAA%3D)
+[database('Framework').BladePerformanceIncludingNetwork(ago(1h), now())](https://dataexplorer.azure.com/clusters/azportalpartner/databases/AzurePortal?query=H4sIAAAAAAAAA0tJLElMSixO1VB3K0rMTS3PL8pW19RzyklMSQ1ILUrLL8pNzEtO9cxLzilNycxL90stASnRSEzP1zDM0NRRyMsv19DU5OUCAD25CItIAAAA)
 
 With the `BladePerformanceIncludingNetwork` function, we sample 1% of traffic to measure the number of network requests that are made throughout their session, that sampling does not affect the overall duration that is reported. Within the function we will correlate the count of any network requests, these are tracked in telemetry under the action `XHRPerformance`, made when the user is loading a given blade. It does not impact the markers that measure performance. That said a larger number of network requests will generally result in slower performance.
 
@@ -185,7 +185,7 @@ BladePerformanceIncludingNetwork will return a table with the following columns
 <a name="performance-overview-how-to-assess-your-performance-part"></a>
 ### Part
 
-[database('Partner').PartPerformance(ago(1h), now())](https://aka.ms/kwe?cluster=azportal.kusto.windows.net&database=AzurePortal&q=H4sIAAAAAAAAA0tJLElMSixO1VAPSCwqyUstUtfUA7ECUovS8otyE%2FOSUzUS0%2FM1DDM0dRTy8ss1NDW5AIGipTc0AAAA)
+[database('Framework').PartPerformance(ago(1h), now())](https://dataexplorer.azure.com/clusters/azportalpartner/databases/Framework?query=H4sIAAAAAAAAA0tJLElMSixO1VB3K0rMTS3PL8pW19QLSCwqCUgtSssvyk3MS07VSEzP1zDM0NRRyMsv19AEAHCIw240AAAA)
 
 PartPerformance will return a table with the following columns:
 
@@ -193,12 +193,6 @@ PartPerformance will return a table with the following columns:
   - Part/Extension identifiers
 - PartCount
   - How many times the part was loaded within the given date range
-- Samples
-  - The number of loads which were tracking the number of XHR requests
-- XHRCount, XHRCount95th, XHRMax
-  - The 50th percentile (95th or MAX) of XHR requests sent which correlate to that part load (*) This is a rough heuristic, based on a 1% sampling.
-- Bytes
-  - Bytes transferred to the client via XHR requests
 - 50th, 80th, 95th, 99th
   - The time it takes for your part to resolve its `onInputsSet` or `onInitialize` promise. This is captured under the `PartReady` action in telemetry
 - RedScore
