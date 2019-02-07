@@ -355,7 +355,7 @@ The following are the feature flags that are invoked with the syntax: `feature.<
 
 **feature.prefetch**: Enables or disables a script prefetch feature in the Portal for diagnostics purposes. Reserved for team use. 
 
-**feature.rapidtoasts**: Enables or disables toast notifications, and sets the default time that a toast is displayed, in milliseconds.  A value of zero disables toasts. 
+**feature.rapidtoasts**: Enables or disables toast notifications, and sets the default time that a toast is displayed, in milliseconds.  A value of "0" or "true" disables toasts. 
 
 <!--TODO:  verify whether these relex settings have ceased to exist or are just not used -->
 **feature.relex**:  Not used.  Comma-delimited list of extensions to load in Relex. **NOTE**: An asterisk ("*") will load all extensions in Relex.
