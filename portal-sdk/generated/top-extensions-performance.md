@@ -14,6 +14,7 @@
     * [My WxP score is below the bar, what should I do](#performance-frequently-asked-questions-faq-my-wxp-score-is-below-the-bar-what-should-i-do)
     * [Is there any way I can get further help](#performance-frequently-asked-questions-faq-is-there-any-way-i-can-get-further-help)
 * [Performance best practices](#performance-best-practices)
+    * [Checklist](#performance-best-practices-checklist)
     * [Operational best practices](#performance-best-practices-operational-best-practices)
     * [Coding best practices](#performance-best-practices-coding-best-practices)
     * [General best practices](#performance-best-practices-general-best-practices)
@@ -265,6 +266,17 @@ Sure! Book in some time in the Azure performance office hours.
 
 <a name="performance-best-practices"></a>
 # Performance best practices
+
+<a name="performance-best-practices-checklist"></a>
+## Checklist
+
+- Migrate to the [hosting service](portalfx-extension-hosting-service.md#extension-hosting-service)
+- Enable [prewarming](http://aka.ms/portalfx/docs/prewarming), running your extension in a web worker
+- Ensure your extension isn't using [shims](#extension-load-shim-dependencies-removing-shims)
+- Ensure your extension isn't using [obsolete bundles](https://aka.ms/portalfx/obsoletebundles)
+- Use the [Portal's ARM delegation token](#using-the-portals-arm-token)
+- Migrate your extension to [dependency injection](#dependency-injected-view-models)
+- Ensure you aren't making any network requests in your extension boot path (Program.ts file)
 
 <a name="performance-best-practices-operational-best-practices"></a>
 ## Operational best practices
