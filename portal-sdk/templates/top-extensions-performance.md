@@ -213,6 +213,16 @@ Sure! Book in some time in the Azure performance office hours.
 
 # Performance best practices
 
+## Checklist
+
+- Migrate to the [hosting service](portalfx-extension-hosting-service.md#extension-hosting-service)
+- Enable [prewarming](http://aka.ms/portalfx/docs/prewarming), running your extension in a web worker
+- Ensure your extension isn't using [shims](#extension-load-shim-dependencies-removing-shims)
+- Ensure your extension isn't using [obsolete bundles](https://aka.ms/portalfx/obsoletebundles)
+- Use the [Portal's ARM delegation token](#using-the-portals-arm-token)
+- Migrate your extension to [dependency injection](#dependency-injected-view-models)
+- Ensure you aren't making any network requests in your extension boot path (Program.ts file)
+
 ## Operational best practices
 
 - Enable performance alerts
