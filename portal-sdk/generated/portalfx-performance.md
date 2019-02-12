@@ -61,6 +61,23 @@ Extension-loading performance effects both Blade and Part performance, as your e
 In the case where a user is visiting your resource blade for the first time, the Fx will load up your extension and then request the view model, consequently your Blade/Part performance is affected.
 If the user were to browse away from your experience and browse back before your extension is unloaded, obviously the user's second visit will be faster, as they don't pay the cost of loading the extension.
 
+This time captures:
+
+1. The downloading of your extensions homepage
+1. The parsing and execution of the required framework scripts in your iframe
+    - This work has already happened outside of your extension load if your extension uses prewarming 
+1. The downloading, parsing, and execution of your obsolete bundles
+    - If you have any
+1. The downloading, parsing, and execution of your shims
+    - If you have any
+1. The downloading, parsing, and execution of your extensions initial bundles
+    - This can be reduce by migrating to dependency injection
+1. The downloading, parsing, and execution of your extensions resources bundle
+    - This can be parallelized with your initial bundles if you upgrade to SDK 5.0.302.5601+
+1. The handshake from your extension to the framework stating your extension is ready
+    - Completion of your initialize method in your Program.ts declaration 
+
+
 <a name="performance-overview-blade-performance"></a>
 ## Blade performance
 

@@ -10,14 +10,15 @@ External partners can download and install the NuGet packages when they install 
 ### Updating your NuGet Packages
 
 * In Visual Studio
-1. Install the latest version of the Portal SDK MSI, as specified in [downloads.md](/portal-sdk/generated/downloads.md).
+1. If external outside of Microsoft:
+   1. Install the latest version of the Portal SDK MSI, as specified in [downloads.md](https://aka.ms/portalfx/downloads). Optional for internal teams, Required for teams outside of Microsoft.
 1. In Visual Studio open your Solution and select `Tools > NuGet Package Manager > Manage NuGet packages for Solution…`.
 1. Select all `Microsoft.Portal.*` NuGet packages.
 1. Click `Update`.
-1. Build and fix any breaking changes, as described in [Breaking changes](/portal-sdk/generated/breaking-changes.md).
+1. Build and fix any breaking changes, as described in [Breaking changes](https://aka.ms/portalfx/breaking).
 
 * In CoreXT
-1. Find the latest SDK version number from the SDK downloads document located at [/portal-sdk/generated/downloads.md](/portal-sdk/generated/downloads.md).
+1. Find the latest SDK version number from the SDK downloads document located [here](https://aka.ms/portalfx/downloads).
 
 1. Update your `package.config` to the latest version of the SDK.
 
