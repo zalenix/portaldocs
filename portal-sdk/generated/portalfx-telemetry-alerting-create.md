@@ -148,10 +148,11 @@ Currently alerts run every 60 minutes assessing the previous 60 minute and previ
 <a name="create-how-do-i-onboard"></a>
 ## How do I onboard?
 
-1. Generate the desired per extension configuration
-    - This can be done by manually editing the JSON file.
-1. Fill out the following work item [https://aka.ms/portalfx/alerting-onboarding][alerting-onboarding] and attach configuration JSON
-1. Set up correlation rules in ICM
+1. Submit and complete a Pull Request in [Alerting Repo][alerting-dev-ops].
+> For non-create alert the customization JSON should be located at products/{YourServiceNameInIcM}/{ExtensionName}.alerting.json. It's recommended to have an owners.txt in the same folder as the customization JSON file. The owners.txt has AAD enabled email alias or/and individual MSFT aliases. Anyone from owners.txt can approve the Pull Request for any changes within that folder or its subfolder.
+
+> For create alert the customization JSON should be located at products/IbizaFx/Create/{ExtensionName}.create.alerting.json.
+2. Set up correlation rules in ICM
 
 
 | Field | Value |
@@ -173,16 +174,17 @@ Currently alerts run every 60 minutes assessing the previous 60 minute and previ
 <a name="create-how-do-i-know-my-extension-s-current-customization"></a>
 ## How do I know my extension&#39;s current customization?
 
-Click the [this link][alerting-extension-customization] and replace `HubsExtension` with `YOUR_EXTENSION_NAME` and run Kusto function, GetExtensionCustomizationJson. Or go to [https://azportalpartner.kusto.windows.net/Phms][kusto-phms-database] to open Kusto.Explorer and run Kusto function, 
-GetExtensionCustomizationJson("YOUR_EXTENSION_NAME"). The regex is supported. You can view alert customization of onboarded extensions. The extension alert customization only exists once you have onboarded to the alerting infrastructure.
-> The customizaztion has a daily sync from the SQL database at 5:00 pm PST.
+Alerting is running off customization JSONs that live in [Azure Portal Alerting Repo a.k.a. Alerting Repo][alerting-dev-ops]. All the non-create alerts customimzation JSONs are located at products/{YourServiceNameInIcM}/{ExtensionName}.alerting.json. All the create alerts customization JSONs are located at products/IbizaFx/Create/{ExtensionName}.create.alerting.json.
 
 <a name="create-what-happens-if-i-need-to-update-them"></a>
 ## What happens if I need to update them?
 
-1. Contact [ibizafxhot](mailto:ibizafxhot@microsoft.com) and attached the updated configuration
-1. We will respond as soon as possible and apply the updates
+Submit and complete a Pull Request on your extension's customization JSON in [Alerting Repo][alerting-dev-ops]. The update is 'live' once the Pull Request is complete.
+> For each extension there's an owners.txt that is in the same or parent folder as the JSON. The owners.txt has AAD enabled email alias or/and individual MSFT aliases. Anyone from owners.txt can approve the Pull Request. The owners.txt is created and maintained by extension team.
+
+<a name="create-questions-and-suggestions"></a>
+## Questions and suggestions?
+Contact [Azure Ibiza Fx Gauge Team](mailto:azurefxg@microsoft.com).
 
 [alerting-onboarding]: https://aka.ms/portalfx/alerting-onboarding
-[alerting-extension-customization]: https://azportalpartner.kusto.windows.net/Phms?query=GetExtensionCustomizationJson%28%22HubsExtension%22%29
-[kusto-phms-database]: https://azportalpartner.kusto.windows.net/Phms
+[alerting-dev-ops]: https://msazure.visualstudio.com/One/_git/AzureUX-PortalFX-Alerting

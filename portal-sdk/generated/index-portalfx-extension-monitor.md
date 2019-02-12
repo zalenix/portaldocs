@@ -35,12 +35,14 @@
     * [How do I onboard?](portalfx-telemetry-alerting-availability.md#how-do-i-onboard)
     * [How do I know my extension's current customization?](portalfx-telemetry-alerting-availability.md#how-do-i-know-my-extension-s-current-customization)
     * [What happens if I need to update them?](portalfx-telemetry-alerting-availability.md#what-happens-if-i-need-to-update-them)
+    * [Questions and suggestions?](portalfx-telemetry-alerting-availability.md#questions-and-suggestions)
 
 * [Configuration](portalfx-telemetry-alerting-performance.md#configuration)
 * [How often do they run?](portalfx-telemetry-alerting-performance.md#how-often-do-they-run)
 * [How do I onboard?](portalfx-telemetry-alerting-performance.md#how-do-i-onboard)
 * [How do I know my extension's current customization?](portalfx-telemetry-alerting-performance.md#how-do-i-know-my-extension-s-current-customization)
 * [What happens if I need to update them?](portalfx-telemetry-alerting-performance.md#what-happens-if-i-need-to-update-them)
+* [Questions and suggestions?](portalfx-telemetry-alerting-performance.md#questions-and-suggestions)
 
 * [Client Error](portalfx-telemetry-alerting-error-messages.md#client-error)
     * [Configuration](portalfx-telemetry-alerting-error-messages.md#configuration)
@@ -48,6 +50,7 @@
     * [How do I onboard?](portalfx-telemetry-alerting-error-messages.md#how-do-i-onboard)
     * [How do I know my extension's current customization?](portalfx-telemetry-alerting-error-messages.md#how-do-i-know-my-extension-s-current-customization)
     * [What happens if I need to update them?](portalfx-telemetry-alerting-error-messages.md#what-happens-if-i-need-to-update-them)
+    * [Questions and suggestions?](portalfx-telemetry-alerting-error-messages.md#questions-and-suggestions)
 
 * [Create](portalfx-telemetry-alerting-create.md#create)
     * [Configuration](portalfx-telemetry-alerting-create.md#configuration)
@@ -55,11 +58,13 @@
     * [How do I onboard?](portalfx-telemetry-alerting-create.md#how-do-i-onboard)
     * [How do I know my extension's current customization?](portalfx-telemetry-alerting-create.md#how-do-i-know-my-extension-s-current-customization)
     * [What happens if I need to update them?](portalfx-telemetry-alerting-create.md#what-happens-if-i-need-to-update-them)
+    * [Questions and suggestions?](portalfx-telemetry-alerting-create.md#questions-and-suggestions)
 
 * [Fequently asked questions](portalfx-telemetry-alerting-faq.md#fequently-asked-questions)
     * [How do I onboard?](portalfx-telemetry-alerting-faq.md#how-do-i-onboard)
     * [How do I know my extension's current configuration?](portalfx-telemetry-alerting-faq.md#how-do-i-know-my-extension-s-current-configuration)
     * [What happens if I need to update my configuration?](portalfx-telemetry-alerting-faq.md#what-happens-if-i-need-to-update-my-configuration)
+    * [Questions and suggestions?](portalfx-telemetry-alerting-faq.md#questions-and-suggestions)
 
 
 <a name="telemetry-performance"></a>
