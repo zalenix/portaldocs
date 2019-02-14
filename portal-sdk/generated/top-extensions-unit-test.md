@@ -88,8 +88,7 @@ always-auth=true
     "build": "npm run prereq && tsc -p tsconfig.json",
     "build-trace": "tsc -p tsconfig.json --diagnostics --listFiles --listEmittedFiles --traceResolution",
     "test": "npm run build && karma start",
-    "test-ci": "npm run build && karma start --single-run --no-colors",
-    "test-dev": "npm run build && index.html"
+    "test-ci": "npm run build && karma start --single-run --no-colors"
   },
   "keywords": [
     "unittest"
@@ -97,34 +96,32 @@ always-auth=true
   "author": "Microsoft",
   "license": "MIT",
   "dependencies": {
-    "@types/chai": "4.1.2",
-    "@types/mocha": "2.2.48",
-    "@types/nconf": "0.0.37",
-    "@types/sinon": "4.3.0",
-    "chai": "4.1.2",
-    "gulp": "3.9.1",
+    "@types/chai": "4.1.7",
+    "@types/mocha": "5.2.5",
+    "@types/nconf": "0.10.0",
+    "@types/sinon": "7.0.5",
+    "chai": "4.2.0",
+    "gulp": "4.0.0",
     "gulp-concat": "2.6.1",
-    "karma": "2.0.0",
+    "karma": "4.0.0",
     "karma-chai": "0.1.0",
     "karma-chrome-launcher": "2.2.0",
-    "karma-coverage": "1.1.1",
+    "karma-coverage": "1.1.2",
     "karma-edge-launcher": "0.4.2",
     "karma-mocha": "1.3.0",
     "karma-mocha-reporter": "2.2.5",
     "karma-junit-reporter": "1.2.0",
     "karma-requirejs": "1.1.0",
-    "karma-trx-reporter": "0.2.9",
-    "mocha": "5.0.4",
+    "karma-trx-reporter": "0.4.0",
+    "mocha": "5.2.0",
     "msportalfx-ut": "file:../../packages/Microsoft.Portal.TestFramework.UnitTest.$(CURRENT_BUILD_VERSION)/msportalfx-ut-$(NPM_CURRENT_BUILD_VERSION).tgz",
     "nconf": "0.10.0",
-    "requirejs": "2.3.5",
-    "sinon": "4.4.3",
+    "requirejs": "2.3.6",
+    "sinon": "7.2.3",
     "typescript": "3.2.1"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
-
 
 ```
 
@@ -263,10 +260,10 @@ describe("Resource Overview Blade Tests", () => {
                             "name": "bar",
                             "type": "Providers.Test/statefulIbizaEngines",
                             "location": "East Asia",
-                            "properties": {}
-                        }
-                    }
-                ]
+                            "properties": {},
+                        },
+                    },
+                ],
             }));
         } else {
             request.respond(404, null, "not mocked");
@@ -276,7 +273,7 @@ describe("Resource Overview Blade Tests", () => {
     const bladeParameters : Parameters = { id: resourceId };
     // options for the blade under test. optional callbacks beforeOnInitializeCalled, afterOnInitializeCalled and afterRevealContentCalled
     // can be supplied to execute custom test code
- 
+
     // get blade instance with context initialized and onInitialized called
     return TemplateBladeHarness.initializeBlade(ResourceOverviewBlade, {
       parameters: bladeParameters,
@@ -291,7 +288,7 @@ describe("Resource Overview Blade Tests", () => {
         console.log("after reveal called");
       },
     }).then((resourceBlade) => {
-      
+
       assert.equal(resourceBlade.title(), "bar");
       assert.equal(resourceBlade.subtitle, ClientResources.resourceOverviewBladeSubtitle);
     });

@@ -288,7 +288,7 @@ public onInitialize(): Q.Promise<void> {
  */
 private _initializeControl(): void {
     const bladeLink: BladeLink = {
-        bladeReference: ko.observable(new BladeReferences.NoParameterChildBladeReference()),
+        bladeReference: ko.observable(BladeReferences.forBlade("NoParameterChildBlade").createReference()),
     };
     const resourceLink: ResourceLink = {
         resourceId: "/subscriptions/sub123/resourceGroups/accounts/providers/Microsoft.test/accounts/Peter",

@@ -144,6 +144,8 @@ At the top of any C# file using the `TypeMetadataModel` annotation, the followin
 <PropertyGroup>
   <PortalEmitTypeMetadataTypeScript>true</PortalEmitTypeMetadataTypeScript>
   <PortalEmitTypeMetadataTypeScriptTargetFolder>Client\_generated</PortalEmitTypeMetadataTypeScriptTargetFolder>
+  <BladeReferencesCodegenMode>Definitions</BladeReferencesCodegenMode>
+  <PartReferencesCodegenMode>Definitions</PartReferencesCodegenMode>
 </PropertyGroup>
 
 ```

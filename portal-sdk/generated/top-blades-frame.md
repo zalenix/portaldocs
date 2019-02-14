@@ -61,7 +61,7 @@ export class SampleFrameBlade {
                    // This is an example of how to listen for messages from your iframe.
                    case FramePage.MessageType.OpenBlade:
                        // In this sample, opening a sample child blade.
-                       container.openBlade(new OpenBladeApiChildBladeReference());
+                       container.openBlade(BladeReferences.forBlade("OpenBladeApiChildBlade").createReference());
                        break;
                    default:
                        break;

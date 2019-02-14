@@ -77,19 +77,17 @@ const engineDisplacement = FxDropDown.create<string>(container, {
         new Validations.Required(),
     ],
     subLabel: {
-        htmlTemplate: `<a href data-bind="text: createNew, click: onClick"></a>`,
+        htmlTemplate: `<a href="#" data-bind="text: createNew, fxclick: onClick"></a>`,
         viewModel: {
             createNew: ClientResources.createNew,
             onClick: () => {
-                container.openContextPane(new CreateDisplacementItemBladeReference(
-                    {
-                        label: ClientResources.engineDisplacementColumn,
-                    },
-                    (reason, data) => {
+                container.openContextPane(BladeReferences.forBlade("CreateDisplacementItemBlade").createReference({
+                    parameters: { label: ClientResources.engineDisplacementColumn },
+                    onClosed: (reason, data) => {
                         if (reason === BladeClosedReason.ChildClosedSelf) {
                             const { value } = data;
                             const currentItems = displacementItems();
-                            if (MsPortalFx.findIndex(currentItems, (i) => ko.unwrap(i.text).localeCompareIgnoreCase(value) === 0) === -1) {
+                            if (MsPortalFx.findIndex(currentItems, (i) => (<string>ko.unwrap(i.text)).localeCompareIgnoreCase(value) === 0) === -1) {
                                 const newItem = {
                                     text: value,
                                     value: value,
@@ -106,8 +104,7 @@ const engineDisplacement = FxDropDown.create<string>(container, {
 
                             this._displacement(value);
                         }
-                    })
-                );
+                    }}));
             },
         },
     },

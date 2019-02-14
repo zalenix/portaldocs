@@ -25,15 +25,14 @@ An example of using a context pane is located at `<dir>/Client/V1/Navigation/Ope
 import { Person } from "_generated/SamplesExtension/DataModels/Person";
 import * as Di from "Fx/DependencyInjection";
 import * as OptionsGroup from "Fx/Controls/OptionsGroup";
+import { BladeReferences, BladeLink, ResourceLink, ClickableLink  } from "Fx/Composition";
 import * as FxCompositionBlade from "Fx/Composition/Pdl/Blade";
 import { ViewModels as ViewModelDefinitions } from "_generated/ExtensionDefinition";
 import { DataContext } from "../../NavigationArea";
-import { BladeLink, ResourceLink, ClickableLink } from "Fx/Composition";
 
 // import references to blades that are opened by these samples
 import * as Resources from "ClientResources";
 import { ViewModel as HotspotViewModel } from "Fx/Controls/HotSpot";
-import { AppBladeReference, ListViewChildBladeReference, OpenBladeApiChildBladeReference, OpenBladeApiSamplesReference } from "_generated/BladeReferences";
 
 import Def = ViewModelDefinitions.V1$Navigation.OpenBladeApiSamplesViewModel;
 import BladeContainer = FxCompositionBlade.Container;
@@ -63,86 +62,39 @@ export class OpenBladeApiSamplesViewModel
 
     private _container: BladeContainer;
 
-    public bladeOpened = ko.observable(false);
-
-    public contextBladeOpened = ko.observable(false);
-
-    /**
-     * Hotspot view model
-     */
-    public hotspot: HotspotViewModel;
-
-    public grid: Grid.ViewModel<Person, Person>;
-
-    private _view: QueryView<Person, string>;
-
-    constructor(container: BladeContainer, dataContext: DataContext) {
-        super();
-        this.title(Resources.openBladeAPITitle);
-        this.subtitle(Resources.navigationSamplesTitle);
-
-        this._container = container;
-
-        this._initializeHotSpotSample(container);
-
-        this._initializeGridSample(container, dataContext);
-
-        this._initializeBladeLinkSample(container);
-
-        this._initializeDynamicFxclickLinkSample(container);
-    }
-
-    /**
-     * onInputsSet is invoked when the template blade receives new parameters
-     */
-    public onInputsSet(): MsPortalFx.Base.Promise {
-        // fetch data for the grid sample
-        return this._view.fetch("");
-    }
-
-    public onOpenChildBladeLinkClick() {
-        this._container.openBlade(new OpenBladeApiChildBladeReference());
-    }
+    public onOpenChildBladeLinkClick: () => void;
 
     /**
      * Renders a blade link as part of a standard HTML anchor tag from the template,
      * allowing for common browser operations like Ctrl + Click to open in new tab,
      * Right click -> copy link to copy to clipboard, etc. in addition to opening the blade on normal click.
      */
-    public readonly onOpenChildBladeLinkClickWithBladeLink: BladeLink = {
-        bladeReference: new OpenBladeApiChildBladeReference(),
-    };
+    public readonly onOpenChildBladeLinkClickWithBladeLink: BladeLink;
 
-    public readonly bladeRefPicker = OptionsGroup.create(this._container, {
-        label: Resources.bladeRefPickerLabel,
-        items: [{
-            text: Resources.validChildBlade,
-            value: Resources.validChildBlade,
-        }, {
-            text: Resources.validBlade,
-            value: Resources.validBlade,
-        }, {
-            text: Resources.nullBladeRefLabel,
-            value: Resources.nullBladeRefLabel,
-        },
-    ]});
+    /**
+     * Renders a blade link as part of a standard HTML anchor tag from the template,
+     * with an observable inner BladeReference,
+     * allowing for common browser operations like Ctrl + Click to open in new tab,
+     * Right click -> copy link to copy to clipboard, etc. in addition to opening the blade on normal click.
+     */
+    public readonly onOpenChildBladeLinkClickWithDynamicBladeLink: BladeLink;
 
-    public readonly fxclickPicker = OptionsGroup.create(this._container, {
-        label: Resources.fxclickPickerLabel,
-        items: [{
-            text: Resources.callback,
-            value: Resources.callback,
-        }, {
-            text: Resources.bladeLink,
-            value: Resources.bladeLink,
-        }, {
-            text: Resources.resourceLink,
-            value: Resources.resourceLink,
-        }, {
-            text: Resources.clickableLink,
-            value: Resources.clickableLink,
-        },
-    ]});
+    /**
+     * Renders a resource link as part of a standard HTML anchor tag from the template,
+     * allowing for common browser operations like Ctrl + Click to open in new tab,
+     * Right click -> copy link to copy to clipboard, etc. in addition to opening the blade on normal click.
+     */
+    public readonly onOpenChildBladeLinkClickWithResourceLink: ResourceLink;
+
+    /**
+     * Renders a ClickableLink as part of a standard HTML anchor tag from the template,
+     * allowing for common browser operations like Ctrl + Click to open in new tab,
+     * Right click -> copy link to copy to clipboard, etc. in addition to opening the blade on normal click.
+     */
+    public readonly onLinkClickWithClickableLink: ClickableLink;
+
+    public readonly bladeRefPicker: OptionsGroup.Contract<any>;
+    public readonly fxclickPicker: OptionsGroup.Contract<any>;
 
     /**
      * Counter for usage telemetry on the dynamic fxclick sample.
@@ -167,7 +119,7 @@ export class OpenBladeApiSamplesViewModel
     /**
      * Observable BladeReference to hook up within the dynamic BladeLink.
      */
-    private readonly dynamicBladeRef = ko.observable(new OpenBladeApiChildBladeReference());
+    private readonly dynamicBladeRef = ko.observable(BladeReferences.forBlade("OpenBladeApiChildBlade").createReference());
 
     /**
      * Dynamnic fxclick which wraps in an observable any of the four possible functions:
@@ -176,102 +128,170 @@ export class OpenBladeApiSamplesViewModel
      * - ResourceLink,
      * - ClickableLink.
      */
-    public readonly dynamicFxclick = ko.observable<Function | BladeLink | ResourceLink | ClickableLink>(this._onCallbackFxclickClick); // showcasing the callback case by default
+    public readonly dynamicFxclick: KnockoutObservable<Function | BladeLink | ResourceLink | ClickableLink>;
 
     /**
      * Text to display on the dynamic fxclick link.
      */
-    public readonly dynamicFxclickText = ko.observable(Resources.dynamicFxclickCallbackText); // showcasing the callback case by default
+    public readonly dynamicFxclickText: KnockoutObservable<string>;
 
     /**
      * Used as a showcase callback for the dynamic fxclick sample.
      */
-    private _onCallbackFxclickClick() {
-        this._container.openBlade(new OpenBladeApiChildBladeReference());
-        incrementDynamicFxclickClickCount(this.dynamicFxclickClickCount)();
-    }
+    private readonly _onCallbackFxclickClick: () => void;
 
     /**
      * Used as a showcase Blade Link for the dynamic fxclick sample.
      */
-    private readonly _onBladeLinkFxclickLink: BladeLink = {
-        bladeReference: new OpenBladeApiChildBladeReference(),
-        onLinkOpened: incrementDynamicFxclickClickCount(this.dynamicFxclickClickCount),
-    };
+    private readonly _onBladeLinkFxclickLink: BladeLink;
 
     /**
      * Used as a showcase Resource Link for the dynamic fxclick sample.
      */
-    private readonly _onResourceLinkFxclickLink: ResourceLink = {
-        resourceId:  "/subscriptions/sub123/resourceGroups/accounts/providers/Microsoft.test/accounts/Peter",
-        onLinkOpened: incrementDynamicFxclickClickCount(this.dynamicFxclickClickCount),
-    };
+    private readonly _onResourceLinkFxclickLink: ResourceLink;
 
     /**
      * Used as a showcase Clickable Link for the dynamic fxclick sample.
      */
-    private readonly _onClickableLinkFxclickLink: ClickableLink = new ClickableLink(
-        "http://www.bing.com/",
-        "_self",
-        "",
-        incrementDynamicFxclickClickCount(this.dynamicFxclickClickCount),
-    );
+    private readonly _onClickableLinkFxclickLink: ClickableLink;
 
     /**
-     * Renders a blade link as part of a standard HTML anchor tag from the template,
-     * with an observable inner BladeReference,
-     * allowing for common browser operations like Ctrl + Click to open in new tab,
-     * Right click -> copy link to copy to clipboard, etc. in addition to opening the blade on normal click.
+     * Hotspot view model
      */
-    public readonly onOpenChildBladeLinkClickWithDynamicBladeLink: BladeLink = {
-        bladeReference: this.dynamicBladeRef,
-        onLinkOpened: (keypress) => {
-            this.bladeLinkClickCount(this.bladeLinkClickCount() + 1);
+    public hotspot: HotspotViewModel;
 
-            if (keypress) {
-                console.log("The BladeLink has been accessed by 'Enter' key");
-            } else {
-                console.log("The BladeLink has been accessed by left-Click");
+    public grid: Grid.ViewModel<Person, Person>;
+
+    private _view: QueryView<Person, string>;
+
+    constructor(container: BladeContainer, dataContext: DataContext) {
+        super();
+        this.title(Resources.openBladeAPITitle);
+        this.subtitle(Resources.navigationSamplesTitle);
+
+        this._container = container;
+
+        this.bladeRefPicker = OptionsGroup.create(this._container, {
+            label: Resources.bladeRefPickerLabel,
+            items: [{
+                text: Resources.validChildBlade,
+                value: Resources.validChildBlade,
+            }, {
+                text: Resources.validBlade,
+                value: Resources.validBlade,
+            }, {
+                text: Resources.nullBladeRefLabel,
+                value: Resources.nullBladeRefLabel,
+            },
+        ]});
+
+        this.fxclickPicker = OptionsGroup.create(this._container, {
+            label: Resources.fxclickPickerLabel,
+            items: [{
+                text: Resources.callback,
+                value: Resources.callback,
+            }, {
+                text: Resources.bladeLink,
+                value: Resources.bladeLink,
+            }, {
+                text: Resources.resourceLink,
+                value: Resources.resourceLink,
+            }, {
+                text: Resources.clickableLink,
+                value: Resources.clickableLink,
+            },
+        ]});
+
+        this._onCallbackFxclickClick = () => {
+            this._container.openBlade(BladeReferences.forBlade("OpenBladeApiChildBlade").createReference());
+            incrementDynamicFxclickClickCount(this.dynamicFxclickClickCount)();
+        };
+
+        this._onBladeLinkFxclickLink = {
+            bladeReference: BladeReferences.forBlade("OpenBladeApiChildBlade").createReference(),
+            onLinkOpened: incrementDynamicFxclickClickCount(this.dynamicFxclickClickCount),
+        };
+
+        this._onResourceLinkFxclickLink = {
+            resourceId:  "/subscriptions/sub123/resourceGroups/accounts/providers/Microsoft.test/accounts/Peter",
+            onLinkOpened: incrementDynamicFxclickClickCount(this.dynamicFxclickClickCount),
+        };
+
+        this._onClickableLinkFxclickLink = new ClickableLink(
+            "http://www.bing.com/",
+            "_new",
+            "",
+            incrementDynamicFxclickClickCount(this.dynamicFxclickClickCount),
+        );
+
+        // showcasing the callback case by default
+        this.dynamicFxclick = ko.observable(this._onCallbackFxclickClick);
+        this.dynamicFxclickText = ko.observable(Resources.dynamicFxclickCallbackText);
+
+        this.onOpenChildBladeLinkClick = () => {
+            this._container.openBlade(BladeReferences.forBlade("OpenBladeApiChildBlade").createReference());
+        };
+
+        this.onOpenChildBladeLinkClickWithBladeLink = {
+            bladeReference: BladeReferences.forBlade("OpenBladeApiChildBlade").createReference(),
+        };
+
+        this.onOpenChildBladeLinkClickWithDynamicBladeLink = {
+            bladeReference: this.dynamicBladeRef,
+            onLinkOpened: (keypress) => {
+                this.bladeLinkClickCount(this.bladeLinkClickCount() + 1);
+
+                if (keypress) {
+                    console.log("The BladeLink has been accessed by 'Enter' key");
+                } else {
+                    console.log("The BladeLink has been accessed by left-Click");
+                }
+            },
+        };
+
+        this.onOpenChildBladeLinkClickWithResourceLink = {
+            resourceId: "/subscriptions/sub123/resourceGroups/accounts/providers/Microsoft.test/accounts/Peter",
+            onLinkOpened: (keypress) => {
+                this.resourceLinkClickCount(this.resourceLinkClickCount() + 1);
+
+                if (keypress) {
+                    console.log("The ResourceLink has been accessed by 'Enter' key");
+                } else {
+                    console.log("The ResourceLink has been accessed by left-Click");
+                }
+            },
+        };
+
+        this.onLinkClickWithClickableLink = new ClickableLink(
+            "http://www.bing.com/",
+            "_new",
+            "",
+            (keypress) => {
+                this.clickableLinkClickCount(this.clickableLinkClickCount() + 1);
+
+                if (keypress) {
+                    console.log("The ClickableLink has been accessed by 'Enter' key");
+                } else {
+                    console.log("The ClickableLink has been accessed by left-Click");
+                }
             }
-        },
-    };
+        );
+
+        this._initializeHotSpotSample(container);
+        this._initializeGridSample(container, dataContext);
+        this._initializeBladeLinkSample(container);
+        this._initializeDynamicFxclickLinkSample(container);
+    }
 
     /**
-     * Renders a resource link as part of a standard HTML anchor tag from the template,
-     * allowing for common browser operations like Ctrl + Click to open in new tab,
-     * Right click -> copy link to copy to clipboard, etc. in addition to opening the blade on normal click.
+     * onInputsSet is invoked when the template blade receives new parameters
      */
-    public readonly onOpenChildBladeLinkClickWithResourceLink: ResourceLink = {
-        resourceId: "/subscriptions/sub123/resourceGroups/accounts/providers/Microsoft.test/accounts/Peter",
-        onLinkOpened: (keypress) => {
-            this.resourceLinkClickCount(this.resourceLinkClickCount() + 1);
+    public onInputsSet(): MsPortalFx.Base.Promise {
+        // fetch data for the grid sample
+        return this._view.fetch("");
+    }
 
-            if (keypress) {
-                console.log("The ResourceLink has been accessed by 'Enter' key");
-            } else {
-                console.log("The ResourceLink has been accessed by left-Click");
-            }
-        },
-    };
-
-    /**
-     * Renders a ClickableLink as part of a standard HTML anchor tag from the template,
-     * allowing for common browser operations like Ctrl + Click to open in new tab,
-     * Right click -> copy link to copy to clipboard, etc. in addition to opening the blade on normal click.
-     */
-    public readonly onLinkClickWithClickableLink: ClickableLink = new ClickableLink(
-        "http://www.bing.com/",
-        "_self",
-        "",
-        (keypress) => {
-            this.clickableLinkClickCount(this.clickableLinkClickCount() + 1);
-
-            if (keypress) {
-                console.log("The ClickableLink has been accessed by 'Enter' key");
-            } else {
-                console.log("The ClickableLink has been accessed by left-Click");
-            }
-        });
+    public bladeOpened = ko.observable(false);
 
     public onButtonClick() {
         // this callback is invoked when the blade is closed
@@ -281,7 +301,7 @@ export class OpenBladeApiSamplesViewModel
         };
 
         // The openBlade API returns a promise that is resolved after the blade is opened
-        const openBladePromise = this._container.openBlade(new OpenBladeApiChildBladeReference(onBladeClosed));
+        const openBladePromise = this._container.openBlade(BladeReferences.forBlade("OpenBladeApiChildBlade").createReference({ onClosed: onBladeClosed }));
 
         // If the promise result is true the blade was sucessfully opened.
         // If the promise is false the blade could not be opened.
@@ -291,6 +311,8 @@ export class OpenBladeApiSamplesViewModel
         });
     }
 
+    public contextBladeOpened = ko.observable(false);
+
     public onContextBladeButtonClick() {
         // this callback is invoked when the blade is closed
         const onBladeClosed = () => {
@@ -298,7 +320,7 @@ export class OpenBladeApiSamplesViewModel
             this.contextBladeOpened(false);
         };
 
-        const openContextBladePromise = this._container.openContextPane(new OpenBladeApiChildBladeReference(onBladeClosed));
+        const openContextBladePromise = this._container.openContextPane(BladeReferences.forBlade("OpenBladeApiChildBlade").createReference({ onClosed: onBladeClosed }));
 
         openContextBladePromise.then((result) => {
             this.contextBladeOpened(result);
@@ -307,19 +329,19 @@ export class OpenBladeApiSamplesViewModel
 
     public onContextAppBladeButtonClick() {
         /* Opens an AppBlade in the context menu (additional sample) */
-        this._container.openContextPane(new AppBladeReference());
+        this._container.openContextPane(BladeReferences.forBlade("AppBlade").createReference());
     }
 
     public onRowClick(item: Person) {
-        this._container.openBlade(new ListViewChildBladeReference({
-            ssnId: item.ssnId(),
+        this._container.openBlade(BladeReferences.forBlade("ListViewChildBlade").createReference({
+            parameters: { ssnId: item.ssnId() },
         }));
     }
 
     private _initializeHotSpotSample(container: BladeContainer) {
         this.hotspot = new HotspotViewModel(container, {
             onClick: () => {
-                container.openBlade(new OpenBladeApiChildBladeReference());
+                container.openBlade(BladeReferences.forBlade("OpenBladeApiChildBlade").createReference());
             },
         });
     }
@@ -349,9 +371,9 @@ export class OpenBladeApiSamplesViewModel
             if (Resources.nullBladeRefLabel === value) {
                 this.dynamicBladeRef(null);
             } else if (Resources.validBlade === value) {
-                this.dynamicBladeRef(new OpenBladeApiSamplesReference());
+                this.dynamicBladeRef(BladeReferences.forBlade("OpenBladeApiSamples").createReference());
             } else if (Resources.validChildBlade === value) {
-                this.dynamicBladeRef(new OpenBladeApiChildBladeReference());
+                this.dynamicBladeRef(BladeReferences.forBlade("OpenBladeApiChildBlade").createReference());
             }
         });
     }
