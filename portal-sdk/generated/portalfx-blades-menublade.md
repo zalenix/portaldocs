@@ -42,8 +42,8 @@ constructor(container: MsPortalFx.ViewModels.ContainerContract) {
                     displayText: ClientResources.SampleMenuBlade.relatedResources,
                     icon: null,
                     supplyBladeReference: () => {
-                        return new HubsBladeReferences.MapResourceGroupBladeReference({
-                            id: "/subscriptions/sub123/resourcegroups/snowtraxpxz",
+                        return BladeReferences.forExtension("HubsExtension").forBlade("MapResourceGroupBlade").createReference({
+                            parameters: { id: "/subscriptions/sub123/resourcegroups/snowtraxpxz" },
                         });
                     },
                 },
@@ -53,7 +53,7 @@ constructor(container: MsPortalFx.ViewModels.ContainerContract) {
                     displayText: ClientResources.createEngine,
                     icon: null,
                     supplyBladeReference: () => {
-                        return new BladeReferences.CreateEngineV3BladeReference({
+                        return BladeReferences.forBlade("CreateEngineV3Blade").createReference({
                             supplyInitialData: () => {
                                 return {
                                     model: "Azure Engine 3.0",
@@ -81,7 +81,7 @@ constructor(container: MsPortalFx.ViewModels.ContainerContract) {
                     displayText: ClientResources.SampleMenuBlade.optOut,
                     icon: null,
                     supplyBladeReference: () => {
-                        return new BladeReferences.BladeWidthSmallBladeReference({ bladeTitle: ClientResources.SampleMenuBlade.optOut });
+                        return BladeReferences.forBlade("BladeWidthSmallBlade").createReference({ parameters: { bladeTitle: ClientResources.SampleMenuBlade.optOut }});
                     },
                 },
                 // Menu item that demonstrates a blade that can have activated width.
@@ -90,7 +90,7 @@ constructor(container: MsPortalFx.ViewModels.ContainerContract) {
                     displayText: ClientResources.ActivationStyleBlade.title,
                     icon: null,
                     supplyBladeReference: () => {
-                        return new BladeReferences.BladeWithActivationStyleReference();
+                        return BladeReferences.forBlade("BladeWithActivationStyle").createReference();
                     },
                 },
             ],
@@ -103,15 +103,16 @@ constructor(container: MsPortalFx.ViewModels.ContainerContract) {
                     id: "unauthorizedblade",
                     displayText: ClientResources.bladeUnauthorized,
                     icon: null,
-                    supplyBladeReference: () => new BladeReferences.UnauthorizedBladeReference(),
+                    supplyBladeReference: () => BladeReferences.forBlade("UnauthorizedBlade").createReference(),
                 },
                 {
                     id: "bladeWithSummary",
                     displayText: resourceName,
                     icon: null,
-                    supplyBladeReference: () => new BladeReferences.EngineBladeReference({
-                        id: `/subscriptions/sub123/resourcegroups/snowtraxpxz/providers/Providers.Test/statefulIbizaEngines/${resourceName}`,
-                    }),
+                    supplyBladeReference: () => BladeReferences.forBlade("EngineBlade").createReference({
+                        parameters: {
+                            id: `/subscriptions/sub123/resourcegroups/snowtraxpxz/providers/Providers.Test/statefulIbizaEngines/${resourceName}`,
+                    }}),
                 },
             ],
         },

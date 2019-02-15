@@ -25,15 +25,14 @@ An example of using a context pane is located at `<dir>/Client/V1/Navigation/Ope
 import { Person } from "_generated/SamplesExtension/DataModels/Person";
 import * as Di from "Fx/DependencyInjection";
 import * as OptionsGroup from "Fx/Controls/OptionsGroup";
+import { BladeReferences, BladeLink, ResourceLink, ClickableLink  } from "Fx/Composition";
 import * as FxCompositionBlade from "Fx/Composition/Pdl/Blade";
 import { ViewModels as ViewModelDefinitions } from "_generated/ExtensionDefinition";
 import { DataContext } from "../../NavigationArea";
-import { BladeLink, ResourceLink, ClickableLink } from "Fx/Composition";
 
 // import references to blades that are opened by these samples
 import * as Resources from "ClientResources";
 import { ViewModel as HotspotViewModel } from "Fx/Controls/HotSpot";
-import { AppBladeReference, ListViewChildBladeReference, OpenBladeApiChildBladeReference, OpenBladeApiSamplesReference } from "_generated/BladeReferences";
 
 import Def = ViewModelDefinitions.V1$Navigation.OpenBladeApiSamplesViewModel;
 import BladeContainer = FxCompositionBlade.Container;
@@ -101,7 +100,7 @@ export class OpenBladeApiSamplesViewModel
     }
 
     public onOpenChildBladeLinkClick() {
-        this._container.openBlade(new OpenBladeApiChildBladeReference());
+        this._container.openBlade(BladeReferences.forBlade("OpenBladeApiChildBlade").createReference());
     }
 
     /**
@@ -110,7 +109,7 @@ export class OpenBladeApiSamplesViewModel
      * Right click -> copy link to copy to clipboard, etc. in addition to opening the blade on normal click.
      */
     public readonly onOpenChildBladeLinkClickWithBladeLink: BladeLink = {
-        bladeReference: new OpenBladeApiChildBladeReference(),
+        bladeReference: BladeReferences.forBlade("OpenBladeApiChildBlade").createReference(),
     };
 
     public readonly bladeRefPicker = OptionsGroup.create(this._container, {
@@ -167,7 +166,7 @@ export class OpenBladeApiSamplesViewModel
     /**
      * Observable BladeReference to hook up within the dynamic BladeLink.
      */
-    private readonly dynamicBladeRef = ko.observable(new OpenBladeApiChildBladeReference());
+    private readonly dynamicBladeRef = ko.observable(BladeReferences.forBlade("OpenBladeApiChildBlade").createReference());
 
     /**
      * Dynamnic fxclick which wraps in an observable any of the four possible functions:
@@ -187,7 +186,7 @@ export class OpenBladeApiSamplesViewModel
      * Used as a showcase callback for the dynamic fxclick sample.
      */
     private _onCallbackFxclickClick() {
-        this._container.openBlade(new OpenBladeApiChildBladeReference());
+        this._container.openBlade(BladeReferences.forBlade("OpenBladeApiChildBlade").createReference());
         incrementDynamicFxclickClickCount(this.dynamicFxclickClickCount)();
     }
 
@@ -195,7 +194,7 @@ export class OpenBladeApiSamplesViewModel
      * Used as a showcase Blade Link for the dynamic fxclick sample.
      */
     private readonly _onBladeLinkFxclickLink: BladeLink = {
-        bladeReference: new OpenBladeApiChildBladeReference(),
+        bladeReference: BladeReferences.forBlade("OpenBladeApiChildBlade").createReference(),
         onLinkOpened: incrementDynamicFxclickClickCount(this.dynamicFxclickClickCount),
     };
 
@@ -281,7 +280,7 @@ export class OpenBladeApiSamplesViewModel
         };
 
         // The openBlade API returns a promise that is resolved after the blade is opened
-        const openBladePromise = this._container.openBlade(new OpenBladeApiChildBladeReference(onBladeClosed));
+        const openBladePromise = this._container.openBlade(BladeReferences.forBlade("OpenBladeApiChildBlade").createReference({ onClosed: onBladeClosed }));
 
         // If the promise result is true the blade was sucessfully opened.
         // If the promise is false the blade could not be opened.
@@ -298,7 +297,7 @@ export class OpenBladeApiSamplesViewModel
             this.contextBladeOpened(false);
         };
 
-        const openContextBladePromise = this._container.openContextPane(new OpenBladeApiChildBladeReference(onBladeClosed));
+        const openContextBladePromise = this._container.openContextPane(BladeReferences.forBlade("OpenBladeApiChildBlade").createReference({ onClosed: onBladeClosed }));
 
         openContextBladePromise.then((result) => {
             this.contextBladeOpened(result);
@@ -307,19 +306,19 @@ export class OpenBladeApiSamplesViewModel
 
     public onContextAppBladeButtonClick() {
         /* Opens an AppBlade in the context menu (additional sample) */
-        this._container.openContextPane(new AppBladeReference());
+        this._container.openContextPane(BladeReferences.forBlade("AppBlade").createReference());
     }
 
     public onRowClick(item: Person) {
-        this._container.openBlade(new ListViewChildBladeReference({
-            ssnId: item.ssnId(),
+        this._container.openBlade(BladeReferences.forBlade("ListViewChildBlade").createReference({
+            parameters: { ssnId: item.ssnId() },
         }));
     }
 
     private _initializeHotSpotSample(container: BladeContainer) {
         this.hotspot = new HotspotViewModel(container, {
             onClick: () => {
-                container.openBlade(new OpenBladeApiChildBladeReference());
+                container.openBlade(BladeReferences.forBlade("OpenBladeApiChildBlade").createReference());
             },
         });
     }
@@ -349,9 +348,9 @@ export class OpenBladeApiSamplesViewModel
             if (Resources.nullBladeRefLabel === value) {
                 this.dynamicBladeRef(null);
             } else if (Resources.validBlade === value) {
-                this.dynamicBladeRef(new OpenBladeApiSamplesReference());
+                this.dynamicBladeRef(BladeReferences.forBlade("OpenBladeApiSamples").createReference());
             } else if (Resources.validChildBlade === value) {
-                this.dynamicBladeRef(new OpenBladeApiChildBladeReference());
+                this.dynamicBladeRef(BladeReferences.forBlade("OpenBladeApiChildBlade").createReference());
             }
         });
     }

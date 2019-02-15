@@ -44,7 +44,7 @@ public onInitialize() {
                         displayText: BladeClientResources.controlsMenuBladeContentAreaBladeTitle,
                         icon: null,
                         supplyBladeReference: () => {
-                            return new BladeReferences.ControlsMenuBladeContentAreaBladeReference();
+                            return BladeReferences.forBlade("ControlsMenuBladeContentAreaBlade").createReference();
                         },
                     },
                 ],
@@ -55,7 +55,7 @@ public onInitialize() {
             displayText: BladeClientResources.overviewBladeTitle,
             icon: null,
             supplyBladeReference: () => {
-                return new BladeReferences.MenuBladeOverviewBladeReference();
+                return BladeReferences.forBlade("MenuBladeOverviewBlade").createReference();
             },
         },
     });

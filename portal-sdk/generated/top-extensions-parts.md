@@ -63,10 +63,10 @@ If you need more control over the DOM and are willing to take on additional burd
 /// <reference path="../../../FramePage.d.ts" />
 
 import { DataContext } from "../PartsArea";
+import { BladeReferences } from "Fx/Composition";
 import * as FramePart from "Fx/Composition/FramePart";
 import { SvgType } from "Fx/Images";
 import * as ClientResources from "ClientResources";
-import { OpenBladeApiChildBladeReference } from "_generated/BladeReferences";
 
 @FramePart.Decorator({
     galleryMetadata: {
@@ -98,7 +98,7 @@ export class SampleFramePart {
                     // This is an example of how to listen for messages from your iframe.
                     case FramePage.MessageType.OpenBlade:
                         // In this sample, opening a sample child blade.
-                        container.openBlade(new OpenBladeApiChildBladeReference());
+                        container.openBlade(BladeReferences.forBlade("OpenBladeApiChildBlade").createReference());
                         break;
                     default:
                         break;
@@ -130,7 +130,8 @@ To access the part references from within a blade, the extension imports the fol
 
 ```typescript
 
-import { PinnableBladePinnedPartReference } from "_generated/PartReferences";
+import { PartReferences } from "Fx/Composition";
+import { PinnableBladePinnedPartReference } from "_generated/PartReferenceTypes";
 
 ```
 
@@ -159,7 +160,7 @@ private _getPartReferenceForPinning() {
     const partParameters = $.extend({}, parameters, { favoriteColor: favoriteColor });  // Here, supply extra parameters to the Part.
     const partSize = this._getPinnedPartSize(favoriteColor);
 
-    return new PinnableBladePinnedPartReference(partParameters, { initialSize: partSize });  // Here, specify the initial size of the Part.
+    return PartReferences.forPart("PinnableBladePinnedPart").createReference({ parameters: partParameters, options: { initialSize: partSize }});  // Here, specify the initial size of the Part.
 }
 
 ```

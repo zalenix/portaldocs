@@ -81,11 +81,9 @@ const engineDisplacement = FxDropDown.create<string>(container, {
         viewModel: {
             createNew: ClientResources.createNew,
             onClick: () => {
-                container.openContextPane(new CreateDisplacementItemBladeReference(
-                    {
-                        label: ClientResources.engineDisplacementColumn,
-                    },
-                    (reason, data) => {
+                container.openContextPane(BladeReferences.forBlade("CreateDisplacementItemBlade").createReference({
+                    parameters: { label: ClientResources.engineDisplacementColumn },
+                    onClosed: (reason, data) => {
                         if (reason === BladeClosedReason.ChildClosedSelf) {
                             const { value } = data;
                             const currentItems = displacementItems();
@@ -106,8 +104,7 @@ const engineDisplacement = FxDropDown.create<string>(container, {
 
                             this._displacement(value);
                         }
-                    })
-                );
+                    }}));
             },
         },
     },
