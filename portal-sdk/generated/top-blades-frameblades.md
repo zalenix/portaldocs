@@ -39,10 +39,10 @@ To create a FrameBlade, you need to create 3 artifacts.
   /// <reference path="../../../FramePage.d.ts" />
 
 import * as ClientResources from "ClientResources";
+import { BladeReferences } from "Fx/Composition";
 import { DialogButtons } from "Fx/Composition/Dialog";
 import * as FrameBlade from "Fx/Composition/FrameBlade";
 import * as BladesArea from "../BladesArea";
-import { OpenBladeApiChildBladeReference } from "_generated/BladeReferences";
 
 import Toolbars = MsPortalFx.ViewModels.Toolbars;
 import Toolbar = Toolbars.Toolbar;
@@ -72,7 +72,7 @@ export class SampleFrameBlade {
                     // This is an example of how to listen for messages from your iframe.
                     case FramePage.MessageType.OpenBlade:
                         // In this sample, opening a sample child blade.
-                        container.openBlade(new OpenBladeApiChildBladeReference());
+                        container.openBlade(BladeReferences.forBlade("OpenBladeApiChildBlade").createReference());
                         break;
                     default:
                         break;
