@@ -612,7 +612,7 @@ The frameworks supports a new extension load contract that can improve extension
 ## Migration steps
 
 - Since the new extension load contract will no longer execute Program.ts, your extension's Program.ts should only contain the bare minimum scaffolding. Refer to the following Program.ts for an example: https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/1320194?_a=files&path=%2Fsrc%2FSDK%2FAcceptanceTests%2FExtensions%2FInternalSamplesExtension%2FExtension%2FClient%2FProgram.ts
-- You do not need to run `MsPortalFx.Base.Diagnostics.Telemetry.initialize(*extensionName*);` because the framework run it on your behalf.
+- You do not need to run `MsPortalFx.Base.Diagnostics.Telemetry.initialize(*extensionName*);` because the framework will run it on your behalf.
 - If your extension is on the hosting service, you can delete Program.ts.
 - If you have RPC callbacks that need to be registered, you need to migrate them to the new contract by performing the following steps.
   - Create the file `Client\EventHandlers\EventHandlers.ts`.
