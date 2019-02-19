@@ -633,7 +633,7 @@ The frameworks supports a new extension load contract that can improve extension
     }
     ```
 
-    - Refer to this class as an example: https://msazure.visualstudio.com/One/_git/AzureUX-IaaSExp/commit/fba28b74f52b4d8a60497037f9ecd743ff775368?path=%2Fsrc%2Fsrc%2FUx%2FExtensions%2FCompute%2FClient%2FEventHandlers%2FEventHandlers.ts&gridItemType=2&_a=contents
+    - Refer to these changes for an example: https://msazure.visualstudio.com/One/_git/AzureUX-IaaSExp/commit/fba28b74f52b4d8a60497037f9ecd743ff775368?path=%2Fsrc%2Fsrc%2FUx%2FExtensions%2FCompute%2FClient%2FEventHandlers%2FEventHandlers.ts&gridItemType=2&_a=contents
 - Change the `EnableDependencyInjectedViewModels` MSBuild property in your csproj to `EnableFastExtensionLoad`.
 - The URI used to register your extension to the portal should be the application root and should not contain any routes.
   - The hosting service URIs are already registered correctly.
