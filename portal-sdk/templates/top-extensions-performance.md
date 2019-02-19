@@ -606,7 +606,7 @@ The frameworks supports a new extension load contract that can improve extension
 - Complete the dependency injected view models migration.
 - Upgrade to at least SDK 14401.
   - It is recommended that you first upgrade to SDK 12101 and absorb the TypeScript 3.2 compiler breaking changes.
-  - The MSI can be found at this location \\reddog\Builds\branches\git_azureux_portalfx_production_sdk\5.0.302.14401\retail-amd64\src\RDPackages\SdkInstallerPackage\Portal
+  - The MSI can be found at this location [\\\\reddog\Builds\branches\git_azureux_portalfx_production_sdk\5.0.302.14401\retail-amd64\src\RDPackages\SdkInstallerPackage\Portal](\\\\reddog\Builds\branches\git_azureux_portalfx_production_sdk\5.0.302.14401\retail-amd64\src\RDPackages\SdkInstallerPackage\Portal)
   - $(ExtensionPageVersion) breaking change notes: https://msazure.visualstudio.com/One/_workitems/edit/3276047
 
 ## Migration steps
