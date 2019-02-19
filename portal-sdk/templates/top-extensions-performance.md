@@ -634,6 +634,7 @@ The frameworks supports a new extension load contract that can improve extension
     ```
 
     - Refer to these changes for an example: https://msazure.visualstudio.com/One/_git/AzureUX-IaaSExp/commit/fba28b74f52b4d8a60497037f9ecd743ff775368?path=%2Fsrc%2Fsrc%2FUx%2FExtensions%2FCompute%2FClient%2FEventHandlers%2FEventHandlers.ts&gridItemType=2&_a=contents
+    - You can verify whether the RPC callbacks are registered correctly by checking `Output/Content/AzurePortalMetadata/SdkSuppliedEnvironment.json` for `rpc`.
 - Change the `EnableDependencyInjectedViewModels` MSBuild property in your csproj to `EnableFastExtensionLoad`.
 - The URI used to register your extension to the portal should be the application root and should not contain any routes. 
   - You may need to change the URI that you use to sideload your extension.
@@ -650,6 +651,8 @@ The frameworks supports a new extension load contract that can improve extension
 
 - You can verify whether the migration was completed successfully by sideloading your extension in MPAC and checking whether the expression `FxImpl.Extension.isFastExtensionLoadEnabled()` returns `true` in the iframe/webworker of your extension.
 
+
 ## Pull Request Samples
 
-- https://dev.azure.com/msazure/One/_git/Mgmt-RecoverySvcs-Portal/pullrequest/1423720?_a=files
+- https://dev.azure.com/msazure/One/_git/Mgmt-RecoverySvcs-Portal/pullrequest/1423720
+- https://msazure.visualstudio.com/One/_git/MGMT-AppInsights-InsightsPortal/pullrequest/1426564
