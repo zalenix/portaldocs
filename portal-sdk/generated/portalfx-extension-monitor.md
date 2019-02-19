@@ -65,6 +65,10 @@
     * [Prerequistes](top-extensions-performance.md#prerequistes)
     * [Migration steps](top-extensions-performance.md#migration-steps)
     * [Pull Request Samples](top-extensions-performance.md#pull-request-samples)
+* [Fast extension load](top-extensions-performance.md#fast-extension-load)
+    * [Prerequistes](top-extensions-performance.md#prerequistes)
+    * [Migration steps](top-extensions-performance.md#migration-steps)
+    * [Pull Request Samples](top-extensions-performance.md#pull-request-samples)
 
 
 <a name="reliability"></a>

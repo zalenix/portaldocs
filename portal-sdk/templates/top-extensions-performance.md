@@ -218,10 +218,10 @@ Sure! Book in some time in the Azure performance office hours.
 - Migrate to the [hosting service](portalfx-extension-hosting-service.md#extension-hosting-service)
 - Enable [prewarming](http://aka.ms/portalfx/docs/prewarming), running your extension in a web worker
 - Ensure your extension isn't using [shims](#extension-load-shim-dependencies-removing-shims)
+- Migrate your extension to [dependency injection](#dependency-injected-view-models)
+- Migrate your extension to [Fast extension load](#fast-extension-load)
 - Ensure your extension isn't using [obsolete bundles](https://aka.ms/portalfx/obsoletebundles)
 - Use the [Portal's ARM delegation token](#using-the-portals-arm-token)
-- Migrate your extension to [dependency injection](#dependency-injected-view-models)
-- Ensure you aren't making any network requests in your extension boot path (Program.ts file)
 
 ## Operational best practices
 
@@ -396,7 +396,7 @@ Below are the steps to switch to the V2 targets. A video of the migration steps 
 
 ## Prerequisites
 
-- Get your extension working with at least Ibiza SDK 5.0.302.1051. The V2 targets are under active development are continuously being improved. Ideally get your extension working with the latest SDK.
+- Get your extension working with at least Ibiza SDK 5.0.302.6501. The V2 targets are under active development are continuously being improved. Ideally get your extension working with the latest SDK.
 
 ## Get your extension building with tsconfig.json
 

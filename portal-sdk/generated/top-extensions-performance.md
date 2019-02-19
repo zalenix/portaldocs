@@ -36,6 +36,10 @@
     * [Prerequistes](#dependency-injected-view-models-prerequistes)
     * [Migration steps](#dependency-injected-view-models-migration-steps)
     * [Pull Request Samples](#dependency-injected-view-models-pull-request-samples)
+* [Fast extension load](#fast-extension-load)
+    * [Prerequistes](#fast-extension-load-prerequistes)
+    * [Migration steps](#fast-extension-load-migration-steps)
+    * [Pull Request Samples](#fast-extension-load-pull-request-samples)
 
 
 <a name="performance-overview"></a>
@@ -273,10 +277,10 @@ Sure! Book in some time in the Azure performance office hours.
 - Migrate to the [hosting service](portalfx-extension-hosting-service.md#extension-hosting-service)
 - Enable [prewarming](http://aka.ms/portalfx/docs/prewarming), running your extension in a web worker
 - Ensure your extension isn't using [shims](#extension-load-shim-dependencies-removing-shims)
+- Migrate your extension to [dependency injection](#dependency-injected-view-models)
+- Migrate your extension to [Fast extension load](#fast-extension-load)
 - Ensure your extension isn't using [obsolete bundles](https://aka.ms/portalfx/obsoletebundles)
 - Use the [Portal's ARM delegation token](#using-the-portals-arm-token)
-- Migrate your extension to [dependency injection](#dependency-injected-view-models)
-- Ensure you aren't making any network requests in your extension boot path (Program.ts file)
 
 <a name="performance-best-practices-operational-best-practices"></a>
 ## Operational best practices
@@ -463,7 +467,7 @@ Below are the steps to switch to the V2 targets. A video of the migration steps 
 <a name="v2-targets-prerequisites"></a>
 ## Prerequisites
 
-- Get your extension working with at least Ibiza SDK 5.0.302.1051. The V2 targets are under active development are continuously being improved. Ideally get your extension working with the latest SDK.
+- Get your extension working with at least Ibiza SDK 5.0.302.6501. The V2 targets are under active development are continuously being improved. Ideally get your extension working with the latest SDK.
 
 <a name="v2-targets-get-your-extension-building-with-tsconfig-json"></a>
 ## Get your extension building with tsconfig.json
@@ -671,3 +675,68 @@ MsPortalFx.require("Fx/DependencyInjection")
 
 [TelemetryOnboarding]: <portalfx-telemetry-getting-started.md>
 [Ext-Perf/Rel-Report]: <http://aka.ms/portalfx/dashboard/extensionperf>
+
+<a name="fast-extension-load"></a>
+# Fast extension load
+
+The frameworks supports a new extension load contract that can improve extension load performance by one second at the 95th percentile by deprecating Program.ts and the classic extension initialization code path. Once your extension uses the new contract, the portal will no longer download and execute Program.ts and _generated/Manifest.ts. _generated/ExtensionDefinition.ts will be bundled with your blades.
+
+<a name="fast-extension-load-prerequistes"></a>
+## Prerequistes
+
+- Remove all requireJS shims.
+- Complete the dependency injected view models migration.
+- Upgrade to at least SDK 14401.
+  - It is recommended that you first upgrade to SDK 12101 and absorb the TypeScript 3.2 compiler breaking changes.
+  - The MSI can be found at this location [\\\\reddog\Builds\branches\git_azureux_portalfx_production_sdk\5.0.302.14401\retail-amd64\src\RDPackages\SdkInstallerPackage\Portal](\\\\reddog\Builds\branches\git_azureux_portalfx_production_sdk\5.0.302.14401\retail-amd64\src\RDPackages\SdkInstallerPackage\Portal)
+  - $(ExtensionPageVersion) breaking change notes: https://msazure.visualstudio.com/One/_workitems/edit/3276047
+
+<a name="fast-extension-load-migration-steps"></a>
+## Migration steps
+
+- Since the new extension load contract will no longer execute Program.ts, your extension's Program.ts should only contain the bare minimum scaffolding. Refer to the following Program.ts for an example: https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx/pullrequest/1320194?_a=files&path=%2Fsrc%2FSDK%2FAcceptanceTests%2FExtensions%2FInternalSamplesExtension%2FExtension%2FClient%2FProgram.ts
+- You do not need to run `MsPortalFx.Base.Diagnostics.Telemetry.initialize(*extensionName*);` because the framework will run it on your behalf.
+- If your extension is on the hosting service, you can delete Program.ts.
+- If you have RPC callbacks that need to be registered, you need to migrate them to the new contract by performing the following steps.
+  - Create the file `Client\EventHandlers\EventHandlers.ts`.
+  - Create a class like the one below and add your RPC registrations.
+
+    ```typescript
+
+    import * as Di from "Fx/DependencyInjection";
+
+    import Rpc = MsPortalFx.Services.Rpc;
+
+    @Di.Class()
+    @Rpc.EventHandler.Decorator("rpc")
+    export class EventHandlers {
+        public registerEndPoints(): void {
+            // Add RPC registrations here
+        }
+    }
+    ```
+
+    - Refer to these changes for an example: https://msazure.visualstudio.com/One/_git/AzureUX-IaaSExp/commit/fba28b74f52b4d8a60497037f9ecd743ff775368?path=%2Fsrc%2Fsrc%2FUx%2FExtensions%2FCompute%2FClient%2FEventHandlers%2FEventHandlers.ts&gridItemType=2&_a=contents
+    - You can verify whether the RPC callbacks are registered correctly by checking `Output/Content/AzurePortalMetadata/SdkSuppliedEnvironment.json` for `rpc`.
+- Change the `EnableDependencyInjectedViewModels` MSBuild property in your csproj to `EnableFastExtensionLoad`.
+- The URI used to register your extension to the portal should be the application root and should not contain any routes. 
+  - You may need to change the URI that you use to sideload your extension.
+  - The hosting service URIs are already registered correctly.
+  - You can add a urlMapping in your web.config to redirect `~` to your home page controller. This change does not have to be deployed to production if your extension is already on the hosting service.
+
+    ```xml
+        <system.web>
+            <urlMappings enabled="true">
+                <add url="~" mappedUrl="~/Home/Index"/>
+            </urlMappings>
+        </system.web>
+    ```
+
+- You can verify whether the migration was completed successfully by sideloading your extension in MPAC and checking whether the expression `FxImpl.Extension.isFastExtensionLoadEnabled()` returns `true` in the iframe/webworker of your extension.
+
+
+<a name="fast-extension-load-pull-request-samples"></a>
+## Pull Request Samples
+
+- https://dev.azure.com/msazure/One/_git/Mgmt-RecoverySvcs-Portal/pullrequest/1423720
+- https://msazure.visualstudio.com/One/_git/MGMT-AppInsights-InsightsPortal/pullrequest/1426564
