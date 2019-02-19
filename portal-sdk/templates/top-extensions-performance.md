@@ -635,7 +635,8 @@ The frameworks supports a new extension load contract that can improve extension
 
     - Refer to these changes for an example: https://msazure.visualstudio.com/One/_git/AzureUX-IaaSExp/commit/fba28b74f52b4d8a60497037f9ecd743ff775368?path=%2Fsrc%2Fsrc%2FUx%2FExtensions%2FCompute%2FClient%2FEventHandlers%2FEventHandlers.ts&gridItemType=2&_a=contents
 - Change the `EnableDependencyInjectedViewModels` MSBuild property in your csproj to `EnableFastExtensionLoad`.
-- The URI used to register your extension to the portal should be the application root and should not contain any routes.
+- The URI used to register your extension to the portal should be the application root and should not contain any routes. 
+  - You may need to change the URI that you use to sideload your extension.
   - The hosting service URIs are already registered correctly.
   - You can add a urlMapping in your web.config to redirect `~` to your home page controller. This change does not have to be deployed to production if your extension is already on the hosting service.
 
