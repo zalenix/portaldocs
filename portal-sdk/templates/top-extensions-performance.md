@@ -643,7 +643,7 @@ The frameworks supports a new extension load contract that can improve extension
     ```xml
         <system.web>
             <urlMappings enabled="true">
-                <add url="~" mappedUrl="~/Home/Index"/>
+                <add url="~/" mappedUrl="~/Home/Index"/>
             </urlMappings>
         </system.web>
     ```
