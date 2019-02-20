@@ -638,7 +638,7 @@ The frameworks supports a new extension load contract that can improve extension
 - The URI used to register your extension to the portal should be the application root and should not contain any routes. 
   - You may need to change the URI that you use to sideload your extension.
   - The hosting service URIs are already registered correctly.
-  - You can add a urlMapping in your web.config to redirect `~` to your home page controller. This change does not have to be deployed to production if your extension is already on the hosting service.
+  - You can add a urlMapping in your web.config to redirect the root application path `~/` to your home page controller. This change does not have to be deployed to production if your extension is already on the hosting service.
 
     ```xml
         <system.web>
