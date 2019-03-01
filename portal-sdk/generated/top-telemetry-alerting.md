@@ -36,6 +36,8 @@ There are number of framework provided alerts:
 1. Extension SDK age
     - Sev3 IcM incdient for an extension when its SDK is older than 60 days
     - Sev2 for over 90 days
+    
+    Note: You can set the time of the day at which you want to trigger an SDK age alert. Learn more about timezone based alerting [here](#timezone-based-alerting).
 1. Extension alive
 1. Performance
 1. Availability
@@ -787,6 +789,40 @@ Alerts are supported in national clouds. Specify the national cloud portal domai
     ...
 }
 ```
+
+## Timezone based alerting
+
+As Ibiza has extension developers spread across the world, we have a mechanism to trigger alerts in the business hours of the extension team. Currently, the alerts supported for timezone based alerting are - 
+1. SDK Age alerts.
+
+For all other alerts, the extension owner cannot pick a timezone and will be alerted as soon as the alert trigger conditions are met.
+
+To configure timezone based alerting, you need to specify a `businessHourStartTimeUtc` property in the alerting config. The value takes an integer value from `0` to `23` as a string. The value represents the UTC hour at which business hours start in the extension team's region.
+
+When an alert is triggered, the Ibiza team guarentees that you will receive it within 6 hours of the hour configured as `businessHourStartTimeUtc`.
+
+Examples - 
+
+1. If your region is 6 hours ahead of UTC (UTC +6), and you want to receive an alert between 10 AM to 4 PM, you can set `businessHourStartTimeUtc` to "4" as 10 AM in your region will be 4 AM in UTC.
+
+1. If your region is 8 hours behind UTC (UTC -8), and you want to receive an alert between 10 AM to 4 PM, you can set `businessHourStartTimeUtc` to "18" as 10 AM in your region will be 6 PM in UTC.
+
+Here is an example of how to specify `businessHourStartTimeUtc` in the config for a team that wants to receive alerts between 4 AM and 10 AM UTC. 
+
+```json
+{
+    "extensionName": "Your_Extension_Name",
+    "businessHourStartTimeUtc": "4",
+    "enabled": true,
+    "environments": [
+        ...
+    ]
+    ...
+}
+```
+
+If no value is specified for `businessHourStartTimeUtc`, alerts are triggered in PST business hours by default.
+
 
 [alerting-onboarding]: https://aka.ms/portalfx/alerting-onboarding
 [alerting-kusto-partner]: https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/azportalpartner.kusto.windows.net/databases/Partner?q=H4sIAAAAAAAEAEvOKS0uSS3SUHesKsgvKknMUdfUS0ksSUxKLE7VUApILCrJSy1S0tRzSU1LLM0pcS7KBKrOTNTQBABHZQn9OQAAAA%3d%3d
