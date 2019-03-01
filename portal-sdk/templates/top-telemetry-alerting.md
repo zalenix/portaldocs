@@ -14,6 +14,8 @@ There are number of framework provided alerts:
 1. Extension SDK age
     - Sev3 IcM incdient for an extension when its SDK is older than 60 days
     - Sev2 for over 90 days
+    
+    Note: You can set the time of the day at which you want to trigger an SDK age alert. Learn more about timezone based alerting [here](#timezone-based-alerting).
 1. Extension alive
 1. Performance
 1. Availability
@@ -711,7 +713,7 @@ For all other alerts, the extension owner cannot pick a timezone and will be ale
 
 To configure timezone based alerting, you need to specify a `businessHourStartTimeUtc` property in the alerting config. The value takes an integer value from `0` to `23` as a string. The value represents the UTC hour at which business hours start in the extension team's region.
 
-The Ibiza team guarentees that you will receive an alert within 6 hours of the hour configured as `businessHourStartTimeUtc`.
+When an alert is triggered, the Ibiza team guarentees that you will receive it within 6 hours of the hour configured as `businessHourStartTimeUtc`.
 
 Examples - 
 
