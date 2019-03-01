@@ -22,8 +22,6 @@ There are number of framework provided alerts:
 1. Client Error
 1. Create regression
 
-Note: You can set the time of the day at which you want to trigger an SDK age alert. Learn more about timezone based alerting [here](#timezone-based-alerting).
-
 Some of these alert types are configurable per extension. The following alerts types currently support extension configuration:
 
 1. [Performance](#performance)
