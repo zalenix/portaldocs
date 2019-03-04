@@ -139,11 +139,13 @@ Note:  Incorrect or insufficient information in the workitem could delay the onb
 ![storage](./../media/portalfx-extensions-onboarding/validate-hostingsvc-onboarding-prod.png)
 
 ## Step 2 - Portal Framework
-1) Register your extension with Azure portal framework by raising a pull request to the appropriate extension config json. eg: extensions.dogfood.json, extensions.prod.json etc,.
-2) Always raise the PR to the Dev branch
-3) For Prod config chanages, once the PR is approved, please cherry pick the change to Mpac and then to Prod. Portal team does not auto merge the changes to other branches
-4) Always cherry-pick the change from previous downlevel branch. eg: Dev to Mpac, Mpac to Prod.
-5) Here is a sample PR change for dogfood branch.
+1) Register your extension with Azure portal framework by raising a pull request to the appropriate extension config json. eg: [extensions.dogfood.json](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx?path=%2Fsrc%2FRDPackages%2FOneCloud%2FExtensions.dogfood.json&version=GBdev), [extensions.prod.json](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx?path=%2Fsrc%2FRDPackages%2FOneCloud%2FExtensions.prod.json&version=GBdev) etc,. If you are disabling the extension in the given environment(eg: "flags": "Disabled"), you do not have to increment the extension count. 
+2) If you are NOT using disabled flag, you must increment the extension count in [DeploymentSettingsTests.cs](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx?path=%2Fsrc%2FStbPortal%2FWebsite.Server.Tests%2FDeploymentSettingsTests.cs&version=GBdev) 
+![storage](./../media/portalfx-extensions-onboarding/extension-count.png)
+3) Always raise the PR to the Dev branch
+4) For Prod config chanages, once the PR is approved, please cherry pick the change to Mpac and then to Prod. Portal team does not auto merge the changes to other branches
+5) Always cherry-pick the change from previous downlevel branch. eg: Dev to Mpac, Mpac to Prod.
+6) Here is a sample PR change for dogfood branch.
 
 ![storage container](./../media/portalfx-extensions-onboarding/portal-framework-extension-config.png)
 
