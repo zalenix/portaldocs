@@ -171,6 +171,7 @@ htmlTemplate: `<div data-bind="pcControl: essentials"></div>`,
 })
 // The 'Configurable' decorator is applied here so the Blade can persist the 'expanded' property of the essentials control.
 @TemplateBlade.Configurable.Decorator()
+@TemplateBlade.InjectableModel.Decorator(DataContext)
 export class EssentialsDefaultBlade {
 
 ```
@@ -286,8 +287,14 @@ public onInitialize(): Q.Promise<void> {
  * Initializes the Essentials control.
  */
 private _initializeControl(): void {
+    const bladeLink: BladeLink = {
+        bladeReference: ko.observable(BladeReferences.forBlade("NoParameterChildBlade").createReference()),
+    };
+    const resourceLink: ResourceLink = {
+        resourceId: "/subscriptions/sub123/resourceGroups/accounts/providers/Microsoft.test/accounts/Peter",
+    };
     this.essentials =  Essentials.create(this.context.container, {
-        resourceId: "/subscriptions/sub123/resourcegroups/snowtraxpsx/providers/Microsoft.Test/snowmobiles/snowtraxpsx600",
+        resourceId: "/subscriptions/sub123/resourcegroups/servertest/providers/Microsoft.test/virtualservers/default1",
         includeTags: true,
         additionalRight: [{
             label: ClientResources.essentialsItem,
@@ -301,9 +308,17 @@ private _initializeControl(): void {
             value: "Bing.com",
             onClick: new ClickableLink(ko.observable("http://www.bing.com")),
         }, {
+            label: ClientResources.essentialsItem,
+            value: "Blade Link",
+            onClick: bladeLink,
+        }, {
+            label: ClientResources.essentialsItem,
+            value: "Resource Link",
+            onClick: resourceLink,
+        }, {
             label: ClientResources.essentialsMultiLineItem,
             lines: [{
-                value: ClientResources.essentialsSampleString,
+                value: ClientResources.essentialsLongString,
             }, {
                 value: "Bing.com",
                 onClick: new ClickableLink(ko.observable("http://www.bing.com")),
@@ -369,6 +384,7 @@ htmlTemplate: `<div data-bind="pcControl: essentials"></div>`,
 })
 // The 'Configurable' decorator is applied here so the Blade can persist the 'expanded' property of the essentials control.
 @TemplateBlade.Configurable.Decorator()
+@TemplateBlade.InjectableModel.Decorator(DataContext)
 export class EssentialsCustomLayoutBlade {
 
 ```
@@ -432,7 +448,7 @@ public onInitialize(): Q.Promise<void> {
 private _initializeControl(): void {
     let clickCounter = 0;
     this.essentials =  Essentials.create(this.context.container, {
-        resourceId: "/subscriptions/sub123/resourcegroups/snowtraxpsx/providers/Microsoft.Test/snowmobiles/snowtraxpsx600",
+        resourceId: "/subscriptions/sub123/resourcegroups/servertest/providers/Microsoft.test/virtualservers/default1",
         left: [
             Essentials.BuiltInType.Status,
             {
@@ -516,6 +532,7 @@ htmlTemplate: `<div data-bind="pcControl: essentials"></div>`,
 })
 // The 'Configurable' decorator is applied here so the Blade can persist the 'expanded' property of the essentials control.
 @TemplateBlade.Configurable.Decorator()
+@TemplateBlade.InjectableModel.Decorator(DataContext)
 export class EssentialsNonResourceBlade {
 
 ```
@@ -736,7 +753,7 @@ As the above code shows, the sample AJAX response contains 4 properties. First 2
 
 this.essentials =  Essentials.create(this.context.container, {
     responsiveColumns: true,
-    resourceId: "/subscriptions/sub123/resourcegroups/snowtraxpsx/providers/Microsoft.Test/snowmobiles/snowtraxpsx600",
+    resourceId: "/subscriptions/sub123/resourcegroups/servertest/providers/Microsoft.test/virtualservers/default1",
     additionalRight: [{
         label: ClientResources.essentialsItem,
         value: ClientResources.essentialsSampleString,
@@ -744,6 +761,10 @@ this.essentials =  Essentials.create(this.context.container, {
         label: ClientResources.essentialsItem,
         value: "Bing.com",
         onClick: new ClickableLink(ko.observable("http://www.bing.com")),
+        icon: {
+            image: MsPortalFx.Base.Images.SmileyHappy(),
+            position: Essentials.IconPosition.Right,
+        },
     }, {
         label: ClientResources.essentialsMultiLineItem,
         lines: [{
@@ -751,6 +772,10 @@ this.essentials =  Essentials.create(this.context.container, {
         }, {
             value: "Bing.com",
             onClick: new ClickableLink(ko.observable("http://www.bing.com")),
+            icon: {
+                image: MsPortalFx.Base.Images.SmileyHappy(),
+                position: Essentials.IconPosition.Left,
+            },
         }],
     }],
     onBladeOpen: (origin: Essentials.BuiltInType) => {

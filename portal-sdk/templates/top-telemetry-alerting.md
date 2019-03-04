@@ -1,6 +1,6 @@
 {"gitdown": "contents"}
 
-# Overview
+## Overview
 
 The framework provides an out of the box alerting infrastructure. Some of these alerts you will be automatically onboarded to and others you will have to onboard manually.
 They offer a great way to constantly assess your product and ensure you are within SLAs and not regressing within real time.
@@ -14,6 +14,8 @@ There are number of framework provided alerts:
 1. Extension SDK age
     - Sev3 IcM incdient for an extension when its SDK is older than 60 days
     - Sev2 for over 90 days
+    
+    Note: You can set the time of the day at which you want to trigger an SDK age alert. Learn more about timezone based alerting [here](#timezone-based-alerting).
 1. Extension alive
 1. Performance
 1. Availability
@@ -619,14 +621,19 @@ Alerts will only trigger when the following criteria are met.
 1. Hourly create successRate is below {minSuccessRateOverPastHour} and hourly create totalcount is above {minTotalCountOverPastHour}
 1. 24-hour create successRate is below {minSuccessRateOverPast24Hours} and 24-hour create totalcount is above {minTotalCountOverPast24Hours}
 
-## Fequently asked questions
 
-### How do I onboard
 
-1. Generate the desired per extension configuration
-    - This can be done by manually editing the JSON file.
-1. Fill out the following work item [https://aka.ms/portalfx/alerting-onboarding][alerting-onboarding] and attach configuration JSON
-1. Set up correlation rules in ICM
+## How do I onboard
+
+
+1. Submit and complete a Pull Request in [Azure Portal Alerting Repo a.k.a. Alerting Repo](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx-Alerting).
+
+> For non-create alert the customization JSON should be located at `products/{YourServiceNameInIcM}/{ExtensionName}.alerting.json`. It's recommended to have an `owners.txt` in the same folder as the customization JSON file. The `owners.txt` has AAD enabled email alias or/and individual MSFT aliases. Anyone from `owners.txt` can approve the Pull Request for any changes within that folder or its subfolder.
+
+> For create alert the customization JSON should be located at `products/IbizaFx/Create/{ExtensionName}.create.alerting.json`.
+
+
+2. Set up correlation rules in ICM
 
 | Field | Value |
 | -----  | ----- |
@@ -653,17 +660,15 @@ Alerts will only trigger when the following criteria are met.
 | Performance - Blade | BladeLoadPerformance |
 | Performance - Part | PartLoadPerformance|
 
-### How do I know my extension's current configuration
+## How do I know my extension's current configuration
 
-Click the [this link][alerting-extension-customization] and replace `HubsExtension` with `YOUR_EXTENSION_NAME` and run Kusto function, GetExtensionCustomizationJson. Or go to [https://azportalpartner.kusto.windows.net/Partner][kusto-partner-database] to open Kusto.Explorer and run Kusto function,
-GetExtensionCustomizationJson("YOUR_EXTENSION_NAME"). The regex is supported. You can view alert customization of onboarded extensions. The extension alert customization only exists once you have onboarded to the alerting infrastructure.
-> The customizaztion has a daily sync from the SQL database starting at 17:00 PST.
+Alerting is running off customization JSONs that live in [Alerting Repo](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx-Alerting). All the non-create alerts customimzation JSONs are located at `products/{YourServiceNameInIcM}/{ExtensionName}.alerting.json`. All the create alerts customization JSONs are located at `products/IbizaFx/Create/{ExtensionName}.create.alerting.json`.
 
-### What happens if I need to update my configuration
+## What happens if I need to update my configuration
 
-1. Contact [ibizafxhot](mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com),
-1. State in the email which configuration you require to be updated and attached the updated configuration
-1. We will respond as soon as possible and apply the updates
+Submit and complete a Pull Request on your extension's customization JSON in [Alerting Repo](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx-Alerting). The update is 'live' once the Pull Request is complete.
+
+> For each extension there's an `owners.txt` that is in the same or parent folder as the JSON. The `owners.txt` has AAD enabled email alias or/and individual MSFT aliases. Anyone from `owners.txt` can approve the Pull Request. The `owners.txt` is created and maintained by extension team.
 
 ### How is mapping done from extension name to IcM team and service names
 
@@ -697,11 +702,37 @@ Alerts are supported in national clouds. Specify the national cloud portal domai
 }
 ```
 
-[alerting-onboarding]: https://aka.ms/portalfx/alerting-onboarding
-[alerting-kusto-partner]: https://ailoganalyticsportal-privatecluster.cloudapp.net/clusters/azportalpartner.kusto.windows.net/databases/Partner?q=H4sIAAAAAAAEAEvOKS0uSS3SUHesKsgvKknMUdfUS0ksSUxKLE7VUApILCrJSy1S0tRzSU1LLM0pcS7KBKrOTNTQBABHZQn9OQAAAA%3d%3d
+## Timezone based alerting
 
-[datacenter-code-name]: https://aka.ms/portalfx/alerting/datacenter-code-name
-[safe-deployment-stage]: https://aka.ms/portalfx/alerting/safe-deployment-stage
-[alerting-onboarding]: https://aka.ms/portalfx/alerting-onboarding
-[alerting-extension-customization]: https://azportalpartner.kusto.windows.net/Partner?query=GetExtensionCustomizationJson%28%5C%22HubsExtension%5C%22%29
-[kusto-partner-database]: https://azportalpartner.kusto.windows.net/Partner
+As Ibiza has extension developers spread across the world, we have a mechanism to trigger alerts in the business hours of the extension team. Currently, the alerts supported for timezone based alerting are - 
+1. SDK Age alerts.
+
+For all other alerts, the extension owner cannot pick a timezone and will be alerted as soon as the alert trigger conditions are met.
+
+To configure timezone based alerting, you need to specify a `businessHourStartTimeUtc` property in the alerting config. The value takes an integer value from `0` to `23` as a string. The value represents the UTC hour at which business hours start in the extension team's region.
+
+When an alert is triggered, the Ibiza team guarentees that you will receive it within 6 hours of the hour configured as `businessHourStartTimeUtc`.
+
+Examples - 
+
+1. If your region is 6 hours ahead of UTC (UTC +6), and you want to receive an alert between 10 AM to 4 PM, you can set `businessHourStartTimeUtc` to "4" as 10 AM in your region will be 4 AM in UTC.
+
+1. If your region is 8 hours behind UTC (UTC -8), and you want to receive an alert between 10 AM to 4 PM, you can set `businessHourStartTimeUtc` to "18" as 10 AM in your region will be 6 PM in UTC.
+
+Here is an example of how to specify `businessHourStartTimeUtc` in the config for a team that wants to receive alerts between 4 AM and 10 AM UTC. 
+
+```json
+{
+    "extensionName": "Your_Extension_Name",
+    "businessHourStartTimeUtc": "4",
+    "enabled": true,
+    "environments": [
+        ...
+    ]
+    ...
+}
+```
+
+If no value is specified for `businessHourStartTimeUtc`, alerts are triggered in PST business hours by default.
+
+

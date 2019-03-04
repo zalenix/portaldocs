@@ -2,7 +2,9 @@
 <a name="getting-started"></a>
 # Getting Started
 
-* [Getting started with the Portal SDK](portalfx-creating-extensions.md#getting-started-with-the-portal-sdk)
+* [Getting Started with the Portal SDK](top-extensions-getting-started.md#getting-started-with-the-portal-sdk)
+* [Questions?](top-extensions-getting-started.md#questions)
+* [FAQ:](top-extensions-getting-started.md#faq)
 
 * [Samples extension](portalfx-sample-extensions.md#samples-extension)
 
@@ -10,6 +12,8 @@
 <a name="common-scenarios"></a>
 # Common scenarios
 * [Building browse experiences](portalfx-browse.md#building-browse-experiences)
+    * [No-code Browse](portalfx-browse.md#no-code-browse)
+    * [Custom blade](portalfx-browse.md#custom-blade)
 
 * [Building create experiences](portalfx-create.md#building-create-experiences)
 * [Building custom create forms](portalfx-create.md#building-custom-create-forms)
@@ -22,7 +26,6 @@
 * [Defining Blades and Parts using TypeScript decorators (a.k.a. 'no-PDL')](portalfx-no-pdl-programming.md#defining-blades-and-parts-using-typescript-decorators-a-k-a-no-pdl)
 
 
-* [Blades](portalfx-blades.md#blades)
 
 * [Developing Forms](portalfx-forms.md#developing-forms)
     * [FAQ](portalfx-forms.md#faq)
@@ -30,7 +33,6 @@
 
 * [Monitor Chart](portalfx-controls-monitor-chart.md#monitor-chart)
 
-* [EditScopeless Forms](portalfx-editscopeless-forms.md#editscopeless-forms)
 
 * [Using Fx/Controls in EditScope backed forms](portalfx-fxcontrols-editscope-forms.md#using-fx-controls-in-editscope-backed-forms)
 
@@ -76,8 +78,6 @@
 
 * [Debugging extension load failures](portalfx-debugging-extension-load-failures.md#debugging-extension-load-failures)
 
-* [Testing in production](portalfx-testinprod.md#testing-in-production)
-* [Marking automated tests as test/synthetic traffic](portalfx-testinprod.md#marking-automated-tests-as-test-synthetic-traffic)
 
 
 <a name="other"></a>
@@ -87,6 +87,4 @@
 * [Understanding the blade view model](portalfx-blade-viewmodel.md#understanding-the-blade-view-model)
     * [Blade initialization](portalfx-blade-viewmodel.md#blade-initialization)
 
-* [How to expose config settings for consumption in the client](portalfx-load-configuration.md#how-to-expose-config-settings-for-consumption-in-the-client)
-* [Step by step walkthrough](portalfx-load-configuration.md#step-by-step-walkthrough)
 

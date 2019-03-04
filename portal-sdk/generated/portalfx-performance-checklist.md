@@ -6,5 +6,5 @@
 - [Extension HomePage Caching](portalfx-extension-homepage-caching.md)
 - [Persistent Caching of scripts across extension updates](portalfx-extension-persistent-caching-of-scripts.md)
 - [Optimize number CORS preflight requests to ARM using invokeApi](portalfx-data-loadingdata.md)
-- [Data best practices](portalfx-performance.md)
+- [Data best practices](top-extensions-performance.md)
 - [Viewmodel best practices](portalfx-performance-checklist.md)

@@ -47,7 +47,7 @@ This tutorial will provide you step by step instructions for creating a UnitTest
 ```
 
 Note:
-* This document uses relative paths to indicate where you should add each file relative to the root of your test folder e.g ./package.json indicates adding an index.html at the root of your test project folder Extension.UnitTests/package.json
+* This document uses relative paths to indicate where you should add each file relative to the root of your test folder e.g ./package.json indicates adding an package.json at the root of your test project folder Extension.UnitTests/package.json
 * All code snippets provided are for `Microsoft.Portal.Tools.V2.targets` if you are using it's predecessor `Microsoft.Portal.Tools.targets` see the [FAQ](#FAQ) at the bottom of this document.
 
 ### Dev/Build time configuration
@@ -189,9 +189,6 @@ Using karmajs for a single test run useful for scenarios such as running in CI
 
 `npm run test-ci` launches karmajs in your configured target browsers for a single run.
 
-Using a browser as a host (deprecated):
-`npm run test-dev` opens index.html in your regular browser.
-
 Note that the karma.conf.js is configured to run your tests in both in Edge and Chrome. You may also pick and choose additional browsers via the launcher plugins [documented here](https://karma-runner.github.io/2.0/config/browsers.html).
 
 ### Test Results
@@ -320,16 +317,6 @@ const options : harness.InitializationOptions = {
 harness.init(options);
 
 ...
-
-```
-
-## Simple html test harness for running mocha tests
-
-Even though it is not that useful for gated CI some teams prefer to have a simple index.html for debugging their tests in the browser rather than using the karma Debug view. If you would like this alternative approach use the following.
-
-```html
-
-{"gitdown": "include-file", "file": "../samples/VS/PT/Default/Extension.UnitTests/index.html"}
 
 ```
 

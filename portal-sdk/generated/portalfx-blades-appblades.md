@@ -166,7 +166,7 @@ function receiveMessage(event) {
     //     return;
     // }
 
-    if (event.data["signature"] !== "FxAppBlade") {
+    if (!event.data || event.data["signature"] !== "FxAppBlade") {
         return;
     }
     var data = event.data["data"];

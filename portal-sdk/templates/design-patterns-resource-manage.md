@@ -188,6 +188,8 @@ Display guiding content and key information about the resource
 
 ## Telemetry
 
+* Resources and menus with more than 20,000 clicks over last 28 days [View report](https://aka.ms/portalfx/fundamentals/resourcemenu)
+
 # For developers 
 Developers can use the following information to get started implementing this pattern
 

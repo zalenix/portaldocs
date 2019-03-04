@@ -41,7 +41,7 @@ For more information about performance and reliability, see the following resour
 
 * Checklist
 
-    [portalfx-performance.md](portalfx-performance.md)
+    [portalfx-performance.md](top-extensions-performance.md)
 
 ###	Reliability
 

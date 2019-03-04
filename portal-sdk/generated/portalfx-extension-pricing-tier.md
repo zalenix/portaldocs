@@ -40,7 +40,7 @@ this.specDropDown = new SpecsDropDown(container, {
     // This extender should be the same extender view model used for the spec picker blade.
     // You may need to extend your data context or share your data context between your
     // create area and you spec picker area to use the extender with the current datacontext.
-    specPickerExtender: new BillingSpecPickerV3Extender(container, initialDataObservable(), dataContext),
+    specPickerExtender: new BillingSpecPickerV3Extender(container),
     pricingBlade: {
         detailBlade: "BillingSpecPickerV3",
         detailBladeInputs: {},
@@ -66,15 +66,12 @@ a blade view model,
 /**
 * The view model that drives the Virtual Machines specific spec picker blade.
 */
+@Di.Class("viewModel")
 export class RobotSpecPickerV3BladeViewModel extends MsPortalFx.ViewModels.Blade {
    /**
     * Creates the view model for the spec picker blade.
-    *
-    * @param container The view model for the blade container.
-    * @param initialState The initial state for the blade view model.
-    * @param dataContext The data context for the Create area.
     */
-   constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: HubsArea.DataContext) {
+   constructor() {
        super();
        this.title(ClientResources.vmSpecPickerBladeTitle);
        this.subtitle(ClientResources.vmSpecPickerBladeSubtitle);
@@ -117,10 +114,9 @@ export class RobotSpecPickerV3Extender implements HubsExtension.Azure.SpecPicker
     * Extender constructor.
     *
     * @param container The view model for the part container.
-    * @param initialState The initial state for the part.
     * @param dataContext The data context.
     */
-   constructor(container: MsPortalFx.ViewModels.ContainerContract, initialState: any, dataContext: HubsArea.DataContext, selectionMode?: Lists.ListView.SelectionMode) {
+   constructor(container: MsPortalFx.ViewModels.ContainerContract, dataContext: HubsArea.DataContext, selectionMode?: Lists.ListView.SelectionMode) {
        
 ```
 

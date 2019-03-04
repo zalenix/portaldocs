@@ -4,7 +4,7 @@
 <a name="create-overview"></a>
 ### Overview
 
-The create experience is one of the most important customer journeys within the portal. Which is why our designers have spent many months testing and validating different design patterns. Our most recent design incorporates a full screen blade and uses horizontal tabs to help organize different configuration settings into sections. The goal is to develop a consistent, simple, intuitive, and quick customer experience across resources.
+The create experience is one of the most important customer journeys within the portal. Which is why our designers have spent many months testing and validating different design guidelines. Our most recent design incorporates a full screen blade and uses horizontal tabs to help organize different configuration settings into sections. The goal is to develop a consistent, simple, intuitive, and quick customer experience across resources.
 
 Ask a `create` questions on [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/ibiza-create)
 	
@@ -13,10 +13,10 @@ Ask a `create` questions on [Stack Overflow](https://stackoverflow.microsoft.com
 
 The  most recent Portal SDK contains a sample create in `SamplesExtension/Client/V2/Create/Engine/CreateArmEngineBlade.ts`. This sample uses NoPDL and includes 3 essential tabs and 2 optional tabs. All the styling and validation patterns are included and can be easily augmented to meet your needs. The remainder of this document is intended to help you understand the key design principles and create a consistent experience.
 
-<a name="create-related-design-patterns"></a>
-### Related design patterns
+<a name="create-related-design-guidelines"></a>
+### Related design guidelines
 
--   Resource Create [top-designpatterns-resource-create.md](top-designpatterns-resource-create.md)
+-   Create a Resource [top-design-patterns-resource-create.md](top-design-patterns-resource-create.md)
 
 <a name="create-design-principles"></a>
 ### Design Principles
@@ -77,19 +77,17 @@ const engineDisplacement = FxDropDown.create<string>(container, {
         new Validations.Required(),
     ],
     subLabel: {
-        htmlTemplate: `<a href data-bind="text: createNew, click: onClick"></a>`,
+        htmlTemplate: `<a href="#" data-bind="text: createNew, fxclick: onClick"></a>`,
         viewModel: {
             createNew: ClientResources.createNew,
             onClick: () => {
-                container.openContextPane(new CreateDisplacementItemBladeReference(
-                    {
-                        label: ClientResources.engineDisplacementColumn,
-                    },
-                    (reason, data) => {
+                container.openContextPane(BladeReferences.forBlade("CreateDisplacementItemBlade").createReference({
+                    parameters: { label: ClientResources.engineDisplacementColumn },
+                    onClosed: (reason, data) => {
                         if (reason === BladeClosedReason.ChildClosedSelf) {
                             const { value } = data;
                             const currentItems = displacementItems();
-                            if (MsPortalFx.findIndex(currentItems, (i) => ko.unwrap(i.text).localeCompareIgnoreCase(value) === 0) === -1) {
+                            if (MsPortalFx.findIndex(currentItems, (i) => (<string>ko.unwrap(i.text)).localeCompareIgnoreCase(value) === 0) === -1) {
                                 const newItem = {
                                     text: value,
                                     value: value,
@@ -106,8 +104,7 @@ const engineDisplacement = FxDropDown.create<string>(container, {
 
                             this._displacement(value);
                         }
-                    })
-                );
+                    }}));
             },
         },
     },

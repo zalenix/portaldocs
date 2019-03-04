@@ -13,12 +13,11 @@
     * [Create regression](#overview-create-regression)
         * [Configuration](#overview-create-regression-configuration)
         * [How often do create alerts run](#overview-create-regression-how-often-do-create-alerts-run)
-    * [Fequently asked questions](#overview-fequently-asked-questions)
-        * [How do I onboard](#overview-fequently-asked-questions-how-do-i-onboard)
-        * [How do I know my extension's current configuration](#overview-fequently-asked-questions-how-do-i-know-my-extension-s-current-configuration)
-        * [What happens if I need to update my configuration](#overview-fequently-asked-questions-what-happens-if-i-need-to-update-my-configuration)
-        * [How is mapping done from extension name to IcM team and service names](#overview-fequently-asked-questions-how-is-mapping-done-from-extension-name-to-icm-team-and-service-names)
-        * [How to enable alerts for national clouds](#overview-fequently-asked-questions-how-to-enable-alerts-for-national-clouds)
+    * [How do I onboard](#overview-how-do-i-onboard)
+    * [How do I know my extension's current configuration](#overview-how-do-i-know-my-extension-s-current-configuration)
+    * [What happens if I need to update my configuration](#overview-what-happens-if-i-need-to-update-my-configuration)
+        * [How is mapping done from extension name to IcM team and service names](#overview-what-happens-if-i-need-to-update-my-configuration-how-is-mapping-done-from-extension-name-to-icm-team-and-service-names)
+        * [How to enable alerts for national clouds](#overview-what-happens-if-i-need-to-update-my-configuration-how-to-enable-alerts-for-national-clouds)
 
 
 <a name="overview"></a>
@@ -703,16 +702,20 @@ Alerts will only trigger when the following criteria are met.
 1. Hourly create successRate is below {minSuccessRateOverPastHour} and hourly create totalcount is above {minTotalCountOverPastHour}
 1. 24-hour create successRate is below {minSuccessRateOverPast24Hours} and 24-hour create totalcount is above {minTotalCountOverPast24Hours}
 
-<a name="overview-fequently-asked-questions"></a>
-## Fequently asked questions
 
-<a name="overview-fequently-asked-questions-how-do-i-onboard"></a>
-### How do I onboard
 
-1. Generate the desired per extension configuration
-    - This can be done by manually editing the JSON file.
-1. Fill out the following work item [https://aka.ms/portalfx/alerting-onboarding][alerting-onboarding] and attach configuration JSON
-1. Set up correlation rules in ICM
+<a name="overview-how-do-i-onboard"></a>
+## How do I onboard
+
+
+1. Submit and complete a Pull Request in [Azure Portal Alerting Repo a.k.a. Alerting Repo](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx-Alerting).
+
+> For non-create alert the customization JSON should be located at `products/{YourServiceNameInIcM}/{ExtensionName}.alerting.json`. It's recommended to have an `owners.txt` in the same folder as the customization JSON file. The `owners.txt` has AAD enabled email alias or/and individual MSFT aliases. Anyone from `owners.txt` can approve the Pull Request for any changes within that folder or its subfolder.
+
+> For create alert the customization JSON should be located at `products/IbizaFx/Create/{ExtensionName}.create.alerting.json`.
+
+
+2. Set up correlation rules in ICM
 
 | Field | Value |
 | -----  | ----- |
@@ -739,28 +742,26 @@ Alerts will only trigger when the following criteria are met.
 | Performance - Blade | BladeLoadPerformance |
 | Performance - Part | PartLoadPerformance|
 
-<a name="overview-fequently-asked-questions-how-do-i-know-my-extension-s-current-configuration"></a>
-### How do I know my extension&#39;s current configuration
+<a name="overview-how-do-i-know-my-extension-s-current-configuration"></a>
+## How do I know my extension&#39;s current configuration
 
-Click the [this link][alerting-extension-customization] and replace `HubsExtension` with `YOUR_EXTENSION_NAME` and run Kusto function, GetExtensionCustomizationJson. Or go to [https://azportalpartner.kusto.windows.net/Partner][kusto-partner-database] to open Kusto.Explorer and run Kusto function,
-GetExtensionCustomizationJson("YOUR_EXTENSION_NAME"). The regex is supported. You can view alert customization of onboarded extensions. The extension alert customization only exists once you have onboarded to the alerting infrastructure.
-> The customizaztion has a daily sync from the SQL database starting at 17:00 PST.
+Alerting is running off customization JSONs that live in [Alerting Repo](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx-Alerting). All the non-create alerts customimzation JSONs are located at `products/{YourServiceNameInIcM}/{ExtensionName}.alerting.json`. All the create alerts customization JSONs are located at `products/IbizaFx/Create/{ExtensionName}.create.alerting.json`.
 
-<a name="overview-fequently-asked-questions-what-happens-if-i-need-to-update-my-configuration"></a>
-### What happens if I need to update my configuration
+<a name="overview-what-happens-if-i-need-to-update-my-configuration"></a>
+## What happens if I need to update my configuration
 
-1. Contact [ibizafxhot](mailto:ibizafxhot@microsoft.com;azurefxg@microsoft.com),
-1. State in the email which configuration you require to be updated and attached the updated configuration
-1. We will respond as soon as possible and apply the updates
+Submit and complete a Pull Request on your extension's customization JSON in [Alerting Repo](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx-Alerting). The update is 'live' once the Pull Request is complete.
 
-<a name="overview-fequently-asked-questions-how-is-mapping-done-from-extension-name-to-icm-team-and-service-names"></a>
+> For each extension there's an `owners.txt` that is in the same or parent folder as the JSON. The `owners.txt` has AAD enabled email alias or/and individual MSFT aliases. Anyone from `owners.txt` can approve the Pull Request. The `owners.txt` is created and maintained by extension team.
+
+<a name="overview-what-happens-if-i-need-to-update-my-configuration-how-is-mapping-done-from-extension-name-to-icm-team-and-service-names"></a>
 ### How is mapping done from extension name to IcM team and service names
 
 Azure Portal partner team's IcM info is collected during parnter onboarding process and is stored in the [extension config](https://aka.ms/portalfx/extensionsprodjson). An IcM routing rule is added under Azure Portal (Ibiza) service in IcM to route incidents to corresponding partners.
 
 > The IcM routing rule is in format 'AIMS://AZUREPORTAL\Portal\{ExtensionName}'.
 
-<a name="overview-fequently-asked-questions-how-to-enable-alerts-for-national-clouds"></a>
+<a name="overview-what-happens-if-i-need-to-update-my-configuration-how-to-enable-alerts-for-national-clouds"></a>
 ### How to enable alerts for national clouds
 
 Alerts are supported in national clouds. Specify the national cloud portal domain names in "environment" property. You can use the same criteria for national clouds or different set of criteria.The national cloud domain names are "portal.azure.cn", "portal.azure.us", "portal.microsoftazure.de". You can use any legit national cloud domain name, for instance, "aad.portal.azrue.cn".

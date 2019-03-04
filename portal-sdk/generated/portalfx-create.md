@@ -282,8 +282,8 @@ This is an alternative method of disallowing the user to select a value from ARM
 
 hiding: {
     hide: (item: Value) => item.property === "5ag",
-    reason: "Some locations are hidden because because of legal restrictions on new software"
-}
+    reason: "Some locations are hidden because because of legal restrictions on new software",
+},
 
 ```
 
@@ -303,7 +303,7 @@ grouping: {
     map: (item: Value): string => {
         return item.property.slice(-2) === "bg" ? "Group B" : "Group A";
     },
-    sort: (a: string, b: string) => MsPortalFx.compare(b, a)
+    sort: (a: string, b: string) => MsPortalFx.compare(b, a),
 },
 
 ```
@@ -316,7 +316,7 @@ If you want to sort values in the dropdown, supply the 'sort' option, which shou
  
 ```typescript
 
-sort: (a: Value, b: Value) => MsPortalFx.compare(b.property, a.property)
+sort: (a: Value, b: Value) => MsPortalFx.compare(b.property, a.property),
 
 ```
  
@@ -570,7 +570,7 @@ this.specDropDown = new SpecsDropDown(container, {
     // This extender should be the same extender view model used for the spec picker blade.
     // You may need to extend your data context or share your data context between your
     // create area and you spec picker area to use the extender with the current datacontext.
-    specPickerExtender: new BillingSpecPickerV3Extender(container, initialDataObservable(), dataContext),
+    specPickerExtender: new BillingSpecPickerV3Extender(container),
     pricingBlade: {
         detailBlade: "BillingSpecPickerV3",
         detailBladeInputs: {},

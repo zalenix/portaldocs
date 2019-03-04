@@ -74,7 +74,7 @@ to enable both the extension and the Gallery item:
 To permanently enable an extension (e.g. if it's ready for general use), please contact the portal team.
 
 <a name="before-deploying-extension-2-extension-stamps"></a>
-### >
+###  start="2">
 <li>Extension &quot;stamps&quot;</li>
 <
 
@@ -103,7 +103,7 @@ of your extension as registered in the portal. For instance,
 override the stamp.
 
 <a name="before-deploying-extension-3-understand-extension-runtime-compatibility"></a>
-### >
+###  start="3">
 <li>Understand extension runtime compatibility</li>
 <
 
@@ -164,7 +164,7 @@ We also recommend that extensions use a CDN, such as Azure CDN, to move the most
 
 Having a presence in all geographies is important for good performance.
 We see much higher latencies and reliability issues when servers are not geo-located with their users.
-(For more tips, see the [performance page](portalfx-performance.md).)
+(For more tips, see the [performance page](top-extensions-performance.md).)
 
 In order to deploy to all regions:
 1.	Use [Extension Hosting Service](portalfx-extension-hosting-service.md) to deploy UI

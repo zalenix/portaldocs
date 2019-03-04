@@ -44,15 +44,11 @@ Max width: 700px
 
 ### Editable grid text boxes
 Min width: 80px
-<div style="max-width:800px">
-<img alttext="Example image" src="../media/design-patterns-responsive-design/editable-grid-min-width.png"  />
-</div>
-
 Max width: 265px 
-This example has slightly narrower text boxes at 220px
-<div style="max-width:800px">
-<img alttext="Example image" src="../media/design-patterns-responsive-design/editable-grid-max-width.png"  />
-</div>
+
+### Entire page
+Max width: 700px
+
 
 ## Success critera
 - Blades look and feel professional regardless of screen resolution
@@ -69,6 +65,7 @@ This example has slightly narrower text boxes at 220px
 ## Related design guidelines
 <!-- Links to Related design guidelines.  Always include the link to the readme -->
 * Design guidelines [top-design.md](top-design.md)
+* Full screen [design-patterns-page-fullscreen.md](design-patterns-page-fullscreen.md)
 
 ## Research and usability
 Research often finds issues with experiences that do not follow guidelines on page and field maximum widths.
@@ -78,12 +75,14 @@ Research often finds issues with experiences that do not follow guidelines on pa
 ## Telemetry
 <!-- Links to portal telemetry showing the solution usage -->
 
+* Full screen status of pages with more than 20,000 views over last 28 days [View report](https://aka.ms/portalfx/fundamentals/nonfullscreenblades)
+
 # For developers
 Developers can use the following information to get started implementing this pattern
 
 ## Tips and tricks
 <!-- Bulleted list of tips and tricks for developers -->
--Set a max-width on your content in the CSS (blade/part templates) OR set initial DisplayState=“normal” in a blade’s PDL.
+-Set a max-width on your content in the CSS (blade/part templates).
 
 ## Related documentation
 <!-- Links to related developer docs -->

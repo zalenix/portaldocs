@@ -186,8 +186,8 @@ This method is used in the `mapOutgoingDataForCollector` callback of the `Parame
 
  ```typescript
 
-this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<DataModels.ServerConfig[], KnockoutObservableArray<DataModels.ServerConfig>>(container, {
-    editScopeMetadataType: DataModels.ServerConfigType,
+this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<ServerConfig[], KnockoutObservableArray<ServerConfig>>(container, {
+    editScopeMetadataType: ServerConfigMetadata.name,
     mapIncomingDataForEditScope: (incoming) => {
         return ko.observableArray(incoming);  // Editable grid can only bind to an observable array.
     },
@@ -195,7 +195,7 @@ this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<DataModels.
         const editScope = this.parameterProvider.editScope();
 
         // Use EditScope's 'getEntityArrayWithEdits' to return an array with all created/updated/deleted items.
-        return editScope.getEntityArrayWithEdits<DataModels.ServerConfig>(outgoing).arrayWithEdits;
+        return editScope.getEntityArrayWithEdits<ServerConfig>(outgoing).arrayWithEdits;
     },
 });
 
@@ -270,16 +270,16 @@ this.editScope = this.parameterProvider.editScope;
 
  ```typescript
 
-this.itemsCollector = new MsPortalFx.ViewModels.ParameterCollector<DataModels.ServerConfig[]>(container, {
+this.itemsCollector = new MsPortalFx.ViewModels.ParameterCollector<ServerConfig[]>(container, {
     selectable: this.itemsSelector.selectable,
     supplyInitialData: () => {
         const editScope = this._editScopeView.editScope();
 
         // Use EditScope's 'getEntityArrayWithEdits' to develop an array with all created/updated/deleted items
         // in this entity array.
-        return editScope.getEntityArrayWithEdits<DataModels.ServerConfig>(editScope.root.serverConfigs).arrayWithEdits;
+        return editScope.getEntityArrayWithEdits<ServerConfig>(editScope.root.serverConfigs).arrayWithEdits;
     },
-    receiveResult: (result: DataModels.ServerConfig[]) => {
+    receiveResult: (result: ServerConfig[]) => {
         const editScope = this._editScopeView.editScope();
 
         // Use EditScope's 'applyArrayWithEdits' to examine the array returned from the Provider Blade
@@ -294,8 +294,8 @@ The  following example uses an array that includes 'created' entities and does n
 
  ```typescript
 
-this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<DataModels.ServerConfig[], KnockoutObservableArray<DataModels.ServerConfig>>(container, {
-    editScopeMetadataType: DataModels.ServerConfigType,
+this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<ServerConfig[], KnockoutObservableArray<ServerConfig>>(container, {
+    editScopeMetadataType: ServerConfigMetadata.name,
     mapIncomingDataForEditScope: (incoming) => {
         return ko.observableArray(incoming);  // Editable grid can only bind to an observable array.
     },
@@ -303,7 +303,7 @@ this.parameterProvider = new MsPortalFx.ViewModels.ParameterProvider<DataModels.
         const editScope = this.parameterProvider.editScope();
 
         // Use EditScope's 'getEntityArrayWithEdits' to return an array with all created/updated/deleted items.
-        return editScope.getEntityArrayWithEdits<DataModels.ServerConfig>(outgoing).arrayWithEdits;
+        return editScope.getEntityArrayWithEdits<ServerConfig>(outgoing).arrayWithEdits;
     },
 });
 
@@ -370,11 +370,10 @@ An example of loading an edit scope is in the following code. The sample is also
 
  ```typescript
 
-
 /**
  * Initializes the website detail form.
  */
-constructor(container: MsPortalFx.ViewModels.PartContainerContract, initialState: any, dataContext: MasterDetailArea.DataContext) {
+constructor(container: MsPortalFx.ViewModels.PartContainerContract, dataContext: MasterDetailArea.DataContext) {
     super(container);
 
     this._editScopeView = dataContext.editScopeCache.createView(container);
@@ -385,7 +384,6 @@ constructor(container: MsPortalFx.ViewModels.PartContainerContract, initialState
     // Setup editable form.
     this._initializeForm(container);
 }
-	
 
 ```
 
@@ -393,15 +391,13 @@ constructor(container: MsPortalFx.ViewModels.PartContainerContract, initialState
 
  ```typescript
 
-
 /**
-* Invoked when the Part's inputs change.
-*/
+ * Invoked when the Part's inputs change.
+ */
 public onInputsSet(inputs: Def.DetailPartViewModel.InputsContract): MsPortalFx.Base.Promise {
     // Acquires edit scope seeded with an item with id currentItemId.
     return this._editScopeView.fetchForExistingData(inputs.editScopeId, inputs.currentItemId);
 }
-	
 
 ```
  
@@ -530,7 +526,7 @@ The code instantiates an `EditScope` by using a `MsPortalFx.Data.EditScopeView` 
  ```typescript
 
 const editScopeCache = EditScopeCache.createNew<WebsiteModel, number>({
-    supplyExistingData: (websiteId, lifetime) => {
+    supplyExistingData: (websiteId) => {
         return FxBaseNet.ajax({
             uri: Util.appendSessionId(MsPortalFx.Base.Resources.getAppRelativeUri("/api/Websites/" + websiteId)), // this particular endpoint requires sessionId to be in query string
             type: "GET",
@@ -547,7 +543,7 @@ const editScopeCache = EditScopeCache.createNew<WebsiteModel, number>({
             };
         });
     },
-    saveEditScopeChanges: (websiteId, editScope, edits, lifetime, dataToUpdate) => {
+    saveEditScopeChanges: (websiteId, editScope) => {
         // get the website from the edit scope
         const website = editScope.root;
 
@@ -645,7 +641,7 @@ saveCommand.command = {
         const editScopeDirty = !!editScope ? editScope.dirty() : false;
         return !this._saving() && editScopeDirty;
     }),
-    execute: (context: any): FxBase.Promise => {
+    execute: (): FxBase.Promise => {
         return this._editScopeView.editScope().saveChanges();
     },
 };
@@ -661,7 +657,7 @@ discardCommand.command = {
         const editScopeDirty = !!editScope ? editScope.dirty() : false;
         return !this._saving() && editScopeDirty;
     }),
-    execute: (context: any): FxBase.Promise => {
+    execute: (): FxBase.Promise => {
         this._editScopeView.editScope().revertAll();
         return null;
     },

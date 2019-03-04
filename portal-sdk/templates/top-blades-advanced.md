@@ -17,7 +17,7 @@ The following sections discuss advanced topics in template blade development.
 
 ### Deep linking
 
-The portal lets the user link directly to particular blade. As long as your blade does not have the ReturnsData decorator then users can deep link to it. There are a few supported link formats.
+The portal lets the user link directly to a particular blade. As long as your blade does not have the `@ReturnsData` decorator then users can deep link to it. There are a few supported link formats.
 
 * The #blade format lets you link to arbitrary blades
 
@@ -42,6 +42,7 @@ The portal lets the user link directly to particular blade. As long as your blad
     Example:
     [https://portal.azure.com/microsoft.com#blade/HubsExtension/BrowseAllBladeWithType/type/HubsExtension_Tag](https://portal.azure.com/microsoft.com#blade/HubsExtension/BrowseAllBladeWithType/type/HubsExtension_Tag)
 
+    **Note**: Extension authors should always validate blade input parameters, as these might come from the browser address bar, which can be hand-crafted by end-users. For this reason, it is not recommended to use input parameters as a way to pass extended information to a blade that is being opened, just to avoid a lookup. As an example, if the intent is to display extended information about a resource, and even if the calling blade already retrieved that information, the recommended pattern is to only pass the resource identifier and have the receiving blade look up information about that resource and display it. That could be via a REST call to the back-end (possibly cached for performance) or it could be via a shared/cached data object in the extension’s context (with possible fallback to REST for resiliency, as the user might deep-link directly to it).
 
 * The #create format lets you link to marketplace items
 

@@ -35,6 +35,7 @@
     * [How do I onboard?](portalfx-telemetry-alerting-availability.md#how-do-i-onboard)
     * [How do I know my extension's current customization?](portalfx-telemetry-alerting-availability.md#how-do-i-know-my-extension-s-current-customization)
     * [What happens if I need to update them?](portalfx-telemetry-alerting-availability.md#what-happens-if-i-need-to-update-them)
+    * [Questions and suggestions?](portalfx-telemetry-alerting-availability.md#questions-and-suggestions)
 
 * [Performance](portalfx-telemetry-alerting-performance.md#performance)
     * [Configuration](portalfx-telemetry-alerting-performance.md#configuration)
@@ -42,6 +43,7 @@
     * [How do I onboard?](portalfx-telemetry-alerting-performance.md#how-do-i-onboard)
     * [How do I know my extension's current customization?](portalfx-telemetry-alerting-performance.md#how-do-i-know-my-extension-s-current-customization)
     * [What happens if I need to update them?](portalfx-telemetry-alerting-performance.md#what-happens-if-i-need-to-update-them)
+    * [Questions and suggestions?](portalfx-telemetry-alerting-performance.md#questions-and-suggestions)
 
 * [Client Error](portalfx-telemetry-alerting-error-messages.md#client-error)
     * [Configuration](portalfx-telemetry-alerting-error-messages.md#configuration)
@@ -49,6 +51,7 @@
     * [How do I onboard?](portalfx-telemetry-alerting-error-messages.md#how-do-i-onboard)
     * [How do I know my extension's current customization?](portalfx-telemetry-alerting-error-messages.md#how-do-i-know-my-extension-s-current-customization)
     * [What happens if I need to update them?](portalfx-telemetry-alerting-error-messages.md#what-happens-if-i-need-to-update-them)
+    * [Questions and suggestions?](portalfx-telemetry-alerting-error-messages.md#questions-and-suggestions)
 
 * [Create](portalfx-telemetry-alerting-create.md#create)
     * [Configuration](portalfx-telemetry-alerting-create.md#configuration)
@@ -56,36 +59,18 @@
     * [How do I onboard?](portalfx-telemetry-alerting-create.md#how-do-i-onboard)
     * [How do I know my extension's current customization?](portalfx-telemetry-alerting-create.md#how-do-i-know-my-extension-s-current-customization)
     * [What happens if I need to update them?](portalfx-telemetry-alerting-create.md#what-happens-if-i-need-to-update-them)
+    * [Questions and suggestions?](portalfx-telemetry-alerting-create.md#questions-and-suggestions)
 
 * [Fequently asked questions](portalfx-telemetry-alerting-faq.md#fequently-asked-questions)
     * [How do I onboard?](portalfx-telemetry-alerting-faq.md#how-do-i-onboard)
     * [How do I know my extension's current configuration?](portalfx-telemetry-alerting-faq.md#how-do-i-know-my-extension-s-current-configuration)
     * [What happens if I need to update my configuration?](portalfx-telemetry-alerting-faq.md#what-happens-if-i-need-to-update-my-configuration)
+    * [Questions and suggestions?](portalfx-telemetry-alerting-faq.md#questions-and-suggestions)
 
 
 <a name="telemetry-performance"></a>
 ## Performance
-* [Performance Overview](portalfx-performance.md#performance-overview)
-    * [Extension performance](portalfx-performance.md#extension-performance)
-    * [Blade performance](portalfx-performance.md#blade-performance)
-    * [Part performance](portalfx-performance.md#part-performance)
-    * [WxP score](portalfx-performance.md#wxp-score)
-    * [How to assess your performance](portalfx-performance.md#how-to-assess-your-performance)
-* [Performance Frequently Asked Questions (FAQ)](portalfx-performance.md#performance-frequently-asked-questions-faq)
-    * [My Extension 'load' is above the bar, what should I do](portalfx-performance.md#my-extension-load-is-above-the-bar-what-should-i-do)
-    * [My Blade 'FullReady' is above the bar, what should I do](portalfx-performance.md#my-blade-fullready-is-above-the-bar-what-should-i-do)
-    * [My Part 'Ready' is above the bar, what should I do](portalfx-performance.md#my-part-ready-is-above-the-bar-what-should-i-do)
-    * [My WxP score is below the bar, what should I do](portalfx-performance.md#my-wxp-score-is-below-the-bar-what-should-i-do)
-    * [Is there any way I can get further help](portalfx-performance.md#is-there-any-way-i-can-get-further-help)
-* [Performance best practices](portalfx-performance.md#performance-best-practices)
-    * [Operational best practices](portalfx-performance.md#operational-best-practices)
-    * [Coding best practices](portalfx-performance.md#coding-best-practices)
-    * [General best practices](portalfx-performance.md#general-best-practices)
-* [Performance profiling](portalfx-performance.md#performance-profiling)
-    * [How to profile your scenario](portalfx-performance.md#how-to-profile-your-scenario)
-    * [Idenitifying common slowdowns](portalfx-performance.md#idenitifying-common-slowdowns)
-    * [Verifying a change](portalfx-performance.md#verifying-a-change)
-
+undefined
 
 <a name="telemetry-reliability"></a>
 ## Reliability

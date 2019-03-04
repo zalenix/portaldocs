@@ -63,7 +63,7 @@ Following are some of the dashboards that we support. If you do not have access 
 
 | Name | Power BI Link | Metrics Description |
 | ---- | ------------ | ------------------- |
-| Portal Performance Dashboard | [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf) | [Perf Docs](portalfx-performance.md) |
+| Portal Performance Dashboard | [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf) | [Perf Docs](top-extensions-performance.md) |
 | Portal Reliability Dashboard | [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf) | [Reliability Docs](portalfx-reliability.md) |
 | Portal Create Dashboard | [http://aka.ms/portalfx/dashboard/PortalCreate](http://aka.ms/portalfx/dashboard/PortalCreate) | [Create Docs](portalfx-telemetry-create.md) |
 | Extension Errors Dashboard | [http://aka.ms/portalfx/dashboard/ExtensionErrors](http://aka.ms/portalfx/dashboard/ExtensionErrors) | [Extension Errors Docs](portalfx-telemetry-extension-errors.md) |

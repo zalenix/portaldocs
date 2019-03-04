@@ -40,7 +40,7 @@ A naive implementation of this might go something like this (ignore the lines ab
 
 ```typescript
 
-const projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
+const projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionLifetime, (_ /* itemLifetime */, robot) => {
     const projectionId = this._uuid++;
     this._logMapFunctionRunning(projectionId, robot);
     return <RobotDetails>{
@@ -118,7 +118,7 @@ A correct implemenation of the map above then looks like (again ignore uuid and 
 
 ```typescript
 
-const projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
+const projectedItems = this._view.items.map<RobotDetails>(this._currentProjectionLifetime, (_ /* itemLifetime */, robot) => {
     const projectionId = this._uuid++;
     this._logMapFunctionRunning(projectionId, robot);
     return <RobotDetails>{
@@ -139,7 +139,7 @@ Now that you understand how `map()` works we can introduce `mapInto()`. Here's t
 
 ```typescript
 
-const projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
+const projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProjectionLifetime, (_ /* itemLifetime */, robot) => {
     const projectionId = this._uuid++;
     this._logMapFunctionRunning(projectionId, robot);
     return <RobotDetails>{
@@ -158,7 +158,7 @@ You can see how it reacts by clicking on the 'Proper mapInto' button and then ad
 
 ```typescript
 
-const projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProjectionLifetime, (itemLifetime, robot) => {
+const projectedItems = this._view.items.mapInto<RobotDetails>(this._currentProjectionLifetime, (_ /* itemLifetime */, robot) => {
     const projectionId = this._uuid++;
     this._logMapFunctionRunning(projectionId, robot);
     return <RobotDetails>{
@@ -199,7 +199,7 @@ this._view = dataContext.robotData.robotsQuery.createView(container);
 // As items are added or removed from the underlying items array,
 // individual changed items will be re-evaluated to create the computed
 // value in the resulting observable array.
-const projectedItems = this._view.items.mapInto<RobotDetails>(container, (itemLifetime, robot) => {
+const projectedItems = this._view.items.mapInto<RobotDetails>(container, (_ /* itemLifetime */, robot) => {
     return <RobotDetails>{
         name: robot.name,
         computedName: ko.pureComputed(() => {
