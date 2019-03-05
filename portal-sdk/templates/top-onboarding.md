@@ -124,8 +124,24 @@ eg: Dogfood, Prod, Mooncake, Fairfax and BlackForest
 ![storage container](./../media/portalfx-extensions-onboarding/hosting-service-storage-container.png)
 
 3) Upload the [config.json](/portal-sdk/generated/top-extensions-hosting-service.md#step-8-upload-safe-deployment-config) and the [generated zip file](/portal-sdk/generated/top-extensions-hosting-service.md#step-7-execute-content-unbundler-as-part-of-build-to-generate-zip-file) from your build. 
-4) Create a hosting service onboarding [workitem](https://aka.ms/extension-hosting-service/onboarding)
-5) Send email to [ibiza-onboarding@microsoft.com](mailTo:ibiza-onboarding@microsoft.com) with the workitem details and extension details.
+
+**NOTE**:  You can make changes to hosting service configuration and raise a pull request for a self-service onboarding to hosting service
+
+4) Create a new branch in the [hosting service repository](https://msazure.visualstudio.com/One/_git/AzureUX-PortalHostingSvc/branches) based on the dev branch
+
+![storage container](./../media/portalfx-extensions-onboarding/create-branch.png)
+
+5) Update the hosting service configuration for appropriate environment(eg: [config.dogfood.json](https://msazure.visualstudio.com/One/_git/AzureUX-PortalHostingSvc?path=%2Fsrc%2FRDPackages%2FExtensionHost%2Fconfig.dogfood.json&version=GBdev),
+[config.prod.json](https://msazure.visualstudio.com/One/_git/AzureUX-PortalHostingSvc?path=%2Fsrc%2FRDPackages%2FExtensionHost%2Fconfig.prod.json&version=GBdev),
+[config.ff.json](https://msazure.visualstudio.com/One/_git/AzureUX-PortalHostingSvc?path=%2Fsrc%2FRDPackages%2FExtensionHost%2Fconfig.ff.json&version=GBdev), 
+[config.mc.json](https://msazure.visualstudio.com/One/_git/AzureUX-PortalHostingSvc?path=%2Fsrc%2FRDPackages%2FExtensionHost%2Fconfig.mc.json&version=GBdev), 
+[config.bf.json](https://msazure.visualstudio.com/One/_git/AzureUX-PortalHostingSvc?path=%2Fsrc%2FRDPackages%2FExtensionHost%2Fconfig.bf.json&version=GBdev)) by editing and adding a new line for the extension route prefix entry in the "hostExtensionConfigs" section as shown below.
+
+![storage container](./../media/portalfx-extensions-onboarding/hosting-service-pr.png)
+
+6) Commit and Create a pull request to the Dev Branch.
+7) Create a hosting service onboarding [workitem](https://aka.ms/extension-hosting-service/onboarding) and this to the pull request. 
+8) Send email to [ibiza-onboarding@microsoft.com](mailTo:ibiza-onboarding@microsoft.com) with the workitem details and pull request id to get the approval.
 
 Note:  Incorrect or insufficient information in the workitem could delay the onboarding process.
 
@@ -167,6 +183,7 @@ Note : Please DO NOT get the pull request approved, bypassed or completed withou
 
 ## Step 3 - AAD Onboarding
 1) For teams that require Graph access and AAD app for per extension tokens, please create a [workitem](http://aka.ms/portalfx/newextension)
+2) Any changes to the AAD app to add more permissions or reply URLs will require an additional workitem. Please schedule a meeting to go over the changes along with the onboarding
 2) Send email to [ibiza-onboarding@microsoft.com](mailTo:ibiza-onboarding@microsoft.com) with the workitem details and extension details. 
 
 Here is the list of [graph endpoints](https://msft.spoppe.com/sites/Identity/MSODS/SitePages/AAD%20Environments.aspx) for different clouds
