@@ -426,7 +426,8 @@ Below are the steps to switch to the V2 targets. A video of the migration steps 
       "rootDir": "Client",
       "removeComments": false,
       "sourceMap": true,
-      "target": "es5"
+      "target": "es5",
+      "types": []
     },
     "include": [
       "Client/**/*"
