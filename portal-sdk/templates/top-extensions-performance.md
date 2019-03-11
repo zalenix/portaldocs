@@ -426,7 +426,8 @@ Below are the steps to switch to the V2 targets. A video of the migration steps 
       "rootDir": "Client",
       "removeComments": false,
       "sourceMap": true,
-      "target": "es5"
+      "target": "es5",
+      "types": []
     },
     "include": [
       "Client/**/*"
@@ -525,6 +526,7 @@ The framework supports loading view models using dependency injection. If you mi
 
 ## Migration steps
 
+- Remove the code in Program.ts that initializes the DataContext classes. Set the generic type parameter of `MsPortalFx.Extension.EntryPointBase` base class specification to void.
 - Delete the generated ViewModelFactories.ts from `Client\_generated`
 - Add the following line to your csproj
 
@@ -553,7 +555,6 @@ The framework supports loading view models using dependency injection. If you mi
 - Find all DataContext classes that are still referenced by your view models and add the `@Di.Class()` decorator.
   - Note that `@Di.Class()` is called with no arguments.
   - You will need to add `import * as Di from "Fx/DependencyInjection` to the top of the files
-- Remove the code in Program.ts that initializes the DataContext classes. Set the generic type parameter of `MsPortalFx.Extension.EntryPointBase` base class specification to void.
 - The constructor of any class that contains a `@Di.Class()` decorator (with or without the "viewModel" argument) cannot contain an parameter that is specified with a non-class type. Some of your view model classes may have a dataContext parameter with an any type or an interface type. Either change the type to a class or remove the parameter entirely.
 - All classes in the dependency chain of migrated view models should be marked with `@Di.Class()` decorator. The dependency injection framework in the Portal only supports constructor injection.
 - Put the following code in your Program.ts right at the module level. Then load your extension through the portal. This will validate that you have correctly migrated the V1 view models. The code should complete almost instantly. Remove the code when you are done.
