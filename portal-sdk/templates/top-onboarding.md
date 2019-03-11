@@ -116,7 +116,7 @@ Note : Step 1 and Step 2 below are sequential and required to complete the Porta
 
 ## Step 1 - Hosting Service
 
-To use the Extension Hosting Service after you have developed your extension, you will have to onboard onto the Extension Hosting service separately. You will have to follow the steps in [this document](/portal-sdk/generated/top-extensions-hosting-service.md#) to have your extension to be ready for deploying onto the hosting service. The reason we have the steps below is to let you do these things in parallel - 
+To use the Extension Hosting Service after you have developed your extension, you will have to onboard onto the Extension Hosting service separately. You will have to follow the steps in [this document](/portal-sdk/generated/top-extensions-hosting-service.md#) to have your extension to be ready for deploying onto the hosting service. The reason we have the steps below is to let you do these things in parallel. Developers should join the  `Azure Portal Partner Contributors - 19668(19668)` group by using this link: [https://myaccess](https://myaccess). 
 1) Create storage account for each environment 
 eg: Dogfood, Prod, Mooncake, Fairfax and BlackForest
 2) Create a container under the storage account with anonymous read access
