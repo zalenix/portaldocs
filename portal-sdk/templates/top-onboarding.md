@@ -163,6 +163,8 @@ Note:  Incorrect or insufficient information in the workitem could delay the onb
 5) Always cherry-pick the change from previous downlevel branch. eg: Dev to Mpac, Mpac to Prod.
 6) Here is a sample PR change for dogfood branch.
 
+Note : Dogfood config does not require creating a CNAME entry for extensions as all extensions use the common DNS endpoint. Onboarding to Production config will require the CNAME created with route prefix.
+
 ![storage container](./../media/portalfx-extensions-onboarding/portal-framework-extension-config.png)
 
 Note : Extension name cannot be changed once onboarding is complete. It will require a new onboarding and redirecting to the new extension.
