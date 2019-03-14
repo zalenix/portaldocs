@@ -603,6 +603,7 @@ The frameworks supports a new extension load contract that can improve extension
 
 ## Prerequistes
 
+- Onboard to Prewarming / Web Workers
 - Remove all requireJS shims.
 - Complete the dependency injected view models migration.
 - Upgrade to at least SDK 14401.
