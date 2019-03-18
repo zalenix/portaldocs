@@ -560,7 +560,7 @@ Please contact [ibizafxpm@microsoft.com](mailto:ibizafxpm@microsoft.com) with th
 
 * Subject: 'Browse curation requestion - YourAssetName'
 * Body:
-  * 'ExtensioName - YourExtensionName'
+  * 'ExtensionName - YourExtensionName'
   * 'AssetName - YourAssetName'
   * 'KindName - YourKindName' (If applicable)
   * 'Category - DesiredCategory'

@@ -36,8 +36,8 @@ For all other questions please reach out to [Ibiza Telemetry](mailto:ibiza-telem
 
 #### Programmatic access
 
-We're currently not onboarding any more users on to programmatic access. We're in the process of making some infrastructure changes to support this ask.
-We'll update the documentation when we can onboard programmatic access.
+Please note that we already offer pretty extensive and customized alerting for extensions that may reduce (often eliminates) the need for you to request programmatic accesses. Please see https://aka.ms/portalfx/docs/alerting for more details. 
+However, if you require programmatic access, we're onboarding partners to our dedicated AzPortalPartner follower cluster. To see the steps to proceed, please review our [onboarding instructions](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-telemetry-getting-started.md#programmatic-access). 
 
 Kusto.Explorer: [Application](http://kusto-us/ke/Kusto.Explorer.application)
 
@@ -47,7 +47,7 @@ Following are some of the dashboards that we support. If you do not have access 
 
 | Name | Power BI Link | Metrics Description |
 | ---- | ------------ | ------------------- |
-| Portal Performance Dashboard | [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf) | [Perf Docs](portalfx-performance.md) |
+| Portal Performance Dashboard | [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf) | [Perf Docs](top-extensions-performance.md) |
 | Portal Reliability Dashboard | [http://aka.ms/portalfx/dashboard/extensionperf](http://aka.ms/portalfx/dashboard/extensionperf) | [Reliability Docs](portalfx-reliability.md) |
 | Portal Create Dashboard | [http://aka.ms/portalfx/dashboard/PortalCreate](http://aka.ms/portalfx/dashboard/PortalCreate) | [Create Docs](portalfx-telemetry-create.md) |
 | Extension Errors Dashboard | [http://aka.ms/portalfx/dashboard/ExtensionErrors](http://aka.ms/portalfx/dashboard/ExtensionErrors) | [Extension Errors Docs](portalfx-telemetry-extension-errors.md) |

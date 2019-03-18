@@ -30,7 +30,7 @@ Request the following permissions to stay current on product roadmaps, get news 
 
 * Developers should join the  `Azure Portal Partner Contributors - 19668(19668)` group by using this link: [https://myaccess](https://myaccess).
 
-* PMs, Developers, and Developer Leads should subscribe to the partner request process by joining the ```Uservoice ``` group at this link:  [https://aka.ms/portalfx/uservoice](https://aka.ms/portalfx/uservoice). For more information about the partner request process, see [top-extensions-partner-request.md](top-extensions-partner-request.md).
+* PMs, Developers, and Developer Leads should subscribe to the partner request process by joining the ```Uservoice ``` group at this link:  [https://aka.ms/portalfx/uservoice](https://aka.ms/portalfx/uservoice). For more information about the partner request process, see [top-extensions-partner-request.md](/portal-sdk/generated/top-extensions-partner-request.md).
 
 * PMs, Developers, and Developer Leads should receive notifications on breaking changes by joining the ```ibizabreak ``` group at  this  link:  [http://igroup/join/ibizabreak](http://igroup/join/ibizabreak).
 
@@ -69,7 +69,7 @@ Once the name of the extension is finalized, it is time to register the extensio
  
 * External teams can submit their requests by reaching out to the <a href="mailto:ibizafxpm@microsoft.com?subject=Onboarding Request: Add <extensionName> to the Portal&body=Extension Name:  <br><br>Company:  <br><br>Brand or Suite:  <br><br>Product or Component:  <br><br> URLs: <br><br>Production: main.<extensionName>.ext.<company>.com<br><br>  Contact info: <br><br>Business Contacts <br><br> Dev leads: <br><br> PROD on-call email for live site incidents: <br><br>">ibizafxpm team</a> with an onboarding request.
 
-* **NOTE**: Extension names must use standard extension name format, as in the example located [here](top-extensions-configuration.md#configuration-file-locations-and-structure).
+* **NOTE**: Extension names must use standard extension name format, as in the example located [here](/portal-sdk/generated/top-extensions-configuration.md#configuration-file-locations-and-structure).
 
 * **NOTE**:  Extension URLs adhere to the naming requirements located in [portalfx-extensions-cnames.md](portalfx-extensions-cnames.md).
 
@@ -110,32 +110,86 @@ When you are ready for all users to see your experience, you will enable your en
 
 # Steps to Portal onboarding 
 
-Azure portal onboarding steps listed below assumes that all new services have completed the onboarding meeting with [ibiza-onboarding@microsoft.com](mailTo:ibiza-onboarding@microsoft.com) team and that you have downloaded the Azure portal SDK to start the development of your extension. If you have not had either the onboarding meeting or have developed the extension, please discuss with the Azure portal team on the requirements. You must consider [Azure portal SLAs](top-extensions-svc-lvl-agreements.md#service-level-agreement-for-deployment) before you plan to either Preview or GA your service and make sure required changes are available in the appropriate portal branches and deployed fully to all regions.
+Azure portal onboarding steps listed below assumes that all new services have completed the onboarding meeting with [ibiza-onboarding@microsoft.com](mailTo:ibiza-onboarding@microsoft.com) team and that you have downloaded the Azure portal SDK to start the development of your extension. If you have not had either the onboarding meeting or have developed the extension, please discuss with the Azure portal team on the requirements.
 
-## Hosting Service 
+Note : Step 1 and Step 2 below are sequential and required to complete the Portal onboarding. Step 3 is optional unless the onboarding service requires dedicated tokens. 
 
-To use the Extension Hosting Service after you have developed your extension, you will have to onboard onto the Extension Hosting service separately. You will have to follow the steps in [this document](top-extensions-hosting-service.md#) to have your extension to be ready for deploying onto the hosting service. The reason we have the steps below is to let you do these things in parallel. 
+## Step 1 - Hosting Service
+
+To use the Extension Hosting Service after you have developed your extension, you will have to onboard onto the Extension Hosting service separately. You will have to follow the steps in [this document](/portal-sdk/generated/top-extensions-hosting-service.md#) to have your extension to be ready for deploying onto the hosting service. The reason we have the steps below is to let you do these things in parallel. Developers should join the  `Azure Portal Partner Contributors - 19668(19668)` group by using this link: [https://myaccess](https://myaccess). 
 1) Create storage account for each environment 
 eg: Dogfood, Prod, Mooncake, Fairfax and BlackForest
 2) Create a container under the storage account with anonymous read access
+
 ![storage container](./../media/portalfx-extensions-onboarding/hosting-service-storage-container.png)
-3) Upload the [config.json](top-extensions-hosting-service.md#step-8-upload-safe-deployment-config) and the [generated zip file](top-extensions-hosting-service.md#step-7-execute-content-unbundler-as-part-of-build-to-generate-zip-file) from your build. 
-4) Create a hosting service onboarding [workitem](https://aka.ms/extension-hosting-service/onboarding) with the storage account URL as per the examples listed [here](top-extensions-hosting-service.md#step-9-registering-your-extension-with-the-hosting-service)
-5) Send email to [ibiza-onboarding@microsoft.com](mailTo:ibiza-onboarding@microsoft.com) with the workitem details and extension details.
 
-Note:  Incorrect or insufficient information in the workitem could delay the onboarding process. 
+3) Upload the [config.json](/portal-sdk/generated/top-extensions-hosting-service.md#step-8-upload-safe-deployment-config) and the [generated zip file](/portal-sdk/generated/top-extensions-hosting-service.md#step-7-execute-content-unbundler-as-part-of-build-to-generate-zip-file) from your build. 
 
-## Portal Framework
-1) Register your extension with Azure portal framework by [raising a pull request](top-extensions-publishing.md) to the appropriate extension config json. eg: extensions.dogfood.json, extensions.prod.json etc,.
-2) Always raise the PR to the Dev branch
-3) For Prod config chanages, once the PR is approved, please cherry pick the change to Mpac and then to Prod. Portal team does not auto merge the changes to other branches
-4) Always cherry-pick the change from previous downlevel branch. eg: Dev to Mpac, Mpac to Prod.
-5) Here is a sample PR change for dogfood branch.
+**NOTE**:  You can make changes to hosting service configuration and raise a pull request for a self-service onboarding to hosting service
+
+4) Create a new branch in the [hosting service repository](https://msazure.visualstudio.com/One/_git/AzureUX-PortalHostingSvc/branches) based on the dev branch
+
+![storage container](./../media/portalfx-extensions-onboarding/create-branch.png)
+
+5) Update the hosting service configuration for appropriate environment(eg: [config.dogfood.json](https://msazure.visualstudio.com/One/_git/AzureUX-PortalHostingSvc?path=%2Fsrc%2FRDPackages%2FExtensionHost%2Fconfig.dogfood.json&version=GBdev),
+[config.prod.json](https://msazure.visualstudio.com/One/_git/AzureUX-PortalHostingSvc?path=%2Fsrc%2FRDPackages%2FExtensionHost%2Fconfig.prod.json&version=GBdev),
+[config.ff.json](https://msazure.visualstudio.com/One/_git/AzureUX-PortalHostingSvc?path=%2Fsrc%2FRDPackages%2FExtensionHost%2Fconfig.ff.json&version=GBdev), 
+[config.mc.json](https://msazure.visualstudio.com/One/_git/AzureUX-PortalHostingSvc?path=%2Fsrc%2FRDPackages%2FExtensionHost%2Fconfig.mc.json&version=GBdev), 
+[config.bf.json](https://msazure.visualstudio.com/One/_git/AzureUX-PortalHostingSvc?path=%2Fsrc%2FRDPackages%2FExtensionHost%2Fconfig.bf.json&version=GBdev)) by editing and adding a new line for the [extension route prefix](https://github.com/Azure/portaldocs/blob/dev/portal-sdk/generated/top-extensions-hosting-service.md#step-7-execute-content-unbundler-as-part-of-build-to-generate-zip-file) entry in the "hostExtensionConfigs" section as shown below.
+
+![storage container](./../media/portalfx-extensions-onboarding/hosting-service-pr.png)
+
+6) Commit and Create a pull request to the Dev Branch.
+7) Create a hosting service onboarding [workitem](https://aka.ms/extension-hosting-service/onboarding) and this to the pull request. 
+8) Send email to [ibiza-onboarding@microsoft.com](mailTo:ibiza-onboarding@microsoft.com) with the workitem details and pull request id to get the approval.
+
+Note:  Incorrect or insufficient information in the workitem could delay the onboarding process.
+
+## How to verify if hosting service onboarding is complete?
+
+1. Check Hosting Service API Diagnostics log for [Dogfood](https://hosting.onecloud.azure-test.net/api/diagnostics) or [Production](https://hosting.portal.azure.net/api/diagnostics) in web browser.
+2. Press Ctrl+F to find your extension routeprefix that registered for your service. Eg: storage
+
+![storage](./../media/portalfx-extensions-onboarding/validate-hostingsvc-onboarding.png)
+
+![storage](./../media/portalfx-extensions-onboarding/validate-hostingsvc-onboarding-prod.png)
+
+## Step 2 - Portal Framework
+1) Register your extension with Azure portal framework by raising a pull request to the appropriate extension config json. eg: [extensions.dogfood.json](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx?path=%2Fsrc%2FRDPackages%2FOneCloud%2FExtensions.dogfood.json&version=GBdev), [extensions.prod.json](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx?path=%2Fsrc%2FRDPackages%2FOneCloud%2FExtensions.prod.json&version=GBdev) etc,. If you are disabling the extension in the given environment(eg: "flags": "Disabled"), you do not have to increment the extension count. 
+2) If you are NOT using disabled flag, you must increment the extension count in [DeploymentSettingsTests.cs](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx?path=%2Fsrc%2FStbPortal%2FWebsite.Server.Tests%2FDeploymentSettingsTests.cs&version=GBdev) 
+![storage](./../media/portalfx-extensions-onboarding/extension-count.png)
+3) Always raise the PR to the Dev branch
+4) For Prod config chanages, once the PR is approved, please cherry pick the change to Mpac and then to Prod. Portal team does not auto merge the changes to other branches
+5) Always cherry-pick the change from previous downlevel branch. eg: Dev to Mpac, Mpac to Prod.
+6) Here is a sample PR change for dogfood branch.
+
+Note : Dogfood config does not require creating a CNAME entry for extensions as all extensions use the common DNS endpoint. Onboarding to Production config will require the CNAME created with route prefix.
+
 ![storage container](./../media/portalfx-extensions-onboarding/portal-framework-extension-config.png)
 
-## AAD Onboarding
+Note : Extension name cannot be changed once onboarding is complete. It will require a new onboarding and redirecting to the new extension.
+
+![storage container](./../media/portalfx-extensions-onboarding/framework-extension-redirect-config.png)
+
+## How to verify if portal framework onboarding is complete?
+
+1. Add a comment in the workitem associated with the pull request to get notified of deployment. 
+2. Check [Commit Search](https://aka.ms/portalfx/commitsearch) with the commit id and [deployment pipeline](http://simonp-sites/pipeline).
+3. If the changes are deployed you should find them in the API diagnostics log in respective branches [DF](https://df.onecloud.azure-test.net/api/diagnostics), [RC](https://rc.portal.azure.com/api/diagnostics), [MPAC](https://ms.portal.azure.com/api/diagnostics) or [PROD](https://portal.azure.com/api/diagnostics)
+
+![DF](./../media/portalfx-extensions-onboarding/validate-framework-config-df.png)
+
+![RC](./../media/portalfx-extensions-onboarding/validate-framework-config-rc.png)
+
+Note : Please DO NOT get the pull request approved, bypassed or completed without hosting service onboarding complete and required DNS entries created.  
+
+## Step 3 - AAD Onboarding
 1) For teams that require Graph access and AAD app for per extension tokens, please create a [workitem](http://aka.ms/portalfx/newextension)
+2) Any changes to the AAD app to add more permissions or reply URLs will require an additional workitem. Please schedule a meeting to go over the changes along with the onboarding
 2) Send email to [ibiza-onboarding@microsoft.com](mailTo:ibiza-onboarding@microsoft.com) with the workitem details and extension details. 
+
+Here is the list of [graph endpoints](https://msft.spoppe.com/sites/Identity/MSODS/SitePages/AAD%20Environments.aspx) for different clouds
+
 <!--
 TODO - Add an example after the feature is ready (ETA is March or April )
 -->

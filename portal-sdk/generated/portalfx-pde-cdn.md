@@ -27,7 +27,7 @@ For CoreXT based environemtns, you can add a reference to the package in your **
 *Note:* you will need to update the version with the latest from [here](https://msazure.visualstudio.com/DefaultCollection/One/_apps/hub/ms.feed.feed-hub?feedName=Official&protocolType=NuGet&packageName=microsoft.portal.extensions.cdn)
 
 <a name="getting-started-with-azure-cdn-2-referencing-cdn-pde"></a>
-## >
+##  start="2">
 <li>Referencing CDN PDE</li>
 <
 
@@ -37,7 +37,7 @@ In your extension *.csproj file, you will need to add a reference to the Microso
 ```
 
 <a name="getting-started-with-azure-cdn-3-referencing-cdn-integration-blade"></a>
-## >
+##  start="3">
 <li>Referencing CDN Integration Blade</li>
 <
 
@@ -108,7 +108,7 @@ The hostname of your service which is used as an origin for the created CDN endp
 	```
 
 <a name="getting-started-with-azure-cdn-4-telemetry-and-monitoring"></a>
-## >
+##  start="4">
 <li>Telemetry and Monitoring</li>
 <
 We are tracking the usage and actions on CDN integration blade through following metrics:

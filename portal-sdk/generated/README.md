@@ -27,7 +27,9 @@ Learn how the framework is structured and how it is designed to run in multiple 
 
 * [Architecture overview](/portal-sdk/generated/top-extensions-architecture.md)
 
-* [Authentication architecture](/portal-sdk/generated/top-extensions-authentication.md)
+* [Authentication flow](/portal-sdk/generated/top-extensions-authentication-flow.md)
+
+* [Authentication procedures](/portal-sdk/generated/top-extensions-authentication-procedures.md)
 
 <!--
 <a name="azure-portal-extension-development-documentation-what-s-new"></a>

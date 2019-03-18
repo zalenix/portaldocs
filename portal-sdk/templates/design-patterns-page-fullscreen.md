@@ -116,6 +116,7 @@ Use the Close button in the right corner
 
 ## Related design guidelines
 
+* Responsive design [design-patterns-page-responsive-design.md](design-patterns-page-responsive-design.md)
 * Create a Resource [design-patterns-resource-create.md](design-patterns-resource-create.md)
 * Browse Resources [design-patterns-resource-browse.md](design-patterns-resource-browse.md)
 * Manage a Resource [design-patterns-resource-manage.md](design-patterns-resource-manage.md)
@@ -130,7 +131,8 @@ Research history and retrospective for Azure Portal Full Screen
 
 * Non full screen pages [View report](https://aka.ms/portalfx/fundamentals/nonfullscreenblades)
 
-* Non full screen resource creation pages [View report](https://aka.ms/portalfx/fundamentals/nonfullscreencreate)
+* Non full screen resource creation pages [View report](https://aka.ms/portalfx/fundamentals/allcreate)
+
 
 # For developers 
 Developers can use the following information to get started implementing this pattern

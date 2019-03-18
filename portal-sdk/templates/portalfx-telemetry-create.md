@@ -33,7 +33,7 @@ This function returns the list of Portal Azure service deployment lifecycles, al
 * Calculating the average create duration by data center.
 
 #### Underlying Function Resources 
-* `cluster("Azportal").database("AzPtlCosmos").CreateFlows`
+* `cluster("Azportalpartner").database("AzPtlCosmos").CreateFlows`
   * The source of the Azure create lifecycle deployment information.
 * `cluster("Armprod").database("ARMProd").Deployments`
   * The source of the ARM deployment information

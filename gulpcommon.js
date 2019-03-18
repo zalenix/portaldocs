@@ -5,7 +5,7 @@
 //workaround no support for Visual Studio Online url format
 var fs = require('fs');
 var utilFilePath = process.cwd() + '\\node_modules\\gitinfo\\dist\\utils.js';
-if(fs.existsSync(utilFilePath)) {
+if (fs.existsSync(utilFilePath)) {
     var utilContent = fs.readFileSync(utilFilePath, { 'encoding': 'utf8' });
     var result = utilContent.replace(/url.length !== 2/g, 'url.length < 2');
     fs.writeFileSync(utilFilePath, result, { 'encoding': 'utf8' });
@@ -30,11 +30,11 @@ var self = module.exports = {
      * Generates gitdown output for all files in the inputDir that have a path that match the fileMatchPattern.
      * the resulting output is written to outputDir.  Does not recurse directories for content.
      */
-    processDirectory: function(inputDir, outputDir, fileMatchPattern) {
+    processDirectory: function (inputDir, outputDir, fileMatchPattern) {
         const fileRegEx = new RegExp(fileMatchPattern, "i");
         var processFilePromises = [];
-        
-        if (!fs.existsSync(outputDir)){            
+
+        if (!fs.existsSync(outputDir)) {
             fs.mkdirSync(outputDir);
         }
 
@@ -56,12 +56,12 @@ var self = module.exports = {
     processFile: function (inputFile, outDir, config, relativeLinkToHash) {
         console.log("processing: " + inputFile);
         var gd = gitdown.readFile(path.resolve(inputFile));
-        config.gitinfo = config.gitinfo || { gitPath: gitPath};
+        config.gitinfo = config.gitinfo || { gitPath: gitPath };
         gd.setConfig(config);
 
         //register a custom helper that injects h1 anchor tags per document
-        gd.registerHelper('include-file',{
-            weight:20,
+        gd.registerHelper('include-file', {
+            weight: 20,
             compile: !!relativeLinkToHash ? self.includeFile : gitdownIncludeHelper.compile
         });
 
@@ -70,12 +70,12 @@ var self = module.exports = {
             weight: 10,
             compile: self.includeSection
         });
-        
+
         gd.registerHelper('include-headings', {
             weight: 30,
             compile: self.includeHeadings
         });
-        
+
         var outputFile = path.resolve(outDir, path.basename(inputFile));
 
         // Write the file ourselves intead of using gitdown.WriteFile so we can fix line endings to be CRLF.
@@ -90,14 +90,14 @@ var self = module.exports = {
         }
         try {
             config.maxLevel = config.maxLevel || 2;
-            
+
             var fullFilePath = path.resolve(context.gitdown.getConfig().baseDirectory, config.file);
             var relativeFilePath = fullFilePath.replace(context.gitdown.getConfig().baseDirectory, "");
-            
+
             if (!fs.existsSync(fullFilePath)) {
                 throw new Error('Input file does not exist: ' + config.file);
             }
-            
+
             var content = fs.readFileSync(fullFilePath, {
                 encoding: 'utf8'
             });
@@ -111,7 +111,7 @@ var self = module.exports = {
 
             output = self.appendFilepathsToLinks(output, relativeFilePath);
         } catch (err) {
-            console.log ("An error occured while trying to include headings: " + err);
+            console.log("An error occured while trying to include headings: " + err);
         }
 
         return output;
@@ -135,18 +135,18 @@ var self = module.exports = {
      *
      * @private
      */
-   maxLevel: function (tree) {
-      var maxLevel = arguments.length <= 1 || arguments[1] === undefined ? 1 : arguments[1];
+    maxLevel: function (tree) {
+        var maxLevel = arguments.length <= 1 || arguments[1] === undefined ? 1 : arguments[1];
 
-      tree.forEach((article, index) => {
-        if (article.level > maxLevel) {
-          delete tree[index];
-        } else {
-          article.descendants = self.maxLevel(article.descendants, maxLevel);
-        }
-      });
+        tree.forEach((article, index) => {
+            if (article.level > maxLevel) {
+                delete tree[index];
+            } else {
+                article.descendants = self.maxLevel(article.descendants, maxLevel);
+            }
+        });
 
-      return tree;
+        return tree;
     },
     /**
      * Extending gitdown to provide code snippet injection. 
@@ -179,6 +179,7 @@ var self = module.exports = {
         const extRegEx = {
             ".config": { regEx: xmlCommentRegEx, template: xmlSnippetTemplate },
             ".pdl": { regEx: xmlCommentRegEx, template: xmlSnippetTemplate },
+            ".csproj": { regEx: xmlCommentRegEx, template: xmlSnippetTemplate },
             ".html": { regEx: xmlCommentRegEx, template: xmlSnippetTemplate },
             ".cs": { regEx: codeCommentRegEx, template: "```csharp\n%s\n```" },
             ".ts": { regEx: codeCommentRegEx, template: "```typescript\n%s\n```" },
@@ -194,8 +195,8 @@ var self = module.exports = {
             var sectionContent = sectionContentMatches.pop();
             const firstLineWhiteSpaceRegEx = new RegExp("^[ \t]+", "gm");
             const firstLineWhiteSpace = firstLineWhiteSpaceRegEx.exec(sectionContent);
-            if(firstLineWhiteSpace && firstLineWhiteSpace.length > 0) {
-                const regExMatchWhiteSpaceMultiLine = new RegExp(util.format("^[ \t]{%s}", firstLineWhiteSpace.pop().length ), "gm");
+            if (firstLineWhiteSpace && firstLineWhiteSpace.length > 0) {
+                const regExMatchWhiteSpaceMultiLine = new RegExp(util.format("^[ \t]{%s}", firstLineWhiteSpace.pop().length), "gm");
                 sectionContent = sectionContent.replace(regExMatchWhiteSpaceMultiLine, '');
             }
 
@@ -214,7 +215,7 @@ var self = module.exports = {
         }
 
         const originalContent = gitdownIncludeHelper.compile(config, context);
-        
+
         return originalContent;
     },
     /**
@@ -222,7 +223,7 @@ var self = module.exports = {
      * gitdown references that provide code snippet injection into docs and also to maintain the same folder structure that
      * will be present on github
      */
-     createSymlink: function(fromDir, toDir) {
+    createSymlink: function (fromDir, toDir) {
         // alternative is to use environmental variable but gitdown does not support that resolution of env var in path.  
         // so would need to do that for both regular gitdown references and for include sections
         const resolvedFromDir = path.resolve(__dirname, fromDir);
@@ -240,14 +241,14 @@ var self = module.exports = {
      * Validates the links within a given file includes those that start with #, ., / and http
      * Links that are behind authentication (401 or 403 response codes) can not be properly verified and will not be reported as failures.
      */
-    checkLinks: function(inputFile) {
+    checkLinks: function (inputFile) {
         var links = [];
         var docs = [];
         var brokenLinks = [];
-        return Q.ninvoke(fs, 'readFile', inputFile,'utf8').then(function (result) {
+        return Q.ninvoke(fs, 'readFile', inputFile, 'utf8').then(function (result) {
             //console.log("checking links in " + inputFile);
             var urls = urlExt.extractUrls(result, urlExt.SOURCE_TYPE_MARKDOWN);
-            
+
             // Make sure to comment why the url is being skipped
             // Do not include http:// or https:// as they get trimmed when matching
             var urlsToSkip = [
@@ -281,21 +282,20 @@ var self = module.exports = {
                 "idwebelements", // internal
                 "qe" //internal
             ];
-            
+
             var count = 0;
-            urls.forEach(function(url) {
+            urls.forEach(function (url) {
                 // Trim the http:// or https://
                 var regex = new RegExp("(^HTTPS://|HTTP://)", "i");
-                var trimmedUrl = url.replace(regex,"");
-                
-                if (urlsToSkip.some(function(s) { return trimmedUrl.toUpperCase().indexOf(s.toUpperCase()) == 0 || trimmedUrl.toUpperCase().indexOf("@") >= 0; /** catch emails **/ }))
-                {
+                var trimmedUrl = url.replace(regex, "");
+
+                if (urlsToSkip.some(function (s) { return trimmedUrl.toUpperCase().indexOf(s.toUpperCase()) == 0 || trimmedUrl.toUpperCase().indexOf("@") >= 0; /** catch emails **/ })) {
                     //console.log(chalk.yellow("Skipping check for url: " + url));
                     return;
                 }
-                
+
                 switch (url[0]) {
-                    case "#": 
+                    case "#":
                         const fragment = url.substr(1);
                         //this regex allows for a match on the markdown header tag. e.g: a fragment of #some-fragment
                         // will search the doc to see if there is any subheading e.g ### some Fragment. 
@@ -303,52 +303,54 @@ var self = module.exports = {
                         const matchHeading = util.format("^[#]+[\\s]?%s", fragment.replace(/-/gm, " "));
                         const matchFragment = new RegExp(matchHeading, "gmi");
                         if (!(result.includes("name=\"" + fragment + "\"") || matchFragment.exec(result))) {
-                           //console.log(chalk.red("\tHyperlink " + url  + " does not refer to a valid link in the document.  Input file: " + inputFile));
-                           brokenLinks.push({ "url":url, "inputFile":inputFile });
-                           count++;
+                            //console.log(chalk.red("\tHyperlink " + url  + " does not refer to a valid link in the document.  Input file: " + inputFile));
+                            brokenLinks.push({ "url": url, "inputFile": inputFile });
+                            count++;
                         }
                         break;
                     case "/":
                         var sanitizedPath = url.substr(0, url.indexOf("#") > 0 ? url.indexOf("#") : url.length).replace(/\//gm, "\\");
                         var file = __dirname + sanitizedPath + (!path.extname(sanitizedPath) ? '.md' : '');
                         if (!fs.existsSync(file)) {
-                           //console.log(chalk.red("\tLink : " + url + " does not resolve to valid path. Resolved path " + file + "does not exist. Input file: " + inputFile));
-                           brokenLinks.push({ "url":url, "inputFile":inputFile });
-                           count++;
+                            //console.log(chalk.red("\tLink : " + url + " does not resolve to valid path. Resolved path " + file + "does not exist. Input file: " + inputFile));
+                            brokenLinks.push({ "url": url, "inputFile": inputFile });
+                            count++;
                         }
                         break;
                     case "h":
-                            links.push(url);
+                        links.push(url);
                         break;
                     case ".":
                     default:
                         var sanitizedPath = url.substr(0, url.indexOf("#") > 0 ? url.indexOf("#") : url.length).replace(/\//gm, "\\");
                         var file = path.resolve(path.dirname(inputFile), sanitizedPath);
                         if (!(fs.existsSync(file) && fs.statSync(file).isFile())) {
-                           //console.log(chalk.red("\tLink : " + url + " does not resolve to valid path. Resolved path " + file + "does not exist. Input file: " + inputFile));
-                           brokenLinks.push({ "url":url, "inputFile":inputFile, "reason":"Does not exist or is not a file." });
-                           count++;
+                            //console.log(chalk.red("\tLink : " + url + " does not resolve to valid path. Resolved path " + file + "does not exist. Input file: " + inputFile));
+                            brokenLinks.push({ "url": url, "inputFile": inputFile, "reason": "Does not exist or is not a file." });
+                            count++;
                         }
                         break;
                 }
             });
-        }).then(function() {
+        }).then(function () {
             // Check that all links are valid
             return links.reduce((prev, curr) => {
                 return prev.then(() => {
                     return fetch(curr, {
-                        method: "HEAD"
+                        method: "HEAD",
+                        timeout: 10*1000 // 10 second timeout
                     }).then((response) => {
                         if (!response.ok) {
                             if (response.status === 401 /* Unauthorized */ ||
                                 response.status === 403 /* Forbidden */) {
                                 // Ignore authenticated endpoints
                             } else if (response.status === 404 /* Not Found */ ||
-                                       response.status === 405 /* Method Not Allowed */ ||
-                                       response.status === 503 /* Service Unavailable */) {
+                                response.status === 405 /* Method Not Allowed */ ||
+                                response.status === 503 /* Service Unavailable */) {
                                 // Retry possibly unsupported HEAD requests
                                 return fetch(curr, {
-                                    method: "GET"
+                                    method: "GET",
+                                    timeout: 10*1000 // 10 second timeout
                                 }).then((response) => {
                                     if (!response.ok) {
                                         throw new Error(response.statusText);
@@ -364,7 +366,7 @@ var self = module.exports = {
                     });
                 });
             }, Q());
-        }).then(function() {
+        }).then(function () {
             return brokenLinks;
         });
     }
