@@ -82,7 +82,7 @@ The resource menu offers a way to navigate to all pages related to the resource.
 Each menu item opens a page that allows the user to drill deeper for more information. Monitoring pages and Resource health require the resource provider to do additional onboarding.
 
 ### Overview page
-The overview page is the home page for a resource. It displays key information and actions for the resource.  The overview page should contain a toolbar, essentials panel, and content area.
+The overview page is the home page for a resource. It displays key information and actions for the resource.  The overview page should contain a toolbar, essentials panel, and content area.  See more details on overview page layout in the [overview page design pattern](portalfx-design-page-overview.md)
 
 <div style="max-width:800px">
 <img alttext="Resource overview page" src="../media/design-patterns-resource-manage/overview.png"  />
@@ -158,6 +158,7 @@ Display guiding content and key information about the resource
 * Don’t build your overview page as a PDL blade   
 
 ## Related design guidelines
+* Overvew page [design-patterns-page-overview.md](design-patterns-page-overview.md)
 * Create a Resource [design-patterns-resource-create.md](design-patterns-resource-create.md)
 * Browse Resources [design-patterns-resource-browse.md](design-patterns-resource-browse.md)
 * Design guidelines [top-design.md](top-design.md)
