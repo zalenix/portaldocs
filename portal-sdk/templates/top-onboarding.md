@@ -159,8 +159,8 @@ Note:  Incorrect or insufficient information in the workitem could delay the onb
 2) If you are NOT using disabled flag, you must increment the extension count in [DeploymentSettingsTests.cs](https://msazure.visualstudio.com/One/_git/AzureUX-PortalFx?path=%2Fsrc%2FStbPortal%2FWebsite.Server.Tests%2FDeploymentSettingsTests.cs&version=GBdev) 
 ![storage](./../media/portalfx-extensions-onboarding/extension-count.png)
 3) Always raise the PR to the Dev branch
-4) For Prod config chanages, once the PR is approved, please cherry pick the change to Mpac and then to Prod. Portal team does not auto merge the changes to other branches
-5) Always cherry-pick the change from previous downlevel branch. eg: Dev to Mpac, Mpac to Prod.
+4) For Prod config chanages, once the PR is approved, please cherry pick the change to Prod after thoroughly testing the portal in MPAC. Portal team does not auto merge the changes to Production branches
+5) Always cherry-pick the change from Dev to Prod branch. ***This is a new change to the cherry-picking process as we will deploy to Mpac by default from Dev branch.***
 6) Here is a sample PR change for dogfood branch.
 
 Note : Dogfood config does not require creating a CNAME entry for extensions as all extensions use the common DNS endpoint. Onboarding to Production config will require the CNAME created with route prefix.
