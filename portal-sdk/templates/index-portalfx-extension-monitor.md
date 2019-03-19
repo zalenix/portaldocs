@@ -15,7 +15,7 @@
 {"gitdown": "include-headings", "file": "../templates/portalfx-telemetry-alerting-faq.md"}
 
 ## Performance 
-{"gitdown": "include-headings", "file": "../templates/portalfx-performance.md"}
+{"gitdown": "include-headings", "file": "top-extensions-performance.md"}
 
 ## Reliability
 {"gitdown": "include-headings", "file": "../templates/portalfx-reliability.md"}

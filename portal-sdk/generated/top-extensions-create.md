@@ -104,7 +104,8 @@ const engineDisplacement = FxDropDown.create<string>(container, {
 
                             this._displacement(value);
                         }
-                    }}));
+                    },
+                }));
             },
         },
     },
@@ -129,6 +130,7 @@ const parameters = {
     backupenginename: this._backupEngineName(),
     displacement: this._displacement(),
     location: location.name,
+    rgName: MsPortalFx.isFeatureEnabled("SubscriptionLevel") ? resourceGroupName : undefined,
     primaryenginetags: this._getTagMapForResource(tagResources[0]),
     secondaryenginestags: this._getTagMapForResource(tagResources[1]),
 };
@@ -158,6 +160,19 @@ const onCreateButtonClick = () => {
     createButton.disabled(true);
     // All form and Arm validations have passed, deploy the template.
     return provisioning.deployTemplate(this._supplyTemplateDeploymentOptions())
+        .then((val) => {
+            // IMPORTANT: If you decide to log your TemplateDeploymentResults, particularly the parameters
+            // property, make sure you do *NOT* log any secure strings or secure objects (e.g. passwords).
+            // This is a security compliance issue.
+            MsPortalFx.Base.Diagnostics.Telemetry.trace({
+                source: "CreateEngineSample",
+                action: "TemplateDeploymentResult",
+                data: {
+                    correlationId: val.correlationId,
+                    subscriptionId: val.subscriptionId,
+                },
+            });
+        })
         .catch(err => {
             // This should only occur if there was a network issue when trying to call ARM, since validation has already succeeded.
             showError(MsPortalFx.getLogFriendlyMessage(err), () => {

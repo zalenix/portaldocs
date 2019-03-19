@@ -535,7 +535,7 @@ The framework supports loading view models using dependency injection. If you mi
 ```
 
 - Build the extension project
-- Get a copy of the dependency injection migration tool at: [\\\\wimoy-dev\Public\DependencyInjectionMigrator](\\\\wimoy-dev\Public\DependencyInjectionMigrator) and copy it locally.
+- Get a copy of the dependency injection migration tool at: [\\\\wimoy-dev\Public\DependencyInjectionMigrator](\\\\wimoy-dev\Public\DependencyInjectionMigrator) and copy it locally. Many thanks to Bryan Wood (v-brwoo@microsoft.com) for improving the tool.
   - Look for the string "ViewModels:" in the build logs and copy and paste the JSON to Extension.json in the dependency injection migration tool.
   - Modify the migration tool source code and put in the path of the folder that contains the TypeScript for your extension
 - Run the tool and migrate your V1 view models.
@@ -603,6 +603,7 @@ The frameworks supports a new extension load contract that can improve extension
 
 ## Prerequistes
 
+- Onboard to Prewarming / Web Workers
 - Remove all requireJS shims.
 - Complete the dependency injected view models migration.
 - Upgrade to at least SDK 14401.

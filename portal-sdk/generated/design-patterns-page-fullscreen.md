@@ -47,7 +47,7 @@ Full screen is a foundation of any page in the Azure portal. All resources are b
 
 <a name="full-screen-pages-anatomy"></a>
 ## Anatomy
-A full screen page usually contains:
+Full screen navigation involves:
 
 <div style="max-width:800px">
 <img alttext="Full screen anotomy" src="../media/design-patterns-page-fullscreen/FS_1_Anatomy.png"  />
@@ -80,6 +80,8 @@ Even though previous blades are no longer visible, the user can traverse to an e
 </div>
 Use the portal breadcrumbs or the browser back button
 
+Content page clicks that are equivalent to a resource menu selection should perform a resource menu selection and *not* stack a full screen blade to the right and do horizontal scrolling
+
 <div style="max-width:200px">
 <img alttext="Close blade" src="../media/design-patterns-page-fullscreen/FS_3_X@2x-400x126.png" />
 </div>
@@ -90,6 +92,7 @@ Use the Close button in the right corner
 ## Do
 
 * Keep input fields at a max width of 265px
+* Show the result of a user click as close to the click target as possible - so try Dialog then Context Pane then a full screen page
 * Use context panes in favor of narrow blades for user input or displaying summary information  
 
 <a name="full-screen-pages-don-t"></a>

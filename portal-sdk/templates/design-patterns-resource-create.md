@@ -151,7 +151,7 @@ The post create page provides realtime deployment status, help with troubleshoot
 
 ## Telemetry
 
-* Full screen status of resource creation pages with more than 20,000 views over last 28 days [View report](https://aka.ms/portalfx/fundamentals/allcreate)
+* Non full screen resource creation pages [View report](https://aka.ms/portalfx/fundamentals/allcreate)
 
 # For developers 
 Developers can use the following information to get started implementing this pattern

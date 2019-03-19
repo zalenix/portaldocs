@@ -36,8 +36,8 @@ For all other questions please reach out to [Ibiza Telemetry](mailto:ibiza-telem
 
 #### Programmatic access
 
-We're currently not onboarding any more users on to programmatic access. We're in the process of making some infrastructure changes to support this ask.
-We'll update the documentation when we can onboard programmatic access.
+Please note that we already offer pretty extensive and customized alerting for extensions that may reduce (often eliminates) the need for you to request programmatic accesses. Please see https://aka.ms/portalfx/docs/alerting for more details. 
+However, if you require programmatic access, we're onboarding partners to our dedicated AzPortalPartner follower cluster. To see the steps to proceed, please review our [onboarding instructions](https://github.com/Azure/portaldocs/blob/master/portal-sdk/generated/portalfx-telemetry-getting-started.md#programmatic-access). 
 
 Kusto.Explorer: [Application](http://kusto-us/ke/Kusto.Explorer.application)
 

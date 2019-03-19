@@ -54,48 +54,26 @@ The resource menu offers a way to navigate to all pages related to the resource.
 <table style="width:800px; border-style:none; cellpadding=10px">
 <tr>
 <td width="30%" align=center valign=top>
-<!-- TODO get updated screenshot that matches new fluent styling -->
 <div style="max-width:200px">
 <img alttext="Resource menu" src="../media/design-patterns-resource-manage/resource-menu.png"  />
 </div>
 </td>
 <td valign=top>
-Resource menu parts:
-<br><br>
-Top items: items common to all resources
-<ul>
-<li>Overview</li>
-<li>Activity logs</li>
-<li>Access control (IAM)</li>
-<li>Tags</li>
-<li>Diagnose and solve problems</li>
-</ul>
+
+### Resource menu contents
 <br>
-SETTINGS: a grouping of the menu that enables configuration of resource settings
-<ul>
-<li><i>Resource-specific settings items</i></li>
-<li>Properties</li>
-<li>Locks</li>
-<li>Automation script</li>
-</ul>
-<br>
-<i>Resource-specific groups and items</i>
-<br><br>
-MONITORING: a grouping of the menu that enables monitoring the resource
-<ul>
-<li>Alerts</li>
-<li>Metrics</li>
-<li>Diagnostic settings</li>
-<li>Logs</li>
-<li><i>Resource-specific monitoring items</i></li>
-</ul>
-<br>
-SUPPORT + TROUBLESHOOTING: a grouping of the menu that enables navigation to support and troubleshooting info
-<ul>
-<li>Resource health</li>
-<li><i>Resource-specific support + troubleshooting items</i></li>
-<li>Create support request</li>
-<ul>
+
+**Top level**
+<br>Pages common to all resources
+
+**Settings**
+<br>A grouping of the menu that surfaces configuration settings on a resource
+
+**Monitoring**
+<br>Services that give visibility into a resource
+ 
+**Support + troubleshooting**
+<br>Tools to help users find and resolve issues with a resource
 </td>
 </tr>
 </table>
@@ -104,7 +82,7 @@ SUPPORT + TROUBLESHOOTING: a grouping of the menu that enables navigation to sup
 Each menu item opens a page that allows the user to drill deeper for more information. Monitoring pages and Resource health require the resource provider to do additional onboarding.
 
 ### Overview page
-The overview page is the home page for a resource. It displays key information and actions for the resource.  The overview page should contain a toolbar, essentials panel, and content area.
+The overview page is the home page for a resource. It displays key information and actions for the resource.  The overview page should contain a toolbar, essentials panel, and content area.  See more details on overview page layout in the [overview page design pattern](portalfx-design-page-overview.md)
 
 <div style="max-width:800px">
 <img alttext="Resource overview page" src="../media/design-patterns-resource-manage/overview.png"  />
@@ -180,6 +158,7 @@ Display guiding content and key information about the resource
 * Don’t build your overview page as a PDL blade   
 
 ## Related design guidelines
+* Overvew page [design-patterns-page-overview.md](design-patterns-page-overview.md)
 * Create a Resource [design-patterns-resource-create.md](design-patterns-resource-create.md)
 * Browse Resources [design-patterns-resource-browse.md](design-patterns-resource-browse.md)
 * Design guidelines [top-design.md](top-design.md)

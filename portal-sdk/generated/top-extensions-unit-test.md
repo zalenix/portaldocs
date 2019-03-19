@@ -316,6 +316,7 @@ describe("Resource Overview Blade Tests", () => {
         "outDir": "./Output",
         "rootDir": ".",
         "sourceMap": false,
+        "strictBindCallApply": true,
         "target": "es5",
         "paths": {
             "msportalfx-ut/*": [

@@ -156,7 +156,7 @@ Developers can use the following information to get started implementing this pa
 ## Related documentation
 
 <!-- TODO Fixup links when new browse publishes -->
-* Building browse experiences [top-extension-browse.md](top-extension-browse.md)
+* Building browse experiences [top-extensions-browse.md](top-extensions-browse.md)
     * Add command [portalfx-browse.md#add-command](portalfx-browse.md#add-command)
     * Customizing columns [portalfx-browse.md#add-command](portalfx-browse.md#add-command)
     * Context menu commands [portalfx-browse.md#adding-context-menu-commands](portalfx-browse.md#adding-context-menu-commands)

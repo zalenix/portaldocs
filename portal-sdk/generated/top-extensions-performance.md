@@ -498,7 +498,8 @@ Below are the steps to switch to the V2 targets. A video of the migration steps 
       "rootDir": "Client",
       "removeComments": false,
       "sourceMap": true,
-      "target": "es5"
+      "target": "es5",
+      "types": []
     },
     "include": [
       "Client/**/*"
@@ -604,6 +605,7 @@ The framework supports loading view models using dependency injection. If you mi
 <a name="dependency-injected-view-models-migration-steps"></a>
 ## Migration steps
 
+- Remove the code in Program.ts that initializes the DataContext classes. Set the generic type parameter of `MsPortalFx.Extension.EntryPointBase` base class specification to void.
 - Delete the generated ViewModelFactories.ts from `Client\_generated`
 - Add the following line to your csproj
 
@@ -632,7 +634,6 @@ The framework supports loading view models using dependency injection. If you mi
 - Find all DataContext classes that are still referenced by your view models and add the `@Di.Class()` decorator.
   - Note that `@Di.Class()` is called with no arguments.
   - You will need to add `import * as Di from "Fx/DependencyInjection` to the top of the files
-- Remove the code in Program.ts that initializes the DataContext classes. Set the generic type parameter of `MsPortalFx.Extension.EntryPointBase` base class specification to void.
 - The constructor of any class that contains a `@Di.Class()` decorator (with or without the "viewModel" argument) cannot contain an parameter that is specified with a non-class type. Some of your view model classes may have a dataContext parameter with an any type or an interface type. Either change the type to a class or remove the parameter entirely.
 - All classes in the dependency chain of migrated view models should be marked with `@Di.Class()` decorator. The dependency injection framework in the Portal only supports constructor injection.
 - Put the following code in your Program.ts right at the module level. Then load your extension through the portal. This will validate that you have correctly migrated the V1 view models. The code should complete almost instantly. Remove the code when you are done.
@@ -684,10 +685,10 @@ The frameworks supports a new extension load contract that can improve extension
 <a name="fast-extension-load-prerequistes"></a>
 ## Prerequistes
 
+- Onboard to Prewarming / Web Workers
 - Remove all requireJS shims.
 - Complete the dependency injected view models migration.
 - Upgrade to at least SDK 14401.
-  - It is recommended that you first upgrade to SDK 12101 and absorb the TypeScript 3.2 compiler breaking changes.
   - The MSI can be found at this location [\\\\reddog\Builds\branches\git_azureux_portalfx_production_sdk\5.0.302.14401\retail-amd64\src\RDPackages\SdkInstallerPackage\Portal](\\\\reddog\Builds\branches\git_azureux_portalfx_production_sdk\5.0.302.14401\retail-amd64\src\RDPackages\SdkInstallerPackage\Portal)
   - $(ExtensionPageVersion) breaking change notes: https://msazure.visualstudio.com/One/_workitems/edit/3276047
 
@@ -722,12 +723,12 @@ The frameworks supports a new extension load contract that can improve extension
 - The URI used to register your extension to the portal should be the application root and should not contain any routes. 
   - You may need to change the URI that you use to sideload your extension.
   - The hosting service URIs are already registered correctly.
-  - You can add a urlMapping in your web.config to redirect `~` to your home page controller. This change does not have to be deployed to production if your extension is already on the hosting service.
+  - You can add a urlMapping in your web.config to redirect the root application path `~/` to your home page controller. This change does not have to be deployed to production if your extension is already on the hosting service.
 
     ```xml
         <system.web>
             <urlMappings enabled="true">
-                <add url="~" mappedUrl="~/Home/Index"/>
+                <add url="~/" mappedUrl="~/Home/Index"/>
             </urlMappings>
         </system.web>
     ```

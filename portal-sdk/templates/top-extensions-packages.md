@@ -70,7 +70,7 @@ After installation, NuGet packages that are used for development can be viewed i
 | [Microsoft.Portal.Framework](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=Official%40Local&package=Microsoft.Portal.Framework&protocolType=NuGet&_a=package) | Contains framework assemblies required for extension development. | 
 | [Microsoft.Portal.Security.AadCore](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=Official%40Local&package=Microsoft.Portal.Security.AadCore&protocolType=NuGet&_a=package)	| Contains AAD module used for auth. | 
 | [Microsoft.Portal.Tools](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=Official%40Local&package=Microsoft.Portal.Tools&protocolType=NuGet&_a=package) | 	Contains PDC, build target files (.target) , Definition files and TypeScript 2.3.3 compiler. | 
-| [Microsoft.Portal.Tools.ContentUnbundler](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=Official%40Local&package=Microsoft.Portal.Tools.ContentUnbundler&protocolType=NuGet&_a=package) | Contains the tool that packages an extension UI into a zip file which can be served by the hosting service. | 
+
 
 ### Publishing in the marketplace
 
@@ -112,3 +112,4 @@ The following NuGet packages have been deprecated. Do not use these packages whe
 | Microsoft.Portal.Framework.Scripts | Use Microsoft.Portal.TestFramework.UnitTest instead, as specified in [top-extensions-unit-test.md](top-extensions-unit-test.md). |
 | Microsoft.Portal.Tools.Etw | The recommended practice is to use the Extension Hosting Service as specified in [top-extensions-hosting-service.md](top-extensions-hosting-service.md) instead of custom deployment, as specified in [top-extensions-custom-deployment.md](top-extensions-custom-deployment.md). If you are self-hosting your extension, then this package provides the `EtwRelatedFilesUtility.exe` tool and sample configurations.  | 
 | Microsoft.Portal.TypeMetadata | Author typemetadata directly instead of using this package, as specified in [portalfx-data-typemetadata.md#non-generated-type-metadata](portalfx-data-typemetadata.md#non-generated-type-metadata). |
+| [Microsoft.Portal.Tools.ContentUnbundler](https://msazure.visualstudio.com/One/Azure%20Portal/_packaging?feed=Official%40Local&package=Microsoft.Portal.Tools.ContentUnbundler&protocolType=NuGet&_a=package) | This NuGet has been deprecated. The recommended practice is to generate HostingService artifacts as part of native build. [Extension Hosting Service](top-extensions-hosting-service.md). | 

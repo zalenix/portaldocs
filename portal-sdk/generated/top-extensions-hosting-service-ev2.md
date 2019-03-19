@@ -3,7 +3,7 @@
 
 **NOTE**: This section of the document assumes that the reader has reviewed the hosting service document located at [top-extensions-hosting-service.md](top-extensions-hosting-service.md). 
 
-**NOTE**: This section is only relevant to extension developers who are using [WARM](top-extensions-glossary.md) and [EV2](top-extensions-glossary.md) for deployment, or who plan to migrate to WARM and EV2 for deployment.
+**NOTE**: This section is only relevant to extension developers who are using WARM and EV2 for deployment, or who plan to migrate to WARM and EV2 for deployment.
 
 <a name="ev2-integration-with-hosting-service"></a>
 ## EV2 Integration with hosting service
@@ -17,31 +17,34 @@ Deploying an extension with hosting requires extension developers to upload the 
 
 Since EV2 does not provide an API to upload the zip file, setting up the deployment infrastructure can become an unmanageable task. The deployment process is simplified  by leveraging the EV2 extension that was developed by the Ibiza team. The EV2 extension allows the upload of the zip file to a storage account in a way that is compliant.
 
-<a name="ev2-integration-with-hosting-service-configuring-contentunbundler-for-ev2-based-deployments"></a>
-### Configuring ContentUnbundler for Ev2 based deployments
+<a name="ev2-integration-with-hosting-service-configuring-builds-for-ev2-based-deployments"></a>
+### Configuring Builds for Ev2 based deployments
 
-In the basic scenario, extension developers can execute **ContentUnbundler** in EV2 mode. This will generate the rollout spec, service model schema and parameter files. The procedure is as follows. 
+In the basic scenario Microsoft.Portal.Tools.v2.targets will generate Ev2 templates. This includes the rollout spec, service model schema and parameter files. The procedure is as follows. 
 
-1.  Specify the `ContentUnbundlerMode` as ExportEv2. This attribute is provided in addition to other properties.
+1.  Configure Build.
 
-    The following is the `csproj` configuration for the Monitoring Extension in the **CoreXT** environment.
+ Microsoft.Portal.Tools.v2.targets provides the following properties to control hosting service output generation.  The properties have default values that you can override in your Extension.csproj file to meet the needs of your extension.
+- `HostingServiceCreateDeploymentArtifacts`: defaults is undefined. Set to  `true` to generate versioned hosting service zip file. 
+- `HostingServiceRoutePrefix`: Defaults to `$(MSBuildProjectName)`. The prefix name of your extension e.g scheduler that is supplied as part of onboarding to the extension host.
+- `HostingServicePackageOutputRootDir`: Defaults to `$(OutDir)`. This is the output directory in which the build create a HostingSvc directory with generated zip file.
+- `HostingServiceEv2ExportTemplates`: Defaults to `true`. When true will generate ev2 deployment artifacts to `HostingServiceEv2ServiceGroupRootSourceDir`.
+- `HostingServiceEv2OutputRootDir`: Defaults to `$(HostingServicePackageOutputRootDir)`. Root directory where generated Ev2 Rollout specs will placed.
+- `HostingServiceEv2ServiceGroupRootReplacementsFilePath`: Defaults to `$(MSBuildProjectDirectory)\ServiceGroupRootReplacements.json`.
+- `HostingServiceEv2ServiceGroupRootSourceDir`: Defaults to `$(MSBuildThisFileDirectory)\Ev2\ServiceGroupRoot`. Use to change the default templates used for Ev2 spec generation.
 
-    ```xml
-    <!-- ContentUnbundler parameters -->
-    <PropertyGroup>
-        <ForceUnbundler>true</ForceUnbundler>
-        <ContentUnbundlerExe>$(PkgMicrosoft_Portal_Tools_ContentUnbundler)\build\ContentUnbundler.exe</ContentUnbundlerExe>
-        <ContentUnbundlerSourceDirectory>$(WebProjectOutputDir.Trim('\'))</ContentUnbundlerSourceDirectory>
-        <ContentUnbundlerOutputDirectory>$(BinariesBuildTypeArchDirectory)\ServiceGroupRoot</ContentUnbundlerOutputDirectory>s
-        <ContentUnbundlerExtensionRoutePrefix>monitoring</ContentUnbundlerExtensionRoutePrefix>
-        <ContentUnbundlerMode>ExportEv2</ContentUnbundlerMode>
-    </PropertyGroup>
-    .
-    .
-    .
-    .
-    <Import Project="$(PkgMicrosoft_Portal_Tools_ContentUnbundler)\build\Microsoft.Portal.Tools.ContentUnbundler.targets" />
-    ```
+For example this is the customized configuration for playground extension in CoreXT
+
+```xml
+<PropertyGroup>
+    <HostingServiceCreateDeploymentArtifacts>$(IsOfficialBuild)</HostingServiceCreateDeploymentArtifacts>
+    <HostingServiceRoutePrefix>[YourExtensionNameInHostingService]<</HostingServiceRoutePrefix>
+    <HostingServiceEv2ExportTemplates>true</HostingServiceEv2ExportTemplates>
+</PropertyGroup>
+ ```
+
+`[YourExtensionNameInHostingService]` should be replaced by an alphanumeric string that will be used when registering the extension in the hosting service. This string will be used to create the extension host name as well. Once the extension is registered in the hosting service, this value should not be changed.  Outside of CoreXT, you may want to set `HostingServiceCreateDeploymentArtifacts` to default to true as IsOfficialBuild will not be defined.  Note to change the output path of the built zip use `HostingServiceCreateDeploymentArtifacts`.  To change the outputpath of Generated Ev2Artifacts set `HostingServiceEv2OutputRootDir`.
+
 1. Add a ServiceGroupRootReplacements.json file to the root of your project (right next to your web.config file). 
 
     The `ServiceGroupRootReplacements.json` is a JSON file that defines few properties which are used to generate artifacts that can be used to deploy the extension using EV2. You can define multiple objects in this file, each of those objects will map to an environment to which  you would like to deploy your extension. Below are the properties that should be added to those objects.
@@ -119,9 +122,11 @@ In the basic scenario, extension developers can execute **ContentUnbundler** in 
     
     1. Mooncake
 
+Note: If using a non standard path for ServiceGroupRootReplacements set build property `HostingServiceEv2ServiceGroupRootReplacementsFilePath` to the non standard location.  This already defaults toDefaults to `$(MSBuildProjectDirectory)\ServiceGroupRootReplacements.json`.
+
 1. KeyVault
 
-    The following procedure describes how to set up the KeyVault that is required by the  `ServiceGroupRootReplacements.json` file, as specified in [#configuring-contentunbundler-for-Ev2-based-deployments](#configuring-contentunbundler-for-Ev2-based-deployments).
+    The following procedure describes how to set up the KeyVault that is required by the  `ServiceGroupRootReplacements.json` file, as specified in [#configuring-builds-for-Ev2-based-deployments](#configuring-builds-for-Ev2-based-deployments).
 
     1. Set up KeyVault
 
@@ -143,7 +148,7 @@ In the basic scenario, extension developers can execute **ContentUnbundler** in 
 
         1. Create an Ev2 Certificate and add it to the KeyVault as a secret. In the following `csproj` config example, the name of the certificate in the KeyVault is `PortalHostingServiceDeploymentCertificate`.
         
-        1. Create a KeyVault secret for the storage account connection string. Any configuration for prod environments is done via [jit](top-extensions-glossary.md) access and on your [SAW](top-extensions-glossary.md).
+        1. Create a KeyVault secret for the storage account connection string. Any configuration for prod environments is done via jit access and on your SAW.
 
 1.  Initiate a test deployment
 
@@ -179,10 +184,10 @@ The preceding  configuration will result in a build output as required by Ev2 an
                   \Production.friendlyname_3.json
   ```
 
-<a name="ev2-integration-with-hosting-service-specify-contentunbundler-bake-time"></a>
-### Specify ContentUnbundler bake time
+<a name="ev2-integration-with-hosting-service-specify-ev2-bake-time"></a>
+### Specify Ev2 bake time
 
-The **ContentUnbundler** EV2 template files that are shipped are now formatted to accept customized monitor durations, which is the time to wait between each stage of a deployment, also known as bake time. To accommodate this, the files have been renamed from `Blackforest.RolloutParameters.PT6H.json` to 
+The EV2 template files that are shipped are now formatted to accept customized monitor durations, which is the time to wait between each stage of a deployment, also known as bake time. To accommodate this, the files have been renamed from `Blackforest.RolloutParameters.PT6H.json` to 
 `Blackforest.RolloutParameters.{MonitorDuration}.json`.
 
 The monitor duration can be specified by updating the  `ServiceGroupRootReplacements.json` file to include a new array called "MonitorDuration", as in the following example.
@@ -204,12 +209,12 @@ The monitor duration can be specified by updating the  `ServiceGroupRootReplacem
     }
   ```
 
-If no monitor durations are specified, then the **ContentUnbundler** EV2 generation will default to 6 hours (PT6H) and 1 day (P1D).
+If no monitor durations are specified, then the EV2 generation will default to 6 hours (PT6H) and 1 day (P1D).
 
 <a name="ev2-integration-with-hosting-service-skipping-safe-deployment"></a>
 ### Skipping safe deployment
 
-**ContentUnbundler** EV2 templates now support generating deployment files that do not include a delay between stages.  This can be enabled by adding the key/value pair `"SkipSafeDeployment": "true" ` in the corresponding environment in the `ServiceGroupRootReplacements.json` file.  The following example adds the SkipSafeDeployment key/value pair to the extension named `Microsoft_MyExtension` in the **MOONCAKE** environment.
+EV2 templates now support generating deployment files that do not include a delay between stages.  This can be enabled by adding the key/value pair `"SkipSafeDeployment": "true" ` in the corresponding environment in the `ServiceGroupRootReplacements.json` file.  The following example adds the SkipSafeDeployment key/value pair to the extension named `Microsoft_MyExtension` in the **MOONCAKE** environment.
 
   ```
     { 
