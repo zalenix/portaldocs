@@ -123,7 +123,7 @@ eg: Dogfood, Prod, Mooncake, Fairfax and BlackForest
 
 ![storage container](./../media/portalfx-extensions-onboarding/hosting-service-storage-container.png)
 
-3) Upload the [config.json](/portal-sdk/generated/top-extensions-hosting-service.md#step-8-upload-safe-deployment-config) and the [generated zip file](/portal-sdk/generated/top-extensions-hosting-service.md#step-7-execute-content-unbundler-as-part-of-build-to-generate-zip-file) from your build. 
+3) Upload the [config.json](/portal-sdk/generated/top-extensions-hosting-service.md#step-6-upload-safe-deployment-config) and the [generated zip file](/portal-sdk/generated/top-extensions-hosting-service.md#step-1-generate-hosting-service-versioned-zip-file) from your build. 
 
 **NOTE**:  You can make changes to hosting service configuration and raise a pull request for a self-service onboarding to hosting service
 
@@ -135,7 +135,7 @@ eg: Dogfood, Prod, Mooncake, Fairfax and BlackForest
 [config.prod.json](https://msazure.visualstudio.com/One/_git/AzureUX-PortalHostingSvc?path=%2Fsrc%2FRDPackages%2FExtensionHost%2Fconfig.prod.json&version=GBdev),
 [config.ff.json](https://msazure.visualstudio.com/One/_git/AzureUX-PortalHostingSvc?path=%2Fsrc%2FRDPackages%2FExtensionHost%2Fconfig.ff.json&version=GBdev), 
 [config.mc.json](https://msazure.visualstudio.com/One/_git/AzureUX-PortalHostingSvc?path=%2Fsrc%2FRDPackages%2FExtensionHost%2Fconfig.mc.json&version=GBdev), 
-[config.bf.json](https://msazure.visualstudio.com/One/_git/AzureUX-PortalHostingSvc?path=%2Fsrc%2FRDPackages%2FExtensionHost%2Fconfig.bf.json&version=GBdev)) by editing and adding a new line for the [extension route prefix](https://github.com/Azure/portaldocs/blob/dev/portal-sdk/generated/top-extensions-hosting-service.md#step-7-execute-content-unbundler-as-part-of-build-to-generate-zip-file) entry in the "hostExtensionConfigs" section as shown below.
+[config.bf.json](https://msazure.visualstudio.com/One/_git/AzureUX-PortalHostingSvc?path=%2Fsrc%2FRDPackages%2FExtensionHost%2Fconfig.bf.json&version=GBdev)) by editing and adding a new line for the [extension route prefix](https://github.com/Azure/portaldocs/blob/dev/portal-sdk/generated/top-extensions-hosting-service.md#step-1-generate-hosting-service-versioned-zip-file) entry in the "hostExtensionConfigs" section as shown below.
 
 ![storage container](./../media/portalfx-extensions-onboarding/hosting-service-pr.png)
 

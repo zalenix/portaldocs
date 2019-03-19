@@ -25,6 +25,7 @@ An example of using a context pane is located at `<dir>/Client/V1/Navigation/Ope
 import { Person } from "_generated/SamplesExtension/DataModels/Person";
 import * as Di from "Fx/DependencyInjection";
 import * as OptionsGroup from "Fx/Controls/OptionsGroup";
+import * as TextBox from "Fx/Controls/TextBox";
 import { BladeReferences, BladeLink, ResourceLink, ClickableLink  } from "Fx/Composition";
 import * as FxCompositionBlade from "Fx/Composition/Pdl/Blade";
 import { ViewModels as ViewModelDefinitions } from "_generated/ExtensionDefinition";
@@ -135,6 +136,41 @@ export class OpenBladeApiSamplesViewModel
      */
     public readonly dynamicFxclickText: KnockoutObservable<string>;
 
+    /**
+     * Text to display on the <div> fxclick link.
+     */
+    public readonly divTagFxclickText = Resources.divTagFxclickText;
+
+    /**
+     * Text to display on the <a> fxclick link.
+     */
+    public readonly aTagFxclickText = Resources.aTagFxclickText;
+
+    /**
+     * on-click callback for the 'DIV' tag callback fxclick.
+     */
+    public onDivTagFxclickClick() {
+        // in real applications one might opt for logging telemetry at this level
+        console.log(`The 'DIV' tag callback fxclick has been accessed with href="${this.hrefValue()}"`);
+    }
+
+    /**
+     * on-click callback for the 'A' tag callback fxclick.
+     */
+    public onATagFxclickClick() {
+        // in real applications one might opt for logging telemetry at this level
+        console.log(`The 'A' tag callback fxclick has been accessed with href="${this.hrefValue()}"`);
+    }
+
+    /**
+     * Input field for feeding in the desired HREF value.
+     */
+    public readonly customHrefTextBox: TextBox.Contract;
+
+    /**
+     * The desired HREF value.
+     */
+    public readonly hrefValue = ko.observable<string>();
     /**
      * Used as a showcase callback for the dynamic fxclick sample.
      */
@@ -276,6 +312,11 @@ export class OpenBladeApiSamplesViewModel
                 }
             }
         );
+
+        this.customHrefTextBox = TextBox.create(container, {
+            placeHolderText: Resources.customHrefTextBoxPlaceholder,
+            value: this.hrefValue,
+        });
 
         this._initializeHotSpotSample(container);
         this._initializeGridSample(container, dataContext);

@@ -49,7 +49,7 @@ This function returns the list of Portal Azure service deployment lifecycles, al
 
 <a name="create-telemetry-create-flow-functions-getcreateflows-underlying-function-resources"></a>
 #### Underlying Function Resources
-* `cluster("Azportal").database("AzPtlCosmos").CreateFlows`
+* `cluster("Azportalpartner").database("AzPtlCosmos").CreateFlows`
   * The source of the Azure create lifecycle deployment information.
 * `cluster("Armprod").database("ARMProd").Deployments`
   * The source of the ARM deployment information
