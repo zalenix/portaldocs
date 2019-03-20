@@ -235,7 +235,61 @@ In addition to the zip files, the hosting service expects a config file in the s
 
 This essentially means that if a user request the extension to be loaded in portal, then, based on the nearest data center, portal will decide which version of extension to load. For example, based on the above mentioned `config.json` if a user from Central US region requests to load `Microsoft_Azue_MyExtension` then hosting service will load the stage 1 version i.e. 1.0.0.5 to the user. However, if a user from Singapore loads the extension then the user will be served 1.0.0.1 of the extension.
 
-For national clouds, there are only 2 stages as outlined below - 
+**`$customStageDefinition`:** The hosting service provides a default rollout stages as described above. If those do not meet your requirements, you can modify them by supplying a custom stage definition file for your extension. To tell the hosting service that it should use a custom stage definition for your extension, set this property to true in your `config.json` file.
+
+Once this property is set to true, the hosting service will expect that a json file with the name `stagedefinintion.json` exists in your storage account, and will try to fetch it. 
+
+For example, https://mybizaextensionprod.blob.core.windows.net/extension/stagedefinition.json 
+
+If the fetch fails for any reason, the hosting service will fail to sync the extension.
+
+***`Custom stage definition file`***
+The custom stage definition file is a json file that should conform to the below schema
+
+```json
+{
+    "stagename":["array of ARM region names"], 
+    "allregionsstagename":["*"],
+    "$sequence":["stagename","allregionsstagename"]
+}
+```
+An example is the default stage definition that the hosting service provides
+
+```json
+{
+    "stage1": [
+        "centraluseuap"
+    ],
+    "stage2": [
+        "westcentralus"
+    ],
+    "stage3": [
+        "southcentralus"
+    ],
+    "stage4": [
+        "westus"
+    ],
+    "stage5": [
+        "*"
+    ],
+    "$sequence": [
+        "stage1",
+        "stage2",
+        "stage3",
+        "stage4",
+        "stage5"
+    ]
+}
+```
+The $sequence property should be an array of strings that contain the stage names. This will dictate the order of the rollout. So for example, if the $sequence property is defined as ["myfirststage","mysecondstage","mythirdstage"], then when a new version is deployed, the version will go to the myfirststage stage, and so on.
+
+Each array item defined in the $sequence array should correspond to a property with the same name in the JSON object. Each of those properties should be an array of ARM region names to which that stage maps to. For example, in the default stage definition, stage1 is defined as ["centraluseuap"].
+The last item in the $sequence array should always be assigned an array of a single element that contains `*`. This means that when a version is assigned to the last stage, it is deployed to all Azure regions. For example, in the default stage definition provided by hosting service, stage5 is the last stage and has ["*"] as its value.
+
+The stages defined in your `config.json` file should match the stage names defined in your `stagedefinition.json` file.
+
+
+For national clouds, there are default stage definition defines only 2 stages as outlined below - 
 
 **Mooncake:**
 
@@ -262,9 +316,15 @@ To load version 2.0.0.0 the url would be -
 
 [https://myextension.hosting.portal.azure.net/myextension/friendlyname?l=en&trustedAuthority=portal.azure.com](https://myextension.hosting.portal.azure.net/myextension/friendlyname?l=en&trustedAuthority=portal.azure.com)
 
-#### Step 7: Registering your extension with the hosting service
+#### Step 7: Creating and configuration a storage account
 
-Extensions that intend to use extension hosting service should publish the extracted deployment artifacts (zip file) that are generated during the build along with `config.json` to a public endpoint. Make sure that all the zip files and `config.json` are at the same level.
+Extensions that intend to use extension hosting service should publish the packaged deployment artifacts (zip file) that are generated during the build along with `config.json` to a public read only container in a storage account. Make sure that all the zip files and `config.json` are at the same level.
+
+Since the hosting service requires a single storage account to hold all the extension deployment artifacts, this constitutes a single point of failure where if the storage account is down for any reason, the extension cannot be updated. To overcome this limitation, the storage team built a feature allowing storage account owners to fail over to a secondary region in case the primary region that hosts the storage account is down.
+
+You can find more information about the feature and how to onboard here https://azure.microsoft.com/en-us/blog/account-failover-now-in-public-preview-for-azure-storage/ 
+
+#### Step 8: Registering your extension with the hosting service
 
 Once you have these files available on a public endpoint, file a request to register this endpoint using the following [link](https://aka.ms/extension-hosting-service/onboarding).
 
@@ -293,7 +353,7 @@ Please submit your onboarding request [here](https://mybizaextensionprod.blob.co
 | FAIRFAX     	| 15 days                	|
 | MOONCAKE    	| 15 days                	|
 
-#### Step 8: Migrating extensions that use server side controllers
+#### Step 9: Migrating extensions that use server side controllers
 
 If your extension uses server side controllers, there is some extra work that needs to be done to make your extension ready for hosting in the hosting service.
 
@@ -445,6 +505,12 @@ NOTE: This samples depicts that all stages are serving version 2.0.0.0
 **Do I need to register a new storage account everytime I need to upload zip file?**
 
 No. Registering storage account with hosting service is one-time process. This enabled hosting service to know where to get the latest version of your extension.
+
+**What happens if there is an outage in the region that hosts the storage account?**
+
+If the region that hosts the storage account is experiencing an outage that is making the storage account inaccessible, the extension will not be impacted. The hosting service will continue serving content without any issues. 
+
+This will however prevent new versions of the extension from being deployed. The solution for this is to configure the storage account for manual failover. [Step 7: Creating and configuration a storage account](#Step-7:-Creating-and-configuration-a-storage-account) has more information on how to configure the storage account to allow for manual failover.
 
 **How can I ask questions about hosting service?**
 
