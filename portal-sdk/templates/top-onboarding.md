@@ -167,6 +167,8 @@ Note : Dogfood config does not require creating a CNAME entry for extensions as 
 
 ![storage container](./../media/portalfx-extensions-onboarding/portal-framework-extension-config.png)
 
+7) [Hide all assets](portalfx-assets.md#how-to-hide-your-asset-in-different-environments) in your extension code before updating the framework config. By doing this, you can control when the assets can be shown and when you want to go live in Production. 
+
 Note : Extension name cannot be changed once onboarding is complete. It will require a new onboarding and redirecting to the new extension.
 
 ![storage container](./../media/portalfx-extensions-onboarding/framework-extension-redirect-config.png)
