@@ -22,7 +22,7 @@ The display language will be one of the 18 language below. All extensions are re
 | Dutch                 	| nl           	|
 | Hungarian             	| hu           	|
 | Portuguese (Portugal) 	| pt-PT        	|
-| Polish                	| po           	|
+| Polish                	| pl           	|
 | Swedish               	| sv           	|
 | Turkish               	| tr           	|
 
