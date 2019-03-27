@@ -72,7 +72,7 @@ You will need to set up some MSBuild directives in your Extension.csproj to popu
   <Target Name="SetExtensionPageVersion"
           BeforeTargets="CompilePdl" >​
     <PropertyGroup>​
-      <ExtensionPageVersion>$(BuildVersion)</ExtensionPageVersion>​
+      <ExtensionPageVersion>$(BuildVersion).$([System.DateTime]::Now.ToString("yyMMdd-HHmm")).</ExtensionPageVersion>​
     </PropertyGroup>​
   </Target>
 
