@@ -59,15 +59,12 @@ Max width: 700px
 <a name="responsive-design-behavior-editable-grid-text-boxes"></a>
 ### Editable grid text boxes
 Min width: 80px
-<div style="max-width:800px">
-<img alttext="Example image" src="../media/design-patterns-responsive-design/editable-grid-min-width.png"  />
-</div>
-
 Max width: 265px 
-This example has slightly narrower text boxes at 220px
-<div style="max-width:800px">
-<img alttext="Example image" src="../media/design-patterns-responsive-design/editable-grid-max-width.png"  />
-</div>
+
+<a name="responsive-design-behavior-entire-page"></a>
+### Entire page
+Max width: 700px
+
 
 <a name="responsive-design-success-critera"></a>
 ## Success critera
@@ -88,6 +85,7 @@ This example has slightly narrower text boxes at 220px
 ## Related design guidelines
 <!-- Links to Related design guidelines.  Always include the link to the readme -->
 * Design guidelines [top-design.md](top-design.md)
+* Full screen [design-patterns-page-fullscreen.md](design-patterns-page-fullscreen.md)
 
 <a name="responsive-design-research-and-usability"></a>
 ## Research and usability
@@ -99,6 +97,8 @@ Research often finds issues with experiences that do not follow guidelines on pa
 ## Telemetry
 <!-- Links to portal telemetry showing the solution usage -->
 
+* Full screen status of pages with more than 20,000 views over last 28 days [View report](https://aka.ms/portalfx/fundamentals/nonfullscreenblades)
+
 <a name="for-developers"></a>
 # For developers
 Developers can use the following information to get started implementing this pattern
@@ -106,7 +106,7 @@ Developers can use the following information to get started implementing this pa
 <a name="for-developers-tips-and-tricks"></a>
 ## Tips and tricks
 <!-- Bulleted list of tips and tricks for developers -->
--Set a max-width on your content in the CSS (blade/part templates) OR set initial DisplayState=“normal” in a blade’s PDL.
+-Set a max-width on your content in the CSS (blade/part templates).
 
 <a name="for-developers-related-documentation"></a>
 ## Related documentation

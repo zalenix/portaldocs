@@ -51,7 +51,7 @@ In the basic scenario, extension developers can execute **ContentUnbundler** in 
 
     **ContactEmail**: The contact email of the extension owners. 
 
-    **TargetStorageConStringKeyVaultUri**: The keyvault Uri that contains the storage account connection string, account key, or SASToken. This will require you to set up keyvault.
+    **TargetStorageCredentialsKeyVaultUri**: The keyvault Uri that contains the storage account connection string, account key, or SASToken. This will require you to set up keyvault.
 
     **StorageAccountCredentialsType**: The type of credential provided in the `TargetStorageCredentialsKeyVaultUri` property.  Valid values are "ConnectionString", "AccountKey", or "SASToken".
 
@@ -126,7 +126,7 @@ In the basic scenario, extension developers can execute **ContentUnbundler** in 
 
         1. The certificate that Ev2 will use to call the hosting service to initate a deployment.
 
-            **NOTE**: Azure ignores this certificate but it is still required. The extension is validated based on an allowed list of storage accounts and the storage credential you supply by using the   `PortalExtensionName`, `TargetStorageConStringKeyVaultUri` and `TargetContainerName` settings.
+            **NOTE**: Azure ignores this certificate but it is still required. The extension is validated based on an allowed list of storage accounts and the storage credential you supply by using the   `PortalExtensionName`, `TargetStorageCredentialsKeyVaultUri` and `TargetContainerName` settings.
 
         1. The credentials to the target storage account where the extension will be deployed. The format of the connection string is the default form `DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1};EndpointSuffix={3}`, which is the format provided from `portal.azure.com`.
     

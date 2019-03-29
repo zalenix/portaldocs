@@ -1,5 +1,5 @@
 <!-- This is the template to use when creating a new design pattern document -->
-# <NAME>
+# DESIGN PATTERN NAME
 <!-- Fill in the name above and then write a short description of the design pattern.  For example
 "Forms are the manner in which we gather and validate user input."
 -->

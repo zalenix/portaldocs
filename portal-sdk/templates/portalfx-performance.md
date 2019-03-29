@@ -422,7 +422,7 @@ Below are the steps to switch to the V2 targets. A video of the migration steps 
 
 ## Prerequisites
 
-- Get your extension working with at least Ibiza SDK 5.0.302.1051. The V2 targets are under active development are continuously being improved. Ideally get your extension working with the latest SDK.
+- Get your extension working with at least Ibiza SDK 5.0.302.6501. The V2 targets are under active development are continuously being improved. Ideally get your extension working with the latest SDK.
 
 ## Get your extension building with tsconfig.json
 
@@ -436,6 +436,7 @@ Below are the steps to switch to the V2 targets. A video of the migration steps 
     "compilerOptions": {
       "baseUrl": "Client",
       "declaration": true,
+      "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
       "forceConsistentCasingInFileNames": true,
       "inlineSources": true,
@@ -532,6 +533,7 @@ Below are the steps to switch to the V2 targets. A video of the migration steps 
 ## Breaking changes between V1 and V2 targets
 
 - The output location of pde files has been changed from `$(ProjectDir)Client` to `$(OutDir)`.
+- The V2 targets uses a different localization model. You should verify that localization is still working by loading the portal with your extension sideloaded and with the query string `?l=fr`.
 
 # Dependency injected view models
 
@@ -576,6 +578,7 @@ The framework supports loading view models using dependency injection. If you mi
     - _generated\adapters\blade
     - _generated\adapters\part
   - DataContext classes referenced by V2 view models cannot be removed even if they are empty
+  - If you forget to do this step for a V2 view model, you will see an error similar to: `The InjectableModel.Decorator decorator is missing. Please add the appropriate InjectableModel.Decorator decorator to your 'SubscriptionPropertiesBladePinnedPart' view model.`
 - Find all DataContext classes that are still referenced by your view models and add the `@Di.Class()` decorator.
   - Note that `@Di.Class()` is called with no arguments.
   - You will need to add `import * as Di from "Fx/DependencyInjection` to the top of the files
