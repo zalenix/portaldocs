@@ -12,7 +12,7 @@ Kusto.Explorer: [Application](http://kusto-us/ke/Kusto.Explorer.application)
 ### Kusto Cluster Info
 
 Name: AzPortal
-Data Source: [https://AzPortal.kusto.windows.net](https://AzPortal.kusto.windows.net)
+Data Source: [https://Azportalpartner.kusto.windows.net](https://AzPortal.kusto.windows.net)
 
 <a name="getting-started-permissions"></a>
 ### Permissions
