@@ -127,7 +127,7 @@ In order to load your extension in a specific environments you will need to prov
 - The files need to be placed under `\Content\Config`
 - The file should have its build action set to `Content`, otherwise the file will not be included in the generated zip file.
 - The files need to be named with the following convention: <host>.<domain>.json (e.g. portal.azure.com.json, ms.portal.azure.com.json)
-- a default.json file is required. It will contain environment values that will be made available to the client.  default.json is common to all cloud specific configs.  If the same key is found in a cloud specific config it will get overridden by the value from the cloud specific config.  To ensure default.json captures both extension and fx values that may have non default values set by your extension that you're unaware it is recommended to watch the migration video [https://aka.ms/portalfx/removecuvideo](https://aka.ms/portalfx/removecuvideo).
+- a default.json file is required. It will contain environment values that will be made available to the client.  default.json is common to all cloud specific configs.  If the same key is found in a cloud specific config it will get overridden by the value from the cloud specific config.  To ensure default.json captures both extension and fx values that may have non default values set by your extension that you're unaware of it's recommended to watch the migration video [https://aka.ms/portalfx/removecuvideo](https://aka.ms/portalfx/removecuvideo).
 	
 Here are example for each environment. For now, just add this empty file with a build action of content:
 1. **Default** configuration file should be named `default.json`.
