@@ -104,7 +104,8 @@ const engineDisplacement = FxDropDown.create<string>(container, {
 
                             this._displacement(value);
                         }
-                    }}));
+                    },
+                }));
             },
         },
     },
