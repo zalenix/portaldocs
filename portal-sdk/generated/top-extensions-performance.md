@@ -50,7 +50,7 @@ As an extension author you have a duty to uphold your experience to the performa
 
 | Area      | 95th Percentile Bar | Telemetry Action         | How is it measured? |
 | --------- | ------------------- | ------------------------ | ------------------- |
-| Extension | < 4 secs       | ExtensionLoad            | The time it takes for your extension's home page to be loaded and initial scripts, the `initialize` call to complete within your Extension definition file  |
+| Extension | < 2 secs       | ExtensionLoad            | The time it takes for your extension's home page to be loaded and initial scripts, the `initialize` call to complete within your Extension definition file  |
 | Blade     | < 4 secs       | BladeFullReady           | The time it takes for the blade's `onInitialize` or `onInputsSet` to resolve and all the parts on the blade to become ready |
 | Part      | < 4 secs       | PartReady                | Time it takes for the part to be rendered and then the part's OnInputsSet to resolve |
 | WxP       | > 80       | N/A                      | An overall experience score, calculated by weighting blade usage and the blade full ready time |
@@ -614,7 +614,7 @@ The framework supports loading view models using dependency injection. If you mi
 ```
 
 - Build the extension project
-- Get a copy of the dependency injection migration tool at: [\\\\wimoy-dev\Public\DependencyInjectionMigrator](\\\\wimoy-dev\Public\DependencyInjectionMigrator) and copy it locally.
+- Get a copy of the dependency injection migration tool at: [\\\\wimoy-dev\Public\DependencyInjectionMigrator](\\\\wimoy-dev\Public\DependencyInjectionMigrator) and copy it locally. Many thanks to Bryan Wood (v-brwoo@microsoft.com) for improving the tool.
   - Look for the string "ViewModels:" in the build logs and copy and paste the JSON to Extension.json in the dependency injection migration tool.
   - Modify the migration tool source code and put in the path of the folder that contains the TypeScript for your extension
 - Run the tool and migrate your V1 view models.
@@ -685,12 +685,12 @@ The frameworks supports a new extension load contract that can improve extension
 <a name="fast-extension-load-prerequistes"></a>
 ## Prerequistes
 
-- Onboard to Prewarming / Web Workers
 - Remove all requireJS shims.
 - Complete the dependency injected view models migration.
 - Upgrade to at least SDK 14401.
   - The MSI can be found at this location [\\\\reddog\Builds\branches\git_azureux_portalfx_production_sdk\5.0.302.14401\retail-amd64\src\RDPackages\SdkInstallerPackage\Portal](\\\\reddog\Builds\branches\git_azureux_portalfx_production_sdk\5.0.302.14401\retail-amd64\src\RDPackages\SdkInstallerPackage\Portal)
   - $(ExtensionPageVersion) breaking change notes: https://msazure.visualstudio.com/One/_workitems/edit/3276047
+- Prewarming / Web Workers is not a pre-requisite. If an extension onboards to both Prewarming and FastExtensionLoad, the framework will eliminate an additional 500 ms postMessage call, allowing an extension to reach sub-second extension load time.
 
 <a name="fast-extension-load-migration-steps"></a>
 ## Migration steps

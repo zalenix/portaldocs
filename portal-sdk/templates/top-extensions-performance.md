@@ -7,7 +7,7 @@ As an extension author you have a duty to uphold your experience to the performa
 
 | Area      | 95th Percentile Bar | Telemetry Action         | How is it measured? |
 | --------- | ------------------- | ------------------------ | ------------------- |
-| Extension | < 4 secs       | ExtensionLoad            | The time it takes for your extension's home page to be loaded and initial scripts, the `initialize` call to complete within your Extension definition file  |
+| Extension | < 2 secs       | ExtensionLoad            | The time it takes for your extension's home page to be loaded and initial scripts, the `initialize` call to complete within your Extension definition file  |
 | Blade     | < 4 secs       | BladeFullReady           | The time it takes for the blade's `onInitialize` or `onInputsSet` to resolve and all the parts on the blade to become ready |
 | Part      | < 4 secs       | PartReady                | Time it takes for the part to be rendered and then the part's OnInputsSet to resolve |
 | WxP       | > 80       | N/A                      | An overall experience score, calculated by weighting blade usage and the blade full ready time |
