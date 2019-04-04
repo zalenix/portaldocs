@@ -165,18 +165,23 @@ This is at which percentile you want to measure the performance. Today the only 
 <a name="overview-performance-configuration-what-is-percentiledurationthresholdinmilliseconds"></a>
 #### What is percentileDurationThresholdInMilliseconds
 
-This is the minimum duration (in milliseconds) when {percentile}% of users is above the {percentileDurationThresholdInMilliseconds}.
+This is the minimum duration (in milliseconds) above which if [Weighted duration](#overview-performance-configuration-when-do-the-alerts-trigger) is calcuated, then it will fire an alert for affected user count more than `minAffectedUserCount`.
+
+This is also __half__ the minimum duration (in milliseconds) above which if [Weighted duration](#overview-performance-configuration-when-do-the-alerts-trigger) is calcuated, then it will fire an alert for affected user count more than `bottomMinAffectedUserCount`.
 
 <a name="overview-performance-configuration-what-is-minaffectedusercount"></a>
 #### What is minAffectedUserCount
 
-This is the minimum number of users whose load duration is above {percentileDurationThresholdInMilliseconds}.
+This is the minimum number of users whose load duration is above `percentileDurationThresholdInMilliseconds`.
+
+This is used as a threshold to trigger an alert if the [Weighted duration](#overview-performance-configuration-when-do-the-alerts-trigger) is greater than the `percentileDurationThresholdInMilliseconds` defined.
 
 <a name="overview-performance-configuration-what-is-bottomminaffectedusercount"></a>
 #### What is bottomMinAffectedUserCount
 
-This is used as a threshold to trigger an alert if the {percentile} defined is greater than or
-equal to __double__ the {percentileThreshold} defined.
+This is the minimum number of users whose load duration is above __double__ the `percentileDurationThresholdInMilliseconds`.
+
+This is used as a threshold to trigger an alert if the [Weighted duration](#overview-performance-configuration-when-do-the-alerts-trigger) is greater than __double__ the `percentileDurationThresholdInMilliseconds` defined.
 
 > This is defaulted to 20% of {minAffectedUserCount}.
 
